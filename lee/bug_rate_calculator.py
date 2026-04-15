@@ -214,16 +214,16 @@ def get_git_diff_stats(base: str, target: str) -> List[FileStat]:
     ref = f"{base}...{target}"
 
     # 1. 获取文件状态（A/M/D/R）
-    cmd_status = ["git", "diff", "--name-status", ref]
-    result = subprocess.run(cmd_status, capture_output=True, text=True)
+    cmd_status = ["git", "-c", "core.quotePath=false", "diff", "--name-status", ref]
+    result = subprocess.run(cmd_status, capture_output=True, text=True, encoding='utf-8')
     if result.returncode != 0:
         print(f"Git 命令执行失败: {' '.join(cmd_status)}")
         print(f"错误信息: {result.stderr}")
         sys.exit(1)
 
     # 2. 获取增删行数
-    cmd_numstat = ["git", "diff", "--numstat", ref]
-    result2 = subprocess.run(cmd_numstat, capture_output=True, text=True)
+    cmd_numstat = ["git", "-c", "core.quotePath=false", "diff", "--numstat", ref]
+    result2 = subprocess.run(cmd_numstat, capture_output=True, text=True, encoding='utf-8')
 
     # 构建 numstat 查找表: filepath -> (added, deleted)
     numstat_map: Dict[str, Tuple[int, int]] = {}
