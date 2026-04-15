@@ -14,9 +14,9 @@ description: 自动计算千行 Bug 率，对比 Git 分支变更行数
 
 ## 执行步骤
 
-1. 进入 `lee` 目录运行脚本：
+1. 进入项目根目录运行脚本：
    ```
-   cd lee && python bug_rate_calculator.py --diff master main --bugs 10 --detail
+   cd .claude/skills/bug-rate/scripts && python bug_rate_calculator.py --diff master main --bugs 10 --detail
    ```
 
 2. 如果用户指定了其他分支、Bug 数或变更范围，替换参数：
@@ -29,7 +29,7 @@ description: 自动计算千行 Bug 率，对比 Git 分支变更行数
    - 文件级明细（状态、新增/更新/删除行数）
 
 ## 脚本路径
-`lee/bug_rate_calculator.py`
+`.claude/skills/bug-rate/scripts/bug_rate_calculator.py`
 
 ## 统计规则
 - **新增行**：master 没有，main 有的代码行
