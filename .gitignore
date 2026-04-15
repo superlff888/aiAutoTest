@@ -1,4 +1,4 @@
 .env
-
 lee/.env
 .idea/
+.venv/
