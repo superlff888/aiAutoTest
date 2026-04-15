@@ -13,9 +13,13 @@ Usage:
 import argparse
 import os
 import sys
+import io
 from pathlib import Path
 from dataclasses import dataclass, field
 from typing import Dict, List, Tuple
+
+# Windows GBK 终端兼容
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 
 # ===== 配置区 =====
@@ -181,27 +185,42 @@ def calculate_bug_rate(stats: List[FileStat], bug_count: int, by_lines: bool = T
     """
     按代码行数分配 Bug 并计算千行 Bug 率
 
-    by_lines=True  → 按代码行数比例分配 Bug
+    by_lines=True  → 按代码行数比例分配 Bug（使用最大余数法）
     by_lines=False → 平均分配 Bug
     """
     total_code = sum(s.code_lines for s in stats)
     if total_code == 0:
         return stats
 
-    remaining_bugs = bug_count
-    for i, stat in enumerate(stats):
-        if by_lines:
-            # 按代码行数比例分配，最后一个文件吸收余数
-            if i == len(stats) - 1:
-                stat.bug_count = remaining_bugs
-            else:
-                stat.bug_count = round(stat.code_lines / total_code * bug_count)
-                remaining_bugs -= stat.bug_count
+    if by_lines:
+        # 最大余数法分配
+        quotients = []
+        for stat in stats:
+            exact = stat.code_lines / total_code * bug_count
+            quotients.append((stat, exact, exact - int(exact)))
 
+        # 先给每个文件 floor 值
+        remaining = bug_count
+        for stat, exact, frac in quotients:
+            stat.bug_count = int(exact)
+            remaining -= stat.bug_count
+
+        # 按余数从大到小分配剩余 Bug
+        quotients.sort(key=lambda x: x[2], reverse=True)
+        for stat, exact, frac in quotients:
+            if remaining <= 0:
+                break
+            stat.bug_count += 1
+            remaining -= 1
+
+        # 计算千行 Bug 率
+        for stat in stats:
             if stat.code_lines > 0:
                 stat.bug_rate = stat.bug_count / stat.code_lines * 1000
-        else:
-            # 平均分配
+    else:
+        # 平均分配
+        remaining_bugs = bug_count
+        for i, stat in enumerate(stats):
             if i == len(stats) - 1:
                 stat.bug_count = remaining_bugs
             else:
@@ -252,7 +271,7 @@ def print_summary(stats: List[FileStat], modules: Dict[str, ModuleStat], bug_cou
     overall_rate = bug_count / total_code * 1000 if total_code > 0 else 0
 
     print("=" * 70)
-    print(" 📊 千行 Bug 率统计报告")
+    print(" [REPORT] 千行 Bug 率统计报告")
     print("=" * 70)
     print(f"  Bug 总数:     {bug_count}")
     print(f"  文件总数:     {total_files}")
@@ -277,7 +296,7 @@ def print_detail(modules: Dict[str, ModuleStat]):
     print("-" * 80)
 
     for name, mod in sorted(modules.items()):
-        print(f"\n  📁 {name}/  (千行Bug率: {mod.bug_rate:.2f})")
+        print(f"\n  [DIR] {name}/  (千行Bug率: {mod.bug_rate:.2f})")
         for f in sorted(mod.files, key=lambda x: x.bug_rate, reverse=True):
             rate_str = f"{f.bug_rate:.2f}" if f.bug_count > 0 else "—"
             print(f"    {f.path:<55} {f.code_lines:>7} {f.bug_count:>4} {rate_str:>10}")
