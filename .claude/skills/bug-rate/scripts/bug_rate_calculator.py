@@ -41,6 +41,7 @@ CODE_EXTENSIONS = {
 EXCLUDE_DIRS = {
     ".git", ".venv", "venv", "__pycache__", "node_modules",
     ".idea", ".vscode", "build", "dist", ".tox",
+    ".claude",
 }
 
 COMMENT_MARKERS = {
@@ -247,6 +248,10 @@ def get_git_diff_stats(base: str, target: str) -> List[FileStat]:
 
         ext = os.path.splitext(filepath)[1]
         if ext not in CODE_EXTENSIONS:
+            continue
+
+        # 排除 .claude 目录下的文件
+        if filepath.startswith(".claude"):
             continue
 
         added, deleted = numstat_map.get(filepath, (0, 0))
