@@ -25,7 +25,7 @@ llm = ChatOpenAI(
     base_url = os.getenv("OPENAI_BASE_URL")
     )
 
-response = llm.invoke("你好")
+response = llm.invoke("你好，你能在测试领域做什么？")
 print(response.content)
 
 for chunk in llm.stream("你好，你能在测试领域做什么？"):
