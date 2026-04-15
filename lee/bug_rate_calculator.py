@@ -74,11 +74,9 @@ class FileStat:
     code_lines: int = 0
     blank_lines: int = 0
     comment_lines: int = 0
-    new_lines: int = 0          # 新增行（纯新加）
-    updated_lines: int = 0      # 更新行（内容被修改）
-    deleted_lines: int = 0      # 删除行（纯删除）
-    bug_count: int = 0
-    bug_rate: float = 0.0
+    new_lines: int = 0
+    updated_lines: int = 0
+    deleted_lines: int = 0
 
     @property
     def changed_lines(self) -> int:
@@ -95,8 +93,6 @@ class ModuleStat:
     new_lines: int = 0
     updated_lines: int = 0
     deleted_lines: int = 0
-    bug_count: int = 0
-    bug_rate: float = 0.0
     files: List[FileStat] = field(default_factory=list)
 
     @property
@@ -199,17 +195,6 @@ def get_git_diff_stats(base: str, target: str) -> List[FileStat]:
     获取 Git diff 统计：对比 base 和 target 分支，返回每个文件的变更行数
     base   → 基准分支（如 master）
     target → 对比分支（如 main）
-
-    git diff --numstat 对每个文件返回 added 和 deleted：
-      - 新增文件：added = 文件总行数, deleted = 0
-      - 删除文件：added = 0, deleted = 文件总行数
-      - 修改文件：added 和 deleted 分别表示 git 视角的增删
-
-    对每个文件，变更量按 max(added, deleted) 计算：
-      更新行 = min(added, deleted)   — 原有行被修改
-      新增行 = added - 更新行         — 纯新加的行
-      删除行 = deleted - 更新行       — 纯删除的行
-      变更量 = 新增 + 更新 + 删除 = max(added, deleted)
     """
     ref = f"{base}...{target}"
 
@@ -225,7 +210,7 @@ def get_git_diff_stats(base: str, target: str) -> List[FileStat]:
     cmd_numstat = ["git", "-c", "core.quotePath=false", "diff", "--numstat", ref]
     result2 = subprocess.run(cmd_numstat, capture_output=True, text=True, encoding='utf-8')
 
-    # 构建 numstat 查找表: filepath -> (added, deleted)
+    # 构建 numstat 查找表
     numstat_map: Dict[str, Tuple[int, int]] = {}
     if result2.stdout.strip():
         for line in result2.stdout.strip().split("\n"):
@@ -282,37 +267,6 @@ def get_git_diff_stats(base: str, target: str) -> List[FileStat]:
     return stats
 
 
-def calculate_bug_rate_by_lines(stats: List[FileStat], bug_count: int) -> List[FileStat]:
-    """按变更行数分配 Bug 并计算千行 Bug 率"""
-    total_changed = sum(s.changed_lines for s in stats)
-    if total_changed == 0:
-        return stats
-
-    # 最大余数法分配
-    quotients = []
-    for stat in stats:
-        exact = stat.changed_lines / total_changed * bug_count
-        quotients.append((stat, exact, exact - int(exact)))
-
-    remaining = bug_count
-    for stat, exact, frac in quotients:
-        stat.bug_count = int(exact)
-        remaining -= stat.bug_count
-
-    quotients.sort(key=lambda x: x[2], reverse=True)
-    for stat, exact, frac in quotients:
-        if remaining <= 0:
-            break
-        stat.bug_count += 1
-        remaining -= 1
-
-    for stat in stats:
-        if stat.changed_lines > 0:
-            stat.bug_rate = stat.bug_count / stat.changed_lines * 1000
-
-    return stats
-
-
 def calculate_bug_rate_static(stats: List[FileStat], bug_count: int) -> List[FileStat]:
     """静态模式：按代码总行数分配 Bug"""
     total_code = sum(s.code_lines for s in stats)
@@ -343,8 +297,28 @@ def calculate_bug_rate_static(stats: List[FileStat], bug_count: int) -> List[Fil
     return stats
 
 
-def group_by_module(stats: List[FileStat], diff_mode: bool = False) -> Dict[str, ModuleStat]:
-    """按一级子目录分组统计"""
+def group_by_module_static(stats: List[FileStat]) -> Dict[str, ModuleStat]:
+    """静态模式：按一级子目录分组统计"""
+    modules: Dict[str, ModuleStat] = {}
+
+    for stat in stats:
+        parts = Path(stat.path).parts
+        module_name = parts[0] if len(parts) > 1 else os.path.dirname(stat.path) or "根目录"
+
+        if module_name not in modules:
+            modules[module_name] = ModuleStat(name=module_name)
+
+        mod = modules[module_name]
+        mod.total_files += 1
+        mod.total_lines += stat.total_lines
+        mod.code_lines += stat.code_lines
+        mod.files.append(stat)
+
+    return modules
+
+
+def group_by_module_diff(stats: List[FileStat]) -> Dict[str, ModuleStat]:
+    """Diff 模式：按一级子目录分组统计"""
     modules: Dict[str, ModuleStat] = {}
 
     for stat in stats:
@@ -361,13 +335,7 @@ def group_by_module(stats: List[FileStat], diff_mode: bool = False) -> Dict[str,
         mod.new_lines += stat.new_lines
         mod.updated_lines += stat.updated_lines
         mod.deleted_lines += stat.deleted_lines
-        mod.bug_count += stat.bug_count
         mod.files.append(stat)
-
-    for mod in modules.values():
-        base = mod.changed_lines if diff_mode else mod.code_lines
-        if base > 0:
-            mod.bug_rate = mod.bug_count / base * 1000
 
     return modules
 
@@ -396,7 +364,10 @@ def print_static_summary(stats: List[FileStat], modules: Dict[str, ModuleStat], 
     print(f"\n {'模块':<30} {'文件数':>6} {'代码行':>8} {'Bug数':>6} {'千行Bug率':>10}")
     print("-" * 70)
     for name, mod in sorted(modules.items()):
-        print(f" {name:<30} {mod.total_files:>6} {mod.code_lines:>8} {mod.bug_count:>6} {mod.bug_rate:>10.2f}")
+        mod_code = mod.code_lines
+        mod_bug = round(mod_code / total_code * bug_count) if total_code > 0 else 0
+        mod_rate = mod_bug / mod_code * 1000 if mod_code > 0 else 0
+        print(f" {name:<30} {mod.total_files:>6} {mod_code:>8} {mod_bug:>6} {mod_rate:>10.2f}")
     print("-" * 70)
 
 
@@ -422,36 +393,32 @@ def print_diff_summary(stats: List[FileStat], modules: Dict[str, ModuleStat],
     print(f"  千行 Bug 率:        {overall_rate:.2f}")
     print("=" * 75)
 
-    hdr = f" {'模块':<25} {'新增行':>6} {'更新行':>6} {'删除行':>6} {'Bug':>4} {'千行Bug率':>10}"
+    hdr = f" {'模块':<25} {'新增行':>6} {'更新行':>6} {'删除行':>6}"
     print(hdr)
-    print("-" * len(hdr.split("\n")[0]))
+    print("-" * len(hdr))
     for name, mod in sorted(modules.items()):
-        row = (f" {name:<25} {mod.new_lines:>6} {mod.updated_lines:>6}"
-               f" {mod.deleted_lines:>6} {mod.bug_count:>4} {mod.bug_rate:>10.2f}")
+        row = f" {name:<25} {mod.new_lines:>6} {mod.updated_lines:>6} {mod.deleted_lines:>6}"
         print(row)
-    print("-" * len(hdr.split("\n")[0]))
+    print("-" * len(hdr))
 
 
 STATUS_LABEL = {"A": "新增", "M": "修改", "D": "删除"}
 
 
-def print_detail(modules: Dict[str, ModuleStat], diff_mode: bool = False):
+def print_detail(stats: List[FileStat], diff_mode: bool = False):
     """打印文件级明细"""
     if diff_mode:
-        print(f"\n {'文件':<45} {'状态':>6} {'新增行':>6} {'更新行':>6} {'删除行':>6} {'Bug':>4} {'千行Bug率':>10}")
+        print(f"\n {'文件':<50} {'状态':>6} {'新增行':>6} {'更新行':>6} {'删除行':>6}")
     else:
-        print(f"\n {'文件':<55} {'代码行':>7} {'Bug':>4} {'千行Bug率':>10}")
-    print("-" * 95)
+        print(f"\n {'文件':<55} {'代码行':>7}")
+    print("-" * 75)
 
-    for name, mod in sorted(modules.items()):
-        print(f"\n  [DIR] {name}/  (千行Bug率: {mod.bug_rate:.2f})")
-        for f in sorted(mod.files, key=lambda x: x.bug_rate, reverse=True):
-            rate_str = f"{f.bug_rate:.2f}" if f.bug_count > 0 else "—"
-            if diff_mode:
-                label = STATUS_LABEL.get(f.status, f.status)
-                print(f"    {f.path:<45} {label:>6} {f.new_lines:>6} {f.updated_lines:>6} {f.deleted_lines:>6} {f.bug_count:>4} {rate_str:>10}")
-            else:
-                print(f"    {f.path:<55} {f.code_lines:>7} {f.bug_count:>4} {rate_str:>10}")
+    for f in stats:
+        if diff_mode:
+            label = STATUS_LABEL.get(f.status, f.status)
+            print(f"    {f.path:<50} {label:>6} {f.new_lines:>6} {f.updated_lines:>6} {f.deleted_lines:>6}")
+        else:
+            print(f"    {f.path:<55} {f.code_lines:>7}")
 
 
 # ===== 主入口 =====
@@ -493,12 +460,10 @@ def main():
             print("未找到代码变更文件")
             sys.exit(0)
 
-        stats = calculate_bug_rate_by_lines(stats, args.bugs)
-        modules = group_by_module(stats, diff_mode=True)
-
+        modules = group_by_module_diff(stats)
         print_diff_summary(stats, modules, args.bugs, base, target)
         if args.detail:
-            print_detail(modules, diff_mode=True)
+            print_detail(stats, diff_mode=True)
     else:
         # 静态扫描模式
         if not os.path.isdir(args.dir):
@@ -514,11 +479,11 @@ def main():
             sys.exit(0)
 
         stats = calculate_bug_rate_static(stats, args.bugs)
-        modules = group_by_module(stats)
+        modules = group_by_module_static(stats)
 
         print_static_summary(stats, modules, args.bugs)
         if args.detail:
-            print_detail(modules)
+            print_detail(stats)
 
     print()
 
