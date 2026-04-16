@@ -17,9 +17,9 @@ from langchain_core.prompts import FewShotPromptTemplate, PromptTemplate
 
 dotenv.load_dotenv()
 llm = ChatOpenAI(
-    model_name=os.getenv("MODEL_NAME"),
-    base_url=os.getenv("BASE_URL"),
-    api_key=os.getenv("API_KEY"),
+    model_name=os.getenv("OPENAI_MODEL"),
+    base_url=os.getenv("OPENAI_BASE_URL"),
+    api_key=os.getenv("OPENAI_API_KEY"),
 )
 # 样本示例
 examples = [
