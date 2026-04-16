@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmap>
+  <header>
+    <uuid>test-plan-f1.3</uuid>
+    <title>F1.3 用户信息修改</title>
+    <description>用户可修改昵称、密码、头像、性别等基础信息</description>
+  </header>
+  
+  <mainNode>
+    <title>用户信息修改</title>
+    <children>
+      
+      <!-- 正向用例 -->
+      <node>
+        <title>正向用例</title>
+        <children>
+          <node>
+            <title>TC_UM_001 - 成功修改昵称</title>
+            <notes>
+前置步骤：用户已登录
+测试步骤：1.进入个人中心 2.修改昵称为"测试用户" 3.点击保存
+输入数据：昵称：测试用户
+预期结果：修改成功，页面刷新显示新昵称
+            </notes>
+          </node>
+          <node>
+            <title>TC_UM_002 - 修改性别为男</title>
+            <notes>
+前置步骤：用户已登录
+测试步骤：1.进入个人中心 2.选择性别为"男" 3.点击保存
+输入数据：性别：男
+预期结果：修改成功，性别显示为男
+            </notes>
+          </node>
+          <node>
+            <title>TC_UM_003 - 修改性别为女</title>
+            <notes>
+前置步骤：用户已登录
+测试步骤：1.进入个人中心 2.选择性别为"女" 3.点击保存
+输入数据：性别：女
+预期结果：修改成功，性别显示为女
+            </notes>
+          </node>
+          <node>
+            <title>TC_UM_004 - 修改性别为保密</title>
+            <notes>
+前置步骤：用户已登录
+测试步骤：1.进入个人中心 2.选择性别为"保密" 3.点击保存
+输入数据：性别：保密
+预期结果：修改成功，性别显示为保密
+            </notes>
+          </node>
+          <node>
+            <title>TC_UM_005 - 上传PNG格式头像</title>
+            <notes>
+前置步骤：用户已登录
+测试步骤：1.进入个人中心 2.上传PNG格式图片(1.5M) 3.点击保存
+输入数据：头像：test.png (1.5M)
+预期结果：上传成功，头像显示新图片
+            </notes>
+          </node>
+          <node>
+            <title>TC_UM_006 - 上传JPG格式头像</title>
+            <notes>
+前置步骤：用户已登录
+测试步骤：1.进入个人中心 2.上传JPG格式图片(1M) 3.点击保存
+输入数据：头像：test.jpg (1M)
+预期结果：上传成功，头像显示新图片
+            </notes>
+          </node>
+          <node>
+            <title>TC_UM_007 - 上传JPEG格式头像</title>
+            <notes>
+前置步骤：用户已登录
+测试步骤：1.进入个人中心 2.上传JPEG格式图片(500KB) 3.点击保存
+输入数据：头像：test.jpeg (500KB)
+预期结果：上传成功，头像显示新图片
+            </notes>
+          </node>
+          <node>
+            <title>TC_UM_021 - 同时修改多个字段</title>
+            <notes>
+前置步骤：用户已登录
+测试步骤：1.进入个人中心 2.同时修改昵称+性别+头像 3.点击保存
+输入数据：昵称：新昵称；性别：女；头像：1M.jpg
+预期结果：所有字段修改成功，页面显示最新数据
+            </notes>
+          </node>
+        </children>
+      </node>
+      
+      <!-- 边界用例 -->
+      <node>
+        <title>边界用例</title>
+        <children>
+          <node>
+            <title>昵称长度边界</title>
+            <children>
+              <node>
+                <title>TC_UM_008 - 昵称最小边界-3位</title>
+                <notes>
+前置步骤：用户已登录
+测试步骤：1.进入个人中心 2.输入3位昵称 3.点击保存
+输入数据：昵称：abc
+预期结果：保存成功，3位昵称有效
+                </notes>
+              </node>
+              <node>
+                <title>TC_UM_009 - 昵称最大边界-20位</title>
+                <notes>
+前置步骤：用户已登录
+测试步骤：1.进入个人中心 2.输入20位昵称 3.点击保存
+输入数据：昵称：abcdefghijklmnopqrst
+预期结果：保存成功，20位昵称有效
+                </notes>
+              </node>
+              <node>
+                <title>TC_UM_010 - 昵称超短-2位</title>
+                <notes>
+前置步骤：用户已登录
+测试步骤：1.进入个人中心 2.输入2位昵称 3.点击保存
+输入数据：昵称：ab
+预期结果：提示"昵称长度需3-20位"，保存失败
+                </notes>
+              </node>
+              <node>
+                <title>TC_UM_011 - 昵称超长-21位</title>
+                <notes>
+前置步骤：用户已登录
+测试步骤：1.进入个人中心 2.输入21位昵称 3.点击保存
+输入数据：昵称：abcdefghijklmnopqrstu
+预期结果：提示"昵称长度需3-20位"，保存失败
+                </notes>
+              </node>
+            </children>
+          </node>
+          <node>
+            <title>头像大小边界</title>
+            <children>
+              <node>
+                <title>TC_UM_012 - 头像大小=2M边界</title>
+                <notes>
+前置步骤：用户已登录
+测试步骤：1.进入个人中心 2.上传2M图片 3.点击保存
+输入数据：头像：2M.jpg
+预期结果：上传成功，2M在限制内
+                </notes>
+              </node>
+              <node>
+                <title>TC_UM_013 - 头像大小超过2M</title>
+                <notes>
+前置步骤：用户已登录
+测试步骤：1.进入个人中心 2.上传2.5M图片 3.点击保存
+输入数据：头像：2.5M.jpg
+预期结果：提示"图片大小不能超过2M"，上传失败
+                </notes>
+              </node>
+            </children>
+          </node>
+          <node>
+            <title>昵称字符类型</title>
+            <children>
+              <node>
+                <title>TC_UM_014 - 昵称纯中文</title>
+                <notes>
+前置步骤：用户已登录
+测试步骤：1.进入个人中心 2.输入中文昵称 3.点击保存
+输入数据：昵称：用户你好
+预期结果：保存成功，中文昵称有效
+                </notes>
+              </node>
+              <node>
+                <title>TC_UM_015 - 昵称纯英文</title>
+                <notes>
+前置步骤：用户已登录
+测试步骤：1.进入个人中心 2.输入英文昵称 3.点击保存
+输入数据：昵称：HelloWorld
+预期结果：保存成功，英文昵称有效
+                </notes>
+              </node>
+              <node>
+                <title>TC_UM_016 - 昵称中英文混合</title>
+                <notes>
+前置步骤：用户已登录
+测试步骤：1.进入个人中心 2.输入中英文混合昵称 3.点击保存
+输入数据：昵称：Test用户123
+预期结果：保存成功，中英文混合有效
+                </notes>
+              </node>
+            </children>
+          </node>
+        </children>
+      </node>
+      
+      <!-- 异常用例 -->
+      <node>
+        <title>异常用例</title>
+        <children>
+          <node>
+            <title>TC_UM_017 - 未登录修改信息</title>
+            <notes>
+前置步骤：用户未登录
+测试步骤：1.直接访问个人中心修改页面 2.尝试修改昵称 3.点击保存
+输入数据：-
+预期结果：跳转至登录页面，提示"请先登录"
+            </notes>
+          </node>
+          <node>
+            <title>TC_UM_018 - 昵称含非法字符</title>
+            <notes>
+前置步骤：用户已登录
+测试步骤：1.进入个人中心 2.输入含特殊字符昵称 3.点击保存
+输入数据：昵称：test@#$%
+预期结果：提示"昵称仅支持中英文"，保存失败
+            </notes>
+          </node>
+          <node>
+            <title>TC_UM_019 - 上传GIF格式头像</title>
+            <notes>
+前置步骤：用户已登录
+测试步骤：1.进入个人中心 2.上传GIF格式图片 3.点击保存
+输入数据：头像：test.gif
+预期结果：提示"仅支持png/jpg/jpeg格式"，上传失败
+            </notes>
+          </node>
+          <node>
+            <title>TC_UM_020 - 上传BMP格式头像</title>
+            <notes>
+前置步骤：用户已登录
+测试步骤：1.进入个人中心 2.上传BMP格式图片 3.点击保存
+输入数据：头像：test.bmp
+预期结果：提示"仅支持png/jpg/jpeg格式"，上传失败
+            </notes>
+          </node>
+          <node>
+            <title>TC_UM_022 - 性别字段不选</title>
+            <notes>
+前置步骤：用户已登录
+测试步骤：1.进入个人中心 2.不选择性别 3.点击保存
+输入数据：性别：空
+预期结果：保存成功，性别保持原值或默认"保密"
+            </notes>
+          </node>
+        </children>
+      </node>
+      
+    </children>
+  </mainNode>
+</xmap>
