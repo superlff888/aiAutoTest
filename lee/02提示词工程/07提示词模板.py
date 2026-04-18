@@ -19,18 +19,16 @@ from langchain_openai import ChatOpenAI
 
 
 
-# LangChain 会执行以下步骤进行自动推导：
-# 解析模板字符串
-# 提取变量名
-# 设置默认模板格式（f-string）
-# 构建 PromptTemplate 实例，LangChain 会调用 PromptTemplate.__init__()，传入解析后的参数
+# 提示词模板: 这种写法更pythonic，直接在字符串中使用{变量名}占位符，LangChain会自动解析并提取变量名，无需显式声明input_variables。
 prompt1 = PromptTemplate.from_template(
     """
     你是一个{role}，请用{style}风格输出针对以下测试需求的建议：
     测试需求：{requirement}
     """
 )
-# 提示词模板
+
+
+# 提示词模板:这种显式构造的写法只在一种场景下有意义：你需要严格校验输入变量，或者 input_variables 的顺序需要与模板中出现的顺序不同（这种情况极少）。
 prompt2 = PromptTemplate(  # 注意：PromptTemplate.from_template()本质是调用 PromptTemplate.__init__()，效果相同
     input_variables=["role", "style", "requirement"],  # input_variables声明了需要在提示词模板中插入的所有动态数据
     template="""你是一个{role}，请用{style}风格输出针对以下测试需求的建议：

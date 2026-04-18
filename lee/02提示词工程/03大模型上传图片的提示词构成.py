@@ -44,9 +44,10 @@ with open(image_path, "rb") as f:
 
 
 user_input = HumanMessage(content=[
-    {"type": "user", "content": "请帮我分析图片中内容"},
-    {"type": "image", "mime_type": "image/png", "content": image_base64}
+    {"type": "text", "text": "请帮我分析图片中内容"},
+    {"type": "image","base64": image_base64, "mime_type": "image/png"}
 ])
+
 
 messages.append(user_input)
 

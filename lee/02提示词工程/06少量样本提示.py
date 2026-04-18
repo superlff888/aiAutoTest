@@ -27,11 +27,6 @@ examples = [
     {"input": "加载页面卡顿超过10秒", "output": "性能问题"}
 ]
 
-example_prompt_1 = PromptTemplate(  # 变量插入
-    input_variables=["input", "output"],
-    # 提示词模板  遍历examples中的变量对应的值，按照template模板输出提示词
-    template="Bug描述：{input}\nBug类型：{output}"
-)
 
 example_prompt_2 = PromptTemplate.from_template(
     "Bug描述：{input}\nBug类型：{output}"
