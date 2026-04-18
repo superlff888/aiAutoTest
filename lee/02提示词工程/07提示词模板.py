@@ -36,7 +36,7 @@ prompt2 = PromptTemplate(  # 注意：PromptTemplate.from_template()本质是调
 )
 print(prompt2)
 
-messages2 = prompt2.format( # format将变量替换为str具体值，生成完整提示词内容。
+messages2 = prompt1.format( # format将变量替换为str具体值，生成完整提示词内容。
     role="资深测试工程师",
     style="专业、简洁",
     requirement="用户注册功能需要验证邮箱的唯一性"
