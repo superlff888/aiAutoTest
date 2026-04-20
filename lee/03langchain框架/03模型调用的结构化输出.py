@@ -3,20 +3,19 @@
 import os 
 import dotenv
 from langchain_openai import ChatOpenAI
-from langchain_core.prompts import PromptTemplate   
-from langchain.messages import SystemMessage, HumanMessage, AIMessage
+from langchain_core.messages import SystemMessage, HumanMessage
+from pydantic import BaseModel, Field
 
 
 # 加载.env文件中的环境变量
 dotenv.load_dotenv()    
 
 llm = ChatOpenAI(
-    model=os.getenv('OPENAI_MODEL'),        
+    model=os.getenv('OPENAI_MODEL'),
     base_url=os.getenv('OPENAI_BASE_URL'),
-    api_key=os.getenv('OPENAI_API_KEY')
+    api_key=os.getenv('OPENAI_API_KEY'),
+    extra_body={"enable_thinking": False}  # 禁用推理模式thinking，避免输出标签破坏JSON解析
 )
-
-
 sys_prompt = SystemMessage(content="""
 你是一位有10年经验的资深软件测试工程师，精通测试需求分析，以“功能正常+边界+异常”为主线思维指导生成测试点。
     样本示例：
@@ -46,8 +45,6 @@ sys_prompt = SystemMessage(content="""
 
 """
               )
-
-
 user_prompt = HumanMessage(content="""请根据以下需求文档生成测试点，
 📌 F1.3 用户信息修改
 🧩 功能背景
@@ -68,10 +65,6 @@ user_prompt = HumanMessage(content="""请根据以下需求文档生成测试点
 
 messages = [sys_prompt, user_prompt]
 
-
-from pydantic import BaseModel, Field
-
-
 class TestCase(BaseModel):
     id: str = Field(..., description="用例ID")
     case_name: str = Field(..., description="用例名称")
@@ -83,13 +76,13 @@ class CaseModelOutputParser(BaseModel):
     case_count: int = Field(..., description="用例总数")
     name: str = Field(..., description="测试的功能")
 
-model_structured = llm.with_structured_output(TestCase)
+model_structured = llm.with_structured_output(CaseModelOutputParser, method="function_calling")
 
 response = model_structured.invoke(messages)
 
-# res = response.model_dump()
+res = response.model_dump().get("test_cases", [])  # 将 Pydantic 模型对象转换为 Python 字典，这样python就可以处理了
 
-# print(res)
+print(res)
 
 
 
