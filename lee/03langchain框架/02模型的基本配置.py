@@ -13,9 +13,9 @@ LLM = ChatOpenAI(
     model=os.getenv('OPENAI_MODEL'),
     base_url=os.getenv('OPENAI_BASE_URL'),
     api_key=os.getenv('OPENAI_API_KEY'),
-    temperature=0.9,
-    max_retries=6,
-    max_tokens=2048
+    temperature=0.9,  # 越小越确定
+    max_retries=6,  # 最大重试次数
+    max_tokens=2048  # 输出的最大tokens数量
 )
 
 
