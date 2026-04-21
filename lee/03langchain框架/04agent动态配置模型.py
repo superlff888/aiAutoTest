@@ -43,7 +43,8 @@ def if_message_type_is_image(messages):
 def dynamic_model_selection(request: ModelRequest, handler) -> ModelResponse:
     """动态模型选择的中间件函数"""
     selected_model = if_message_type_is_image(request.state["messages"])
-    new_request = request.override(model = selected_model)  # 创建一个新的请求对象，保持原有请求的其他属性不变})  
+    # 创建一个新的请求对象，保持原有请求的其他属性不变
+    new_request = request.override(model = selected_model)  #  关键字传参 -- > override(self, **overrides: Unpack[_ModelRequestOverrides])
     return handler(new_request)  # 将选定的模型传递给处理函数；
     # 装饰器函数的内嵌函数中handler: Callable[[ModelRequest[ContextT]], ModelResponse[ResponseT]]决定了handler的类型，handler是一个回调函数，接收一个ModelRequest对象，返回一个ModelResponse对象；在dynamic_model_selection函数中调用handler(new_request)，将新的请求对象传递给处理函数，最终返回处理函数的结果。
 
