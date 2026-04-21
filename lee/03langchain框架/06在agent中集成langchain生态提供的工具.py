@@ -17,7 +17,8 @@ llm = ChatOpenAI(
     model=os.getenv("OPENAI_MODEL"),
     base_url=os.getenv("OPENAI_BASE_URL"),
     api_key=os.getenv("OPENAI_API_KEY"),     
-    temperature=0)   
+    temperature=0
+    )   
 
 
 def getdbtools():
@@ -47,6 +48,17 @@ chunk = agent.stream(
     stream_mode="updates",
     version="v2"
     )
+
+for step,data in chunk.items():
+        if step == "model":
+            print('=================【调用大模型执行结果】=====================')
+        elif step == "tools":
+            print('====================【调用工具返回结果】=====================')
+        for block in data['messages'][-1].content_blocks:
+            if block['type'] == "text":
+                print(block['text'])
+            elif block['type'] == "tool_call":
+                print(f"计划调用工具:{block['name']},参数为：{block['args']}")
 
 
 
