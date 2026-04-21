@@ -33,7 +33,7 @@ def read(file_path: str) -> str:
 
 agent = create_agent(model=model, tools=[write, read])
 
-user_prompt = "请帮我创建一个文件，文件名是test.txt，文件内容是Hello, World！"
+user_prompt = "请在当前文件同级目录下创建一个文件，文件名是test.txt，文件内容是Hello, World！"
 
 
 response = agent.stream({"messages": [{"type": "human", "content": user_prompt}]}) 

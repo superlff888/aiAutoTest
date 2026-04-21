@@ -19,7 +19,7 @@ LLM = ChatOpenAI(
 )
 
 
-res = LLM.batch([
+res = LLM.batch_as_completed([
     "帮我用python写一个pytest+requests的接口测试用例的dome,要求10行以内",
     "请用python写一个爬虫程序，爬取百度首页的源码,10行以内"
     ])
