@@ -12,3 +12,5 @@ model = ChatOpenAI(
     model=os.getenv("MODEL_NAME_R1"),
     max_tokens=10000
 )
+
+
