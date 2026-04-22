@@ -43,7 +43,7 @@ agent = create_agent(
 human_message = HumanMessage(content="请将'Hello, World!'写入到当前目录下的hello.txt文件中。")  
 response = agent.stream(
     {"messages":[human_message]},
-    stream_mode=["custom", "messages"],
+    stream_mode=["custom", "messages"],  # "custom"结合get_stream_writer()可以输出自定义内容，"messages"可以输出LLM的消息流
     version="v2"
     )
 
