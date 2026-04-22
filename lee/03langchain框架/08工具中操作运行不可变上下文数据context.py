@@ -12,7 +12,7 @@ from langchain.tools import tool,ToolRuntime
 
 @dataclass
 class UserContext:
-    user_id: str  # 用户唯一标识
+    user_id: str = "user123" # 用户唯一标识
 
 
 # 2. 模拟用户数据库
@@ -50,7 +50,19 @@ if __name__ == "__main__":
 
     response = agent.invoke(
         {"messages":[HumanMessage(content="请帮我查询一下我的账户信息，我的用户ID是user123")]},
-        context=UserContext(user_id="user123")
+        context=UserContext()  # 不可变上下文user_id可以使用默认 "user123"，但必须要传 context 实例
     )
 
     print("最终返回给用户的结果：\n", response.get("messages")[-1].content)
+
+
+    """
+    state与context都是上下文信息，所以使用思路都是一样:
+    1. 声明定义上下文信息类与属性（AgentState、@dataclass）
+    2. 绑定智能体
+    3. 调用智能体时传入上下文信息（context为不可变信息，故绑定智能体的时候就传入的不可变信息）
+    """
+
+    
+
+
