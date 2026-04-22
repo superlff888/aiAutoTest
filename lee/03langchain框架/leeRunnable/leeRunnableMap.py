@@ -15,7 +15,7 @@ import os
 from langchain_core.output_parsers import StrOutputParser
 from langchain_openai import ChatOpenAI
 from langchain_core.runnables import RunnableLambda, RunnableBranch, RunnableMap
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import PromptTemplate
 
 # 加载.env文件中的环境变量
 dotenv.load_dotenv()

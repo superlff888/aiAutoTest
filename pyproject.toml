@@ -10,6 +10,7 @@ dependencies = [
     "langchain-openai>=1.1.12",
     "langgraph>=1.1.6",
     "langsmith>=0.7.30",
+    "nest-asyncio>=1.6.0",
     "pymysql>=1.1.2",
     "python-dotenv>=1.2.2",
 ]

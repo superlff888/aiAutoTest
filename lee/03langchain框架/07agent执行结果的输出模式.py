@@ -43,7 +43,7 @@ agent = create_agent(
 human_message = HumanMessage(content="请将'Hello, World!'写入到当前目录下的hello.txt文件中。")  
 response = agent.stream(
     {"messages":[human_message]},
-    stream_mode=["custom", "updates"],
+    stream_mode=["custom", "messages"],
     version="v2"
     )
 

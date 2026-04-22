@@ -25,7 +25,7 @@ llm = ChatOpenAI(
     api_key=os.getenv('API_KEY'),
 )
 
-
+PromptTemplate.from_template()
 
 prompt = PromptTemplate(
     input_variables=["name", "output"],
