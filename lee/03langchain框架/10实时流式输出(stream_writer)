@@ -1,0 +1,74 @@
+
+
+
+import os
+import sys
+import time
+
+sys.stdout.reconfigure(encoding='utf-8')
+
+import dotenv
+from langchain.agents import create_agent
+from langchain.messages import HumanMessage, SystemMessage
+from langchain.tools import tool, ToolRuntime
+from langchain_openai import ChatOpenAI
+
+
+dotenv.load_dotenv()
+
+llm=ChatOpenAI(
+    model=os.getenv("OPENAI_MODEL"),
+    base_url=os.getenv("OPENAI_BASE_URL"),
+    api_key=os.getenv("OPENAI_API_KEY"),     
+    temperature=0
+    ) 
+
+
+@tool
+def get_weather(city: str, runtime: ToolRuntime) -> str:
+    """获取指定城市的天气，实时反馈查询进度。"""
+    writer = runtime.stream_writer
+    # 推送实时进度信息
+    writer(f"正在查询{city}的天气数据...")
+    time.sleep(1)
+    writer(f"已获取{city}的气象站数据，正在解析...")
+    time.sleep(1)
+    writer(f"天气数据解析完成！")
+    return f"{city} 当前天气：晴，22摄氏度，微风"
+
+agent = create_agent(
+    model=llm,
+    tools=[get_weather],
+    system_prompt=SystemMessage(content="你是一个天气查询助手，可以使用工具获取天气信息。")
+)
+
+def output_messages(response):
+    for item in response:
+        if item.get("type") == "custom":
+            print(f"agent custom:\n{item.get("data")}\n")
+        elif item.get("type") == "messages":
+            if item["data"][0].content:
+                print(f"{item["data"][0].content}")
+        elif item.get("type")=="updates":
+            if "model" in item["data"].keys():
+                if hasattr(item["data"]["model"]["messages"][0], "content") and item["data"]["model"]["messages"][0].content:
+                    print(f"=====================================================================\nagent model updates:\n{item["data"]["model"]["messages"][0].content}")
+            if "tools" in item["data"].keys():
+                if hasattr(item["data"]["tools"]["messages"][0], "content") and item["data"]["tools"]["messages"][0].name:
+                    print(f"调用工【{item["data"]["tools"]["messages"][0].name}】获取天气数据：\n{item["data"]["tools"]["messages"][0].content}")
+
+def main():
+    while True:
+        query = input("请输入要查询天气的城市名称：")
+        if query.lower() == "exit":
+                break
+        messages = [HumanMessage(content=f"请告诉我{query}的天气")]
+        agent_response = agent.stream(
+            {"messages": messages}, 
+            stream_mode=["custom", "messages", "updates"],
+            version="v2")
+        output_messages(agent_response)
+
+
+if __name__ == "__main__":
+    main()

@@ -86,7 +86,7 @@ for item in response:
             print("=====================================================================\nagent updates调用工具:\n", item["data"]["tools"]["messages"][0].name)  # 打印最新的工具调用更新
     elif item["type"] == "messages":  # 布尔上下文中 item["data"][0].content 为真值表示 content 不为空
         if hasattr(item["data"][0], "content") and item["data"][0].content and item["data"][0].content not in ("null", "None", "<think>", "</think>"): 
-            print("=====================================================================\nagent messages:\n", item["data"][0].content)  # 打印最新的消息更新
+            print("=====================================================================\nagent messages:", item["data"][0].content)  # 打印最新的消息更新
     
 
 
