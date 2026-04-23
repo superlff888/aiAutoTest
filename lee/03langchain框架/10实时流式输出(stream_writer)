@@ -12,7 +12,7 @@ from langchain.agents import create_agent
 from langchain.messages import HumanMessage, SystemMessage
 from langchain.tools import tool, ToolRuntime
 from langchain_openai import ChatOpenAI
-
+from langgraph.config import get_stream_writer
 
 dotenv.load_dotenv()
 
@@ -28,6 +28,7 @@ llm=ChatOpenAI(
 def get_weather(city: str, runtime: ToolRuntime) -> str:
     """获取指定城市的天气，实时反馈查询进度。"""
     writer = runtime.stream_writer  # 工具内的进度推送
+    # get_stream_writer()("正在查询{city}的天气数据...")
     # 推送实时进度信息
     writer(f"正在查询{city}的天气数据...")
     time.sleep(1)
