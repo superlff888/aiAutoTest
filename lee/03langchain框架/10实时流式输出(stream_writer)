@@ -45,18 +45,22 @@ agent = create_agent(
 
 def output_messages(response):
     for item in response:
-        if item.get("type") == "custom":
-            print(f"agent custom:\n{item.get("data")}\n")
-        elif item.get("type") == "messages":
-            if item["data"][0].content:
-                print(f"{item["data"][0].content}")
-        elif item.get("type")=="updates":
-            if "model" in item["data"].keys():
-                if hasattr(item["data"]["model"]["messages"][0], "content") and item["data"]["model"]["messages"][0].content:
-                    print(f"=====================================================================\nagent model updates:\n{item["data"]["model"]["messages"][0].content}")
-            if "tools" in item["data"].keys():
-                if hasattr(item["data"]["tools"]["messages"][0], "content") and item["data"]["tools"]["messages"][0].name:
-                    print(f"调用工【{item["data"]["tools"]["messages"][0].name}】获取天气数据：\n{item["data"]["tools"]["messages"][0].content}")
+        data = item['data']
+        match item['type']:
+            case 'custom':
+                print(f'agent custom:\n{data}\n')
+            case 'messages' if data[0].content:
+                # if data[0].content:
+                print(f'{data[0].content}')
+            case 'updates':
+                if 'model' in data:
+                    msg = data['model']['messages'][0]
+                    if (content := getattr(msg, 'content', None)):
+                        print(f'=====================================================================\nagent model updates:\n{content}')
+                if 'tools' in data:
+                    msg = data['tools']['messages'][0]
+                    if (name := getattr(msg, 'name', None)) and (content := getattr(msg, 'content', None)):
+                        print(f'调用工具【{name}】获取天气数据：\n{content}')
 
 def main():
     while True:
@@ -67,7 +71,7 @@ def main():
         agent_response = agent.stream(
             {"messages": messages}, 
             stream_mode=["custom", "messages", "updates"],
-            version="v2")
+            version="v2")  # 输出dict
         output_messages(agent_response)
 
 
