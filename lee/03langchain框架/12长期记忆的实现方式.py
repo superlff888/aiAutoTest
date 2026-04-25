@@ -57,20 +57,18 @@ minimax27 = ChatOpenAI(
 )
 
 
-@tool
+@tool("保存用户信息的工具",description="Save the current user's name to long-term memory.")
 def save_user_info(user_info: UserInfo, runtime: ToolRuntime[Context]) -> str:
-    """Save the current user's name to long-term memory."""
     assert runtime.store is not None
     runtime.store.put(("users",), runtime.context.user_id, dict(user_info))
     return "Successfully saved user info."
 
 
-@tool
+@tool("查看用户信息的工具",description="Look up user info.")
 def get_user_info(runtime: ToolRuntime[Context]) -> str:
-    """Look up user info."""
     assert runtime.store is not None # 判断存储是否注入agent
     user_info = runtime.store.get(("users",), runtime.context.user_id)
-    return str(user_info) if user_info else "Unknown user"
+    return str(user_info.value) if user_info else "Unknown user"
 
 
 # MySQL 连接串
