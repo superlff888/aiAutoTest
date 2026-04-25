@@ -39,8 +39,8 @@ def if_message_type_is_image(messages):
     return model
 
 #  装饰器没带括号（@wrap_model_call 而非 @wrap_model_call()），Python 把被装饰函数 dynamic_model_selection 作为 func 参数直接传入，然后立即调用内层的 decorator(func)
-@wrap_model_call  # Python 拿到 wrap_model_call 后，自动用它装饰 dynamic_model_selection，装饰器内部也适用
-def dynamic_model_selection(request: ModelRequest, handler) -> ModelResponse:
+@wrap_model_call  
+def dynamic_model_selection(request: ModelRequest, handler) -> ModelResponse:  # 参数参考了装饰器参数func的注解类的回调函数
     """动态模型选择的中间件函数"""
     selected_model = if_message_type_is_image(request.state["messages"])
     # 创建一个新的请求对象，保持原有请求的其他属性不变
@@ -57,7 +57,7 @@ system_prompt = """
     约束规范：
         1、生成的测试点，不要有重复的内容
 """
-path_name = Path(__file__).parent / "msg" / "login.png"
+path_name = Path(__file__).parent / "picture" / "login.png"
 
 # 2、将图片内容转换为base64编码,然后传递给大模型
 with open(path_name, "rb") as f:
@@ -85,9 +85,15 @@ agent = create_agent(
 
 
 
-response = agent.stream({"messages": [user_prompt]})
-for item in response:
-    print(item.content, end="", flush=True)
+response = agent.stream(
+    {"messages": [user_prompt]}
+    )
+for chunk in response:
+    for node_name, node_data in chunk.items():
+        if "messages" in node_data:
+            for message in node_data["messages"]:
+                if hasattr(message, "content") and isinstance(message.content, str):
+                    print(message.content, end="", flush=True)
 
 
 
