@@ -37,7 +37,7 @@ class ShortTermMemoryAgent:
                     )  
 
     agent = create_agent(
-        model=minimax27,
+        minimax27,
         system_prompt=SystemMessage(content="你是一个资深测试工程师"),
         checkpointer=InMemorySaver()
     )

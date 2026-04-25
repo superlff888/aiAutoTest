@@ -18,3 +18,4 @@ def getdbtools(model):
     db = SQLDatabase.from_uri(DATABASE_URI)  # 初始化SQLDatabase对象。这个对象封装了与数据库的交互能力，能自动读取数据库的表结构（schema）信息，后续 Agent 需要依赖这些元数据来生成正确的 SQL
     toolkit = SQLDatabaseToolkit(db=db, llm=model)  # 创建 SQLDatabaseToolkit 工具包
     return toolkit.get_tools()  # return工具列表
+
