@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(*bug_rate_calculator.py*)"
+    ]
+  }
+}

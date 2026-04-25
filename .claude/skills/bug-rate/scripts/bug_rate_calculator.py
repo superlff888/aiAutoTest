@@ -1,31 +1,48 @@
 """
 千行 Bug 率自动计算工具
 
-两种模式：
-1. 静态扫描模式：扫描当前目录下所有代码文件的行数，分配 Bug 计算千行 Bug 率
-2. Git Diff 模式：对比两个分支/提交的变更行数，基于变更行数计算千行 Bug 率
+模式：
+1. GitLab URL 模式：输入 GitLab Compare 链接，自动调用 API 获取 diff 数据计算
+2. 分支模式：指定分支名 + 项目路径，自动与 master 对比
+3. Git Diff 模式：对比两个分支/提交的变更行数
+4. 静态扫描模式（实验性）：扫描当前目录下所有代码文件的行数，分配 Bug 计算千行 Bug 率
 
-Git Diff 模式变更量计算（代码行级别）：
-  新增行   — master 没有，main 有的代码行（纯新增）
+Git Diff / GitLab 模式变更量计算（代码行级别）：
+  新增行   — 基准分支没有，目标分支有的代码行（纯新增）
   更新行   — 两个分支都有，但内容被修改的代码行
-  删除行   — master 有，main 没有的代码行（纯删除）
+  删除行   — 基准分支有，目标分支没有的代码行（纯删除）
   变更总量 = 新增行 + 更新行 + 删除行
   千行 Bug 率 = Bug 数 / 变更总量 * 1000
 
 Usage:
-    python bug_rate_calculator.py                          # 静态扫描，10 个 Bug
-    python bug_rate_calculator.py --diff master main --bugs 10
-    python bug_rate_calculator.py --diff master main --bugs 10 --detail
+    python bug_rate_calculator.py --gitlab-url "https://..." --bugs 10  # GitLab URL 模式
+    python bug_rate_calculator.py --branch feat-1.0 --project g/p --bugs 10  # 分支模式
+    python bug_rate_calculator.py --diff master main --bugs 10        # Git Diff 模式
+    python bug_rate_calculator.py                                    # 静态扫描（实验性），10 个 Bug
 """
 
 import argparse
+import json
 import os
+import re
 import subprocess
 import sys
 import io
+import urllib.parse
+import urllib.request
 from pathlib import Path
 from dataclasses import dataclass, field
 from typing import Dict, List, Tuple
+
+# 加载配置文件
+_config_path = Path(__file__).parent / "config.json"
+_config = {}
+if _config_path.exists():
+    with open(_config_path, "r", encoding="utf-8") as f:
+        _config = json.load(f)
+
+DEFAULT_GITLAB_TOKEN = _config.get("gitlab_token", "")
+DEFAULT_GITLAB_DOMAIN = _config.get("gitlab_domain", "gitlab.starcharge.com")
 
 # Windows GBK 终端兼容
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
@@ -78,6 +95,8 @@ class FileStat:
     new_lines: int = 0
     updated_lines: int = 0
     deleted_lines: int = 0
+    bug_count: float = 0.0      # 静态模式分配
+    bug_rate: float = 0.0       # 静态模式分配
 
     @property
     def changed_lines(self) -> int:
@@ -99,6 +118,133 @@ class ModuleStat:
     @property
     def changed_lines(self) -> int:
         return self.new_lines + self.updated_lines + self.deleted_lines
+
+
+# ===== GitLab URL 模式 =====
+
+# 支持的 URL 格式：
+#   https://gitlab.example.com/group/project/-/compare/master...release-1.0
+#   https://gitlab.example.com/group/project/-/compare/master...release-1.0?from_project_id=123
+GITLAB_COMPARE_RE = re.compile(
+    r"https?://(?P<domain>[^/]+)/(?P<path>.+?)/-/compare/(?P<base>[^\.]+)\.\.\.(?P<target>[^?]+)"
+)
+_CLEAN_JSON_RE = re.compile(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]')
+
+
+def parse_gitlab_url(url: str) -> Dict[str, str]:
+    """解析 GitLab Compare URL"""
+    if not (m := GITLAB_COMPARE_RE.match(url.strip())):
+        print("无法解析 GitLab URL，格式应为：")
+        print("  https://gitlab.xxx/group/project/-/compare/base...target")
+        sys.exit(1)
+    project_path = m.group("path").strip("/")
+    return {
+        "domain": m.group("domain"),
+        "project": urllib.parse.quote(project_path, safe=""),
+        "base": m.group("base"),
+        "target": m.group("target"),
+    }
+
+
+def _clean_json(raw: str) -> str:
+    """清理 GitLab API 响应中的控制字符（diff 内容常含非法字符导致 JSON 解析失败）"""
+    return _CLEAN_JSON_RE.sub('', raw)
+
+
+def get_gitlab_diff_stats(
+    domain: str, project: str, base: str, target: str, token: str
+) -> List[FileStat]:
+    """通过 GitLab Compare API 获取 diff 统计（直连 API，自动找 merge base）"""
+    all_diffs = []
+    page = 1
+    per_page = 100
+
+    while True:
+        url = (
+            f"https://{domain}/api/v4/projects/{project}/repository/compare"
+            f"?from={urllib.parse.quote(base)}&to={urllib.parse.quote(target)}"
+            f"&straight=false&per_page={per_page}&page={page}"
+        )
+
+        req = urllib.request.Request(url)
+        req.add_header("PRIVATE-TOKEN", token)
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                stdout = resp.read().decode("utf-8")
+        except Exception as e:
+            print(f"  API 请求失败: {e}")
+            sys.exit(1)
+
+        try:
+            result = json.loads(_clean_json(stdout))
+        except json.JSONDecodeError:
+            print(f"  API 返回数据解析失败")
+            sys.exit(1)
+
+        # 检查 API 错误响应（如项目/分支不存在）
+        if "message" in result and "diffs" not in result:
+            msg = result["message"]
+            match msg.lower():
+                case _ if "not found" in msg or "404" in msg:
+                    print("  错误：项目或分支不存在")
+                    print(f"  GitLab 返回: {msg}")
+                case _:
+                    print(f"  API 错误: {msg}")
+            sys.exit(1)
+
+        if not (diffs := result.get("diffs", [])):
+            break
+        all_diffs.extend(diffs)
+
+        if len(diffs) < per_page:
+            break
+        page += 1
+
+    if not all_diffs:
+        print("未获取到任何 diff 数据")
+        print("  提示：该目标分支可能已合并到 master，GitLab Compare API 在合并场景下无法返回 diff 数据")
+        sys.exit(0)
+
+    stats = []
+    for d in all_diffs:
+        filepath = d.get("new_path") or d.get("old_path", "")
+        if not filepath:
+            continue
+
+        if not (ext := os.path.splitext(filepath)[1]) or ext not in CODE_EXTENSIONS:
+            continue
+        if filepath.startswith(".claude"):
+            continue
+
+        match (d.get("new_file", False), d.get("deleted_file", False)):
+            case (False, True):
+                status = "D"
+            case (True, False):
+                status = "A"
+            case _:
+                status = "M"
+
+        # 从 diff 字符串统计新增/删除行（排除 +++ / --- 头部行）
+        added = deleted = 0
+        for l in d.get("diff", "").split("\n"):
+            if l.startswith("+") and not l.startswith("+++"):
+                added += 1
+            elif l.startswith("-") and not l.startswith("---"):
+                deleted += 1
+
+        updated = min(added, deleted)
+        new_only = added - updated
+        deleted_only = deleted - updated
+
+        stats.append(FileStat(
+            path=filepath,
+            status=status,
+            new_lines=new_only,
+            updated_lines=updated,
+            deleted_lines=deleted_only,
+        ))
+
+    return stats
 
 
 # ===== 核心逻辑 =====
@@ -168,8 +314,7 @@ def scan_directory(directory: str, exclude: set = None) -> List[FileStat]:
         dirs[:] = [d for d in dirs if d not in exclude]
 
         for filename in sorted(files):
-            ext = os.path.splitext(filename)[1]
-            if ext not in CODE_EXTENSIONS:
+            if (ext := os.path.splitext(filename)[1]) not in CODE_EXTENSIONS:
                 continue
 
             filepath = os.path.join(root, filename)
@@ -235,19 +380,19 @@ def get_git_diff_stats(base: str, target: str) -> List[FileStat]:
 
         status = parts[0]
 
-        if status in ("A", "M", "D"):
-            filepath = parts[1]
-        elif status.startswith("R"):
-            if len(parts) >= 3:
-                filepath = parts[2]
-            else:
+        match status:
+            case "A" | "M" | "D":
+                filepath = parts[1]
+            case _ if status.startswith("R"):
+                if len(parts) >= 3:
+                    filepath = parts[2]
+                else:
+                    continue
+                status = "M"
+            case _:
                 continue
-            status = "M"
-        else:
-            continue
 
-        ext = os.path.splitext(filepath)[1]
-        if ext not in CODE_EXTENSIONS:
+        if not (ext := os.path.splitext(filepath)[1]) or ext not in CODE_EXTENSIONS:
             continue
 
         # 排除 .claude 目录下的文件
@@ -363,7 +508,7 @@ def print_static_summary(stats: List[FileStat], modules: Dict[str, ModuleStat], 
     print(f"  代码总行数:   {total_code}")
     print(f"  空行数:       {total_blank}")
     print(f"  注释行数:     {total_comments}")
-    print(f"  千行 Bug 率:  {overall_rate:.2f}")
+    print(f"  千行 Bug 率:  {overall_rate:.2f}‰")
     print("=" * 70)
 
     print(f"\n {'模块':<30} {'文件数':>6} {'代码行':>8} {'Bug数':>6} {'千行Bug率':>10}")
@@ -372,7 +517,7 @@ def print_static_summary(stats: List[FileStat], modules: Dict[str, ModuleStat], 
         mod_code = mod.code_lines
         mod_bug = round(mod_code / total_code * bug_count) if total_code > 0 else 0
         mod_rate = mod_bug / mod_code * 1000 if mod_code > 0 else 0
-        print(f" {name:<30} {mod.total_files:>6} {mod_code:>8} {mod_bug:>6} {mod_rate:>10.2f}")
+        print(f" {name:<30} {mod.total_files:>6} {mod_code:>8} {mod_bug:>6} {mod_rate:>10.2f}‰")
     print("-" * 70)
 
 
@@ -395,14 +540,18 @@ def print_diff_summary(stats: List[FileStat], modules: Dict[str, ModuleStat],
     print(f"  更新行:             {total_updated}")
     print(f"  删除行:             {total_deleted}")
     print(f"  变更总行数:         {total_changed}")
-    print(f"  千行 Bug 率:        {overall_rate:.2f}")
+    print(f"  千行 Bug 率:        {overall_rate:.2f}‰")
     print("=" * 75)
 
-    hdr = f" {'模块':<25} {'新增行':>6} {'更新行':>6} {'删除行':>6}"
+    hdr = f" {'模块':<25} {'新增行':>6} {'更新行':>6} {'删除行':>6} {'Bug数':>6} {'千行Bug率':>10}"
     print(hdr)
     print("-" * len(hdr))
+    overall_rate = bug_count / total_changed * 1000 if total_changed > 0 else 0
     for name, mod in sorted(modules.items()):
-        row = f" {name:<25} {mod.new_lines:>6} {mod.updated_lines:>6} {mod.deleted_lines:>6}"
+        # 按模块变更量占比分配 Bug，再算千行率（所有模块共享同一基准率）
+        mod_bug = mod.changed_lines / total_changed * bug_count if total_changed > 0 else 0
+        mod_rate = overall_rate if mod.changed_lines > 0 else 0
+        row = f" {name:<25} {mod.new_lines:>6} {mod.updated_lines:>6} {mod.deleted_lines:>6} {mod_bug:>6.0f} {mod_rate:>10.2f}‰"
         print(row)
     print("-" * len(hdr))
 
@@ -412,18 +561,20 @@ STATUS_LABEL = {"A": "新增", "M": "修改", "D": "删除"}
 
 def print_detail(stats: List[FileStat], diff_mode: bool = False):
     """打印文件级明细"""
-    if diff_mode:
-        print(f"\n {'文件':<50} {'状态':>6} {'新增行':>6} {'更新行':>6} {'删除行':>6}")
-    else:
-        print(f"\n {'文件':<55} {'代码行':>7}")
+    match diff_mode:
+        case True:
+            print(f"\n {'文件':<50} {'状态':>6} {'新增行':>6} {'更新行':>6} {'删除行':>6}")
+        case False:
+            print(f"\n {'文件':<55} {'代码行':>7}")
     print("-" * 75)
 
     for f in stats:
-        if diff_mode:
-            label = STATUS_LABEL.get(f.status, f.status)
-            print(f"    {f.path:<50} {label:>6} {f.new_lines:>6} {f.updated_lines:>6} {f.deleted_lines:>6}")
-        else:
-            print(f"    {f.path:<55} {f.code_lines:>7}")
+        match diff_mode:
+            case True:
+                label = STATUS_LABEL.get(f.status, f.status)
+                print(f"    {f.path:<50} {label:>6} {f.new_lines:>6} {f.updated_lines:>6} {f.deleted_lines:>6}")
+            case False:
+                print(f"    {f.path:<55} {f.code_lines:>7}")
 
 
 # ===== 主入口 =====
@@ -442,6 +593,16 @@ def main():
 
   # 对比最近5次提交
   python bug_rate_calculator.py --diff HEAD~5 HEAD --bugs 3
+
+  # GitLab Compare URL 模式
+  python bug_rate_calculator.py --gitlab-url "https://gitlab.xxx/group/proj/-/compare/master...release-1.0" --bugs 10 --token "glpat-xxx"
+
+  # 分支模式（简洁）：指定分支名，自动与 master 对比
+  python bug_rate_calculator.py --branch feature-4.5.5 --project group/project --bugs 10 --detail
+
+  # Token 也可通过环境变量提供
+  export GITLAB_TOKEN="glpat-xxx"
+  python bug_rate_calculator.py --branch feature-4.5.5 --project group/project --bugs 10
         """,
     )
     parser.add_argument("--dir", default=".", help="要扫描的目录 (默认: 当前目录)")
@@ -452,43 +613,122 @@ def main():
         help="Git Diff 模式：对比 BASE 和 TARGET 分支/提交 "
              "(例: --diff master main)"
     )
+    parser.add_argument(
+        "--gitlab-url", metavar="URL",
+        help="GitLab Compare URL，例: https://gitlab.xxx/group/proj/-/compare/master...release-1.0"
+    )
+    parser.add_argument(
+        "--token", default=DEFAULT_GITLAB_TOKEN,
+        help="GitLab Personal Access Token（也可通过环境变量 GITLAB_TOKEN 提供）"
+    )
+    parser.add_argument(
+        "--branch", metavar="NAME",
+        help="分支模式：指定目标分支名，自动与 master 对比（需配合 --project）"
+    )
+    parser.add_argument(
+        "--project", metavar="PATH",
+        help="GitLab 项目路径，如 cloud-product-two/vpp-operation（分支模式必需）"
+    )
+    parser.add_argument(
+        "--domain", default=DEFAULT_GITLAB_DOMAIN,
+        help="GitLab 域名（默认: gitlab.starcharge.com）"
+    )
     args = parser.parse_args()
+    token = args.token or os.environ.get("GITLAB_TOKEN")
 
-    # Git Diff 模式
-    if args.diff:
-        base, target = args.diff
-        print(f"Git Diff 模式: {base} -> {target}")
-        print(f"Bug 总数: {args.bugs}\n")
+    match (args.gitlab_url, args.branch, args.diff):
+        case (url, _, _) if url:
+            # GitLab URL 模式
+            if not token:
+                print("需要提供 GitLab Token，通过以下方式之一：")
+                print("  1. 命令行参数: --token glpat-xxx")
+                print("  2. 环境变量:   export GITLAB_TOKEN=glpat-xxx")
+                sys.exit(1)
+            info = parse_gitlab_url(args.gitlab_url)
 
-        stats = get_git_diff_stats(base, target)
-        if not stats:
-            print("未找到代码变更文件")
-            sys.exit(0)
+            print(f"GitLab 模式: {info['domain']}")
+            print(f"  项目: {info['project']}")
+            print(f"  分支: {info['base']} -> {info['target']}")
+            print(f"  Bug 总数: {args.bugs}\n")
 
-        modules = group_by_module_diff(stats)
-        print_diff_summary(stats, modules, args.bugs, base, target)
-        if args.detail:
-            print_detail(stats, diff_mode=True)
-    else:
-        # 静态扫描模式
-        if not os.path.isdir(args.dir):
-            print(f"错误: 目录 '{args.dir}' 不存在")
-            sys.exit(1)
+            stats = get_gitlab_diff_stats(
+                info["domain"], info["project"], info["base"], info["target"], token
+            )
+            if not stats:
+                print("未找到代码变更文件")
+                sys.exit(0)
 
-        print(f"静态扫描模式: {args.dir}")
-        print(f"Bug 总数: {args.bugs}\n")
+            modules = group_by_module_diff(stats)
+            label = f"{info['base']} -> {info['target']}"
+            print_diff_summary(stats, modules, args.bugs, label.split(" -> ")[0], label.split(" -> ")[1])
+            if args.detail:
+                print_detail(stats, diff_mode=True)
 
-        stats = scan_directory(args.dir)
-        if not stats:
-            print("未找到任何代码文件")
-            sys.exit(0)
+        case (_, branch, _) if branch:
+            # 分支模式（简洁模式：指定分支名，自动与 master 对比）
+            if not token:
+                print("需要提供 GitLab Token，通过以下方式之一：")
+                print("  1. 命令行参数: --token glpat-xxx")
+                print("  2. 环境变量:   export GITLAB_TOKEN=glpat-xxx")
+                sys.exit(1)
+            if not args.project:
+                print("分支模式需指定项目路径: --project group/project")
+                sys.exit(1)
 
-        stats = calculate_bug_rate_static(stats, args.bugs)
-        modules = group_by_module_static(stats)
+            project_encoded = urllib.parse.quote(args.project, safe="")
+            base = "master"
+            target = args.branch
 
-        print_static_summary(stats, modules, args.bugs)
-        if args.detail:
-            print_detail(stats)
+            print(f"分支模式: {args.domain}")
+            print(f"  项目: {args.project}")
+            print(f"  分支: {base} -> {target}")
+            print(f"  Bug 总数: {args.bugs}\n")
+
+            stats = get_gitlab_diff_stats(args.domain, project_encoded, base, target, token)
+            if not stats:
+                print("未找到代码变更文件")
+                sys.exit(0)
+
+            modules = group_by_module_diff(stats)
+            print_diff_summary(stats, modules, args.bugs, base, target)
+            if args.detail:
+                print_detail(stats, diff_mode=True)
+
+        case (_, _, (base, target)):
+            # Git Diff 模式
+            print(f"Git Diff 模式: {base} -> {target}")
+            print(f"Bug 总数: {args.bugs}\n")
+
+            stats = get_git_diff_stats(base, target)
+            if not stats:
+                print("未找到代码变更文件")
+                sys.exit(0)
+
+            modules = group_by_module_diff(stats)
+            print_diff_summary(stats, modules, args.bugs, base, target)
+            if args.detail:
+                print_detail(stats, diff_mode=True)
+
+        case _:
+            # 静态扫描模式
+            if not os.path.isdir(args.dir):
+                print(f"错误: 目录 '{args.dir}' 不存在")
+                sys.exit(1)
+
+            print(f"静态扫描模式: {args.dir}")
+            print(f"Bug 总数: {args.bugs}\n")
+
+            stats = scan_directory(args.dir)
+            if not stats:
+                print("未找到任何代码文件")
+                sys.exit(0)
+
+            stats = calculate_bug_rate_static(stats, args.bugs)
+            modules = group_by_module_static(stats)
+
+            print_static_summary(stats, modules, args.bugs)
+            if args.detail:
+                print_detail(stats)
 
     print()
 

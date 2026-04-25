@@ -43,6 +43,12 @@ agent = create_agent(
     system_prompt=SystemMessage(content="你是一个天气查询助手，可以使用工具获取天气信息。")
 )
 
+def _get_first_msg(data, section):
+    """从 data[section]['messages'] 中安全获取第一条消息。"""
+    if section not in data:
+        return None
+    return data[section]['messages'][0]
+
 def output_messages(response):
     for item in response:
         data = item['data']
@@ -50,15 +56,12 @@ def output_messages(response):
             case 'custom':
                 print(f'agent custom:\n{data}\n')
             case 'messages' if data[0].content:
-                # if data[0].content:
                 print(f'{data[0].content}')
             case 'updates':
-                if 'model' in data:
-                    msg = data['model']['messages'][0]
+                if msg := _get_first_msg(data, 'model'):
                     if (content := getattr(msg, 'content', None)):
                         print(f'=====================================================================\nagent model updates:\n{content}')
-                if 'tools' in data:
-                    msg = data['tools']['messages'][0]
+                if msg := _get_first_msg(data, 'tools'):
                     if (name := getattr(msg, 'name', None)) and (content := getattr(msg, 'content', None)):
                         print(f'调用工具【{name}】获取天气数据：\n{content}')
 
@@ -66,7 +69,7 @@ def main():
     while True:
         query = input("请输入要查询天气的城市名称：")
         if query.lower() == "exit":
-                break
+            break
         messages = [HumanMessage(content=f"请告诉我{query}的天气")]
         agent_response = agent.stream(
             {"messages": messages}, 

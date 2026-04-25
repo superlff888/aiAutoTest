@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(curl -s --max-time 120 -H \"PRIVATE-TOKEN: ifTpvpp1vpQFs51ZxeJ1\" \"https://gitlab.starcharge.com/api/v4/projects/837/repository/compare?from=master&to=release-4.12.0&straight=false&per_page=100\")",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(type\\(d\\)\\); print\\('commits:', len\\(d.get\\('commits',[]\\)\\)\\); print\\('diffs:', len\\(d.get\\('diffs',[]\\)\\)\\)\")",
+      "Bash(python bug_rate_calculator.py --branch feature-4.5.5 --project cloud-product-two/vpp-operation --bugs 12)"
+    ]
+  }
+}
