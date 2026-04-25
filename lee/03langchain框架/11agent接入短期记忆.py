@@ -38,33 +38,31 @@ class ShortTermMemoryAgent:
 
     agent = create_agent(
         model=minimax27,
-        checkpointer = InMemorySaver()
-    )  
-
-
+        system_prompt=SystemMessage(content="你是一个资深测试工程师"),
+        checkpointer=InMemorySaver()
+    )
+    
     @staticmethod
     def output_messages(response):
-        # 显示agent调用的结果
         for chunk in response:
-            if chunk['type'] == "messages":
-                print(chunk['data'][0].content, end='')
-
+            item = chunk['type']
+            match item:
+                case 'messages':
+                    print(chunk["data"][0].content,end='')
 
     def main(self):
-        print("开始运行agent：")
-        while True:
-            user_input = input("\n请输入消息（输入exit退出）：")
-            messages = []
-            messages.append(HumanMessage(content=user_input))
-            if user_input.lower() == "exit":
-                break
-            response = self.agent.stream(
-                {"messages": messages},
-                config={"configurable": {"thread_id": "short_term_memory_agent_0001"}},
-                stream_mode =["messages","updates"],
-                version="v2"
-                )
-            self.output_messages(response)
+        print('----------------------------开始运行agent------------------------------------')
+        user_input = input("\n请输入消息（输入exit退出）：")
+        messages= []
+        messages.append(user_input)
+        response = self.agent.stream(
+            {'messages':messages},
+            config={"configurable":{"thread_id":"tc-oo1"}},
+            stream_mode=["updates", "custom", "messages"],
+            version = "v2"
+        )
+
+        self.output_messages(response)
 
 if __name__ == "__main__":
     ShortTermMemoryAgent().main()
