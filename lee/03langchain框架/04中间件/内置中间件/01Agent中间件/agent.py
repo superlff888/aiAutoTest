@@ -1,5 +1,4 @@
-# @Author  : 木森
-# @weixin: python771
+
 import os
 from dataclasses import dataclass
 
@@ -79,21 +78,24 @@ class MyOneAgent:
     def handle_agent_output(response):
         """处理agent的输出结果"""
         for chunk in response:
-            if chunk['type'] == "messages":
-                print(chunk['data'][0].content, end='')
-            elif chunk['type'] == "updates":
-                for step, data in chunk['data'].items():
-                    if step == "model":
-                        print('🤖=================【调用大模型执行结果】========步骤完成=============')
-                    elif step == "tools":
-                        print('🔧===================【调用工具返回结果】========步骤完成=============')
-                    for block in data['messages'][-1].content_blocks:
-                        if block['type'] == "text":
-                            print(block['text'])
-                        elif block['type'] == "tool_call":
-                            print(f"🔧工具:{block['name']},参数为：{block['args']}")
-            elif chunk['type'] == 'custom':
-                print("✅自定义输出：", chunk['data'])
+            match chunk['type']:
+                case "messages":
+                    print(chunk['data'][0].content, end='')
+                case "updates":
+                    for step, data in chunk['data'].items():
+                        match step:
+                            case "model":
+                                print('🤖=================【调用大模型执行结果】========步骤完成=============')
+                            case "tools":
+                                print('🔧===================【调用工具返回结果】========步骤完成=============')
+                        for block in data['messages'][-1].content_blocks:
+                            match block['type']:
+                                case "text":
+                                    print(block['text'])
+                                case "tool_call":
+                                    print(f"🔧工具:{block['name']},参数为：{block['args']}")
+                case 'custom':
+                    print("✅自定义输出：", chunk['data'])
 
     @staticmethod
     def output_messages(response):
@@ -117,7 +119,7 @@ class MyOneAgent:
             messages = HumanMessage(content=f"执行出错啦，错误信息：{e}")
             self.agent_call(messages, user_id)
 
-    def mian(self, user_id: str):
+    def main(self, user_id: str):
         print("====================这是我的第一个有记忆的agent==================")
         while True:
             messages = []
@@ -128,4 +130,4 @@ class MyOneAgent:
 
 if __name__ == '__main__':
     agent = MyOneAgent()
-    agent.mian("musen_001")
+    agent.main("lee_001")

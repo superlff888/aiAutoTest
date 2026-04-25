@@ -1,11 +1,13 @@
-# @Author  : 木森
-# @weixin: python771
-"""自定义实现的长期记忆管理器"""
+
+
 import json
 import os
 
 
 class MemoryManager:
+    
+    """自定义实现的长期记忆管理器"""
+
     memory_file = "memory.json"
 
     def __init__(self):
