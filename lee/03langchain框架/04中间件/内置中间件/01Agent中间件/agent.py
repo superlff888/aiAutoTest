@@ -22,6 +22,7 @@ class AgentContext:
 
 
 class MyOneAgent:
+    
     system_prompt = """
                 你是我的个人AI编程助手，后续请根据我的指令去完成相关开发工作
                 你具备完善的记忆系统：
@@ -60,14 +61,14 @@ class MyOneAgent:
             context_schema=AgentContext,
             # 配置中间件
             middleware=[
-                # 任务列表中间件
+                # 任务清单列表中间件，规划复杂目标，让用户了解进度
                 TodoListMiddleware(),
                 # 对历史聊天进行压缩的中间件
                 SummarizationMiddleware(
                     model=self.model,
                     # 当对话的记录超过max_tokens 设置的值后，会进行对上下文进行压缩
                     max_tokens=1024 * 100,
-                    # 压缩完，要保留最近的每次对话记录的次数
+                    # 压缩完，要保留最近的每次对话记录的次数（数量）
                     messages_to_keep=10
                 )
 
