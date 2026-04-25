@@ -5,7 +5,7 @@ from typing import Optional
 
 import dotenv
 from langchain.agents import AgentState, create_agent
-from langchain.messages import HumanMessage
+from langchain.messages import HumanMessage, SystemMessage
 from langchain.tools import ToolRuntime, tool
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel, Field
@@ -29,17 +29,22 @@ class LeeState(AgentState):
 
 
 class WriterParams(BaseModel):
-    content: str = Field(..., description="要写入文件的内容")
-    file_path: Optional[str] = Field(default=None, description="要写入的文件路径")
+    content: str = Field(description="要写入文件的内容")
+    file_path: str = Field(description="要写入的文件路径")
+    # file_path: Optional[str] = Field(None, description="要读取的文件路径（不传则使用默认路径）")
+
 
 class ReaderParams(BaseModel):
-    file_path: Optional[str] = Field(default=None, description="要读取的文件路径")  
+    file_path: str = Field(...,description="要读取的文件路径")  
 
 
 @tool("写文件的工具", description="写文件的工具，用于将内容写入文件", args_schema=WriterParams)
 def write_file(file_path: str, content: str, runtime: ToolRuntime):
+    NAME = runtime.state.get("username",{})  # 工具中获取上下文中自定义的字段数据username
+    print(f'-----------------------我是{NAME}------------------------')
+    messages = runtime.state.get("messages",{})
+    print(f"======================================\n历史消息:\n {messages}")  # 用户消息、AI消息
     print("工具正在运行中...")
-
     writer = get_stream_writer()
     writer(f"正在写入文件：{file_path}")
     with open(file_path, "w", encoding="utf-8") as f:
@@ -53,7 +58,7 @@ def read_file(file_path: str):
     writer(f"正在读取文件：{file_path}")
     with open(file_path, "r", encoding="utf-8") as f:
         content_text = f.read()
-        writer(f"文件读取完成，内容如下：\n{content_text}")
+        writer(f"文件读取完成，内容为：{content_text}")
 
 
 agent = create_agent(
@@ -69,6 +74,7 @@ user_prompt = HumanMessage(content="请将'Hello, World!'写入hello.txt文件�
 
 response = agent.stream(
     {"messages":[user_prompt], "username": "Lee"},
+    system_prompt=SystemMessage(content="你是一名全能助手"),
     config={"configurable": {"thread_id": 1000}},
     stream_mode=['custom', 'updates', 'messages'],
     version="v2"
