@@ -22,7 +22,7 @@ class AgentContext:
 
 
 class MyOneAgent:
-    
+
     system_prompt = """
                 你是我的个人AI编程助手，后续请根据我的指令去完成相关开发工作
                 你具备完善的记忆系统：
@@ -62,7 +62,7 @@ class MyOneAgent:
             # 配置中间件
             middleware=[
                 # 任务清单列表中间件，规划复杂目标，让用户了解进度
-                TodoListMiddleware(),
+                # TodoListMiddleware(),
                 # 对历史聊天进行压缩的中间件
                 SummarizationMiddleware(
                     model=self.model,
