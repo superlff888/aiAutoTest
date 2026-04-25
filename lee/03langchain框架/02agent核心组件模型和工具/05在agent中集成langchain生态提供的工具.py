@@ -3,8 +3,6 @@ from langchain.agents import create_agent
 from langchain_community.agent_toolkits import SQLDatabaseToolkit
 import os
 from dotenv import load_dotenv
-
-from langchain_community.utilities import SQLDatabase
 from langchain.messages import SystemMessage, HumanMessage
 from langchain_openai import ChatOpenAI
 from utils.get_db_tools import getdbtools
@@ -17,14 +15,16 @@ llm = ChatOpenAI(
     model=os.getenv("OPENAI_MODEL"),
     base_url=os.getenv("OPENAI_BASE_URL"),
     api_key=os.getenv("OPENAI_API_KEY"),     
-    temperature=0,
+    temperature=0.2,
     # extra_body={"reasoning_split": True}
     # extra_body={"thinking": False}
     )   
 
+tools = getdbtools(llm)
+# print(f"工具列表：{tools}")
 
 agent = create_agent(
-    tools=getdbtools(llm),
+    tools=tools,
     model=llm,
     system_prompt=SystemMessage(content="你是一个SQL专家，协助用户查询数据库中的表结构信息，并生成正确的SQL查询语句") 
 )
