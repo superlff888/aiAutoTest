@@ -62,12 +62,12 @@ class MyOneAgent:
             # 配置中间件
             middleware=[
                 # 任务清单列表中间件，规划复杂目标，让用户了解进度
-                # TodoListMiddleware(),
-                # 对历史聊天进行压缩的中间件
+                TodoListMiddleware(),
+                # 对历史聊天内容进行压缩的中间件，因为超过当前使用的大模型token上下文的最大限制，大模型会报错
                 SummarizationMiddleware(
                     model=self.model,
                     # 当对话的记录超过max_tokens 设置的值后，会进行对上下文进行压缩
-                    max_tokens=1024 * 100,
+                    max_tokens=1024 * 200 * 0.5,
                     # 压缩完，要保留最近的每次对话记录的次数（数量）
                     messages_to_keep=10
                 )
