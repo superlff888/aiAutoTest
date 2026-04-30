@@ -201,9 +201,7 @@ def get_gitlab_diff_stats(
         page += 1
 
     if not all_diffs:
-        print("未获取到任何 diff 数据")
-        print("  提示：该目标分支可能已合并到 master，GitLab Compare API 在合并场景下无法返回 diff 数据")
-        sys.exit(0)
+        return []
 
     stats = []
     for d in all_diffs:
@@ -472,8 +470,13 @@ def group_by_module_diff(stats: List[FileStat]) -> Dict[str, ModuleStat]:
     modules: Dict[str, ModuleStat] = {}
 
     for stat in stats:
-        parts = Path(stat.path).parts
-        module_name = parts[0] if len(parts) > 1 else os.path.dirname(stat.path) or "根目录"
+        path = stat.path
+        # 多 URL 模式下路径格式为 [project]/实际路径，剥离前缀
+        if path.startswith("[") and "]" in path:
+            path = path.split("]/", 1)[-1]
+
+        parts = Path(path).parts
+        module_name = parts[0] if len(parts) > 1 else os.path.dirname(path) or "根目录"
 
         if module_name not in modules:
             modules[module_name] = ModuleStat(name=module_name)
@@ -543,18 +546,6 @@ def print_diff_summary(stats: List[FileStat], modules: Dict[str, ModuleStat],
     print(f"  千行 Bug 率:        {overall_rate:.2f}‰")
     print("=" * 75)
 
-    hdr = f" {'模块':<25} {'新增行':>6} {'更新行':>6} {'删除行':>6} {'Bug数':>6} {'千行Bug率':>10}"
-    print(hdr)
-    print("-" * len(hdr))
-    overall_rate = bug_count / total_changed * 1000 if total_changed > 0 else 0
-    for name, mod in sorted(modules.items()):
-        # 按模块变更量占比分配 Bug，再算千行率（所有模块共享同一基准率）
-        mod_bug = mod.changed_lines / total_changed * bug_count if total_changed > 0 else 0
-        mod_rate = overall_rate if mod.changed_lines > 0 else 0
-        row = f" {name:<25} {mod.new_lines:>6} {mod.updated_lines:>6} {mod.deleted_lines:>6} {mod_bug:>6.0f} {mod_rate:>10.2f}‰"
-        print(row)
-    print("-" * len(hdr))
-
 
 STATUS_LABEL = {"A": "新增", "M": "修改", "D": "删除"}
 
@@ -615,7 +606,11 @@ def main():
     )
     parser.add_argument(
         "--gitlab-url", metavar="URL",
-        help="GitLab Compare URL，例: https://gitlab.xxx/group/proj/-/compare/master...release-1.0"
+        help="GitLab Compare URL（单个），例: https://gitlab.xxx/group/proj/-/compare/master...release-1.0"
+    )
+    parser.add_argument(
+        "--gitlab-urls", nargs="+", metavar="URL",
+        help="GitLab Compare URL（多个），自动汇总所有 URL 的 diff 后统一计算千行 Bug 率"
     )
     parser.add_argument(
         "--token", default=DEFAULT_GITLAB_TOKEN,
@@ -636,8 +631,49 @@ def main():
     args = parser.parse_args()
     token = args.token or os.environ.get("GITLAB_TOKEN")
 
-    match (args.gitlab_url, args.branch, args.diff):
-        case (url, _, _) if url:
+    match (args.gitlab_url, args.gitlab_urls, args.branch, args.diff):
+        case (_, urls, _, _) if urls:
+            # 多 GitLab URL 汇总模式
+            if not token:
+                print("需要提供 GitLab Token，通过以下方式之一：")
+                print("  1. 命令行参数: --token glpat-xxx")
+                print("  2. 环境变量:   export GITLAB_TOKEN=glpat-xxx")
+                sys.exit(1)
+
+            print(f"多 URL 汇总模式: 共 {len(urls)} 个 GitLab 链接\n")
+
+            all_stats: List[FileStat] = []
+
+            for url in urls:
+                info = parse_gitlab_url(url)
+                label = f"{info['base']} -> {info['target']} ({info['project']})"
+                print(f"  解析: {label}")
+
+                stats = get_gitlab_diff_stats(
+                    info["domain"], info["project"], info["base"], info["target"], token
+                )
+                if stats:
+                    # 为多 URL 模式标记项目来源，便于模块名提取
+                    for s in stats:
+                        s.path = f"[{info['project']}]/{s.path}"
+                    all_stats.extend(stats)
+                    total = sum(s.new_lines + s.updated_lines + s.deleted_lines for s in stats)
+                    print(f"    变更: {len(stats)} 个文件, {total} 行\n")
+                else:
+                    print(f"    未找到代码变更\n")
+
+            if not all_stats:
+                print("所有链接均未找到代码变更文件")
+                sys.exit(0)
+
+            modules = group_by_module_diff(all_stats)
+            base = "multi-url"
+            target = "summary"
+            print_diff_summary(all_stats, modules, args.bugs, base, target)
+            if args.detail:
+                print_detail(all_stats, diff_mode=True)
+
+        case (url, _, _, _) if url:
             # GitLab URL 模式
             if not token:
                 print("需要提供 GitLab Token，通过以下方式之一：")
@@ -664,7 +700,7 @@ def main():
             if args.detail:
                 print_detail(stats, diff_mode=True)
 
-        case (_, branch, _) if branch:
+        case (_, _, branch, _) if branch:
             # 分支模式（简洁模式：指定分支名，自动与 master 对比）
             if not token:
                 print("需要提供 GitLab Token，通过以下方式之一：")
@@ -694,7 +730,7 @@ def main():
             if args.detail:
                 print_detail(stats, diff_mode=True)
 
-        case (_, _, (base, target)):
+        case (_, _, _, (base, target)):
             # Git Diff 模式
             print(f"Git Diff 模式: {base} -> {target}")
             print(f"Bug 总数: {args.bugs}\n")

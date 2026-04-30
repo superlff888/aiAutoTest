@@ -1,6 +1,6 @@
 ---
 name: bug-rate
-description: 自动计算千行 Bug 率，支持分支名、GitLab URL、Git Diff 和静态扫描四种模式
+description: 自动计算千行 Bug 率，支持分支名、单/多 GitLab URL、Git Diff 和静态扫描五种模式
 ---
 
 # 千行 Bug 率计算
@@ -9,7 +9,7 @@ description: 自动计算千行 Bug 率，支持分支名、GitLab URL、Git Dif
 当用户提到：
 - "计算千行bug率" / "算一下千行bug率" / "千行bug率"
 - "对比master和main的代码变更" / "统计代码变更量"
-- 输入 GitLab Compare 链接
+- 输入单个或多个 GitLab Compare 链接
 - 输入分支名（如 `feature-4.5.5`）
 
 ## 交互规则
@@ -43,6 +43,20 @@ python .claude/skills/bug-rate/scripts/bug_rate_calculator.py \
 ```
 
 Token 已内置，无需每次传参（如需换 token 用 `--token glpat-xxx` 覆盖）。
+
+### 模式二（扩展）：多 GitLab URL 汇总模式
+
+用户输入多个 GitLab Compare URL（跨多个服务）时，汇总所有 diff 后统一计算：
+
+```
+python .claude/skills/bug-rate/scripts/bug_rate_calculator.py \
+  --gitlab-urls "url1" "url2" "url3" --bugs 10 --detail
+```
+
+- 逐个解析每个 URL 的 diff，汇总新增/更新/删除行
+- 文件路径标记 `[项目名]/实际路径`，明细中可区分来源
+- 最终用**总变更量**和**总 Bug 数**计算一个统一的千行 Bug 率
+- 按实际一级子目录分组（自动剥离 `[项目名]` 前缀）
 
 ### 模式三：Git Diff 模式（本地仓库）
 
