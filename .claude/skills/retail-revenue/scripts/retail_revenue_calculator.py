@@ -274,9 +274,9 @@ def print_text_table(results: list[UserResult], summary: dict) -> None:
             widths[i] = max(widths[i], len(str(v)))
 
     print(f"\n【基础参数】")
-    print(f"  月度批发市场度电成本：{summary['wholesale_cost']:.2f} 元/MWh")
-    print(f"  批发侧成本：{summary['wholesale_total_cost']:.2f} 元")
-    print(f"  总用电量：{summary['total_cons']:.2f} MWh")
+    print(f"  月度批发市场度电成本：{summary['wholesale_cost']:.8f} 元/MWh")
+    print(f"  批发侧成本：{summary['wholesale_total_cost']:.8f} 元")
+    print(f"  总用电量：{summary['total_cons']:.8f} MWh")
     print(f"  用户数：{summary['user_count']}")
 
     print(f"\n【用户维度明细】")
