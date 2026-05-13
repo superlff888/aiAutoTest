@@ -249,54 +249,51 @@ def run_calculation(
 
 
 def print_text_table(results: list[UserResult], summary: dict) -> None:
-    """打印文本格式结果"""
-    print("=" * 110)
-    print("零售侧收入计算结果")
-    print("=" * 110)
-
-    print(f"\n【基础参数】")
-    print(f"  月度批发市场度电成本：{fmt(summary['wholesale_cost'])} 元/MWh")
-    print(f"  批发侧成本：{fmt(summary['wholesale_total_cost'])} 元")
-    print(f"  总用电量：{fmt(summary['total_cons'])} MWh")
-    print(f"  用户数：{summary['user_count']}")
-
-    print(f"\n【用户维度明细】\n")
-    headers = [
-        "用户", "用电量(MWh)", "固定价格电费", "市场联动电费",
-        "零售套餐电费", "电能量结算均价", "风险管控费用", "风险状态",
-        "超额收益返还费用", "零售侧收入"
-    ]
-    rows = []
+    """打印结果 — 10列固定格式，数值保留2位小数"""
+    cols = ["用户", "用电量(MWh)", "固定价格电费", "市场联动电费", "零售套餐电费",
+            "结算均价", "风险管控费用", "风险状态", "超额收益返还", "零售侧收入"]
+    data = []
     for r in results:
-        rows.append([
-            r.name, fmt(r.cons), fmt(r.fixed_elec),
-            fmt(r.linkage_elec), fmt(r.package_elec),
-            fmt(r.settlement_price), fmt(r.risk_fee),
+        data.append([
+            r.name,
+            f"{r.cons:.2f}",
+            f"{r.fixed_elec:.2f}",
+            f"{r.linkage_elec:.2f}",
+            f"{r.package_elec:.2f}",
+            f"{r.settlement_price:.2f}",
+            f"{r.risk_fee:.2f}",
             r.risk_status,
-            fmt(r.user_excess), fmt(r.retail_income)
+            f"{r.user_excess:.2f}",
+            f"{r.retail_income:.2f}"
         ])
 
-    col_widths = [max(len(str(row[i])) for row in [headers] + rows) + 2 for i in range(len(headers))]
-    for i in range(len(col_widths)):
-        col_widths[i] = min(col_widths[i], 22)
+    widths = [len(c) for c in cols]
+    for row in data:
+        for i, v in enumerate(row):
+            widths[i] = max(widths[i], len(str(v)))
 
-    def fmt_row(row, widths):
-        return "".join(str(v).ljust(w) for v, w in zip(row, widths))
+    print(f"\n【基础参数】")
+    print(f"  月度批发市场度电成本：{summary['wholesale_cost']:.2f} 元/MWh")
+    print(f"  批发侧成本：{summary['wholesale_total_cost']:.2f} 元")
+    print(f"  总用电量：{summary['total_cons']:.2f} MWh")
+    print(f"  用户数：{summary['user_count']}")
 
-    print(fmt_row(headers, col_widths))
-    print("-" * sum(col_widths))
-    for row in rows:
-        print(fmt_row(row, col_widths))
+    print(f"\n【用户维度明细】")
+    header = " | ".join(c.ljust(widths[i]) for i, c in enumerate(cols))
+    print(header)
+    print("-" * len(header))
+    for row in data:
+        print(" | ".join(str(v).ljust(widths[i]) for i, v in enumerate(row)))
 
     print(f"\n【售电公司汇总】")
-    print(f"  售电公司售电收益（扣除批发侧成本后）：{fmt(summary['company_revenue'])} 元")
-    print(f"  售电公司收益均价：{fmt(summary['company_avg_price'])} 元/MWh")
+    print(f"  售电公司售电收益（扣除批发侧成本后）：{summary['company_revenue']:.2f} 元")
+    print(f"  售电公司收益均价：{summary['company_avg_price']:.2f} 元/MWh")
     print(f"  超额收益返还触发：{'是' if summary['excess_triggered'] else '否'}")
     if summary['excess_triggered']:
-        print(f"  售电公司超额收益返还电费：{fmt(summary['company_excess'])} 元")
+        print(f"  售电公司超额收益返还电费：{summary['company_excess']:.2f} 元")
         print(f"  返还比例：70%")
-    print(f"\n【零售侧总收入】 {fmt(summary['total_income'])} 元")
-    print("=" * 110)
+
+    print(f"\n【零售侧总收入】 {summary['total_income']:.2f} 元")
 
 
 def print_json_output(results: list[UserResult], summary: dict) -> None:
