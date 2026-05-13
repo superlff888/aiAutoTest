@@ -243,6 +243,7 @@ def run_calculation(
         "company_excess": company_excess,
         "excess_triggered": excess_triggered,
         "total_income": total_income,
+        "retail_per_mwh_revenue": total_income / total_cons,
     }
 
     return user_results, summary
@@ -288,6 +289,7 @@ def print_text_table(results: list[UserResult], summary: dict) -> None:
     print(f"\n【售电公司汇总】")
     print(f"  售电公司售电收益（扣除批发侧成本后）：{summary['company_revenue']:.2f} 元")
     print(f"  售电公司收益均价：{summary['company_avg_price']:.2f} 元/MWh")
+    print(f"  零售侧度电收益：{summary['retail_per_mwh_revenue']:.2f} 元/MWh")
     print(f"  超额收益返还触发：{'是' if summary['excess_triggered'] else '否'}")
     if summary['excess_triggered']:
         print(f"  售电公司超额收益返还电费：{summary['company_excess']:.2f} 元")

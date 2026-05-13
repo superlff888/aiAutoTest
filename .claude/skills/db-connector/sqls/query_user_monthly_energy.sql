@@ -6,7 +6,7 @@ FROM `energy_vpp`.`user_energy` a join elec_company b
 on a.orgcode = b.orgcode
 WHERE 1=1
     AND a.`trade_center_id` = '27'
-    AND a.`time` BETWEEN '20260401' AND '20260430'
+    AND a.`time` BETWEEN '20260401' AND '20260410'
     AND a.`vpp_id` = '1'
     AND a.`time_type` = '1'
     AND a.`company_id` IN (
