@@ -4,7 +4,8 @@
       "Bash(python .claude/skills/db-connector/scripts/db_executor.py exec test --file *)",
       "Bash(python .claude/skills/retail-revenue/scripts/retail_revenue_calculator.py --text *)",
       "Bash(PYTHONIOENCODING=utf-8 python .claude/skills/retail-revenue/scripts/retail_revenue_calculator.py --text *)",
-      "Bash(cd \"e:/AI/pythonProject/aiAutoTest\" && PYTHONIOENCODING=utf-8 python .claude/skills/retail-revenue/scripts/retail_revenue_calculator.py --text *)"
+      "Bash(cd \"e:/AI/pythonProject/aiAutoTest\" && PYTHONIOENCODING=utf-8 python .claude/skills/retail-revenue/scripts/retail_revenue_calculator.py --text *)",
+      "Bash(gh api *)"
     ]
   }
 }
