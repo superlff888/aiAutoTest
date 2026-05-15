@@ -119,6 +119,9 @@ def check_latest_data(connection_name: str, sql: str, expected_date: datetime) -
                 elif hasattr(max_date, 'strftime'):
                     # date 对象也有 strftime 方法
                     max_date_str = max_date.strftime('%Y-%m-%d')
+                elif isinstance(max_date, int):
+                    # 整数格式如 20260507，转为字符串处理
+                    max_date_str = f"{max_date}"[:4] + "-" + f"{max_date}"[4:6] + "-" + f"{max_date}"[6:8]
 
                 if max_date_str is None:
                     return False, None, f"无法解析日期类型: {type(max_date)}"
@@ -345,7 +348,7 @@ def main():
     parser = argparse.ArgumentParser(description='RPA数据采集完整性校验')
     parser.add_argument('--config', default='doc/数据中心类型定义.json',
                         help='数据中心类型定义JSON路径')
-    parser.add_argument('--connection', '-c', default='test',
+    parser.add_argument('--connection', '-c', default='prod',
                         help='数据库连接名称（test/prod）')
     parser.add_argument('--trade-center',
                         help='指定交易中心名称（默认检查所有）')
