@@ -5,7 +5,9 @@
       "Bash(python .claude/skills/retail-revenue/scripts/retail_revenue_calculator.py --text *)",
       "Bash(PYTHONIOENCODING=utf-8 python .claude/skills/retail-revenue/scripts/retail_revenue_calculator.py --text *)",
       "Bash(cd \"e:/AI/pythonProject/aiAutoTest\" && PYTHONIOENCODING=utf-8 python .claude/skills/retail-revenue/scripts/retail_revenue_calculator.py --text *)",
-      "Bash(gh api *)"
+      "Bash(gh api *)",
+      "Bash(python -c 'import json; c=json.load\\(open\\(\"e:/AI/pythonProject/aiAutoTest/.claude/skills/bug-rate/scripts/config.json\"\\)\\); print\\(c.get\\(\"gitlab_token\",\"\"\\)\\)')",
+      "Bash(curl -s --max-time 30 -H \"PRIVATE-TOKEN: $\\(python -c 'import json; c=json.load\\(open\\(\"e:/AI/pythonProject/aiAutoTest/.claude/skills/bug-rate/scripts/config.json\"\\)\\); print\\(c.get\\(\"gitlab_token\",\"\"\\)\\)'\\)\" \"https://gitlab.starcharge.com/api/v4/projects/840/repository/compare?from=master&to=feature-4.9.0&straight=false&per_page=100\")"
     ]
   }
 }
