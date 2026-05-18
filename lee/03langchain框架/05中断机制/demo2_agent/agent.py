@@ -32,7 +32,8 @@ class Agent:
                     interrupt_on={
                         # 工具名称：True| False
                         "终端命令执行工具": True
-                    }
+                    },
+                    description_prefix="⚠️ 终端命令工具执行待人工审核"
                 )
             ]
         )

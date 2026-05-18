@@ -1,7 +1,5 @@
-# @Author  : 木森
-# @weixin: python771
-# @Author  : 木森
-# @weixin: python771
+
+
 import subprocess
 import platform
 import re
