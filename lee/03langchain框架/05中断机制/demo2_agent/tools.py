@@ -1,0 +1,139 @@
+# @Author  : 木森
+# @weixin: python771
+# @Author  : 木森
+# @weixin: python771
+import subprocess
+import platform
+import re
+from langchain.tools import tool
+from typing import Optional
+from pydantic import BaseModel, Field
+
+
+class CommandInput(BaseModel):
+    """命令输入参数"""
+    command: str = Field(description="要执行的系统命令，如 'ls -la'")
+    timeout: int = Field(default=30, description="超时时间（秒）", ge=1, le=300)
+
+
+class CommandExecutor:
+    """安全的跨平台命令执行器"""
+
+    # 危险命令模式
+    DANGEROUS_PATTERNS = [
+        r"rm\s+-rf\s+/",  # rm -rf /
+        r"rm\s+-rf",  # 递归强制删除
+        r"format\s+",  # 格式化
+        r"del\s+/[fqs]",  # Windows 强制删除
+        r">\s*/dev/",  # 写入设备
+        r"dd\s+if=",  # dd 复制
+        r"mkfs",  # 格式化文件系统
+        r"shutdown",  # 关机
+        r"reboot",  # 重启
+        r"chmod\s+777",  # 过度权限
+        r"wget.*\|",  # 管道下载执行
+        r"curl.*\|",  # 管道下载执行
+    ]
+
+    def __init__(self, timeout: int = 30):
+        self.timeout = timeout
+        self.platform = platform.system()
+
+    def _is_safe_command(self, command: str) -> tuple[bool, str]:
+        """安全检查"""
+        cmd_lower = command.lower()
+        for pattern in self.DANGEROUS_PATTERNS:
+            if re.search(pattern, cmd_lower):
+                return False, f"安全拦截: 匹配危险模式 '{pattern}'"
+
+        return True, ""
+
+    def run(self, command: str, timeout: Optional[int] = None) -> str:
+        """执行命令"""
+        timeout = timeout or self.timeout
+
+        # 安全检查
+        is_safe, error_msg = self._is_safe_command(command)
+        if not is_safe:
+            return f"错误信息: {error_msg}"
+        try:
+            if self.platform == "Windows":
+                # Windows: 使用 shell
+                result = subprocess.run(
+                    command,
+                    shell=True,
+                    capture_output=True,
+                    text=True,
+                    timeout=timeout,
+                )
+            else:
+                # Linux/Mac: 使用 sh -c
+                result = subprocess.run(
+                    ["/bin/sh", "-c", command],
+                    shell=False,
+                    capture_output=True,
+                    text=True,
+                    timeout=timeout,
+                )
+
+            # 处理输出
+            output = result.stdout.strip() if result.stdout else result.stderr.strip()
+
+            if result.returncode != 0:
+                return f"执行失败 (返回码: {result.returncode})\n{output or '无错误信息'}"
+
+            return output or "执行成功，无输出"
+
+        except subprocess.TimeoutExpired:
+            return f"执行超时 ({timeout}秒)"
+        except FileNotFoundError:
+            return "命令未找到"
+        except PermissionError:
+            return "权限不足"
+        except Exception:
+            return "执行出错"
+
+
+@tool("终端命令执行工具", description="用于执行系统终端的操作命令", args_schema=CommandInput)
+def execute_command(command: str, timeout: int = 30) -> str:
+    """
+    执行系统命令（Windows/Linux）。
+    Args:
+        command: 要执行的命令，如 "ls -la"、"python --version"
+        timeout: 超时时间（秒），默认30，最长300
+    Returns:
+        命令执行结果
+    Examples:
+        execute_command("ls -la")
+        execute_command("python --version")
+        execute_command("echo hello")
+    """
+    # ============手动在命令执行的工具中添加人工确认(简单实现)=============
+    # print("【开始执行系统终端命令】:", command)
+    # while True:
+    #     res = input("请输入是否同意执行(yes/no)：")
+    #     if res == "yes":
+    #         break
+    #     elif res == "no":
+    #         return "用户拒绝执行"
+    #     else:
+    #         print("输入有误，请重新输入！")
+    _executor = CommandExecutor()
+    return _executor.run(command, timeout)
+
+
+if __name__ == "__main__":
+    # 方式1: 直接调用
+    print("=== 直接调用 ===")
+    result = execute_command.invoke({"command": "echo hello world", "timeout": 10})
+    print(result)
+
+    print("=== 测试危险命令拦截 ===")
+    result = execute_command.invoke({"command": "rm -rf /", "timeout": 10})
+    print(result)
+
+    print("=== 测试超时 ===")
+    result = execute_command.invoke({"command": "sleep 5", "timeout": 2})
+    print(result)
+
+

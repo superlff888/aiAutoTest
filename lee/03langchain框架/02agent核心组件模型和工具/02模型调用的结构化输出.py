@@ -11,9 +11,9 @@ from pydantic import BaseModel, Field
 dotenv.load_dotenv()    
 
 llm = ChatOpenAI(
-    model=os.getenv('OPENAI_MODEL'),
-    base_url=os.getenv('OPENAI_BASE_URL'),
-    api_key=os.getenv('OPENAI_API_KEY'),
+    model=os.getenv('MODEL_NAME_QWEN3'),
+    base_url=os.getenv('BASE_URL'),
+    api_key=os.getenv('API_KEY'),
     extra_body={"enable_thinking": False}  # 禁用推理模式thinking，避免输出标签破坏JSON解析
 )
 sys_prompt = SystemMessage(content="""

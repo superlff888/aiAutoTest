@@ -1,0 +1,1 @@
+[{"role": "user", "content": "你好"}, {"role": "assistant", "content": "<think>\n用户用中文说\"你好\"，这是一个简单的问候。我应该用中文友好地回应。\n</think>\n\n你好！有什么我可以帮助你的吗？"}]
