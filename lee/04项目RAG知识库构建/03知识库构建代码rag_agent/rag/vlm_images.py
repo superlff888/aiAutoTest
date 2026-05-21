@@ -142,14 +142,14 @@ class ImageVLMParser:
                 for file in os.listdir(image_directory):
                     # 拼接完整的文件路径
                     file_path = os.path.join(image_directory, file)
-                    # 往线程池中提交处理的任务
+                    # 往线程池中提交处理的任务：submit 是非阻塞的。也就是说，派完活就立刻返回，不等工人干完，继续派下一个任务；把活交给线程池，拿回一个 Future()对象
                     future = executor.submit(self.images_vlm_content, file_path)
 
                     futures_list.append(future)
             # 获取线程池执行的结果
             for future in futures_list:
                 # 获取线程池中任务的结果
-                image_vlm_res = future.result()
+                image_vlm_res = future.result()  # result()阻塞等待，直到跑完 --> 等任务完成，拿回真正的返回值
                 result.append(image_vlm_res)
             # 保存图片内容
             json_file_path = os.path.join(image_directory, "image_vlm_content.json")

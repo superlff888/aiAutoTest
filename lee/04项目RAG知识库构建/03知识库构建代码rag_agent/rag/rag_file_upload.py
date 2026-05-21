@@ -16,7 +16,7 @@ import os
 import dotenv
 
 dotenv.load_dotenv()
-from rag_agent.rag.vlm_images import ImageVLMParser
+from vlm_images import ImageVLMParser
 import requests
 import subprocess
 
