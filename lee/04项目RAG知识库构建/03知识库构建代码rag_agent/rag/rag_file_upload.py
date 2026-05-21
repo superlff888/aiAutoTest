@@ -3,13 +3,16 @@
 """
 提供带有图片的PDF或者word文档
 
-1、解析文档minerU解析文档的内容
+1、minerU解析文档的内容
     得到纯文本的md文件，包含图片的image文件夹
 
 2、将带有images的文件夹 通过封装的vlm_images进行解析
 
 3、将纯文本的md 和解析图片得到的json文件通过知识库文件上传的api直接上传到知识库中
-    http://localhost:9621
+    http://localhost:9621/documents/upload
+    
+    图片和文本内容通过指示图谱建立关联关系
+
 
 """
 import os
