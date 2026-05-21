@@ -10,7 +10,7 @@
 
 3、将纯文本的md 和解析图片得到的json文件通过知识库文件上传的api直接上传到知识库中
     http://localhost:9621/documents/upload
-    
+
     图片和文本内容通过指示图谱建立关联关系
 
 
@@ -61,7 +61,7 @@ class AddDocumentToKnowledgeBase:
         :return:
         """
         url = os.getenv('RAG_KNOWLEDGE_BASE_URL') + '/documents/upload'
-        # 将图片的json文件上传到知识库中
+        # 调用知识库文件上传的api，将图片的json文件上传到知识库中
         response = requests.post(
             url=url,
             files={
@@ -98,3 +98,10 @@ if __name__ == '__main__':
         r"G:\AI\上课代码\AI2604\Code_RAG\docs2"
     )
     kd.main()
+
+
+
+"""
+纯文本的需求文档，直接通过web客户端上传即可，如果带有图片，则需要使用我们自己封装的图片解析工具vlm_images进行解析，得到图片的内容之后，再通过知识库文件上传的api上传到知识库中
+
+"""
