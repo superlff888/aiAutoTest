@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(*bug_rate_calculator.py*)"
+      "Bash(*bug_rate_calculator.py*)",
+      "Bash(*profit-sum*)"
     ]
   }
 }
