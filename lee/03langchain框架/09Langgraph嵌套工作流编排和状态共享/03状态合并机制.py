@@ -2,6 +2,7 @@ from typing import TypedDict, Annotated
 import operator
 from langgraph.graph import StateGraph
 
+
 # 定义状态：使用 Annotated 声明 cases 字段的合并规则（通过 + 操作符合并列表）
 class OverallState(TypedDict):
     cases: Annotated[list[str], operator.add]  # 关键点：并发时自动合并列表
