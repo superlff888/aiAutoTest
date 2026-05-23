@@ -108,7 +108,8 @@ graph.add_edge(START, "select1")
 graph.add_conditional_edges('select1', router, {
     "generator_api_case": "api_case",  # 图中引用节点用的是字符串名称，不是函数本身,所以映射到节点名称
     "generator_test_case": "test_case",  
-    "work3": "work3"
+    # 每个分支最终都流向 END
+    "work3": "work3" 
 })
 
 graph.add_edge("api_case", END)
