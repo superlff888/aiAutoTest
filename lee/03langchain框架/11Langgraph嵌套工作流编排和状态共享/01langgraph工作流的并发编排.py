@@ -81,11 +81,11 @@ class WorkFlow:
         ]}
 
     def generate_autotest_case(self, state: State):
-        """生成自动化用例"""
+        """根据测试点生成自动化用例"""
         print("==================自动化用例生成======================")
         test_point = state.get("test_point")
-        # 调用大模型去实现自动化用例生成
 
+        # 调用大模型去实现自动化用例生成
         print(f"正在为测试点{test_point}生成自动化用例")
         time.sleep(3)
         print(f"正在为测试点{test_point}生成自动化用例生成完毕")
@@ -94,7 +94,7 @@ class WorkFlow:
     def auto_test_case_save(self, state: State):
         """保存自动化用例"""
         print("==================保存自动化用例======================")
-        # 获取当前所有的自动化用
+        # 获取当前所有的自动化用例
         api_test_case = state.api_test_case
         print(f"正在保存自动化用例：{api_test_case}")
 
@@ -106,8 +106,10 @@ class WorkFlow:
         run_list = []
         # 获取当前节点的输出
         for i in api_test_points:
-            run_list.append(Send("自动化用例生成", {"test_point": i.get("name")}))
-        return run_list
+            # "自动化用例生成"是add_node定义的节点名称，传递的参数会传递给"自动化用例生成"节点的state）
+            run_list.append(Send("自动化用例生成", {"test_point": i.get("name")}))  # 运行时动态生成N条并发执行的节点
+            # Annotated[list[str], operator.add] 告诉 LangGraph：多个节点同时往 api_test_case 这个字段写数据时，用 + 把它们拼接起来
+        return run_list  # 所有 Send 都造出来放进列表，真正的并发是在 LangGraph 内部实现的，由langGraph控制
 
     def create_workflow(self):
         """创建工作流"""
@@ -118,7 +120,7 @@ class WorkFlow:
         graph.add_node("自动化用例保存", self.auto_test_case_save)
         # 节点编排
         graph.add_edge(START, "接口测试点提取")
-        graph.add_conditional_edges("接口测试点提取", self.router_func )
+        graph.add_conditional_edges("接口测试点提取", self.router_func )  # LangGraph 同时调度执行多个Send对象里定义的节点（并发执行）
         graph.add_edge("自动化用例生成", "自动化用例保存")
         graph.add_edge("自动化用例保存", END)
 
