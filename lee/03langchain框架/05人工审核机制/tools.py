@@ -1,8 +1,10 @@
 
 
+import os
 import subprocess
 import platform
 import re
+import shutil
 from langchain.tools import tool
 from typing import Optional
 from pydantic import BaseModel, Field
@@ -13,6 +15,13 @@ class CommandInput(BaseModel):
     command: str = Field(description="要执行的系统命令，如 'ls -la'")
     timeout: int = Field(default=30, description="超时时间（秒）", ge=1, le=300)
 
+# 使用 Pydantic 数据模型来定义工具参数
+class DataBaseConfig(BaseModel):
+    host: str = Field(..., description="数据库的 host 地址")
+    port: int = Field(..., description="数据库端口")
+    user: str = Field(..., description="数据库连接的用户名")
+    password: str = Field(..., description="数据库连接的用户密码")
+    database: str = Field(..., description="操作的库")
 
 class CommandExecutor:
     """安全的跨平台命令执行器"""
@@ -46,6 +55,23 @@ class CommandExecutor:
 
         return True, ""
 
+    def _resolve_command(self, command: str) -> tuple[bool, str]:
+        """检查命令是否存在（避免'系统找不到文件'错误）"""
+        cmd_parts = command.strip().split()
+        if not cmd_parts:
+            return False, "命令为空"
+        cmd_name = cmd_parts[0]
+        # Windows Store 占位程序特殊处理（python3 是空壳）
+        if cmd_name.lower() in ('python3', 'python3.exe') and self.platform == "Windows":
+            python_path = shutil.which('python')
+            if python_path:
+                return False, f"命令不存在: {cmd_name}（Windows 占位程序），建议改为: python {' '.join(cmd_parts[1:])}"
+            return False, "命令不存在: python3（系统未安装 Python）"
+        # 使用 shutil.which 查找
+        if not shutil.which(cmd_name):
+            return False, f"命令不存在: {cmd_name}"
+        return True, ""
+
     def run(self, command: str, timeout: Optional[int] = None) -> str:
         """执行命令"""
         timeout = timeout or self.timeout
@@ -54,6 +80,11 @@ class CommandExecutor:
         is_safe, error_msg = self._is_safe_command(command)
         if not is_safe:
             return f"错误信息: {error_msg}"
+
+        # 检查命令是否存在
+        cmd_exists, cmd_msg = self._resolve_command(command)
+        if not cmd_exists:
+            return f"错误信息: {cmd_msg}"
         try:
             if self.platform == "Windows":
                 # Windows: 使用 shell
@@ -119,6 +150,16 @@ def execute_command(command: str, timeout: int = 30) -> str:
     _executor = CommandExecutor()
     return _executor.run(command, timeout)
 
+@tool("获取数据库连接配置", description="获取数据库的连接参数")
+def get_database_connect_config() -> DataBaseConfig:
+    """获取数据库的连接配置"""
+    return DataBaseConfig(
+        host=os.getenv("db_host"),
+        port=int(os.getenv("db_port")),
+        user=os.getenv("db_user"),
+        password=os.getenv("db_password"),
+        database=os.getenv("database"),
+    )
 
 if __name__ == "__main__":
     # 方式1: 直接调用

@@ -1,0 +1,446 @@
+[
+    {
+        "case_id": "TP-FUNC-002",
+        "priority": "P0",
+        "case_name": "添加第一个收货地址自动设为默认",
+        "setup": [
+            "用户已登录，账号下无任何收货地址"
+        ],
+        "test_data": {
+            "userId": 456,
+            "receiver": "李四",
+            "phone": "13900139000",
+            "region": "上海市浦东新区",
+            "detail": "世纪大道100号",
+            "isDefault": true
+        },
+        "execute_step": [
+            "调用POST /api/users/456/addresses接口",
+            "传入所有必填参数",
+            "提交添加地址请求"
+        ],
+        "expected_result": [
+            "接口返回200状态码",
+            "地址添加成功",
+            "该地址自动被设为默认地址"
+        ],
+        "result": null,
+        "review_result": "通过",
+        "review_decs": "用例设计合理，覆盖第一个地址自动设默认的业务规则"
+    },
+    {
+        "case_id": "TP-FUNC-003",
+        "priority": "P1",
+        "case_name": "地址数量已达上限5个时禁止添加",
+        "setup": [
+            "用户已登录，账号下已有5个收货地址"
+        ],
+        "test_data": {
+            "userId": 789,
+            "receiver": "王五",
+            "phone": "13700137000",
+            "region": "广州市天河区",
+            "detail": "体育西路123号",
+            "isDefault": false
+        },
+        "execute_step": [
+            "调用POST /api/users/789/addresses接口",
+            "传入所有必填参数",
+            "提交添加地址请求"
+        ],
+        "expected_result": [
+            "接口返回错误状态码",
+            "返回提示信息'地址超限，不能添加更多'"
+        ],
+        "result": null,
+        "review_result": "通过",
+        "review_decs": "用例覆盖地址超限核心场景，设计合理"
+    },
+    {
+        "case_id": "TP-FUNC-004",
+        "priority": "P1",
+        "case_name": "电话号码格式不符-过短",
+        "setup": [
+            "用户已登录"
+        ],
+        "test_data": {
+            "userId": 123,
+            "receiver": "张三",
+            "phone": "1380013",
+            "region": "北京市朝阳区",
+            "detail": "建国路88号",
+            "isDefault": false
+        },
+        "execute_step": [
+            "调用POST /api/users/123/addresses接口",
+            "phone字段传入7位数字",
+            "提交添加地址请求"
+        ],
+        "expected_result": [
+            "接口返回错误状态码",
+            "返回提示'电话号码格式不正确'"
+        ],
+        "result": null,
+        "review_result": "通过",
+        "review_decs": "用例测试电话号码格式校验，边界值选取合理"
+    },
+    {
+        "case_id": "TP-FUNC-005",
+        "priority": "P1",
+        "case_name": "电话号码格式不符-过长",
+        "setup": [
+            "用户已登录"
+        ],
+        "test_data": {
+            "userId": 123,
+            "receiver": "张三",
+            "phone": "13800138000123",
+            "region": "北京市朝阳区",
+            "detail": "建国路88号",
+            "isDefault": false
+        },
+        "execute_step": [
+            "调用POST /api/users/123/addresses接口",
+            "phone字段传入13位数字",
+            "提交添加地址请求"
+        ],
+        "expected_result": [
+            "接口返回错误状态码",
+            "返回提示'电话号码格式不正确'"
+        ],
+        "result": null,
+        "review_result": "通过",
+        "review_decs": "用例设计合理，测试电话号码格式校验场景，测试数据和预期结果明确"
+    },
+    {
+        "case_id": "TP-FUNC-006",
+        "priority": "P1",
+        "case_name": "电话号码包含非数字字符",
+        "setup": [
+            "用户已登录"
+        ],
+        "test_data": {
+            "userId": 123,
+            "receiver": "张三",
+            "phone": "13800abc000",
+            "region": "北京市朝阳区",
+            "detail": "建国路88号",
+            "isDefault": false
+        },
+        "execute_step": [
+            "调用POST /api/users/123/addresses接口",
+            "phone字段传入包含字母的数字",
+            "提交添加地址请求"
+        ],
+        "expected_result": [
+            "接口返回错误状态码",
+            "返回提示'电话号码格式不正确'"
+        ],
+        "result": null,
+        "review_result": "通过",
+        "review_decs": "用例测试电话号码格式校验，符合需求"
+    },
+    {
+        "case_id": "TP-FUNC-007",
+        "priority": "P1",
+        "case_name": "收货人姓名为空",
+        "setup": [
+            "用户已登录"
+        ],
+        "test_data": {
+            "userId": 123,
+            "receiver": "",
+            "phone": "13800138000",
+            "region": "北京市朝阳区",
+            "detail": "建国路88号",
+            "isDefault": false
+        },
+        "execute_step": [
+            "调用POST /api/users/123/addresses接口",
+            "receiver字段传入空字符串",
+            "提交添加地址请求"
+        ],
+        "expected_result": [
+            "接口返回错误状态码",
+            "返回提示'receiver为必填字段'"
+        ],
+        "result": null,
+        "review_result": "通过",
+        "review_decs": "用例覆盖必填字段校验需求，测试receiver为空场景，预期结果合理"
+    },
+    {
+        "case_id": "TP-FUNC-008",
+        "priority": "P1",
+        "case_name": "联系电话为空",
+        "setup": [
+            "用户已登录"
+        ],
+        "test_data": {
+            "userId": 123,
+            "receiver": "张三",
+            "phone": "",
+            "region": "北京市朝阳区",
+            "detail": "建国路88号",
+            "isDefault": false
+        },
+        "execute_step": [
+            "调用POST /api/users/123/addresses接口",
+            "phone字段传入空字符串",
+            "提交添加地址请求"
+        ],
+        "expected_result": [
+            "接口返回错误状态码",
+            "返回提示'phone为必填字段'"
+        ],
+        "result": null,
+        "review_result": "通过",
+        "review_decs": "用例设计合理，覆盖必填字段为空校验场景"
+    },
+    {
+        "case_id": "TP-FUNC-009",
+        "priority": "P1",
+        "case_name": "省市区为空",
+        "setup": [
+            "用户已登录"
+        ],
+        "test_data": {
+            "userId": 123,
+            "receiver": "张三",
+            "phone": "13800138000",
+            "region": "",
+            "detail": "建国路88号",
+            "isDefault": false
+        },
+        "execute_step": [
+            "调用POST /api/users/123/addresses接口",
+            "region字段传入空字符串",
+            "提交添加地址请求"
+        ],
+        "expected_result": [
+            "接口返回错误状态码",
+            "返回提示'region为必填字段'"
+        ],
+        "result": null,
+        "review_result": "通过",
+        "review_decs": "用例覆盖必填字段校验场景，设计合理"
+    },
+    {
+        "case_id": "TP-FUNC-010",
+        "priority": "P1",
+        "case_name": "详细地址为空",
+        "setup": [
+            "用户已登录"
+        ],
+        "test_data": {
+            "userId": 123,
+            "receiver": "张三",
+            "phone": "13800138000",
+            "region": "北京市朝阳区",
+            "detail": "",
+            "isDefault": false
+        },
+        "execute_step": [
+            "调用POST /api/users/123/addresses接口",
+            "detail字段传入空字符串",
+            "提交添加地址请求"
+        ],
+        "expected_result": [
+            "接口返回错误状态码",
+            "返回提示'detail为必填字段'"
+        ],
+        "result": null,
+        "review_result": "通过",
+        "review_decs": "用例设计合理，验证必填字段校验"
+    },
+    {
+        "case_id": "TP-FUNC-011",
+        "priority": "P2",
+        "case_name": "电话号码包含空格",
+        "setup": [
+            "用户已登录"
+        ],
+        "test_data": {
+            "userId": 123,
+            "receiver": "张三",
+            "phone": "138 0013 8000",
+            "region": "北京市朝阳区",
+            "detail": "建国路88号",
+            "isDefault": false
+        },
+        "execute_step": [
+            "调用POST /api/users/123/addresses接口",
+            "phone字段传入包含空格的数字",
+            "提交添加地址请求"
+        ],
+        "expected_result": [
+            "接口返回错误状态码",
+            "返回提示'电话号码格式不正确'"
+        ],
+        "result": null,
+        "review_result": "通过",
+        "review_decs": "用例测试电话号码格式校验，场景明确，数据合理"
+    },
+    {
+        "case_id": "TP-FUNC-012",
+        "priority": "P2",
+        "case_name": "电话号码包含中文字符",
+        "setup": [
+            "用户已登录"
+        ],
+        "test_data": {
+            "userId": 123,
+            "receiver": "张三",
+            "phone": "13800138手机",
+            "region": "北京市朝阳区",
+            "detail": "建国路88号",
+            "isDefault": false
+        },
+        "execute_step": [
+            "调用POST /api/users/123/addresses接口",
+            "phone字段传入包含中文的数字",
+            "提交添加地址请求"
+        ],
+        "expected_result": [
+            "接口返回错误状态码",
+            "返回提示'电话号码格式不正确'"
+        ],
+        "result": null,
+        "review_result": "通过",
+        "review_decs": "用例有效验证电话号码格式校验逻辑"
+    },
+    {
+        "case_id": "TP-FUNC-013",
+        "priority": "P2",
+        "case_name": "userId不存在或无效",
+        "setup": [
+            "用户已登录"
+        ],
+        "test_data": {
+            "userId": 999999999,
+            "receiver": "张三",
+            "phone": "13800138000",
+            "region": "北京市朝阳区",
+            "detail": "建国路88号",
+            "isDefault": false
+        },
+        "execute_step": [
+            "调用POST /api/users/999999999/addresses接口",
+            "传入所有必填参数",
+            "提交添加地址请求"
+        ],
+        "expected_result": [
+            "接口返回404状态码",
+            "返回提示'用户不存在'"
+        ],
+        "result": null,
+        "review_result": "通过",
+        "review_decs": "用例设计合理，测试边界条件"
+    },
+    {
+        "case_id": "TP-FUNC-014",
+        "priority": "P2",
+        "case_name": "userId格式错误-非数字",
+        "setup": [
+            "用户已登录"
+        ],
+        "test_data": {
+            "userId": "abc",
+            "receiver": "张三",
+            "phone": "13800138000",
+            "region": "北京市朝阳区",
+            "detail": "建国路88号",
+            "isDefault": false
+        },
+        "execute_step": [
+            "调用POST /api/users/abc/addresses接口",
+            "传入所有必填参数",
+            "提交添加地址请求"
+        ],
+        "expected_result": [
+            "接口返回400状态码",
+            "返回提示'userId格式错误'"
+        ],
+        "result": null,
+        "review_result": "通过",
+        "review_decs": "用例设计合理，测试userId参数格式校验属于必要边界测试"
+    },
+    {
+        "case_id": "TP-FUNC-015",
+        "priority": "P2",
+        "case_name": "缺少全部必填参数",
+        "setup": [
+            "用户已登录"
+        ],
+        "test_data": {
+            "userId": 123
+        },
+        "execute_step": [
+            "调用POST /api/users/123/addresses接口",
+            "不传入任何地址参数",
+            "提交添加地址请求"
+        ],
+        "expected_result": [
+            "接口返回400状态码",
+            "返回提示'必填字段缺失'"
+        ],
+        "result": null,
+        "review_result": "通过",
+        "review_decs": "用例覆盖必填参数校验场景，预期结果合理"
+    },
+    {
+        "case_id": "TP-FUNC-016",
+        "priority": "P2",
+        "case_name": "添加第5个地址时isDefault设为true",
+        "setup": [
+            "用户已登录，账号下已有4个收货地址"
+        ],
+        "test_data": {
+            "userId": 123,
+            "receiver": "赵六",
+            "phone": "13600136000",
+            "region": "深圳市南山区",
+            "detail": "科技园路50号",
+            "isDefault": true
+        },
+        "execute_step": [
+            "调用POST /api/users/123/addresses接口",
+            "传入所有必填参数且isDefault为true",
+            "提交添加地址请求"
+        ],
+        "expected_result": [
+            "接口返回200状态码",
+            "地址添加成功",
+            "该地址设为默认地址，原默认地址自动取消默认状态"
+        ],
+        "result": null,
+        "review_result": "通过",
+        "review_decs": "用例设计合理，测试边界值且验证默认地址切换逻辑"
+    },
+    {
+        "case_id": "TP-FUNC-017",
+        "priority": "P1",
+        "case_name": "删除默认地址后系统自动将下一条地址设为默认",
+        "setup": [
+            "用户已登录，账号下已有2个收货地址，其中第一个为默认地址"
+        ],
+        "test_data": {
+            "userId": 123,
+            "addressId": 1
+        },
+        "execute_step": [
+            "创建地址A（系统自动设为默认地址）",
+            "创建地址B（非默认地址）",
+            "调用DELETE /api/users/123/addresses/1接口删除地址A",
+            "调用GET /api/users/123/addresses查询地址列表"
+        ],
+        "expected_result": [
+            "删除接口返回成功状态码",
+            "地址A删除成功",
+            "地址B自动被设为默认地址",
+            "查询结果显示地址B的isDefault为true"
+        ],
+        "result": null,
+        "review_result": "通过",
+        "review_decs": "用例设计合理，覆盖删除默认地址后自动设默认的业务规则"
+    }
+]
