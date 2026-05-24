@@ -51,5 +51,10 @@ graph_index = PropertyGraphIndex.from_documents(
 print("知识图谱构建完成！")
 print(graph_index)
 
-# 
+# 将知识图谱的索引数据持久化保存到磁盘上，这样在后续的查询过程中就可以直接加载这个索引数据，而不需要重新构建知识图谱了。
 graph_index.storage_context.persist(persist_dir="../chroma_db")
+
+
+"""
+如果不执行 persist()，所有索引数据只存在于内存中，脚本运行结束后就会丢失。持久化后，下次可以直接从磁盘加载，无需重新对文档进行向量化和图谱抽取，大幅提升加载速度和查询效率。
+"""
