@@ -9,11 +9,19 @@ index = load_index_from_storage(storage_context=storage_context)
 
 # 构建问答引擎
 query_engine = index.as_query_engine(
-    response_mode="tree_summarize",
-    similarity_top_k=3,
+    # 树形结构的方式来组织检索到的内容，并对这些内容进行总结和归纳，最后生成一个简洁的回答返回给用户
+    response_mode="tree_summarize", 
+    similarity_top_k=3,  # 返回最相似的3条内容
 )
 
 response = query_engine.query(
     "用户模块一共有哪些接口？"
 )
 print(response)
+
+
+
+
+"""
+一定要记得导入全局配置文件models.py，这样才能保证在rag_create.py中构建的向量库和知识图谱能够被正确地加载和使用，否则就会出现找不到模型的错误。
+"""

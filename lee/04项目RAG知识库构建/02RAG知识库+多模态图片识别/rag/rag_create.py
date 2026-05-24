@@ -3,6 +3,11 @@
 from models import *
 from llama_index.core import SimpleDirectoryReader
 
+
+# =============第一步=========初始化嵌入模型（向量化处理文档）和对话模型（检索增强 ）=======================
+
+# 初始化嵌入模型（向量化处理文档）和对话模型（检索增强 ），即from models import *
+
 # =============第二步=========文档加载=======================
 documents = SimpleDirectoryReader(input_dir='../docs').load_data()
 # print(documents)
