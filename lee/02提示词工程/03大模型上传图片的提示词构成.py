@@ -1,6 +1,6 @@
 # !/usr/bin/env python3,# -*- coding: utf-8 -*-
 # --------------------------------------------
-# @FilePath    : \aiAutoTest\lee\02提示词工程\03大模型上传图片的提示词构成.py
+# @FilePath    : lee\02提示词工程\03大模型上传图片的提示词构成.py
 # @Author      : Lee大侠
 # @Desc        : 这是一个AI测试项目
 # @CreateTime  : 2026/04/15 23:17

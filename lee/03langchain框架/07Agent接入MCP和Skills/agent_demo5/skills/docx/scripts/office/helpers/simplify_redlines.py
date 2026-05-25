@@ -1,3 +1,14 @@
+# !/usr/bin/env python3,# -*- coding: utf-8 -*-
+# --------------------------------------------
+# @FilePath    : lee\03langchain框架\07Agent接入MCP和Skills\agent_demo5\skills\docx\scripts\office\helpers\simplify_redlines.py
+# @Author      : Lee大侠
+# @Desc        : 这是一个AI测试项目
+# @CreateTime  : 2026/04/15 22:19
+# @UpdateTime  : 2026/04/15 22:23
+# Copyright (c) 2026 Lee大侠. All rights reserved.
+# ========================================================
+
+
 """Simplify tracked changes by merging adjacent w:ins or w:del elements.
 
 Merges adjacent <w:ins> elements from the same author into a single element.

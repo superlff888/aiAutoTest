@@ -1,13 +1,12 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# ==========================
-# @File    : demo.py
-# @Project : musen
-# @Author  : Lee大侠
-# @WeChat  : 15715151020
-# @Date    : 2026/4/25 15:19
-# @Desc    : AI大模型应用
-# ============================================================================
+# !/usr/bin/env python3,# -*- coding: utf-8 -*-
+# --------------------------------------------
+# @FilePath    : lee\03langchain框架\03agent记忆处理\长期记忆的实现方式.py
+# @Author      : Lee大侠
+# @Desc        : 这是一个AI测试项目
+# @CreateTime  : 2026/04/15 22:19
+# @UpdateTime  : 2026/04/15 22:23
+# Copyright (c) 2026 Lee大侠. All rights reserved.
+# ========================================================
 
 
 from dataclasses import dataclass

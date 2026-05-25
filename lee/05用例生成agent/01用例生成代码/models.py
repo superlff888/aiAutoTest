@@ -1,5 +1,14 @@
-# @Author  : 木森
-# @weixin: python771
+# !/usr/bin/env python3,# -*- coding: utf-8 -*-
+# --------------------------------------------
+# @FilePath    : lee\05用例生成agent\01用例生成代码\models.py
+# @Author      : Lee大侠
+# @Desc        : 这是一个AI测试项目
+# @CreateTime  : 2026/04/15 22:19
+# @UpdateTime  : 2026/04/15 22:23
+# Copyright (c) 2026 Lee大侠. All rights reserved.
+# ========================================================
+
+
 import os
 import dotenv
 from llama_index.core import Settings

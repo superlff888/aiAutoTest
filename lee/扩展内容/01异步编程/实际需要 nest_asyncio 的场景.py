@@ -1,15 +1,14 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# ==========================
-# @File    : 实际需要 nest_asyncio 的场景.py
-# @Project : AIDev
-# @Author  : Lee大侠
-# @WeChat  : 15715151020
-# @Date    : 2026/3/24 23:59
-# @Desc    : AI大模型应用
-# ============================================================================
+# !/usr/bin/env python3,# -*- coding: utf-8 -*-
+# --------------------------------------------
+# @FilePath    : lee\扩展内容\01异步编程\实际需要 nest_asyncio 的场景.py
+# @Author      : Lee大侠
+# @Desc        : 这是一个AI测试项目
+# @CreateTime  : 2026/04/15 22:19
+# @UpdateTime  : 2026/04/15 22:23
+# Copyright (c) 2026 Lee大侠. All rights reserved.
+# ========================================================
 
-# test_nested.py - 会报错
+
 import asyncio
 import nest_asyncio
 

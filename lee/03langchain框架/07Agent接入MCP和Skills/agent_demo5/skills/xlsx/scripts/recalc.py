@@ -1,3 +1,14 @@
+# !/usr/bin/env python3,# -*- coding: utf-8 -*-
+# --------------------------------------------
+# @FilePath    : lee\03langchain框架\07Agent接入MCP和Skills\agent_demo5\skills\xlsx\scripts\recalc.py
+# @Author      : Lee大侠
+# @Desc        : 这是一个AI测试项目
+# @CreateTime  : 2026/04/15 22:19
+# @UpdateTime  : 2026/04/15 22:23
+# Copyright (c) 2026 Lee大侠. All rights reserved.
+# ========================================================
+
+
 """
 Excel Formula Recalculation Script
 Recalculates all formulas in an Excel file using LibreOffice

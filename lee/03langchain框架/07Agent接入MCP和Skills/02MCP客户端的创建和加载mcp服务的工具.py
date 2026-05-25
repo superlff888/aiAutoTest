@@ -1,5 +1,14 @@
-# @Author  : 木森
-# @weixin: python771
+# !/usr/bin/env python3,# -*- coding: utf-8 -*-
+# --------------------------------------------
+# @FilePath    : lee\03langchain框架\07Agent接入MCP和Skills\02MCP客户端的创建和加载mcp服务的工具.py
+# @Author      : Lee大侠
+# @Desc        : 这是一个AI测试项目
+# @CreateTime  : 2026/04/15 22:19
+# @UpdateTime  : 2026/04/15 22:23
+# Copyright (c) 2026 Lee大侠. All rights reserved.
+# ========================================================
+
+
 from langchain_mcp_adapters.client import MultiServerMCPClient
 
 # 创建一个mcp客户端

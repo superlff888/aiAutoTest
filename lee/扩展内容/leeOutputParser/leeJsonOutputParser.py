@@ -1,13 +1,13 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# !/usr/bin/env python3,# -*- coding: utf-8 -*-
+# --------------------------------------------
+# @FilePath    : lee\扩展内容\leeOutputParser\leeJsonOutputParser.py
+# @Author      : Lee大侠
+# @Desc        : 这是一个AI测试项目
+# @CreateTime  : 2026/04/15 22:19
+# @UpdateTime  : 2026/04/15 22:23
+# Copyright (c) 2026 Lee大侠. All rights reserved.
 # ========================================================
-# @File    : leeJsonOutputParser.py
-# @Project : PythonProject
-# @Author  : Lee大侠
-# @WeChat  : 15715151020
-# @Date    : 2025/7/21 23:23
-# @Desc    : JsonOutputParser
-# ========================================================
+
 
 import dotenv
 import os

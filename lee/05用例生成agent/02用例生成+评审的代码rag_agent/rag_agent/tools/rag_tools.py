@@ -1,5 +1,14 @@
-# @Author  : 木森
-# @weixin: python771
+# !/usr/bin/env python3,# -*- coding: utf-8 -*-
+# --------------------------------------------
+# @FilePath    : lee\05用例生成agent\02用例生成+评审的代码rag_agent\rag_agent\tools\rag_tools.py
+# @Author      : Lee大侠
+# @Desc        : 这是一个AI测试项目
+# @CreateTime  : 2026/04/15 22:19
+# @UpdateTime  : 2026/04/15 22:23
+# Copyright (c) 2026 Lee大侠. All rights reserved.
+# ========================================================
+
+
 import os
 import dotenv
 

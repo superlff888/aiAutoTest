@@ -1,5 +1,14 @@
-# @Author  : 木森
-# @weixin: python771
+# !/usr/bin/env python3,# -*- coding: utf-8 -*-
+# --------------------------------------------
+# @FilePath    : lee\扩展内容\leeRunnable\lee_function_calling\01 大模型绑定外部工具.py
+# @Author      : Lee大侠
+# @Desc        : 这是一个AI测试项目
+# @CreateTime  : 2026/04/15 22:19
+# @UpdateTime  : 2026/04/15 22:23
+# Copyright (c) 2026 Lee大侠. All rights reserved.
+# ========================================================
+
+
 """
 langchain中的工具function calling的具体实现
 

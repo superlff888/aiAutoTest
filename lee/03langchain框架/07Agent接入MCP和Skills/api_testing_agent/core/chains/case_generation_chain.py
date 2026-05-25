@@ -1,3 +1,14 @@
+# !/usr/bin/env python3,# -*- coding: utf-8 -*-
+# --------------------------------------------
+# @FilePath    : lee\03langchain框架\07Agent接入MCP和Skills\api_testing_agent\core\chains\case_generation_chain.py
+# @Author      : Lee大侠
+# @Desc        : 这是一个AI测试项目
+# @CreateTime  : 2026/04/15 22:19
+# @UpdateTime  : 2026/04/15 22:23
+# Copyright (c) 2026 Lee大侠. All rights reserved.
+# ========================================================
+
+
 """
 用例生成链
 根据 API 信息生成测试用例

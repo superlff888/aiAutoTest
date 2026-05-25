@@ -1,5 +1,14 @@
-# @Author  : 木森
-# @weixin: python771
+# !/usr/bin/env python3,# -*- coding: utf-8 -*-
+# --------------------------------------------
+# @FilePath    : lee\03langchain框架\09Langgraph嵌套工作流编排和状态共享\01langgraph工作流的并发编排.py
+# @Author      : Lee大侠
+# @Desc        : 这是一个AI测试项目
+# @CreateTime  : 2026/04/15 22:19
+# @UpdateTime  : 2026/04/15 22:23
+# Copyright (c) 2026 Lee大侠. All rights reserved.
+# ========================================================
+
+
 """
 节点并发执行：
     一个接口测试的业务流---->分析测试点，生成接口用例---->生成自动化用例(因为每条用例都需要生成自动化用例，所以这个节点可以设置为并发调用的节点)

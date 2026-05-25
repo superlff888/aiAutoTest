@@ -1,12 +1,11 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# ========================================================
-# @File    : 03 使用langchain实现工具的自动调用.py
-# @Project : PythonProject
-# @Author  : Lee大侠
-# @WeChat  : 15715151020
-# @Date    : 2025/7/24 22:45
-# @Desc    : AI大模型应用开发理论基础
+# !/usr/bin/env python3,# -*- coding: utf-8 -*-
+# --------------------------------------------
+# @FilePath    : lee\扩展内容\leeRunnable\lee_function_calling\03 使用langchain实现工具的自动调用.py
+# @Author      : Lee大侠
+# @Desc        : 这是一个AI测试项目
+# @CreateTime  : 2026/04/15 22:19
+# @UpdateTime  : 2026/04/15 22:23
+# Copyright (c) 2026 Lee大侠. All rights reserved.
 # ========================================================
 
 

@@ -1,6 +1,6 @@
 # !/usr/bin/env python3,# -*- coding: utf-8 -*-
 # --------------------------------------------
-# @FilePath    : \aiAutoTest\lee\01helloWorld\02langchain对大模型的统一封装.py
+# @FilePath    : lee\01helloWorld\02langchain对大模型的统一封装.py
 # @Author      : Lee大侠
 # @Desc        : 这是一个AI测试项目
 # @CreateTime  : 2026/04/15 22:03

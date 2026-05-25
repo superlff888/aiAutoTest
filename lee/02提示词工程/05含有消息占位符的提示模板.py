@@ -1,18 +1,14 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# !/usr/bin/env python3,# -*- coding: utf-8 -*-
+# --------------------------------------------
+# @FilePath    : lee\02提示词工程\05含有消息占位符的提示模板.py
+# @Author      : Lee大侠
+# @Desc        : 这是一个AI测试项目
+# @CreateTime  : 2026/04/15 22:19
+# @UpdateTime  : 2026/04/15 22:23
+# Copyright (c) 2026 Lee大侠. All rights reserved.
 # ========================================================
-# @File    : leeChatPromptTemplate.py
-# @Project : PythonProject
-# @Author  : Lee大侠
-# @WeChat  : 15715151020
-# @Date    : 2025/7/20 19:46
-# @Desc    : 多轮对话模板 ~ MessagesPlaceholder 动态插入消息列表
-#             [
-#              系统消息,
-#              MessagesPlaceholder("chat_history"),  # 动态历史：代码执行中会被历史对话列表数据替换
-#              当前用户问题
-#             ]
-# ========================================================
+
+
 import os
 import dotenv
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder

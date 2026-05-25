@@ -1,5 +1,13 @@
-# @Author  : 木森
-# @weixin: python771
+# !/usr/bin/env python3,# -*- coding: utf-8 -*-
+# --------------------------------------------
+# @FilePath    : lee\04项目RAG知识库构建\02RAG知识库+多模态图片识别\rag_agent\01在自己的代码中接入lightrag系统.py
+# @Author      : Lee大侠
+# @Desc        : 这是一个AI测试项目
+# @CreateTime  : 2026/04/15 22:19
+# @UpdateTime  : 2026/04/15 22:23
+# Copyright (c) 2026 Lee大侠. All rights reserved.
+# ========================================================
+
 
 """
 lightrag 提供了详细的接入api,如果要接入知识库，只需要通过调用api即可实现知识库的内容检索

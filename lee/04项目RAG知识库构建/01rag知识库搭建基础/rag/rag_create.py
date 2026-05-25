@@ -1,3 +1,13 @@
+# !/usr/bin/env python3,# -*- coding: utf-8 -*-
+# --------------------------------------------
+# @FilePath    : lee\04项目RAG知识库构建\01rag知识库搭建基础\rag\rag_create.py
+# @Author      : Lee大侠
+# @Desc        : 这是一个AI测试项目
+# @CreateTime  : 2026/04/15 22:19
+# @UpdateTime  : 2026/04/15 22:23
+# Copyright (c) 2026 Lee大侠. All rights reserved.
+# ========================================================
+
 
 from models import *
 from llama_index.core import SimpleDirectoryReader

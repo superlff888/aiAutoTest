@@ -1,12 +1,12 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+# !/usr/bin/env python3,# -*- coding: utf-8 -*-
+# --------------------------------------------
+# @FilePath    : lee\05用例生成agent\01用例生成代码\rag_agent\pormpts\generate_case_prompt.py
+# @Author      : Lee大侠
+# @Desc        : 这是一个AI测试项目
+# @CreateTime  : 2026/04/15 22:19
+# @UpdateTime  : 2026/04/15 22:23
+# Copyright (c) 2026 Lee大侠. All rights reserved.
 # ========================================================
-# @File    : leeChatPromptTemplate.py
-# @Project : PythonProject
-# @Author  : Lee大侠
-# @WeChat  : 15715151020
-# @Date    : 2025/7/20 19:46
-# @Desc    : 生成测试用例的提示模板
 
 
 from langchain.messages import SystemMessage, HumanMessage

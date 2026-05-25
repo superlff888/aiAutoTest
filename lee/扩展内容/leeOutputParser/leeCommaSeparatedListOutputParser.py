@@ -1,12 +1,11 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# ========================================================
-# @File    : leeCommaSeparatedListOutputParser.py
-# @Project : PythonProject
-# @Author  : Lee大侠
-# @Email   : 1310157572@qq.com
-# @Date    : 2025/7/22 20:03
-# @Desc    : AI大模型应用开发
+# !/usr/bin/env python3,# -*- coding: utf-8 -*-
+# --------------------------------------------
+# @FilePath    : lee\扩展内容\leeOutputParser\leeCommaSeparatedListOutputParser.py
+# @Author      : Lee大侠
+# @Desc        : 这是一个AI测试项目
+# @CreateTime  : 2026/04/15 22:19
+# @UpdateTime  : 2026/04/15 22:23
+# Copyright (c) 2026 Lee大侠. All rights reserved.
 # ========================================================
 
 

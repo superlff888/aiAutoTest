@@ -1,5 +1,14 @@
-# @Author  : 木森
-# @weixin: python771
+# !/usr/bin/env python3,# -*- coding: utf-8 -*-
+# --------------------------------------------
+# @FilePath    : lee\05用例生成agent\03用例生成+数据存储集成Agent\rag_agent\pormpts\system_prompt.py
+# @Author      : Lee大侠
+# @Desc        : 这是一个AI测试项目
+# @CreateTime  : 2026/04/15 22:19
+# @UpdateTime  : 2026/04/15 22:23
+# Copyright (c) 2026 Lee大侠. All rights reserved.
+# ========================================================
+
+
 SYSTEM_PROMPT = """
 # 角色背景
 你是一个资深的测试工程师，擅长分析需求中的测试点，并进行用例编写
