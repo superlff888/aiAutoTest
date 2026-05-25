@@ -151,6 +151,23 @@ def _clean_json(raw: str) -> str:
     return _CLEAN_JSON_RE.sub('', raw)
 
 
+def _check_branch_merged(domain: str, project: str, target: str, token: str, base: str = "master") -> str:
+    """检查空 diff 原因：分支已合并 / 无代码变更 / 分支不存在"""
+    # 1. 查目标分支是否已合并
+    branch_url = f"https://{domain}/api/v4/projects/{project}/repository/branches/{urllib.parse.quote(target, safe='')}"
+    req = urllib.request.Request(branch_url)
+    req.add_header("PRIVATE-TOKEN", token)
+    try:
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            data = json.loads(_clean_json(resp.read().decode()))
+        if data.get("merged") is True:
+            return f"分支 `{target}` 已合并到 `{base}`，变更已被吸收，无法计算千行 Bug 率"
+    except Exception:
+        pass  # 分支不存在或无权访问，继续往下查
+
+    return f"未找到 `{base}` → `{target}` 的代码变更（可能分支不存在或已被删除）"
+
+
 def get_gitlab_diff_stats(
     domain: str, project: str, base: str, target: str, token: str
 ) -> List[FileStat]:
@@ -660,7 +677,10 @@ def main():
                     total = sum(s.new_lines + s.updated_lines + s.deleted_lines for s in stats)
                     print(f"    变更: {len(stats)} 个文件, {total} 行\n")
                 else:
-                    print(f"    未找到代码变更\n")
+                    msg = _check_branch_merged(
+                        info["domain"], info["project"], info["target"], token, info["base"]
+                    )
+                    print(f"    ⚠ {msg}\n")
 
             if not all_stats:
                 print("所有链接均未找到代码变更文件")
@@ -691,7 +711,10 @@ def main():
                 info["domain"], info["project"], info["base"], info["target"], token
             )
             if not stats:
-                print("未找到代码变更文件")
+                msg = _check_branch_merged(
+                    info["domain"], info["project"], info["target"], token, info["base"]
+                )
+                print(f"  ⚠ {msg}")
                 sys.exit(0)
 
             modules = group_by_module_diff(stats)
@@ -722,7 +745,8 @@ def main():
 
             stats = get_gitlab_diff_stats(args.domain, project_encoded, base, target, token)
             if not stats:
-                print("未找到代码变更文件")
+                msg = _check_branch_merged(args.domain, project_encoded, target, token, base)
+                print(f"  ⚠ {msg}")
                 sys.exit(0)
 
             modules = group_by_module_diff(stats)
