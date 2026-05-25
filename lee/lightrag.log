@@ -1,0 +1,682 @@
+2026-05-24 23:27:41,043 - lightrag - INFO - OpenAI LLM Options: {}
+2026-05-24 23:27:41,821 - lightrag - INFO - Embedding config: binding=openai model=Qwen/Qwen3-Embedding-8B embedding_dim=4096 max_token_size=8192
+2026-05-24 23:27:41,821 - lightrag - INFO - Send embedding dimension: False by env var (dimensions=4096, has_param=True, binding=openai)
+2026-05-24 23:27:41,822 - lightrag - INFO - Embedding max_token_size: 8192 (from env variable)
+2026-05-24 23:27:41,822 - lightrag - INFO - Reranking is disabled
+2026-05-24 23:29:16,866 - lightrag - INFO - [Rag1000] Created new empty graph file: E:\AI\pythonProject\aiAutoTest\lee\light-rag\rag_storage\Rag1000\graph_chunk_entity_relation.graphml
+2026-05-24 23:29:16,975 - lightrag - INFO - WebUI assets mounted at /webui
+2026-05-24 23:29:17,199 - uvicorn.error - INFO - Started server process [51556]
+2026-05-24 23:29:17,199 - uvicorn.error - INFO - Waiting for application startup.
+2026-05-24 23:29:17,200 - lightrag - INFO - [Rag1000] Process 51556 KV load full_docs with 0 records
+2026-05-24 23:29:17,200 - lightrag - INFO - [Rag1000] Process 51556 KV load text_chunks with 0 records
+2026-05-24 23:29:17,201 - lightrag - INFO - [Rag1000] Process 51556 KV load full_entities with 0 records
+2026-05-24 23:29:17,201 - lightrag - INFO - [Rag1000] Process 51556 KV load full_relations with 0 records
+2026-05-24 23:29:17,202 - lightrag - INFO - [Rag1000] Process 51556 KV load entity_chunks with 0 records
+2026-05-24 23:29:17,202 - lightrag - INFO - [Rag1000] Process 51556 KV load relation_chunks with 0 records
+2026-05-24 23:29:17,203 - lightrag - INFO - [Rag1000] Process 51556 KV load llm_response_cache with 0 records
+2026-05-24 23:29:17,203 - lightrag - INFO - [Rag1000] Process 51556 doc status load doc_status with 0 records
+2026-05-24 23:29:17,203 - uvicorn.error - INFO - Application startup complete.
+2026-05-24 23:29:17,203 - uvicorn.error - INFO - Uvicorn running on http://0.0.0.0:9621 (Press CTRL+C to quit)
+2026-05-24 23:30:09,390 - uvicorn.access - INFO - 127.0.0.1:44282 - "GET / HTTP/1.1" 307
+2026-05-24 23:30:09,396 - uvicorn.access - INFO - 127.0.0.1:44282 - "GET /webui HTTP/1.1" 307
+2026-05-24 23:30:09,582 - uvicorn.access - INFO - 127.0.0.1:44282 - "GET /webui/assets/index-Cmfh6eB3.js HTTP/1.1" 200
+2026-05-24 23:30:09,607 - uvicorn.access - INFO - 127.0.0.1:5031 - "GET /webui/assets/chunk-Dlc7tRH4.js HTTP/1.1" 200
+2026-05-24 23:30:09,612 - uvicorn.access - INFO - 127.0.0.1:23606 - "GET /webui/assets/path-BmDdnQs8.js HTTP/1.1" 200
+2026-05-24 23:30:09,614 - uvicorn.access - INFO - 127.0.0.1:6492 - "GET /webui/assets/index-Dbwgayzd.css HTTP/1.1" 200
+2026-05-24 23:30:09,618 - uvicorn.access - INFO - 127.0.0.1:41508 - "GET /webui/assets/array-DA6v84qs.js HTTP/1.1" 200
+2026-05-24 23:30:09,619 - uvicorn.access - INFO - 127.0.0.1:21862 - "GET /webui/assets/katex-BX7meHaV.js HTTP/1.1" 200
+2026-05-24 23:30:09,659 - uvicorn.access - INFO - 127.0.0.1:5031 - "GET /webui/assets/_createAssigner-CdflnHPZ.js HTTP/1.1" 200
+2026-05-24 23:30:09,660 - uvicorn.access - INFO - 127.0.0.1:41508 - "GET /webui/assets/rough.esm-ezLMvHwD.js HTTP/1.1" 200
+2026-05-24 23:30:10,139 - uvicorn.access - INFO - 127.0.0.1:44282 - "GET /webui/favicon.png HTTP/1.1" 200
+2026-05-24 23:30:10,144 - uvicorn.access - INFO - 127.0.0.1:5031 - "GET /auth-status HTTP/1.1" 200
+2026-05-24 23:30:10,640 - uvicorn.access - INFO - 127.0.0.1:41508 - "GET /graph/label/popular?limit=300 HTTP/1.1" 200
+2026-05-24 23:30:10,644 - lightrag - INFO - [Rag1000] Subgraph query successful | Node count: 0 | Edge count: 0
+2026-05-24 23:30:10,645 - uvicorn.access - INFO - 127.0.0.1:21862 - "GET /graphs?label=*&max_depth=3&max_nodes=1000 HTTP/1.1" 200
+2026-05-24 23:30:10,651 - uvicorn.access - INFO - 127.0.0.1:5031 - "GET /docs HTTP/1.1" 200
+2026-05-24 23:30:10,729 - uvicorn.access - INFO - 127.0.0.1:5031 - "GET /static/swagger-ui/swagger-ui.css HTTP/1.1" 200
+2026-05-24 23:30:10,732 - uvicorn.access - INFO - 127.0.0.1:21862 - "GET /static/swagger-ui/swagger-ui-bundle.js HTTP/1.1" 200
+2026-05-24 23:30:11,146 - uvicorn.access - INFO - 127.0.0.1:21862 - "GET /openapi.json HTTP/1.1" 200
+2026-05-24 23:32:37,172 - uvicorn.access - INFO - 127.0.0.1:27421 - "POST /documents/upload HTTP/1.1" 200
+2026-05-24 23:32:37,188 - lightrag - INFO - Successfully extracted and enqueued file: 电商系统API接口文档.md
+2026-05-24 23:32:37,191 - uvicorn.access - INFO - 127.0.0.1:27421 - "POST /documents/upload HTTP/1.1" 200
+2026-05-24 23:32:37,193 - lightrag - INFO - Processing 1 document(s)
+2026-05-24 23:32:37,194 - lightrag - INFO - Extracting stage 1/1: 电商系统API接口文档.md
+2026-05-24 23:32:37,195 - lightrag - INFO - Processing d-id: doc-06d561859455a39666d0b70c5afbc342
+2026-05-24 23:32:37,351 - lightrag - INFO - Embedding func: 10 new workers initialized (Timeouts: Func: 30s, Worker: 60s, Health Check: 75s)
+2026-05-24 23:32:40,294 - lightrag - INFO - Successfully extracted and enqueued file: 需求说明书.md
+2026-05-24 23:32:40,298 - lightrag - INFO - Another process is already processing the document queue. Request queued.
+2026-05-24 23:32:40,595 - lightrag - ERROR - Embedding func: Error in decorated function for task 2691282632768_227275.906: Error code: 403 - {'code': 30001, 'message': 'Sorry, your account balance is insufficient', 'data': None}
+2026-05-24 23:32:40,620 - lightrag - ERROR - Traceback (most recent call last):
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\lightrag\lightrag.py", line 2040, in process_document
+    await asyncio.gather(*first_stage_tasks)
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\lightrag\kg\nano_vector_db_impl.py", line 126, in upsert
+    embeddings_list = await asyncio.gather(*embedding_tasks)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\lightrag\utils.py", line 534, in __call__
+    result = await self.func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\lightrag\utils.py", line 1064, in wait_func
+    return await future
+           ^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\lightrag\utils.py", line 768, in worker
+    result = await asyncio.wait_for(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Program Files\python312\Lib\asyncio\tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\lightrag\api\lightrag_server.py", line 941, in optimized_embedding_function
+    return await actual_func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\tenacity\asyncio\__init__.py", line 193, in async_wrapped
+    return await copy(fn, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\tenacity\asyncio\__init__.py", line 112, in __call__
+    do = await self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\tenacity\asyncio\__init__.py", line 157, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\tenacity\_utils.py", line 111, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\tenacity\__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "D:\Program Files\python312\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "D:\Program Files\python312\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\tenacity\asyncio\__init__.py", line 116, in __call__
+    result = await fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\lightrag\llm\openai.py", line 875, in openai_embed
+    response = await openai_async_client.embeddings.create(**api_params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\openai\resources\embeddings.py", line 259, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\openai\_base_client.py", line 1913, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\openai\_base_client.py", line 1698, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.PermissionDeniedError: Error code: 403 - {'code': 30001, 'message': 'Sorry, your account balance is insufficient', 'data': None}
+
+2026-05-24 23:32:40,621 - lightrag - ERROR - Failed to extract document 1/1: 电商系统API接口文档.md
+2026-05-24 23:32:40,626 - lightrag - INFO - Processing additional documents due to pending request
+2026-05-24 23:32:40,629 - lightrag - INFO - Reset 1 documents from PROCESSING/FAILED to PENDING status
+2026-05-24 23:32:40,630 - lightrag - INFO - Processing 2 document(s)
+2026-05-24 23:32:40,632 - lightrag - INFO - Extracting stage 1/2: 电商系统API接口文档.md
+2026-05-24 23:32:40,632 - lightrag - INFO - Processing d-id: doc-06d561859455a39666d0b70c5afbc342
+2026-05-24 23:32:40,633 - lightrag - INFO - Extracting stage 2/2: 需求说明书.md
+2026-05-24 23:32:40,634 - lightrag - INFO - Processing d-id: doc-2bdf60672ed9472b466e9ca14880e31e
+2026-05-24 23:32:47,104 - lightrag - ERROR - Embedding func: Error in decorated function for task 2691305019648_227281.343: Error code: 403 - {'code': 30001, 'message': 'Sorry, your account balance is insufficient', 'data': None}
+2026-05-24 23:32:47,107 - lightrag - ERROR - Traceback (most recent call last):
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\lightrag\lightrag.py", line 2040, in process_document
+    await asyncio.gather(*first_stage_tasks)
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\lightrag\kg\nano_vector_db_impl.py", line 126, in upsert
+    embeddings_list = await asyncio.gather(*embedding_tasks)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\lightrag\utils.py", line 534, in __call__
+    result = await self.func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\lightrag\utils.py", line 1064, in wait_func
+    return await future
+           ^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\lightrag\utils.py", line 768, in worker
+    result = await asyncio.wait_for(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Program Files\python312\Lib\asyncio\tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\lightrag\api\lightrag_server.py", line 941, in optimized_embedding_function
+    return await actual_func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\tenacity\asyncio\__init__.py", line 193, in async_wrapped
+    return await copy(fn, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\tenacity\asyncio\__init__.py", line 112, in __call__
+    do = await self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\tenacity\asyncio\__init__.py", line 157, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\tenacity\_utils.py", line 111, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\tenacity\__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "D:\Program Files\python312\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "D:\Program Files\python312\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\tenacity\asyncio\__init__.py", line 116, in __call__
+    result = await fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\lightrag\llm\openai.py", line 875, in openai_embed
+    response = await openai_async_client.embeddings.create(**api_params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\openai\resources\embeddings.py", line 259, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\openai\_base_client.py", line 1913, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\openai\_base_client.py", line 1698, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.PermissionDeniedError: Error code: 403 - {'code': 30001, 'message': 'Sorry, your account balance is insufficient', 'data': None}
+
+2026-05-24 23:32:47,107 - lightrag - ERROR - Failed to extract document 2/2: 需求说明书.md
+2026-05-24 23:32:47,144 - lightrag - ERROR - Embedding func: Error in decorated function for task 2691305019456_227281.343: Error code: 403 - {'code': 30001, 'message': 'Sorry, your account balance is insufficient', 'data': None}
+2026-05-24 23:32:47,149 - lightrag - ERROR - Embedding func: Error in decorated function for task 2691305018496_227279.234: Error code: 403 - {'code': 30001, 'message': 'Sorry, your account balance is insufficient', 'data': None}
+2026-05-24 23:32:47,153 - lightrag - ERROR - Traceback (most recent call last):
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\lightrag\lightrag.py", line 2040, in process_document
+    await asyncio.gather(*first_stage_tasks)
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\lightrag\kg\nano_vector_db_impl.py", line 126, in upsert
+    embeddings_list = await asyncio.gather(*embedding_tasks)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\lightrag\utils.py", line 534, in __call__
+    result = await self.func(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\lightrag\utils.py", line 1064, in wait_func
+    return await future
+           ^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\lightrag\utils.py", line 768, in worker
+    result = await asyncio.wait_for(
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Program Files\python312\Lib\asyncio\tasks.py", line 520, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\lightrag\api\lightrag_server.py", line 941, in optimized_embedding_function
+    return await actual_func(**kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\tenacity\asyncio\__init__.py", line 193, in async_wrapped
+    return await copy(fn, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\tenacity\asyncio\__init__.py", line 112, in __call__
+    do = await self.iter(retry_state=retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\tenacity\asyncio\__init__.py", line 157, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\tenacity\_utils.py", line 111, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\tenacity\__init__.py", line 393, in <lambda>
+    self._add_action_func(lambda rs: rs.outcome.result())
+                                     ^^^^^^^^^^^^^^^^^^^
+  File "D:\Program Files\python312\Lib\concurrent\futures\_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "D:\Program Files\python312\Lib\concurrent\futures\_base.py", line 401, in __get_result
+    raise self._exception
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\tenacity\asyncio\__init__.py", line 116, in __call__
+    result = await fn(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\lightrag\llm\openai.py", line 875, in openai_embed
+    response = await openai_async_client.embeddings.create(**api_params)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\openai\resources\embeddings.py", line 259, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\openai\_base_client.py", line 1913, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\AI\pythonProject\aiAutoTest\.venv\Lib\site-packages\openai\_base_client.py", line 1698, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.PermissionDeniedError: Error code: 403 - {'code': 30001, 'message': 'Sorry, your account balance is insufficient', 'data': None}
+
+2026-05-24 23:32:47,153 - lightrag - ERROR - Failed to extract document 1/2: 电商系统API接口文档.md
+2026-05-24 23:32:47,158 - lightrag - INFO - Enqueued document processing pipeline stopped
+2026-05-24 23:39:35,004 - uvicorn.access - INFO - 127.0.0.1:3747 - "DELETE /documents/delete_document HTTP/1.1" 200
+2026-05-24 23:39:35,005 - lightrag - INFO - Deleting document 1/2: doc-06d561859455a39666d0b70c5afbc342
+2026-05-24 23:39:35,005 - lightrag - INFO - Starting deletion process for document doc-06d561859455a39666d0b70c5afbc342
+2026-05-24 23:39:35,006 - lightrag - INFO - Deleting doc-06d561859455a39666d0b70c5afbc342 电商系统API接口文档.md(previous status: FAILED)
+2026-05-24 23:39:35,006 - lightrag - INFO - No LLM cache entries found for document doc-06d561859455a39666d0b70c5afbc342
+2026-05-24 23:39:35,008 - lightrag - INFO - Found 0 affected entities
+2026-05-24 23:39:35,008 - lightrag - INFO - Found 0 affected relations
+2026-05-24 23:39:35,011 - lightrag - INFO - Successfully deleted 9 chunks from storage
+2026-05-24 23:39:35,025 - lightrag - INFO - [Rag1000] Writing graph with 0 nodes, 0 edges
+2026-05-24 23:39:35,073 - lightrag - INFO - In memory DB persist to disk
+2026-05-24 23:39:35,083 - lightrag - INFO - [Rag1000] Writing graph with 0 nodes, 0 edges
+2026-05-24 23:39:35,085 - lightrag - INFO - In memory DB persist to disk
+2026-05-24 23:39:35,085 - lightrag - INFO - Document deleted 1/2: doc-06d561859455a39666d0b70c5afbc342[电商系统API接口文档.md]
+2026-05-24 23:39:35,089 - lightrag - INFO - Successfully deleted enqueued file: 电商系统API接口文档.md
+2026-05-24 23:39:35,089 - lightrag - INFO - Deleting document 2/2: doc-2bdf60672ed9472b466e9ca14880e31e
+2026-05-24 23:39:35,089 - lightrag - INFO - Starting deletion process for document doc-2bdf60672ed9472b466e9ca14880e31e
+2026-05-24 23:39:35,089 - lightrag - INFO - Deleting doc-2bdf60672ed9472b466e9ca14880e31e 需求说明书.md(previous status: FAILED)
+2026-05-24 23:39:35,090 - lightrag - INFO - No LLM cache entries found for document doc-2bdf60672ed9472b466e9ca14880e31e
+2026-05-24 23:39:35,091 - lightrag - INFO - Found 0 affected entities
+2026-05-24 23:39:35,092 - lightrag - INFO - Found 0 affected relations
+2026-05-24 23:39:35,093 - lightrag - INFO - Successfully deleted 13 chunks from storage
+2026-05-24 23:39:35,101 - lightrag - INFO - [Rag1000] Writing graph with 0 nodes, 0 edges
+2026-05-24 23:39:35,103 - lightrag - INFO - In memory DB persist to disk
+2026-05-24 23:39:35,115 - lightrag - INFO - [Rag1000] Writing graph with 0 nodes, 0 edges
+2026-05-24 23:39:35,119 - lightrag - INFO - In memory DB persist to disk
+2026-05-24 23:39:35,120 - lightrag - INFO - Document deleted 2/2: doc-2bdf60672ed9472b466e9ca14880e31e[需求说明书.md]
+2026-05-24 23:39:35,125 - lightrag - INFO - Successfully deleted enqueued file: 需求说明书.md
+2026-05-24 23:39:37,423 - uvicorn.access - INFO - 127.0.0.1:3747 - "GET /webui/assets/index-Cmfh6eB3.js HTTP/1.1" 200
+2026-05-24 23:39:37,431 - uvicorn.access - INFO - 127.0.0.1:12734 - "GET /webui/assets/chunk-Dlc7tRH4.js HTTP/1.1" 200
+2026-05-24 23:39:37,438 - uvicorn.access - INFO - 127.0.0.1:58796 - "GET /webui/assets/path-BmDdnQs8.js HTTP/1.1" 200
+2026-05-24 23:39:37,439 - uvicorn.access - INFO - 127.0.0.1:55414 - "GET /webui/assets/array-DA6v84qs.js HTTP/1.1" 200
+2026-05-24 23:39:37,442 - uvicorn.access - INFO - 127.0.0.1:2278 - "GET /webui/assets/katex-BX7meHaV.js HTTP/1.1" 200
+2026-05-24 23:39:37,444 - uvicorn.access - INFO - 127.0.0.1:8804 - "GET /webui/assets/_createAssigner-CdflnHPZ.js HTTP/1.1" 200
+2026-05-24 23:39:37,461 - uvicorn.access - INFO - 127.0.0.1:12734 - "GET /webui/assets/index-Dbwgayzd.css HTTP/1.1" 200
+2026-05-24 23:39:37,465 - uvicorn.access - INFO - 127.0.0.1:58796 - "GET /webui/assets/rough.esm-ezLMvHwD.js HTTP/1.1" 200
+2026-05-24 23:39:37,922 - uvicorn.access - INFO - 127.0.0.1:3747 - "GET /webui/favicon.png HTTP/1.1" 304
+2026-05-24 23:39:38,169 - uvicorn.access - INFO - 127.0.0.1:3747 - "GET /graph/label/popular?limit=300 HTTP/1.1" 200
+2026-05-24 23:39:38,219 - uvicorn.access - INFO - 127.0.0.1:3747 - "GET /docs HTTP/1.1" 200
+2026-05-24 23:39:38,270 - uvicorn.access - INFO - 127.0.0.1:3747 - "GET /static/swagger-ui/swagger-ui.css HTTP/1.1" 200
+2026-05-24 23:39:38,270 - uvicorn.access - INFO - 127.0.0.1:12734 - "GET /static/swagger-ui/swagger-ui-bundle.js HTTP/1.1" 304
+2026-05-24 23:39:38,501 - uvicorn.access - INFO - 127.0.0.1:3747 - "GET /openapi.json HTTP/1.1" 200
+2026-05-24 23:39:43,360 - uvicorn.access - INFO - 127.0.0.1:3747 - "POST /documents/upload HTTP/1.1" 200
+2026-05-24 23:39:43,371 - lightrag - INFO - Successfully extracted and enqueued file: 需求说明书.md
+2026-05-24 23:39:43,377 - lightrag - INFO - Processing 1 document(s)
+2026-05-24 23:39:43,378 - lightrag - INFO - Extracting stage 1/1: 需求说明书.md
+2026-05-24 23:39:43,378 - lightrag - INFO - Processing d-id: doc-2bdf60672ed9472b466e9ca14880e31e
+2026-05-24 23:39:50,514 - lightrag - INFO - LLM func: 10 new workers initialized (Timeouts: Func: 180s, Worker: 360s, Health Check: 375s)
+2026-05-24 23:40:20,522 - lightrag - INFO -  == LLM cache == saving: default:extract:57bdabfce1c3c26889ab244f8858bc96
+2026-05-24 23:40:20,523 - lightrag - WARNING - chunk-ab3498a53049b9ea4cf91920456447c9: Complete delimiter can not be found in extraction result
+2026-05-24 23:40:30,510 - lightrag - INFO -  == LLM cache == saving: default:extract:4850d34e74f230751625b2d56607b8d9
+2026-05-24 23:40:32,549 - lightrag - INFO -  == LLM cache == saving: default:extract:f55f8d22835a6e48fd52f7512fecac9a
+2026-05-24 23:40:32,552 - lightrag - INFO -  == LLM cache == saving: default:extract:452a5b6ce581e1c49d88cf8ac49a5205
+2026-05-24 23:40:32,552 - lightrag - INFO -  == LLM cache == saving: default:extract:31398abd0c024de6a03e691d0cb40448
+2026-05-24 23:40:32,556 - lightrag - INFO -  == LLM cache == saving: default:extract:b16946d6b90fc2bc008c01631db3629a
+2026-05-24 23:40:40,395 - lightrag - INFO -  == LLM cache == saving: default:extract:e1237641ecc01608120df47b048e9793
+2026-05-24 23:40:40,404 - lightrag - INFO -  == LLM cache == saving: default:extract:691801a26f0d7644c5dc056e233b4b86
+2026-05-24 23:40:40,408 - lightrag - INFO -  == LLM cache == saving: default:extract:fb6b150b18602008642e2c93c4e9637b
+2026-05-24 23:40:46,331 - lightrag - INFO -  == LLM cache == saving: default:extract:6e00c09956238a63d0625a6a5bcc3155
+2026-05-24 23:40:46,334 - lightrag - INFO -  == LLM cache == saving: default:extract:61be255c9a71c2fb5bf9e65f2c175003
+2026-05-24 23:40:46,348 - lightrag - WARNING - chunk-abfdd52b1a831b8834e04831a950d3d5: LLM output format error; found 2/4 fields on ENTITY `tree_path<|_ #|>tree_path是后端存储分类层级结构的路径字段，用于实现分类树形结构。` @ `N/A`
+2026-05-24 23:40:46,367 - lightrag - INFO - Chunk 1 of 13 extracted 15 Ent + 17 Rel chunk-ab3498a53049b9ea4cf91920456447c9
+2026-05-24 23:41:35,301 - lightrag - INFO - OpenAI LLM Options: {}
+2026-05-24 23:41:36,051 - lightrag - INFO - Embedding config: binding=openai model=Qwen/Qwen3-Embedding-8B embedding_dim=4096 max_token_size=8192
+2026-05-24 23:41:36,052 - lightrag - INFO - Send embedding dimension: False by env var (dimensions=4096, has_param=True, binding=openai)
+2026-05-24 23:41:36,052 - lightrag - INFO - Embedding max_token_size: 8192 (from env variable)
+2026-05-24 23:41:36,052 - lightrag - INFO - Reranking is disabled
+2026-05-24 23:41:36,837 - lightrag - INFO - [Rag1000] Loaded graph from E:\AI\pythonProject\aiAutoTest\lee\light-rag\rag_storage\Rag1000\graph_chunk_entity_relation.graphml with 0 nodes, 0 edges
+2026-05-24 23:41:36,955 - lightrag - INFO - WebUI assets mounted at /webui
+2026-05-24 23:41:37,006 - uvicorn.error - INFO - Started server process [61508]
+2026-05-24 23:41:37,007 - uvicorn.error - INFO - Waiting for application startup.
+2026-05-24 23:41:37,009 - lightrag - INFO - [Rag1000] Process 61508 KV load full_docs with 1 records
+2026-05-24 23:41:37,010 - lightrag - INFO - [Rag1000] Process 61508 KV load text_chunks with 0 records
+2026-05-24 23:41:37,010 - lightrag - INFO - [Rag1000] Process 61508 KV load full_entities with 0 records
+2026-05-24 23:41:37,011 - lightrag - INFO - [Rag1000] Process 61508 KV load full_relations with 0 records
+2026-05-24 23:41:37,011 - lightrag - INFO - [Rag1000] Process 61508 KV load entity_chunks with 0 records
+2026-05-24 23:41:37,011 - lightrag - INFO - [Rag1000] Process 61508 KV load relation_chunks with 0 records
+2026-05-24 23:41:37,012 - lightrag - INFO - [Rag1000] Process 61508 KV load llm_response_cache with 0 records
+2026-05-24 23:41:37,013 - lightrag - INFO - [Rag1000] Process 61508 doc status load doc_status with 1 records
+2026-05-24 23:41:37,013 - uvicorn.error - INFO - Application startup complete.
+2026-05-24 23:41:37,014 - uvicorn.error - INFO - Uvicorn running on http://0.0.0.0:9621 (Press CTRL+C to quit)
+2026-05-24 23:41:44,042 - uvicorn.access - INFO - 127.0.0.1:52093 - "GET /graph/label/popular?limit=300 HTTP/1.1" 200
+2026-05-24 23:41:44,082 - uvicorn.access - INFO - 127.0.0.1:52093 - "GET /docs HTTP/1.1" 200
+2026-05-24 23:41:44,347 - uvicorn.access - INFO - 127.0.0.1:27476 - "GET /openapi.json HTTP/1.1" 200
+2026-05-24 23:42:50,643 - uvicorn.access - INFO - 127.0.0.1:55044 - "GET /graph/label/popular?limit=300 HTTP/1.1" 200
+2026-05-24 23:42:50,678 - uvicorn.access - INFO - 127.0.0.1:55044 - "GET /docs HTTP/1.1" 200
+2026-05-24 23:42:50,757 - uvicorn.access - INFO - 127.0.0.1:46453 - "GET /openapi.json HTTP/1.1" 200
+2026-05-24 23:43:29,459 - uvicorn.access - INFO - 127.0.0.1:52837 - "GET /graph/label/popular?limit=300 HTTP/1.1" 200
+2026-05-24 23:43:29,499 - uvicorn.access - INFO - 127.0.0.1:52837 - "GET /docs HTTP/1.1" 200
+2026-05-24 23:43:29,576 - uvicorn.access - INFO - 127.0.0.1:15959 - "GET /openapi.json HTTP/1.1" 200
+2026-05-24 23:45:07,305 - uvicorn.access - INFO - 127.0.0.1:7575 - "GET /webui/assets/index-Cmfh6eB3.js HTTP/1.1" 304
+2026-05-24 23:45:07,309 - uvicorn.access - INFO - 127.0.0.1:27712 - "GET /webui/assets/chunk-Dlc7tRH4.js HTTP/1.1" 304
+2026-05-24 23:45:07,317 - uvicorn.access - INFO - 127.0.0.1:45801 - "GET /webui/assets/path-BmDdnQs8.js HTTP/1.1" 304
+2026-05-24 23:45:07,319 - uvicorn.access - INFO - 127.0.0.1:7575 - "GET /webui/assets/index-Dbwgayzd.css HTTP/1.1" 304
+2026-05-24 23:45:07,323 - uvicorn.access - INFO - 127.0.0.1:38810 - "GET /webui/assets/array-DA6v84qs.js HTTP/1.1" 304
+2026-05-24 23:45:07,325 - uvicorn.access - INFO - 127.0.0.1:53738 - "GET /webui/assets/_createAssigner-CdflnHPZ.js HTTP/1.1" 304
+2026-05-24 23:45:07,325 - uvicorn.access - INFO - 127.0.0.1:48278 - "GET /webui/assets/katex-BX7meHaV.js HTTP/1.1" 304
+2026-05-24 23:45:07,330 - uvicorn.access - INFO - 127.0.0.1:27712 - "GET /webui/assets/rough.esm-ezLMvHwD.js HTTP/1.1" 304
+2026-05-24 23:45:07,695 - uvicorn.access - INFO - 127.0.0.1:27712 - "GET /webui/favicon.png HTTP/1.1" 304
+2026-05-24 23:45:07,919 - uvicorn.access - INFO - 127.0.0.1:27712 - "GET /graph/label/popular?limit=300 HTTP/1.1" 200
+2026-05-24 23:45:07,959 - uvicorn.access - INFO - 127.0.0.1:27712 - "GET /docs HTTP/1.1" 200
+2026-05-24 23:45:07,982 - uvicorn.access - INFO - 127.0.0.1:48278 - "GET /static/swagger-ui/swagger-ui.css HTTP/1.1" 304
+2026-05-24 23:45:07,983 - uvicorn.access - INFO - 127.0.0.1:27712 - "GET /static/swagger-ui/swagger-ui-bundle.js HTTP/1.1" 304
+2026-05-24 23:45:08,046 - uvicorn.access - INFO - 127.0.0.1:27712 - "GET /openapi.json HTTP/1.1" 200
+2026-05-24 23:45:23,577 - uvicorn.access - INFO - 127.0.0.1:7836 - "DELETE /documents/delete_document HTTP/1.1" 200
+2026-05-24 23:45:23,577 - lightrag - INFO - Deleting document 1/1: doc-2bdf60672ed9472b466e9ca14880e31e
+2026-05-24 23:45:23,578 - lightrag - INFO - Starting deletion process for document doc-2bdf60672ed9472b466e9ca14880e31e
+2026-05-24 23:45:23,578 - lightrag - INFO - Deleting doc-2bdf60672ed9472b466e9ca14880e31e 需求说明书.md(previous status: PROCESSING)
+2026-05-24 23:45:23,579 - lightrag - INFO - No LLM cache entries found for document doc-2bdf60672ed9472b466e9ca14880e31e
+2026-05-24 23:45:23,579 - lightrag - INFO - Found 0 affected entities
+2026-05-24 23:45:23,580 - lightrag - INFO - Found 0 affected relations
+2026-05-24 23:45:23,580 - lightrag - INFO - Successfully deleted 13 chunks from storage
+2026-05-24 23:45:23,589 - lightrag - INFO - [Rag1000] Writing graph with 0 nodes, 0 edges
+2026-05-24 23:45:23,605 - lightrag - INFO - In memory DB persist to disk
+2026-05-24 23:45:23,616 - lightrag - INFO - [Rag1000] Writing graph with 0 nodes, 0 edges
+2026-05-24 23:45:23,618 - lightrag - INFO - In memory DB persist to disk
+2026-05-24 23:45:23,618 - lightrag - INFO - Document deleted 1/1: doc-2bdf60672ed9472b466e9ca14880e31e[需求说明书.md]
+2026-05-24 23:45:23,625 - lightrag - INFO - Successfully deleted enqueued file: 需求说明书.md
+2026-05-24 23:45:25,995 - uvicorn.access - INFO - 127.0.0.1:7836 - "GET /graph/label/popular?limit=300 HTTP/1.1" 200
+2026-05-24 23:45:26,030 - uvicorn.access - INFO - 127.0.0.1:7836 - "GET /docs HTTP/1.1" 200
+2026-05-24 23:45:26,073 - uvicorn.access - INFO - 127.0.0.1:7836 - "GET /openapi.json HTTP/1.1" 200
+2026-05-24 23:45:33,502 - uvicorn.access - INFO - 127.0.0.1:49672 - "POST /documents/upload HTTP/1.1" 200
+2026-05-24 23:45:33,511 - lightrag - INFO - Successfully extracted and enqueued file: 电商系统API接口文档.md
+2026-05-24 23:45:33,516 - lightrag - INFO - Processing 1 document(s)
+2026-05-24 23:45:33,517 - lightrag - INFO - Extracting stage 1/1: 电商系统API接口文档.md
+2026-05-24 23:45:33,519 - lightrag - INFO - Processing d-id: doc-06d561859455a39666d0b70c5afbc342
+2026-05-24 23:45:33,560 - lightrag - INFO - Embedding func: 10 new workers initialized (Timeouts: Func: 30s, Worker: 60s, Health Check: 75s)
+2026-05-24 23:45:38,039 - lightrag - INFO - LLM func: 10 new workers initialized (Timeouts: Func: 180s, Worker: 360s, Health Check: 375s)
+2026-05-24 23:46:07,474 - lightrag - INFO -  == LLM cache == saving: default:extract:43583f5bef2cccb218eeca8a7a809dd2
+2026-05-24 23:46:10,863 - lightrag - INFO -  == LLM cache == saving: default:extract:b805e79ba45e154ed4600809f65c0310
+2026-05-24 23:46:13,125 - lightrag - INFO -  == LLM cache == saving: default:extract:4e880ff701941d5fe243814bf0d53919
+2026-05-24 23:46:13,126 - lightrag - INFO -  == LLM cache == saving: default:extract:e27ef7302eeadae9d586743f44abe914
+2026-05-24 23:46:13,127 - lightrag - WARNING - chunk-8302692fb8bb5ca27290b44a3fedf7f2: Complete delimiter can not be found in extraction result
+2026-05-24 23:46:13,131 - lightrag - WARNING - chunk-8302692fb8bb5ca27290b44a3fedf7f2: LLM output format error; found 2/4 fields on ENTITY `COMPLETE|>` @ `N/A`
+2026-05-24 23:46:17,720 - lightrag - INFO -  == LLM cache == saving: default:extract:1514230459fa79880b23ca2b36bff56a
+2026-05-24 23:46:17,723 - lightrag - INFO -  == LLM cache == saving: default:extract:19c1bfa93353cbe6b041f68597043de9
+2026-05-24 23:46:17,747 - lightrag - WARNING - chunk-315944f454bfdc133f2b833baf92761d: Complete delimiter can not be found in extraction result
+2026-05-24 23:46:20,091 - lightrag - WARNING - chunk-315944f454bfdc133f2b833baf92761d: LLM output format error; found 2/4 fields on ENTITY `COMPLETE|>` @ `N/A`
+2026-05-24 23:46:22,623 - lightrag - INFO -  == LLM cache == saving: default:extract:171a27f5ef91cc630b57d649e7b82fe8
+2026-05-24 23:46:22,633 - lightrag - INFO -  == LLM cache == saving: default:extract:8ea21767dea494a530f7ad4f126315b7
+2026-05-24 23:46:22,634 - lightrag - INFO - Chunk 1 of 9 extracted 10 Ent + 4 Rel chunk-8e8a92ce61c84fdacc95f44ce7ef4634
+2026-05-24 23:46:24,986 - lightrag - INFO -  == LLM cache == saving: default:extract:f2e74579885caeca703ae8832f8d632e
+2026-05-24 23:46:27,332 - lightrag - INFO -  == LLM cache == saving: default:extract:35674c7e7c0a84076042a3fd60f5c741
+2026-05-24 23:46:31,673 - lightrag - INFO -  == LLM cache == saving: default:extract:e6e3ae622ac1864aea889d7f703315f3
+2026-05-24 23:46:31,678 - lightrag - INFO - Chunk 2 of 9 extracted 18 Ent + 17 Rel chunk-7e8a971c1deafe3adbe6ab8c15339728
+2026-05-24 23:46:34,597 - lightrag - INFO -  == LLM cache == saving: default:extract:b3f11e7a3a9524e60a503a0f4546a838
+2026-05-24 23:46:34,599 - lightrag - INFO - Chunk 3 of 9 extracted 10 Ent + 11 Rel chunk-8302692fb8bb5ca27290b44a3fedf7f2
+2026-05-24 23:46:42,575 - lightrag - INFO -  == LLM cache == saving: default:extract:e0bc46b2fd601b32562bb20dbf394da7
+2026-05-24 23:46:42,577 - lightrag - INFO - Empty entity name found after sanitization. Original: '2'
+2026-05-24 23:46:42,578 - lightrag - INFO - Empty entity name found after sanitization. Original: '5'
+2026-05-24 23:46:42,581 - lightrag - INFO - Empty target entity found after sanitization. Original: '2'
+2026-05-24 23:46:42,582 - lightrag - INFO - Empty target entity found after sanitization. Original: '5'
+2026-05-24 23:46:42,583 - lightrag - WARNING - chunk-677dcb5fe37a7f8269860545dd68897f: LLM output format error; found 4/5 fields on RELATION `user123`~`iPhone<[#]>注册设备,用户信息`
+2026-05-24 23:46:42,585 - lightrag - INFO - Chunk 4 of 9 extracted 26 Ent + 11 Rel chunk-677dcb5fe37a7f8269860545dd68897f
+2026-05-24 23:46:47,045 - lightrag - INFO -  == LLM cache == saving: default:extract:263d7c396e598bc9ae8e621da0254cf0
+2026-05-24 23:46:47,066 - lightrag - INFO -  == LLM cache == saving: default:extract:d0474233ec676f06aaf3ad8ee0638199
+2026-05-24 23:46:47,071 - lightrag - INFO - Chunk 5 of 9 extracted 55 Ent + 43 Rel chunk-c6682f4c5dd06691e9a765b74339fddb
+2026-05-24 23:46:47,072 - lightrag - INFO - Chunk 6 of 9 extracted 36 Ent + 29 Rel chunk-f0d4faef317fd6db66d10756a7a7ae7f
+2026-05-24 23:46:49,891 - lightrag - INFO -  == LLM cache == saving: default:extract:9f87609ab73dfee553ddf7ad802417fd
+2026-05-24 23:46:49,911 - lightrag - INFO - Chunk 7 of 9 extracted 52 Ent + 35 Rel chunk-212b430d29737d598de5a8a40260a350
+2026-05-24 23:46:53,560 - lightrag - INFO -  == LLM cache == saving: default:extract:0bc5bd948e2787f3a23664037c5cb9bb
+2026-05-24 23:46:53,571 - lightrag - INFO - Chunk 8 of 9 extracted 38 Ent + 44 Rel chunk-26622afd9a3bcf1a2a8964d61b69ea18
+2026-05-24 23:47:06,504 - lightrag - INFO -  == LLM cache == saving: default:extract:ca4218d9ded41253ef0cffe3be6aa577
+2026-05-24 23:47:06,505 - lightrag - WARNING - chunk-315944f454bfdc133f2b833baf92761d: Complete delimiter can not be found in extraction result
+2026-05-24 23:47:06,517 - lightrag - WARNING - chunk-315944f454bfdc133f2b833baf92761d: LLM output format error; found 2/4 fields on ENTITY `COMPLETE|>` @ `N/A`
+2026-05-24 23:47:06,518 - lightrag - INFO - Chunk 9 of 9 extracted 68 Ent + 62 Rel chunk-315944f454bfdc133f2b833baf92761d
+2026-05-24 23:47:06,521 - lightrag - INFO - Merging stage 1/1: 电商系统API接口文档.md
+2026-05-24 23:47:06,522 - lightrag - INFO - Phase 1: Processing 275 entities from doc-06d561859455a39666d0b70c5afbc342 (async: 20)
+2026-05-24 23:48:16,445 - lightrag - WARNING - Embedding func: Worker timeout for task 2442395443136_228154.453 after 60s
+2026-05-24 23:48:18,780 - lightrag - WARNING - Embedding func: Worker timeout for task 2442466696192_228152.156 after 60s
+2026-05-24 23:48:21,086 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 商品上下架API: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:48:21,086 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 商品更新API: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:48:37,032 - lightrag - WARNING - Embedding func: Worker timeout for task 2442489260032_228168.031 after 60s
+2026-05-24 23:48:39,276 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 用户ID: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:48:55,021 - lightrag - WARNING - Embedding func: Worker timeout for task 2442489347904_228168.046 after 60s
+2026-05-24 23:48:57,501 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 成本价: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:49:13,727 - lightrag - WARNING - Embedding func: Worker timeout for task 2442466698112_228185.828 after 60s
+2026-05-24 23:49:15,930 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 主图URL: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:49:32,346 - lightrag - WARNING - Embedding func: Worker timeout for task 2442467384128_228201.468 after 60s
+2026-05-24 23:49:34,533 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 最低价格: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:49:50,746 - lightrag - WARNING - Embedding func: Worker timeout for task 2442489343296_228219.781 after 60s
+2026-05-24 23:49:52,960 - lightrag - WARNING - VDB entity_upsert attempt 2 failed for 商品更新API: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:50:09,767 - lightrag - WARNING - Embedding func: Worker timeout for task 2442489198720_228237.843 after 60s
+2026-05-24 23:50:12,199 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 商品模块: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:50:29,336 - lightrag - WARNING - Embedding func: Worker timeout for task 2442489343488_228256.078 after 60s
+2026-05-24 23:50:31,599 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for JSON: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:50:48,345 - lightrag - WARNING - Embedding func: Worker timeout for task 2442467386816_228274.5 after 60s
+2026-05-24 23:50:50,877 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 429 Too Many Requests: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:50:55,598 - lightrag - WARNING - Embedding func: Worker timeout for task 2442467391424_228293.109 after 60s
+2026-05-24 23:51:09,820 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for COMMON_0001: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:51:19,509 - lightrag - WARNING - Embedding func: Worker timeout for task 2442467392576_228311.531 after 60s
+2026-05-24 23:51:21,760 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for COMMON_0008: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:51:34,044 - lightrag - WARNING - Embedding func: Worker timeout for task 2442489069632_228330.781 after 60s
+2026-05-24 23:51:41,138 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for USER_0005: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:52:46,317 - lightrag - WARNING - Embedding func: Worker timeout for task 2442464372544_228407.687 after 60s
+2026-05-24 23:52:48,655 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 商品详情API: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:53:07,491 - lightrag - WARNING - Embedding func: Worker timeout for task 2442489118976_228443.625 after 60s
+2026-05-24 23:53:09,747 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 创建分类接口: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:53:28,069 - lightrag - WARNING - Embedding func: Worker timeout for task 2442489120128_228443.625 after 60s
+2026-05-24 23:53:30,472 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 订单状态: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:54:07,785 - lightrag - WARNING - Embedding func: Detected stuck task 2442489124928_228465.296 (execution time: 78.9s), forcing cleanup
+2026-05-24 23:54:07,801 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 订单管理: Embedding func: Task forcefully terminated due to execution timeout (>75s, actual: 78.9s), retrying...
+2026-05-24 23:54:10,126 - lightrag - WARNING - Embedding func: Worker timeout for task 2442464372544_228487.312 after 60s
+2026-05-24 23:54:26,463 - lightrag - WARNING - VDB entity_upsert attempt 2 failed for 商品详情API: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:54:43,161 - lightrag - WARNING - Embedding func: Worker timeout for task 2442489130880_228508.406 after 60s
+2026-05-24 23:54:45,422 - lightrag - WARNING - VDB entity_upsert attempt 2 failed for 创建分类接口: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:55:01,512 - lightrag - WARNING - Embedding func: Worker timeout for task 2442489132992_228529.062 after 60s
+2026-05-24 23:55:03,797 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for /stats/sales-overview: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:55:19,843 - lightrag - WARNING - Embedding func: Worker timeout for task 2442489186432_228547.703 after 60s
+2026-05-24 23:55:22,173 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 用户登录: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:55:38,870 - lightrag - WARNING - Embedding func: Worker timeout for task 2442489126848_228566.39 after 60s
+2026-05-24 23:55:41,158 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 首页商品展示: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:55:57,473 - lightrag - WARNING - Embedding func: Worker timeout for task 2442489125312_228585.078 after 60s
+2026-05-24 23:55:59,811 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for POST /api/users/{userId}/addresses: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:56:15,467 - lightrag - WARNING - Embedding func: Worker timeout for task 2442395439296_228604.0 after 60s
+2026-05-24 23:56:18,409 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for gender: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:56:37,261 - lightrag - WARNING - Embedding func: Worker timeout for task 2442466695040_228622.375 after 60s
+2026-05-24 23:56:39,655 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for detail: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:56:42,170 - lightrag - WARNING - Embedding func: Worker timeout for task 2442489133376_228640.781 after 60s
+2026-05-24 23:56:51,142 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for imageUrl: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:57:00,155 - lightrag - WARNING - Embedding func: Worker timeout for task 2442489189120_228659.75 after 60s
+2026-05-24 23:57:06,906 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 北京市朝阳区: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:57:26,694 - lightrag - WARNING - Embedding func: Worker timeout for task 2442489254656_228678.406 after 60s
+2026-05-24 23:57:29,093 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 订单备注: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:58:52,679 - lightrag - WARNING - Embedding func: Worker timeout for task 2442466696192_228767.687 after 60s
+2026-05-24 23:58:55,253 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 订单商品数量: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:59:10,344 - lightrag - WARNING - Embedding func: Worker timeout for task 2442489261952_228799.062 after 60s
+2026-05-24 23:59:10,362 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for amount: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-24 23:59:13,459 - lightrag - INFO - Phase 2: Processing 256 relations from doc-06d561859455a39666d0b70c5afbc342 (async: 20)
+2026-05-25 00:07:16,323 - lightrag - WARNING - Embedding func: Worker timeout for task 2442489334272_229292.281 after 60s
+2026-05-25 00:07:16,334 - lightrag - WARNING - VDB relationship_upsert attempt 1 failed for PUT /api/users/{userId}-avatar: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-25 00:09:33,148 - lightrag - WARNING - Embedding func: Worker timeout for task 2442395435072_229431.718 after 60s
+2026-05-25 00:09:33,149 - lightrag - WARNING - VDB relationship_upsert attempt 1 failed for 获取商品评论API-评论: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-25 00:09:35,891 - lightrag - WARNING - Embedding func: Worker timeout for task 2442541227776_229434.125 after 60s
+2026-05-25 00:09:35,892 - lightrag - WARNING - VDB relationship_upsert attempt 1 failed for 完整地址-收货地址: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-25 00:09:39,020 - lightrag - WARNING - Embedding func: Worker timeout for task 2442489186816_229436.906 after 60s
+2026-05-25 00:09:39,021 - lightrag - WARNING - VDB relationship_upsert attempt 1 failed for 订单-评论模块: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-25 00:10:27,995 - lightrag - INFO - Phase 3: Updating final 275(275+0) entities and  256 relations from doc-06d561859455a39666d0b70c5afbc342
+2026-05-25 00:10:27,997 - lightrag - INFO - Completed merging: 275 entities, 0 extra entities, 256 relations
+2026-05-25 00:10:28,285 - lightrag - INFO - [Rag1000] Writing graph with 275 nodes, 256 edges
+2026-05-25 00:10:28,331 - lightrag - INFO - In memory DB persist to disk
+2026-05-25 00:10:28,331 - lightrag - INFO - Completed processing file 1/1: 电商系统API接口文档.md
+2026-05-25 00:10:28,332 - lightrag - INFO - Enqueued document processing pipeline stopped
+2026-05-25 08:37:09,784 - uvicorn.access - INFO - 127.0.0.1:6467 - "GET /webui/assets/rehype-katex-BX5VrZeK.js HTTP/1.1" 200
+2026-05-25 08:37:12,243 - lightrag - WARNING - high_level_keywords is empty
+2026-05-25 08:37:12,244 - lightrag - WARNING - Forced low_level_keywords to origin query: 有几个接口？
+2026-05-25 08:37:13,709 - lightrag - INFO - Query nodes: 有几个接口？ (top_k:40, cosine:0.2)
+2026-05-25 08:37:15,232 - lightrag - INFO - Local query: 40 entites, 81 relations
+2026-05-25 08:37:15,233 - lightrag - INFO - Raw search results: 40 entities, 81 relations, 0 vector chunks
+2026-05-25 08:37:15,245 - lightrag - INFO - After truncation: 40 entities, 81 relations
+2026-05-25 08:37:15,256 - lightrag - INFO - Selecting 8 from 8 entity-related chunks by vector similarity
+2026-05-25 08:37:15,257 - lightrag - INFO - Find no additional relations-related chunks from 81 relations
+2026-05-25 08:37:15,258 - lightrag - INFO - Round-robin merged chunks: 8 -> 8 (deduplicated 0)
+2026-05-25 08:37:15,264 - lightrag - WARNING - Rerank is enabled but no rerank model is configured. Please set up a rerank model or set enable_rerank=False in query parameters.
+2026-05-25 08:37:15,279 - lightrag - INFO - Final context: 40 entities, 81 relations, 8 chunks
+2026-05-25 08:37:15,279 - lightrag - INFO - Final chunks S+F/O: E7/1 E2/2 E6/3 E12/4 E8/5 E2/6 E2/7 E1/8
+2026-05-25 08:37:18,249 - uvicorn.access - INFO - 127.0.0.1:55999 - "POST /query/stream HTTP/1.1" 200
+2026-05-25 08:37:30,487 - uvicorn.access - INFO - 127.0.0.1:50958 - "GET /webui/assets/index-Cmfh6eB3.js HTTP/1.1" 304
+2026-05-25 08:37:30,509 - uvicorn.access - INFO - 127.0.0.1:37732 - "GET /webui/assets/path-BmDdnQs8.js HTTP/1.1" 304
+2026-05-25 08:37:30,514 - uvicorn.access - INFO - 127.0.0.1:33609 - "GET /webui/assets/array-DA6v84qs.js HTTP/1.1" 304
+2026-05-25 08:37:30,514 - uvicorn.access - INFO - 127.0.0.1:11496 - "GET /webui/assets/chunk-Dlc7tRH4.js HTTP/1.1" 304
+2026-05-25 08:37:30,516 - uvicorn.access - INFO - 127.0.0.1:50958 - "GET /webui/assets/_createAssigner-CdflnHPZ.js HTTP/1.1" 304
+2026-05-25 08:37:30,517 - uvicorn.access - INFO - 127.0.0.1:26969 - "GET /webui/assets/index-Dbwgayzd.css HTTP/1.1" 304
+2026-05-25 08:37:30,519 - uvicorn.access - INFO - 127.0.0.1:59254 - "GET /webui/assets/katex-BX7meHaV.js HTTP/1.1" 304
+2026-05-25 08:37:30,520 - uvicorn.access - INFO - 127.0.0.1:37732 - "GET /webui/assets/rough.esm-ezLMvHwD.js HTTP/1.1" 304
+2026-05-25 08:37:30,970 - uvicorn.access - INFO - 127.0.0.1:37732 - "GET /webui/favicon.png HTTP/1.1" 304
+2026-05-25 08:37:31,241 - uvicorn.access - INFO - 127.0.0.1:37732 - "GET /graph/label/popular?limit=300 HTTP/1.1" 200
+2026-05-25 08:37:31,294 - uvicorn.access - INFO - 127.0.0.1:37732 - "GET /docs HTTP/1.1" 200
+2026-05-25 08:37:31,318 - uvicorn.access - INFO - 127.0.0.1:59254 - "GET /static/swagger-ui/swagger-ui.css HTTP/1.1" 304
+2026-05-25 08:37:31,330 - uvicorn.access - INFO - 127.0.0.1:37732 - "GET /static/swagger-ui/swagger-ui-bundle.js HTTP/1.1" 304
+2026-05-25 08:37:31,414 - uvicorn.access - INFO - 127.0.0.1:37732 - "GET /openapi.json HTTP/1.1" 200
+2026-05-25 08:37:38,878 - uvicorn.access - INFO - 127.0.0.1:50829 - "GET /docs HTTP/1.1" 200
+2026-05-25 08:37:38,938 - uvicorn.access - INFO - 127.0.0.1:50829 - "GET /openapi.json HTTP/1.1" 200
+2026-05-25 08:38:57,792 - uvicorn.error - INFO - Shutting down
+2026-05-25 08:38:57,899 - uvicorn.error - INFO - Waiting for application shutdown.
+2026-05-25 08:38:57,901 - lightrag - INFO - Successfully finalized 12 storages
+2026-05-25 08:38:57,903 - uvicorn.error - INFO - Application shutdown complete.
+2026-05-25 08:38:57,903 - uvicorn.error - INFO - Finished server process [61508]
+2026-05-25 08:39:07,567 - lightrag - INFO - OpenAI LLM Options: {}
+2026-05-25 08:39:08,359 - lightrag - INFO - Embedding config: binding=openai model=Qwen/Qwen3-Embedding-8B embedding_dim=4096 max_token_size=8192
+2026-05-25 08:39:08,360 - lightrag - INFO - Send embedding dimension: False by env var (dimensions=4096, has_param=True, binding=openai)
+2026-05-25 08:39:08,360 - lightrag - INFO - Embedding max_token_size: 8192 (from env variable)
+2026-05-25 08:39:08,360 - lightrag - INFO - Reranking is disabled
+2026-05-25 08:39:09,177 - lightrag - INFO - [Rag1000] Loaded graph from E:\AI\pythonProject\aiAutoTest\lee\light-rag\rag_storage\Rag1000\graph_chunk_entity_relation.graphml with 275 nodes, 256 edges
+2026-05-25 08:39:09,396 - lightrag - INFO - WebUI assets mounted at /webui
+2026-05-25 08:39:09,452 - uvicorn.error - INFO - Started server process [57856]
+2026-05-25 08:39:09,452 - uvicorn.error - INFO - Waiting for application startup.
+2026-05-25 08:39:09,454 - lightrag - INFO - [Rag1000] Process 57856 KV load full_docs with 1 records
+2026-05-25 08:39:09,456 - lightrag - INFO - [Rag1000] Process 57856 KV load text_chunks with 9 records
+2026-05-25 08:39:09,458 - lightrag - INFO - [Rag1000] Process 57856 KV load full_entities with 1 records
+2026-05-25 08:39:09,464 - lightrag - INFO - [Rag1000] Process 57856 KV load full_relations with 1 records
+2026-05-25 08:39:09,475 - lightrag - INFO - [Rag1000] Process 57856 KV load entity_chunks with 275 records
+2026-05-25 08:39:09,479 - lightrag - INFO - [Rag1000] Process 57856 KV load relation_chunks with 256 records
+2026-05-25 08:39:09,489 - lightrag - INFO - [Rag1000] Process 57856 KV load llm_response_cache with 18 records
+2026-05-25 08:39:09,491 - lightrag - INFO - [Rag1000] Process 57856 doc status load doc_status with 1 records
+2026-05-25 08:39:09,493 - uvicorn.error - INFO - Application startup complete.
+2026-05-25 08:39:09,494 - uvicorn.error - INFO - Uvicorn running on http://0.0.0.0:9621 (Press CTRL+C to quit)
+2026-05-25 08:39:45,248 - uvicorn.access - INFO - 127.0.0.1:59595 - "GET / HTTP/1.1" 307
+2026-05-25 08:39:45,262 - uvicorn.access - INFO - 127.0.0.1:59595 - "GET /webui HTTP/1.1" 307
+2026-05-25 08:39:45,840 - uvicorn.access - INFO - 127.0.0.1:59595 - "GET /auth-status HTTP/1.1" 200
+2026-05-25 08:39:46,240 - uvicorn.access - INFO - 127.0.0.1:27758 - "GET /docs HTTP/1.1" 200
+2026-05-25 08:39:46,267 - uvicorn.access - INFO - 127.0.0.1:27758 - "GET /static/swagger-ui/swagger-ui-bundle.js HTTP/1.1" 200
+2026-05-25 08:39:46,599 - uvicorn.access - INFO - 127.0.0.1:27758 - "GET /openapi.json HTTP/1.1" 200
+2026-05-25 08:40:38,252 - uvicorn.access - INFO - 127.0.0.1:59804 - "GET /docs HTTP/1.1" 200
+2026-05-25 08:40:38,367 - uvicorn.access - INFO - 127.0.0.1:59804 - "GET /openapi.json HTTP/1.1" 200
+2026-05-25 08:41:05,499 - uvicorn.access - INFO - 127.0.0.1:14081 - "GET /graph/label/popular?limit=300 HTTP/1.1" 200
+2026-05-25 08:41:05,508 - lightrag - INFO - [Rag1000] Subgraph query successful | Node count: 275 | Edge count: 256
+2026-05-25 08:41:05,525 - uvicorn.access - INFO - 127.0.0.1:1336 - "GET /graphs?label=*&max_depth=3&max_nodes=1000 HTTP/1.1" 200
+2026-05-25 08:41:05,600 - lightrag - INFO - [Rag1000] Subgraph query successful | Node count: 275 | Edge count: 256
+2026-05-25 08:41:05,619 - uvicorn.access - INFO - 127.0.0.1:1336 - "GET /graphs?label=*&max_depth=3&max_nodes=1000 HTTP/1.1" 200
+2026-05-25 08:42:33,107 - uvicorn.access - INFO - 127.0.0.1:22509 - "POST /documents/upload HTTP/1.1" 200
+2026-05-25 08:42:33,123 - lightrag - INFO - Successfully extracted and enqueued file: 需求说明书.md
+2026-05-25 08:42:33,133 - lightrag - INFO - Processing 1 document(s)
+2026-05-25 08:42:33,139 - lightrag - INFO - Extracting stage 1/1: 需求说明书.md
+2026-05-25 08:42:33,141 - lightrag - INFO - Processing d-id: doc-2bdf60672ed9472b466e9ca14880e31e
+2026-05-25 08:42:33,184 - lightrag - INFO - Embedding func: 10 new workers initialized (Timeouts: Func: 30s, Worker: 60s, Health Check: 75s)
+2026-05-25 08:42:38,835 - lightrag - INFO - LLM func: 10 new workers initialized (Timeouts: Func: 180s, Worker: 360s, Health Check: 375s)
+2026-05-25 08:43:10,639 - lightrag - INFO -  == LLM cache == saving: default:extract:31398abd0c024de6a03e691d0cb40448
+2026-05-25 08:43:14,164 - lightrag - INFO -  == LLM cache == saving: default:extract:4850d34e74f230751625b2d56607b8d9
+2026-05-25 08:43:16,556 - lightrag - INFO -  == LLM cache == saving: default:extract:452a5b6ce581e1c49d88cf8ac49a5205
+2026-05-25 08:43:16,557 - lightrag - INFO -  == LLM cache == saving: default:extract:691801a26f0d7644c5dc056e233b4b86
+2026-05-25 08:43:21,513 - lightrag - INFO -  == LLM cache == saving: default:extract:6e00c09956238a63d0625a6a5bcc3155
+2026-05-25 08:43:21,515 - lightrag - INFO -  == LLM cache == saving: default:extract:e1237641ecc01608120df47b048e9793
+2026-05-25 08:43:21,517 - lightrag - INFO -  == LLM cache == saving: default:extract:fb6b150b18602008642e2c93c4e9637b
+2026-05-25 08:43:21,518 - lightrag - INFO -  == LLM cache == saving: default:extract:f55f8d22835a6e48fd52f7512fecac9a
+2026-05-25 08:43:23,847 - lightrag - WARNING - chunk-83adcbaf657bc937a5143656733a3e07: LLM output format error; found 4/5 fields on RELATION `富文本编辑器`~`商品`
+2026-05-25 08:43:30,988 - lightrag - INFO -  == LLM cache == saving: default:extract:b16946d6b90fc2bc008c01631db3629a
+2026-05-25 08:43:31,006 - lightrag - INFO -  == LLM cache == saving: default:extract:145a177f99db154cff4aa3d02681b61c
+2026-05-25 08:43:31,008 - lightrag - INFO -  == LLM cache == saving: default:extract:57bdabfce1c3c26889ab244f8858bc96
+2026-05-25 08:43:33,748 - lightrag - INFO - Chunk 1 of 13 extracted 28 Ent + 17 Rel chunk-9a5ab321149976c4182afc52b340e847
+2026-05-25 08:43:38,999 - lightrag - INFO -  == LLM cache == saving: default:extract:f087c4c1e4f7e5bcf0d68c6814871bf9
+2026-05-25 08:43:39,000 - lightrag - INFO -  == LLM cache == saving: default:extract:32f5380a39b7d53a42317b6bd107d980
+2026-05-25 08:43:39,005 - lightrag - INFO - Chunk 2 of 13 extracted 23 Ent + 15 Rel chunk-7ab6b016312276bd0784b4ea1e09d7ec
+2026-05-25 08:43:39,006 - lightrag - INFO - Chunk 3 of 13 extracted 20 Ent + 27 Rel chunk-c502f8a340d6b25f0a1f38beb7ae5b21
+2026-05-25 08:43:50,409 - lightrag - INFO -  == LLM cache == saving: default:extract:25d252af23cfe0c381ad9e5f186e62a4
+2026-05-25 08:43:50,411 - lightrag - INFO - Chunk 4 of 13 extracted 43 Ent + 17 Rel chunk-b82251b511fdadbc30aad6a318114a89
+2026-05-25 08:43:51,118 - lightrag - INFO -  == LLM cache == saving: default:extract:b8d736db71fc6f5746dc526ddc1e1237
+2026-05-25 08:43:51,123 - lightrag - INFO - Chunk 5 of 13 extracted 24 Ent + 29 Rel chunk-6971ea2199ce98c9bf6210f674f5d1e5
+2026-05-25 08:43:52,232 - lightrag - INFO -  == LLM cache == saving: default:extract:d6aedfb782cfafa3e4c2e486299d0947
+2026-05-25 08:43:52,241 - lightrag - INFO - Chunk 6 of 13 extracted 34 Ent + 36 Rel chunk-7622d91dc7978a2d23cb1df61c4e819f
+2026-05-25 08:43:53,362 - lightrag - INFO -  == LLM cache == saving: default:extract:3bea82ead2523384af5fcd9d9090ffb9
+2026-05-25 08:43:53,364 - lightrag - INFO - Chunk 7 of 13 extracted 39 Ent + 32 Rel chunk-ab3498a53049b9ea4cf91920456447c9
+2026-05-25 08:43:53,871 - lightrag - INFO -  == LLM cache == saving: default:extract:cf9abf0f1269e0cef23110448fa1665b
+2026-05-25 08:43:53,873 - lightrag - INFO - Chunk 8 of 13 extracted 33 Ent + 24 Rel chunk-ae2883ee73f89e21cd69741b5767c2a8
+2026-05-25 08:43:57,445 - lightrag - INFO -  == LLM cache == saving: default:extract:bf2d64770aff94120984d07e16ce2e33
+2026-05-25 08:43:57,461 - lightrag - INFO - Chunk 9 of 13 extracted 37 Ent + 34 Rel chunk-abfdd52b1a831b8834e04831a950d3d5
+2026-05-25 08:43:58,934 - lightrag - INFO -  == LLM cache == saving: default:extract:4ac8b5c6cc2f7b92d0c25df6e8584908
+2026-05-25 08:44:03,874 - lightrag - INFO -  == LLM cache == saving: default:extract:e7812956bd6a471d6f8b4aa930a4dfbb
+2026-05-25 08:44:06,418 - lightrag - INFO -  == LLM cache == saving: default:extract:2fa1d45d2c27f62d313d5897c4180241
+2026-05-25 08:44:08,641 - lightrag - INFO -  == LLM cache == saving: default:extract:4f0525c39e4214f91996b09f91b3ccd0
+2026-05-25 08:44:08,651 - lightrag - INFO - Chunk 10 of 13 extracted 42 Ent + 52 Rel chunk-83adcbaf657bc937a5143656733a3e07
+2026-05-25 08:44:12,492 - lightrag - INFO -  == LLM cache == saving: default:extract:d24eb026d84676bfa9bb98b845537cd9
+2026-05-25 08:44:12,495 - lightrag - INFO - Chunk 11 of 13 extracted 24 Ent + 23 Rel chunk-186782b6d8ce8dcb8abe31d1d0ea52d8
+2026-05-25 08:44:25,212 - lightrag - INFO -  == LLM cache == saving: default:extract:f4f2eec0c3eb852703fdb57cbdf86abe
+2026-05-25 08:44:25,223 - lightrag - INFO - Chunk 12 of 13 extracted 40 Ent + 28 Rel chunk-cbf34cedf85e135b8e68b8c9c48d8055
+2026-05-25 08:44:29,968 - lightrag - INFO -  == LLM cache == saving: default:extract:d95c33bd941c01ddffb6673fdbc868d1
+2026-05-25 08:44:29,979 - lightrag - INFO - Chunk 13 of 13 extracted 58 Ent + 46 Rel chunk-1f797cabbc3ad11af3e5b3a149665e5c
+2026-05-25 08:44:29,984 - lightrag - INFO - Merging stage 1/1: 需求说明书.md
+2026-05-25 08:44:29,985 - lightrag - INFO - Phase 1: Processing 357 entities from doc-2bdf60672ed9472b466e9ca14880e31e (async: 20)
+2026-05-25 08:44:41,747 - lightrag - INFO - Merged: `订单状态` | 2+2
+2026-05-25 08:44:45,907 - lightrag - INFO - Merged: `支付方式` | 2+1
+2026-05-25 08:44:52,013 - lightrag - INFO - Merged: `订单金额` | 1+1
+2026-05-25 08:44:52,017 - lightrag - INFO - Merged: `用户信息` | 1+1
+2026-05-25 08:45:12,177 - lightrag - INFO - Merged: `发货时间` | 1+1
+2026-05-25 08:45:12,191 - lightrag - INFO - Merged: `支付时间` | 2+1
+2026-05-25 08:45:12,192 - lightrag - INFO - Merged: `收货人` | 2+1
+2026-05-25 08:45:32,572 - lightrag - INFO - Merged: `支付金额` | 2+2
+2026-05-25 08:45:46,302 - lightrag - WARNING - Embedding func: Worker timeout for task 2574155298176_260401.921 after 60s
+2026-05-25 08:45:48,537 - lightrag - WARNING - Embedding func: Worker timeout for task 2574155299520_260397.64 after 60s
+2026-05-25 08:45:53,389 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 用户手机号: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-25 08:45:53,390 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 导出订单列表: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-25 08:46:07,357 - lightrag - INFO - Merged: `分类ID` | 2+2
+2026-05-25 08:46:07,359 - lightrag - INFO - Merged: `排序值` | 1+1
+2026-05-25 08:46:18,629 - lightrag - WARNING - Embedding func: Worker timeout for task 2574155442560_260410.093 after 60s
+2026-05-25 08:46:22,473 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 操作记录: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-25 08:46:22,492 - lightrag - INFO - Merged: `分类名称` | 1+1
+2026-05-25 08:46:22,499 - lightrag - INFO - Merged: `订单管理` | 1+2
+2026-05-25 08:46:42,296 - lightrag - INFO - Merged: `商品` | 1+6
+2026-05-25 08:46:42,300 - lightrag - INFO - Merged: `订单` | 1+5
+2026-05-25 08:46:58,550 - uvicorn.access - INFO - 127.0.0.1:11600 - "GET /graph/label/popular?limit=300 HTTP/1.1" 200
+2026-05-25 08:46:58,608 - lightrag - INFO - [Rag1000] Subgraph query successful | Node count: 329 | Edge count: 256
+2026-05-25 08:46:58,632 - uvicorn.access - INFO - 127.0.0.1:48997 - "GET /graphs?label=*&max_depth=3&max_nodes=1000 HTTP/1.1" 200
+2026-05-25 08:47:09,591 - lightrag - WARNING - Embedding func: Worker timeout for task 2574150669440_260471.546 after 60s
+2026-05-25 08:47:15,870 - lightrag - WARNING - VDB entity_upsert attempt 2 failed for 导出订单列表: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-25 08:47:17,784 - lightrag - INFO - Merged: `订单号` | 1+1
+2026-05-25 08:47:17,788 - lightrag - INFO - Merged: `购物车` | 1+4
+2026-05-25 08:47:17,789 - lightrag - INFO - Merged: `评论模块` | 1+2
+2026-05-25 08:47:23,032 - lightrag - WARNING - Embedding func: Worker timeout for task 2574150675584_260485.421 after 60s
+2026-05-25 08:47:27,566 - uvicorn.access - INFO - 127.0.0.1:5198 - "GET /docs HTTP/1.1" 200
+2026-05-25 08:47:30,306 - lightrag - INFO - [Rag1000] Subgraph query successful | Node count: 341 | Edge count: 256
+2026-05-25 08:47:30,321 - uvicorn.access - INFO - 127.0.0.1:4676 - "GET /graphs?label=*&max_depth=3&max_nodes=1000 HTTP/1.1" 200
+2026-05-25 08:47:30,322 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 排序值: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-25 08:47:30,343 - lightrag - INFO - Merged: `评分` | 2+2
+2026-05-25 08:47:30,344 - lightrag - INFO - Merged: `评论图片` | 1+2
+2026-05-25 08:47:30,643 - uvicorn.access - INFO - 127.0.0.1:48997 - "GET /openapi.json HTTP/1.1" 200
+2026-05-25 08:47:59,490 - lightrag - INFO - Merged: `用户模块` | 1+1
+2026-05-25 08:47:59,491 - lightrag - INFO - Merged: `用户注册` | 1+1
+2026-05-25 08:47:59,493 - lightrag - INFO - Merged: `用户登录` | 1+1
+2026-05-25 08:48:16,226 - lightrag - INFO - Merged: `收货地址` | 2+3
+2026-05-25 08:48:28,324 - lightrag - INFO - Merged: `用户` | 1+5
+2026-05-25 08:48:50,779 - lightrag - WARNING - Embedding func: Worker timeout for task 2574155298560_260582.968 after 60s
+2026-05-25 08:48:52,998 - lightrag - WARNING - Embedding func: Worker timeout for task 2574029928192_260582.968 after 60s
+2026-05-25 08:49:00,008 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 好评: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-25 08:49:00,009 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 差评: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-25 08:49:00,017 - lightrag - WARNING - Embedding func: Worker timeout for task 2574155298752_260597.546 after 60s
+2026-05-25 08:49:02,383 - lightrag - WARNING - Embedding func: Worker timeout for task 2574154888960_260597.562 after 60s
+2026-05-25 08:49:04,918 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 已完成: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-25 08:49:04,929 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 去评价: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-25 08:49:38,039 - lightrag - INFO - Merged: `订单模块` | 2+1
+2026-05-25 08:49:38,041 - lightrag - INFO - Merged: `商品模块` | 3+2
+2026-05-25 08:50:07,624 - lightrag - INFO - Merged: `库存` | 1+3
+2026-05-25 08:50:18,317 - lightrag - WARNING - Embedding func: Worker timeout for task 2574154962048_260663.015 after 60s
+2026-05-25 08:50:19,553 - lightrag - WARNING - Embedding func: Worker timeout for task 2574155298752_260663.015 after 60s
+2026-05-25 08:50:20,810 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 管理后台用户: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-25 08:50:20,819 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 商品展示: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-25 08:50:30,570 - lightrag - WARNING - Embedding func: Worker timeout for task 2574154962432_260663.015 after 60s
+2026-05-25 08:50:33,232 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 购物流程: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-25 08:50:42,437 - lightrag - WARNING - Embedding func: Worker timeout for task 2574154885312_260696.093 after 60s
+2026-05-25 08:50:45,558 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 默认地址: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-25 08:50:51,502 - lightrag - INFO - Merged: `商品ID` | 3+2
+2026-05-25 08:50:54,351 - lightrag - INFO - Merged: `创建时间` | 1+1
+2026-05-25 08:51:32,594 - lightrag - INFO - Merged: `评论` | 1+2
+2026-05-25 08:51:32,595 - lightrag - INFO - Merged: `用户状态管理` | 1+1
+2026-05-25 08:52:09,460 - lightrag - INFO - Merged: `轮播图管理` | 1+1
+2026-05-25 08:52:15,904 - lightrag - INFO - Merged: `轮播图` | 1+2
+2026-05-25 08:52:24,267 - lightrag - WARNING - Embedding func: Worker timeout for task 2574155052032_260785.078 after 60s
+2026-05-25 08:52:25,574 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 被封禁用户: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-25 08:53:10,320 - lightrag - WARNING - Embedding func: Worker timeout for task 2574155113728_260834.687 after 60s
+2026-05-25 08:53:11,570 - lightrag - WARNING - Embedding func: Worker timeout for task 2574155113344_260834.687 after 60s
+2026-05-25 08:53:12,794 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 被举报内容: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-25 08:53:12,797 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 举报处理中: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-25 08:54:14,862 - lightrag - WARNING - Embedding func: Worker timeout for task 2574155113920_260899.625 after 60s
+2026-05-25 08:54:16,091 - lightrag - WARNING - VDB entity_upsert attempt 1 failed for 上架状态: Embedding func: Worker execution timeout after 60s, retrying...
+2026-05-25 08:54:16,114 - lightrag - INFO - Merged: `推荐商品` | 1+1
+2026-05-25 08:54:27,303 - lightrag - INFO - Merged: `商品价格` | 1+2
+2026-05-25 08:55:08,408 - lightrag - INFO - Merged: `用户ID` | 2+1
+2026-05-25 08:56:00,517 - lightrag - INFO - Phase 2: Processing 373 relations from doc-2bdf60672ed9472b466e9ca14880e31e (async: 20)
+2026-05-25 09:00:14,143 - lightrag - INFO - Merged: `订单模块`~`购物车` | 1+1
+2026-05-25 09:01:18,478 - lightrag - INFO - Merged: `收货地址`~`订单` | 1+1
+2026-05-25 09:03:43,695 - lightrag - INFO - Chunks appended from relation: `评论状态管理`
+2026-05-25 09:03:44,903 - lightrag - INFO - Merged: `轮播图`~`轮播图管理` | 1+1
+2026-05-25 09:03:57,287 - lightrag - INFO - Merged: `评分`~`评论` | 1+1
+2026-05-25 09:04:07,520 - lightrag - INFO - Merged: `评论`~`评论图片` | 1+1
+2026-05-25 09:05:27,352 - lightrag - INFO - Chunks appended from relation: `轮播图`
+2026-05-25 09:07:15,884 - lightrag - INFO - Phase 3: Updating final 372(357+15) entities and  373 relations from doc-2bdf60672ed9472b466e9ca14880e31e
+2026-05-25 09:07:15,888 - lightrag - INFO - Completed merging: 357 entities, 15 extra entities, 373 relations
+2026-05-25 09:07:16,219 - lightrag - INFO - [Rag1000] Writing graph with 611 nodes, 624 edges
+2026-05-25 09:07:16,311 - lightrag - INFO - In memory DB persist to disk
+2026-05-25 09:07:16,311 - lightrag - INFO - Completed processing file 1/1: 需求说明书.md
+2026-05-25 09:07:16,314 - lightrag - INFO - Enqueued document processing pipeline stopped

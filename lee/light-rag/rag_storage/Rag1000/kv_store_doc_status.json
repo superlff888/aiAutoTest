@@ -1,0 +1,56 @@
+{
+  "doc-06d561859455a39666d0b70c5afbc342": {
+    "status": "processed",
+    "chunks_count": 9,
+    "chunks_list": [
+      "chunk-315944f454bfdc133f2b833baf92761d",
+      "chunk-212b430d29737d598de5a8a40260a350",
+      "chunk-8302692fb8bb5ca27290b44a3fedf7f2",
+      "chunk-c6682f4c5dd06691e9a765b74339fddb",
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f",
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18",
+      "chunk-677dcb5fe37a7f8269860545dd68897f",
+      "chunk-7e8a971c1deafe3adbe6ab8c15339728",
+      "chunk-8e8a92ce61c84fdacc95f44ce7ef4634"
+    ],
+    "content_summary": "# 电商系统API接口文档\r\n\r\n## 文档说明\r\n- **版本**: v1.0\r\n- **最后更新**: 2022-08-15\r\n- **接口BaseURL**: `https://api.mstest.com`\r\n\r\n### 1、认证方式\r\n所有需要认证的接口需要在请求头中添加：\r\n```\r\nAuthorization: Bearer {jwt_token}\r\n```\r\n\r\n### 2、异常返回\r\n\r\n#### 1. 异常响应标准结构\r\n\r\n所有异常响应均采用以下JSON格式：\r\n\r\n```...",
+    "content_length": 26470,
+    "created_at": "2026-05-24T15:45:33.507370+00:00",
+    "updated_at": "2026-05-24T16:10:27.999424+00:00",
+    "file_path": "电商系统API接口文档.md",
+    "track_id": "upload_20260524_234533_d46e6002",
+    "metadata": {
+      "processing_start_time": 1779637533,
+      "processing_end_time": 1779639027
+    }
+  },
+  "doc-2bdf60672ed9472b466e9ca14880e31e": {
+    "status": "processed",
+    "chunks_count": 13,
+    "chunks_list": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f",
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5",
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21",
+      "chunk-9a5ab321149976c4182afc52b340e847",
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8",
+      "chunk-7ab6b016312276bd0784b4ea1e09d7ec",
+      "chunk-83adcbaf657bc937a5143656733a3e07",
+      "chunk-abfdd52b1a831b8834e04831a950d3d5",
+      "chunk-ab3498a53049b9ea4cf91920456447c9",
+      "chunk-b82251b511fdadbc30aad6a318114a89",
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8",
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c",
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "content_summary": "# 需求说明书\r\n\r\n##  项目概述\r\n\r\n#### 1.1 项目背景\r\n\r\n本系统为一套线上商城系统，支持用户注册、登录、浏览商品、购物车管理、订单生成与支付、评论等功能，旨在为用户提供完整的电商购物闭环体验。\r\n\r\n#### 1.2 项目目标\r\n\r\n开发一套 B2C 商城平台，支持商品展示、购物流程、订单管理、用户信息管理等核心模块，并具备完善的接口设计，便于前后端分离开发。\r\n\r\n#### 1.3 用户角色\r\n\r\n- 普通用户：浏览商品、下单、支付、查看订单、评论等\r\n- 管理后台用户（...",
+    "content_length": 31061,
+    "created_at": "2026-05-25T00:42:33.113127+00:00",
+    "updated_at": "2026-05-25T01:07:15.890595+00:00",
+    "file_path": "需求说明书.md",
+    "track_id": "upload_20260525_084233_3a513f37",
+    "metadata": {
+      "processing_start_time": 1779669753,
+      "processing_end_time": 1779671235
+    }
+  }
+}

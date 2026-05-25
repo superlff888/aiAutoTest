@@ -1,0 +1,5623 @@
+{
+  "商品ID<SEP>评论获取API": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638353,
+    "update_time": 1779638353,
+    "_id": "商品ID<SEP>评论获取API"
+  },
+  "分类ID<SEP>商品列表API": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638353,
+    "update_time": 1779638353,
+    "_id": "分类ID<SEP>商品列表API"
+  },
+  "商品创建API<SEP>商品名称": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638353,
+    "update_time": 1779638353,
+    "_id": "商品创建API<SEP>商品名称"
+  },
+  "商品上下架API<SEP>商品状态": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638353,
+    "update_time": 1779638353,
+    "_id": "商品上下架API<SEP>商品状态"
+  },
+  "评分<SEP>评论内容": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638353,
+    "update_time": 1779638353,
+    "_id": "评分<SEP>评论内容"
+  },
+  "成本价<SEP>销售价": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638353,
+    "update_time": 1779638353,
+    "_id": "成本价<SEP>销售价"
+  },
+  "商品图片<SEP>评论内容": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638367,
+    "update_time": 1779638367,
+    "_id": "商品图片<SEP>评论内容"
+  },
+  "库存<SEP>销量": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638367,
+    "update_time": 1779638367,
+    "_id": "库存<SEP>销量"
+  },
+  "商品创建时间<SEP>商品更新时间": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638367,
+    "update_time": 1779638367,
+    "_id": "商品创建时间<SEP>商品更新时间"
+  },
+  "分类路径<SEP>商品名称": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638377,
+    "update_time": 1779638377,
+    "_id": "分类路径<SEP>商品名称"
+  },
+  "商品创建API<SEP>销售价": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638377,
+    "update_time": 1779638377,
+    "_id": "商品创建API<SEP>销售价"
+  },
+  "关键词<SEP>商品列表API": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638383,
+    "update_time": 1779638383,
+    "_id": "关键词<SEP>商品列表API"
+  },
+  "商品创建API<SEP>库存": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638385,
+    "update_time": 1779638385,
+    "_id": "商品创建API<SEP>库存"
+  },
+  "商品状态<SEP>评论获取API": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638385,
+    "update_time": 1779638385,
+    "_id": "商品状态<SEP>评论获取API"
+  },
+  "商品ID<SEP>商品更新API": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638385,
+    "update_time": 1779638385,
+    "_id": "商品ID<SEP>商品更新API"
+  },
+  "下架原因<SEP>商品上下架API": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638385,
+    "update_time": 1779638385,
+    "_id": "下架原因<SEP>商品上下架API"
+  },
+  "版本v1.0<SEP>电商系统API接口文档": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638385,
+    "update_time": 1779638385,
+    "_id": "版本v1.0<SEP>电商系统API接口文档"
+  },
+  "2022-08-15<SEP>电商系统API接口文档": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638397,
+    "update_time": 1779638397,
+    "_id": "2022-08-15<SEP>电商系统API接口文档"
+  },
+  "商品ID<SEP>商品上下架API": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638399,
+    "update_time": 1779638399,
+    "_id": "商品ID<SEP>商品上下架API"
+  },
+  "Authorization<SEP>Bearer Token": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638399,
+    "update_time": 1779638399,
+    "_id": "Authorization<SEP>Bearer Token"
+  },
+  "商品ID<SEP>商品删除API": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638403,
+    "update_time": 1779638403,
+    "_id": "商品ID<SEP>商品删除API"
+  },
+  "主图URL<SEP>商品创建API": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638403,
+    "update_time": 1779638403,
+    "_id": "主图URL<SEP>商品创建API"
+  },
+  "通用错误<SEP>错误代码全集": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638403,
+    "update_time": 1779638403,
+    "_id": "通用错误<SEP>错误代码全集"
+  },
+  "https://api.mstest.com<SEP>电商系统API接口文档": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638409,
+    "update_time": 1779638409,
+    "_id": "https://api.mstest.com<SEP>电商系统API接口文档"
+  },
+  "关键词<SEP>评论获取API": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638409,
+    "update_time": 1779638409,
+    "_id": "关键词<SEP>评论获取API"
+  },
+  "商品列表API<SEP>商品状态": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638409,
+    "update_time": 1779638409,
+    "_id": "商品列表API<SEP>商品状态"
+  },
+  "商品列表API<SEP>最低价格": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638416,
+    "update_time": 1779638416,
+    "_id": "商品列表API<SEP>最低价格"
+  },
+  "JSON<SEP>异常响应标准结构": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638416,
+    "update_time": 1779638416,
+    "_id": "JSON<SEP>异常响应标准结构"
+  },
+  "用户模块<SEP>错误代码全集": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638420,
+    "update_time": 1779638420,
+    "_id": "用户模块<SEP>错误代码全集"
+  },
+  "商品创建API<SEP>商品描述": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638423,
+    "update_time": 1779638423,
+    "_id": "商品创建API<SEP>商品描述"
+  },
+  "success<SEP>异常响应标准结构": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638423,
+    "update_time": 1779638423,
+    "_id": "success<SEP>异常响应标准结构"
+  },
+  "商品列表API<SEP>最高价格": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638423,
+    "update_time": 1779638423,
+    "_id": "商品列表API<SEP>最高价格"
+  },
+  "400 Bad Request<SEP>HTTP状态码使用规范": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638423,
+    "update_time": 1779638423,
+    "_id": "400 Bad Request<SEP>HTTP状态码使用规范"
+  },
+  "商品模块<SEP>错误代码全集": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638431,
+    "update_time": 1779638431,
+    "_id": "商品模块<SEP>错误代码全集"
+  },
+  "401 Unauthorized<SEP>HTTP状态码使用规范": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638433,
+    "update_time": 1779638433,
+    "_id": "401 Unauthorized<SEP>HTTP状态码使用规范"
+  },
+  "code<SEP>异常响应标准结构": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638433,
+    "update_time": 1779638433,
+    "_id": "code<SEP>异常响应标准结构"
+  },
+  "商品创建API<SEP>筛选条件": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638433,
+    "update_time": 1779638433,
+    "_id": "商品创建API<SEP>筛选条件"
+  },
+  "403 Forbidden<SEP>HTTP状态码使用规范": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638440,
+    "update_time": 1779638440,
+    "_id": "403 Forbidden<SEP>HTTP状态码使用规范"
+  },
+  "商品创建API<SEP>页码": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638442,
+    "update_time": 1779638442,
+    "_id": "商品创建API<SEP>页码"
+  },
+  "订单模块<SEP>错误代码全集": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638442,
+    "update_time": 1779638442,
+    "_id": "订单模块<SEP>错误代码全集"
+  },
+  "message<SEP>异常响应标准结构": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638442,
+    "update_time": 1779638442,
+    "_id": "message<SEP>异常响应标准结构"
+  },
+  "COMMON_0001<SEP>通用错误": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638442,
+    "update_time": 1779638442,
+    "_id": "COMMON_0001<SEP>通用错误"
+  },
+  "COMMON_0002<SEP>通用错误": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638451,
+    "update_time": 1779638451,
+    "_id": "COMMON_0002<SEP>通用错误"
+  },
+  "商品创建API<SEP>每页数量": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638453,
+    "update_time": 1779638453,
+    "_id": "商品创建API<SEP>每页数量"
+  },
+  "支付模块<SEP>错误代码全集": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638453,
+    "update_time": 1779638453,
+    "_id": "支付模块<SEP>错误代码全集"
+  },
+  "分类ID<SEP>商品创建API": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638457,
+    "update_time": 1779638457,
+    "_id": "分类ID<SEP>商品创建API"
+  },
+  "404 Not Found<SEP>HTTP状态码使用规范": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638460,
+    "update_time": 1779638460,
+    "_id": "404 Not Found<SEP>HTTP状态码使用规范"
+  },
+  "COMMON_0003<SEP>通用错误": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638460,
+    "update_time": 1779638460,
+    "_id": "COMMON_0003<SEP>通用错误"
+  },
+  "电商系统API接口文档<SEP>错误代码全集": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638460,
+    "update_time": 1779638460,
+    "_id": "电商系统API接口文档<SEP>错误代码全集"
+  },
+  "用户注册接口<SEP>电商系统API接口文档": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638466,
+    "update_time": 1779638466,
+    "_id": "用户注册接口<SEP>电商系统API接口文档"
+  },
+  "USER_0001<SEP>用户模块": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638466,
+    "update_time": 1779638466,
+    "_id": "USER_0001<SEP>用户模块"
+  },
+  "409 Conflict<SEP>HTTP状态码使用规范": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638470,
+    "update_time": 1779638470,
+    "_id": "409 Conflict<SEP>HTTP状态码使用规范"
+  },
+  "COMMON_0004<SEP>通用错误": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638470,
+    "update_time": 1779638470,
+    "_id": "COMMON_0004<SEP>通用错误"
+  },
+  "USER_0002<SEP>用户模块": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638474,
+    "update_time": 1779638474,
+    "_id": "USER_0002<SEP>用户模块"
+  },
+  "422 Unprocessable Entity<SEP>HTTP状态码使用规范": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638476,
+    "update_time": 1779638476,
+    "_id": "422 Unprocessable Entity<SEP>HTTP状态码使用规范"
+  },
+  "COMMON_0005<SEP>通用错误": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638476,
+    "update_time": 1779638476,
+    "_id": "COMMON_0005<SEP>通用错误"
+  },
+  "用户注册接口<SEP>请求参数": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638476,
+    "update_time": 1779638476,
+    "_id": "用户注册接口<SEP>请求参数"
+  },
+  "429 Too Many Requests<SEP>HTTP状态码使用规范": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638483,
+    "update_time": 1779638483,
+    "_id": "429 Too Many Requests<SEP>HTTP状态码使用规范"
+  },
+  "响应示例<SEP>用户注册接口": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638485,
+    "update_time": 1779638485,
+    "_id": "响应示例<SEP>用户注册接口"
+  },
+  "COMMON_0006<SEP>通用错误": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638485,
+    "update_time": 1779638485,
+    "_id": "COMMON_0006<SEP>通用错误"
+  },
+  "PRODUCT_0001<SEP>商品模块": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638485,
+    "update_time": 1779638485,
+    "_id": "PRODUCT_0001<SEP>商品模块"
+  },
+  "分类ID<SEP>评论获取API": {
+    "chunk_ids": [
+      "chunk-f0d4faef317fd6db66d10756a7a7ae7f"
+    ],
+    "count": 1,
+    "create_time": 1779638495,
+    "update_time": 1779638495,
+    "_id": "分类ID<SEP>评论获取API"
+  },
+  "USER_0003<SEP>用户模块": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638497,
+    "update_time": 1779638497,
+    "_id": "USER_0003<SEP>用户模块"
+  },
+  "COMMON_0007<SEP>通用错误": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638497,
+    "update_time": 1779638497,
+    "_id": "COMMON_0007<SEP>通用错误"
+  },
+  "PRODUCT_0002<SEP>商品模块": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638497,
+    "update_time": 1779638497,
+    "_id": "PRODUCT_0002<SEP>商品模块"
+  },
+  "ORDER_0001<SEP>订单模块": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638497,
+    "update_time": 1779638497,
+    "_id": "ORDER_0001<SEP>订单模块"
+  },
+  "500 Internal Server Error<SEP>HTTP状态码使用规范": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638497,
+    "update_time": 1779638497,
+    "_id": "500 Internal Server Error<SEP>HTTP状态码使用规范"
+  },
+  "USER_0004<SEP>用户模块": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638509,
+    "update_time": 1779638509,
+    "_id": "USER_0004<SEP>用户模块"
+  },
+  "PAYMENT_0001<SEP>支付模块": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638509,
+    "update_time": 1779638509,
+    "_id": "PAYMENT_0001<SEP>支付模块"
+  },
+  "ORDER_0002<SEP>订单模块": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638513,
+    "update_time": 1779638513,
+    "_id": "ORDER_0002<SEP>订单模块"
+  },
+  "PRODUCT_0003<SEP>商品模块": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638513,
+    "update_time": 1779638513,
+    "_id": "PRODUCT_0003<SEP>商品模块"
+  },
+  "503 Service Unavailable<SEP>HTTP状态码使用规范": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638513,
+    "update_time": 1779638513,
+    "_id": "503 Service Unavailable<SEP>HTTP状态码使用规范"
+  },
+  "COMMON_0008<SEP>通用错误": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638513,
+    "update_time": 1779638513,
+    "_id": "COMMON_0008<SEP>通用错误"
+  },
+  "username<SEP>请求参数": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638513,
+    "update_time": 1779638513,
+    "_id": "username<SEP>请求参数"
+  },
+  "PAYMENT_0002<SEP>支付模块": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638524,
+    "update_time": 1779638524,
+    "_id": "PAYMENT_0002<SEP>支付模块"
+  },
+  "USER_0005<SEP>用户模块": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638526,
+    "update_time": 1779638526,
+    "_id": "USER_0005<SEP>用户模块"
+  },
+  "email<SEP>请求参数": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638526,
+    "update_time": 1779638526,
+    "_id": "email<SEP>请求参数"
+  },
+  "COMMON_0009<SEP>通用错误": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638526,
+    "update_time": 1779638526,
+    "_id": "COMMON_0009<SEP>通用错误"
+  },
+  "userId<SEP>响应示例": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638526,
+    "update_time": 1779638526,
+    "_id": "userId<SEP>响应示例"
+  },
+  "智能手机<SEP>电子产品": {
+    "chunk_ids": [
+      "chunk-8302692fb8bb5ca27290b44a3fedf7f2"
+    ],
+    "count": 1,
+    "create_time": 1779638526,
+    "update_time": 1779638526,
+    "_id": "智能手机<SEP>电子产品"
+  },
+  "USER_0006<SEP>用户模块": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638537,
+    "update_time": 1779638537,
+    "_id": "USER_0006<SEP>用户模块"
+  },
+  "商品列表API<SEP>查询参数": {
+    "chunk_ids": [
+      "chunk-8302692fb8bb5ca27290b44a3fedf7f2"
+    ],
+    "count": 1,
+    "create_time": 1779638537,
+    "update_time": 1779638537,
+    "_id": "商品列表API<SEP>查询参数"
+  },
+  "COMMON_9999<SEP>通用错误": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638542,
+    "update_time": 1779638542,
+    "_id": "COMMON_9999<SEP>通用错误"
+  },
+  "商品详情API<SEP>智能手机": {
+    "chunk_ids": [
+      "chunk-8302692fb8bb5ca27290b44a3fedf7f2"
+    ],
+    "count": 1,
+    "create_time": 1779638542,
+    "update_time": 1779638542,
+    "_id": "商品详情API<SEP>智能手机"
+  },
+  "商品收藏API<SEP>智能手机": {
+    "chunk_ids": [
+      "chunk-8302692fb8bb5ca27290b44a3fedf7f2"
+    ],
+    "count": 1,
+    "create_time": 1779638546,
+    "update_time": 1779638546,
+    "_id": "商品收藏API<SEP>智能手机"
+  },
+  "购物车API<SEP>购物车项目": {
+    "chunk_ids": [
+      "chunk-8302692fb8bb5ca27290b44a3fedf7f2"
+    ],
+    "count": 1,
+    "create_time": 1779638549,
+    "update_time": 1779638549,
+    "_id": "购物车API<SEP>购物车项目"
+  },
+  "收藏列表<SEP>用户": {
+    "chunk_ids": [
+      "chunk-8302692fb8bb5ca27290b44a3fedf7f2"
+    ],
+    "count": 1,
+    "create_time": 1779638555,
+    "update_time": 1779638555,
+    "_id": "收藏列表<SEP>用户"
+  },
+  "ORDER_0003<SEP>订单模块": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638557,
+    "update_time": 1779638557,
+    "_id": "ORDER_0003<SEP>订单模块"
+  },
+  "PRODUCT_0004<SEP>商品模块": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638563,
+    "update_time": 1779638563,
+    "_id": "PRODUCT_0004<SEP>商品模块"
+  },
+  "商品详情API<SEP>购物车API": {
+    "chunk_ids": [
+      "chunk-8302692fb8bb5ca27290b44a3fedf7f2"
+    ],
+    "count": 1,
+    "create_time": 1779638563,
+    "update_time": 1779638563,
+    "_id": "商品详情API<SEP>购物车API"
+  },
+  "ORDER_0004<SEP>订单模块": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638570,
+    "update_time": 1779638570,
+    "_id": "ORDER_0004<SEP>订单模块"
+  },
+  "分类ID<SEP>分类树接口": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638570,
+    "update_time": 1779638570,
+    "_id": "分类ID<SEP>分类树接口"
+  },
+  "password<SEP>请求参数": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638574,
+    "update_time": 1779638574,
+    "_id": "password<SEP>请求参数"
+  },
+  "USER_0007<SEP>用户模块": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638574,
+    "update_time": 1779638574,
+    "_id": "USER_0007<SEP>用户模块"
+  },
+  "PAYMENT_0003<SEP>支付模块": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638574,
+    "update_time": 1779638574,
+    "_id": "PAYMENT_0003<SEP>支付模块"
+  },
+  "用户<SEP>购物车项目": {
+    "chunk_ids": [
+      "chunk-8302692fb8bb5ca27290b44a3fedf7f2"
+    ],
+    "count": 1,
+    "create_time": 1779638574,
+    "update_time": 1779638574,
+    "_id": "用户<SEP>购物车项目"
+  },
+  "智能手机<SEP>购物车API": {
+    "chunk_ids": [
+      "chunk-8302692fb8bb5ca27290b44a3fedf7f2"
+    ],
+    "count": 1,
+    "create_time": 1779638574,
+    "update_time": 1779638574,
+    "_id": "智能手机<SEP>购物车API"
+  },
+  "商品收藏API<SEP>收藏列表": {
+    "chunk_ids": [
+      "chunk-8302692fb8bb5ca27290b44a3fedf7f2"
+    ],
+    "count": 1,
+    "create_time": 1779638574,
+    "update_time": 1779638574,
+    "_id": "商品收藏API<SEP>收藏列表"
+  },
+  "创建分类接口<SEP>父分类ID": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638574,
+    "update_time": 1779638574,
+    "_id": "创建分类接口<SEP>父分类ID"
+  },
+  "分类名称<SEP>分类树接口": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638589,
+    "update_time": 1779638589,
+    "_id": "分类名称<SEP>分类树接口"
+  },
+  "ORDER_0005<SEP>订单模块": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638589,
+    "update_time": 1779638589,
+    "_id": "ORDER_0005<SEP>订单模块"
+  },
+  "分类状态<SEP>启用禁用分类接口": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638589,
+    "update_time": 1779638589,
+    "_id": "分类状态<SEP>启用禁用分类接口"
+  },
+  "订单列表接口<SEP>订单号": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638589,
+    "update_time": 1779638589,
+    "_id": "订单列表接口<SEP>订单号"
+  },
+  "confirmPassword<SEP>请求参数": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638598,
+    "update_time": 1779638598,
+    "_id": "confirmPassword<SEP>请求参数"
+  },
+  "商品收藏API<SEP>商品详情API": {
+    "chunk_ids": [
+      "chunk-8302692fb8bb5ca27290b44a3fedf7f2"
+    ],
+    "count": 1,
+    "create_time": 1779638598,
+    "update_time": 1779638598,
+    "_id": "商品收藏API<SEP>商品详情API"
+  },
+  "分类ID<SEP>创建分类接口": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638598,
+    "update_time": 1779638598,
+    "_id": "分类ID<SEP>创建分类接口"
+  },
+  "USER_0008<SEP>用户模块": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638598,
+    "update_time": 1779638598,
+    "_id": "USER_0008<SEP>用户模块"
+  },
+  "PAYMENT_0004<SEP>支付模块": {
+    "chunk_ids": [
+      "chunk-315944f454bfdc133f2b833baf92761d"
+    ],
+    "count": 1,
+    "create_time": 1779638598,
+    "update_time": 1779638598,
+    "_id": "PAYMENT_0004<SEP>支付模块"
+  },
+  "分类树接口<SEP>分类状态": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638598,
+    "update_time": 1779638598,
+    "_id": "分类树接口<SEP>分类状态"
+  },
+  "订单详情接口<SEP>订单金额": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638598,
+    "update_time": 1779638598,
+    "_id": "订单详情接口<SEP>订单金额"
+  },
+  "商品ID<SEP>商品下架接口": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638598,
+    "update_time": 1779638598,
+    "_id": "商品ID<SEP>商品下架接口"
+  },
+  "下架原因<SEP>商品状态": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638600,
+    "update_time": 1779638600,
+    "_id": "下架原因<SEP>商品状态"
+  },
+  "订单列表接口<SEP>订单状态": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638614,
+    "update_time": 1779638614,
+    "_id": "订单列表接口<SEP>订单状态"
+  },
+  "分类名称<SEP>创建分类接口": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638619,
+    "update_time": 1779638619,
+    "_id": "分类名称<SEP>创建分类接口"
+  },
+  "分类ID<SEP>更新分类接口": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638619,
+    "update_time": 1779638619,
+    "_id": "分类ID<SEP>更新分类接口"
+  },
+  "支付方式<SEP>订单详情接口": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638624,
+    "update_time": 1779638624,
+    "_id": "支付方式<SEP>订单详情接口"
+  },
+  "用户ID<SEP>订单列表接口": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638624,
+    "update_time": 1779638624,
+    "_id": "用户ID<SEP>订单列表接口"
+  },
+  "收货人<SEP>订单列表接口": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638628,
+    "update_time": 1779638628,
+    "_id": "收货人<SEP>订单列表接口"
+  },
+  "分类ID<SEP>启用禁用分类接口": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638628,
+    "update_time": 1779638628,
+    "_id": "分类ID<SEP>启用禁用分类接口"
+  },
+  "收货地址<SEP>配送信息": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638628,
+    "update_time": 1779638628,
+    "_id": "收货地址<SEP>配送信息"
+  },
+  "订单号<SEP>订单详情接口": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638635,
+    "update_time": 1779638635,
+    "_id": "订单号<SEP>订单详情接口"
+  },
+  "商品下架接口<SEP>商品管理": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638635,
+    "update_time": 1779638635,
+    "_id": "商品下架接口<SEP>商品管理"
+  },
+  "分类树接口<SEP>商品分类管理": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638640,
+    "update_time": 1779638640,
+    "_id": "分类树接口<SEP>商品分类管理"
+  },
+  "收货人<SEP>配送信息": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638642,
+    "update_time": 1779638642,
+    "_id": "收货人<SEP>配送信息"
+  },
+  "用户信息<SEP>订单详情接口": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638642,
+    "update_time": 1779638642,
+    "_id": "用户信息<SEP>订单详情接口"
+  },
+  "支付信息<SEP>订单详情接口": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638647,
+    "update_time": 1779638647,
+    "_id": "支付信息<SEP>订单详情接口"
+  },
+  "创建分类接口<SEP>商品分类管理": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638650,
+    "update_time": 1779638650,
+    "_id": "创建分类接口<SEP>商品分类管理"
+  },
+  "后台管理<SEP>商品管理": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638650,
+    "update_time": 1779638650,
+    "_id": "后台管理<SEP>商品管理"
+  },
+  "订单详情接口<SEP>配送信息": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638655,
+    "update_time": 1779638655,
+    "_id": "订单详情接口<SEP>配送信息"
+  },
+  "支付信息<SEP>支付方式": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638655,
+    "update_time": 1779638655,
+    "_id": "支付信息<SEP>支付方式"
+  },
+  "商品分类管理<SEP>更新分类接口": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638660,
+    "update_time": 1779638660,
+    "_id": "商品分类管理<SEP>更新分类接口"
+  },
+  "轮播图<SEP>轮播图管理": {
+    "chunk_ids": [
+      "chunk-7e8a971c1deafe3adbe6ab8c15339728",
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 2,
+    "update_time": 1779671024,
+    "_id": "轮播图<SEP>轮播图管理"
+  },
+  "推荐位<SEP>推荐位管理": {
+    "chunk_ids": [
+      "chunk-7e8a971c1deafe3adbe6ab8c15339728"
+    ],
+    "count": 1,
+    "create_time": 1779638660,
+    "update_time": 1779638660,
+    "_id": "推荐位<SEP>推荐位管理"
+  },
+  "启用禁用分类接口<SEP>商品分类管理": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638668,
+    "update_time": 1779638668,
+    "_id": "启用禁用分类接口<SEP>商品分类管理"
+  },
+  "数据统计<SEP>销售概况": {
+    "chunk_ids": [
+      "chunk-7e8a971c1deafe3adbe6ab8c15339728"
+    ],
+    "count": 1,
+    "create_time": 1779638668,
+    "update_time": 1779638668,
+    "_id": "数据统计<SEP>销售概况"
+  },
+  "用户ID<SEP>订单详情接口": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638673,
+    "update_time": 1779638673,
+    "_id": "用户ID<SEP>订单详情接口"
+  },
+  "交易ID<SEP>支付信息": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638673,
+    "update_time": 1779638673,
+    "_id": "交易ID<SEP>支付信息"
+  },
+  "推荐位<SEP>推荐商品": {
+    "chunk_ids": [
+      "chunk-7e8a971c1deafe3adbe6ab8c15339728"
+    ],
+    "count": 1,
+    "create_time": 1779638673,
+    "update_time": 1779638673,
+    "_id": "推荐位<SEP>推荐商品"
+  },
+  "用户状态管理<SEP>轮播图管理": {
+    "chunk_ids": [
+      "chunk-7e8a971c1deafe3adbe6ab8c15339728"
+    ],
+    "count": 1,
+    "create_time": 1779638673,
+    "update_time": 1779638673,
+    "_id": "用户状态管理<SEP>轮播图管理"
+  },
+  "支付信息<SEP>支付时间": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638684,
+    "update_time": 1779638684,
+    "_id": "支付信息<SEP>支付时间"
+  },
+  "订单列表接口<SEP>订单详情接口": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638687,
+    "update_time": 1779638687,
+    "_id": "订单列表接口<SEP>订单详情接口"
+  },
+  "用户ID<SEP>用户信息": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638687,
+    "update_time": 1779638687,
+    "_id": "用户ID<SEP>用户信息"
+  },
+  "销售概况<SEP>销售趋势": {
+    "chunk_ids": [
+      "chunk-7e8a971c1deafe3adbe6ab8c15339728"
+    ],
+    "count": 1,
+    "create_time": 1779638687,
+    "update_time": 1779638687,
+    "_id": "销售概况<SEP>销售趋势"
+  },
+  "商品销售排行<SEP>数据统计": {
+    "chunk_ids": [
+      "chunk-7e8a971c1deafe3adbe6ab8c15339728"
+    ],
+    "count": 1,
+    "create_time": 1779638687,
+    "update_time": 1779638687,
+    "_id": "商品销售排行<SEP>数据统计"
+  },
+  "推荐位管理<SEP>轮播图管理": {
+    "chunk_ids": [
+      "chunk-7e8a971c1deafe3adbe6ab8c15339728"
+    ],
+    "count": 1,
+    "create_time": 1779638687,
+    "update_time": 1779638687,
+    "_id": "推荐位管理<SEP>轮播图管理"
+  },
+  "/banners<SEP>轮播图": {
+    "chunk_ids": [
+      "chunk-7e8a971c1deafe3adbe6ab8c15339728"
+    ],
+    "count": 1,
+    "create_time": 1779638687,
+    "update_time": 1779638687,
+    "_id": "/banners<SEP>轮播图"
+  },
+  "后台管理<SEP>商品分类管理": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638687,
+    "update_time": 1779638687,
+    "_id": "后台管理<SEP>商品分类管理"
+  },
+  "/recommends<SEP>推荐位": {
+    "chunk_ids": [
+      "chunk-7e8a971c1deafe3adbe6ab8c15339728"
+    ],
+    "count": 1,
+    "create_time": 1779638687,
+    "update_time": 1779638687,
+    "_id": "/recommends<SEP>推荐位"
+  },
+  "/recommends/{position}<SEP>推荐位": {
+    "chunk_ids": [
+      "chunk-7e8a971c1deafe3adbe6ab8c15339728"
+    ],
+    "count": 1,
+    "create_time": 1779638707,
+    "update_time": 1779638707,
+    "_id": "/recommends/{position}<SEP>推荐位"
+  },
+  "推荐商品<SEP>智能手机X": {
+    "chunk_ids": [
+      "chunk-7e8a971c1deafe3adbe6ab8c15339728"
+    ],
+    "count": 1,
+    "create_time": 1779638707,
+    "update_time": 1779638707,
+    "_id": "推荐商品<SEP>智能手机X"
+  },
+  "双十一大促<SEP>轮播图": {
+    "chunk_ids": [
+      "chunk-7e8a971c1deafe3adbe6ab8c15339728"
+    ],
+    "count": 1,
+    "create_time": 1779638712,
+    "update_time": 1779638712,
+    "_id": "双十一大促<SEP>轮播图"
+  },
+  "/stats/sales-overview<SEP>销售概况": {
+    "chunk_ids": [
+      "chunk-7e8a971c1deafe3adbe6ab8c15339728"
+    ],
+    "count": 1,
+    "create_time": 1779638712,
+    "update_time": 1779638712,
+    "_id": "/stats/sales-overview<SEP>销售概况"
+  },
+  "用户注册<SEP>用户登录": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638712,
+    "update_time": 1779638712,
+    "_id": "用户注册<SEP>用户登录"
+  },
+  "修改用户信息<SEP>获取用户信息": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638712,
+    "update_time": 1779638712,
+    "_id": "修改用户信息<SEP>获取用户信息"
+  },
+  "订单管理<SEP>订单详情接口": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638722,
+    "update_time": 1779638722,
+    "_id": "订单管理<SEP>订单详情接口"
+  },
+  "订单列表接口<SEP>页码": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638722,
+    "update_time": 1779638722,
+    "_id": "订单列表接口<SEP>页码"
+  },
+  "推荐位管理<SEP>数据统计": {
+    "chunk_ids": [
+      "chunk-7e8a971c1deafe3adbe6ab8c15339728"
+    ],
+    "count": 1,
+    "create_time": 1779638722,
+    "update_time": 1779638722,
+    "_id": "推荐位管理<SEP>数据统计"
+  },
+  "/stats/product-ranking<SEP>商品销售排行": {
+    "chunk_ids": [
+      "chunk-7e8a971c1deafe3adbe6ab8c15339728"
+    ],
+    "count": 1,
+    "create_time": 1779638722,
+    "update_time": 1779638722,
+    "_id": "/stats/product-ranking<SEP>商品销售排行"
+  },
+  "HOME_HOT<SEP>推荐位": {
+    "chunk_ids": [
+      "chunk-7e8a971c1deafe3adbe6ab8c15339728"
+    ],
+    "count": 1,
+    "create_time": 1779638722,
+    "update_time": 1779638722,
+    "_id": "HOME_HOT<SEP>推荐位"
+  },
+  "商品模块<SEP>首页商品展示": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638734,
+    "update_time": 1779638734,
+    "_id": "商品模块<SEP>首页商品展示"
+  },
+  "GET /api/users/{userId}<SEP>userId": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638737,
+    "update_time": 1779638737,
+    "_id": "GET /api/users/{userId}<SEP>userId"
+  },
+  "后台管理<SEP>订单管理": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638739,
+    "update_time": 1779638739,
+    "_id": "后台管理<SEP>订单管理"
+  },
+  "用户登录<SEP>获取用户信息": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638739,
+    "update_time": 1779638739,
+    "_id": "用户登录<SEP>获取用户信息"
+  },
+  "每页数量<SEP>订单列表接口": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638739,
+    "update_time": 1779638739,
+    "_id": "每页数量<SEP>订单列表接口"
+  },
+  "mstest.com<SEP>首页商品展示": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638739,
+    "update_time": 1779638739,
+    "_id": "mstest.com<SEP>首页商品展示"
+  },
+  "POST /api/users/login<SEP>account": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638739,
+    "update_time": 1779638739,
+    "_id": "POST /api/users/login<SEP>account"
+  },
+  "POST /api/users/login<SEP>password": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638752,
+    "update_time": 1779638752,
+    "_id": "POST /api/users/login<SEP>password"
+  },
+  "PUT /api/users/{userId}<SEP>userId": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638755,
+    "update_time": 1779638755,
+    "_id": "PUT /api/users/{userId}<SEP>userId"
+  },
+  "开始时间<SEP>订单列表接口": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638755,
+    "update_time": 1779638755,
+    "_id": "开始时间<SEP>订单列表接口"
+  },
+  "收货地址管理<SEP>用户登录": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638755,
+    "update_time": 1779638755,
+    "_id": "收货地址管理<SEP>用户登录"
+  },
+  "结束时间<SEP>订单列表接口": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638763,
+    "update_time": 1779638763,
+    "_id": "结束时间<SEP>订单列表接口"
+  },
+  "收货地址管理<SEP>获取地址列表": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638765,
+    "update_time": 1779638765,
+    "_id": "收货地址管理<SEP>获取地址列表"
+  },
+  "GET /api/users/{userId}/addresses<SEP>userId": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638765,
+    "update_time": 1779638765,
+    "_id": "GET /api/users/{userId}/addresses<SEP>userId"
+  },
+  "PUT /api/users/{userId}<SEP>nickname": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638765,
+    "update_time": 1779638765,
+    "_id": "PUT /api/users/{userId}<SEP>nickname"
+  },
+  "PUT /api/users/{userId}<SEP>avatar": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638773,
+    "update_time": 1779638773,
+    "_id": "PUT /api/users/{userId}<SEP>avatar"
+  },
+  "GET /api/products/home<SEP>banners": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638773,
+    "update_time": 1779638773,
+    "_id": "GET /api/products/home<SEP>banners"
+  },
+  "收货地址管理<SEP>添加地址": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638778,
+    "update_time": 1779638778,
+    "_id": "收货地址管理<SEP>添加地址"
+  },
+  "POST /api/users/{userId}/addresses<SEP>userId": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638778,
+    "update_time": 1779638778,
+    "_id": "POST /api/users/{userId}/addresses<SEP>userId"
+  },
+  "GET /api/products/home<SEP>categories": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638783,
+    "update_time": 1779638783,
+    "_id": "GET /api/products/home<SEP>categories"
+  },
+  "imageUrl<SEP>mstest.com": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638783,
+    "update_time": 1779638783,
+    "_id": "imageUrl<SEP>mstest.com"
+  },
+  "PUT /api/users/{userId}/addresses/{addressId}<SEP>userId": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638788,
+    "update_time": 1779638788,
+    "_id": "PUT /api/users/{userId}/addresses/{addressId}<SEP>userId"
+  },
+  "POST /api/users/{userId}/addresses<SEP>receiver": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638788,
+    "update_time": 1779638788,
+    "_id": "POST /api/users/{userId}/addresses<SEP>receiver"
+  },
+  "修改地址<SEP>收货地址管理": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638788,
+    "update_time": 1779638788,
+    "_id": "修改地址<SEP>收货地址管理"
+  },
+  "POST /api/users/{userId}/addresses<SEP>phone": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638796,
+    "update_time": 1779638796,
+    "_id": "POST /api/users/{userId}/addresses<SEP>phone"
+  },
+  "DELETE /api/users/{userId}/addresses/{addressId}<SEP>userId": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638799,
+    "update_time": 1779638799,
+    "_id": "DELETE /api/users/{userId}/addresses/{addressId}<SEP>userId"
+  },
+  "删除地址<SEP>收货地址管理": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638799,
+    "update_time": 1779638799,
+    "_id": "删除地址<SEP>收货地址管理"
+  },
+  "订单模块<SEP>购物车": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb",
+      "chunk-9a5ab321149976c4182afc52b340e847"
+    ],
+    "count": 2,
+    "update_time": 1779670814,
+    "_id": "订单模块<SEP>购物车"
+  },
+  "收货人手机号<SEP>订单列表接口": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638809,
+    "update_time": 1779638809,
+    "_id": "收货人手机号<SEP>订单列表接口"
+  },
+  "提交订单API<SEP>购物车商品": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638809,
+    "update_time": 1779638809,
+    "_id": "提交订单API<SEP>购物车商品"
+  },
+  "linkUrl<SEP>mstest.com": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638817,
+    "update_time": 1779638817,
+    "_id": "linkUrl<SEP>mstest.com"
+  },
+  "GET /api/products/home<SEP>recommendProducts": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638817,
+    "update_time": 1779638817,
+    "_id": "GET /api/products/home<SEP>recommendProducts"
+  },
+  "收货地址<SEP>订单": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb",
+      "chunk-9a5ab321149976c4182afc52b340e847"
+    ],
+    "count": 2,
+    "update_time": 1779670878,
+    "_id": "收货地址<SEP>订单"
+  },
+  "POST /api/users/{userId}/addresses<SEP>region": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638817,
+    "update_time": 1779638817,
+    "_id": "POST /api/users/{userId}/addresses<SEP>region"
+  },
+  "北京市朝阳区<SEP>收货地址管理": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638817,
+    "update_time": 1779638817,
+    "_id": "北京市朝阳区<SEP>收货地址管理"
+  },
+  "支付数据<SEP>支付订单API": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638817,
+    "update_time": 1779638817,
+    "_id": "支付数据<SEP>支付订单API"
+  },
+  "POST /api/users/{userId}/addresses<SEP>detail": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638833,
+    "update_time": 1779638833,
+    "_id": "POST /api/users/{userId}/addresses<SEP>detail"
+  },
+  "订单列表接口<SEP>订单管理": {
+    "chunk_ids": [
+      "chunk-26622afd9a3bcf1a2a8964d61b69ea18"
+    ],
+    "count": 1,
+    "create_time": 1779638836,
+    "update_time": 1779638836,
+    "_id": "订单列表接口<SEP>订单管理"
+  },
+  "张三<SEP>收货地址管理": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638836,
+    "update_time": 1779638836,
+    "_id": "张三<SEP>收货地址管理"
+  },
+  "提交评论API<SEP>订单ID": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638836,
+    "update_time": 1779638836,
+    "_id": "提交评论API<SEP>订单ID"
+  },
+  "订单<SEP>订单备注": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638847,
+    "update_time": 1779638847,
+    "_id": "订单<SEP>订单备注"
+  },
+  "评分<SEP>评论": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb",
+      "chunk-7ab6b016312276bd0784b4ea1e09d7ec"
+    ],
+    "count": 2,
+    "update_time": 1779671037,
+    "_id": "评分<SEP>评论"
+  },
+  "avatar<SEP>mstest.com": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638855,
+    "update_time": 1779638855,
+    "_id": "avatar<SEP>mstest.com"
+  },
+  "PUT /api/users/{userId}<SEP>phone": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638855,
+    "update_time": 1779638855,
+    "_id": "PUT /api/users/{userId}<SEP>phone"
+  },
+  "POST /api/users/{userId}/addresses<SEP>isDefault": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638855,
+    "update_time": 1779638855,
+    "_id": "POST /api/users/{userId}/addresses<SEP>isDefault"
+  },
+  "批量删除购物车商品API<SEP>购物车项ID数组": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638855,
+    "update_time": 1779638855,
+    "_id": "批量删除购物车商品API<SEP>购物车项ID数组"
+  },
+  "评论<SEP>评论内容": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638867,
+    "update_time": 1779638867,
+    "_id": "评论<SEP>评论内容"
+  },
+  "删除购物车商品API<SEP>购物车商品": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638870,
+    "update_time": 1779638870,
+    "_id": "删除购物车商品API<SEP>购物车商品"
+  },
+  "张三<SEP>收货地址": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638870,
+    "update_time": 1779638870,
+    "_id": "张三<SEP>收货地址"
+  },
+  "订单<SEP>订单商品项": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638870,
+    "update_time": 1779638870,
+    "_id": "订单<SEP>订单商品项"
+  },
+  "智能手机<SEP>订单商品项": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638878,
+    "update_time": 1779638878,
+    "_id": "智能手机<SEP>订单商品项"
+  },
+  "支付<SEP>订单": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638878,
+    "update_time": 1779638878,
+    "_id": "支付<SEP>订单"
+  },
+  "PUT /api/users/{userId}<SEP>gender": {
+    "chunk_ids": [
+      "chunk-212b430d29737d598de5a8a40260a350"
+    ],
+    "count": 1,
+    "create_time": 1779638884,
+    "update_time": 1779638884,
+    "_id": "PUT /api/users/{userId}<SEP>gender"
+  },
+  "评论<SEP>评论图片": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb",
+      "chunk-7ab6b016312276bd0784b4ea1e09d7ec"
+    ],
+    "count": 2,
+    "update_time": 1779671047,
+    "_id": "评论<SEP>评论图片"
+  },
+  "取消订单API<SEP>订单": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638891,
+    "update_time": 1779638891,
+    "_id": "取消订单API<SEP>订单"
+  },
+  "支付<SEP>支付方式": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638891,
+    "update_time": 1779638891,
+    "_id": "支付<SEP>支付方式"
+  },
+  "商品ID<SEP>订单商品项": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638891,
+    "update_time": 1779638891,
+    "_id": "商品ID<SEP>订单商品项"
+  },
+  "收货人<SEP>收货地址": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638891,
+    "update_time": 1779638891,
+    "_id": "收货人<SEP>收货地址"
+  },
+  "商品图片URL<SEP>订单商品项": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638903,
+    "update_time": 1779638903,
+    "_id": "商品图片URL<SEP>订单商品项"
+  },
+  "确认收货API<SEP>订单": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638906,
+    "update_time": 1779638906,
+    "_id": "确认收货API<SEP>订单"
+  },
+  "收货地址<SEP>联系电话": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638906,
+    "update_time": 1779638906,
+    "_id": "收货地址<SEP>联系电话"
+  },
+  "提交评论API<SEP>评论": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638906,
+    "update_time": 1779638906,
+    "_id": "提交评论API<SEP>评论"
+  },
+  "获取商品评论API<SEP>评论": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638913,
+    "update_time": 1779638913,
+    "_id": "获取商品评论API<SEP>评论"
+  },
+  "完整地址<SEP>收货地址": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638915,
+    "update_time": 1779638915,
+    "_id": "完整地址<SEP>收货地址"
+  },
+  "订单<SEP>评论模块": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638915,
+    "update_time": 1779638915,
+    "_id": "订单<SEP>评论模块"
+  },
+  "商品价格<SEP>订单商品项": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638922,
+    "update_time": 1779638922,
+    "_id": "商品价格<SEP>订单商品项"
+  },
+  "商品图片URL数组<SEP>提交评论API": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638922,
+    "update_time": 1779638922,
+    "_id": "商品图片URL数组<SEP>提交评论API"
+  },
+  "101<SEP>智能手机X": {
+    "chunk_ids": [
+      "chunk-8e8a92ce61c84fdacc95f44ce7ef4634"
+    ],
+    "count": 1,
+    "create_time": 1779638927,
+    "update_time": 1779638927,
+    "_id": "101<SEP>智能手机X"
+  },
+  "商品数量<SEP>订单商品项": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638930,
+    "update_time": 1779638930,
+    "_id": "商品数量<SEP>订单商品项"
+  },
+  "156<SEP>智能手机X": {
+    "chunk_ids": [
+      "chunk-8e8a92ce61c84fdacc95f44ce7ef4634"
+    ],
+    "count": 1,
+    "create_time": 1779638933,
+    "update_time": 1779638933,
+    "_id": "156<SEP>智能手机X"
+  },
+  "467844.00<SEP>智能手机X": {
+    "chunk_ids": [
+      "chunk-8e8a92ce61c84fdacc95f44ce7ef4634"
+    ],
+    "count": 1,
+    "create_time": 1779638936,
+    "update_time": 1779638936,
+    "_id": "467844.00<SEP>智能手机X"
+  },
+  "00138001<SEP>张三": {
+    "chunk_ids": [
+      "chunk-677dcb5fe37a7f8269860545dd68897f"
+    ],
+    "count": 1,
+    "create_time": 1779638936,
+    "update_time": 1779638936,
+    "_id": "00138001<SEP>张三"
+  },
+  "https://cdn.com/p101.jpg<SEP>智能手机X": {
+    "chunk_ids": [
+      "chunk-8e8a92ce61c84fdacc95f44ce7ef4634"
+    ],
+    "count": 1,
+    "create_time": 1779638942,
+    "update_time": 1779638942,
+    "_id": "https://cdn.com/p101.jpg<SEP>智能手机X"
+  },
+  "00138001<SEP>智能手机X": {
+    "chunk_ids": [
+      "chunk-677dcb5fe37a7f8269860545dd68897f"
+    ],
+    "count": 1,
+    "create_time": 1779638944,
+    "update_time": 1779638944,
+    "_id": "00138001<SEP>智能手机X"
+  },
+  "00138001<SEP>ALIPAY": {
+    "chunk_ids": [
+      "chunk-677dcb5fe37a7f8269860545dd68897f"
+    ],
+    "count": 1,
+    "create_time": 1779638947,
+    "update_time": 1779638947,
+    "_id": "00138001<SEP>ALIPAY"
+  },
+  "SF123456789<SEP>顺丰": {
+    "chunk_ids": [
+      "chunk-677dcb5fe37a7f8269860545dd68897f"
+    ],
+    "count": 1,
+    "create_time": 1779638947,
+    "update_time": 1779638947,
+    "_id": "SF123456789<SEP>顺丰"
+  },
+  "user123<SEP>测试用户": {
+    "chunk_ids": [
+      "chunk-677dcb5fe37a7f8269860545dd68897f"
+    ],
+    "count": 1,
+    "create_time": 1779638953,
+    "update_time": 1779638953,
+    "_id": "user123<SEP>测试用户"
+  },
+  "00138001<SEP>顺丰": {
+    "chunk_ids": [
+      "chunk-677dcb5fe37a7f8269860545dd68897f"
+    ],
+    "count": 1,
+    "create_time": 1779638955,
+    "update_time": 1779638955,
+    "_id": "00138001<SEP>顺丰"
+  },
+  "1001<SEP>user123": {
+    "chunk_ids": [
+      "chunk-677dcb5fe37a7f8269860545dd68897f"
+    ],
+    "count": 1,
+    "create_time": 1779638958,
+    "update_time": 1779638958,
+    "_id": "1001<SEP>user123"
+  },
+  "13800138000<SEP>张三": {
+    "chunk_ids": [
+      "chunk-677dcb5fe37a7f8269860545dd68897f"
+    ],
+    "count": 1,
+    "create_time": 1779638958,
+    "update_time": 1779638958,
+    "_id": "13800138000<SEP>张三"
+  },
+  "00138001<SEP>5998.00": {
+    "chunk_ids": [
+      "chunk-677dcb5fe37a7f8269860545dd68897f"
+    ],
+    "count": 1,
+    "create_time": 1779638958,
+    "update_time": 1779638958,
+    "_id": "00138001<SEP>5998.00"
+  },
+  "19995.00<SEP>user123": {
+    "chunk_ids": [
+      "chunk-677dcb5fe37a7f8269860545dd68897f"
+    ],
+    "count": 1,
+    "create_time": 1779638965,
+    "update_time": 1779638965,
+    "_id": "19995.00<SEP>user123"
+  },
+  "192.168.1.1<SEP>user123": {
+    "chunk_ids": [
+      "chunk-677dcb5fe37a7f8269860545dd68897f"
+    ],
+    "count": 1,
+    "create_time": 1779638967,
+    "update_time": 1779638967,
+    "_id": "192.168.1.1<SEP>user123"
+  },
+  "获取订单列表API<SEP>订单": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638982,
+    "update_time": 1779638982,
+    "_id": "获取订单列表API<SEP>订单"
+  },
+  "获取订单详情API<SEP>订单": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638987,
+    "update_time": 1779638987,
+    "_id": "获取订单详情API<SEP>订单"
+  },
+  "获取订单列表API<SEP>订单状态": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638987,
+    "update_time": 1779638987,
+    "_id": "获取订单列表API<SEP>订单状态"
+  },
+  "获取订单列表API<SEP>页码": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638993,
+    "update_time": 1779638993,
+    "_id": "获取订单列表API<SEP>页码"
+  },
+  "总金额<SEP>订单": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638996,
+    "update_time": 1779638996,
+    "_id": "总金额<SEP>订单"
+  },
+  "支付金额<SEP>订单": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779638998,
+    "update_time": 1779638998,
+    "_id": "支付金额<SEP>订单"
+  },
+  "每页数量<SEP>获取订单列表API": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779639001,
+    "update_time": 1779639001,
+    "_id": "每页数量<SEP>获取订单列表API"
+  },
+  "总数<SEP>获取订单列表API": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779639003,
+    "update_time": 1779639003,
+    "_id": "总数<SEP>获取订单列表API"
+  },
+  "创建时间<SEP>订单": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779639009,
+    "update_time": 1779639009,
+    "_id": "创建时间<SEP>订单"
+  },
+  "支付时间<SEP>订单": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779639012,
+    "update_time": 1779639012,
+    "_id": "支付时间<SEP>订单"
+  },
+  "发货时间<SEP>订单": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779639015,
+    "update_time": 1779639015,
+    "_id": "发货时间<SEP>订单"
+  },
+  "完成时间<SEP>订单": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779639018,
+    "update_time": 1779639018,
+    "_id": "完成时间<SEP>订单"
+  },
+  "是否可评论<SEP>订单": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779639021,
+    "update_time": 1779639021,
+    "_id": "是否可评论<SEP>订单"
+  },
+  "订单<SEP>订单商品数量": {
+    "chunk_ids": [
+      "chunk-c6682f4c5dd06691e9a765b74339fddb"
+    ],
+    "count": 1,
+    "create_time": 1779639025,
+    "update_time": 1779639025,
+    "_id": "订单<SEP>订单商品数量"
+  },
+  "订单列表分页查询<SEP>订单编号": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670560,
+    "update_time": 1779670560,
+    "_id": "订单列表分页查询<SEP>订单编号"
+  },
+  "基本信息<SEP>查看订单详情": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670560,
+    "update_time": 1779670560,
+    "_id": "基本信息<SEP>查看订单详情"
+  },
+  "商家发货操作<SEP>物流公司": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670560,
+    "update_time": 1779670560,
+    "_id": "商家发货操作<SEP>物流公司"
+  },
+  "查看订单详情<SEP>用户信息": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670564,
+    "update_time": 1779670564,
+    "_id": "查看订单详情<SEP>用户信息"
+  },
+  "关闭原因<SEP>管理员关闭订单": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670564,
+    "update_time": 1779670564,
+    "_id": "关闭原因<SEP>管理员关闭订单"
+  },
+  "商家发货操作<SEP>运单号": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670567,
+    "update_time": 1779670567,
+    "_id": "商家发货操作<SEP>运单号"
+  },
+  "收货信息<SEP>查看订单详情": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670568,
+    "update_time": 1779670568,
+    "_id": "收货信息<SEP>查看订单详情"
+  },
+  "用户手机号<SEP>订单列表分页查询": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670570,
+    "update_time": 1779670570,
+    "_id": "用户手机号<SEP>订单列表分页查询"
+  },
+  "发货时间<SEP>商家发货操作": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670571,
+    "update_time": 1779670571,
+    "_id": "发货时间<SEP>商家发货操作"
+  },
+  "操作人<SEP>管理员关闭订单": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670571,
+    "update_time": 1779670571,
+    "_id": "操作人<SEP>管理员关闭订单"
+  },
+  "导出订单列表<SEP>订单编号": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670571,
+    "update_time": 1779670571,
+    "_id": "导出订单列表<SEP>订单编号"
+  },
+  "订单列表分页查询<SEP>订单状态": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670575,
+    "update_time": 1779670575,
+    "_id": "订单列表分页查询<SEP>订单状态"
+  },
+  "导出订单列表<SEP>用户手机号": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670575,
+    "update_time": 1779670575,
+    "_id": "导出订单列表<SEP>用户手机号"
+  },
+  ">导出订单列表<SEP>支付金额": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670575,
+    "update_time": 1779670575,
+    "_id": ">导出订单列表<SEP>支付金额"
+  },
+  "关闭时间<SEP>管理员关闭订单": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670579,
+    "update_time": 1779670579,
+    "_id": "关闭时间<SEP>管理员关闭订单"
+  },
+  "商品明细<SEP>查看订单详情": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670581,
+    "update_time": 1779670581,
+    "_id": "商品明细<SEP>查看订单详情"
+  },
+  "操作记录<SEP>查看订单详情": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670583,
+    "update_time": 1779670583,
+    "_id": "操作记录<SEP>查看订单详情"
+  },
+  "查看订单详情<SEP>物流信息": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670584,
+    "update_time": 1779670584,
+    "_id": "查看订单详情<SEP>物流信息"
+  },
+  "商品分类<SEP>新增分类": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670584,
+    "update_time": 1779670584,
+    "_id": "商品分类<SEP>新增分类"
+  },
+  "商家发货操作<SEP>订单状态": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670591,
+    "update_time": 1779670591,
+    "_id": "商家发货操作<SEP>订单状态"
+  },
+  "创建时间范围<SEP>订单列表分页查询": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670591,
+    "update_time": 1779670591,
+    "_id": "创建时间范围<SEP>订单列表分页查询"
+  },
+  "导出订单列表<SEP>订单状态": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670594,
+    "update_time": 1779670594,
+    "_id": "导出订单列表<SEP>订单状态"
+  },
+  "商家发货操作<SEP>物流信息": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670594,
+    "update_time": 1779670594,
+    "_id": "商家发货操作<SEP>物流信息"
+  },
+  "支付方式<SEP>订单列表分页查询": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670597,
+    "update_time": 1779670597,
+    "_id": "支付方式<SEP>订单列表分页查询"
+  },
+  "商品分类<SEP>编辑分类": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670597,
+    "update_time": 1779670597,
+    "_id": "商品分类<SEP>编辑分类"
+  },
+  "管理员关闭订单<SEP>订单状态": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670599,
+    "update_time": 1779670599,
+    "_id": "管理员关闭订单<SEP>订单状态"
+  },
+  "导出订单列表<SEP>物流信息": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670599,
+    "update_time": 1779670599,
+    "_id": "导出订单列表<SEP>物流信息"
+  },
+  "用户端<SEP>管理员关闭订单": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670602,
+    "update_time": 1779670602,
+    "_id": "用户端<SEP>管理员关闭订单"
+  },
+  "商家发货操作<SEP>用户端": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670604,
+    "update_time": 1779670604,
+    "_id": "商家发货操作<SEP>用户端"
+  },
+  "管理员<SEP>订单管理": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670604,
+    "update_time": 1779670604,
+    "_id": "管理员<SEP>订单管理"
+  },
+  "启用禁用分类<SEP>商品分类": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670607,
+    "update_time": 1779670607,
+    "_id": "启用禁用分类<SEP>商品分类"
+  },
+  "发货状态<SEP>订单列表分页查询": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670607,
+    "update_time": 1779670607,
+    "_id": "发货状态<SEP>订单列表分页查询"
+  },
+  "删除分类<SEP>商品分类": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670610,
+    "update_time": 1779670610,
+    "_id": "删除分类<SEP>商品分类"
+  },
+  "分类树结构展示<SEP>商品分类": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670612,
+    "update_time": 1779670612,
+    "_id": "分类树结构展示<SEP>商品分类"
+  },
+  "用户昵称<SEP>订单列表分页查询": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670614,
+    "update_time": 1779670614,
+    "_id": "用户昵称<SEP>订单列表分页查询"
+  },
+  "订单列表分页查询<SEP>订单金额": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670617,
+    "update_time": 1779670617,
+    "_id": "订单列表分页查询<SEP>订单金额"
+  },
+  "删除分类<SEP>逻辑删除": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670617,
+    "update_time": 1779670617,
+    "_id": "删除分类<SEP>逻辑删除"
+  },
+  "订单管理<SEP>运营人员": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670621,
+    "update_time": 1779670621,
+    "_id": "订单管理<SEP>运营人员"
+  },
+  "一级分类<SEP>商品分类": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670621,
+    "update_time": 1779670621,
+    "_id": "一级分类<SEP>商品分类"
+  },
+  "编辑分类<SEP>递归结构": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670621,
+    "update_time": 1779670621,
+    "_id": "编辑分类<SEP>递归结构"
+  },
+  "下单时间<SEP>订单列表分页查询": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670627,
+    "update_time": 1779670627,
+    "_id": "下单时间<SEP>订单列表分页查询"
+  },
+  "分类树结构展示<SEP>商品": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670627,
+    "update_time": 1779670627,
+    "_id": "分类树结构展示<SEP>商品"
+  },
+  "商品分类<SEP>子分类": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670629,
+    "update_time": 1779670629,
+    "_id": "商品分类<SEP>子分类"
+  },
+  "下单时间<SEP>导出订单列表": {
+    "chunk_ids": [
+      "chunk-ab3498a53049b9ea4cf91920456447c9"
+    ],
+    "count": 1,
+    "create_time": 1779670631,
+    "update_time": 1779670631,
+    "_id": "下单时间<SEP>导出订单列表"
+  },
+  "三级分类<SEP>商品分类": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670632,
+    "update_time": 1779670632,
+    "_id": "三级分类<SEP>商品分类"
+  },
+  "客服<SEP>订单管理": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670633,
+    "update_time": 1779670633,
+    "_id": "客服<SEP>订单管理"
+  },
+  "分类ID<SEP>商品分类": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670635,
+    "update_time": 1779670635,
+    "_id": "分类ID<SEP>商品分类"
+  },
+  "三级分类<SEP>商品": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670635,
+    "update_time": 1779670635,
+    "_id": "三级分类<SEP>商品"
+  },
+  "商品分类<SEP>父级ID": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670638,
+    "update_time": 1779670638,
+    "_id": "商品分类<SEP>父级ID"
+  },
+  "仓储人员<SEP>订单管理": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670641,
+    "update_time": 1779670641,
+    "_id": "仓储人员<SEP>订单管理"
+  },
+  "商品分类<SEP>排序值": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670643,
+    "update_time": 1779670643,
+    "_id": "商品分类<SEP>排序值"
+  },
+  "查看订单详情<SEP>订单管理": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670646,
+    "update_time": 1779670646,
+    "_id": "查看订单详情<SEP>订单管理"
+  },
+  "分类名称<SEP>商品分类": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670649,
+    "update_time": 1779670649,
+    "_id": "分类名称<SEP>商品分类"
+  },
+  "商家发货操作<SEP>订单管理": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670650,
+    "update_time": 1779670650,
+    "_id": "商家发货操作<SEP>订单管理"
+  },
+  "订单列表分页查询<SEP>订单管理": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670652,
+    "update_time": 1779670652,
+    "_id": "订单列表分页查询<SEP>订单管理"
+  },
+  "商家<SEP>商家发货操作": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670652,
+    "update_time": 1779670652,
+    "_id": "商家<SEP>商家发货操作"
+  },
+  "商品分类<SEP>状态": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670655,
+    "update_time": 1779670655,
+    "_id": "商品分类<SEP>状态"
+  },
+  "商品评分统计<SEP>评价": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670655,
+    "update_time": 1779670655,
+    "_id": "商品评分统计<SEP>评价"
+  },
+  "平台管理员<SEP>订单管理": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670658,
+    "update_time": 1779670658,
+    "_id": "平台管理员<SEP>订单管理"
+  },
+  "多条件筛选<SEP>订单列表分页查询": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670658,
+    "update_time": 1779670658,
+    "_id": "多条件筛选<SEP>订单列表分页查询"
+  },
+  "tree_path<SEP>商品分类": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670658,
+    "update_time": 1779670658,
+    "_id": "tree_path<SEP>商品分类"
+  },
+  "商品评分统计<SEP>好评度": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670663,
+    "update_time": 1779670663,
+    "_id": "商品评分统计<SEP>好评度"
+  },
+  "商品评论<SEP>评分": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670663,
+    "update_time": 1779670663,
+    "_id": "商品评论<SEP>评分"
+  },
+  "分类路径缓存<SEP>商品分类": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670671,
+    "update_time": 1779670671,
+    "_id": "分类路径缓存<SEP>商品分类"
+  },
+  "订单<SEP>订单管理": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670675,
+    "update_time": 1779670675,
+    "_id": "订单<SEP>订单管理"
+  },
+  "商品评论<SEP>评论图片": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670675,
+    "update_time": 1779670675,
+    "_id": "商品评论<SEP>评论图片"
+  },
+  "好评<SEP>评价": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670675,
+    "update_time": 1779670675,
+    "_id": "好评<SEP>评价"
+  },
+  "商品评论<SEP>审核机制": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670679,
+    "update_time": 1779670679,
+    "_id": "商品评论<SEP>审核机制"
+  },
+  "差评<SEP>评价": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670680,
+    "update_time": 1779670680,
+    "_id": "差评<SEP>评价"
+  },
+  "定时任务<SEP>超时取消": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670680,
+    "update_time": 1779670680,
+    "_id": "定时任务<SEP>超时取消"
+  },
+  "售后处理<SEP>订单管理": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670683,
+    "update_time": 1779670683,
+    "_id": "售后处理<SEP>订单管理"
+  },
+  "待支付<SEP>订单": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670683,
+    "update_time": 1779670683,
+    "_id": "待支付<SEP>订单"
+  },
+  "商品评论<SEP>敏感词": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670687,
+    "update_time": 1779670687,
+    "_id": "商品评论<SEP>敏感词"
+  },
+  "数据监管<SEP>订单管理": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670688,
+    "update_time": 1779670688,
+    "_id": "数据监管<SEP>订单管理"
+  },
+  "有图评论<SEP>评价": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670688,
+    "update_time": 1779670688,
+    "_id": "有图评论<SEP>评价"
+  },
+  "用户模块<SEP>线上商城系统": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670692,
+    "update_time": 1779670692,
+    "_id": "用户模块<SEP>线上商城系统"
+  },
+  "分类图片<SEP>商品分类": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670694,
+    "update_time": 1779670694,
+    "_id": "分类图片<SEP>商品分类"
+  },
+  "分类路径缓存<SEP>首页分类页": {
+    "chunk_ids": [
+      "chunk-abfdd52b1a831b8834e04831a950d3d5"
+    ],
+    "count": 1,
+    "create_time": 1779670694,
+    "update_time": 1779670694,
+    "_id": "分类路径缓存<SEP>首页分类页"
+  },
+  "商品评论<SEP>评论列表": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670697,
+    "update_time": 1779670697,
+    "_id": "商品评论<SEP>评论列表"
+  },
+  "用户模块<SEP>用户注册": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670697,
+    "update_time": 1779670697,
+    "_id": "用户模块<SEP>用户注册"
+  },
+  "已支付<SEP>订单": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670699,
+    "update_time": 1779670699,
+    "_id": "已支付<SEP>订单"
+  },
+  "用户模块<SEP>用户登录": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670702,
+    "update_time": 1779670702,
+    "_id": "用户模块<SEP>用户登录"
+  },
+  "已发货<SEP>订单": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670703,
+    "update_time": 1779670703,
+    "_id": "已发货<SEP>订单"
+  },
+  "普通用户<SEP>用户注册": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670703,
+    "update_time": 1779670703,
+    "_id": "普通用户<SEP>用户注册"
+  },
+  "用户信息修改<SEP>用户模块": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670708,
+    "update_time": 1779670708,
+    "_id": "用户信息修改<SEP>用户模块"
+  },
+  "已收货<SEP>订单": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670711,
+    "update_time": 1779670711,
+    "_id": "已收货<SEP>订单"
+  },
+  "已取消<SEP>订单": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670713,
+    "update_time": 1779670713,
+    "_id": "已取消<SEP>订单"
+  },
+  "商品评论<SEP>待审核状态": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670714,
+    "update_time": 1779670714,
+    "_id": "商品评论<SEP>待审核状态"
+  },
+  "手机号邮箱绑定<SEP>用户模块": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670715,
+    "update_time": 1779670715,
+    "_id": "手机号邮箱绑定<SEP>用户模块"
+  },
+  "普通用户<SEP>用户登录": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670715,
+    "update_time": 1779670715,
+    "_id": "普通用户<SEP>用户登录"
+  },
+  "未登录用户<SEP>用户注册": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670715,
+    "update_time": 1779670715,
+    "_id": "未登录用户<SEP>用户注册"
+  },
+  "普通用户<SEP>用户信息修改": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670721,
+    "update_time": 1779670721,
+    "_id": "普通用户<SEP>用户信息修改"
+  },
+  "用户收货地址管理<SEP>用户模块": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670723,
+    "update_time": 1779670723,
+    "_id": "用户收货地址管理<SEP>用户模块"
+  },
+  "我的订单<SEP>订单": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670723,
+    "update_time": 1779670723,
+    "_id": "我的订单<SEP>订单"
+  },
+  "用户登录<SEP>验证码": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670723,
+    "update_time": 1779670723,
+    "_id": "用户登录<SEP>验证码"
+  },
+  "异步处理<SEP>超时取消": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670726,
+    "update_time": 1779670726,
+    "_id": "异步处理<SEP>超时取消"
+  },
+  "用户模块<SEP>获取验证码": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670728,
+    "update_time": 1779670728,
+    "_id": "用户模块<SEP>获取验证码"
+  },
+  "B2C商城平台<SEP>商品展示": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670728,
+    "update_time": 1779670728,
+    "_id": "B2C商城平台<SEP>商品展示"
+  },
+  "个人中心<SEP>用户信息修改": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670731,
+    "update_time": 1779670731,
+    "_id": "个人中心<SEP>用户信息修改"
+  },
+  "普通用户<SEP>用户收货地址管理": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670731,
+    "update_time": 1779670731,
+    "_id": "普通用户<SEP>用户收货地址管理"
+  },
+  "用户注册<SEP>验证码": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670731,
+    "update_time": 1779670731,
+    "_id": "用户注册<SEP>验证码"
+  },
+  "未登录用户<SEP>用户登录": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670731,
+    "update_time": 1779670731,
+    "_id": "未登录用户<SEP>用户登录"
+  },
+  "订单<SEP>评价": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670731,
+    "update_time": 1779670731,
+    "_id": "订单<SEP>评价"
+  },
+  "已收货订单<SEP>我的订单": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670731,
+    "update_time": 1779670731,
+    "_id": "已收货订单<SEP>我的订单"
+  },
+  "线上商城系统<SEP>购物车管理": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670731,
+    "update_time": 1779670731,
+    "_id": "线上商城系统<SEP>购物车管理"
+  },
+  "B2C商城平台<SEP>购物流程": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670742,
+    "update_time": 1779670742,
+    "_id": "B2C商城平台<SEP>购物流程"
+  },
+  "注册页<SEP>用户注册": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670743,
+    "update_time": 1779670743,
+    "_id": "注册页<SEP>用户注册"
+  },
+  "去评价<SEP>已收货订单": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670745,
+    "update_time": 1779670745,
+    "_id": "去评价<SEP>已收货订单"
+  },
+  "手机号邮箱绑定<SEP>普通用户": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670745,
+    "update_time": 1779670745,
+    "_id": "手机号邮箱绑定<SEP>普通用户"
+  },
+  "新增收货地址<SEP>用户收货地址管理": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670745,
+    "update_time": 1779670745,
+    "_id": "新增收货地址<SEP>用户收货地址管理"
+  },
+  "B2C商城平台<SEP>订单管理": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670749,
+    "update_time": 1779670749,
+    "_id": "B2C商城平台<SEP>订单管理"
+  },
+  "线上商城系统<SEP>订单生成与支付": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670753,
+    "update_time": 1779670753,
+    "_id": "线上商城系统<SEP>订单生成与支付"
+  },
+  "收货地址<SEP>普通用户": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670754,
+    "update_time": 1779670754,
+    "_id": "收货地址<SEP>普通用户"
+  },
+  "手机号邮箱绑定<SEP>验证码": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670754,
+    "update_time": 1779670754,
+    "_id": "手机号邮箱绑定<SEP>验证码"
+  },
+  "用户<SEP>购物车": {
+    "chunk_ids": [
+      "chunk-9a5ab321149976c4182afc52b340e847",
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 2,
+    "create_time": 1779670754,
+    "update_time": 1779670754,
+    "_id": "用户<SEP>购物车"
+  },
+  "线上商城系统<SEP>评论功能": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670758,
+    "update_time": 1779670758,
+    "_id": "线上商城系统<SEP>评论功能"
+  },
+  "用户收货地址管理<SEP>编辑收货地址": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670758,
+    "update_time": 1779670758,
+    "_id": "用户收货地址管理<SEP>编辑收货地址"
+  },
+  "商品<SEP>购物车商品记录": {
+    "chunk_ids": [
+      "chunk-9a5ab321149976c4182afc52b340e847"
+    ],
+    "count": 1,
+    "create_time": 1779670758,
+    "update_time": 1779670758,
+    "_id": "商品<SEP>购物车商品记录"
+  },
+  "线上商城系统<SEP>项目背景": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670764,
+    "update_time": 1779670764,
+    "_id": "线上商城系统<SEP>项目背景"
+  },
+  "删除收货地址<SEP>用户收货地址管理": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670765,
+    "update_time": 1779670765,
+    "_id": "删除收货地址<SEP>用户收货地址管理"
+  },
+  "用户收货地址管理<SEP>设置默认地址": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670767,
+    "update_time": 1779670767,
+    "_id": "用户收货地址管理<SEP>设置默认地址"
+  },
+  "B2C商城平台<SEP>用户信息管理": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670770,
+    "update_time": 1779670770,
+    "_id": "B2C商城平台<SEP>用户信息管理"
+  },
+  "B2C商城平台<SEP>接口设计": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670773,
+    "update_time": 1779670773,
+    "_id": "B2C商城平台<SEP>接口设计"
+  },
+  "普通用户<SEP>用户中心": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670774,
+    "update_time": 1779670774,
+    "_id": "普通用户<SEP>用户中心"
+  },
+  "普通用户<SEP>默认地址": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670775,
+    "update_time": 1779670775,
+    "_id": "普通用户<SEP>默认地址"
+  },
+  "B2C商城平台<SEP>项目目标": {
+    "chunk_ids": [
+      "chunk-7622d91dc7978a2d23cb1df61c4e819f"
+    ],
+    "count": 1,
+    "create_time": 1779670778,
+    "update_time": 1779670778,
+    "_id": "B2C商城平台<SEP>项目目标"
+  },
+  "购物车<SEP>购物车商品记录": {
+    "chunk_ids": [
+      "chunk-9a5ab321149976c4182afc52b340e847"
+    ],
+    "count": 1,
+    "create_time": 1779670779,
+    "update_time": 1779670779,
+    "_id": "购物车<SEP>购物车商品记录"
+  },
+  "库存<SEP>延迟校验机制": {
+    "chunk_ids": [
+      "chunk-9a5ab321149976c4182afc52b340e847"
+    ],
+    "count": 1,
+    "create_time": 1779670780,
+    "update_time": 1779670780,
+    "_id": "库存<SEP>延迟校验机制"
+  },
+  "后台用户<SEP>商品管理模块": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670781,
+    "update_time": 1779670781,
+    "_id": "后台用户<SEP>商品管理模块"
+  },
+  "商品模块<SEP>购物车": {
+    "chunk_ids": [
+      "chunk-9a5ab321149976c4182afc52b340e847"
+    ],
+    "count": 1,
+    "create_time": 1779670783,
+    "update_time": 1779670783,
+    "_id": "商品模块<SEP>购物车"
+  },
+  "分类管理模块<SEP>后台用户": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670789,
+    "update_time": 1779670789,
+    "_id": "分类管理模块<SEP>后台用户"
+  },
+  "商品分类<SEP>管理员": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670789,
+    "update_time": 1779670789,
+    "_id": "商品分类<SEP>管理员"
+  },
+  "商品分类<SEP>运营人员": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670795,
+    "update_time": 1779670795,
+    "_id": "商品分类<SEP>运营人员"
+  },
+  "分类树结构<SEP>商品分类": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670811,
+    "update_time": 1779670811,
+    "_id": "分类树结构<SEP>商品分类"
+  },
+  "商品模块<SEP>库存": {
+    "chunk_ids": [
+      "chunk-9a5ab321149976c4182afc52b340e847"
+    ],
+    "count": 1,
+    "create_time": 1779670814,
+    "update_time": 1779670814,
+    "_id": "商品模块<SEP>库存"
+  },
+  "订单<SEP>购物车": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8",
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 2,
+    "create_time": 1779670817,
+    "update_time": 1779670817,
+    "_id": "订单<SEP>购物车"
+  },
+  "微信<SEP>订单模块": {
+    "chunk_ids": [
+      "chunk-9a5ab321149976c4182afc52b340e847"
+    ],
+    "count": 1,
+    "create_time": 1779670817,
+    "update_time": 1779670817,
+    "_id": "微信<SEP>订单模块"
+  },
+  "商品分类<SEP>新增分类功能": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670820,
+    "update_time": 1779670820,
+    "_id": "商品分类<SEP>新增分类功能"
+  },
+  "订单<SEP>超时取消": {
+    "chunk_ids": [
+      "chunk-ae2883ee73f89e21cd69741b5767c2a8"
+    ],
+    "count": 1,
+    "create_time": 1779670823,
+    "update_time": 1779670823,
+    "_id": "订单<SEP>超时取消"
+  },
+  "商品分类<SEP>编辑分类功能": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670825,
+    "update_time": 1779670825,
+    "_id": "商品分类<SEP>编辑分类功能"
+  },
+  "支付宝<SEP>订单模块": {
+    "chunk_ids": [
+      "chunk-9a5ab321149976c4182afc52b340e847"
+    ],
+    "count": 1,
+    "create_time": 1779670826,
+    "update_time": 1779670826,
+    "_id": "支付宝<SEP>订单模块"
+  },
+  "商品<SEP>订单": {
+    "chunk_ids": [
+      "chunk-9a5ab321149976c4182afc52b340e847",
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 2,
+    "create_time": 1779670828,
+    "update_time": 1779670828,
+    "_id": "商品<SEP>订单"
+  },
+  "启用禁用分类功能<SEP>商品分类": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670831,
+    "update_time": 1779670831,
+    "_id": "启用禁用分类功能<SEP>商品分类"
+  },
+  "删除分类功能<SEP>商品分类": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670835,
+    "update_time": 1779670835,
+    "_id": "删除分类功能<SEP>商品分类"
+  },
+  "商品分类<SEP>商品列表": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670845,
+    "update_time": 1779670845,
+    "_id": "商品分类<SEP>商品列表"
+  },
+  "分类管理模块<SEP>商品分类": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670846,
+    "update_time": 1779670846,
+    "_id": "分类管理模块<SEP>商品分类"
+  },
+  "支付系统<SEP>订单": {
+    "chunk_ids": [
+      "chunk-9a5ab321149976c4182afc52b340e847"
+    ],
+    "count": 1,
+    "create_time": 1779670853,
+    "update_time": 1779670853,
+    "_id": "支付系统<SEP>订单"
+  },
+  "商品<SEP>管理员": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670853,
+    "update_time": 1779670853,
+    "_id": "商品<SEP>管理员"
+  },
+  "分类管理模块<SEP>商品管理模块": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670856,
+    "update_time": 1779670856,
+    "_id": "分类管理模块<SEP>商品管理模块"
+  },
+  "商品评价<SEP>订单": {
+    "chunk_ids": [
+      "chunk-9a5ab321149976c4182afc52b340e847"
+    ],
+    "count": 1,
+    "create_time": 1779670861,
+    "update_time": 1779670861,
+    "_id": "商品评价<SEP>订单"
+  },
+  "支付系统<SEP>订单模块": {
+    "chunk_ids": [
+      "chunk-9a5ab321149976c4182afc52b340e847"
+    ],
+    "count": 1,
+    "create_time": 1779670861,
+    "update_time": 1779670861,
+    "_id": "支付系统<SEP>订单模块"
+  },
+  "商品<SEP>运营人员": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670870,
+    "update_time": 1779670870,
+    "_id": "商品<SEP>运营人员"
+  },
+  "分类ID<SEP>所属分类": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670870,
+    "update_time": 1779670870,
+    "_id": "分类ID<SEP>所属分类"
+  },
+  "去结算<SEP>订单": {
+    "chunk_ids": [
+      "chunk-9a5ab321149976c4182afc52b340e847"
+    ],
+    "count": 1,
+    "create_time": 1779670872,
+    "update_time": 1779670872,
+    "_id": "去结算<SEP>订单"
+  },
+  "图片上传<SEP>新增商品功能": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670872,
+    "update_time": 1779670872,
+    "_id": "图片上传<SEP>新增商品功能"
+  },
+  "商品ID<SEP>编辑商品功能": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670875,
+    "update_time": 1779670875,
+    "_id": "商品ID<SEP>编辑商品功能"
+  },
+  "更新时间<SEP>编辑商品功能": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670882,
+    "update_time": 1779670882,
+    "_id": "更新时间<SEP>编辑商品功能"
+  },
+  "订单<SEP>运费": {
+    "chunk_ids": [
+      "chunk-9a5ab321149976c4182afc52b340e847"
+    ],
+    "count": 1,
+    "create_time": 1779670887,
+    "update_time": 1779670887,
+    "_id": "订单<SEP>运费"
+  },
+  "商品上下架功能<SEP>购物车": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670887,
+    "update_time": 1779670887,
+    "_id": "商品上下架功能<SEP>购物车"
+  },
+  "关键字模糊搜索<SEP>后台用户": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670891,
+    "update_time": 1779670891,
+    "_id": "关键字模糊搜索<SEP>后台用户"
+  },
+  "用户<SEP>订单": {
+    "chunk_ids": [
+      "chunk-9a5ab321149976c4182afc52b340e847"
+    ],
+    "count": 1,
+    "create_time": 1779670893,
+    "update_time": 1779670893,
+    "_id": "用户<SEP>订单"
+  },
+  "编辑商品功能<SEP>订单": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670894,
+    "update_time": 1779670894,
+    "_id": "编辑商品功能<SEP>订单"
+  },
+  "分类筛选<SEP>后台用户": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670895,
+    "update_time": 1779670895,
+    "_id": "分类筛选<SEP>后台用户"
+  },
+  "关键字模糊搜索<SEP>商品列表": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670895,
+    "update_time": 1779670895,
+    "_id": "关键字模糊搜索<SEP>商品列表"
+  },
+  "商品<SEP>商品分类": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670898,
+    "update_time": 1779670898,
+    "_id": "商品<SEP>商品分类"
+  },
+  "上架状态筛选<SEP>后台用户": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670899,
+    "update_time": 1779670899,
+    "_id": "上架状态筛选<SEP>后台用户"
+  },
+  "分类管理模块<SEP>树状结构": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670901,
+    "update_time": 1779670901,
+    "_id": "分类管理模块<SEP>树状结构"
+  },
+  "分类筛选<SEP>商品列表": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670902,
+    "update_time": 1779670902,
+    "_id": "分类筛选<SEP>商品列表"
+  },
+  "分类树结构<SEP>新增分类功能": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670902,
+    "update_time": 1779670902,
+    "_id": "分类树结构<SEP>新增分类功能"
+  },
+  "商品<SEP>新增商品功能": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670904,
+    "update_time": 1779670904,
+    "_id": "商品<SEP>新增商品功能"
+  },
+  "CDN<SEP>图片上传": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670906,
+    "update_time": 1779670906,
+    "_id": "CDN<SEP>图片上传"
+  },
+  "商品<SEP>编辑商品功能": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670907,
+    "update_time": 1779670907,
+    "_id": "商品<SEP>编辑商品功能"
+  },
+  "分类树结构<SEP>删除分类功能": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670907,
+    "update_time": 1779670907,
+    "_id": "分类树结构<SEP>删除分类功能"
+  },
+  "Markdown<SEP>富文本编辑器": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670907,
+    "update_time": 1779670907,
+    "_id": "Markdown<SEP>富文本编辑器"
+  },
+  "商品<SEP>商品上下架功能": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670912,
+    "update_time": 1779670912,
+    "_id": "商品<SEP>商品上下架功能"
+  },
+  "商品管理模块<SEP>订单": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670912,
+    "update_time": 1779670912,
+    "_id": "商品管理模块<SEP>订单"
+  },
+  "创建时间<SEP>商品列表": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670912,
+    "update_time": 1779670912,
+    "_id": "创建时间<SEP>商品列表"
+  },
+  "分类管理权限<SEP>背景用户": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670912,
+    "update_time": 1779670912,
+    "_id": "分类管理权限<SEP>背景用户"
+  },
+  "超级管理员<SEP>重置密码": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779670913,
+    "update_time": 1779670913,
+    "_id": "超级管理员<SEP>重置密码"
+  },
+  "上架状态筛选<SEP>商品列表": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670920,
+    "update_time": 1779670920,
+    "_id": "上架状态筛选<SEP>商品列表"
+  },
+  "客服<SEP>用户举报": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779670920,
+    "update_time": 1779670920,
+    "_id": "客服<SEP>用户举报"
+  },
+  "客服主管<SEP>重置密码": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779670924,
+    "update_time": 1779670924,
+    "_id": "客服主管<SEP>重置密码"
+  },
+  "QuillJS<SEP>富文本编辑器": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670924,
+    "update_time": 1779670924,
+    "_id": "QuillJS<SEP>富文本编辑器"
+  },
+  "内容审核专员<SEP>评价管理": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779670924,
+    "update_time": 1779670924,
+    "_id": "内容审核专员<SEP>评价管理"
+  },
+  "删除商品功能<SEP>商品": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670924,
+    "update_time": 1779670924,
+    "_id": "删除商品功能<SEP>商品"
+  },
+  "客服<SEP>评论": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779670929,
+    "update_time": 1779670929,
+    "_id": "客服<SEP>评论"
+  },
+  "用户标签<SEP>高活跃用户标签": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779670929,
+    "update_time": 1779670929,
+    "_id": "用户标签<SEP>高活跃用户标签"
+  },
+  "商品<SEP>购物车": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07",
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 2,
+    "create_time": 1779670932,
+    "update_time": 1779670932,
+    "_id": "商品<SEP>购物车"
+  },
+  "删除商品功能<SEP>逻辑删除": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670932,
+    "update_time": 1779670932,
+    "_id": "删除商品功能<SEP>逻辑删除"
+  },
+  "系统管理员<SEP>评价管理": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779670932,
+    "update_time": 1779670932,
+    "_id": "系统管理员<SEP>评价管理"
+  },
+  "内容审核专员<SEP>评论": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779670932,
+    "update_time": 1779670932,
+    "_id": "内容审核专员<SEP>评论"
+  },
+  "用户标签<SEP>高消费用户标签": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779670941,
+    "update_time": 1779670941,
+    "_id": "用户标签<SEP>高消费用户标签"
+  },
+  "评价列表<SEP>评价管理": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779670943,
+    "update_time": 1779670943,
+    "_id": "评价列表<SEP>评价管理"
+  },
+  "操作日志<SEP>敏感操作": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779670943,
+    "update_time": 1779670943,
+    "_id": "操作日志<SEP>敏感操作"
+  },
+  "用户标签<SEP>黑名单监控标签": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779670946,
+    "update_time": 1779670946,
+    "_id": "用户标签<SEP>黑名单监控标签"
+  },
+  "系统管理员<SEP>评论": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779670946,
+    "update_time": 1779670946,
+    "_id": "系统管理员<SEP>评论"
+  },
+  "删除商品功能<SEP>物理删除": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670949,
+    "update_time": 1779670949,
+    "_id": "删除商品功能<SEP>物理删除"
+  },
+  "审批流程<SEP>数据导出": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779670949,
+    "update_time": 1779670949,
+    "_id": "审批流程<SEP>数据导出"
+  },
+  "商品<SEP>商品列表": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670951,
+    "update_time": 1779670951,
+    "_id": "商品<SEP>商品列表"
+  },
+  "审核流程<SEP>评价管理": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779670952,
+    "update_time": 1779670952,
+    "_id": "审核流程<SEP>评价管理"
+  },
+  "新用户标签<SEP>用户标签": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779670952,
+    "update_time": 1779670952,
+    "_id": "新用户标签<SEP>用户标签"
+  },
+  "安全机制<SEP>重置密码": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779670952,
+    "update_time": 1779670952,
+    "_id": "安全机制<SEP>重置密码"
+  },
+  "双人复核<SEP>敏感操作": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779670957,
+    "update_time": 1779670957,
+    "_id": "双人复核<SEP>敏感操作"
+  },
+  "操作日志<SEP>系统": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779670957,
+    "update_time": 1779670957,
+    "_id": "操作日志<SEP>系统"
+  },
+  "审核状态<SEP>已发布状态": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779670957,
+    "update_time": 1779670957,
+    "_id": "审核状态<SEP>已发布状态"
+  },
+  "标签系统<SEP>用户标签": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779670962,
+    "update_time": 1779670962,
+    "_id": "标签系统<SEP>用户标签"
+  },
+  "安全机制<SEP>封禁操作": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779670964,
+    "update_time": 1779670964,
+    "_id": "安全机制<SEP>封禁操作"
+  },
+  "用户举报<SEP>评价管理": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779670964,
+    "update_time": 1779670964,
+    "_id": "用户举报<SEP>评价管理"
+  },
+  "商品<SEP>商品标题": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670964,
+    "update_time": 1779670964,
+    "_id": "商品<SEP>商品标题"
+  },
+  "举报处理中<SEP>有效举报": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779670964,
+    "update_time": 1779670964,
+    "_id": "举报处理中<SEP>有效举报"
+  },
+  "删除评论<SEP>管理员": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779670972,
+    "update_time": 1779670972,
+    "_id": "删除评论<SEP>管理员"
+  },
+  "待审核状态<SEP>评论状态管理": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779670974,
+    "update_time": 1779670974,
+    "_id": "待审核状态<SEP>评论状态管理"
+  },
+  "删除评论<SEP>逻辑删除": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779670976,
+    "update_time": 1779670976,
+    "_id": "删除评论<SEP>逻辑删除"
+  },
+  "商品<SEP>简要描述": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670976,
+    "update_time": 1779670976,
+    "_id": "商品<SEP>简要描述"
+  },
+  "用户标签<SEP>行为指标": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779670981,
+    "update_time": 1779670981,
+    "_id": "用户标签<SEP>行为指标"
+  },
+  "内容运营人员<SEP>运营配置": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779670981,
+    "update_time": 1779670981,
+    "_id": "内容运营人员<SEP>运营配置"
+  },
+  "单价<SEP>商品": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670984,
+    "update_time": 1779670984,
+    "_id": "单价<SEP>商品"
+  },
+  "举报人<SEP>用户举报": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779670986,
+    "update_time": 1779670986,
+    "_id": "举报人<SEP>用户举报"
+  },
+  "已发布状态<SEP>评论状态管理": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779670987,
+    "update_time": 1779670987,
+    "_id": "已发布状态<SEP>评论状态管理"
+  },
+  "举报类型<SEP>用户举报": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779670991,
+    "update_time": 1779670991,
+    "_id": "举报类型<SEP>用户举报"
+  },
+  "商品<SEP>库存": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07",
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 2,
+    "create_time": 1779670993,
+    "update_time": 1779670993,
+    "_id": "商品<SEP>库存"
+  },
+  "审核未通过状态<SEP>评论状态管理": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779670993,
+    "update_time": 1779670993,
+    "_id": "审核未通过状态<SEP>评论状态管理"
+  },
+  "市场运营经理<SEP>运营配置": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779670996,
+    "update_time": 1779670996,
+    "_id": "市场运营经理<SEP>运营配置"
+  },
+  "已删除状态<SEP>评论状态管理": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779670997,
+    "update_time": 1779670997,
+    "_id": "已删除状态<SEP>评论状态管理"
+  },
+  "主图<SEP>商品": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779670997,
+    "update_time": 1779670997,
+    "_id": "主图<SEP>商品"
+  },
+  "举报入口<SEP>举报按钮": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779670997,
+    "update_time": 1779670997,
+    "_id": "举报入口<SEP>举报按钮"
+  },
+  "举报理由<SEP>用户举报": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671001,
+    "update_time": 1779671001,
+    "_id": "举报理由<SEP>用户举报"
+  },
+  "举报处理中<SEP>评论状态管理": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671004,
+    "update_time": 1779671004,
+    "_id": "举报处理中<SEP>评论状态管理"
+  },
+  "审核模式<SEP>系统设置": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671004,
+    "update_time": 1779671004,
+    "_id": "审核模式<SEP>系统设置"
+  },
+  "管理员<SEP>运营配置": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671007,
+    "update_time": 1779671007,
+    "_id": "管理员<SEP>运营配置"
+  },
+  "商品<SEP>详情图文": {
+    "chunk_ids": [
+      "chunk-83adcbaf657bc937a5143656733a3e07"
+    ],
+    "count": 1,
+    "create_time": 1779671008,
+    "update_time": 1779671008,
+    "_id": "商品<SEP>详情图文"
+  },
+  "评价管理<SEP>评论状态管理": {
+    "chunk_ids": [
+      "chunk-186782b6d8ce8dcb8abe31d1d0ea52d8"
+    ],
+    "count": 1,
+    "create_time": 1779671009,
+    "update_time": 1779671009,
+    "_id": "评价管理<SEP>评论状态管理"
+  },
+  "用户举报<SEP>被举报内容": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671009,
+    "update_time": 1779671009,
+    "_id": "用户举报<SEP>被举报内容"
+  },
+  "举报入口<SEP>举报类型选择表单": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671009,
+    "update_time": 1779671009,
+    "_id": "举报入口<SEP>举报类型选择表单"
+  },
+  "内容管理员<SEP>操作权限管理": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671009,
+    "update_time": 1779671009,
+    "_id": "内容管理员<SEP>操作权限管理"
+  },
+  "内容审核服务<SEP>正则过滤": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671009,
+    "update_time": 1779671009,
+    "_id": "内容审核服务<SEP>正则过滤"
+  },
+  "全自动通过<SEP>审核模式": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671016,
+    "update_time": 1779671016,
+    "_id": "全自动通过<SEP>审核模式"
+  },
+  "轮播图管理<SEP>运营配置": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671016,
+    "update_time": 1779671016,
+    "_id": "轮播图管理<SEP>运营配置"
+  },
+  "审核记录<SEP>操作日志": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671020,
+    "update_time": 1779671020,
+    "_id": "审核记录<SEP>操作日志"
+  },
+  "人工审核<SEP>审核模式": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671021,
+    "update_time": 1779671021,
+    "_id": "人工审核<SEP>审核模式"
+  },
+  "封禁<SEP>操作权限管理": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671024,
+    "update_time": 1779671024,
+    "_id": "封禁<SEP>操作权限管理"
+  },
+  "推荐商品位配置<SEP>运营配置": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671024,
+    "update_time": 1779671024,
+    "_id": "推荐商品位配置<SEP>运营配置"
+  },
+  "用户举报<SEP>直接删除": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671028,
+    "update_time": 1779671028,
+    "_id": "用户举报<SEP>直接删除"
+  },
+  "状态变更日志<SEP>评论状态管理": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671029,
+    "update_time": 1779671029,
+    "_id": "状态变更日志<SEP>评论状态管理"
+  },
+  "封禁<SEP>管理员": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671031,
+    "update_time": 1779671031,
+    "_id": "封禁<SEP>管理员"
+  },
+  "图片地址<SEP>轮播图": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671031,
+    "update_time": 1779671031,
+    "_id": "图片地址<SEP>轮播图"
+  },
+  "用户<SEP>评论": {
+    "chunk_ids": [
+      "chunk-7ab6b016312276bd0784b4ea1e09d7ec"
+    ],
+    "count": 1,
+    "create_time": 1779671031,
+    "update_time": 1779671031,
+    "_id": "用户<SEP>评论"
+  },
+  "审核模式<SEP>混合模式": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671035,
+    "update_time": 1779671035,
+    "_id": "审核模式<SEP>混合模式"
+  },
+  "跳转链接<SEP>轮播图": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671038,
+    "update_time": 1779671038,
+    "_id": "跳转链接<SEP>轮播图"
+  },
+  "后台商品管理模块<SEP>管理员": {
+    "chunk_ids": [
+      "chunk-7ab6b016312276bd0784b4ea1e09d7ec"
+    ],
+    "count": 1,
+    "create_time": 1779671038,
+    "update_time": 1779671038,
+    "_id": "后台商品管理模块<SEP>管理员"
+  },
+  "运营配置<SEP>首页公告栏配置": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671040,
+    "update_time": 1779671040,
+    "_id": "运营配置<SEP>首页公告栏配置"
+  },
+  "标题<SEP>轮播图": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671042,
+    "update_time": 1779671042,
+    "_id": "标题<SEP>轮播图"
+  },
+  "推荐内容上下架控制<SEP>运营配置": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671043,
+    "update_time": 1779671043,
+    "_id": "推荐内容上下架控制<SEP>运营配置"
+  },
+  "备注<SEP>评论状态管理": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671046,
+    "update_time": 1779671046,
+    "_id": "备注<SEP>评论状态管理"
+  },
+  "状态<SEP>轮播图": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671047,
+    "update_time": 1779671047,
+    "_id": "状态<SEP>轮播图"
+  },
+  "删除商品<SEP>超级管理员": {
+    "chunk_ids": [
+      "chunk-7ab6b016312276bd0784b4ea1e09d7ec"
+    ],
+    "count": 1,
+    "create_time": 1779671047,
+    "update_time": 1779671047,
+    "_id": "删除商品<SEP>超级管理员"
+  },
+  "内容配置排序<SEP>运营配置": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671051,
+    "update_time": 1779671051,
+    "_id": "内容配置排序<SEP>运营配置"
+  },
+  "商品列表查看<SEP>管理员": {
+    "chunk_ids": [
+      "chunk-7ab6b016312276bd0784b4ea1e09d7ec"
+    ],
+    "count": 1,
+    "create_time": 1779671051,
+    "update_time": 1779671051,
+    "_id": "商品列表查看<SEP>管理员"
+  },
+  "图片地址<SEP>轮播图配置": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671051,
+    "update_time": 1779671051,
+    "_id": "图片地址<SEP>轮播图配置"
+  },
+  "商品详情页<SEP>评论": {
+    "chunk_ids": [
+      "chunk-7ab6b016312276bd0784b4ea1e09d7ec"
+    ],
+    "count": 1,
+    "create_time": 1779671054,
+    "update_time": 1779671054,
+    "_id": "商品详情页<SEP>评论"
+  },
+  "新增商品<SEP>管理员": {
+    "chunk_ids": [
+      "chunk-7ab6b016312276bd0784b4ea1e09d7ec"
+    ],
+    "count": 1,
+    "create_time": 1779671055,
+    "update_time": 1779671055,
+    "_id": "新增商品<SEP>管理员"
+  },
+  "后台商品管理模块<SEP>超级管理员": {
+    "chunk_ids": [
+      "chunk-7ab6b016312276bd0784b4ea1e09d7ec"
+    ],
+    "count": 1,
+    "create_time": 1779671055,
+    "update_time": 1779671055,
+    "_id": "后台商品管理模块<SEP>超级管理员"
+  },
+  "跳转链接<SEP>轮播图配置": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671055,
+    "update_time": 1779671055,
+    "_id": "跳转链接<SEP>轮播图配置"
+  },
+  "排序权重<SEP>轮播图": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671055,
+    "update_time": 1779671055,
+    "_id": "排序权重<SEP>轮播图"
+  },
+  "上架状态<SEP>状态": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671055,
+    "update_time": 1779671055,
+    "_id": "上架状态<SEP>状态"
+  },
+  "推荐位类型<SEP>推荐商品位配置": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671055,
+    "update_time": 1779671055,
+    "_id": "推荐位类型<SEP>推荐商品位配置"
+  },
+  "商品ID<SEP>推荐商品位配置": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671064,
+    "update_time": 1779671064,
+    "_id": "商品ID<SEP>推荐商品位配置"
+  },
+  "公告内容<SEP>首页公告栏配置": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671064,
+    "update_time": 1779671064,
+    "_id": "公告内容<SEP>首页公告栏配置"
+  },
+  "业务规则<SEP>轮播图配置": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671064,
+    "update_time": 1779671064,
+    "_id": "业务规则<SEP>轮播图配置"
+  },
+  "管理员<SEP>编辑商品": {
+    "chunk_ids": [
+      "chunk-7ab6b016312276bd0784b4ea1e09d7ec"
+    ],
+    "count": 1,
+    "create_time": 1779671068,
+    "update_time": 1779671068,
+    "_id": "管理员<SEP>编辑商品"
+  },
+  "展示时间段<SEP>轮播图": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671068,
+    "update_time": 1779671068,
+    "_id": "展示时间段<SEP>轮播图"
+  },
+  "下架状态<SEP>状态": {
+    "chunk_ids": [
+      "chunk-1f797cabbc3ad11af3e5b3a149665e5c"
+    ],
+    "count": 1,
+    "create_time": 1779671068,
+    "update_time": 1779671068,
+    "_id": "下架状态<SEP>状态"
+  },
+  "评论<SEP>评论筛选": {
+    "chunk_ids": [
+      "chunk-7ab6b016312276bd0784b4ea1e09d7ec"
+    ],
+    "count": 1,
+    "create_time": 1779671068,
+    "update_time": 1779671068,
+    "_id": "评论<SEP>评论筛选"
+  },
+  "上架<SEP>推荐内容上下架控制": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671068,
+    "update_time": 1779671068,
+    "_id": "上架<SEP>推荐内容上下架控制"
+  },
+  "下架<SEP>推荐内容上下架控制": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671074,
+    "update_time": 1779671074,
+    "_id": "下架<SEP>推荐内容上下架控制"
+  },
+  "推荐商品位配置<SEP>是否固定展示": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671075,
+    "update_time": 1779671075,
+    "_id": "推荐商品位配置<SEP>是否固定展示"
+  },
+  "状态<SEP>轮播图配置": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671076,
+    "update_time": 1779671076,
+    "_id": "状态<SEP>轮播图配置"
+  },
+  "定时上架<SEP>推荐内容上下架控制": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671077,
+    "update_time": 1779671077,
+    "_id": "定时上架<SEP>推荐内容上下架控制"
+  },
+  "上下架商品<SEP>管理员": {
+    "chunk_ids": [
+      "chunk-7ab6b016312276bd0784b4ea1e09d7ec"
+    ],
+    "count": 1,
+    "create_time": 1779671077,
+    "update_time": 1779671077,
+    "_id": "上下架商品<SEP>管理员"
+  },
+  "业务规则<SEP>推荐商品位配置": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671080,
+    "update_time": 1779671080,
+    "_id": "业务规则<SEP>推荐商品位配置"
+  },
+  "评论<SEP>评论排序": {
+    "chunk_ids": [
+      "chunk-7ab6b016312276bd0784b4ea1e09d7ec"
+    ],
+    "count": 1,
+    "create_time": 1779671080,
+    "update_time": 1779671080,
+    "_id": "评论<SEP>评论排序"
+  },
+  "发布时间<SEP>首页公告栏配置": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671080,
+    "update_time": 1779671080,
+    "_id": "发布时间<SEP>首页公告栏配置"
+  },
+  "权重<SEP>首页公告栏配置": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671084,
+    "update_time": 1779671084,
+    "_id": "权重<SEP>首页公告栏配置"
+  },
+  "标题<SEP>轮播图配置": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671085,
+    "update_time": 1779671085,
+    "_id": "标题<SEP>轮播图配置"
+  },
+  "排序权重<SEP>轮播图配置": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671087,
+    "update_time": 1779671087,
+    "_id": "排序权重<SEP>轮播图配置"
+  },
+  "手机号绑定功能<SEP>用户": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671087,
+    "update_time": 1779671087,
+    "_id": "手机号绑定功能<SEP>用户"
+  },
+  "状态<SEP>首页公告栏配置": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671089,
+    "update_time": 1779671089,
+    "_id": "状态<SEP>首页公告栏配置"
+  },
+  "定时下架<SEP>推荐内容上下架控制": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671090,
+    "update_time": 1779671090,
+    "_id": "定时下架<SEP>推荐内容上下架控制"
+  },
+  "排序<SEP>推荐商品位配置": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671090,
+    "update_time": 1779671090,
+    "_id": "排序<SEP>推荐商品位配置"
+  },
+  "审核机制<SEP>评论": {
+    "chunk_ids": [
+      "chunk-7ab6b016312276bd0784b4ea1e09d7ec"
+    ],
+    "count": 1,
+    "create_time": 1779671093,
+    "update_time": 1779671093,
+    "_id": "审核机制<SEP>评论"
+  },
+  "推荐商品位配置<SEP>显示名称": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671094,
+    "update_time": 1779671094,
+    "_id": "推荐商品位配置<SEP>显示名称"
+  },
+  "内容型组件<SEP>推荐内容上下架控制": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671095,
+    "update_time": 1779671095,
+    "_id": "内容型组件<SEP>推荐内容上下架控制"
+  },
+  "业务规则<SEP>首页公告栏配置": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671095,
+    "update_time": 1779671095,
+    "_id": "业务规则<SEP>首页公告栏配置"
+  },
+  "上架<SEP>状态": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671095,
+    "update_time": 1779671095,
+    "_id": "上架<SEP>状态"
+  },
+  "用户<SEP>验证码": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671095,
+    "update_time": 1779671095,
+    "_id": "用户<SEP>验证码"
+  },
+  "权限控制<SEP>评论": {
+    "chunk_ids": [
+      "chunk-7ab6b016312276bd0784b4ea1e09d7ec"
+    ],
+    "count": 1,
+    "create_time": 1779671095,
+    "update_time": 1779671095,
+    "_id": "权限控制<SEP>评论"
+  },
+  "轮播图<SEP>首页商品展示功能": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671095,
+    "update_time": 1779671095,
+    "_id": "轮播图<SEP>首页商品展示功能"
+  },
+  "展示时间段<SEP>轮播图配置": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671103,
+    "update_time": 1779671103,
+    "_id": "展示时间段<SEP>轮播图配置"
+  },
+  "下架<SEP>状态": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671109,
+    "update_time": 1779671109,
+    "_id": "下架<SEP>状态"
+  },
+  "收货地址管理功能<SEP>用户": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671110,
+    "update_time": 1779671110,
+    "_id": "收货地址管理功能<SEP>用户"
+  },
+  "分类列表<SEP>首页商品展示功能": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671111,
+    "update_time": 1779671111,
+    "_id": "分类列表<SEP>首页商品展示功能"
+  },
+  "内容型组件<SEP>轮播图": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671111,
+    "update_time": 1779671111,
+    "_id": "内容型组件<SEP>轮播图"
+  },
+  "用户<SEP>获取验证码功能": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671119,
+    "update_time": 1779671119,
+    "_id": "用户<SEP>获取验证码功能"
+  },
+  "推荐商品<SEP>首页商品展示功能": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671120,
+    "update_time": 1779671120,
+    "_id": "推荐商品<SEP>首页商品展示功能"
+  },
+  "商品模块<SEP>首页商品展示功能": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671122,
+    "update_time": 1779671122,
+    "_id": "商品模块<SEP>首页商品展示功能"
+  },
+  "获取验证码功能<SEP>验证码": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671124,
+    "update_time": 1779671124,
+    "_id": "获取验证码功能<SEP>验证码"
+  },
+  "收货地址<SEP>用户": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671124,
+    "update_time": 1779671124,
+    "_id": "收货地址<SEP>用户"
+  },
+  "用户<SEP>首页商品展示功能": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671128,
+    "update_time": 1779671128,
+    "_id": "用户<SEP>首页商品展示功能"
+  },
+  "收货地址<SEP>默认地址": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671128,
+    "update_time": 1779671128,
+    "_id": "收货地址<SEP>默认地址"
+  },
+  "内容型组件<SEP>商品推荐位": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671131,
+    "update_time": 1779671131,
+    "_id": "内容型组件<SEP>商品推荐位"
+  },
+  "商品列表浏览功能<SEP>用户": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671134,
+    "update_time": 1779671134,
+    "_id": "商品列表浏览功能<SEP>用户"
+  },
+  "商品详情页功能<SEP>用户": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671142,
+    "update_time": 1779671142,
+    "_id": "商品详情页功能<SEP>用户"
+  },
+  "商品<SEP>商品列表浏览功能": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671142,
+    "update_time": 1779671142,
+    "_id": "商品<SEP>商品列表浏览功能"
+  },
+  "商品收藏功能<SEP>用户": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671147,
+    "update_time": 1779671147,
+    "_id": "商品收藏功能<SEP>用户"
+  },
+  "商品评论<SEP>商品详情页功能": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671147,
+    "update_time": 1779671147,
+    "_id": "商品评论<SEP>商品详情页功能"
+  },
+  "公告栏<SEP>内容型组件": {
+    "chunk_ids": [
+      "chunk-cbf34cedf85e135b8e68b8c9c48d8055"
+    ],
+    "count": 1,
+    "create_time": 1779671149,
+    "update_time": 1779671149,
+    "_id": "公告栏<SEP>内容型组件"
+  },
+  "商品详情页功能<SEP>购物车功能": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671151,
+    "update_time": 1779671151,
+    "_id": "商品详情页功能<SEP>购物车功能"
+  },
+  "F2.4商品收藏<SEP>用户": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671157,
+    "update_time": 1779671157,
+    "_id": "F2.4商品收藏<SEP>用户"
+  },
+  "F3.1加入购物车<SEP>用户": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671159,
+    "update_time": 1779671159,
+    "_id": "F3.1加入购物车<SEP>用户"
+  },
+  "商品模块<SEP>商品详情页功能": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671160,
+    "update_time": 1779671160,
+    "_id": "商品模块<SEP>商品详情页功能"
+  },
+  "商品详情页功能<SEP>立即购买功能": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671162,
+    "update_time": 1779671162,
+    "_id": "商品详情页功能<SEP>立即购买功能"
+  },
+  "商品列表浏览功能<SEP>商品模块": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671162,
+    "update_time": 1779671162,
+    "_id": "商品列表浏览功能<SEP>商品模块"
+  },
+  "F3.2修改商品数量<SEP>用户": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671168,
+    "update_time": 1779671168,
+    "_id": "F3.2修改商品数量<SEP>用户"
+  },
+  "商品主图<SEP>商品详情页功能": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671170,
+    "update_time": 1779671170,
+    "_id": "商品主图<SEP>商品详情页功能"
+  },
+  "商品价格<SEP>商品详情页功能": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671172,
+    "update_time": 1779671172,
+    "_id": "商品价格<SEP>商品详情页功能"
+  },
+  "商品库存<SEP>商品详情页功能": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671173,
+    "update_time": 1779671173,
+    "_id": "商品库存<SEP>商品详情页功能"
+  },
+  "商品参数<SEP>商品详情页功能": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671174,
+    "update_time": 1779671174,
+    "_id": "商品参数<SEP>商品详情页功能"
+  },
+  "收藏记录<SEP>数据库": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671174,
+    "update_time": 1779671174,
+    "_id": "收藏记录<SEP>数据库"
+  },
+  "商品收藏功能<SEP>商品模块": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671177,
+    "update_time": 1779671177,
+    "_id": "商品收藏功能<SEP>商品模块"
+  },
+  "购物车<SEP>购物车上限": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671178,
+    "update_time": 1779671178,
+    "_id": "购物车<SEP>购物车上限"
+  },
+  "售后说明<SEP>商品详情页功能": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671179,
+    "update_time": 1779671179,
+    "_id": "售后说明<SEP>商品详情页功能"
+  },
+  "订单<SEP>选中状态": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671179,
+    "update_time": 1779671179,
+    "_id": "订单<SEP>选中状态"
+  },
+  "商品<SEP>商品详情页功能": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671182,
+    "update_time": 1779671182,
+    "_id": "商品<SEP>商品详情页功能"
+  },
+  "F3.3删除购物车商品<SEP>用户": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671186,
+    "update_time": 1779671186,
+    "_id": "F3.3删除购物车商品<SEP>用户"
+  },
+  "F3.2修改商品数量<SEP>购物车": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671187,
+    "update_time": 1779671187,
+    "_id": "F3.2修改商品数量<SEP>购物车"
+  },
+  "商品<SEP>商品收藏功能": {
+    "chunk_ids": [
+      "chunk-6971ea2199ce98c9bf6210f674f5d1e5"
+    ],
+    "count": 1,
+    "create_time": 1779671187,
+    "update_time": 1779671187,
+    "_id": "商品<SEP>商品收藏功能"
+  },
+  "封禁/解封用户<SEP>管理员": {
+    "chunk_ids": [
+      "chunk-b82251b511fdadbc30aad6a318114a89"
+    ],
+    "count": 1,
+    "create_time": 1779671187,
+    "update_time": 1779671187,
+    "_id": "封禁/解封用户<SEP>管理员"
+  },
+  "客服人员<SEP>用户管理模块": {
+    "chunk_ids": [
+      "chunk-b82251b511fdadbc30aad6a318114a89"
+    ],
+    "count": 1,
+    "create_time": 1779671187,
+    "update_time": 1779671187,
+    "_id": "客服人员<SEP>用户管理模块"
+  },
+  "F3.4查询购物车列表<SEP>用户": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671192,
+    "update_time": 1779671192,
+    "_id": "F3.4查询购物车列表<SEP>用户"
+  },
+  "已下架商品<SEP>购物车": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671193,
+    "update_time": 1779671193,
+    "_id": "已下架商品<SEP>购物车"
+  },
+  "F3.2修改商品数量<SEP>库存": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671193,
+    "update_time": 1779671193,
+    "_id": "F3.2修改商品数量<SEP>库存"
+  },
+  "超级管理员<SEP>重置用户密码": {
+    "chunk_ids": [
+      "chunk-b82251b511fdadbc30aad6a318114a89"
+    ],
+    "count": 1,
+    "create_time": 1779671193,
+    "update_time": 1779671193,
+    "_id": "超级管理员<SEP>重置用户密码"
+  },
+  "用户管理模块<SEP>运营人员": {
+    "chunk_ids": [
+      "chunk-b82251b511fdadbc30aad6a318114a89"
+    ],
+    "count": 1,
+    "create_time": 1779671197,
+    "update_time": 1779671197,
+    "_id": "用户管理模块<SEP>运营人员"
+  },
+  "查看用户详情<SEP>用户列表查询": {
+    "chunk_ids": [
+      "chunk-b82251b511fdadbc30aad6a318114a89"
+    ],
+    "count": 1,
+    "create_time": 1779671197,
+    "update_time": 1779671197,
+    "_id": "查看用户详情<SEP>用户列表查询"
+  },
+  "F2.4商品收藏<SEP>商品": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671199,
+    "update_time": 1779671199,
+    "_id": "F2.4商品收藏<SEP>商品"
+  },
+  "封禁/解封用户<SEP>封禁状态": {
+    "chunk_ids": [
+      "chunk-b82251b511fdadbc30aad6a318114a89"
+    ],
+    "count": 1,
+    "create_time": 1779671199,
+    "update_time": 1779671199,
+    "_id": "封禁/解封用户<SEP>封禁状态"
+  },
+  "用户<SEP>登录": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671202,
+    "update_time": 1779671202,
+    "_id": "用户<SEP>登录"
+  },
+  "标签信息<SEP>用户标签管理": {
+    "chunk_ids": [
+      "chunk-b82251b511fdadbc30aad6a318114a89"
+    ],
+    "count": 1,
+    "create_time": 1779671202,
+    "update_time": 1779671202,
+    "_id": "标签信息<SEP>用户标签管理"
+  },
+  "F3.3删除购物车商品<SEP>购物车": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671204,
+    "update_time": 1779671204,
+    "_id": "F3.3删除购物车商品<SEP>购物车"
+  },
+  "F3.2修改商品数量<SEP>已下架商品": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671204,
+    "update_time": 1779671204,
+    "_id": "F3.2修改商品数量<SEP>已下架商品"
+  },
+  "用户管理模块<SEP>系统管理员": {
+    "chunk_ids": [
+      "chunk-b82251b511fdadbc30aad6a318114a89"
+    ],
+    "count": 1,
+    "create_time": 1779671206,
+    "update_time": 1779671206,
+    "_id": "用户管理模块<SEP>系统管理员"
+  },
+  "用户列表查询<SEP>管理员": {
+    "chunk_ids": [
+      "chunk-b82251b511fdadbc30aad6a318114a89"
+    ],
+    "count": 1,
+    "create_time": 1779671206,
+    "update_time": 1779671206,
+    "_id": "用户列表查询<SEP>管理员"
+  },
+  "查看用户详情<SEP>行为统计": {
+    "chunk_ids": [
+      "chunk-b82251b511fdadbc30aad6a318114a89"
+    ],
+    "count": 1,
+    "create_time": 1779671206,
+    "update_time": 1779671206,
+    "_id": "查看用户详情<SEP>行为统计"
+  },
+  "ERP系统<SEP>财务对账与导出": {
+    "chunk_ids": [
+      "chunk-b82251b511fdadbc30aad6a318114a89"
+    ],
+    "count": 1,
+    "create_time": 1779671206,
+    "update_time": 1779671206,
+    "_id": "ERP系统<SEP>财务对账与导出"
+  },
+  "封禁/解封用户<SEP>封禁理由": {
+    "chunk_ids": [
+      "chunk-b82251b511fdadbc30aad6a318114a89"
+    ],
+    "count": 1,
+    "create_time": 1779671211,
+    "update_time": 1779671211,
+    "_id": "封禁/解封用户<SEP>封禁理由"
+  },
+  "F3.1加入购物车<SEP>商品": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671211,
+    "update_time": 1779671211,
+    "_id": "F3.1加入购物车<SEP>商品"
+  },
+  "我的收藏<SEP>用户": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671214,
+    "update_time": 1779671214,
+    "_id": "我的收藏<SEP>用户"
+  },
+  "发货依赖控制<SEP>物流信息": {
+    "chunk_ids": [
+      "chunk-b82251b511fdadbc30aad6a318114a89"
+    ],
+    "count": 1,
+    "create_time": 1779671214,
+    "update_time": 1779671214,
+    "_id": "发货依赖控制<SEP>物流信息"
+  },
+  "F3.4查询购物车列表<SEP>购物车": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671216,
+    "update_time": 1779671216,
+    "_id": "F3.4查询购物车列表<SEP>购物车"
+  },
+  "客服人员<SEP>管理员": {
+    "chunk_ids": [
+      "chunk-b82251b511fdadbc30aad6a318114a89"
+    ],
+    "count": 1,
+    "create_time": 1779671219,
+    "update_time": 1779671219,
+    "_id": "客服人员<SEP>管理员"
+  },
+  "本地缓存<SEP>用户": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671222,
+    "update_time": 1779671222,
+    "_id": "本地缓存<SEP>用户"
+  },
+  "商品<SEP>收藏记录": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671223,
+    "update_time": 1779671223,
+    "_id": "商品<SEP>收藏记录"
+  },
+  "F3.1加入购物车<SEP>购物车": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671223,
+    "update_time": 1779671223,
+    "_id": "F3.1加入购物车<SEP>购物车"
+  },
+  "F3.1加入购物车<SEP>已下架商品": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671226,
+    "update_time": 1779671226,
+    "_id": "F3.1加入购物车<SEP>已下架商品"
+  },
+  "结算平台<SEP>财务对账与导出": {
+    "chunk_ids": [
+      "chunk-b82251b511fdadbc30aad6a318114a89"
+    ],
+    "count": 1,
+    "create_time": 1779671227,
+    "update_time": 1779671227,
+    "_id": "结算平台<SEP>财务对账与导出"
+  },
+  "JSON格式<SEP>财务对账与导出": {
+    "chunk_ids": [
+      "chunk-b82251b511fdadbc30aad6a318114a89"
+    ],
+    "count": 1,
+    "create_time": 1779671229,
+    "update_time": 1779671229,
+    "_id": "JSON格式<SEP>财务对账与导出"
+  },
+  "F3.3删除购物车商品<SEP>商品": {
+    "chunk_ids": [
+      "chunk-c502f8a340d6b25f0a1f38beb7ae5b21"
+    ],
+    "count": 1,
+    "create_time": 1779671231,
+    "update_time": 1779671231,
+    "_id": "F3.3删除购物车商品<SEP>商品"
+  },
+  "CSV格式<SEP>财务对账与导出": {
+    "chunk_ids": [
+      "chunk-b82251b511fdadbc30aad6a318114a89"
+    ],
+    "count": 1,
+    "create_time": 1779671233,
+    "update_time": 1779671233,
+    "_id": "CSV格式<SEP>财务对账与导出"
+  }
+}
