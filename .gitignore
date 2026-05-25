@@ -3,3 +3,7 @@
 lee/.env
 .idea/
 .venv/
+
+# RAG runtime storage
+rag/light-rag/rag_storage/
+rag/lightrag.log
