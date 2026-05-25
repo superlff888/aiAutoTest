@@ -1,0 +1,4300 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d13" for="edge" attr.name="truncate" attr.type="string"/>
+<key id="d12" for="edge" attr.name="created_at" attr.type="long"/>
+<key id="d11" for="edge" attr.name="file_path" attr.type="string"/>
+<key id="d10" for="edge" attr.name="source_id" attr.type="string"/>
+<key id="d9" for="edge" attr.name="keywords" attr.type="string"/>
+<key id="d8" for="edge" attr.name="description" attr.type="string"/>
+<key id="d7" for="edge" attr.name="weight" attr.type="double"/>
+<key id="d6" for="node" attr.name="truncate" attr.type="string"/>
+<key id="d5" for="node" attr.name="created_at" attr.type="long"/>
+<key id="d4" for="node" attr.name="file_path" attr.type="string"/>
+<key id="d3" for="node" attr.name="source_id" attr.type="string"/>
+<key id="d2" for="node" attr.name="description" attr.type="string"/>
+<key id="d1" for="node" attr.name="entity_type" attr.type="string"/>
+<key id="d0" for="node" attr.name="entity_id" attr.type="string"/>
+<graph edgedefault="undirected"><node id="电商系统API接口文档">
+  <data key="d0">电商系统API接口文档</data>
+  <data key="d1">content</data>
+  <data key="d2">电商系统API接口文档是一份详细的技术文档，描述了电商系统的API接口规范、认证方式、异常返回处理等内容。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718617</data>
+  <data key="d6"></data>
+</node>
+<node id="v1.0">
+  <data key="d0">v1.0</data>
+  <data key="d1">data</data>
+  <data key="d2">v1.0是文档的版本号，表示第一版正式发布。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718617</data>
+  <data key="d6"></data>
+</node>
+<node id="2022-08-15">
+  <data key="d0">2022-08-15</data>
+  <data key="d1">data</data>
+  <data key="d2">2022-08-15是文档的最后更新日期。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718617</data>
+  <data key="d6"></data>
+</node>
+<node id="https://api.mstest.com">
+  <data key="d0">https://api.mstest.com</data>
+  <data key="d1">data</data>
+  <data key="d2">https.api.mstest.com是接口的BaseURL，所有API接口都基于此地址。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718619</data>
+  <data key="d6"></data>
+</node>
+<node id="认证方式">
+  <data key="d0">认证方式</data>
+  <data key="d1">concept</data>
+  <data key="d2">认证方式是API安全机制，说明所有需要认证的接口需要在请求头中添加特定的认证信息。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718621</data>
+  <data key="d6"></data>
+</node>
+<node id="Authorization Bearer Token">
+  <data key="d0">Authorization Bearer Token</data>
+  <data key="d1">data</data>
+  <data key="d2">Authorization Bearer Token是一种JWT令牌，用于API接口的身份认证。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718624</data>
+  <data key="d6"></data>
+</node>
+<node id="异常返回">
+  <data key="d0">异常返回</data>
+  <data key="d1">concept</data>
+  <data key="d2">异常返回是指API接口在发生错误时的标准响应格式和处理规范。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718626</data>
+  <data key="d6"></data>
+</node>
+<node id="异常响应标准结构">
+  <data key="d0">异常响应标准结构</data>
+  <data key="d1">concept</data>
+  <data key="d2">异常响应标准结构是所有异常响应采用的JSON格式规范，包含success、code、message字段。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718629</data>
+  <data key="d6"></data>
+</node>
+<node id="HTTP状态码">
+  <data key="d0">HTTP状态码</data>
+  <data key="d1">concept</data>
+  <data key="d2">HTTP状态码是Web服务返回的标准状态码，用于表示请求的处理结果。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718631</data>
+  <data key="d6"></data>
+</node>
+<node id="错误代码全集">
+  <data key="d0">错误代码全集</data>
+  <data key="d1">data</data>
+  <data key="d2">错误代码全集是系统所有错误代码的完整列表，按模块分类整理。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718633</data>
+  <data key="d6"></data>
+</node>
+<node id="通用错误">
+  <data key="d0">通用错误</data>
+  <data key="d1">concept</data>
+  <data key="d2">通用错误是错误代码分类，包含适用于所有模块的通用错误类型。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718640</data>
+  <data key="d6"></data>
+</node>
+<node id="用户模块">
+  <data key="d0">用户模块</data>
+  <data key="d1">concept</data>
+  <data key="d2">用户模块是电商系统的功能模块，负责处理用户相关的业务逻辑和错误。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718640</data>
+  <data key="d6"></data>
+</node>
+<node id="商品模块">
+  <data key="d0">商品模块</data>
+  <data key="d1">concept</data>
+  <data key="d2">商品模块是电商系统的功能模块，负责处理商品相关的业务逻辑和错误。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718640</data>
+  <data key="d6"></data>
+</node>
+<node id="订单模块">
+  <data key="d0">订单模块</data>
+  <data key="d1">concept</data>
+  <data key="d2">订单模块是电商系统的核心功能模块之一,用于处理用户提交订单、查询订单、支付订单、取消订单以及确认收货等功能。&lt;SEP&gt;订单模块是电商系统的功能模块，负责处理订单相关的业务逻辑和错误。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d&lt;SEP&gt;chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718640</data>
+  <data key="d6"></data>
+</node>
+<node id="支付模块">
+  <data key="d0">支付模块</data>
+  <data key="d1">concept</data>
+  <data key="d2">支付模块是电商系统的功能模块，负责处理支付相关的业务逻辑和错误。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718640</data>
+  <data key="d6"></data>
+</node>
+<node id="用户注册">
+  <data key="d0">用户注册</data>
+  <data key="d1">method</data>
+  <data key="d2">用户注册是用户模块的接口功能，用于创建新用户账户。&lt;SEP&gt;用户注册是创建新用户的API端点，用于添加新用户账号。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d&lt;SEP&gt;chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718640</data>
+  <data key="d6"></data>
+</node>
+<node id="POST /api/users/register">
+  <data key="d0">POST /api/users/register</data>
+  <data key="d1">data</data>
+  <data key="d2">POST /api.users.register是用户注册的API接口端点。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718640</data>
+  <data key="d6"></data>
+</node>
+<node id="请求参数">
+  <data key="d0">请求参数</data>
+  <data key="d1">data</data>
+  <data key="d2">请求参数是API接口调用时需要提供的输入参数。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718640</data>
+  <data key="d6"></data>
+</node>
+<node id="响应示例">
+  <data key="d0">响应示例</data>
+  <data key="d1">content</data>
+  <data key="d2">响应示例展示了API接口返回数据的标准格式和内容。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718640</data>
+  <data key="d6"></data>
+</node>
+<node id="400 Bad Request">
+  <data key="d0">400 Bad Request</data>
+  <data key="d1">data</data>
+  <data key="d2">400 Bad Request是HTTP状态码，表示客户端请求错误，如参数校验失败。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718640</data>
+  <data key="d6"></data>
+</node>
+<node id="401 Unauthorized">
+  <data key="d0">401 Unauthorized</data>
+  <data key="d1">data</data>
+  <data key="d2">401 Unauthorized是HTTP状态码，表示未认证或Token无效。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718655</data>
+  <data key="d6"></data>
+</node>
+<node id="403 Forbidden">
+  <data key="d0">403 Forbidden</data>
+  <data key="d1">data</data>
+  <data key="d2">403 Forbidden是HTTP状态码，表示无权限访问资源。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718655</data>
+  <data key="d6"></data>
+</node>
+<node id="404 Not Found">
+  <data key="d0">404 Not Found</data>
+  <data key="d1">data</data>
+  <data key="d2">404 Not Found是HTTP状态码，表示资源不存在。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718655</data>
+  <data key="d6"></data>
+</node>
+<node id="409 Conflict">
+  <data key="d0">409 Conflict</data>
+  <data key="d1">data</data>
+  <data key="d2">409 Conflict是HTTP状态码，表示资源冲突，如重复创建。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718655</data>
+  <data key="d6"></data>
+</node>
+<node id="422 Unprocessable Entity">
+  <data key="d0">422 Unprocessable Entity</data>
+  <data key="d1">data</data>
+  <data key="d2">422 Unprocessable Entity是HTTP状态码，表示业务逻辑验证失败。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718655</data>
+  <data key="d6"></data>
+</node>
+<node id="429 Too Many Requests">
+  <data key="d0">429 Too Many Requests</data>
+  <data key="d1">data</data>
+  <data key="d2">429 Too Many Requests是HTTP状态码，表示请求过于频繁。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718655</data>
+  <data key="d6"></data>
+</node>
+<node id="500 Internal Server Error">
+  <data key="d0">500 Internal Server Error</data>
+  <data key="d1">data</data>
+  <data key="d2">500 Internal Server Error是HTTP状态码，表示服务器内部错误。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718667</data>
+  <data key="d6"></data>
+</node>
+<node id="503 Service Unavailable">
+  <data key="d0">503 Service Unavailable</data>
+  <data key="d1">data</data>
+  <data key="d2">503 Service Unavailable是HTTP状态码，表示服务暂时不可用。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718667</data>
+  <data key="d6"></data>
+</node>
+<node id="402 Payment Required">
+  <data key="d0">402 Payment Required</data>
+  <data key="d1">data</data>
+  <data key="d2">402 Payment Required是HTTP状态码，用于表示支付请求被接受但需要额外付费才能完成。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718667</data>
+  <data key="d6"></data>
+</node>
+<node id="success">
+  <data key="d0">success</data>
+  <data key="d1">data</data>
+  <data key="d2">success是JSON响应中的布尔字段，用于表示请求是否成功处理。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718667</data>
+  <data key="d6"></data>
+</node>
+<node id="code">
+  <data key="d0">code</data>
+  <data key="d1">data</data>
+  <data key="d2">code是JSON响应中的字符串字段，用于表示错误或成功的具体代码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718667</data>
+  <data key="d6"></data>
+</node>
+<node id="message">
+  <data key="d0">message</data>
+  <data key="d1">data</data>
+  <data key="d2">message是JSON响应中的字符串字段，用于描述请求结果或错误信息。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718694</data>
+  <data key="d6"></data>
+</node>
+<node id="userId">
+  <data key="d0">userId</data>
+  <data key="d1">data</data>
+  <data key="d2">userId是用户注册接口响应中的整数字段，表示新创建用户的唯一标识符。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718694</data>
+  <data key="d6"></data>
+</node>
+<node id="username">
+  <data key="d0">username</data>
+  <data key="d1">data</data>
+  <data key="d2">username是用户注册接口的请求参数和响应字段，表示用户的登录名称。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718694</data>
+  <data key="d6"></data>
+</node>
+<node id="email">
+  <data key="d0">email</data>
+  <data key="d1">data</data>
+  <data key="d2">email是用户注册接口的请求参数，表示用户的电子邮箱地址。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718694</data>
+  <data key="d6"></data>
+</node>
+<node id="password">
+  <data key="d0">password</data>
+  <data key="d1">data</data>
+  <data key="d2">password是用户注册接口的请求参数，用于用户账户的密码设置。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718706</data>
+  <data key="d6"></data>
+</node>
+<node id="confirmPassword">
+  <data key="d0">confirmPassword</data>
+  <data key="d1">data</data>
+  <data key="d2">confirmPassword是用户注册接口的请求参数，用于确认用户密码是否一致。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718706</data>
+  <data key="d6"></data>
+</node>
+<node id="string">
+  <data key="d0">string</data>
+  <data key="d1">concept</data>
+  <data key="d2">string是编程语言中的数据类型，表示字符串类型。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718706</data>
+  <data key="d6"></data>
+</node>
+<node id="boolean">
+  <data key="d0">boolean</data>
+  <data key="d1">concept</data>
+  <data key="d2">boolean是编程语言中的数据类型，表示布尔类型(真/假)。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718730</data>
+  <data key="d6"></data>
+</node>
+<node id="COMMON_0001">
+  <data key="d0">COMMON_0001</data>
+  <data key="d1">data</data>
+  <data key="d2">COMMON_0001是通用错误代码，表示请求参数校验失败，对应400状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718730</data>
+  <data key="d6"></data>
+</node>
+<node id="COMMON_0002">
+  <data key="d0">COMMON_0002</data>
+  <data key="d1">data</data>
+  <data key="d2">COMMON_0002是通用错误代码，表示未提供认证信息，对应401状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718730</data>
+  <data key="d6"></data>
+</node>
+<node id="COMMON_0003">
+  <data key="d0">COMMON_0003</data>
+  <data key="d1">data</data>
+  <data key="d2">COMMON_0003是通用错误代码，表示Token已过期，对应401状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718730</data>
+  <data key="d6"></data>
+</node>
+<node id="COMMON_0004">
+  <data key="d0">COMMON_0004</data>
+  <data key="d1">data</data>
+  <data key="d2">COMMON_0004是通用错误代码，表示Token无效，对应401状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718730</data>
+  <data key="d6"></data>
+</node>
+<node id="COMMON_0005">
+  <data key="d0">COMMON_0005</data>
+  <data key="d1">data</data>
+  <data key="d2">COMMON_0005是通用错误代码，表示权限不足，对应403状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718730</data>
+  <data key="d6"></data>
+</node>
+<node id="COMMON_0006">
+  <data key="d0">COMMON_0006</data>
+  <data key="d1">data</data>
+  <data key="d2">COMMON_0006是通用错误代码，表示资源不存在，对应404状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718730</data>
+  <data key="d6"></data>
+</node>
+<node id="COMMON_0007">
+  <data key="d0">COMMON_0007</data>
+  <data key="d1">data</data>
+  <data key="d2">COMMON_0007是通用错误代码，表示资源已存在，对应409状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718730</data>
+  <data key="d6"></data>
+</node>
+<node id="COMMON_0008">
+  <data key="d0">COMMON_0008</data>
+  <data key="d1">data</data>
+  <data key="d2">COMMON_0008是通用错误代码，表示业务规则校验失败，对应422状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718730</data>
+  <data key="d6"></data>
+</node>
+<node id="COMMON_0009">
+  <data key="d0">COMMON_0009</data>
+  <data key="d1">data</data>
+  <data key="d2">COMMON_0009是通用错误代码，表示请求过于频繁，对应429状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718753</data>
+  <data key="d6"></data>
+</node>
+<node id="COMMON_9999">
+  <data key="d0">COMMON_9999</data>
+  <data key="d1">data</data>
+  <data key="d2">COMMON_9999是通用错误代码，表示系统内部错误，对应500状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718753</data>
+  <data key="d6"></data>
+</node>
+<node id="USER_0001">
+  <data key="d0">USER_0001</data>
+  <data key="d1">data</data>
+  <data key="d2">USER_0001是用户模块错误代码，表示用户名已存在，对应400状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718753</data>
+  <data key="d6"></data>
+</node>
+<node id="USER_0002">
+  <data key="d0">USER_0002</data>
+  <data key="d1">data</data>
+  <data key="d2">USER_0002是用户模块错误代码，表示邮箱已注册，对应400状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718753</data>
+  <data key="d6"></data>
+</node>
+<node id="USER_0003">
+  <data key="d0">USER_0003</data>
+  <data key="d1">data</data>
+  <data key="d2">USER_0003是用户模块错误代码，表示手机号已绑定，对应400状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718753</data>
+  <data key="d6"></data>
+</node>
+<node id="USER_0004">
+  <data key="d0">USER_0004</data>
+  <data key="d1">data</data>
+  <data key="d2">USER_0004是用户模块错误代码，表示用户名或密码错误，对应401状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718753</data>
+  <data key="d6"></data>
+</node>
+<node id="USER_0005">
+  <data key="d0">USER_0005</data>
+  <data key="d1">data</data>
+  <data key="d2">USER_0005是用户模块错误代码，表示账户已被封禁，对应403状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718753</data>
+  <data key="d6"></data>
+</node>
+<node id="USER_0006">
+  <data key="d0">USER_0006</data>
+  <data key="d1">data</data>
+  <data key="d2">USER_0006是用户模块错误代码，表示验证码错误，对应403状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718753</data>
+  <data key="d6"></data>
+</node>
+<node id="USER_0007">
+  <data key="d0">USER_0007</data>
+  <data key="d1">data</data>
+  <data key="d2">USER_0007是用户模块错误代码，表示验证码已过期，对应403状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718753</data>
+  <data key="d6"></data>
+</node>
+<node id="USER_0008">
+  <data key="d0">USER_0008</data>
+  <data key="d1">data</data>
+  <data key="d2">USER_0008是用户模块错误代码，表示验证码发送过于频繁，对应429状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718753</data>
+  <data key="d6"></data>
+</node>
+<node id="PRODUCT_0001">
+  <data key="d0">PRODUCT_0001</data>
+  <data key="d1">data</data>
+  <data key="d2">PRODUCT_0001是商品模块错误代码，表示商品不存在，对应404状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718774</data>
+  <data key="d6"></data>
+</node>
+<node id="PRODUCT_0002">
+  <data key="d0">PRODUCT_0002</data>
+  <data key="d1">data</data>
+  <data key="d2">PRODUCT_0002是商品模块错误代码，表示商品已下架，对应422状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718774</data>
+  <data key="d6"></data>
+</node>
+<node id="PRODUCT_0003">
+  <data key="d0">PRODUCT_0003</data>
+  <data key="d1">data</data>
+  <data key="d2">PRODUCT_0003是商品模块错误代码，表示库存不足，对应422状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718774</data>
+  <data key="d6"></data>
+</node>
+<node id="PRODUCT_0004">
+  <data key="d0">PRODUCT_0004</data>
+  <data key="d1">data</data>
+  <data key="d2">PRODUCT_0004是商品模块错误代码，表示商品禁止购买，对应403状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718774</data>
+  <data key="d6"></data>
+</node>
+<node id="ORDER_0001">
+  <data key="d0">ORDER_0001</data>
+  <data key="d1">data</data>
+  <data key="d2">ORDER_0001是订单模块错误代码，表示订单不存在，对应404状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718774</data>
+  <data key="d6"></data>
+</node>
+<node id="ORDER_0002">
+  <data key="d0">ORDER_0002</data>
+  <data key="d1">data</data>
+  <data key="d2">ORDER_0002是订单模块错误代码，表示订单状态异常，对应422状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718774</data>
+  <data key="d6"></data>
+</node>
+<node id="ORDER_0003">
+  <data key="d0">ORDER_0003</data>
+  <data key="d1">data</data>
+  <data key="d2">ORDER_0003是订单模块错误代码，表示订单不属于当前用户，对应403状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718774</data>
+  <data key="d6"></data>
+</node>
+<node id="ORDER_0004">
+  <data key="d0">ORDER_0004</data>
+  <data key="d1">data</data>
+  <data key="d2">ORDER_0004是订单模块错误代码，表示支付金额不匹配，对应422状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718774</data>
+  <data key="d6"></data>
+</node>
+<node id="ORDER_0005">
+  <data key="d0">ORDER_0005</data>
+  <data key="d1">data</data>
+  <data key="d2">ORDER_0005是订单模块错误代码，表示重复支付，对应409状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718774</data>
+  <data key="d6"></data>
+</node>
+<node id="PAYMENT_0001">
+  <data key="d0">PAYMENT_0001</data>
+  <data key="d1">data</data>
+  <data key="d2">PAYMENT_0001是支付模块错误代码，表示支付方式不支持，对应400状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718792</data>
+  <data key="d6"></data>
+</node>
+<node id="PAYMENT_0002">
+  <data key="d0">PAYMENT_0002</data>
+  <data key="d1">data</data>
+  <data key="d2">PAYMENT_0002是支付模块错误代码，表示支付失败，对应402状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718792</data>
+  <data key="d6"></data>
+</node>
+<node id="PAYMENT_0003">
+  <data key="d0">PAYMENT_0003</data>
+  <data key="d1">data</data>
+  <data key="d2">PAYMENT_0003是支付模块错误代码，表示重复支付请求，对应409状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718792</data>
+  <data key="d6"></data>
+</node>
+<node id="PAYMENT_0004">
+  <data key="d0">PAYMENT_0004</data>
+  <data key="d1">data</data>
+  <data key="d2">PAYMENT_0004是支付模块错误代码，表示支付已超时，对应422状态码。</data>
+  <data key="d3">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718792</data>
+  <data key="d6"></data>
+</node>
+<node id="用户状态">
+  <data key="d0">用户状态</data>
+  <data key="d1">concept</data>
+  <data key="d2">用户状态是一个概念，表示用户的当前账户状态，可为NORMAL或BANNED。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718792</data>
+  <data key="d6"></data>
+</node>
+<node id="status参数">
+  <data key="d0">status参数</data>
+  <data key="d1">data</data>
+  <data key="d2">status参数是用于设置或获取用户状态的请求参数，必填，值可为NORMAL或BANNED。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718792</data>
+  <data key="d6"></data>
+</node>
+<node id="reason参数">
+  <data key="d0">reason参数</data>
+  <data key="d1">data</data>
+  <data key="d2">reason参数是可选参数，用于提供封禁用户的原因。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718792</data>
+  <data key="d6"></data>
+</node>
+<node id="轮播图">
+  <data key="d0">轮播图</data>
+  <data key="d1">content</data>
+  <data key="d2">轮播图是后台管理系统中的内容，用于展示促销或广告信息，包含标题、图片、链接、排序、状态和时间等信息。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718792</data>
+  <data key="d6"></data>
+</node>
+<node id="轮播图列表">
+  <data key="d0">轮播图列表</data>
+  <data key="d1">data</data>
+  <data key="d2">轮播图列表是获取轮播图的数据接口返回结果，包含多个轮播图项。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718810</data>
+  <data key="d6"></data>
+</node>
+<node id="GET /banners">
+  <data key="d0">GET /banners</data>
+  <data key="d1">method</data>
+  <data key="d2">GET /banners是获取轮播图列表的API接口方法。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718810</data>
+  <data key="d6"></data>
+</node>
+<node id="POST /banners">
+  <data key="d0">POST /banners</data>
+  <data key="d1">method</data>
+  <data key="d2">POST /banners是创建轮播图的API接口方法。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718810</data>
+  <data key="d6"></data>
+</node>
+<node id="轮播图字段">
+  <data key="d0">轮播图字段</data>
+  <data key="d1">data</data>
+  <data key="d2">轮播图字段包括title、imageUrl、linkUrl、sort、status、startTime、endTime等属性。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718810</data>
+  <data key="d6"></data>
+</node>
+<node id="推荐位">
+  <data key="d0">推荐位</data>
+  <data key="d1">content</data>
+  <data key="d2">推荐位是后台管理系统中的内容配置，用于展示推荐商品，包含推荐位标识、名称、最大商品数和商品列表。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718810</data>
+  <data key="d6"></data>
+</node>
+<node id="GET /recommends">
+  <data key="d0">GET /recommends</data>
+  <data key="d1">method</data>
+  <data key="d2">GET /recommends是获取推荐位配置的API接口方法。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718810</data>
+  <data key="d6"></data>
+</node>
+<node id="PUT /recommends/{position}">
+  <data key="d0">PUT /recommends/{position}</data>
+  <data key="d1">method</data>
+  <data key="d2">PUT /recommends/{position}是更新指定推荐位的API接口方法。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718827</data>
+  <data key="d6"></data>
+</node>
+<node id="position参数">
+  <data key="d0">position参数</data>
+  <data key="d1">data</data>
+  <data key="d2">position参数是推荐位的标识符，用于指定哪个推荐位，如HOME_HOT。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718827</data>
+  <data key="d6"></data>
+</node>
+<node id="items参数">
+  <data key="d0">items参数</data>
+  <data key="d1">data</data>
+  <data key="d2">items参数是推荐位的商品数组，包含商品ID和排序信息。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718827</data>
+  <data key="d6"></data>
+</node>
+<node id="销售概况">
+  <data key="d0">销售概况</data>
+  <data key="d1">data</data>
+  <data key="d2">销售概况是后台管理系统的统计数据，包含总销售额、订单数、用户数、平均订单金额和销售趋势。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718827</data>
+  <data key="d6"></data>
+</node>
+<node id="GET /stats/sales-overview">
+  <data key="d0">GET /stats/sales-overview</data>
+  <data key="d1">method</data>
+  <data key="d2">GET /stats/sales-overview是获取销售概况的API接口方法。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718827</data>
+  <data key="d6"></data>
+</node>
+<node id="period参数">
+  <data key="d0">period参数</data>
+  <data key="d1">data</data>
+  <data key="d2">period参数是销售统计的查询参数，用于指定统计周期，可选值为day/week/month。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718827</data>
+  <data key="d6"></data>
+</node>
+<node id="商品销售排行">
+  <data key="d0">商品销售排行</data>
+  <data key="d1">data</data>
+  <data key="d2">商品销售排行是后台管理系统的统计数据，展示商品的销售数量和销售金额排名。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718852</data>
+  <data key="d6"></data>
+</node>
+<node id="GET /stats/product-ranking">
+  <data key="d0">GET /stats/product-ranking</data>
+  <data key="d1">method</data>
+  <data key="d2">GET /stats/product-ranking是获取商品销售排行的API接口方法。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718852</data>
+  <data key="d6"></data>
+</node>
+<node id="limit参数">
+  <data key="d0">limit参数</data>
+  <data key="d1">data</data>
+  <data key="d2">limit参数是商品销售排行的查询参数，用于指定返回数量，默认值为10。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718852</data>
+  <data key="d6"></data>
+</node>
+<node id="sortBy参数">
+  <data key="d0">sortBy参数</data>
+  <data key="d1">data</data>
+  <data key="d2">sortBy参数是商品销售排行的查询参数，用于指定排序方式，可选值为sales或amount。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718852</data>
+  <data key="d6"></data>
+</node>
+<node id="NORMAL">
+  <data key="d0">NORMAL</data>
+  <data key="d1">data</data>
+  <data key="d2">NORMAL是用户状态参数的一种可能值，表示用户账户处于正常状态。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718852</data>
+  <data key="d6"></data>
+</node>
+<node id="BANNED">
+  <data key="d0">BANNED</data>
+  <data key="d1">data</data>
+  <data key="d2">BANNED是用户状态参数的一种可能值，表示用户账户已被封禁。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718852</data>
+  <data key="d6"></data>
+</node>
+<node id="封禁原因">
+  <data key="d0">封禁原因</data>
+  <data key="d1">data</data>
+  <data key="d2">封禁原因是用户被封禁的具体原因，在reason参数中记录。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718852</data>
+  <data key="d6"></data>
+</node>
+<node id="统计周期">
+  <data key="d0">统计周期</data>
+  <data key="d1">concept</data>
+  <data key="d2">统计周期是销售统计的时间维度，可分为day(天)、week(周)、month(月)三种。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718852</data>
+  <data key="d6"></data>
+</node>
+<node id="排序方式">
+  <data key="d0">排序方式</data>
+  <data key="d1">concept</data>
+  <data key="d2">排序方式是商品销售排行的排序依据，可选sales(销量)或amount(金额)。</data>
+  <data key="d3">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718852</data>
+  <data key="d6"></data>
+</node>
+<node id="订单00138001">
+  <data key="d0">订单00138001</data>
+  <data key="d1">data</data>
+  <data key="d2">订单00138001是一个已支付订单，状态为PAID，订单金额为5998.00元，包含2部智能手机X。</data>
+  <data key="d3">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718852</data>
+  <data key="d6"></data>
+</node>
+<node id="智能手机X">
+  <data key="d0">智能手机X</data>
+  <data key="d1">artifact</data>
+  <data key="d2">智能手机X是订单中的商品，单价2999.00元，数量2件，总价5998.00元。</data>
+  <data key="d3">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718867</data>
+  <data key="d6"></data>
+</node>
+<node id="张三">
+  <data key="d0">张三</data>
+  <data key="d1">person</data>
+  <data key="d2">张三是订单的收件人，电话13800138000，地址位于北京市朝阳区。&lt;SEP&gt;-张三是收货地址中示例的收货人姓名。</data>
+  <data key="d3">chunk-677dcb5fe37a7f8269860545dd68897f&lt;SEP&gt;chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718867</data>
+  <data key="d6"></data>
+</node>
+<node id="顺丰">
+  <data key="d0">顺丰</data>
+  <data key="d1">organization</data>
+  <data key="d2">顺丰是负责订单配送的物流公司，运单号为SF123456789。</data>
+  <data key="d3">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718867</data>
+  <data key="d6"></data>
+</node>
+<node id="ALIPAY">
+  <data key="d0">ALIPAY</data>
+  <data key="d1">method</data>
+  <data key="d2">ALIPAY是订单的支付方式，交易ID为ALI123456789，支付金额5998.00元。</data>
+  <data key="d3">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718867</data>
+  <data key="d6"></data>
+</node>
+<node id="用户1001">
+  <data key="d0">用户1001</data>
+  <data key="d1">person</data>
+  <data key="d2">用户1001是系统用户，用户名为user123，昵称为测试用户，手机号13800138000，邮箱user@mstest.com，状态为NORMAL。</data>
+  <data key="d3">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718867</data>
+  <data key="d6"></data>
+</node>
+<node id="订单发货API">
+  <data key="d0">订单发货API</data>
+  <data key="d1">method</data>
+  <data key="d2">订单发货API是POST /orders/{orderId}/ship接口，用于处理订单发货操作。</data>
+  <data key="d3">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718867</data>
+  <data key="d6"></data>
+</node>
+<node id="订单备注API">
+  <data key="d0">订单备注API</data>
+  <data key="d1">method</data>
+  <data key="d2">订单备注API是POST /orders/{orderId}/remarks接口，用于添加订单备注。</data>
+  <data key="d3">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718867</data>
+  <data key="d6"></data>
+</node>
+<node id="用户列表API">
+  <data key="d0">用户列表API</data>
+  <data key="d1">method</data>
+  <data key="d2">用户列表API是GET /users接口，用于获取用户列表信息。</data>
+  <data key="d3">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718880</data>
+  <data key="d6"></data>
+</node>
+<node id="用户详情API">
+  <data key="d0">用户详情API</data>
+  <data key="d1">method</data>
+  <data key="d2">用户详情API是GET /users/{userId}接口，用于获取用户详细信息。</data>
+  <data key="d3">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718880</data>
+  <data key="d6"></data>
+</node>
+<node id="用户状态管理API">
+  <data key="d0">用户状态管理API</data>
+  <data key="d1">method</data>
+  <data key="d2">用户状态管理API是PATCH /users/{userId}/status接口，用于封禁或解封用户。</data>
+  <data key="d3">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718880</data>
+  <data key="d6"></data>
+</node>
+<node id="顺丰快递">
+  <data key="d0">顺丰快递</data>
+  <data key="d1">organization</data>
+  <data key="d2">顺丰快递是订单发货API中指定的物流公司，用于配送订单货物。</data>
+  <data key="d3">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718880</data>
+  <data key="d6"></data>
+</node>
+<node id="客户要求周末配送">
+  <data key="d0">客户要求周末配送</data>
+  <data key="d1">content</data>
+  <data key="d2">客户要求周末配送是订单备注API中的备注内容示例。</data>
+  <data key="d3">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718899</data>
+  <data key="d6"></data>
+</node>
+<node id="多次恶意退货">
+  <data key="d0">多次恶意退货</data>
+  <data key="d1">concept</data>
+  <data key="d2">多次恶意退货是用户状态管理API中封禁用户的示例原因。</data>
+  <data key="d3">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718899</data>
+  <data key="d6"></data>
+</node>
+<node id="商品">
+  <data key="d0">商品</data>
+  <data key="d1">concept</data>
+  <data key="d2">商品是电商平台中待销售的物品，具有上下架状态和下架原因等属性。DELETE /products/{productId}接口用于删除商品。更新商品状态接口使用status字段，值为ON_SALE或OFF_SALE。&lt;SEP&gt;商品是系统中的产品数据，包含商品名称、价格和图片等信息。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18&lt;SEP&gt;chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718899</data>
+  <data key="d6"></data>
+</node>
+<node id="商品管理">
+  <data key="d0">商品管理</data>
+  <data key="d1">concept</data>
+  <data key="d2">商品管理是后台管理功能，包括更新商品状态和删除商品(逻辑删除)两个操作。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718899</data>
+  <data key="d6"></data>
+</node>
+<node id="分类">
+  <data key="d0">分类</data>
+  <data key="d1">concept</data>
+  <data key="d2">分类是用于组织商品的层级结构，具有categoryId、name、parentId、icon、sort、status等属性。分类支持树形结构，parentId为0表示一级分类。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718899</data>
+  <data key="d6"></data>
+</node>
+<node id="分类管理">
+  <data key="d0">分类管理</data>
+  <data key="d1">concept</data>
+  <data key="d2">分类管理是后台管理功能，包括获取分类树、创建分类、更新分类、启用/禁用分类等操作。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718923</data>
+  <data key="d6"></data>
+</node>
+<node id="订单">
+  <data key="d0">订单</data>
+  <data key="d1">concept</data>
+  <data key="d2">订单是用户提交购买商品后生成的交易记录,包含订单ID、订单状态、总金额、收货地址、商品列表等详细信息。&lt;SEP&gt;订单是用户购买商品的凭证，具有orderId、userId、username、totalAmount、paymentAmount、status、paymentMethod、createdAt等属性，包含收货人信息。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18&lt;SEP&gt;chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718923</data>
+  <data key="d6"></data>
+</node>
+<node id="订单管理">
+  <data key="d0">订单管理</data>
+  <data key="d1">concept</data>
+  <data key="d2">订单管理是后台管理功能，包括获取订单列表和获取订单详情两个操作，支持按订单号、状态、用户ID、手机号、时间范围查询。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718923</data>
+  <data key="d6"></data>
+</node>
+<node id="删除商品接口">
+  <data key="d0">删除商品接口</data>
+  <data key="d1">method</data>
+  <data key="d2">删除商品接口是DELETE /products/{productId}接口，用于逻辑删除商品。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718923</data>
+  <data key="d6"></data>
+</node>
+<node id="更新商品状态接口">
+  <data key="d0">更新商品状态接口</data>
+  <data key="d1">method</data>
+  <data key="d2">更新商品状态接口用于修改商品的上下架状态，status字段值为ON_SALE或OFF_SALE。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718943</data>
+  <data key="d6"></data>
+</node>
+<node id="获取分类树接口">
+  <data key="d0">获取分类树接口</data>
+  <data key="d1">method</data>
+  <data key="d2">获取分类树接口是GET /categories/tree接口，返回分类的层级树形结构。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718943</data>
+  <data key="d6"></data>
+</node>
+<node id="创建分类接口">
+  <data key="d0">创建分类接口</data>
+  <data key="d1">method</data>
+  <data key="d2">创建分类接口是POST /categories接口，用于创建新的商品分类。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718943</data>
+  <data key="d6"></data>
+</node>
+<node id="更新分类接口">
+  <data key="d0">更新分类接口</data>
+  <data key="d1">method</data>
+  <data key="d2">更新分类接口是PUT /categories/{categoryId}接口，用于更新分类信息。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718943</data>
+  <data key="d6"></data>
+</node>
+<node id="启用禁用分类接口">
+  <data key="d0">启用禁用分类接口</data>
+  <data key="d1">method</data>
+  <data key="d2">启用禁用分类接口是PATCH /categories/{categoryId}/status接口，用于修改分类状态。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718943</data>
+  <data key="d6"></data>
+</node>
+<node id="订单列表接口">
+  <data key="d0">订单列表接口</data>
+  <data key="d1">method</data>
+  <data key="d2">订单列表接口是GET /orders接口，支持分页查询和多种筛选条件。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718943</data>
+  <data key="d6"></data>
+</node>
+<node id="订单详情接口">
+  <data key="d0">订单详情接口</data>
+  <data key="d1">method</data>
+  <data key="d2">订单详情接口是GET /orders/{orderId}接口，返回订单的完整信息。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718953</data>
+  <data key="d6"></data>
+</node>
+<node id="用户">
+  <data key="d0">用户</data>
+  <data key="d1">person</data>
+  <data key="d2">用户是电商平台的购买者，通过userId和username标识，与订单关联。订单中的收货人信息包括张三等。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718953</data>
+  <data key="d6"></data>
+</node>
+<node id="支付信息">
+  <data key="d0">支付信息</data>
+  <data key="d1">concept</data>
+  <data key="d2">支付信息包括支付方式(ALIPAY)、支付金额、交易ID、支付时间等属性，与订单关联。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718953</data>
+  <data key="d6"></data>
+</node>
+<node id="商品状态">
+  <data key="d0">商品状态</data>
+  <data key="d1">concept</data>
+  <data key="d2">商品状态是商品的上下架状态，值为ON_SALE(上架)或OFF_SALE(下架)，下架原因可为“库存不足”。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718953</data>
+  <data key="d6"></data>
+</node>
+<node id="分类状态">
+  <data key="d0">分类状态</data>
+  <data key="d1">concept</data>
+  <data key="d2">分类状态用于控制分类的启用或禁用，值为ENABLED或DISABLED。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718956</data>
+  <data key="d6"></data>
+</node>
+<node id="订单状态">
+  <data key="d0">订单状态</data>
+  <data key="d1">concept</data>
+  <data key="d2">订单状态表示订单的当前状态，示例值为PAID(已支付)。&lt;SEP&gt;订单状态是订单的生命周期状态,包括UNPAID(未支付)、PAID(已支付)、SHIPPED(已发货)、COMPLETED(已完成)等状态。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18&lt;SEP&gt;chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718977</data>
+  <data key="d6"></data>
+</node>
+<node id="status字段">
+  <data key="d0">status字段</data>
+  <data key="d1">data</data>
+  <data key="d2">status字段是商品管理中的字符串类型字段，用于表示商品的上下架状态，值为ON_SALE表示上架，OFF_SALE表示下架。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718977</data>
+  <data key="d6"></data>
+</node>
+<node id="reason字段">
+  <data key="d0">reason字段</data>
+  <data key="d1">data</data>
+  <data key="d2">reason字段是商品管理中的字符串类型字段，用于表示商品下架的原因，示例值为"库存不足"。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718977</data>
+  <data key="d6"></data>
+</node>
+<node id="商品已下架响应">
+  <data key="d0">商品已下架响应</data>
+  <data key="d1">content</data>
+  <data key="d2">商品已下架响应是更新商品状态接口返回的消息内容，表示商品已成功下架。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718977</data>
+  <data key="d6"></data>
+</node>
+<node id="商品已删除响应">
+  <data key="d0">商品已删除响应</data>
+  <data key="d1">content</data>
+  <data key="d2">商品已删除响应是删除商品接口返回的消息内容，表示商品已成功删除。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718977</data>
+  <data key="d6"></data>
+</node>
+<node id="分类创建成功响应">
+  <data key="d0">分类创建成功响应</data>
+  <data key="d1">content</data>
+  <data key="d2">分类创建成功响应是创建分类接口返回的消息内容，包含新创建的分类ID和成功消息。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718977</data>
+  <data key="d6"></data>
+</node>
+<node id="分类更新成功响应">
+  <data key="d0">分类更新成功响应</data>
+  <data key="d1">content</data>
+  <data key="d2">分类更新成功响应是更新分类接口返回的消息内容，表示分类信息已成功更新。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718990</data>
+  <data key="d6"></data>
+</node>
+<node id="分类已禁用响应">
+  <data key="d0">分类已禁用响应</data>
+  <data key="d1">content</data>
+  <data key="d2">分类已禁用响应是启用禁用分类接口返回的消息内容，表示分类已成功禁用。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718990</data>
+  <data key="d6"></data>
+</node>
+<node id="categoryId字段">
+  <data key="d0">categoryId字段</data>
+  <data key="d1">data</data>
+  <data key="d2">categoryId字段是分类的唯一标识符，用于在系统中唯一识别一个分类。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718990</data>
+  <data key="d6"></data>
+</node>
+<node id="parentId字段">
+  <data key="d0">parentId字段</data>
+  <data key="d1">data</data>
+  <data key="d2">parentId字段用于表示分类的父分类ID，值为0表示该分类为一级分类。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718990</data>
+  <data key="d6"></data>
+</node>
+<node id="orderId字段">
+  <data key="d0">orderId字段</data>
+  <data key="d1">data</data>
+  <data key="d2">orderId字段是订单的唯一标识符，用于在系统中唯一识别一个订单，示例值为"20231015123456"。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718990</data>
+  <data key="d6"></data>
+</node>
+<node id="username字段">
+  <data key="d0">username字段</data>
+  <data key="d1">data</data>
+  <data key="d2">username字段是用户的登录名称，用于标识用户身份，示例值为"user123"。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718990</data>
+  <data key="d6"></data>
+</node>
+<node id="totalAmount字段">
+  <data key="d0">totalAmount字段</data>
+  <data key="d1">data</data>
+  <data key="d2">totalAmount字段表示订单的总金额，示例值为5998.00。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718990</data>
+  <data key="d6"></data>
+</node>
+<node id="paymentAmount字段">
+  <data key="d0">paymentAmount字段</data>
+  <data key="d1">data</data>
+  <data key="d2">paymentAmount字段表示订单的实付金额，示例值为5998.00。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718990</data>
+  <data key="d6"></data>
+</node>
+<node id="paymentMethod字段">
+  <data key="d0">paymentMethod字段</data>
+  <data key="d1">data</data>
+  <data key="d2">paymentMethod字段表示订单的支付方式，示例值为ALIPAY(支付宝)。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718990</data>
+  <data key="d6"></data>
+</node>
+<node id="createdAt字段">
+  <data key="d0">createdAt字段</data>
+  <data key="d1">data</data>
+  <data key="d2">createdAt字段表示订单的创建时间，示例值为"2023-10-15T10:30:00Z"。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718990</data>
+  <data key="d6"></data>
+</node>
+<node id="receiver字段">
+  <data key="d0">receiver字段</data>
+  <data key="d1">data</data>
+  <data key="d2">receiver字段表示订单的收货人姓名，示例值为"张三"。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718999</data>
+  <data key="d6"></data>
+</node>
+<node id="address字段">
+  <data key="d0">address字段</data>
+  <data key="d1">data</data>
+  <data key="d2">address字段表示订单的收货地址，示例值为"北京市朝阳区..."。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718999</data>
+  <data key="d6"></data>
+</node>
+<node id="transactionId字段">
+  <data key="d0">transactionId字段</data>
+  <data key="d1">data</data>
+  <data key="d2">transactionId字段表示支付的交易ID，示例值为"ALI123456789"。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718999</data>
+  <data key="d6"></data>
+</node>
+<node id="paidAt字段">
+  <data key="d0">paidAt字段</data>
+  <data key="d1">data</data>
+  <data key="d2">paidAt字段表示订单的支付时间，示例值为"2023-10-15T10:35:00Z"。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718999</data>
+  <data key="d6"></data>
+</node>
+<node id="图标URL">
+  <data key="d0">图标URL</data>
+  <data key="d1">data</data>
+  <data key="d2">图标URL是分类的图标链接地址，示例值为"https://cdn.com/icon1.png"等。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718999</data>
+  <data key="d6"></data>
+</node>
+<node id="排序值">
+  <data key="d0">排序值</data>
+  <data key="d1">data</data>
+  <data key="d2">排序值是用于确定分类显示顺序的数值字段，数值越小越靠前显示。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779718999</data>
+  <data key="d6"></data>
+</node>
+<node id="分页参数">
+  <data key="d0">分页参数</data>
+  <data key="d1">concept</data>
+  <data key="d2">分页参数包括page和pageSize，用于实现商品列表的分页展示功能。&lt;SEP&gt;分页参数是订单列表查询的可选参数，包括page(页码)和pageSize(每页数量)，用于实现分页查询。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18&lt;SEP&gt;chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719022</data>
+  <data key="d6"></data>
+</node>
+<node id="时间查询参数">
+  <data key="d0">时间查询参数</data>
+  <data key="d1">concept</data>
+  <data key="d2">时间查询参数是订单列表查询的可选参数，包括startTime和endTime，用于按时间范围筛选订单。</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719022</data>
+  <data key="d6"></data>
+</node>
+<node id="购物车模块">
+  <data key="d0">购物车模块</data>
+  <data key="d1">concept</data>
+  <data key="d2">购物车模块是电商系统的核心功能模块之一,用于管理用户添加商品到购物车、删除购物车商品以及批量删除购物车商品的功能。</data>
+  <data key="d3">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719022</data>
+  <data key="d6"></data>
+</node>
+<node id="评论模块">
+  <data key="d0">评论模块</data>
+  <data key="d1">concept</data>
+  <data key="d2">评论模块是电商系统的核心功能模块之一,用于处理用户提交商品评论和查询商品评论的功能。</data>
+  <data key="d3">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719022</data>
+  <data key="d6"></data>
+</node>
+<node id="购物车商品">
+  <data key="d0">购物车商品</data>
+  <data key="d1">data</data>
+  <data key="d2">购物车商品是用户添加到购物车中的商品信息,包含商品ID、数量等属性,可进行单个或批量删除操作。</data>
+  <data key="d3">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719022</data>
+  <data key="d6"></data>
+</node>
+<node id="商品评论">
+  <data key="d0">商品评论</data>
+  <data key="d1">data</data>
+  <data key="d2">商品评论是用户对已购商品提交的评分和文字评价,可包含图片,用于其他用户参考商品质量。&lt;SEP&gt;商品评论是用户对商品的评价内容,包含评分、评论文字和可选的图片附件。</data>
+  <data key="d3">chunk-c6682f4c5dd06691e9a765b74339fddb&lt;SEP&gt;chunk-f0d4faef317fd6db66d10756a7a7ae7f</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719022</data>
+  <data key="d6"></data>
+</node>
+<node id="删除购物车商品API">
+  <data key="d0">删除购物车商品API</data>
+  <data key="d1">method</data>
+  <data key="d2">删除购物车商品API是用于从购物车中删除单个商品购物车项的接口,端点为DELETE /api/cart/{cartItemId}。</data>
+  <data key="d3">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719022</data>
+  <data key="d6"></data>
+</node>
+<node id="批量删除购物车商品API">
+  <data key="d0">批量删除购物车商品API</data>
+  <data key="d1">method</data>
+  <data key="d2">批量删除购物车商品API是用于从购物车中批量删除多个商品购物车项的接口,端点为DELETE /api/cart/batch。</data>
+  <data key="d3">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719022</data>
+  <data key="d6"></data>
+</node>
+<node id="提交订单API">
+  <data key="d0">提交订单API</data>
+  <data key="d1">method</data>
+  <data key="d2">提交订单API是用于用户将购物车商品提交生成订单的接口,端点为POST /api/orders。</data>
+  <data key="d3">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719022</data>
+  <data key="d6"></data>
+</node>
+<node id="获取订单列表API">
+  <data key="d0">获取订单列表API</data>
+  <data key="d1">method</data>
+  <data key="d2">获取订单列表API是用于查询用户订单列表的接口,端点为GET /api/orders,支持按状态筛选和分页。</data>
+  <data key="d3">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719022</data>
+  <data key="d6"></data>
+</node>
+<node id="获取订单详情API">
+  <data key="d0">获取订单详情API</data>
+  <data key="d1">method</data>
+  <data key="d2">获取订单详情API是用于查询单个订单详细信息的接口,端点为GET /api/orders/{orderId}。</data>
+  <data key="d3">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719035</data>
+  <data key="d6"></data>
+</node>
+<node id="支付订单API">
+  <data key="d0">支付订单API</data>
+  <data key="d1">method</data>
+  <data key="d2">支付订单API是用于支付订单的接口,端点为POST /api/orders/{orderId}/pay,支持多种支付方式。</data>
+  <data key="d3">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719035</data>
+  <data key="d6"></data>
+</node>
+<node id="取消订单API">
+  <data key="d0">取消订单API</data>
+  <data key="d1">method</data>
+  <data key="d2">取消订单API是用于取消未支付订单的接口,端点为PUT /api/orders/{orderId}/cancel。</data>
+  <data key="d3">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719035</data>
+  <data key="d6"></data>
+</node>
+<node id="确认收货API">
+  <data key="d0">确认收货API</data>
+  <data key="d1">method</data>
+  <data key="d2">确认收货API是用于确认订单已收货完成的接口,端点为PUT /api/orders/{orderId}/complete。</data>
+  <data key="d3">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719035</data>
+  <data key="d6"></data>
+</node>
+<node id="提交评论API">
+  <data key="d0">提交评论API</data>
+  <data key="d1">method</data>
+  <data key="d2">提交评论API是用于用户提交商品评论的接口,端点为POST /api/reviews,可提交评分、文字评价和图片。</data>
+  <data key="d3">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719035</data>
+  <data key="d6"></data>
+</node>
+<node id="获取商品评论API">
+  <data key="d0">获取商品评论API</data>
+  <data key="d1">method</data>
+  <data key="d2">获取商品评论API是一个用于获取特定商品评论的GET接口,支持筛选、分页等查询参数。&lt;SEP&gt;获取商品评论API是用于查询指定商品评论列表的接口,端点为GET /api/products/{productId}/reviews。</data>
+  <data key="d3">chunk-c6682f4c5dd06691e9a765b74339fddb&lt;SEP&gt;chunk-f0d4faef317fd6db66d10756a7a7ae7f</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719046</data>
+  <data key="d6"></data>
+</node>
+<node id="收货地址">
+  <data key="d0">收货地址</data>
+  <data key="d1">data</data>
+  <data key="d2">收货地址是用户提供的收货详细信息，包含省市区和详细地址。&lt;SEP&gt;收货地址是用户下单时需要提供的收货信息,包含收货人姓名、电话和详细收货地址。</data>
+  <data key="d3">chunk-c6682f4c5dd06691e9a765b74339fddb&lt;SEP&gt;chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719046</data>
+  <data key="d6"></data>
+</node>
+<node id="创建商品API">
+  <data key="d0">创建商品API</data>
+  <data key="d1">method</data>
+  <data key="d2">创建商品API是一个用于创建新商品的POST接口,需要提供商品名称、分类ID、价格、库存等必填参数。</data>
+  <data key="d3">chunk-f0d4faef317fd6db66d10756a7a7ae7f</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719046</data>
+  <data key="d6"></data>
+</node>
+<node id="更新商品信息API">
+  <data key="d0">更新商品信息API</data>
+  <data key="d1">method</data>
+  <data key="d2">更新商品信息API是一个用于更新商品信息的PUT接口,所有字段为可选参数。</data>
+  <data key="d3">chunk-f0d4faef317fd6db66d10756a7a7ae7f</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719046</data>
+  <data key="d6"></data>
+</node>
+<node id="商品上下架API">
+  <data key="d0">商品上下架API</data>
+  <data key="d1">method</data>
+  <data key="d2">商品上下架API是一个用于更改商品状态的PATCH接口,可将商品设置为在售或下架状态。</data>
+  <data key="d3">chunk-f0d4faef317fd6db66d10756a7a7ae7f</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719046</data>
+  <data key="d6"></data>
+</node>
+<node id="删除商品API">
+  <data key="d0">删除商品API</data>
+  <data key="d1">method</data>
+  <data key="d2">删除商品API是一个用于删除商品的DELETE接口,采用逻辑删除方式。</data>
+  <data key="d3">chunk-f0d4faef317fd6db66d10756a7a7ae7f</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719046</data>
+  <data key="d6"></data>
+</node>
+<node id="商品列表API">
+  <data key="d0">商品列表API</data>
+  <data key="d1">method</data>
+  <data key="d2">商品列表API是一个用于获取商品列表的GET接口,支持按名称、分类、价格区间等条件筛选。</data>
+  <data key="d3">chunk-f0d4faef317fd6db66d10756a7a7ae7f</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719046</data>
+  <data key="d6"></data>
+</node>
+<node id="商品数据">
+  <data key="d0">商品数据</data>
+  <data key="d1">data</data>
+  <data key="d2">商品数据是指商品管理中的核心数据对象,包含商品ID、名称、价格、库存、销售量、状态、创建时间等信息。</data>
+  <data key="d3">chunk-f0d4faef317fd6db66d10756a7a7ae7f</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719046</data>
+  <data key="d6"></data>
+</node>
+<node id="评论数据">
+  <data key="d0">评论数据</data>
+  <data key="d1">data</data>
+  <data key="d2">评论数据是指商品评论相关的数据对象,包含评论ID、用户ID、用户名、评分、内容、图片、创建时间等信息。</data>
+  <data key="d3">chunk-f0d4faef317fd6db66d10756a7a7ae7f</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719046</data>
+  <data key="d6"></data>
+</node>
+<node id="智能手机">
+  <data key="d0">智能手机</data>
+  <data key="d1">content</data>
+  <data key="d2">智能手机是示例中的商品名称。&lt;SEP&gt;智能手机是在mstest.com电商平台上销售的产品，售价2999元，已有100件销量，评分4.5分，库存50件。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2&lt;SEP&gt;chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719057</data>
+  <data key="d6"></data>
+</node>
+<node id="电子产品">
+  <data key="d0">电子产品</data>
+  <data key="d1">concept</data>
+  <data key="d2">电子产品是示例中的商品分类名称。&lt;SEP&gt;电子产品是一个产品分类，包含智能手机等商品，分类ID为1。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2&lt;SEP&gt;chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719057</data>
+  <data key="d6"></data>
+</node>
+<node id="mstest.com">
+  <data key="d0">mstest.com</data>
+  <data key="d1">organization</data>
+  <data key="d2">mstest.com是一个电商平台，提供商品展示、收藏、购物车等功能服务。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719057</data>
+  <data key="d6"></data>
+</node>
+<node id="商品列表接口">
+  <data key="d0">商品列表接口</data>
+  <data key="d1">method</data>
+  <data key="d2">商品列表接口是GET /api/products API端点，用于获取商品列表，支持分类ID、关键词、价格区间、排序、分页等查询参数。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719057</data>
+  <data key="d6"></data>
+</node>
+<node id="商品详情接口">
+  <data key="d0">商品详情接口</data>
+  <data key="d1">method</data>
+  <data key="d2">商品详情接口是GET /api/products/{productId} API端点，用于获取特定商品的详细信息。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719057</data>
+  <data key="d6"></data>
+</node>
+<node id="商品收藏接口">
+  <data key="d0">商品收藏接口</data>
+  <data key="d1">method</data>
+  <data key="d2">商品收藏接口包括POST收藏、DELETE取消收藏、GET收藏列表三个API端点，用于管理用户对商品的收藏操作。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719057</data>
+  <data key="d6"></data>
+</node>
+<node id="购物车接口">
+  <data key="d0">购物车接口</data>
+  <data key="d1">method</data>
+  <data key="d2">购物车接口包括加入购物车、获取购物车列表、修改购物车商品、删除购物车商品、批量删除等API端点。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719057</data>
+  <data key="d6"></data>
+</node>
+<node id="分类查询参数">
+  <data key="d0">分类查询参数</data>
+  <data key="d1">data</data>
+  <data key="d2">分类查询参数是用于筛选商品的categoryId参数，属于可选查询条件。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719057</data>
+  <data key="d6"></data>
+</node>
+<node id="关键词搜索参数">
+  <data key="d0">关键词搜索参数</data>
+  <data key="d1">data</data>
+  <data key="d2">关键词搜索参数是用于按关键词搜索商品的keyword参数，属于可选查询条件。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719065</data>
+  <data key="d6"></data>
+</node>
+<node id="价格区间参数">
+  <data key="d0">价格区间参数</data>
+  <data key="d1">data</data>
+  <data key="d2">价格区间参数包括minPrice和maxPrice，用于筛选指定价格范围内的商品。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719065</data>
+  <data key="d6"></data>
+</node>
+<node id="排序参数">
+  <data key="d0">排序参数</data>
+  <data key="d1">data</data>
+  <data key="d2">排序参数是用于指定商品排序方式的sort参数，如price_asc表示按价格升序排列。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719065</data>
+  <data key="d6"></data>
+</node>
+<node id="库存数据">
+  <data key="d0">库存数据</data>
+  <data key="d1">data</data>
+  <data key="d2">库存数据表示商品的库存数量，是商品的重要属性，智能手机库存为50件。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719065</data>
+  <data key="d6"></data>
+</node>
+<node id="购物车数量">
+  <data key="d0">购物车数量</data>
+  <data key="d1">data</data>
+  <data key="d2">购物车数量表示用户添加到购物车的商品数量，是购物车的基本属性。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719065</data>
+  <data key="d6"></data>
+</node>
+<node id="商品评分">
+  <data key="d0">商品评分</data>
+  <data key="d1">data</data>
+  <data key="d2">商品评分是用户对商品的评价指标，智能手机评分为4.5分。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719065</data>
+  <data key="d6"></data>
+</node>
+<node id="收藏功能">
+  <data key="d0">收藏功能</data>
+  <data key="d1">concept</data>
+  <data key="d2">收藏功能是电商平台的用户功能模块，允许用户收藏喜欢的商品。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719065</data>
+  <data key="d6"></data>
+</node>
+<node id="购物车功能">
+  <data key="d0">购物车功能</data>
+  <data key="d1">concept</data>
+  <data key="d2">购物车功能是电商平台的核心功能模块，允许用户临时存放待购买的商品。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719078</data>
+  <data key="d6"></data>
+</node>
+<node id="productId">
+  <data key="d0">productId</data>
+  <data key="d1">data</data>
+  <data key="d2">productId是商品的唯一标识符，用于在系统中区分不同商品。示例值为1。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719078</data>
+  <data key="d6"></data>
+</node>
+<node id="价格2999元">
+  <data key="d0">价格2999元</data>
+  <data key="d1">data</data>
+  <data key="d2">价格2999元是智能手机商品的定价，属于商品的属性数据。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719078</data>
+  <data key="d6"></data>
+</node>
+<node id="屏幕尺寸6.5英寸">
+  <data key="d0">屏幕尺寸6.5英寸</data>
+  <data key="d1">data</data>
+  <data key="d2">屏幕尺寸6.5英寸是智能手机的技术规格属性。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719078</data>
+  <data key="d6"></data>
+</node>
+<node id="评论数量100">
+  <data key="d0">评论数量100</data>
+  <data key="d1">data</data>
+  <data key="d2">评论数量100是指商品收到的用户评论总数，是商品评分相关的数据。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719078</data>
+  <data key="d6"></data>
+</node>
+<node id="销售数量100">
+  <data key="d0">销售数量100</data>
+  <data key="d1">data</data>
+  <data key="d2">销售数量100是指商品的已售出数量，反映商品的销量数据。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719078</data>
+  <data key="d6"></data>
+</node>
+<node id="商品图片URL">
+  <data key="d0">商品图片URL</data>
+  <data key="d1">data</data>
+  <data key="d2">商品图片URL是展示商品图片的网络地址，示例为https://mstest.com/product1.jpg。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719085</data>
+  <data key="d6"></data>
+</node>
+<node id="购物车商品状态">
+  <data key="d0">购物车商品状态</data>
+  <data key="d1">data</data>
+  <data key="d2">购物车商品状态表示购物车中商品的状态，示例为NORMAL。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719085</data>
+  <data key="d6"></data>
+</node>
+<node id="商品规格">
+  <data key="d0">商品规格</data>
+  <data key="d1">concept</data>
+  <data key="d2">商品规格是商品详情中包含的技术参数列表，如屏幕尺寸等属性信息。</data>
+  <data key="d3">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719085</data>
+  <data key="d6"></data>
+</node>
+<node id="用户登录">
+  <data key="d0">用户登录</data>
+  <data key="d1">method</data>
+  <data key="d2">用户登录是一个API端点，用于验证用户凭据并返回认证令牌。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719085</data>
+  <data key="d6"></data>
+</node>
+<node id="获取用户信息">
+  <data key="d0">获取用户信息</data>
+  <data key="d1">method</data>
+  <data key="d2">获取用户信息是一个API端点，用于根据用户ID获取用户的详细信息。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719093</data>
+  <data key="d6"></data>
+</node>
+<node id="修改用户信息">
+  <data key="d0">修改用户信息</data>
+  <data key="d1">method</data>
+  <data key="d2">修改用户信息是一个API端点，用于更新用户的基本信息如昵称、头像、手机号和性别。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719093</data>
+  <data key="d6"></data>
+</node>
+<node id="收货地址管理">
+  <data key="d0">收货地址管理</data>
+  <data key="d1">concept</data>
+  <data key="d2">收货地址管理是一个功能模块，包含获取、添加、修改和删除收货地址的API端点。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719093</data>
+  <data key="d6"></data>
+</node>
+<node id="获取地址列表">
+  <data key="d0">获取地址列表</data>
+  <data key="d1">method</data>
+  <data key="d2">获取地址列表是一个API端点，用于获取用户的所有收货地址。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719093</data>
+  <data key="d6"></data>
+</node>
+<node id="添加地址">
+  <data key="d0">添加地址</data>
+  <data key="d1">method</data>
+  <data key="d2">添加地址是一个API端点，用于为用户添加新的收货地址。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719100</data>
+  <data key="d6"></data>
+</node>
+<node id="修改地址">
+  <data key="d0">修改地址</data>
+  <data key="d1">method</data>
+  <data key="d2">修改地址是一个API端点，用于更新用户指定的收货地址信息。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719100</data>
+  <data key="d6"></data>
+</node>
+<node id="删除地址">
+  <data key="d0">删除地址</data>
+  <data key="d1">method</data>
+  <data key="d2">删除地址是一个API端点，用于删除用户指定的收货地址。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719100</data>
+  <data key="d6"></data>
+</node>
+<node id="首页商品展示">
+  <data key="d0">首页商品展示</data>
+  <data key="d1">method</data>
+  <data key="d2">首页商品展示是一个API端点，用于获取首页的商品展示数据，包括横幅广告、商品分类和推荐商品。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719100</data>
+  <data key="d6"></data>
+</node>
+<node id="UserId">
+  <data key="d0">UserId</data>
+  <data key="d1">data</data>
+  <data key="d2">UserId是用户数据表中的主键字段，用于唯一标识一个用户。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719114</data>
+  <data key="d6"></data>
+</node>
+<node id="Username">
+  <data key="d0">Username</data>
+  <data key="d1">data</data>
+  <data key="d2">Username是用户数据表中的用户名字段，用于用户登录和显示。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719114</data>
+  <data key="d6"></data>
+</node>
+<node id="Email">
+  <data key="d0">Email</data>
+  <data key="d1">data</data>
+  <data key="d2">Email是用户数据表中的邮箱字段，用于用户联系和验证。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719114</data>
+  <data key="d6"></data>
+</node>
+<node id="Password">
+  <data key="d0">Password</data>
+  <data key="d1">data</data>
+  <data key="d2">Password是用户登录的密码字段，用于验证用户身份。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719114</data>
+  <data key="d6"></data>
+</node>
+<node id="手机号">
+  <data key="d0">手机号</data>
+  <data key="d1">data</data>
+  <data key="d2">手机号是用户的联系电话字段，用于收货联系和用户验证。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719114</data>
+  <data key="d6"></data>
+</node>
+<node id="收货人">
+  <data key="d0">收货人</data>
+  <data key="d1">data</data>
+  <data key="d2">收货人是收货地址中的收货人姓名字段。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719114</data>
+  <data key="d6"></data>
+</node>
+<node id="商品分类">
+  <data key="d0">商品分类</data>
+  <data key="d1">data</data>
+  <data key="d2">商品分类是商品的类别数据，用于对商品进行分类展示。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719114</data>
+  <data key="d6"></data>
+</node>
+<node id="横幅广告">
+  <data key="d0">横幅广告</data>
+  <data key="d1">data</data>
+  <data key="d2">横幅广告是首页展示的推广图片，包含图片URL和链接URL。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719114</data>
+  <data key="d6"></data>
+</node>
+<node id="推荐商品">
+  <data key="d0">推荐商品</data>
+  <data key="d1">data</data>
+  <data key="d2">推荐商品是首页展示的推荐商品列表，包含商品ID、名称、价格和图片。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719127</data>
+  <data key="d6"></data>
+</node>
+<node id="user123">
+  <data key="d0">user123</data>
+  <data key="d1">content</data>
+  <data key="d2">user123是示例中的用户名。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719127</data>
+  <data key="d6"></data>
+</node>
+<node id="北京市朝阳区">
+  <data key="d0">北京市朝阳区</data>
+  <data key="d1">location</data>
+  <data key="d2">北京市朝阳区是示例中的省市区地址。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719127</data>
+  <data key="d6"></data>
+</node>
+<node id="建国路88号">
+  <data key="d0">建国路88号</data>
+  <data key="d1">location</data>
+  <data key="d2">建国路88号是示例中的详细地址。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719127</data>
+  <data key="d6"></data>
+</node>
+<node id="Token">
+  <data key="d0">Token</data>
+  <data key="d1">data</data>
+  <data key="d2">Token是用户登录成功后返回的认证令牌，用于后续接口的身份验证。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719127</data>
+  <data key="d6"></data>
+</node>
+<node id="确认密码">
+  <data key="d0">确认密码</data>
+  <data key="d1">data</data>
+  <data key="d2">确认密码是用户注册时的密码确认字段，必须与密码字段一致。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719127</data>
+  <data key="d6"></data>
+</node>
+<node id="账户">
+  <data key="d0">账户</data>
+  <data key="d1">data</data>
+  <data key="d2">账户是用户登录接口的请求参数，可以是用户名或邮箱。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719127</data>
+  <data key="d6"></data>
+</node>
+<node id="昵称">
+  <data key="d0">昵称</data>
+  <data key="d1">data</data>
+  <data key="d2">昵称是用户的基本信息字段，最大20个字符，用于用户个性化显示。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719127</data>
+  <data key="d6"></data>
+</node>
+<node id="头像">
+  <data key="d0">头像</data>
+  <data key="d1">data</data>
+  <data key="d2">头像是用户的头像图片URL，用于展示用户形象。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719127</data>
+  <data key="d6"></data>
+</node>
+<node id="性别">
+  <data key="d0">性别</data>
+  <data key="d1">data</data>
+  <data key="d2">性别是用户的基本信息字段，可选值为MALE、FEMALE或SECRET。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719127</data>
+  <data key="d6"></data>
+</node>
+<node id="状态">
+  <data key="d0">状态</data>
+  <data key="d1">data</data>
+  <data key="d2">状态是用户的账号状态字段，示例值为NORMAL。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719142</data>
+  <data key="d6"></data>
+</node>
+<node id="创建时间">
+  <data key="d0">创建时间</data>
+  <data key="d1">data</data>
+  <data key="d2">创建时间是用户账号的创建时间字段，格式为ISO 8601时间戳。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719142</data>
+  <data key="d6"></data>
+</node>
+<node id="地址ID">
+  <data key="d0">地址ID</data>
+  <data key="d1">data</data>
+  <data key="d2">地址ID是收货地址的唯一标识符，用于区分不同的收货地址。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719142</data>
+  <data key="d6"></data>
+</node>
+<node id="是否默认">
+  <data key="d0">是否默认</data>
+  <data key="d1">data</data>
+  <data key="d2">是否默认是收货地址的标记字段，用于标识是否为用户的默认收货地址。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719142</data>
+  <data key="d6"></data>
+</node>
+<node id="图片链接">
+  <data key="d0">图片链接</data>
+  <data key="d1">data</data>
+  <data key="d2">图片链接是商品或横幅广告的图片URL地址。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719142</data>
+  <data key="d6"></data>
+</node>
+<node id="链接地址">
+  <data key="d0">链接地址</data>
+  <data key="d1">data</data>
+  <data key="d2">链接地址是横幅广告点击后跳转的目标URL地址。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719142</data>
+  <data key="d6"></data>
+</node>
+<node id="分类ID">
+  <data key="d0">分类ID</data>
+  <data key="d1">data</data>
+  <data key="d2">分类ID是商品分类的唯一标识符。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719142</data>
+  <data key="d6"></data>
+</node>
+<node id="图标">
+  <data key="d0">图标</data>
+  <data key="d1">data</data>
+  <data key="d2">图标是商品分类的图标图片URL。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719142</data>
+  <data key="d6"></data>
+</node>
+<node id="商品ID">
+  <data key="d0">商品ID</data>
+  <data key="d1">data</data>
+  <data key="d2">商品ID是商品的唯一标识符。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719142</data>
+  <data key="d6"></data>
+</node>
+<node id="价格">
+  <data key="d0">价格</data>
+  <data key="d1">data</data>
+  <data key="d2">价格是商品的售价字段。</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719149</data>
+  <data key="d6"></data>
+</node>
+<node id="phone字段">
+  <data key="d0">phone字段</data>
+  <data key="d3">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d2">订单列表接口返回收货人手机号。</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719405</data>
+  <data key="d6"></data>
+</node>
+<node id="地区">
+  <data key="d0">地区</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d2">获取地址列表返回收货地址的地区信息。</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719654</data>
+  <data key="d6"></data>
+</node>
+<node id="详细地址">
+  <data key="d0">详细地址</data>
+  <data key="d3">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d2">添加地址接口需要提供详细地址。</data>
+  <data key="d1">UNKNOWN</data>
+  <data key="d4">电商系统API接口文档.md</data>
+  <data key="d5">1779719674</data>
+  <data key="d6"></data>
+</node>
+<edge source="电商系统API接口文档" target="v1.0">
+  <data key="d7">1.0</data>
+  <data key="d8">v1.0是电商系统API接口文档的当前版本。</data>
+  <data key="d9">文档结构,版本信息</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719160</data>
+  <data key="d13"></data>
+</edge>
+<edge source="电商系统API接口文档" target="2022-08-15">
+  <data key="d7">1.0</data>
+  <data key="d8">2022-08-15是电商系统API接口文档的最后更新时间。</data>
+  <data key="d9">文档时间,更新记录</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719166</data>
+  <data key="d13"></data>
+</edge>
+<edge source="电商系统API接口文档" target="认证方式">
+  <data key="d7">1.0</data>
+  <data key="d8">认证方式是电商系统API接口文档中说明的安全验证机制。</data>
+  <data key="d9">技术规范,文档内容</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719176</data>
+  <data key="d13"></data>
+</edge>
+<edge source="电商系统API接口文档" target="异常返回">
+  <data key="d7">1.0</data>
+  <data key="d8">异常返回是电商系统API接口文档的重要章节，详细描述了错误响应规范。</data>
+  <data key="d9">文档章节,错误处理</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719182</data>
+  <data key="d13"></data>
+</edge>
+<edge source="认证方式" target="Authorization Bearer Token">
+  <data key="d7">1.0</data>
+  <data key="d8">Authorization Bearer Token是认证方式中使用的具体JWT令牌实现。</data>
+  <data key="d9">安全验证,认证机制</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719160</data>
+  <data key="d13"></data>
+</edge>
+<edge source="异常返回" target="异常响应标准结构">
+  <data key="d7">1.0</data>
+  <data key="d8">异常响应标准结构定义了异常返回的统一JSON格式。</data>
+  <data key="d9">数据规范,错误格式</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719189</data>
+  <data key="d13"></data>
+</edge>
+<edge source="异常返回" target="HTTP状态码">
+  <data key="d7">1.0</data>
+  <data key="d8">HTTP状态码是异常返回中使用的标准状态指示机制。</data>
+  <data key="d9">状态指示,错误分类</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719193</data>
+  <data key="d13"></data>
+</edge>
+<edge source="异常返回" target="错误代码全集">
+  <data key="d7">1.0</data>
+  <data key="d8">错误代码全集列出了异常返回中使用的所有错误代码。</data>
+  <data key="d9">代码规范,错误管理</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719197</data>
+  <data key="d13"></data>
+</edge>
+<edge source="异常响应标准结构" target="success">
+  <data key="d7">1.0</data>
+  <data key="d8">success是异常响应标准结构中的一个字段，表示请求处理结果。</data>
+  <data key="d9">响应字段,数据格式</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719193</data>
+  <data key="d13"></data>
+</edge>
+<edge source="异常响应标准结构" target="code">
+  <data key="d7">1.0</data>
+  <data key="d8">code是异常响应标准结构中的一个字段，用于传递错误或状态代码。</data>
+  <data key="d9">响应字段,错误代码</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719199</data>
+  <data key="d13"></data>
+</edge>
+<edge source="异常响应标准结构" target="message">
+  <data key="d7">1.0</data>
+  <data key="d8">message是异常响应标准结构中的一个字段，用于描述具体信息。</data>
+  <data key="d9">信息描述,响应字段</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719203</data>
+  <data key="d13"></data>
+</edge>
+<edge source="异常响应标准结构" target="COMMON_0001">
+  <data key="d7">1.0</data>
+  <data key="d8">COMMON_0001是异常响应标准结构中code字段的一个具体值。</data>
+  <data key="d9">具体示例,错误代码应用</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719205</data>
+  <data key="d13"></data>
+</edge>
+<edge source="HTTP状态码" target="402 Payment Required">
+  <data key="d7">1.0</data>
+  <data key="d8">402 Payment Required是HTTP状态码的一种，用于支付场景。</data>
+  <data key="d9">支付相关,状态码定义</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719220</data>
+  <data key="d13"></data>
+</edge>
+<edge source="错误代码全集" target="通用错误">
+  <data key="d7">1.0</data>
+  <data key="d8">通用错误是错误代码全集中的一个分类，包含通用错误代码。</data>
+  <data key="d9">模块划分,错误分类</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719160</data>
+  <data key="d13"></data>
+</edge>
+<edge source="错误代码全集" target="用户模块">
+  <data key="d7">1.0</data>
+  <data key="d8">用户模块的错误代码属于错误代码全集的一部分。</data>
+  <data key="d9">模块划分,错误分类</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719167</data>
+  <data key="d13"></data>
+</edge>
+<edge source="错误代码全集" target="商品模块">
+  <data key="d7">1.0</data>
+  <data key="d8">商品模块的错误代码属于错误代码全集的一部分。</data>
+  <data key="d9">模块划分,错误分类</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719176</data>
+  <data key="d13"></data>
+</edge>
+<edge source="错误代码全集" target="订单模块">
+  <data key="d7">1.0</data>
+  <data key="d8">订单模块的错误代码属于错误代码全集的一部分。</data>
+  <data key="d9">模块划分,错误分类</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719181</data>
+  <data key="d13"></data>
+</edge>
+<edge source="错误代码全集" target="支付模块">
+  <data key="d7">1.0</data>
+  <data key="d8">支付模块的错误代码属于错误代码全集的一部分。</data>
+  <data key="d9">模块划分,错误分类</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719186</data>
+  <data key="d13"></data>
+</edge>
+<edge source="通用错误" target="COMMON_0002">
+  <data key="d7">1.0</data>
+  <data key="d8">COMMON_0002属于通用错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719176</data>
+  <data key="d13"></data>
+</edge>
+<edge source="通用错误" target="COMMON_0003">
+  <data key="d7">1.0</data>
+  <data key="d8">COMMON_0003属于通用错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719182</data>
+  <data key="d13"></data>
+</edge>
+<edge source="通用错误" target="COMMON_0004">
+  <data key="d7">1.0</data>
+  <data key="d8">COMMON_0004属于通用错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719189</data>
+  <data key="d13"></data>
+</edge>
+<edge source="通用错误" target="COMMON_0005">
+  <data key="d7">1.0</data>
+  <data key="d8">COMMON_0005属于通用错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719256</data>
+  <data key="d13"></data>
+</edge>
+<edge source="通用错误" target="COMMON_0006">
+  <data key="d7">1.0</data>
+  <data key="d8">COMMON_0006属于通用错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719262</data>
+  <data key="d13"></data>
+</edge>
+<edge source="通用错误" target="COMMON_0007">
+  <data key="d7">1.0</data>
+  <data key="d8">COMMON_0007属于通用错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719285</data>
+  <data key="d13"></data>
+</edge>
+<edge source="通用错误" target="COMMON_0008">
+  <data key="d7">1.0</data>
+  <data key="d8">COMMON_0008属于通用错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719291</data>
+  <data key="d13"></data>
+</edge>
+<edge source="通用错误" target="COMMON_9999">
+  <data key="d7">1.0</data>
+  <data key="d8">COMMON_9999属于通用错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719300</data>
+  <data key="d13"></data>
+</edge>
+<edge source="通用错误" target="COMMON_0001">
+  <data key="d7">1.0</data>
+  <data key="d8">COMMON_0001属于通用错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719312</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户模块" target="用户注册">
+  <data key="d7">1.0</data>
+  <data key="d8">用户注册是用户模块中的一个具体功能接口。</data>
+  <data key="d9">业务逻辑,功能接口</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719196</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户模块" target="USER_0001">
+  <data key="d7">1.0</data>
+  <data key="d8">USER_0001属于用户模块错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719201</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户模块" target="USER_0002">
+  <data key="d7">1.0</data>
+  <data key="d8">USER_0002属于用户模块错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719206</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户模块" target="USER_0003">
+  <data key="d7">1.0</data>
+  <data key="d8">USER_0003属于用户模块错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719210</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户模块" target="USER_0004">
+  <data key="d7">1.0</data>
+  <data key="d8">USER_0004属于用户模块错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719217</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户模块" target="USER_0005">
+  <data key="d7">1.0</data>
+  <data key="d8">USER_0005属于用户模块错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719231</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户模块" target="USER_0006">
+  <data key="d7">1.0</data>
+  <data key="d8">USER_0006属于用户模块错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719240</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户模块" target="USER_0007">
+  <data key="d7">1.0</data>
+  <data key="d8">USER_0007属于用户模块错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719249</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户模块" target="USER_0008">
+  <data key="d7">1.0</data>
+  <data key="d8">USER_0008属于用户模块错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719255</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品模块" target="PRODUCT_0001">
+  <data key="d7">1.0</data>
+  <data key="d8">PRODUCT_0001属于商品模块错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719201</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品模块" target="PRODUCT_0002">
+  <data key="d7">1.0</data>
+  <data key="d8">PRODUCT_0002属于商品模块错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719206</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品模块" target="PRODUCT_0003">
+  <data key="d7">1.0</data>
+  <data key="d8">PRODUCT_0003属于商品模块错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719212</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品模块" target="PRODUCT_0004">
+  <data key="d7">1.0</data>
+  <data key="d8">PRODUCT_0004属于商品模块错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719219</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单模块" target="ORDER_0001">
+  <data key="d7">1.0</data>
+  <data key="d8">ORDER_0001属于订单模块错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719206</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单模块" target="ORDER_0002">
+  <data key="d7">1.0</data>
+  <data key="d8">ORDER_0002属于订单模块错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719212</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单模块" target="ORDER_0003">
+  <data key="d7">1.0</data>
+  <data key="d8">ORDER_0003属于订单模块错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719219</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单模块" target="ORDER_0004">
+  <data key="d7">1.0</data>
+  <data key="d8">ORDER_0004属于订单模块错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719230</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单模块" target="ORDER_0005">
+  <data key="d7">1.0</data>
+  <data key="d8">ORDER_0005属于订单模块错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719239</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单模块" target="订单">
+  <data key="d7">1.0</data>
+  <data key="d8">订单模块负责处理订单的完整生命周期,包括订单创建、状态更新、支付、取消和确认收货。</data>
+  <data key="d9">交易流程,订单处理</data>
+  <data key="d10">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719398</data>
+  <data key="d13"></data>
+</edge>
+<edge source="支付模块" target="PAYMENT_0001">
+  <data key="d7">1.0</data>
+  <data key="d8">PAYMENT_0001属于支付模块错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719212</data>
+  <data key="d13"></data>
+</edge>
+<edge source="支付模块" target="PAYMENT_0002">
+  <data key="d7">1.0</data>
+  <data key="d8">PAYMENT_0002属于支付模块错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719219</data>
+  <data key="d13"></data>
+</edge>
+<edge source="支付模块" target="PAYMENT_0003">
+  <data key="d7">1.0</data>
+  <data key="d8">PAYMENT_0003属于支付模块错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719228</data>
+  <data key="d13"></data>
+</edge>
+<edge source="支付模块" target="PAYMENT_0004">
+  <data key="d7">1.0</data>
+  <data key="d8">PAYMENT_0004属于支付模块错误分类。</data>
+  <data key="d9">模块分类,错误代码归属</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719235</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户注册" target="POST /api/users/register">
+  <data key="d7">1.0</data>
+  <data key="d8">POST /api.users.register是用户注册接口的具体API端点。</data>
+  <data key="d9">API端点,接口地址</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719160</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户注册" target="username">
+  <data key="d7">1.0</data>
+  <data key="d8">username是用户注册接口的请求参数之一，用于输入用户名。</data>
+  <data key="d9">用户标识,请求参数</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719169</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户注册" target="email">
+  <data key="d7">1.0</data>
+  <data key="d8">email是用户注册接口的请求参数之一，用于输入邮箱地址。</data>
+  <data key="d9">联系方式,请求参数</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719173</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户注册" target="password">
+  <data key="d7">1.0</data>
+  <data key="d8">password是用户注册接口的请求参数之一，用于设置账户密码。</data>
+  <data key="d9">安全认证,请求参数</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719182</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户注册" target="confirmPassword">
+  <data key="d7">1.0</data>
+  <data key="d8">confirmPassword是用户注册接口的请求参数，用于确认密码。</data>
+  <data key="d9">安全验证,请求参数</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719187</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户注册" target="userId">
+  <data key="d7">1.0</data>
+  <data key="d8">userId是用户注册接口响应中的字段，表示系统分配的用户ID。</data>
+  <data key="d9">响应参数,用户标识</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719191</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户注册" target="Username">
+  <data key="d7">1.0</data>
+  <data key="d8">用户注册时需要提供用户名user123作为示例。</data>
+  <data key="d9">数据创建,用户名称</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719571</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户注册" target="Email">
+  <data key="d7">1.0</data>
+  <data key="d8">用户注册时需要提供有效邮箱格式作为验证。</data>
+  <data key="d9">数据创建,邮箱验证</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719614</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户注册" target="Password">
+  <data key="d7">1.0</data>
+  <data key="d8">用户注册时需要设置密码，至少6位字符。</data>
+  <data key="d9">数据创建,身份验证</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719634</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户注册" target="确认密码">
+  <data key="d7">1.0</data>
+  <data key="d8">用户注册时需要确认密码，必须与password一致。</data>
+  <data key="d9">密码确认,数据验证</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719658</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户注册" target="UserId">
+  <data key="d7">1.0</data>
+  <data key="d8">用户注册成功后系统分配唯一的UserId。</data>
+  <data key="d9">数据创建,用户标识</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719670</data>
+  <data key="d13"></data>
+</edge>
+<edge source="POST /api/users/register" target="请求参数">
+  <data key="d7">1.0</data>
+  <data key="d8">请求参数定义了用户注册接口需要接收的输入数据。</data>
+  <data key="d9">接口输入,数据规范</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719169</data>
+  <data key="d13"></data>
+</edge>
+<edge source="POST /api/users/register" target="响应示例">
+  <data key="d7">1.0</data>
+  <data key="d8">响应示例展示了用户注册接口的返回数据结构。</data>
+  <data key="d9">接口输出,数据格式</data>
+  <data key="d10">chunk-315944f454bfdc133f2b833baf92761d</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719173</data>
+  <data key="d13"></data>
+</edge>
+<edge source="轮播图" target="POST /banners">
+  <data key="d7">1.0</data>
+  <data key="d8">POST /banners接口用于创建新的轮播图内容。</data>
+  <data key="d9">API操作,内容创建</data>
+  <data key="d10">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719226</data>
+  <data key="d13"></data>
+</edge>
+<edge source="轮播图" target="GET /banners">
+  <data key="d7">1.0</data>
+  <data key="d8">GET /banners接口用于获取轮播图列表数据。</data>
+  <data key="d9">API操作,内容获取</data>
+  <data key="d10">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719231</data>
+  <data key="d13"></data>
+</edge>
+<edge source="轮播图" target="轮播图字段">
+  <data key="d7">1.0</data>
+  <data key="d8">轮播图包含title、imageUrl、linkUrl、sort、status、startTime、endTime等字段。</data>
+  <data key="d9">属性定义,数据结构</data>
+  <data key="d10">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719237</data>
+  <data key="d13"></data>
+</edge>
+<edge source="轮播图列表" target="GET /banners">
+  <data key="d7">1.0</data>
+  <data key="d8">GET /banners接口返回轮播图列表数据。</data>
+  <data key="d9">数据查询,返回结果</data>
+  <data key="d10">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719237</data>
+  <data key="d13"></data>
+</edge>
+<edge source="推荐位" target="GET /recommends">
+  <data key="d7">1.0</data>
+  <data key="d8">GET /recommends接口用于获取推荐位配置信息。</data>
+  <data key="d9">API操作,内容获取</data>
+  <data key="d10">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719231</data>
+  <data key="d13"></data>
+</edge>
+<edge source="推荐位" target="PUT /recommends/{position}">
+  <data key="d7">1.0</data>
+  <data key="d8">PUT /recommends/{position}接口用于更新指定推荐位的商品列表。</data>
+  <data key="d9">API操作,内容更新</data>
+  <data key="d10">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719239</data>
+  <data key="d13"></data>
+</edge>
+<edge source="推荐位" target="position参数">
+  <data key="d7">1.0</data>
+  <data key="d8">position参数用于标识不同的推荐位。</data>
+  <data key="d9">位置标识,参数关联</data>
+  <data key="d10">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719261</data>
+  <data key="d13"></data>
+</edge>
+<edge source="推荐位" target="items参数">
+  <data key="d7">1.0</data>
+  <data key="d8">items参数定义推荐位中展示的商品数组。</data>
+  <data key="d9">参数关联,商品配置</data>
+  <data key="d10">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719280</data>
+  <data key="d13"></data>
+</edge>
+<edge source="销售概况" target="GET /stats/sales-overview">
+  <data key="d7">1.0</data>
+  <data key="d8">GET /stats/sales-overview接口用于获取销售概况统计数据。</data>
+  <data key="d9">API操作,数据统计</data>
+  <data key="d10">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719240</data>
+  <data key="d13"></data>
+</edge>
+<edge source="销售概况" target="period参数">
+  <data key="d7">1.0</data>
+  <data key="d8">period参数用于指定销售概况的统计周期。</data>
+  <data key="d9">参数关联,统计维度</data>
+  <data key="d10">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719249</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品销售排行" target="GET /stats/product-ranking">
+  <data key="d7">1.0</data>
+  <data key="d8">GET /stats/product-ranking接口用于获取商品销售排行数据。</data>
+  <data key="d9">API操作,数据统计</data>
+  <data key="d10">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719242</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品销售排行" target="limit参数">
+  <data key="d7">1.0</data>
+  <data key="d8">limit参数用于限制商品销售排行返回的商品数量。</data>
+  <data key="d9">参数关联,返回限制</data>
+  <data key="d10">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719246</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品销售排行" target="sortBy参数">
+  <data key="d7">1.0</data>
+  <data key="d8">sortBy参数用于指定商品销售排行的排序方式。</data>
+  <data key="d9">参数关联,排序方式</data>
+  <data key="d10">chunk-7e8a971c1deafe3adbe6ab8c15339728</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719254</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单00138001" target="用户1001">
+  <data key="d7">1.0</data>
+  <data key="d8">用户1001是订单00138001的购买者，订单总金额为5998.00元。</data>
+  <data key="d9">下单关系,消费行为</data>
+  <data key="d10">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719246</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单00138001" target="智能手机X">
+  <data key="d7">1.0</data>
+  <data key="d8">订单00138001包含2件智能手机X商品。</data>
+  <data key="d9">包含商品,订单内容</data>
+  <data key="d10">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719255</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单00138001" target="张三">
+  <data key="d7">1.0</data>
+  <data key="d8">订单00138001的收货人是张三，配送地址为北京市朝阳区。</data>
+  <data key="d9">收货人,配送信息</data>
+  <data key="d10">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719279</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单00138001" target="顺丰">
+  <data key="d7">1.0</data>
+  <data key="d8">订单00138001由顺丰负责配送，运单号SF123456789。</data>
+  <data key="d9">物流承运,配送服务</data>
+  <data key="d10">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719289</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单00138001" target="ALIPAY">
+  <data key="d7">1.0</data>
+  <data key="d8">订单00138001通过ALIPAY完成支付，支付金额5998.00元。</data>
+  <data key="d9">交易方式,支付方式</data>
+  <data key="d10">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719291</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单00138001" target="订单发货API">
+  <data key="d7">1.0</data>
+  <data key="d8">订单发货API用于处理订单00138001的发货操作。</data>
+  <data key="d9">操作对象,订单处理</data>
+  <data key="d10">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719300</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单00138001" target="订单备注API">
+  <data key="d7">1.0</data>
+  <data key="d8">订单备注API用于为订单00138001添加备注信息。</data>
+  <data key="d9">操作对象,订单管理</data>
+  <data key="d10">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719315</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单00138001" target="顺丰快递">
+  <data key="d7">1.0</data>
+  <data key="d8">订单00138001由顺丰快递负责配送，运单号为SF123456789。</data>
+  <data key="d9">物流承运,配送服务</data>
+  <data key="d10">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719322</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户1001" target="用户列表API">
+  <data key="d7">1.0</data>
+  <data key="d8">用户1001可以通过用户列表API查询用户信息。</data>
+  <data key="d9">用户管理,系统功能</data>
+  <data key="d10">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719255</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户1001" target="用户详情API">
+  <data key="d7">1.0</data>
+  <data key="d8">用户1001可以通过用户详情API查看个人详细信息。</data>
+  <data key="d9">信息查询,系统功能</data>
+  <data key="d10">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719282</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单发货API" target="顺丰快递">
+  <data key="d7">1.0</data>
+  <data key="d8">订单发货API的请求参数中，shippingCompany示例值为顺丰快递。</data>
+  <data key="d9">参数示例,物流公司</data>
+  <data key="d10">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719265</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单备注API" target="客户要求周末配送">
+  <data key="d7">1.0</data>
+  <data key="d8">订单备注API的content参数示例值为客户要求周末配送。</data>
+  <data key="d9">备注内容,示例参数</data>
+  <data key="d10">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719265</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户列表API" target="用户详情API">
+  <data key="d7">1.0</data>
+  <data key="d8">用户列表API返回用户列表，用户详情API可查询单个用户详细信息。</data>
+  <data key="d9">功能关联,数据查询</data>
+  <data key="d10">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719262</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户状态管理API" target="多次恶意退货">
+  <data key="d7">1.0</data>
+  <data key="d8">用户状态管理API的reason参数示例值为多次恶意退货。</data>
+  <data key="d9">封禁原因,示例参数</data>
+  <data key="d10">chunk-677dcb5fe37a7f8269860545dd68897f</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719265</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品" target="商品管理">
+  <data key="d7">1.0</data>
+  <data key="d8">商品管理功能负责管理商品的上下架状态和删除操作。</data>
+  <data key="d9">功能操作</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719265</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品" target="删除商品接口">
+  <data key="d7">1.0</data>
+  <data key="d8">删除商品接口用于逻辑删除指定ID的商品。</data>
+  <data key="d9">删除操作</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719285</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品" target="更新商品状态接口">
+  <data key="d7">1.0</data>
+  <data key="d8">更新商品状态接口修改商品的上下架状态。</data>
+  <data key="d9">状态更新操作</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719292</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品" target="商品状态">
+  <data key="d7">1.0</data>
+  <data key="d8">商品状态是商品的重要属性，決定商品是否可销售。</data>
+  <data key="d9">状态属性</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719297</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品" target="首页商品展示">
+  <data key="d7">1.0</data>
+  <data key="d8">首页商品展示API返回商品数据，包括推荐商品信息。</data>
+  <data key="d9">商品呈现,数据展示</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719548</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品" target="商品分类">
+  <data key="d7">1.0</data>
+  <data key="d8">商品属于某个商品分类，如智能手机属于电子产品分类。</data>
+  <data key="d9">分类关系,数据关联</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719578</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品" target="商品ID">
+  <data key="d7">1.0</data>
+  <data key="d8">每个商品具有唯一的商品ID用于区分不同商品。</data>
+  <data key="d9">商品标识,数据关联</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719750</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品" target="图片链接">
+  <data key="d7">1.0</data>
+  <data key="d8">商品具有图片链接用于在页面展示商品形象。</data>
+  <data key="d9">商品展示,数据属性</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719757</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品" target="价格">
+  <data key="d7">1.0</data>
+  <data key="d8">商品具有价格属性用于销售展示。</data>
+  <data key="d9">商品价值,数据属性</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719765</data>
+  <data key="d13"></data>
+</edge>
+<edge source="分类" target="分类管理">
+  <data key="d7">1.0</data>
+  <data key="d8">分类管理功能负责管理商品分类的创建、更新、启用禁用等操作。</data>
+  <data key="d9">功能操作</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719282</data>
+  <data key="d13"></data>
+</edge>
+<edge source="分类" target="获取分类树接口">
+  <data key="d7">1.0</data>
+  <data key="d8">获取分类树接口返回分类的层级结构。</data>
+  <data key="d9">查询操作</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719290</data>
+  <data key="d13"></data>
+</edge>
+<edge source="分类" target="创建分类接口">
+  <data key="d7">1.0</data>
+  <data key="d8">创建分类接口用于创建新的商品分类。</data>
+  <data key="d9">创建操作</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719296</data>
+  <data key="d13"></data>
+</edge>
+<edge source="分类" target="更新分类接口">
+  <data key="d7">1.0</data>
+  <data key="d8">更新分类接口用于修改已有分类的信息。</data>
+  <data key="d9">更新操作</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719315</data>
+  <data key="d13"></data>
+</edge>
+<edge source="分类" target="启用禁用分类接口">
+  <data key="d7">1.0</data>
+  <data key="d8">启用禁用分类接口修改分类的启用禁用状态。</data>
+  <data key="d9">状态操作</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719375</data>
+  <data key="d13"></data>
+</edge>
+<edge source="分类" target="分类状态">
+  <data key="d7">1.0</data>
+  <data key="d8">分类状态决定分类是否启用，影响前端展示。</data>
+  <data key="d9">状态属性</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719417</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单" target="订单管理">
+  <data key="d7">1.0</data>
+  <data key="d8">订单管理功能负责查询和管理用户订单。</data>
+  <data key="d9">功能操作</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719286</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单" target="订单列表接口">
+  <data key="d7">1.0</data>
+  <data key="d8">订单列表接口用于查询订单列表，支持分页和多种筛选条件。</data>
+  <data key="d9">查询操作</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719291</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单" target="订单详情接口">
+  <data key="d7">1.0</data>
+  <data key="d8">订单详情接口用于查询单个订单的完整信息。</data>
+  <data key="d9">查询操作</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719299</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单" target="用户">
+  <data key="d7">1.0</data>
+  <data key="d8">订单归属特定用户，通过userId和username关联。</data>
+  <data key="d9">归属关系</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719313</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单" target="支付信息">
+  <data key="d7">1.0</data>
+  <data key="d8">订单包含支付信息，记录支付方式、金额和交易详情。</data>
+  <data key="d9">包含关系</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719320</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单" target="订单状态">
+  <data key="d7">1.0</data>
+  <data key="d8">订单状态表示订单的当前处理阶段。</data>
+  <data key="d9">状态属性</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719384</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单" target="图标URL">
+  <data key="d7">1.0</data>
+  <data key="d8">分类的图标URL存储分类的图标信息。</data>
+  <data key="d9">关联数据</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719386</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单" target="排序值">
+  <data key="d7">1.0</data>
+  <data key="d8">分类的排序值决定分类的显示顺序。</data>
+  <data key="d9">关联数据</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719393</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单" target="购物车商品">
+  <data key="d7">1.0</data>
+  <data key="d8">用户将从购物车中选择的商品提交生成订单,完成购买流程。</data>
+  <data key="d9">购买流程,购物转化</data>
+  <data key="d10">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719401</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单" target="获取订单列表API">
+  <data key="d7">1.0</data>
+  <data key="d8">获取订单列表API用于查询用户的订单列表。</data>
+  <data key="d9">列表获取,订单查询</data>
+  <data key="d10">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719403</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单" target="获取订单详情API">
+  <data key="d7">1.0</data>
+  <data key="d8">获取订单详情API用于查询单个订单的详细信息。</data>
+  <data key="d9">订单查询,详情获取</data>
+  <data key="d10">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719411</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单" target="支付订单API">
+  <data key="d7">1.0</data>
+  <data key="d8">支付订单API用于支付指定订单,支付后更新订单状态。</data>
+  <data key="d9">支付处理,状态更新</data>
+  <data key="d10">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719427</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单" target="取消订单API">
+  <data key="d7">1.0</data>
+  <data key="d8">取消订单API用于取消指定订单,取消后更新订单状态。</data>
+  <data key="d9">交易取消,订单撤销</data>
+  <data key="d10">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719435</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单" target="确认收货API">
+  <data key="d7">1.0</data>
+  <data key="d8">确认收货API用于确认用户已收到商品,标记订单完成。</data>
+  <data key="d9">交易完成,收货确认</data>
+  <data key="d10">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719453</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单" target="提交评论API">
+  <data key="d7">1.0</data>
+  <data key="d8">提交评论API需要关联订单ID以验证购买资格。</data>
+  <data key="d9">评价关联,购买验证</data>
+  <data key="d10">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719486</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单" target="商品评论">
+  <data key="d7">1.0</data>
+  <data key="d8">用户订单完成后可对商品进行评价,提交商品评论。</data>
+  <data key="d9">售后评价,购买后反馈</data>
+  <data key="d10">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719492</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单" target="提交订单API">
+  <data key="d7">1.0</data>
+  <data key="d8">提交订单API根据购物车商品和收货地址创建新订单。</data>
+  <data key="d9">交易创建,订单生成</data>
+  <data key="d10">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719502</data>
+  <data key="d13"></data>
+</edge>
+<edge source="删除商品接口" target="商品已删除响应">
+  <data key="d7">1.0</data>
+  <data key="d8">删除商品接口返回"商品已删除"响应消息。</data>
+  <data key="d9">返回消息</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719301</data>
+  <data key="d13"></data>
+</edge>
+<edge source="更新商品状态接口" target="status字段">
+  <data key="d7">1.0</data>
+  <data key="d8">更新商品状态接口使用status字段来表示商品的上下架状态。</data>
+  <data key="d9">字段关联</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719297</data>
+  <data key="d13"></data>
+</edge>
+<edge source="更新商品状态接口" target="reason字段">
+  <data key="d7">1.0</data>
+  <data key="d8">更新商品状态接口可配合reason字段说明商品下架的具体原因。</data>
+  <data key="d9">字段关联</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719309</data>
+  <data key="d13"></data>
+</edge>
+<edge source="更新商品状态接口" target="商品已下架响应">
+  <data key="d7">1.0</data>
+  <data key="d8">更新商品状态接口返回"商品已下架"响应消息。</data>
+  <data key="d9">返回消息</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719313</data>
+  <data key="d13"></data>
+</edge>
+<edge source="创建分类接口" target="分类创建成功响应">
+  <data key="d7">1.0</data>
+  <data key="d8">创建分类接口返回分类创建成功响应，包含新分类ID。</data>
+  <data key="d9">返回消息</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719306</data>
+  <data key="d13"></data>
+</edge>
+<edge source="更新分类接口" target="分类更新成功响应">
+  <data key="d7">1.0</data>
+  <data key="d8">更新分类接口返回分类更新成功响应。</data>
+  <data key="d9">返回消息</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719301</data>
+  <data key="d13"></data>
+</edge>
+<edge source="启用禁用分类接口" target="分类已禁用响应">
+  <data key="d7">1.0</data>
+  <data key="d8">启用禁用分类接口返回分类已禁用响应。</data>
+  <data key="d9">返回消息</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719306</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单列表接口" target="分页参数">
+  <data key="d7">1.0</data>
+  <data key="d8">订单列表接口支持使用分页参数进行分页查询。</data>
+  <data key="d9">查询参数</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719309</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单列表接口" target="时间查询参数">
+  <data key="d7">1.0</data>
+  <data key="d8">订单列表接口支持使用时间查询参数按时间范围筛选订单。</data>
+  <data key="d9">查询参数</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719373</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单列表接口" target="orderId字段">
+  <data key="d7">1.0</data>
+  <data key="d8">订单列表接口返回订单ID。</data>
+  <data key="d9">返回字段</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719377</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单列表接口" target="totalAmount字段">
+  <data key="d7">1.0</data>
+  <data key="d8">订单列表接口返回订单总金额。</data>
+  <data key="d9">返回字段</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719382</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单列表接口" target="paymentAmount字段">
+  <data key="d7">1.0</data>
+  <data key="d8">订单列表接口返回订单实付金额。</data>
+  <data key="d9">返回字段</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719387</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单列表接口" target="paymentMethod字段">
+  <data key="d7">1.0</data>
+  <data key="d8">订单列表接口返回订单支付方式。</data>
+  <data key="d9">返回字段</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719391</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单列表接口" target="createdAt字段">
+  <data key="d7">1.0</data>
+  <data key="d8">订单列表接口返回订单创建时间。</data>
+  <data key="d9">返回字段</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719395</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单列表接口" target="receiver字段">
+  <data key="d7">1.0</data>
+  <data key="d8">订单列表接口返回订单收货人姓名。</data>
+  <data key="d9">返回字段</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719400</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单列表接口" target="phone字段">
+  <data key="d7">1.0</data>
+  <data key="d8">订单列表接口返回收货人手机号。</data>
+  <data key="d9">返回字段</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719415</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单列表接口" target="address字段">
+  <data key="d7">1.0</data>
+  <data key="d8">订单列表接口返回收货人地址。</data>
+  <data key="d9">返回字段</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719422</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单详情接口" target="transactionId字段">
+  <data key="d7">1.0</data>
+  <data key="d8">订单详情接口返回订单的交易ID。</data>
+  <data key="d9">返回字段</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719316</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单详情接口" target="paidAt字段">
+  <data key="d7">1.0</data>
+  <data key="d8">订单详情接口返回订单的支付时间。</data>
+  <data key="d9">返回字段</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719322</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单详情接口" target="username字段">
+  <data key="d7">1.0</data>
+  <data key="d8">订单详情接口返回用户登录名。</data>
+  <data key="d9">返回字段</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719324</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单详情接口" target="totalAmount字段">
+  <data key="d7">1.0</data>
+  <data key="d8">订单详情接口返回订单总金额。</data>
+  <data key="d9">返回字段</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719387</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单详情接口" target="paymentMethod字段">
+  <data key="d7">1.0</data>
+  <data key="d8">订单详情接口返回支付方式。</data>
+  <data key="d9">返回字段</data>
+  <data key="d10">chunk-26622afd9a3bcf1a2a8964d61b69ea18</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719395</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单状态" target="支付订单API">
+  <data key="d7">1.0</data>
+  <data key="d8">支付成功后将订单状态更新为已支付。</data>
+  <data key="d9">支付完成,状态变更</data>
+  <data key="d10">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719435</data>
+  <data key="d13"></data>
+</edge>
+<edge source="订单状态" target="获取订单详情API">
+  <data key="d7">1.0</data>
+  <data key="d8">获取订单详情时会返回订单的当前状态。</data>
+  <data key="d9">流程跟踪,状态展示</data>
+  <data key="d10">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719447</data>
+  <data key="d13"></data>
+</edge>
+<edge source="分页参数" target="商品列表接口">
+  <data key="d7">1.0</data>
+  <data key="d8">商品列表接口支持按分页参数实现分页展示。</data>
+  <data key="d9">参数支持,接口功能</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719502</data>
+  <data key="d13"></data>
+</edge>
+<edge source="购物车模块" target="购物车商品">
+  <data key="d7">1.0</data>
+  <data key="d8">购物车模块负责管理购物车商品,包括添加、删除和批量删除购物车商品的功能。</data>
+  <data key="d9">数据管理,购物车操作</data>
+  <data key="d10">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719369</data>
+  <data key="d13"></data>
+</edge>
+<edge source="评论模块" target="商品评论">
+  <data key="d7">1.0</data>
+  <data key="d8">评论模块负责管理商品评论的提交和展示,允许用户对商品进行评分和评价。</data>
+  <data key="d9">用户反馈,评价管理</data>
+  <data key="d10">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719373</data>
+  <data key="d13"></data>
+</edge>
+<edge source="购物车商品" target="删除购物车商品API">
+  <data key="d7">1.0</data>
+  <data key="d8">删除购物车商品API用于删除指定的购物车商品项。</data>
+  <data key="d9">删除操作,数据移除</data>
+  <data key="d10">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719382</data>
+  <data key="d13"></data>
+</edge>
+<edge source="购物车商品" target="批量删除购物车商品API">
+  <data key="d7">1.0</data>
+  <data key="d8">批量删除购物车商品API用于批量删除多个购物车商品项。</data>
+  <data key="d9">批量删除,数据清除</data>
+  <data key="d10">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719387</data>
+  <data key="d13"></data>
+</edge>
+<edge source="购物车商品" target="提交订单API">
+  <data key="d7">1.0</data>
+  <data key="d8">提交订单API将用户选中的购物车商品项转换为订单。</data>
+  <data key="d9">订单创建,购物车转化</data>
+  <data key="d10">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719393</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品评论" target="提交评论API">
+  <data key="d7">1.0</data>
+  <data key="d8">提交评论API用于创建新的商品评论记录。</data>
+  <data key="d9">用户反馈,评论创建</data>
+  <data key="d10">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719502</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品评论" target="获取商品评论API">
+  <data key="d7">1.0</data>
+  <data key="d8">获取商品评论API用于查询指定商品的所有评论。</data>
+  <data key="d9">评价查看,评论查询</data>
+  <data key="d10">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719522</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品评论" target="评论数据">
+  <data key="d7">1.0</data>
+  <data key="d8">商品评论包含在评论数据对象中,是评论数据的核心内容部分。</data>
+  <data key="d9">内容包含,数据结构</data>
+  <data key="d10">chunk-f0d4faef317fd6db66d10756a7a7ae7f</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719538</data>
+  <data key="d13"></data>
+</edge>
+<edge source="提交订单API" target="收货地址">
+  <data key="d7">1.0</data>
+  <data key="d8">提交订单时需要指定收货地址用于商品配送。</data>
+  <data key="d9">地址绑定,配送信息</data>
+  <data key="d10">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719438</data>
+  <data key="d13"></data>
+</edge>
+<edge source="获取订单详情API" target="收货地址">
+  <data key="d7">1.0</data>
+  <data key="d8">获取订单详情时会返回订单的收货地址信息。</data>
+  <data key="d9">信息展示,地址查看</data>
+  <data key="d10">chunk-c6682f4c5dd06691e9a765b74339fddb</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719427</data>
+  <data key="d13"></data>
+</edge>
+<edge source="获取商品评论API" target="商品数据">
+  <data key="d7">1.0</data>
+  <data key="d8">获取商品评论API用于查询特定商品下的评论数据。</data>
+  <data key="d9">数据获取,查询关联</data>
+  <data key="d10">chunk-f0d4faef317fd6db66d10756a7a7ae7f</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719407</data>
+  <data key="d13"></data>
+</edge>
+<edge source="收货地址" target="获取地址列表">
+  <data key="d7">1.0</data>
+  <data key="d8">获取地址列表API返回用户的收货地址列表数据。</data>
+  <data key="d9">信息获取,数据关联</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719542</data>
+  <data key="d13"></data>
+</edge>
+<edge source="收货地址" target="添加地址">
+  <data key="d7">1.0</data>
+  <data key="d8">添加地址API用于创建新的收货地址记录。</data>
+  <data key="d9">信息保存,数据创建</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719560</data>
+  <data key="d13"></data>
+</edge>
+<edge source="收货地址" target="UserId">
+  <data key="d7">1.0</data>
+  <data key="d8">UserId用于关联用户和其收货地址，通过userId参数获取指定用户的地址。</data>
+  <data key="d9">外键关系,数据关联</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719578</data>
+  <data key="d13"></data>
+</edge>
+<edge source="收货地址" target="收货人">
+  <data key="d7">1.0</data>
+  <data key="d8">收货人是收货地址数据中的必需字段，表示收货人姓名。</data>
+  <data key="d9">信息组成,数据字段</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719666</data>
+  <data key="d13"></data>
+</edge>
+<edge source="收货地址" target="手机号">
+  <data key="d7">1.0</data>
+  <data key="d8">手机号是收货地址数据中的联系信息，用于快递联系。</data>
+  <data key="d9">信息组成,数据字段</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719697</data>
+  <data key="d13"></data>
+</edge>
+<edge source="收货地址" target="修改地址">
+  <data key="d7">1.0</data>
+  <data key="d8">修改地址API用于更新指定收货地址的信息。</data>
+  <data key="d9">信息修改,数据更新</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719705</data>
+  <data key="d13"></data>
+</edge>
+<edge source="收货地址" target="删除地址">
+  <data key="d7">1.0</data>
+  <data key="d8">删除地址API用于删除指定的收货地址。</data>
+  <data key="d9">信息移除,数据删除</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719772</data>
+  <data key="d13"></data>
+</edge>
+<edge source="收货地址" target="地区">
+  <data key="d7">1.0</data>
+  <data key="d8">地区是收货地址的组成部分，表示省市区信息。</data>
+  <data key="d9">地址信息,数据组成</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719777</data>
+  <data key="d13"></data>
+</edge>
+<edge source="收货地址" target="详细地址">
+  <data key="d7">1.0</data>
+  <data key="d8">详细地址是收货地址的组成部分，表示具体街道门牌号。</data>
+  <data key="d9">地址信息,数据组成</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719784</data>
+  <data key="d13"></data>
+</edge>
+<edge source="创建商品API" target="商品数据">
+  <data key="d7">1.0</data>
+  <data key="d8">创建商品API用于创建新的商品数据记录。</data>
+  <data key="d9">操作关联,数据创建</data>
+  <data key="d10">chunk-f0d4faef317fd6db66d10756a7a7ae7f</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719411</data>
+  <data key="d13"></data>
+</edge>
+<edge source="更新商品信息API" target="商品数据">
+  <data key="d7">1.0</data>
+  <data key="d8">更新商品信息API用于修改现有商品的数据信息。</data>
+  <data key="d9">操作关联,数据更新</data>
+  <data key="d10">chunk-f0d4faef317fd6db66d10756a7a7ae7f</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719420</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品上下架API" target="商品数据">
+  <data key="d7">1.0</data>
+  <data key="d8">商品上下架API用于更改商品的销售状态。</data>
+  <data key="d9">上下架操作,状态管理</data>
+  <data key="d10">chunk-f0d4faef317fd6db66d10756a7a7ae7f</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719433</data>
+  <data key="d13"></data>
+</edge>
+<edge source="删除商品API" target="商品数据">
+  <data key="d7">1.0</data>
+  <data key="d8">删除商品API用于删除指定商品,采用逻辑删除方式。</data>
+  <data key="d9">删除操作,逻辑删除</data>
+  <data key="d10">chunk-f0d4faef317fd6db66d10756a7a7ae7f</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719456</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品列表API" target="商品数据">
+  <data key="d7">1.0</data>
+  <data key="d8">商品列表API用于检索商品列表数据,支持多种筛选条件。</data>
+  <data key="d9">数据获取,查询关联</data>
+  <data key="d10">chunk-f0d4faef317fd6db66d10756a7a7ae7f</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719466</data>
+  <data key="d13"></data>
+</edge>
+<edge source="智能手机" target="电子产品">
+  <data key="d7">1.0</data>
+  <data key="d8">智能手机属于电子产品分类。</data>
+  <data key="d9">产品分类,所属关系</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719425</data>
+  <data key="d13"></data>
+</edge>
+<edge source="智能手机" target="mstest.com">
+  <data key="d7">1.0</data>
+  <data key="d8">mstest.com平台销售智能手机产品。</data>
+  <data key="d9">商品提供,平台销售</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719435</data>
+  <data key="d13"></data>
+</edge>
+<edge source="智能手机" target="商品列表接口">
+  <data key="d7">1.0</data>
+  <data key="d8">商品列表接口返回智能手机等商品信息。</data>
+  <data key="d9">接口功能,数据返回</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719447</data>
+  <data key="d13"></data>
+</edge>
+<edge source="智能手机" target="商品详情接口">
+  <data key="d7">1.0</data>
+  <data key="d8">商品详情接口提供智能手机的详细信息。</data>
+  <data key="d9">接口功能,详情查询</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719456</data>
+  <data key="d13"></data>
+</edge>
+<edge source="智能手机" target="商品收藏接口">
+  <data key="d7">1.0</data>
+  <data key="d8">用户可通过商品收藏接口对智能手机进行收藏或取消收藏操作。</data>
+  <data key="d9">收藏操作,用户交互</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719469</data>
+  <data key="d13"></data>
+</edge>
+<edge source="智能手机" target="购物车接口">
+  <data key="d7">1.0</data>
+  <data key="d8">用户可通过购物车接口将智能手机加入购物车并进行管理。</data>
+  <data key="d9">用户交互,购物操作</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719476</data>
+  <data key="d13"></data>
+</edge>
+<edge source="智能手机" target="库存数据">
+  <data key="d7">1.0</data>
+  <data key="d8">智能手机的库存数据为50件。</data>
+  <data key="d9">产品属性,数据关联</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719496</data>
+  <data key="d13"></data>
+</edge>
+<edge source="智能手机" target="商品评分">
+  <data key="d7">1.0</data>
+  <data key="d8">智能手机的商品评分为4.5分。</data>
+  <data key="d9">产品属性,数据关联</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719515</data>
+  <data key="d13"></data>
+</edge>
+<edge source="智能手机" target="productId">
+  <data key="d7">1.0</data>
+  <data key="d8">智能手机的商品ID为1。</data>
+  <data key="d9">产品标识,数据关联</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719528</data>
+  <data key="d13"></data>
+</edge>
+<edge source="智能手机" target="价格2999元">
+  <data key="d7">1.0</data>
+  <data key="d8">智能手机的价格为2999元。</data>
+  <data key="d9">产品属性,价格数据</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719535</data>
+  <data key="d13"></data>
+</edge>
+<edge source="智能手机" target="屏幕尺寸6.5英寸">
+  <data key="d7">1.0</data>
+  <data key="d8">智能手机的屏幕尺寸为6.5英寸。</data>
+  <data key="d9">产品属性,规格数据</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719548</data>
+  <data key="d13"></data>
+</edge>
+<edge source="智能手机" target="评论数量100">
+  <data key="d7">1.0</data>
+  <data key="d8">智能手机收到100条用户评论。</data>
+  <data key="d9">产品属性,评价数据</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719557</data>
+  <data key="d13"></data>
+</edge>
+<edge source="智能手机" target="销售数量100">
+  <data key="d7">1.0</data>
+  <data key="d8">智能手机已销售100件。</data>
+  <data key="d9">产品属性,销售数据</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719588</data>
+  <data key="d13"></data>
+</edge>
+<edge source="智能手机" target="商品图片URL">
+  <data key="d7">1.0</data>
+  <data key="d8">智能手机通过商品图片URL展示产品图片。</data>
+  <data key="d9">产品展示,媒体关联</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719608</data>
+  <data key="d13"></data>
+</edge>
+<edge source="智能手机" target="商品规格">
+  <data key="d7">1.0</data>
+  <data key="d8">智能手机包含屏幕尺寸等商品规格信息。</data>
+  <data key="d9">产品属性,包含关系</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719634</data>
+  <data key="d13"></data>
+</edge>
+<edge source="mstest.com" target="商品列表接口">
+  <data key="d7">1.0</data>
+  <data key="d8">mstest.com平台提供商品列表接口服务。</data>
+  <data key="d9">功能提供,平台服务</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719548</data>
+  <data key="d13"></data>
+</edge>
+<edge source="mstest.com" target="商品详情接口">
+  <data key="d7">1.0</data>
+  <data key="d8">mstest.com平台提供商品详情接口服务。</data>
+  <data key="d9">功能提供,平台服务</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719630</data>
+  <data key="d13"></data>
+</edge>
+<edge source="mstest.com" target="商品收藏接口">
+  <data key="d7">1.0</data>
+  <data key="d8">mstest.com平台提供商品收藏接口服务。</data>
+  <data key="d9">功能提供,平台服务</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719654</data>
+  <data key="d13"></data>
+</edge>
+<edge source="mstest.com" target="购物车接口">
+  <data key="d7">1.0</data>
+  <data key="d8">mstest.com平台提供购物车接口服务。</data>
+  <data key="d9">功能提供,平台服务</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719670</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品列表接口" target="分类查询参数">
+  <data key="d7">1.0</data>
+  <data key="d8">商品列表接口支持按分类查询参数筛选商品。</data>
+  <data key="d9">参数支持,接口功能</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719456</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品列表接口" target="关键词搜索参数">
+  <data key="d7">1.0</data>
+  <data key="d8">商品列表接口支持按关键词搜索参数查找商品。</data>
+  <data key="d9">参数支持,接口功能</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719469</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品列表接口" target="价格区间参数">
+  <data key="d7">1.0</data>
+  <data key="d8">商品列表接口支持按价格区间参数筛选商品。</data>
+  <data key="d9">参数支持,接口功能</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719476</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品列表接口" target="排序参数">
+  <data key="d7">1.0</data>
+  <data key="d8">商品列表接口支持按排序参数对商品进行排序。</data>
+  <data key="d9">参数支持,接口功能</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719489</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品详情接口" target="商品规格">
+  <data key="d7">1.0</data>
+  <data key="d8">商品详情接口返回商品的技术规格信息。</data>
+  <data key="d9">接口返回,详情数据</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719505</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品收藏接口" target="收藏功能">
+  <data key="d7">1.0</data>
+  <data key="d8">收藏功能通过商品收藏接口实现。</data>
+  <data key="d9">功能实现,接口支撑</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719476</data>
+  <data key="d13"></data>
+</edge>
+<edge source="购物车接口" target="购物车功能">
+  <data key="d7">1.0</data>
+  <data key="d8">购物车功能通过购物车接口实现。</data>
+  <data key="d9">功能实现,接口支撑</data>
+  <data key="d10">chunk-8302692fb8bb5ca27290b44a3fedf7f2</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719496</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户登录" target="获取用户信息">
+  <data key="d7">1.0</data>
+  <data key="d8">用户登录后可以获取用户信息，登录接口返回的Token用于身份验证。</data>
+  <data key="d9">流程关联,身份验证</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719515</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户登录" target="账户">
+  <data key="d7">1.0</data>
+  <data key="d8">用户登录接口需要account参数，可以是用户名或邮箱。</data>
+  <data key="d9">登录凭证,请求参数</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719594</data>
+  <data key="d13"></data>
+</edge>
+<edge source="用户登录" target="Token">
+  <data key="d7">1.0</data>
+  <data key="d8">用户登录成功后返回Token用于后续接口的身份验证。</data>
+  <data key="d9">令牌返回,认证响应</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719614</data>
+  <data key="d13"></data>
+</edge>
+<edge source="获取用户信息" target="修改用户信息">
+  <data key="d7">1.0</data>
+  <data key="d8">获取用户信息后可以修改用户信息，两个接口都使用UserId作为参数。</data>
+  <data key="d9">数据操作,用户管理</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719528</data>
+  <data key="d13"></data>
+</edge>
+<edge source="获取用户信息" target="昵称">
+  <data key="d7">1.0</data>
+  <data key="d8">获取用户信息接口返回用户的昵称字段。</data>
+  <data key="d9">数据字段,用户信息</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719594</data>
+  <data key="d13"></data>
+</edge>
+<edge source="获取用户信息" target="头像">
+  <data key="d7">1.0</data>
+  <data key="d8">获取用户信息接口返回用户的头像URL。</data>
+  <data key="d9">数据字段,用户信息</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719601</data>
+  <data key="d13"></data>
+</edge>
+<edge source="获取用户信息" target="性别">
+  <data key="d7">1.0</data>
+  <data key="d8">获取用户信息接口返回用户的性别信息。</data>
+  <data key="d9">数据字段,用户信息</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719605</data>
+  <data key="d13"></data>
+</edge>
+<edge source="获取用户信息" target="状态">
+  <data key="d7">1.0</data>
+  <data key="d8">获取用户信息接口返回用户的账号状态。</data>
+  <data key="d9">数据字段,用户信息</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719634</data>
+  <data key="d13"></data>
+</edge>
+<edge source="获取用户信息" target="创建时间">
+  <data key="d7">1.0</data>
+  <data key="d8">获取用户信息接口返回用户的账号创建时间。</data>
+  <data key="d9">数据字段,用户信息</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719670</data>
+  <data key="d13"></data>
+</edge>
+<edge source="修改用户信息" target="昵称">
+  <data key="d7">1.0</data>
+  <data key="d8">修改用户信息接口可以更新用户的昵称。</data>
+  <data key="d9">数据更新,请求参数</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719614</data>
+  <data key="d13"></data>
+</edge>
+<edge source="修改用户信息" target="头像">
+  <data key="d7">1.0</data>
+  <data key="d8">修改用户信息接口可以更新用户的头像。</data>
+  <data key="d9">数据更新,请求参数</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719625</data>
+  <data key="d13"></data>
+</edge>
+<edge source="修改用户信息" target="手机号">
+  <data key="d7">1.0</data>
+  <data key="d8">修改用户信息接口可以更新用户的手机号。</data>
+  <data key="d9">数据更新,请求参数</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719797</data>
+  <data key="d13"></data>
+</edge>
+<edge source="修改用户信息" target="性别">
+  <data key="d7">1.0</data>
+  <data key="d8">修改用户信息接口可以更新用户的性别。</data>
+  <data key="d9">数据更新,请求参数</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719800</data>
+  <data key="d13"></data>
+</edge>
+<edge source="收货地址管理" target="获取地址列表">
+  <data key="d7">1.0</data>
+  <data key="d8">收货地址管理模块包含获取地址列表功能，用于获取用户的所有收货地址。</data>
+  <data key="d9">功能模块,数据获取</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719522</data>
+  <data key="d13"></data>
+</edge>
+<edge source="收货地址管理" target="添加地址">
+  <data key="d7">1.0</data>
+  <data key="d8">收货地址管理模块包含添加地址功能，用于创建新的收货地址。</data>
+  <data key="d9">功能模块,数据创建</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719542</data>
+  <data key="d13"></data>
+</edge>
+<edge source="收货地址管理" target="修改地址">
+  <data key="d7">1.0</data>
+  <data key="d8">收货地址管理模块包含修改地址功能，用于更新现有收货地址。</data>
+  <data key="d9">功能模块,数据更新</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719560</data>
+  <data key="d13"></data>
+</edge>
+<edge source="收货地址管理" target="删除地址">
+  <data key="d7">1.0</data>
+  <data key="d8">收货地址管理模块包含删除地址功能，用于删除指定的收货地址。</data>
+  <data key="d9">功能模块,数据删除</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719571</data>
+  <data key="d13"></data>
+</edge>
+<edge source="获取地址列表" target="地址ID">
+  <data key="d7">1.0</data>
+  <data key="d8">获取地址列表返回每个收货地址的唯一标识地址ID。</data>
+  <data key="d9">地址信息,数据字段</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719638</data>
+  <data key="d13"></data>
+</edge>
+<edge source="获取地址列表" target="地区">
+  <data key="d7">1.0</data>
+  <data key="d8">获取地址列表返回收货地址的地区信息。</data>
+  <data key="d9">地址信息,数据字段</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719692</data>
+  <data key="d13"></data>
+</edge>
+<edge source="获取地址列表" target="详细地址">
+  <data key="d7">1.0</data>
+  <data key="d8">获取地址列表返回收货地址的详细信息。</data>
+  <data key="d9">地址信息,数据字段</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719705</data>
+  <data key="d13"></data>
+</edge>
+<edge source="获取地址列表" target="是否默认">
+  <data key="d7">1.0</data>
+  <data key="d8">获取地址列表返回每个地址是否为默认地址。</data>
+  <data key="d9">地址信息,数据字段</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719782</data>
+  <data key="d13"></data>
+</edge>
+<edge source="获取地址列表" target="收货人">
+  <data key="d7">1.0</data>
+  <data key="d8">获取地址列表返回收货人姓名。</data>
+  <data key="d9">地址信息,数据字段</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719787</data>
+  <data key="d13"></data>
+</edge>
+<edge source="获取地址列表" target="手机号">
+  <data key="d7">1.0</data>
+  <data key="d8">获取地址列表返回收货人的联系电话。</data>
+  <data key="d9">地址信息,数据字段</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719792</data>
+  <data key="d13"></data>
+</edge>
+<edge source="添加地址" target="详细地址">
+  <data key="d7">1.0</data>
+  <data key="d8">添加地址接口需要提供详细地址。</data>
+  <data key="d9">数据创建,请求参数</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719688</data>
+  <data key="d13"></data>
+</edge>
+<edge source="添加地址" target="地址ID">
+  <data key="d7">1.0</data>
+  <data key="d8">添加地址成功后返回新创建的地址ID。</data>
+  <data key="d9">地址标识,数据返回</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719705</data>
+  <data key="d13"></data>
+</edge>
+<edge source="添加地址" target="地区">
+  <data key="d7">1.0</data>
+  <data key="d8">添加地址接口需要提供省市区信息。</data>
+  <data key="d9">数据创建,请求参数</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719718</data>
+  <data key="d13"></data>
+</edge>
+<edge source="添加地址" target="是否默认">
+  <data key="d7">1.0</data>
+  <data key="d8">添加地址接口可以设置是否为默认地址。</data>
+  <data key="d9">数据创建,请求参数</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719787</data>
+  <data key="d13"></data>
+</edge>
+<edge source="添加地址" target="收货人">
+  <data key="d7">1.0</data>
+  <data key="d8">添加地址接口需要提供收货人姓名。</data>
+  <data key="d9">数据创建,请求参数</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719794</data>
+  <data key="d13"></data>
+</edge>
+<edge source="添加地址" target="手机号">
+  <data key="d7">1.0</data>
+  <data key="d8">添加地址接口需要提供联系电话。</data>
+  <data key="d9">数据创建,请求参数</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719800</data>
+  <data key="d13"></data>
+</edge>
+<edge source="修改地址" target="地址ID">
+  <data key="d7">1.0</data>
+  <data key="d8">修改地址接口通过addressId参数指定要修改的地址。</data>
+  <data key="d9">地址标识,路径参数</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719772</data>
+  <data key="d13"></data>
+</edge>
+<edge source="删除地址" target="地址ID">
+  <data key="d7">1.0</data>
+  <data key="d8">删除地址接口通过addressId参数指定要删除的地址。</data>
+  <data key="d9">地址标识,路径参数</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719777</data>
+  <data key="d13"></data>
+</edge>
+<edge source="首页商品展示" target="商品分类">
+  <data key="d7">1.0</data>
+  <data key="d8">首页商品展示API返回商品的分类信息。</data>
+  <data key="d9">分类呈现,数据展示</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719560</data>
+  <data key="d13"></data>
+</edge>
+<edge source="首页商品展示" target="横幅广告">
+  <data key="d7">1.0</data>
+  <data key="d8">首页商品展示API返回首页的横幅广告数据。</data>
+  <data key="d9">广告呈现,数据展示</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719578</data>
+  <data key="d13"></data>
+</edge>
+<edge source="首页商品展示" target="图片链接">
+  <data key="d7">1.0</data>
+  <data key="d8">首页商品展示返回横幅广告的图片链接。</data>
+  <data key="d9">广告展示,数据字段</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719701</data>
+  <data key="d13"></data>
+</edge>
+<edge source="首页商品展示" target="链接地址">
+  <data key="d7">1.0</data>
+  <data key="d8">首页商品展示返回横幅广告的跳转链接。</data>
+  <data key="d9">广告跳转,数据字段</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719722</data>
+  <data key="d13"></data>
+</edge>
+<edge source="首页商品展示" target="分类ID">
+  <data key="d7">1.0</data>
+  <data key="d8">首页商品展示返回商品分类的唯一标识。</data>
+  <data key="d9">分类信息,数据字段</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719730</data>
+  <data key="d13"></data>
+</edge>
+<edge source="首页商品展示" target="图标">
+  <data key="d7">1.0</data>
+  <data key="d8">首页商品展示返回商品分类的图标。</data>
+  <data key="d9">分类展示,数据字段</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719734</data>
+  <data key="d13"></data>
+</edge>
+<edge source="首页商品展示" target="商品ID">
+  <data key="d7">1.0</data>
+  <data key="d8">首页商品展示返回推荐商品的唯一标识。</data>
+  <data key="d9">商品信息,数据字段</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719742</data>
+  <data key="d13"></data>
+</edge>
+<edge source="首页商品展示" target="价格">
+  <data key="d7">1.0</data>
+  <data key="d8">首页商品展示返回推荐商品的价格。</data>
+  <data key="d9">商品信息,数据字段</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719750</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品分类" target="分类ID">
+  <data key="d7">1.0</data>
+  <data key="d8">每个商品分类具有唯一的分类ID。</data>
+  <data key="d9">分类标识,数据关联</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719734</data>
+  <data key="d13"></data>
+</edge>
+<edge source="商品分类" target="图标">
+  <data key="d7">1.0</data>
+  <data key="d8">商品分类具有图标属性用于分类展示。</data>
+  <data key="d9">分类图标,数据属性</data>
+  <data key="d10">chunk-212b430d29737d598de5a8a40260a350</data>
+  <data key="d11">电商系统API接口文档.md</data>
+  <data key="d12">1779719742</data>
+  <data key="d13"></data>
+</edge>
+</graph></graphml>

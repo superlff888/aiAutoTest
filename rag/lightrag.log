@@ -1,0 +1,19 @@
+2026-05-25 22:14:54,582 - lightrag - INFO - OpenAI LLM Options: {}
+2026-05-25 22:14:55,095 - lightrag - INFO - Embedding config: binding=openai model=Qwen/Qwen3-Embedding-8B embedding_dim=4096 max_token_size=8192
+2026-05-25 22:14:55,095 - lightrag - INFO - Send embedding dimension: False by env var (dimensions=4096, has_param=True, binding=openai)
+2026-05-25 22:14:55,096 - lightrag - INFO - Embedding max_token_size: 8192 (from env variable)
+2026-05-25 22:14:55,096 - lightrag - INFO - Reranking is disabled
+2026-05-25 22:14:55,769 - lightrag - INFO - [Rag1000] Created new empty graph file: E:\AI\pythonProject\aiAutoTest\rag\light-rag\rag_storage\Rag1000\graph_chunk_entity_relation.graphml
+2026-05-25 22:14:55,863 - lightrag - INFO - WebUI assets mounted at /webui
+2026-05-25 22:14:55,901 - uvicorn.error - INFO - Started server process [1692]
+2026-05-25 22:14:55,901 - uvicorn.error - INFO - Waiting for application startup.
+2026-05-25 22:14:55,902 - lightrag - INFO - [Rag1000] Process 1692 KV load full_docs with 0 records
+2026-05-25 22:14:55,903 - lightrag - INFO - [Rag1000] Process 1692 KV load text_chunks with 0 records
+2026-05-25 22:14:55,903 - lightrag - INFO - [Rag1000] Process 1692 KV load full_entities with 0 records
+2026-05-25 22:14:55,903 - lightrag - INFO - [Rag1000] Process 1692 KV load full_relations with 0 records
+2026-05-25 22:14:55,904 - lightrag - INFO - [Rag1000] Process 1692 KV load entity_chunks with 0 records
+2026-05-25 22:14:55,904 - lightrag - INFO - [Rag1000] Process 1692 KV load relation_chunks with 0 records
+2026-05-25 22:14:55,904 - lightrag - INFO - [Rag1000] Process 1692 KV load llm_response_cache with 0 records
+2026-05-25 22:14:55,905 - lightrag - INFO - [Rag1000] Process 1692 doc status load doc_status with 0 records
+2026-05-25 22:14:55,906 - uvicorn.error - INFO - Application startup complete.
+2026-05-25 22:14:55,906 - uvicorn.error - INFO - Uvicorn running on http://0.0.0.0:9621 (Press CTRL+C to quit)
