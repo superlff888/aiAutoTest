@@ -1,2 +1,1 @@
-- [零售侧收入输出格式](feedback_retail-revenue-output.md) — 固定 4 段输出 + 数据获取流程
-- [零售收入数据来源](retail-revenue-data-sources.md) — 海南零售侧收入计算的基础数据固定来源（文本文件 + SQL 脚本）
+- [red-stderr](reference-red-stderr.md) — Python 终端报错红色背景方案：sitecustomize.py 包裹 sys.stderr

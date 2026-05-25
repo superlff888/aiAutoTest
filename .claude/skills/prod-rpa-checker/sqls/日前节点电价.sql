@@ -7,7 +7,7 @@ WHERE
 	AND `deleted` = '0'
 	AND `day` >= DATE_FORMAT(CURDATE(), '%Y-%m-01')
 	AND `day` <= DATE_FORMAT(DATE_ADD(NOW(), INTERVAL -{{offset_days}} DAY), '%Y-%m-%d')
-	AND `price_type` in ( '21' )
+	AND `price_type` in ( '11' )
 ORDER BY
 	`day` desc
 ;

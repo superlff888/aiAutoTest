@@ -2,7 +2,9 @@
   "permissions": {
     "allow": [
       "Bash(*bug_rate_calculator.py*)",
-      "Bash(*profit-sum*)"
+      "Bash(*profit-sum*)",
+      "Bash(*prod-rpa-checker*)",
+      "Bash(cd *)"
     ]
   }
 }
