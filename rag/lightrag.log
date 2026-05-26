@@ -17,3 +17,58 @@
 2026-05-25 22:14:55,905 - lightrag - INFO - [Rag1000] Process 1692 doc status load doc_status with 0 records
 2026-05-25 22:14:55,906 - uvicorn.error - INFO - Application startup complete.
 2026-05-25 22:14:55,906 - uvicorn.error - INFO - Uvicorn running on http://0.0.0.0:9621 (Press CTRL+C to quit)
+2026-05-26 23:50:45,555 - lightrag - INFO - OpenAI LLM Options: {}
+2026-05-26 23:50:46,647 - lightrag - INFO - Embedding config: binding=openai model=Qwen/Qwen3-Embedding-8B embedding_dim=4096 max_token_size=8192
+2026-05-26 23:50:46,648 - lightrag - INFO - Send embedding dimension: False by env var (dimensions=4096, has_param=True, binding=openai)
+2026-05-26 23:50:46,648 - lightrag - INFO - Embedding max_token_size: 8192 (from env variable)
+2026-05-26 23:50:46,648 - lightrag - INFO - Reranking is disabled
+2026-05-26 23:50:47,847 - lightrag - INFO - [Rag1000] Loaded graph from E:\AI\pythonProject\aiAutoTest\rag\light-rag\rag_storage\Rag1000\graph_chunk_entity_relation.graphml with 237 nodes, 239 edges
+2026-05-26 23:50:48,224 - lightrag - INFO - WebUI assets mounted at /webui
+2026-05-26 23:50:48,307 - uvicorn.error - INFO - Started server process [29820]
+2026-05-26 23:50:48,308 - uvicorn.error - INFO - Waiting for application startup.
+2026-05-26 23:50:48,312 - lightrag - INFO - [Rag1000] Process 29820 KV load full_docs with 2 records
+2026-05-26 23:50:48,314 - lightrag - INFO - [Rag1000] Process 29820 KV load text_chunks with 9 records
+2026-05-26 23:50:48,316 - lightrag - INFO - [Rag1000] Process 29820 KV load full_entities with 1 records
+2026-05-26 23:50:48,319 - lightrag - INFO - [Rag1000] Process 29820 KV load full_relations with 1 records
+2026-05-26 23:50:48,320 - lightrag - INFO - [Rag1000] Process 29820 KV load entity_chunks with 237 records
+2026-05-26 23:50:48,323 - lightrag - INFO - [Rag1000] Process 29820 KV load relation_chunks with 239 records
+2026-05-26 23:50:48,343 - lightrag - INFO - [Rag1000] Process 29820 KV load llm_response_cache with 45 records
+2026-05-26 23:50:48,344 - lightrag - INFO - [Rag1000] Process 29820 doc status load doc_status with 2 records
+2026-05-26 23:50:48,346 - uvicorn.error - INFO - Application startup complete.
+2026-05-26 23:50:48,347 - uvicorn.error - INFO - Uvicorn running on http://0.0.0.0:9621 (Press CTRL+C to quit)
+2026-05-26 23:51:09,741 - uvicorn.access - INFO - 127.0.0.1:55871 - "GET / HTTP/1.1" 307
+2026-05-26 23:51:09,747 - uvicorn.access - INFO - 127.0.0.1:55871 - "GET /webui HTTP/1.1" 307
+2026-05-26 23:51:10,745 - uvicorn.access - INFO - 127.0.0.1:39634 - "GET /auth-status HTTP/1.1" 200
+2026-05-26 23:51:11,286 - uvicorn.access - INFO - 127.0.0.1:39634 - "GET /docs HTTP/1.1" 200
+2026-05-26 23:51:11,635 - uvicorn.access - INFO - 127.0.0.1:39634 - "GET /openapi.json HTTP/1.1" 200
+2026-05-26 23:51:54,025 - uvicorn.access - INFO - 127.0.0.1:43789 - "GET /docs HTTP/1.1" 200
+2026-05-26 23:51:54,277 - uvicorn.access - INFO - 127.0.0.1:43789 - "GET /openapi.json HTTP/1.1" 200
+2026-05-26 23:52:03,517 - uvicorn.access - INFO - 127.0.0.1:4266 - "GET /graph/label/popular?limit=300 HTTP/1.1" 200
+2026-05-26 23:52:03,527 - lightrag - INFO - [Rag1000] Subgraph query successful | Node count: 237 | Edge count: 239
+2026-05-26 23:52:03,556 - uvicorn.access - INFO - 127.0.0.1:51142 - "GET /graphs?label=*&max_depth=3&max_nodes=1000 HTTP/1.1" 200
+2026-05-26 23:52:03,719 - lightrag - INFO - [Rag1000] Subgraph query successful | Node count: 237 | Edge count: 239
+2026-05-26 23:52:03,746 - uvicorn.access - INFO - 127.0.0.1:51142 - "GET /graphs?label=*&max_depth=3&max_nodes=1000 HTTP/1.1" 200
+2026-05-27 01:09:06,383 - lightrag - INFO - OpenAI LLM Options: {}
+2026-05-27 01:09:07,316 - lightrag - INFO - Embedding config: binding=openai model=Qwen/Qwen3-Embedding-8B embedding_dim=4096 max_token_size=8192
+2026-05-27 01:09:07,316 - lightrag - INFO - Send embedding dimension: False by env var (dimensions=4096, has_param=True, binding=openai)
+2026-05-27 01:09:07,316 - lightrag - INFO - Embedding max_token_size: 8192 (from env variable)
+2026-05-27 01:09:07,316 - lightrag - INFO - Reranking is disabled
+2026-05-27 01:09:08,378 - lightrag - INFO - [Rag1000] Loaded graph from E:\AI\pythonProject\aiAutoTest\rag\light-rag\rag_storage\Rag1000\graph_chunk_entity_relation.graphml with 237 nodes, 239 edges
+2026-05-27 01:09:08,722 - lightrag - INFO - WebUI assets mounted at /webui
+2026-05-27 01:09:08,795 - uvicorn.error - INFO - Started server process [20892]
+2026-05-27 01:09:08,796 - uvicorn.error - INFO - Waiting for application startup.
+2026-05-27 01:09:08,800 - lightrag - INFO - [Rag1000] Process 20892 KV load full_docs with 2 records
+2026-05-27 01:09:08,804 - lightrag - INFO - [Rag1000] Process 20892 KV load text_chunks with 9 records
+2026-05-27 01:09:08,805 - lightrag - INFO - [Rag1000] Process 20892 KV load full_entities with 1 records
+2026-05-27 01:09:08,807 - lightrag - INFO - [Rag1000] Process 20892 KV load full_relations with 1 records
+2026-05-27 01:09:08,810 - lightrag - INFO - [Rag1000] Process 20892 KV load entity_chunks with 237 records
+2026-05-27 01:09:08,813 - lightrag - INFO - [Rag1000] Process 20892 KV load relation_chunks with 239 records
+2026-05-27 01:09:08,837 - lightrag - INFO - [Rag1000] Process 20892 KV load llm_response_cache with 45 records
+2026-05-27 01:09:08,839 - lightrag - INFO - [Rag1000] Process 20892 doc status load doc_status with 2 records
+2026-05-27 01:09:08,841 - uvicorn.error - INFO - Application startup complete.
+2026-05-27 01:09:08,842 - uvicorn.error - INFO - Uvicorn running on http://0.0.0.0:9621 (Press CTRL+C to quit)
+2026-05-27 01:09:40,789 - lightrag - INFO - [Rag1000] Subgraph query successful | Node count: 237 | Edge count: 239
+2026-05-27 01:09:40,820 - uvicorn.access - INFO - 127.0.0.1:37224 - "GET /graphs?label=*&max_depth=3&max_nodes=1000 HTTP/1.1" 200
+2026-05-27 01:09:40,848 - uvicorn.access - INFO - 127.0.0.1:37224 - "GET /docs HTTP/1.1" 200
+2026-05-27 01:09:41,328 - uvicorn.access - INFO - 127.0.0.1:37224 - "GET /openapi.json HTTP/1.1" 200
+2026-05-27 01:10:11,015 - uvicorn.access - INFO - 127.0.0.1:5180 - "POST /documents/upload HTTP/1.1" 403

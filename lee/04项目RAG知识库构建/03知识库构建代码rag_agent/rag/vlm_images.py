@@ -18,6 +18,8 @@ from concurrent.futures.thread import ThreadPoolExecutor
 
 dotenv.load_dotenv()
 
+
+"""视觉模型"""
 # 初始模型配置
 vl_model = init_chat_model(
     model_provider="openai",
@@ -137,34 +139,39 @@ class ImageVLMParser:
         }
 
     def patch_image_directory(self, image_directory):
-        """批量处理图片目录"""
+        """批量处理图片目录，返回生成的 JSON 文件路径；目录不存在时返回 None"""
         result = []
-        # 判断一下该路径是否存在
-        if os.path.isdir(image_directory):
-            # 获取配置文件中设定的最大线程数
-            max_workers = int(os.getenv("MAX_CONCURRENT_EMBEDDING_THREADS"))
+        if not os.path.isdir(image_directory):
+            return None
 
-            # 保存线程池执行结果的对象列表
-            futures_list = []
-            # 创建线程池
-            with ThreadPoolExecutor(max_workers=max_workers) as executor:
-                # 获取该目录下的所有文件
-                for file in os.listdir(image_directory):
-                    # 拼接完整的文件路径
-                    file_path = os.path.join(image_directory, file)
-                    # 往线程池中提交处理的任务：submit 是非阻塞的。也就是说，派完活就立刻返回，不等工人干完，继续派下一个任务；把活交给线程池，拿回一个 Future()对象
-                    future = executor.submit(self.images_vlm_content, file_path)
+        # 只处理常见图片格式
+        image_extensions = {'.jpg', '.jpeg', '.png', '.bmp', '.webp', '.gif', '.tiff'}
+        image_files = [
+            f for f in os.listdir(image_directory)
+            if os.path.splitext(f)[1].lower() in image_extensions
+        ]
 
-                    futures_list.append(future)
-            # 获取线程池执行的结果
-            for future in futures_list:
-                # 获取线程池中任务的结果
-                image_vlm_res = future.result()  # result()阻塞等待，直到跑完 --> 等任务完成，拿回真正的返回值
+        max_workers = int(os.getenv("MAX_CONCURRENT_EMBEDDING_THREADS", "4"))
+
+        futures_list = []
+        with ThreadPoolExecutor(max_workers=max_workers) as executor:
+            for file in image_files:
+                file_path = os.path.join(image_directory, file)
+                future = executor.submit(self.images_vlm_content, file_path)
+                futures_list.append(future)
+
+        for future in futures_list:
+            try:
+                image_vlm_res = future.result()
                 result.append(image_vlm_res)
-            # 保存图片内容
+            except Exception as e:
+                print(f"图片识别失败，跳过: {e}")
+
+        if result:
             json_file_path = os.path.join(image_directory, "image_vlm_content.json")
             self.save_image_vlm_content(result, json_file_path)
             return json_file_path
+        return None
 
     # 讲图片内容保存到json文件中
     def save_image_vlm_content(self, image_vlm_content, json_file):
@@ -206,7 +213,7 @@ documents = [
 
 graph_index = PropertyGraphIndex.from_documents(documents, ...)
 
-# 1. 从 image_path(比如lee\04项目RAG知识库构建\02RAG知识库+多模态图片识别\docs2) 的文档中分离出图片文件
+# 1. 从 image_path(比如lee\\04项目RAG知识库构建\\02RAG知识库+多模态图片识别\\docs2) 的文档中分离出图片文件
 # 2. 用 VL 模型理解每张图片 → 得到文本描述  --> 该文件已实现
 # 3. 把图片描述包装成 Document，metadata 标记对应的模块/章节
 # 4. 合并文字文档 + 图片描述文档，再送入 PropertyGraphIndex

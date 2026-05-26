@@ -24,13 +24,16 @@
 
 
 """
+import json
 import os
+import re
+import subprocess
+
 import dotenv
+import requests
 
 dotenv.load_dotenv()
 from vlm_images import ImageVLMParser
-import requests
-import subprocess
 
 
 class AddDocumentToKnowledgeBase:
@@ -47,22 +50,28 @@ class AddDocumentToKnowledgeBase:
     def minerU_parse_document(self):
         """
         使用minerU解析文档
+        
         需要安装
         curl -fsSL https://cdn-mineru.openxlab.org.cn/open-api-cli/install.sh | sh
         在知识库部署的服务器上进行解析(对服务器的配置要求高)
         :return:
         """
         cmd = f"mineru-open-api extract {self.document_path} -o {self.output_path}"
-        subprocess.run(cmd, shell=True)
+        result = subprocess.run(cmd, shell=True)
+        if result.returncode != 0:
+            raise RuntimeError(f"minerU 解析失败，返回码: {result.returncode}")
 
     def parse_images(self, images_path):
         """
-        解析图片文件夹中图片的内容，并上传到知识库中
-        :return:
+        解析图片文件夹中图片的内容
+        :param images_path: 图片文件夹路径
+        :return: VLM 解析结果 JSON 文件路径，目录不存在时抛出 FileNotFoundError
         """
         parser = ImageVLMParser()
-        image_content_json_file_path = parser.patch_image_directory(images_path)
-        self.upload_to_knowledge_base(image_content_json_file_path)
+        vlm_json_file_path = parser.patch_image_directory(images_path)
+        if vlm_json_file_path is None:
+            raise FileNotFoundError(f"图片目录不存在或无可处理图片: {images_path}")
+        return vlm_json_file_path
 
     def upload_to_knowledge_base(self, file_path):
         """
@@ -70,43 +79,151 @@ class AddDocumentToKnowledgeBase:
         :return:
         """
         url = os.getenv('RAG_KNOWLEDGE_BASE_URL') + '/documents/upload'
-        # 调用知识库文件上传的api，将图片的json文件上传到知识库中
-        response = requests.post(
-            url=url,
-            files={
-                'file': open(file_path, 'rb')
-            }
-        )
+        with open(file_path, 'rb') as f:
+            response = requests.post(
+                url=url,
+                files={'file': f}  # 根据接口要求，文件字段名可能需要调整，比如 'file' 或 'document'，具体看服务器端接口定义
+            )
         # 判断文件上传成功还是失败
-        if response.status_code == 200 and response.json()['status'] == "success":
-            print('文件上传成功')
-        else:
-            print('文件上传失败')
+        if response.status_code == 200:
+            try:
+                data = response.json()
+                if data.get('status') == "success":
+                    print('文件上传成功')
+                    return
+            except ValueError:
+                pass
+        print(f'文件上传失败: status={response.status_code}, body={response.text[:200]}')
+
+    @staticmethod
+    def merge_image_desc_into_md(md_file_path, vlm_json_file_path):
+        """
+        方案A：将VLM图片描述注入到MD文本中图片引用的位置
+        这样检索时，图片语义信息就跟原文本绑定在同一个文本块里
+        """
+        # 读取VLM解析结果
+        with open(vlm_json_file_path, "r", encoding="utf-8") as f:
+            vlm_results = json.load(f)
+
+        # 构建 image_path -> description 的映射
+        image_desc_map = {}
+        for item in vlm_results:
+            # 取相对路径，兼容 windows 路径
+            rel_path = item["image_path"].replace("\\", "/")
+            image_desc_map[rel_path] = item["image_content"]
+
+        # 读取原始MD文件
+        with open(md_file_path, "r", encoding="utf-8") as f:
+            md_content = f.read()
+
+        # 遍历每个图片引用，在其后插入VLM描述
+        # 匹配 ![alt](path) 语法
+        pattern = r"(!\[.*?\]\((.*?)\))"
+
+        def replacer(match):
+            full_ref = match.group(1)       # ![alt](images/0.png)
+            img_path = match.group(2)        # images/0.png
+            img_path = img_path.replace("\\", "/")
+
+            if img_path in image_desc_map:
+                desc = image_desc_map[img_path]
+                # 插入图片描述（如果描述是字符串；VLM可能返回list）
+                if isinstance(desc, list):
+                    desc = "".join(desc)
+                return f"{full_ref}\n\n[图片描述]: {desc}"
+            return full_ref
+
+        merged_content = re.sub(pattern, replacer, md_content)
+
+        # 写回一个新的合并文件
+        base, ext = os.path.splitext(md_file_path)
+        merged_file_path = base + "_merged" + ext
+        with open(merged_file_path, "w", encoding="utf-8") as f:
+            f.write(merged_content)
+
+        print(f"图片描述已注入到: {merged_file_path}")
+        return merged_file_path
+
+    def _get_parsed_file_paths(self):
+        """获取解析后的 MD 文件路径和图片目录路径"""
+        # document_path 已经是解析好的 MD 文件，images 与其同级
+        md_file_path = self.document_path
+        images_path = os.path.join(os.path.dirname(self.document_path), 'images')
+        return md_file_path, images_path
 
     def main(self):
         """主方法"""
-        # 解析文档
-        self.minerU_parse_document()
-        # 把解析的文本文档上传到知识库中
-        # 获取输出的md文件名称
-        md_file_name = os.path.basename(self.document_path).split('.')[0] + '.md'
-        print("解析之后的md文件名称为:", md_file_name)
-        md_file_path = os.path.join(self.output_path, md_file_name)
-        self.upload_to_knowledge_base(md_file_path)
-        print("文档中的文本内容已经上传到知识库")
-        # 获取图片文件夹
-        images_path = os.path.join(self.output_path, 'images')
-        # 解析图片文件夹，上传到知识库中
-        self.parse_images(images_path)
-        print("文档中的图片内容已经上传到知识库")
+
+        # 若已经通过minerU客户端解析好文档并得到md文件和图片文件夹，可以跳过这一步，直接使用解析后的文件路径进行后续处理
+        # 解析文档：得到纯文本的md文件，包含图片的image文件夹（可以通过minerU客户端解析，获取纯文本的md文件和对应图片的image文件夹）
+        # self.minerU_parse_document()  
+
+        # 获取解析后的 MD 文件和图片目录路径
+        md_file_path, images_path = self._get_parsed_file_paths()
+        print("解析之后的md文件名称为:", os.path.basename(md_file_path))
+
+        # 先用VLM解析图片，得到JSON文件
+        vlm_json_file_path = self.parse_images(images_path)
+
+        # 方案A：将VLM图片描述合并到MD文本中
+        merged_md_path = self.merge_image_desc_into_md(md_file_path, vlm_json_file_path)
+
+        # 上传合并后的MD文件（文本+图片描述在一起）
+        self.upload_to_knowledge_base(merged_md_path)
+        print("文档（含图片描述）已上传到知识库")
 
 
 if __name__ == '__main__':
     kd = AddDocumentToKnowledgeBase(
-        r'G:\AI\上课代码\AI2604\Code_RAG\docs2\01测试平台功能说明文档.md',
-        r"G:\AI\上课代码\AI2604\Code_RAG\docs2"
+    r'E:\AI\pythonProject\aiAutoTest\lee\04项目RAG知识库构建\03知识库构建代码rag_agent\docs\电子商务项目二期需求规格说明书\电子商务项目二期需求规格说明书.md',
+    r"E:\AI\pythonProject\aiAutoTest\lee\04项目RAG知识库构建\03知识库构建代码rag_agent\docs\out"
     )
+
     kd.main()
+
+
+
+"""
+【构建功能需求文本和该功能对应图片的知识图谱索引】
+
+LightRAG 本身是纯文本 RAG 系统， LightRAG 的文本索引把 ![login_page](images/0.png) 当成一串普通文本字符串，它不会特殊处理图片语法。
+
+LightRAG 如何处理这段文本
+
+```
+用户输入账号和密码，点击登录。
+![login_page](images/0.png)
+如果密码错误，会弹出提示。
+```
+
+LightRAG 内部做的是：
+文本 → 分块(chunk) → 命名实体提取 → 构建图谱节点和关系
+在这个过程中，LightRAG 不会把 ![login_page](images/0.png) 这个“图片文件的相对路径引用”识别为图片引用，它只是当成一串普通文本字符串来处理。实体提取模型可能会识别出 "登录页面" 这个词，但它不会知道这是图片引用。
+在图谱中，images/0.png 不会变成图节点，它只是文本块里的一串字符。实体提取模型可能会认出 login_page 这个词，但它不知道这是图片引用。
+
+
+【正确思路是】
+
+• 新增 merge_image_desc_into_md() 方法：用正则匹配 ![alt](path) 语法，将 VLM 描述插入到对应位置
+• 重写了 main()：先 VLM 解析 → 再合并到 MD → 最后只上传一个合并后的文件（不再分别上传两个独立文件）
+
+实现在知识库中构建文本和对应图片的知识图谱索引
+"""
+
+
+"""
+【LightRAG的接口自动构建知识图谱】
+
+通过LightRAG的接口/documents/upload上传文本后，自动构建知识图谱
+POST /documents/upload (文件)
+  → LightRAG 服务器端自动执行：
+    1. 分块(chunking)
+    2. LLM 提取实体(节点)和关系(边)
+    3. 构建/更新知识图谱
+    4. 建立向量索引
+  → 返回成功
+
+"""
 
 
 
