@@ -8,7 +8,11 @@
 # Copyright (c) 2026 Lee大侠. All rights reserved.
 # ========================================================
 
+"""
+非api的方式直接在代码中加载向量数据库中的内容，构建问答引擎，进行查询
 
+
+"""
 from models import *
 from llama_index.core import StorageContext, load_index_from_storage
 

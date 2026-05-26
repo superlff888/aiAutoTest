@@ -130,6 +130,7 @@ class ImageVLMParser:
             }
         ])
         print("图片识别完成:", image_path)
+        # 我理解应该处理成最下方注释的documents格式，才方便同一module的文字与图片构建知识图谱
         return {
             "image_path": image_path,
             "image_content": response.content
@@ -177,3 +178,40 @@ if __name__ == '__main__':
     parser = ImageVLMParser()
     res = parser.patch_image_directory(r"G:\AI\上课代码\AI2604\Code_RAG\docs2\images")
     print(res)
+
+
+
+
+"""
+
+# 把同一模块的文本和图片描述合并为一个 Document
+documents = [
+    Document(
+        text="用户输入账号密码，点击登录按钮...",
+        metadata={
+            "module": "登录模块",
+            "source": "需求文档第3节",
+            "related_images": ["images/login_mockup.png"]
+        }
+    ),
+    Document(
+        text="登录页面包含：用户名输入框、密码输入框、登录按钮...",  # VL模型识别结果
+        metadata={
+            "module": "登录模块",
+            "source": "原型图 login_mockup.png",
+            "image_path": "images/login_mockup.png"
+        }
+    ),
+]
+
+graph_index = PropertyGraphIndex.from_documents(documents, ...)
+
+# 1. 从 image_path(比如lee\04项目RAG知识库构建\02RAG知识库+多模态图片识别\docs2) 的文档中分离出图片文件
+# 2. 用 VL 模型理解每张图片 → 得到文本描述  --> 该文件已实现
+# 3. 把图片描述包装成 Document，metadata 标记对应的模块/章节
+# 4. 合并文字文档 + 图片描述文档，再送入 PropertyGraphIndex
+all_docs = text_documents + image_documents
+graph_index = PropertyGraphIndex.from_documents(all_docs, ...)
+
+
+"""

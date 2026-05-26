@@ -7,3 +7,6 @@ lee/.env
 # RAG runtime storage
 rag/light-rag/rag_storage/
 rag/lightrag.log
+
+# RPA checker output reports
+.claude/skills/prod-rpa-checker/output/
