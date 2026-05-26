@@ -23,9 +23,9 @@ dotenv.load_dotenv()
 # 初始模型配置
 vl_model = init_chat_model(
     model_provider="openai",
-    model=os.getenv("MODEL2"),
-    api_key=os.getenv("API_KEY"),
-    base_url=os.getenv("BASE_URL"),
+    model=os.getenv("OPENAI_MODEL_QWEN3"),
+    api_key=os.getenv("OPENAI_API_KEY"),
+    base_url=os.getenv("OPENAI_BASE_URL"),
     temperature=0.5,
 )
 
