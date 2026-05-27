@@ -19,6 +19,7 @@
 
 """
 import os
+from pathlib import Path
 import dotenv
 
 dotenv.load_dotenv()
@@ -96,8 +97,9 @@ class AddDocumentToKnowledgeBase:
 
 
 if __name__ == '__main__':
-    kd = AddDocumentToKnowledgeBase(
-        r'G:\AI\上课代码\AI2604\Code_RAG\docs2\01测试平台功能说明文档.md',
-        r"G:\AI\上课代码\AI2604\Code_RAG\docs2"
-    )
+    _BASE = Path(__file__).parent.parent / "docs"
+    doc = _BASE / "电子商务项目二期需求规格说明书" / "电子商务项目二期需求规格说明书.md"
+    out = _BASE / "out"
+
+    kd = AddDocumentToKnowledgeBase(str(doc), str(out))
     kd.main()

@@ -33,6 +33,7 @@ import json
 import os
 import re
 import subprocess
+from pathlib import Path
 
 import dotenv
 import requests
@@ -207,11 +208,11 @@ class AddDocumentToKnowledgeBase:
 
 
 if __name__ == '__main__':
-    kd = AddDocumentToKnowledgeBase(
-    r'E:\AI\pythonProject\aiAutoTest\lee\04项目RAG知识库构建\03知识库构建代码rag_agent\docs\电子商务项目二期需求规格说明书\电子商务项目二期需求规格说明书.md',
-    r"E:\AI\pythonProject\aiAutoTest\lee\04项目RAG知识库构建\03知识库构建代码rag_agent\docs\out"
-    )
+    _BASE = Path(__file__).parent.parent / "docs"
+    doc = _BASE / "电子商务项目二期需求规格说明书" / "电子商务项目二期需求规格说明书.md"
+    out = _BASE / "out"
 
+    kd = AddDocumentToKnowledgeBase(str(doc), str(out))
     kd.main()
 
 
