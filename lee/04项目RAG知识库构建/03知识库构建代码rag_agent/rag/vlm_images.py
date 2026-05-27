@@ -211,14 +211,4 @@ documents = [
     ),
 ]
 
-graph_index = PropertyGraphIndex.from_documents(documents, ...)
-
-# 1. 从 image_path(比如lee\\04项目RAG知识库构建\\02RAG知识库+多模态图片识别\\docs2) 的文档中分离出图片文件
-# 2. 用 VL 模型理解每张图片 → 得到文本描述  --> 该文件已实现
-# 3. 把图片描述包装成 Document，metadata 标记对应的模块/章节
-# 4. 合并文字文档 + 图片描述文档，再送入 PropertyGraphIndex
-all_docs = text_documents + image_documents
-graph_index = PropertyGraphIndex.from_documents(all_docs, ...)
-
-
 """
