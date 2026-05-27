@@ -11,12 +11,16 @@
 
 import json
 import os
+from pathlib import Path
 import dotenv
 from langchain.chat_models import init_chat_model
 from base64 import b64encode
 from concurrent.futures.thread import ThreadPoolExecutor
 
 dotenv.load_dotenv()
+
+
+"""图片识别的方法上面可以加一个判断，判断图片的大小 ，如果小于5bk的图片不做识别"""
 
 
 """视觉模型"""
@@ -55,7 +59,7 @@ class ImageVLMParser:
         --------------------------------
         【多模态输入理解原则】
         --------------------------------
-        你可能会接收到文本、图片、页面截图或扫描文档。
+        你可能会接收到文本、图片、页面截图或扫描文档，图片包含但不限于下面几种图片类型：原型图、业务流程图、拓扑图、系统架构图
         
         对于图片输入：
         - 图片仅作为“证据来源”，而不是“推理素材”
@@ -132,14 +136,13 @@ class ImageVLMParser:
             }
         ])
         print("图片识别完成:", image_path)
-        # 我理解应该处理成最下方注释的documents格式，才方便同一module的文字与图片构建知识图谱
         return {
             "image_path": image_path,
             "image_content": response.content
         }
 
     def patch_image_directory(self, image_directory):
-        """批量处理图片目录，返回生成的 JSON 文件路径；目录不存在时返回 None"""
+        """批量处理图片目录，返回生成的 JSON 文件路径；图片目录不存在时返回 None"""
         result = []
         if not os.path.isdir(image_directory):
             return None
@@ -151,18 +154,20 @@ class ImageVLMParser:
             if os.path.splitext(f)[1].lower() in image_extensions
         ]
 
+        # 获取配置文件中的最大线程数，默认为4
         max_workers = int(os.getenv("MAX_CONCURRENT_EMBEDDING_THREADS", "4"))
 
         futures_list = []
         with ThreadPoolExecutor(max_workers=max_workers) as executor:
             for file in image_files:
                 file_path = os.path.join(image_directory, file)
+                # submit：提交一个任务到线程池，立即返回一个 Future 对象（代表"将来会完成的计算"）
                 future = executor.submit(self.images_vlm_content, file_path)
-                futures_list.append(future)
+                futures_list.append(future)  # 收集所有 Future 对象
 
         for future in futures_list:
             try:
-                image_vlm_res = future.result()
+                image_vlm_res = future.result()  # 调用result()阻塞，等待该任务完成，拿到返回值
                 result.append(image_vlm_res)
             except Exception as e:
                 print(f"图片识别失败，跳过: {e}")
@@ -183,8 +188,37 @@ class ImageVLMParser:
 
 if __name__ == '__main__':
     parser = ImageVLMParser()
-    res = parser.patch_image_directory(r"G:\AI\上课代码\AI2604\Code_RAG\docs2\images")
+    # 图片路径（基于 __file__ 解析绝对路径，不受 cwd 影响）
+    image_directory = (Path(__file__).parent.parent / "doc1")
+    res = parser.patch_image_directory(image_directory)
     print(res)
+
+
+
+
+"""
+
+• submit() 是非阻塞的——提交完立刻继续下一个循环，所有图片几乎是同时提交给队列，线程池自己决定分配给哪个空闲线程
+ - 图片是依次提交的，提交动作本身很快（微秒级），看起来像同时
+ - 但同时执行的数量受 max_workers 限制,最多 {max_workers} 个线程同时跑，比如max_workers=4 意味着最多只有 4 个线程在干活，其他在排队等
+• result() 是阻塞的——调用时如果任务还没完成就等，完成了就返回值
+
+【举例】
+想象你去餐厅点餐：
+1. submit() → 点餐拿号码牌
+你把订单交给服务员，服务员立刻给你一张取餐号码牌（Future），然后转身去厨房下单。
+• 你拿到号码牌后不用在厨房门口干等，可以继续干别的事（或继续下下一道菜）
+• 号码牌本身不是餐，它只是承诺"等下会给你饭"
+• 厨房开始做你的菜了，但你不知道什么时候做好
+Copy code to clipboard
+future = executor.submit(self.images_vlm_content, file_path)
+→ 把一个任务丢进线程池，不等它做完，立刻拿到一个"取餐牌"，继续循环下一张图片。
+2. future.result() → 凭号码牌取餐
+你现在走到取餐口，出示号码牌等着拿餐。
+• 如果菜已经好了，直接端走
+• 如果还没做好，你就站在那等着，直到厨师说"好了"
+• 拿到餐的同时，也知道了这盘菜长什么样
+"""
 
 
 

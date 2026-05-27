@@ -20,7 +20,6 @@
         PDF或者docx中的图片，可以先通过MinerU解析，讲文档转换为MD，并把图片分离出来
 
 
-
     2、通过多模态大模型理解图片内容，将图片和图片内容构建关联,保存到json文件
         [
             {
@@ -44,10 +43,9 @@
 
 import os
 import dotenv
-from deepagents import create_deep_agent
 from langchain.chat_models import init_chat_model
-from rag_agent.rag_tools import lightrag_query
 from base64 import b64encode
+from pathlib import Path
 
 dotenv.load_dotenv()
 
@@ -59,12 +57,11 @@ vl_model = init_chat_model(
     base_url=os.getenv("BASE_URL"),
     temperature=0.5,
 )
-# 图片路径
-image_path = "../images/da57b25bc7e21bfab456b28f132959f96eaa4b2106adbc69bdbc7e297059b8db.jpg"
-image_path2 = "../images/AI平台架构图.png"
+# 图片路径（基于 __file__ 解析绝对路径，不受 cwd 影响）
+image_path2 = (Path(__file__).parent.parent / "doc/AI平台架构图.png")
 # 读取图片内容，转换为base64
 with open(image_path2, "rb") as f:
-    b64_image_content = b64encode(f.read()).decode("utf-8")
+    b64_image_content = b64encode(f.read()).decode("utf-8")    
 message = {
     "role": "user",
     "content": [

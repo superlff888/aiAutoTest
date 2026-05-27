@@ -13,8 +13,8 @@ import os
 import dotenv
 from deepagents import create_deep_agent
 from langchain.chat_models import init_chat_model
-from rag_agent.pormpts.system_prompt import get_system_prompt
-from rag_agent.tools.rag_tools import lightrag_query
+from pormpts.system_prompt import get_system_prompt
+from tools.rag_tools import lightrag_query
 
 dotenv.load_dotenv()
 
