@@ -1,5 +1,4 @@
-# @Author  : 木森
-# @weixin: python771
+
 """
 提供带有图片的PDF或者word文档
 
@@ -18,6 +17,8 @@
     通过图片路径 关联 图片的文本描述和md文件中的文本内容，使图片和文本内容在知识库中建立关联关系
 
 """
+
+
 import os
 from pathlib import Path
 import dotenv

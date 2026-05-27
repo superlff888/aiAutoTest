@@ -1,31 +1,30 @@
-# !/usr/bin/env python3,# -*- coding: utf-8 -*-
-# --------------------------------------------
-# @FilePath    : lee\05用例生成agent\01用例生成代码\rag_agent\rag\rag_file_upload.py
-# @Author      : Lee大侠
-# @Desc        : 这是一个AI测试项目
-# @CreateTime  : 2026/04/15 22:19
-# @UpdateTime  : 2026/04/15 22:23
-# Copyright (c) 2026 Lee大侠. All rights reserved.
-# ========================================================
-
 
 """
 提供带有图片的PDF或者word文档
 
 1、解析文档minerU解析文档的内容
-    得到纯文本的md文件，包含图片的image文件夹
+    得到纯文本的md文件（含图片路径），同时在相同目录包含图片的image文件夹
 
 2、将带有images的文件夹 通过封装的vlm_images进行解析
-
+    ```
+    {
+            "image_path": image_path,  # 图片路径
+            "image_content": response.content  # 图片内容的文本描述
+        }
+    ```
 3、将纯文本的md 和解析图片得到的json文件通过知识库文件上传的api直接上传到知识库中
     http://localhost:9621
+    通过图片路径 关联 图片的文本描述和md文件中的文本内容，使图片和文本内容在知识库中建立关联关系
 
 """
+
+
 import os
+from pathlib import Path
 import dotenv
 
 dotenv.load_dotenv()
-from rag_agent.rag.vlm_images import ImageVLMParser
+from vlm_images import ImageVLMParser
 import requests
 import subprocess
 
@@ -99,8 +98,9 @@ class AddDocumentToKnowledgeBase:
 
 
 if __name__ == '__main__':
-    kd = AddDocumentToKnowledgeBase(
-        r'G:\AI\上课代码\AI2604\Code_RAG\docs2\01测试平台功能说明文档.md',
-        r"G:\AI\上课代码\AI2604\Code_RAG\docs2"
-    )
+    _BASE = Path(__file__).parent.parent / "docs"
+    doc = _BASE / "电子商务项目二期需求规格说明书" / "电子商务项目二期需求规格说明书.md"
+    out = _BASE / "out"
+
+    kd = AddDocumentToKnowledgeBase(str(doc), str(out))
     kd.main()
