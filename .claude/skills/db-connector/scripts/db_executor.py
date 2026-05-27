@@ -17,8 +17,8 @@ from pathlib import Path
 # ─── Environment Variable Resolver ───
 
 def _load_dotenv():
-    """从项目根目录的 .claude/.env 文件加载环境变量到 os.environ。"""
-    dotenv_path = Path(__file__).resolve().parent.parent.parent.parent / ".env"
+    """从项目根目录的 .env 文件加载环境变量到 os.environ。"""
+    dotenv_path = Path(__file__).resolve().parent.parent.parent.parent.parent / ".env"
     if not dotenv_path.exists():
         return
     with open(dotenv_path, "r", encoding="utf-8") as f:

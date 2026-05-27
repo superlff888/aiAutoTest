@@ -32,7 +32,8 @@ import subprocess
 import dotenv
 import requests
 
-dotenv.load_dotenv()
+dotenv.load_dotenv(dotenv.find_dotenv())  # 从当前文件所在目录逐级向上搜索 .env 文件
+
 from vlm_images import ImageVLMParser
 
 
@@ -78,7 +79,10 @@ class AddDocumentToKnowledgeBase:
         上传文件到知识库中
         :return:
         """
-        url = os.getenv('RAG_KNOWLEDGE_BASE_URL') + '/documents/upload'
+        base_url = os.getenv('RAG_KNOWLEDGE_BASE_URL')
+        if not base_url:
+            raise RuntimeError("环境变量 RAG_KNOWLEDGE_BASE_URL 未配置，请在 .env 文件中设置，如: RAG_KNOWLEDGE_BASE_URL=http://localhost:9621")
+        url = base_url + '/documents/upload'
         with open(file_path, 'rb') as f:
             response = requests.post(
                 url=url,
@@ -101,33 +105,59 @@ class AddDocumentToKnowledgeBase:
         方案A：将VLM图片描述注入到MD文本中图片引用的位置
         这样检索时，图片语义信息就跟原文本绑定在同一个文本块里
         """
+        # 幂等性保护：如果输入已经是合并后的文件，直接返回
+        base, ext = os.path.splitext(md_file_path)
+        merged_file_path = base + "_merged" + ext
+        if md_file_path == merged_file_path:
+            print(f"输入已是合并文件，跳过: {md_file_path}")
+            return merged_file_path
+
+        # 若输出已存在且内容未变化，跳过重写
+        if os.path.exists(merged_file_path):
+            with open(merged_file_path, "r", encoding="utf-8") as f:
+                existing_content = f.read()
+            with open(md_file_path, "r", encoding="utf-8") as f:
+                md_content = f.read()
+            with open(vlm_json_file_path, "r", encoding="utf-8") as f:
+                vlm_results = json.load(f)
+            # 快速判断：检查已合并文件是否包含所有图片描述标记
+            image_desc_map = {}
+            for item in vlm_results:
+                img_path = item.get("image_path", "").replace("\\", "/")
+                img_content = item.get("image_content")
+                if not img_path or img_content is None:
+                    continue
+                image_desc_map[img_path] = "".join(img_content) if isinstance(img_content, list) else img_content
+            if all(f"[图片描述]: {desc}" in existing_content for desc in image_desc_map.values()):
+                print(f"合并文件已是最新，跳过: {merged_file_path}")
+                return merged_file_path
+
         # 读取VLM解析结果
         with open(vlm_json_file_path, "r", encoding="utf-8") as f:
             vlm_results = json.load(f)
 
-        # 构建 image_path -> description 的映射
+        # 构建 image_path -> description 的映射，跳过无效条目
         image_desc_map = {}
         for item in vlm_results:
-            # 取相对路径，兼容 windows 路径
-            rel_path = item["image_path"].replace("\\", "/")
-            image_desc_map[rel_path] = item["image_content"]
+            img_path = item.get("image_path", "").replace("\\", "/")
+            img_content = item.get("image_content")
+            if not img_path or img_content is None:
+                continue
+            image_desc_map[img_path] = img_content
 
         # 读取原始MD文件
         with open(md_file_path, "r", encoding="utf-8") as f:
             md_content = f.read()
 
-        # 遍历每个图片引用，在其后插入VLM描述
-        # 匹配 ![alt](path) 语法
-        pattern = r"(!\[.*?\]\((.*?)\))"
+        # 匹配 ![alt](path) 语法，[^\]]* 防止 alt 中包含 ] 导致提前截断
+        pattern = r"(!\[[^\]]*\]\((.*?)\))"
 
         def replacer(match):
-            full_ref = match.group(1)       # ![alt](images/0.png)
-            img_path = match.group(2)        # images/0.png
-            img_path = img_path.replace("\\", "/")
+            full_ref = match.group(1)
+            img_path = match.group(2).replace("\\", "/")
 
             if img_path in image_desc_map:
                 desc = image_desc_map[img_path]
-                # 插入图片描述（如果描述是字符串；VLM可能返回list）
                 if isinstance(desc, list):
                     desc = "".join(desc)
                 return f"{full_ref}\n\n[图片描述]: {desc}"
@@ -135,9 +165,7 @@ class AddDocumentToKnowledgeBase:
 
         merged_content = re.sub(pattern, replacer, md_content)
 
-        # 写回一个新的合并文件
-        base, ext = os.path.splitext(md_file_path)
-        merged_file_path = base + "_merged" + ext
+        # 写回合并文件
         with open(merged_file_path, "w", encoding="utf-8") as f:
             f.write(merged_content)
 
