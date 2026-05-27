@@ -47,3 +47,10 @@ print("向量库构建完成！")
 
 # 对向量数据库中的内容进行持久化存储
 index.storage_context.persist(persist_dir="../chroma_db")
+
+
+
+"""
+有开箱即用的LightRAG等，谁还自己写RAG啊，哈哈哈！！！
+
+"""

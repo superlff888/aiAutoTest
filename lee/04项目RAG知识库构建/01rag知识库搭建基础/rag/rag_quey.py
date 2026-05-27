@@ -9,6 +9,12 @@
 # ========================================================
 
 
+"""
+有开箱即用的LightRAG等，谁还自己写RAG啊，哈哈哈！！！
+
+"""
+
+
 from models import *
 from llama_index.core import StorageContext, load_index_from_storage
 

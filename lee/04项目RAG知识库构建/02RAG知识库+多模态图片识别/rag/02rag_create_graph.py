@@ -68,30 +68,5 @@ graph_index.storage_context.persist(persist_dir="../chroma_db")
 如果不执行 persist()，所有索引数据只存在于内存中，脚本运行结束后就会丢失。持久化后，下次可以直接从磁盘加载，无需重新对文档进行向量化和图谱抽取，大幅提升加载速度和查询效率。
 """
 
-"""
 
-# 把同一模块的文本和图片描述合并为一个 Document
-documents = [
-    Document(
-        text="用户输入账号密码，点击登录按钮...",
-        metadata={
-            "module": "登录模块",
-            "source": "需求文档第3节",
-            "related_images": ["images/login_mockup.png"]
-        }
-    ),
-    Document(
-        text="登录页面包含：用户名输入框、密码输入框、登录按钮...",  # VL模型识别结果
-        metadata={
-            "module": "登录模块",
-            "source": "原型图 login_mockup.png",
-            "image_path": "images/login_mockup.png"
-        }
-    ),
-]
-
-graph_index = PropertyGraphIndex.from_documents(documents, ...)
-
-
-"""
 

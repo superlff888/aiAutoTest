@@ -34,3 +34,8 @@ def lightrag_query(query):
     result = response.json()['response']
     print("==========知识库内容检索完成==========")
     return result
+
+
+"""
+通过LightRAG提供的API接口来实现知识库的查询功能，用户输入一个问题，工具会调用LightRAG的API接口来从知识库中检索相关的内容，并将这些内容返回给用户
+"""
