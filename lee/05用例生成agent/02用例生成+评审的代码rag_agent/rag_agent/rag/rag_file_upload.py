@@ -57,9 +57,10 @@ class AddDocumentToKnowledgeBase:
         curl -fsSL https://cdn-mineru.openxlab.org.cn/open-api-cli/install.sh | sh
         在知识库部署的服务器上进行解析(对服务器的配置要求高)
         :return:
-        """
+        """ 
+        # mineru-open-api命令extract解析document_path文档，并输出到指定的output_path目录中
         cmd = f"mineru-open-api extract {self.document_path} -o {self.output_path}"
-        subprocess.run(cmd, shell=True)
+        subprocess.run(cmd, shell=True)  # 执行系统命令行命令
 
     def parse_images(self, images_path):
         """
