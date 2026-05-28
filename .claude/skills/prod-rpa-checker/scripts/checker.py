@@ -291,29 +291,57 @@ def check_date_continuity(conn, sql: str, start_date: datetime, end_date: dateti
         return False, [], f"查询异常: {str(e)}"
 
 
-def _check_diff(conn, sql: str, trade_center_id: str, vpp_id: str) -> str:
+def _format_date_ranges(dates: list) -> str:
+    """将连续日期压缩为范围格式，如 20260501~20260510"""
+    if not dates:
+        return ''
+    # 排序去重
+    sorted_dates = sorted(set(dates))
+    ranges = []
+    start = sorted_dates[0]
+    prev = sorted_dates[0]
+    for d in sorted_dates[1:]:
+        # 比较日期是否连续（相差1天）
+        prev_dt = datetime.strptime(prev, '%Y%m%d')
+        curr_dt = datetime.strptime(d, '%Y%m%d')
+        if (curr_dt - prev_dt).days == 1:
+            prev = d
+        else:
+            if start == prev:
+                ranges.append(start)
+            else:
+                ranges.append(f'{start}～{prev}')
+            start = d
+            prev = d
+    # 收尾
+    if start == prev:
+        ranges.append(start)
+    else:
+        ranges.append(f'{start}~{prev}')
+    return '、'.join(ranges)
+
+
+def _check_diff(conn, sql: str) -> str:
     """检查代理用户用电明细与代理用户用电总计的差异，复用连接"""
     try:
         with conn.cursor() as cursor:
             cursor.execute(sql)
             rows = cursor.fetchall()
             if not rows:
-                return "✅ 明细与总计一致"
-            max_diff = 0
-            diff_rows = []
+                return "✅ diff=0"
+            diff_dates = []
             for row in rows:
                 diff_val = row.get('diff_energy', 0)
                 try:
                     diff_val = abs(float(diff_val))
                 except (ValueError, TypeError):
                     diff_val = 0
-                if diff_val > max_diff:
-                    max_diff = diff_val
                 if diff_val > 0.01:
-                    diff_rows.append(f"{row.get('time', '?')}: {row.get('diff_energy', '?')}")
-            if max_diff < 0.01:
+                    diff_dates.append(str(row.get('time', '?')))
+            if not diff_dates:
                 return "✅ diff=0"
-            return f"❌ diff≠0，最大差值={max_diff:.2f}，异常日期: {', '.join(diff_rows[:3])}"
+            date_summary = _format_date_ranges(diff_dates)
+            return f"❌ diff={len(diff_dates)}，{date_summary}"
     except Exception as e:
         return f"❌ 查询异常: {str(e)}"
 
@@ -372,7 +400,8 @@ def run_check(connection_name: str, config_path: str, trade_center: str = None,
                 if latest_time == '—':
                     continue
 
-                time_str = latest_time[0] if isinstance(latest_time, list) else latest_time
+                time_str = '/'.join(latest_time) if isinstance(latest_time, list) else latest_time
+                time_label = f'[{", ".join(latest_time)}]' if isinstance(latest_time, list) else latest_time
 
                 sql_template = templates.get(data_type_name)
                 if not sql_template:
@@ -380,7 +409,8 @@ def run_check(connection_name: str, config_path: str, trade_center: str = None,
 
                 # 代理用户用电明细与代理用户用电总计差异：特殊处理
                 if data_type_name == '代理用户用电明细与代理用户用电总计差异':
-                    diff_status = _safe_query(conn, _check_diff, sql_template, trade_center_id, vpp_id)
+                    diff_sql = render_sql(sql_template, trade_center_id, 0, vpp_id)
+                    diff_status = _safe_query(conn, _check_diff, diff_sql)
                     rows.append({
                         'data_type': '明细与总计差异',
                         'latest': diff_status,
@@ -424,7 +454,7 @@ def run_check(connection_name: str, config_path: str, trade_center: str = None,
                         continuity_status = f"❌ {', '.join(missing_dates)}"
 
                 rows.append({
-                    'data_type': f'{data_type_name}（{latest_time}）',
+                    'data_type': f'{data_type_name}（{time_label}）',
                     'latest': latest_status,
                     'volume': vol_status or '—',
                     'continuity': continuity_status,
@@ -433,20 +463,20 @@ def run_check(connection_name: str, config_path: str, trade_center: str = None,
                 if passed:
                     results['passed'].append({
                         'center': center_name,
-                        'data_type': f'{data_type_name}（{latest_time}）',
+                        'data_type': f'{data_type_name}（{time_label}）',
                         'check': {'offset': used_offset, 'expected_date': get_expected_date(used_offset).strftime('%Y-%m-%d'), 'max_date': max_date, 'passed': True}
                     })
                 else:
                     results['failed'].append({
                         'center': center_name,
-                        'data_type': f'{data_type_name}（{latest_time}）',
+                        'data_type': f'{data_type_name}（{time_label}）',
                         'check': {'offset': used_offset, 'expected_date': get_expected_date(used_offset).strftime('%Y-%m-%d'), 'max_date': max_date, 'passed': False, 'error': error}
                     })
 
                 if vol_status and ('不足' in vol_status or '异常' in vol_status):
                     results['failed'].append({
                         'center': center_name,
-                        'data_type': f'{data_type_name}（{latest_time}）',
+                        'data_type': f'{data_type_name}（{time_label}）',
                         'check': {'type': 'volume', 'passed': False, 'error': vol_status}
                     })
 
@@ -530,7 +560,7 @@ def _build_summary(results, center_results):
             problem += f' 等{len(issues)}项'
         lines.append(f"| {center_name} | 部分通过 | {problem} |")
 
-    diff_fails = [f for f in results['failed'] if '明细与总计差异' in f.get('data_type', '')]
+    diff_fails = [f for f in results['failed'] if '代理用户用电明细与代理用户用电总计差异' in f.get('data_type', '')]
     if not diff_fails:
         lines.append(f"\n所有交易中心的**明细与总计差异**检查均通过。")
 
