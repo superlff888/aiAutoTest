@@ -142,10 +142,13 @@ def get_expected_date(offset_days: int) -> datetime:
     return datetime.now() + timedelta(days=-offset_days)
 
 
-def render_sql(sql_template: str, trade_center_id: str, offset_days: int, vpp_id: str = '1') -> str:
+def render_sql(sql_template: str, trade_center_id: str, offset_days: int,
+               start_date: str, end_date: str, vpp_id: str = '1') -> str:
     return sql_template.replace('{{trade_center_id}}', str(trade_center_id)) \
                        .replace('{{offset_days}}', str(offset_days)) \
-                       .replace('{{vpp_id}}', vpp_id)
+                       .replace('{{vpp_id}}', vpp_id) \
+                       .replace('{{start_date}}', start_date) \
+                       .replace('{{end_date}}', end_date)
 
 
 def _extract_date(row: dict):
@@ -178,7 +181,9 @@ def check_latest_data(conn, sql_template: str, trade_center_id: str,
     fallback_log = []
     for i, offset in enumerate(offsets):
         expected_date = get_expected_date(offset)
-        sql = render_sql(sql_template, trade_center_id, offset, vpp_id)
+        start_str = (expected_date - timedelta(days=9)).strftime('%Y-%m-%d')
+        end_str = expected_date.strftime('%Y-%m-%d')
+        sql = render_sql(sql_template, trade_center_id, offset, start_str, end_str, vpp_id)
 
         try:
             with conn.cursor() as cursor:
@@ -188,9 +193,9 @@ def check_latest_data(conn, sql_template: str, trade_center_id: str,
                 if not rows:
                     fallback_log.append(f"{expected_date.strftime('%Y-%m-%d')}({offset}) 无数据")
                     if i == len(offsets) - 1:
-                        month_start = datetime.now().replace(day=1)
+                        range_start = expected_date - timedelta(days=9)
                         missing_dates = _get_missing_dates_from_db(conn, sql_template,
-                                                                   trade_center_id, month_start, expected_date, vpp_id)
+                                                                   trade_center_id, range_start, expected_date, vpp_id)
                         return False, offset, None, f"本月缺失 {len(missing_dates)} 天数据", fallback_log
                     continue
 
@@ -221,13 +226,15 @@ def check_latest_data(conn, sql_template: str, trade_center_id: str,
 
 def _get_missing_dates_from_db(conn, sql_template: str, trade_center_id: str,
                                start_date: datetime, end_date: datetime, vpp_id: str = '1') -> list:
-    sql = render_sql(sql_template, trade_center_id, 0, vpp_id)
+    start_str = start_date.strftime('%Y-%m-%d')
+    end_str = end_date.strftime('%Y-%m-%d')
+    sql = render_sql(sql_template, trade_center_id, 0, start_str, end_str, vpp_id)
     _, missing_dates, _ = _safe_query(conn, check_date_continuity, sql, start_date, end_date)
     return missing_dates
 
 
 def check_data_volume(conn, sql: str) -> tuple:
-    """复用数据库连接检查数据量"""
+    """检查每日数据条数是否在 4~20 条范围内"""
     try:
         with conn.cursor() as cursor:
             cursor.execute(sql)
@@ -235,25 +242,41 @@ def check_data_volume(conn, sql: str) -> tuple:
             count = len(rows)
 
             if not rows:
-                return True, count, 0, None
+                return False, count, 0, "无数据"
 
-            max_date = _normalize_date(_extract_date(rows[0]))
-            if max_date is None:
-                return True, count, 0, None
+            # 按日期分组统计，收集所有load_type
+            date_counts = {}
+            date_load_types = {}
+            for row in rows:
+                date_val = _normalize_date(_extract_date(row))
+                if date_val:
+                    date_counts[date_val] = date_counts.get(date_val, 0) + 1
+                    load_type = row.get('load_type')
+                    if load_type is not None:
+                        if date_val not in date_load_types:
+                            date_load_types[date_val] = set()
+                        date_load_types[date_val].add(str(load_type))
 
-            max_dt = datetime.strptime(max_date, '%Y-%m-%d')
-            month_start = max_dt.replace(day=1)
-            expected_days = (max_dt - month_start).days + 1
+            if not date_counts:
+                return False, count, 0, "无法获取日期字段"
 
-            if expected_days <= 0:
-                return True, count, expected_days, None
+            # 检查每天数据量
+            abnormal_days = []
+            for date_str, day_count in sorted(date_counts.items()):
+                if day_count < 4 or day_count > 20:
+                    lt_set = date_load_types.get(date_str)
+                    if lt_set:
+                        lt_str = '、'.join(sorted(lt_set))
+                    else:
+                        lt_str = '无'
+                    abnormal_days.append((date_str, day_count, lt_str))
 
-            ratio = count / expected_days
-            if ratio < 0.8:
-                return False, count, expected_days, f"数据不足: {count}条 (预期~{expected_days}条, {ratio:.0%})"
-            elif ratio > 1.2:
-                return False, count, expected_days, f"数据异常: {count}条 (预期~{expected_days}条, {ratio:.0%})"
-            return True, count, expected_days, None
+            if abnormal_days:
+                details = '；'.join(f'{d}(load_type={lt}): {c}条' for d, c, lt in abnormal_days[:5])
+                if len(abnormal_days) > 5:
+                    details += f' 等{len(abnormal_days)}天'
+                return False, count, len(date_counts), f'{len(abnormal_days)}天数据量异常: {details}'
+            return True, count, len(date_counts), f"正常(日均{count/len(date_counts):.0f}条)"
     except Exception as e:
         return False, 0, 0, f"数据量检查异常: {str(e)}"
 
@@ -358,15 +381,6 @@ def run_check(connection_name: str, config_path: str, trade_center: str = None,
     sql_dir = Path(config_path).parent.parent / 'sqls'
     templates = load_sql_templates(sql_dir)
 
-    if start_date is None:
-        start_date = datetime.now().replace(day=1)
-    else:
-        start_date = datetime.strptime(start_date, '%Y%m%d')
-    if end_date is None:
-        end_date = datetime.now()
-    else:
-        end_date = datetime.strptime(end_date, '%Y%m%d')
-
     results = {'passed': [], 'failed': []}
     center_results = {}
 
@@ -409,7 +423,9 @@ def run_check(connection_name: str, config_path: str, trade_center: str = None,
 
                 # 代理用户用电明细与代理用户用电总计差异：特殊处理
                 if data_type_name == '代理用户用电明细与代理用户用电总计差异':
-                    diff_sql = render_sql(sql_template, trade_center_id, 0, vpp_id)
+                    diff_start = (datetime.now() - timedelta(days=9)).strftime('%Y%m%d')
+                    diff_end = datetime.now().strftime('%Y%m%d')
+                    diff_sql = render_sql(sql_template, trade_center_id, 0, diff_start, diff_end, vpp_id)
                     diff_status = _safe_query(conn, _check_diff, diff_sql)
                     rows.append({
                         'data_type': '明细与总计差异',
@@ -425,29 +441,33 @@ def run_check(connection_name: str, config_path: str, trade_center: str = None,
 
                 offsets = parse_offset_days(time_str)
 
+                # === 计算该数据类型的检查范围（近10天）===
+                continuity_offset = offsets[0]
+                expected_end_date = get_expected_date(continuity_offset)
+                range_start = (expected_end_date - timedelta(days=9)).strftime('%Y-%m-%d')
+                range_end = expected_end_date.strftime('%Y-%m-%d')
+
                 # === 最新数据时间验证 ===
                 passed, used_offset, max_date, error, fallback_log = _safe_query(
                     conn, check_latest_data, sql_template, trade_center_id, offsets, vpp_id
                 )
                 latest_status = f"✅ {max_date}" if passed else f"❌ {error}"
 
-                # === 数据量合理性校验 ===
+                # === 数据量合理性校验（仅网侧预测/网侧实际）===
                 vol_status = None
-                if data_type_name not in ('网侧预测', '网侧实际'):
-                    volume_sql = render_sql(sql_template, trade_center_id, offsets[0], vpp_id)
-                    vol_ok, vol_count, vol_expected, vol_err = _safe_query(conn, check_data_volume, volume_sql)
-                    vol_status = "—" if vol_err is None else (f"✅ {vol_count}条" if vol_ok else f"❌ {vol_err}")
+                if data_type_name in ('网侧预测', '网侧实际'):
+                    volume_sql = render_sql(sql_template, trade_center_id, continuity_offset, range_start, range_end, vpp_id)
+                    vol_ok, vol_count, vol_days, vol_err = _safe_query(conn, check_data_volume, volume_sql)
+                    vol_status = "—" if vol_err is None else (f"✅ {vol_err}" if vol_ok else f"❌ {vol_err}")
 
                 # === 日期连续性验证 ===
                 if not passed and error and '本月缺失' in error:
                     continuity_status = '⏭️ 本月无数据'
                 else:
-                    continuity_offset = used_offset if passed else offsets[0]
-                    expected_end_date = get_expected_date(continuity_offset)
-                    rendered_sql = render_sql(sql_template, trade_center_id, continuity_offset, vpp_id)
-                    continuity_passed, missing_dates, _ = _safe_query(conn, check_date_continuity, rendered_sql, start_date, expected_end_date)
+                    rendered_sql = render_sql(sql_template, trade_center_id, continuity_offset, range_start, range_end, vpp_id)
+                    continuity_passed, missing_dates, _ = _safe_query(conn, check_date_continuity, rendered_sql, expected_end_date - timedelta(days=9), expected_end_date)
                     if continuity_passed:
-                        continuity_status = f"✅ {start_date.strftime('%m-%d')}~{expected_end_date.strftime('%m-%d')}"
+                        continuity_status = f"✅ {(expected_end_date - timedelta(days=9)).strftime('%m-%d')}~{expected_end_date.strftime('%m-%d')}"
                     elif len(missing_dates) > 3:
                         continuity_status = f"❌ {', '.join(missing_dates[:3])} 等{len(missing_dates)}天"
                     else:
@@ -473,7 +493,7 @@ def run_check(connection_name: str, config_path: str, trade_center: str = None,
                         'check': {'offset': used_offset, 'expected_date': get_expected_date(used_offset).strftime('%Y-%m-%d'), 'max_date': max_date, 'passed': False, 'error': error}
                     })
 
-                if vol_status and ('不足' in vol_status or '异常' in vol_status):
+                if vol_status and '❌' in vol_status:
                     results['failed'].append({
                         'center': center_name,
                         'data_type': f'{data_type_name}（{time_label}）',

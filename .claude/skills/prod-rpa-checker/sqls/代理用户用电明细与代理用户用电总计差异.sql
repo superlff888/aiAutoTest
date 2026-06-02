@@ -10,8 +10,8 @@ FROM (
     FROM user_energy
     WHERE trade_center_id = '{{trade_center_id}}'
     AND `vpp_id` = '{{vpp_id}}'
-    AND time BETWEEN DATE_FORMAT(CURDATE(), '%Y%m01') 
-    AND LAST_DAY(CURDATE())
+    AND time BETWEEN REPLACE('{{start_date}}', '-', '')
+    AND REPLACE('{{end_date}}', '-', '')
     GROUP BY time
     ) u
 LEFT JOIN (
@@ -21,8 +21,8 @@ LEFT JOIN (
     FROM vpp_energy
     WHERE trade_center_id = '{{trade_center_id}}'
     AND `vpp_id` = '{{vpp_id}}'
-    AND time BETWEEN DATE_FORMAT(CURDATE(), '%Y%m01') 
-    AND LAST_DAY(CURDATE())
+    AND time BETWEEN REPLACE('{{start_date}}', '-', '')
+    AND REPLACE('{{end_date}}', '-', '')
     GROUP BY time
 ) v
 ON u.time = v.time
