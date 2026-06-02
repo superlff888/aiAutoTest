@@ -23,7 +23,9 @@ import os
 from pathlib import Path
 import dotenv
 
-dotenv.load_dotenv()
+
+dotenv.load_dotenv(dotenv.find_dotenv()) 
+# dotenv.load_dotenv()
 from vlm_images import ImageVLMParser
 import requests
 import subprocess
@@ -82,7 +84,7 @@ class AddDocumentToKnowledgeBase:
     def main(self):
         """主方法"""
         # 解析文档
-        self.minerU_parse_document()
+        # self.minerU_parse_document()
         # 把解析的文本文档上传到知识库中
         # 获取输出的md文件名称
         md_file_name = os.path.basename(self.document_path).split('.')[0] + '.md'
@@ -99,8 +101,9 @@ class AddDocumentToKnowledgeBase:
 
 if __name__ == '__main__':
     _BASE = Path(__file__).parent.parent / "docs"
-    doc = _BASE / "电子商务项目二期需求规格说明书" / "电子商务项目二期需求规格说明书.md"
-    out = _BASE / "out"
+    _SRC = _BASE / "电子商务项目二期需求规格说明书"
+    doc = _SRC / "电子商务项目二期需求规格说明书.md"
+    out = _SRC  # minerU 解析结果已在此目录
 
     kd = AddDocumentToKnowledgeBase(str(doc), str(out))
     kd.main()

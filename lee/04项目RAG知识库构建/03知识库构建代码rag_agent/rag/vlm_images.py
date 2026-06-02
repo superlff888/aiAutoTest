@@ -142,7 +142,7 @@ class ImageVLMParser:
         }
 
     def patch_image_directory(self, image_directory):
-        """批量处理图片目录，返回生成的 JSON 文件路径；图片目录不存在时返回 None"""
+        """批量处理图片目录，返回生成的 JSON 文件路径；图片目录 不存在时返回 None"""
         result = []
         if not os.path.isdir(image_directory):
             return None
