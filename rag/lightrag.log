@@ -72,3 +72,40 @@
 2026-05-27 01:09:40,848 - uvicorn.access - INFO - 127.0.0.1:37224 - "GET /docs HTTP/1.1" 200
 2026-05-27 01:09:41,328 - uvicorn.access - INFO - 127.0.0.1:37224 - "GET /openapi.json HTTP/1.1" 200
 2026-05-27 01:10:11,015 - uvicorn.access - INFO - 127.0.0.1:5180 - "POST /documents/upload HTTP/1.1" 403
+2026-06-03 20:39:25,769 - lightrag - INFO - Ollama LLM Options: {}
+2026-06-03 20:39:25,770 - lightrag - INFO - Ollama Embedding Options: {}
+2026-06-03 20:39:27,339 - lightrag - INFO - Embedding config: binding=ollama model=None embedding_dim=1024 max_token_size=8192
+2026-06-03 20:39:27,339 - lightrag - INFO - Send embedding dimension: False by env var (dimensions=1024, has_param=True, binding=ollama)
+2026-06-03 20:39:27,340 - lightrag - INFO - Embedding max_token_size: 8192 (from ollama provider default)
+2026-06-03 20:39:27,340 - lightrag - INFO - Reranking is disabled
+2026-06-03 20:39:28,145 - lightrag - INFO - [] Created new empty graph file: E:\AI\pythonProject\aiAutoTest\rag\rag_storage\graph_chunk_entity_relation.graphml
+2026-06-03 20:39:28,333 - lightrag - INFO - WebUI assets mounted at /webui
+2026-06-03 20:39:28,393 - uvicorn.error - INFO - Started server process [18624]
+2026-06-03 20:39:28,394 - uvicorn.error - INFO - Waiting for application startup.
+2026-06-03 20:39:28,395 - lightrag - INFO - [] Process 18624 KV load full_docs with 0 records
+2026-06-03 20:39:28,395 - lightrag - INFO - [] Process 18624 KV load text_chunks with 0 records
+2026-06-03 20:39:28,395 - lightrag - INFO - [] Process 18624 KV load full_entities with 0 records
+2026-06-03 20:39:28,396 - lightrag - INFO - [] Process 18624 KV load full_relations with 0 records
+2026-06-03 20:39:28,396 - lightrag - INFO - [] Process 18624 KV load entity_chunks with 0 records
+2026-06-03 20:39:28,396 - lightrag - INFO - [] Process 18624 KV load relation_chunks with 0 records
+2026-06-03 20:39:28,397 - lightrag - INFO - [] Process 18624 KV load llm_response_cache with 0 records
+2026-06-03 20:39:28,397 - lightrag - INFO - [] Process 18624 doc status load doc_status with 0 records
+2026-06-03 20:39:28,397 - uvicorn.error - INFO - Application startup complete.
+2026-06-03 20:39:28,398 - uvicorn.error - INFO - Uvicorn running on http://0.0.0.0:9621 (Press CTRL+C to quit)
+2026-06-03 20:39:42,619 - uvicorn.access - INFO - 127.0.0.1:32451 - "GET / HTTP/1.1" 307
+2026-06-03 20:39:42,627 - uvicorn.access - INFO - 127.0.0.1:32451 - "GET /webui HTTP/1.1" 307
+2026-06-03 20:39:43,545 - uvicorn.access - INFO - 127.0.0.1:13625 - "GET /auth-status HTTP/1.1" 200
+2026-06-03 20:39:44,151 - lightrag - INFO - [] Subgraph query successful | Node count: 0 | Edge count: 0
+2026-06-03 20:39:44,151 - uvicorn.access - INFO - 127.0.0.1:13625 - "GET /graphs?label=*&max_depth=3&max_nodes=1000 HTTP/1.1" 200
+2026-06-03 20:39:44,279 - uvicorn.access - INFO - 127.0.0.1:13625 - "GET /docs HTTP/1.1" 200
+2026-06-03 20:39:44,863 - uvicorn.access - INFO - 127.0.0.1:13625 - "GET /openapi.json HTTP/1.1" 200
+2026-06-03 20:39:51,119 - uvicorn.access - INFO - 127.0.0.1:37284 - "GET /webui/favicon.png HTTP/1.1" 200
+2026-06-03 20:39:51,409 - uvicorn.access - INFO - 127.0.0.1:37284 - "GET /docs HTTP/1.1" 200
+2026-06-03 20:39:51,489 - uvicorn.access - INFO - 127.0.0.1:37284 - "GET /openapi.json HTTP/1.1" 200
+2026-06-03 20:40:10,097 - uvicorn.access - INFO - 127.0.0.1:54362 - "GET /docs HTTP/1.1" 200
+2026-06-03 20:40:10,184 - uvicorn.access - INFO - 127.0.0.1:54362 - "GET /openapi.json HTTP/1.1" 200
+2026-06-03 20:42:01,529 - uvicorn.error - INFO - Shutting down
+2026-06-03 20:42:01,638 - uvicorn.error - INFO - Waiting for application shutdown.
+2026-06-03 20:42:01,638 - lightrag - INFO - Successfully finalized 12 storages
+2026-06-03 20:42:01,639 - uvicorn.error - INFO - Application shutdown complete.
+2026-06-03 20:42:01,640 - uvicorn.error - INFO - Finished server process [18624]
