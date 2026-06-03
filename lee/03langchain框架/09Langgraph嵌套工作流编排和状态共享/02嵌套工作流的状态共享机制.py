@@ -26,7 +26,7 @@ dotenv.load_dotenv()
 """
 设一个涵盖用例生成，用例执行的Agent系统
 
-1、一个主WorkFlow,两个节点
+1、一个主WorkFlow,两个子节点
     节点一：用例生成的Agent
     节点二：用例执行的Workflow
     
@@ -152,7 +152,7 @@ class CaseExecute:
         # 返回编译的结果
         return graph.compile()
 
-
+# =====================================主工作流，调用用例生成agent和用例执行workflow=================================
 class MainWorkFlow:
     """主Workflow"""
     generator_agent = GenerateAgent().create_agent()
@@ -196,3 +196,36 @@ if __name__ == '__main__':
     response = workflow.invoke({"docs_id": "1"})
     # 通过invoke去调用workflow最后得到的结果(所以节点执行完毕之后的状态MainState)
     print( response)
+
+
+
+
+
+"""
+【子图的使用模式--共享状态模式】
+
+在主工作流中调用子工作流有两种模式：
+
+1、共享状态模式：主工作流和子工作流共享同一个状态对象，主工作流和子工作流对状态对象中的数据进行读写操作，适用于主工作流和子工作流之间需要频繁交互数据的场景。
+2、非共享状态模式：主工作流和子工作流各自维护独立的状态对象，主工作流和子工作流之间通过输入输出进行数据传递，适用于主工作流和子工作流之间交互较少，或者需要隔离状态的场景。
+
+"""
+
+"""
+【用例生成和执行系统设计思路】
+1. 定义状态类，维护共享状态和各自的独立状态：
+    # 和MainState共享的状态
+    case_list: Annotated[list, operator.add] = Field(default=[], description="保存生成的用例")
+    execute_result: list = Field(default=[], description="保存用例执行的结果")
+2. 定义用例生成Agent，包含获取测试点、生成用例、保存用例等功能
+3. 定义用例执行Workflow，包含加载测试环境、执行用例等功能
+4. 定义主Workflow，编排调用用例生成Agent和用例执行Workflow，并维护整体的状态流转
+    # 用例生成(调用子agent)
+    graph.add_node("用例生成", self.generator_agent)
+    # 用例执行（调用子workflow）
+    graph.add_node("用例执行", self.case_execute_workflow)
+5. 通过状态合并机制实现用例生成Agent和用例执行Workflow之间的状态共享，确保数据在不同节点之间正确传递和更新
+6. 最后通过invoke调用主Workflow，触发整个流程的执行，并输出最终的结果
+    
+
+"""
