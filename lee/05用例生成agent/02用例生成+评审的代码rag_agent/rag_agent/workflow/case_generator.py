@@ -135,13 +135,13 @@ class GenerateCaseWorkflow:
         print("开始对用例进行审核")
         requirements = state.get('requirements')
         # 获取生成的用例
-        cases = state.get('generated_cases')
+        cases = state.get('generated_cases') or []
+        if not cases:
+            print("没有可评审的用例，跳过评审环节")
+            return []
+        # Send(目标节点名,传入该节点的 state 数据)
         review_case_list = [Send("用例评审", {"current_review_case": _case, "requirements": requirements}) for _case in
                             cases]
-        # for _case in cases:
-        #     review_case_list.append(
-        #         Send("用例评审", {"current_review_case": _case})
-        #     )
         return review_case_list
 
     @staticmethod
@@ -256,11 +256,12 @@ class GenerateCaseWorkflow:
 
         # 编排节点
         graph.add_edge(START, '用例生成')
+        # add_conditional_edges 唯一支持返回 List[Send]；['用例评审'] 第三个参数只是声明"这个路由可能的目标节点"
         graph.add_conditional_edges("用例生成", self._case_review_router, ['用例评审'])
 
         graph.add_edge('用例评审', "用例覆盖率检查")
         graph.add_conditional_edges("用例覆盖率检查", self.verify_coverage_router, ['保存用例', '补充生成用例'])
-
+        # add_conditional_edges 唯一支持返回 List[Send]
         graph.add_conditional_edges("补充生成用例", self._case_review_router, ['用例评审'])
 
         graph.add_edge('保存用例', END)
@@ -284,24 +285,24 @@ if __name__ == '__main__':
         {
             "requirements": """
         
-         F1.1 用户注册
-🧩 功能背景
-新用户通过注册方式创建账户，支持邮箱/用户名+密码的注册方式。
-🚶 主流程
-1. 用户打开注册页，填写注册信息
-2. 系统校验格式与唯一性（用户名、邮箱）
-3. 提交注册，后台创建账户，初始状态为“正常”
-4. 注册成功后自动登录并跳转首页
-⚠️ 异常流程
-● 邮箱/用户名已被注册：提示“已存在”
-● 两次密码不一致：提示用户重新输入
-📌 状态规则
-● 新用户状态为 “正常”
-● 注册时间记录为创建时间，头像为默认图
-📌 业务规则
-● 用户名唯一，支持 4~20 位字母数字组合
-● 密码长度不少于 6 位
-● 邮箱必须符合格式 xxx@xxx.xx
+            F1.1 用户注册
+            🧩 功能背景
+            新用户通过注册方式创建账户，支持邮箱/用户名+密码的注册方式。
+            🚶 主流程
+            1. 用户打开注册页，填写注册信息
+            2. 系统校验格式与唯一性（用户名、邮箱）
+            3. 提交注册，后台创建账户，初始状态为“正常”
+            4. 注册成功后自动登录并跳转首页
+            ⚠️ 异常流程
+            ● 邮箱/用户名已被注册：提示“已存在”
+            ● 两次密码不一致：提示用户重新输入
+            📌 状态规则
+            ● 新用户状态为 “正常”
+            ● 注册时间记录为创建时间，头像为默认图
+            📌 业务规则
+            ● 用户名唯一，支持 4~20 位字母数字组合
+            ● 密码长度不少于 6 位
+            ● 邮箱必须符合格式 xxx@xxx.xx
         
         """
         },

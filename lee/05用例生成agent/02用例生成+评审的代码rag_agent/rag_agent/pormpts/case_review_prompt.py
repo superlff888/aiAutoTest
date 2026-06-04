@@ -44,7 +44,7 @@ PROMPT = """
 
 
 def get_review_prompt(requirements, _case) -> list:
-    """获取用例的评审提示"""
+    """获取用例的评审提示词"""
     prompt = f"""
     请对下面的这一条用例进行评审
     ## 需求文档：
