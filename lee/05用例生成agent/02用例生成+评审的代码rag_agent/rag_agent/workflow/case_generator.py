@@ -35,6 +35,8 @@ langgraph的使用：
 
 """
 import json
+import os, sys
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
 
 
 from langgraph.constants import START, END
@@ -185,7 +187,7 @@ class GenerateCaseWorkflow:
         prompt = verify_coverage_prompt.get_verify_coverage_prompt(requirements, review_passed_cases)
         # 调用大模型进行检查
         response = llm_model.invoke(prompt)
-        result = format_result(response.content)
+        result = format_result_to_json(response.content)
         print("用例覆盖率分析报告如下：", result.get('coverage_report'))
         print("用例覆盖率检查结果如下：", result.get('coverage'))
         print("需要人工补充的测试点如下：", result.get('recomment'))
@@ -282,7 +284,7 @@ class GenerateCaseWorkflow:
 
 
 if __name__ == '__main__':
-    workflow = GenerateCaseWorkflow().create_workflow()
+    workflow = GenerateCaseWorkflow().create_generate_case_workflow()
     response = workflow.stream(
         {
             "requirements": """
