@@ -13,6 +13,7 @@ import os
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
+from typing import Any
 import requests
 
 # 添加 db-connector 路径以便导入
@@ -360,22 +361,106 @@ def _check_diff(conn, sql: str) -> str:
         return f"❌ 查询异常: {str(e)}"
 
 
-def run_check(connection_name: str, config_path: str, trade_center: str = None,
-              data_type: str = None, start_date: str = None, end_date: str = None,
-              outfile=None) -> tuple:
-    """执行校验
+def _build_structured_result(results, center_results, report_file: str) -> dict[str, Any]:
+    """将 run_check 的 (results, center_results) 构建为飞书通知所需的结构化 dict"""
+    exec_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    # 去重统计 pass/fail（同一 data_type 可能因 volume/continuity 产生多条 failed）
+    seen_passed = set()
+    for p in results["passed"]:
+        seen_passed.add((p["center"], p["data_type"]))
+
+    seen_failed = set()
+    for f in results["failed"]:
+        seen_failed.add((f["center"], f["data_type"]))
+
+    pass_count = len(seen_passed)
+    fail_count = len(seen_failed)
+
+    # 按交易中心组织
+    centers = []
+    all_center_names = list(center_results.keys())
+    for cname in all_center_names:
+        center_fails = [f for f in results["failed"] if f["center"] == cname]
+        center_passes = [p for p in results["passed"] if p["center"] == cname]
+        unique_fail_dts = {(f["data_type"],) for f in center_fails}
+        unique_pass_dts = {(p["data_type"],) for p in center_passes}
+        all_pass = len(unique_fail_dts) == 0
+
+        failures = []
+        for f in center_fails:
+            check = f["check"]
+            ctype = check.get("type", "latest")
+            msg = check.get("error", "")
+            if not msg:
+                if ctype == "continuity":
+                    missing = ", ".join(check.get("missing_dates", [])[:3])
+                    msg = f"日期不连续: 缺失 {missing}"
+                elif ctype == "volume":
+                    msg = f"数据量异常: {check.get('error', '')}"
+            failures.append({
+                "data_type": f["data_type"],
+                "offset": check.get("offset", "—"),
+                "message": msg,
+            })
+
+        centers.append({
+            "name": cname,
+            "trade_center_id": center_results[cname]["center_id"],
+            "all_pass": all_pass,
+            "failures": failures,
+        })
+
+    return {
+        "exec_time": exec_time,
+        "pass_count": pass_count,
+        "fail_count": fail_count,
+        "centers": centers,
+        "report_file": report_file,
+    }
+
+
+def run_check(connection: str = "prod", config_path: str | None = None,
+              trade_center: str = None, data_type: str = None,
+              start_date: str = None, end_date: str = None,
+              outfile=None) -> dict[str, Any]:
+    """执行完整校验，返回结构化结果。
 
     Args:
+        connection: 数据库连接名称（prod/test）
+        config_path: 数据中心配置 JSON 路径（None 时自动定位）
+        trade_center: 指定交易中心名称
+        data_type: 指定数据类型
+        start_date: 起始日期（YYYYMMDD）
+        end_date: 结束日期（YYYYMMDD）
         outfile: 可选，写入详细表格的文件句柄
+
+    返回:
+    {
+        "exec_time": "2026-06-04 17:10:28",
+        "pass_count": int,
+        "fail_count": int,
+        "centers": [
+            {"name": "广东", "trade_center_id": 1, "all_pass": False,
+             "failures": [{"data_type": "...", "offset": "D", "message": "..."}, ...]},
+            ...
+        ],
+        "report_file": "output/rpa_check_report_20260604171028.md"
+    }
     """
-    config = load_data_center_config(config_path)
-    sql_dir = Path(config_path).parent.parent / 'sqls'
+    # 自动定位 config_path
+    if config_path is None:
+        config_path = str(Path(__file__).parent.parent / "doc" / "数据中心类型定义.json")
+    config_path = Path(config_path) if not isinstance(config_path, Path) else config_path
+
+    config = load_data_center_config(str(config_path))
+    sql_dir = config_path.parent.parent / 'sqls'
     templates = load_sql_templates(sql_dir)
 
     results = {'passed': [], 'failed': []}
     center_results = {}
 
-    conn = _ReconnectableConn(_get_conn(connection_name), connection_name)
+    conn = _ReconnectableConn(_get_conn(connection), connection)
     try:
         for center_name, center_config in config.items():
             if trade_center and trade_center != center_name:
@@ -505,34 +590,42 @@ def run_check(connection_name: str, config_path: str, trade_center: str = None,
         conn.close()
 
     # === 写入 MD 文件 ===
-    now_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    output_dir = Path(__file__).parent.parent / 'output'
+    os.makedirs(output_dir, exist_ok=True)
+    report_file = output_dir / f"rpa_check_report_{datetime.now().strftime('%Y%m%d%H%M%S')}.md"
 
-    if outfile:
-        outfile.write(f"# RPA数据采集校验报告\n\n执行时间：{now_str}\n")
+    with open(report_file, 'w', encoding='utf-8') as _f:
+        _f.write(f"# RPA数据采集校验报告\n\n执行时间：{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
         for center_name, cr in center_results.items():
-            outfile.write(f"\n## 交易中心: {center_name} (ID: {cr['center_id']})\n")
-            outfile.write('| 数据类型 | 最新数据时间 | 数据量 | 日期连续性 |\n')
-            outfile.write('|----------|-------------|--------|-----------|\n')
+            _f.write(f"\n## 交易中心: {center_name} (ID: {cr['center_id']})\n")
+            _f.write('| 数据类型 | 最新数据时间 | 数据量 | 日期连续性 |\n')
+            _f.write('|----------|-------------|--------|-----------|\n')
             for r in cr['rows']:
-                outfile.write(f"| {r['data_type']} | {r['latest']} | {r['volume']} | {r['continuity']} |\n")
+                _f.write(f"| {r['data_type']} | {r['latest']} | {r['volume']} | {r['continuity']} |\n")
 
-        outfile.write(f"\n---\n\n## 校验汇总\n\n执行时间：{now_str}\n")
-        outfile.write(f"- ✅ 通过: {len(results['passed'])}\n")
-        outfile.write(f"- ❌ 失败: {len(results['failed'])}\n")
+        _f.write(f"\n---\n\n## 校验汇总\n\n执行时间：{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
+        _f.write(f"- ✅ 通过: {len(results['passed'])}\n")
+        _f.write(f"- ❌ 失败: {len(results['failed'])}\n")
         if results['failed']:
-            outfile.write("\n### 失败详情\n")
+            _f.write("\n### 失败详情\n")
             for fail in results['failed']:
                 check = fail['check']
                 ctype = check.get('type', '')
                 if ctype == 'continuity':
                     missing = ', '.join(check.get('missing_dates', []))
-                    outfile.write(f"- ❌ {fail['center']} / {fail['data_type']} - 日期不连续: 缺失 {missing}\n")
+                    _f.write(f"- ❌ {fail['center']} / {fail['data_type']} - 日期不连续: 缺失 {missing}\n")
                 elif ctype == 'volume':
-                    outfile.write(f"- ❌ {fail['center']} / {fail['data_type']} - 数据量: {check['error']}\n")
+                    _f.write(f"- ❌ {fail['center']} / {fail['data_type']} - 数据量: {check['error']}\n")
                 else:
-                    outfile.write(f"- ❌ {fail['center']} / {fail['data_type']} (offset={check.get('offset', '?')}) - {check.get('error', '未知错误')}\n")
+                    _f.write(f"- ❌ {fail['center']} / {fail['data_type']} (offset={check.get('offset', '?')}) - {check.get('error', '未知错误')}\n")
 
-    return results, center_results
+        # 同时写入用户传入的 outfile（如有）
+        if outfile is not None:
+            _f.seek(0)
+            outfile.write(_f.read())
+
+    # === 构建并返回结构化结果 ===
+    return _build_structured_result(results, center_results, str(report_file))
 
 
 def _build_summary(results, center_results):
@@ -625,28 +718,40 @@ def main():
 
     config_path = Path(args.config) if Path(args.config).is_absolute() else Path(__file__).parent.parent / args.config
 
-    output_dir = Path(__file__).parent.parent / 'output'
-    os.makedirs(output_dir, exist_ok=True)
-    report_file = output_dir / f"rpa_check_report_{datetime.now().strftime('%Y%m%d_%H%M%S')}.md"
-
-    with open(report_file, 'w', encoding='utf-8') as md_file:
-        results, center_results = run_check(
-            connection_name=args.connection,
-            config_path=str(config_path),
-            trade_center=args.trade_center,
-            data_type=args.data_type,
-            start_date=args.start_date,
-            end_date=args.end_date,
-            outfile=md_file
-        )
+    result = run_check(
+        connection=args.connection,
+        config_path=str(config_path),
+        trade_center=args.trade_center,
+        data_type=args.data_type,
+        start_date=args.start_date,
+        end_date=args.end_date,
+    )
 
     # 确保 Windows 控制台 UTF-8 输出
     if sys.stdout.encoding and sys.stdout.encoding.lower() != 'utf-8':
         import io
         sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
-    print(_build_summary(results, center_results))
-    print(f"\n报告已保存到: {report_file}")
+    # 从结构化结果构建控制台摘要
+    lines = [
+        f"\n✅ 通过: {result['pass_count']} | ❌ 失败: {result['fail_count']}",
+        "按中心快速概览:\n",
+        '| 交易中心 | 状态 | 主要问题 |',
+        '|----------|------|----------|',
+    ]
+    for c in result['centers']:
+        if c['all_pass']:
+            lines.append(f"| {c['name']} | **全部通过** ✅ | — |")
+        else:
+            fails = c['failures'][:3]
+            problems = [f"{f['data_type']}: {f['message']}" for f in fails]
+            problem = '；'.join(problems)
+            if len(c['failures']) > 3:
+                problem += f" 等{len(c['failures'])}项"
+            lines.append(f"| {c['name']} | 部分通过 | {problem} |")
+
+    print('\n'.join(lines))
+    print(f"\n报告已保存到: {result['report_file']}")
 
     # if hasattr(args, 'feishu_webhook') and args.feishu_webhook:
     #     send_to_feishu(args.feishu_webhook, str(report_file))

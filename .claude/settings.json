@@ -4,7 +4,8 @@
       "Bash(*bug_rate_calculator.py*)",
       "Bash(*profit-sum*)",
       "Bash(*prod-rpa-checker*)",
-      "Bash(cd *)"
+      "Bash(cd *)",
+      "Bash(powershell -NoProfile -WindowStyle Hidden -Command 'Start-Sleep -Seconds 25; Get-ScheduledTaskInfo -TaskName \"RPA Data Check Daily\" | Select-Object TaskName, LastRunTime, LastTaskResult, NextRunTime')"
     ]
   }
 }

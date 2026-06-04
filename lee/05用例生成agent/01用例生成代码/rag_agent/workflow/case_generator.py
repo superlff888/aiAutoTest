@@ -95,21 +95,21 @@ class GenerateCaseWorkflow:
         prompt = generate_case_prompt.get_generate_case_prompt(requirements)
 
         # 大模型绑定用例输出的数据结构
-        output_llm_model = llm_model.with_structured_output(CaseList)
+        # output_llm_model = llm_model.with_structured_output(CaseList)
         # response = output_llm_model.invoke(prompt)
         # print("生成的测试用例数据结构如下:", response.cases)
         # return {"generated_cases": response.cases}
         # # 调用大模型生成测试用例
         response = llm_model.invoke(prompt)
-        print("结果：", response.content)
+        print("结果：", response.content)  # 纯文本结果，包含了大模型的推理过程和最终的用例数据
         # 判断输出的结果中是否包含<think>推理的内容，如果有则去除
         if "<think>" in response.content:
-            result = response.content.split("</think>")
-            print("推理结果为:", result[0].replace("<think>", ""))
+            result = response.content.split("</think>")  # 在结尾处进行分割，将推理的内容和最终的用例数据分开
+            print("推理内容为:", result[0].replace("<think>", ""))
             # 最终生成的用例数据
             print("测试用例:", result[1].replace('```json', '').replace('```', '').strip())
             res = result[1].replace('```json', '').replace('```', '').strip()
-            # 把```json  和```去掉 然后转换为json数据
+            # 把```json  和```去掉，然后将 json字符串 转换为 Python 对象
             json_result = json.loads(res)
             print("将json转换为python的数据类型：", json_result)
             # 将json转换为pydantic数据
@@ -161,7 +161,7 @@ if __name__ == '__main__':
         
             """
         },
-        subgraphs=True,
+        subgraphs=True,  # 是否开启子图模式，开启后可以在工作流中看到每个节点的执行过程，包括子节点的执行过程
         stream_mode=["messages"],
         version="v2",
     )
