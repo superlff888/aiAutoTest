@@ -13,23 +13,10 @@ import os
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
-from typing import Any
-import requests
 
-# 添加 db-connector 路径以便导入
-import importlib.util
-_spec = importlib.util.spec_from_file_location(
-    "db_executor",
-    str(Path(__file__).parent.parent.parent / "db-connector" / "scripts" / "db_executor.py")
-)
-db_executor_module = importlib.util.module_from_spec(_spec)
-_spec.loader.exec_module(db_executor_module)
+from db_executor import get_connections, resolve_conn, get_connection
 
-get_connections = db_executor_module.get_connections
-resolve_conn = db_executor_module.resolve_conn
-get_connection = db_executor_module.get_connection
-
-# MySQL error codes indicating lost connection
+# ─── MySQL 连接断开错误码 ───
 _CONNECTION_ERRORS = (2006, 2013, 2055)
 
 
@@ -50,10 +37,7 @@ class _ReconnectableConn:
             self._conn.close()
         except Exception:
             pass
-        self._conn = _get_conn(self._connection_name)
-        # If get_connection returns a context manager again, enter it
-        if hasattr(self._conn, '__enter__'):
-            self._conn = self._conn.__enter__()
+        self._conn = _get_conn(self._connection_name).__enter__()
 
     def close(self):
         self._conn.close()
@@ -97,7 +81,7 @@ _DATA_TYPE_SQL_MAPPING = {
     '代理用户用电明细': '代理用户用电明细.sql',
     '代理用户用电总计': '代理用户用电总计.sql',
     '代理用户用电明细与代理用户用电总计差异': '代理用户用电明细与代理用户用电总计差异.sql',
-    '中长期持仓': '代理用户用电明细.sql',
+    # '中长期持仓' — 已跳过，不需要 SQL 模板
 }
 
 _DATE_FIELDS = ['day', 'date', 'time', 'data_date', 'stat_date']
@@ -136,10 +120,12 @@ def parse_offset_days(time_str: str) -> list:
             offsets.append(int(tv[2:]))
         elif tv.startswith('D+'):
             offsets.append(-int(tv[2:]))
+        else:
+            raise ValueError(f"无效的日期偏移格式: {tv!r}，应为 D/D-N/D+N 格式")
     return offsets
 
 
-def get_expected_date(offset_days: int) -> datetime:
+def _compute_expected_date(offset_days: int) -> datetime:
     return datetime.now() + timedelta(days=-offset_days)
 
 
@@ -181,7 +167,7 @@ def check_latest_data(conn, sql_template: str, trade_center_id: str,
     """检查最新数据时间，支持多offset降级查询。复用数据库连接。"""
     fallback_log = []
     for i, offset in enumerate(offsets):
-        expected_date = get_expected_date(offset)
+        expected_date = _compute_expected_date(offset)
         start_str = (expected_date - timedelta(days=9)).strftime('%Y-%m-%d')
         end_str = expected_date.strftime('%Y-%m-%d')
         sql = render_sql(sql_template, trade_center_id, offset, start_str, end_str, vpp_id)
@@ -222,7 +208,6 @@ def check_latest_data(conn, sql_template: str, trade_center_id: str,
             if i == len(offsets) - 1:
                 return False, offset, None, error, fallback_log
             continue
-
 
 
 def check_data_volume(conn, sql: str) -> tuple:
@@ -274,7 +259,7 @@ def check_data_volume(conn, sql: str) -> tuple:
 
 
 def check_date_continuity(conn, sql: str, start_date: datetime, end_date: datetime) -> tuple:
-    """复用数据库连接检查日期连续性"""
+    """复用数据库连接检查日期连续性，复用 _normalize_date/_extract_date 统一逻辑"""
     try:
         with conn.cursor() as cursor:
             cursor.execute(sql)
@@ -282,14 +267,9 @@ def check_date_continuity(conn, sql: str, start_date: datetime, end_date: dateti
 
             existing_dates = set()
             for row in rows:
-                date_val = _extract_date(row)
-                if date_val is None:
-                    continue
-                if isinstance(date_val, datetime):
-                    existing_dates.add(date_val.strftime('%Y-%m-%d'))
-                else:
-                    date_str = str(date_val)
-                    existing_dates.add(date_str[:10] if '-' in date_str else f"{date_str[:4]}-{date_str[4:6]}-{date_str[6:8]}")
+                ds = _normalize_date(_extract_date(row))
+                if ds is not None:
+                    existing_dates.add(ds)
 
             missing_dates = []
             current = start_date
@@ -328,11 +308,11 @@ def _format_date_ranges(dates: list) -> str:
                 ranges.append(f'{start}～{prev}')
             start = d
             prev = d
-    # 收尾
+    # 收尾 — 统一使用半角 ~
     if start == prev:
         ranges.append(start)
     else:
-        ranges.append(f'{start}~{prev}')
+        ranges.append(f'{start}～{prev}')
     return '、'.join(ranges)
 
 
@@ -352,7 +332,9 @@ def _check_diff(conn, sql: str) -> str:
                 except (ValueError, TypeError):
                     diff_val = 0
                 if diff_val > 0.01:
-                    diff_dates.append(str(row.get('time', '?')))
+                    # 尝试多种可能的列名
+                    date_key = row.get('time') or row.get('day') or row.get('date') or row.get('data_date') or '?'
+                    diff_dates.append(str(date_key))
             if not diff_dates:
                 return "✅ diff=0"
             date_summary = _format_date_ranges(diff_dates)
@@ -361,69 +343,10 @@ def _check_diff(conn, sql: str) -> str:
         return f"❌ 查询异常: {str(e)}"
 
 
-def _build_structured_result(results, center_results, report_file: str) -> dict[str, Any]:
-    """将 run_check 的 (results, center_results) 构建为飞书通知所需的结构化 dict"""
-    exec_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-    # 去重统计 pass/fail（同一 data_type 可能因 volume/continuity 产生多条 failed）
-    seen_passed = set()
-    for p in results["passed"]:
-        seen_passed.add((p["center"], p["data_type"]))
-
-    seen_failed = set()
-    for f in results["failed"]:
-        seen_failed.add((f["center"], f["data_type"]))
-
-    pass_count = len(seen_passed)
-    fail_count = len(seen_failed)
-
-    # 按交易中心组织
-    centers = []
-    all_center_names = list(center_results.keys())
-    for cname in all_center_names:
-        center_fails = [f for f in results["failed"] if f["center"] == cname]
-        center_passes = [p for p in results["passed"] if p["center"] == cname]
-        unique_fail_dts = {(f["data_type"],) for f in center_fails}
-        unique_pass_dts = {(p["data_type"],) for p in center_passes}
-        all_pass = len(unique_fail_dts) == 0
-
-        failures = []
-        for f in center_fails:
-            check = f["check"]
-            ctype = check.get("type", "latest")
-            msg = check.get("error", "")
-            if not msg:
-                if ctype == "continuity":
-                    missing = ", ".join(check.get("missing_dates", [])[:3])
-                    msg = f"日期不连续: 缺失 {missing}"
-                elif ctype == "volume":
-                    msg = f"数据量异常: {check.get('error', '')}"
-            failures.append({
-                "data_type": f["data_type"],
-                "offset": check.get("offset", "—"),
-                "message": msg,
-            })
-
-        centers.append({
-            "name": cname,
-            "trade_center_id": center_results[cname]["center_id"],
-            "all_pass": all_pass,
-            "failures": failures,
-        })
-
-    return {
-        "exec_time": exec_time,
-        "pass_count": pass_count,
-        "fail_count": fail_count,
-        "centers": centers,
-        "report_file": report_file,
-    }
-
-
 def run_check(connection: str = "prod", config_path: str | None = None,
               trade_center: str = None, data_type: str = None,
               start_date: str = None, end_date: str = None,
-              outfile=None) -> dict[str, Any]:
+              outfile=None):
     """执行完整校验，返回结构化结果。
 
     Args:
@@ -433,7 +356,7 @@ def run_check(connection: str = "prod", config_path: str | None = None,
         data_type: 指定数据类型
         start_date: 起始日期（YYYYMMDD）
         end_date: 结束日期（YYYYMMDD）
-        outfile: 可选，写入详细表格的文件句柄
+        outfile: 可选，报告内容写入该文件句柄
 
     返回:
     {
@@ -523,6 +446,9 @@ def run_check(connection: str = "prod", config_path: str | None = None,
                 )
                 latest_status = f"✅ {max_date}" if passed else f"❌ {error}"
 
+                # 缓存预期日期，避免重复计算
+                expected_date = _compute_expected_date(used_offset)
+
                 # === 计算连续性验证窗口（最新数据日期往前推10天）===
                 if not passed and error and '无数据' in error:
                     # 全部offset都无数据，不跑连续性检查
@@ -532,7 +458,7 @@ def run_check(connection: str = "prod", config_path: str | None = None,
                     if passed:
                         cont_end_date = datetime.strptime(max_date, '%Y-%m-%d')
                     else:
-                        cont_end_date = get_expected_date(used_offset) - timedelta(days=1)
+                        cont_end_date = expected_date - timedelta(days=1)
                     cont_start_date = cont_end_date - timedelta(days=9)
 
                 # === 数据量合理性校验（仅网侧预测/网侧实际）===
@@ -569,13 +495,13 @@ def run_check(connection: str = "prod", config_path: str | None = None,
                     results['passed'].append({
                         'center': center_name,
                         'data_type': f'{data_type_name}（{time_label}）',
-                        'check': {'offset': used_offset, 'expected_date': get_expected_date(used_offset).strftime('%Y-%m-%d'), 'max_date': max_date, 'passed': True}
+                        'check': {'offset': used_offset, 'expected_date': expected_date.strftime('%Y-%m-%d'), 'max_date': max_date, 'passed': True}
                     })
                 else:
                     results['failed'].append({
                         'center': center_name,
                         'data_type': f'{data_type_name}（{time_label}）',
-                        'check': {'offset': used_offset, 'expected_date': get_expected_date(used_offset).strftime('%Y-%m-%d'), 'max_date': max_date, 'passed': False, 'error': error}
+                        'check': {'offset': used_offset, 'expected_date': expected_date.strftime('%Y-%m-%d'), 'max_date': max_date, 'passed': False, 'error': error}
                     })
 
                 if vol_status and '❌' in vol_status:
@@ -594,112 +520,102 @@ def run_check(connection: str = "prod", config_path: str | None = None,
     os.makedirs(output_dir, exist_ok=True)
     report_file = output_dir / f"rpa_check_report_{datetime.now().strftime('%Y%m%d%H%M%S')}.md"
 
+    report_content = []
+    report_content.append(f"# RPA数据采集校验报告\n\n执行时间：{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    for center_name, cr in center_results.items():
+        report_content.append(f"\n## 交易中心: {center_name} (ID: {cr['center_id']})")
+        report_content.append('| 数据类型 | 最新数据时间 | 数据量 | 日期连续性 |')
+        report_content.append('|----------|-------------|--------|-----------|')
+        for r in cr['rows']:
+            report_content.append(f"| {r['data_type']} | {r['latest']} | {r['volume']} | {r['continuity']} |")
+
+    report_content.append(f"\n---\n\n## 校验汇总\n\n执行时间：{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
+    report_content.append(f"- ✅ 通过: {len(results['passed'])}")
+    report_content.append(f"- ❌ 失败: {len(results['failed'])}")
+    if results['failed']:
+        report_content.append("\n### 失败详情")
+        for fail in results['failed']:
+            check = fail['check']
+            ctype = check.get('type', '')
+            if ctype == 'continuity':
+                missing = ', '.join(check.get('missing_dates', []))
+                report_content.append(f"- ❌ {fail['center']} / {fail['data_type']} - 日期不连续: 缺失 {missing}")
+            elif ctype == 'volume':
+                report_content.append(f"- ❌ {fail['center']} / {fail['data_type']} - 数据量: {check['error']}")
+            else:
+                report_content.append(f"- ❌ {fail['center']} / {fail['data_type']} (offset={check.get('offset', '?')}) - {check.get('error', '未知错误')}")
+
+    md_text = '\n'.join(report_content) + '\n'
+
+    # 写入文件
     with open(report_file, 'w', encoding='utf-8') as _f:
-        _f.write(f"# RPA数据采集校验报告\n\n执行时间：{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-        for center_name, cr in center_results.items():
-            _f.write(f"\n## 交易中心: {center_name} (ID: {cr['center_id']})\n")
-            _f.write('| 数据类型 | 最新数据时间 | 数据量 | 日期连续性 |\n')
-            _f.write('|----------|-------------|--------|-----------|\n')
-            for r in cr['rows']:
-                _f.write(f"| {r['data_type']} | {r['latest']} | {r['volume']} | {r['continuity']} |\n")
+        _f.write(md_text)
 
-        _f.write(f"\n---\n\n## 校验汇总\n\n执行时间：{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-        _f.write(f"- ✅ 通过: {len(results['passed'])}\n")
-        _f.write(f"- ❌ 失败: {len(results['failed'])}\n")
-        if results['failed']:
-            _f.write("\n### 失败详情\n")
-            for fail in results['failed']:
-                check = fail['check']
-                ctype = check.get('type', '')
-                if ctype == 'continuity':
-                    missing = ', '.join(check.get('missing_dates', []))
-                    _f.write(f"- ❌ {fail['center']} / {fail['data_type']} - 日期不连续: 缺失 {missing}\n")
-                elif ctype == 'volume':
-                    _f.write(f"- ❌ {fail['center']} / {fail['data_type']} - 数据量: {check['error']}\n")
-                else:
-                    _f.write(f"- ❌ {fail['center']} / {fail['data_type']} (offset={check.get('offset', '?')}) - {check.get('error', '未知错误')}\n")
-
-        # 同时写入用户传入的 outfile（如有）
-        if outfile is not None:
-            _f.seek(0)
-            outfile.write(_f.read())
+    # 同时写入用户传入的 outfile（如有）
+    if outfile is not None:
+        outfile.write(md_text)
 
     # === 构建并返回结构化结果 ===
     return _build_structured_result(results, center_results, str(report_file))
 
 
-def _build_summary(results, center_results):
-    """构建控制台摘要"""
-    total_pass = len(results['passed'])
-    total_fail = len(results['failed'])
+def _build_structured_result(results, center_results, report_file: str):
+    """将 run_check 的 (results, center_results) 构建为飞书通知所需的结构化 dict"""
+    exec_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-    lines = [f"\n✅ 通过: {total_pass} | ❌ 失败: {total_fail}", "按中心快速概览:\n",
-             '| 交易中心 | 状态 | 主要问题 |', '|----------|------|----------|']
+    # 去重统计 pass/fail（同一 data_type 可能因 volume/continuity 产生多条 failed）
+    seen_passed = set()
+    for p in results["passed"]:
+        seen_passed.add((p["center"], p["data_type"]))
 
-    for center_name, cr in center_results.items():
-        fails = [f for f in results['failed'] if f['center'] == center_name]
+    seen_failed = set()
+    for f in results["failed"]:
+        seen_failed.add((f["center"], f["data_type"]))
 
-        if not fails:
-            lines.append(f"| {center_name} | **全部通过** ✅ | — |")
-            continue
+    pass_count = len(seen_passed)
+    fail_count = len(seen_failed)
 
-        type_issues = {}
-        for f in fails:
-            raw_dt = f['data_type'].split('（')[0]
-            err = f['check'].get('error', '')
-            if raw_dt not in type_issues:
-                type_issues[raw_dt] = err or f['check'].get('type', 'fail')
+    # 按交易中心组织
+    centers = []
+    all_center_names = list(center_results.keys())
+    for cname in all_center_names:
+        center_fails = [f for f in results["failed"] if f["center"] == cname]
+        center_passes = [p for p in results["passed"] if p["center"] == cname]
+        unique_fail_dts = {(f["data_type"],) for f in center_fails}
+        unique_pass_dts = {(p["data_type"],) for p in center_passes}
+        all_pass = len(unique_fail_dts) == 0
 
-        issues = []
-        for dt, err in type_issues.items():
-            if '无数据' in err:
-                issues.append(f'{dt}近10天无数据')
-            elif '数据量异常' in err:
-                issues.append(f'{dt}{err}')
-            elif '预期' in err and '实际' in err:
-                parts = err.split('，')
-                try:
-                    ed = datetime.strptime(parts[0].replace('预期 ', ''), '%Y-%m-%d')
-                    ad = datetime.strptime(parts[1].replace('实际 ', ''), '%Y-%m-%d')
-                    issues.append(f'{dt}缺{(ed - ad).days}天')
-                except Exception:
-                    issues.append(f'{dt}落后')
-            else:
-                issues.append(f'{dt}{err}')
+        failures = []
+        for f in center_fails:
+            check = f["check"]
+            ctype = check.get("type", "latest")
+            msg = check.get("error", "")
+            if not msg:
+                if ctype == "continuity":
+                    missing = ", ".join(check.get("missing_dates", [])[:3])
+                    msg = f"日期不连续: 缺失 {missing}"
+                elif ctype == "volume":
+                    msg = f"数据量异常: {check.get('error', '')}"
+            failures.append({
+                "data_type": f["data_type"],
+                "offset": check.get("offset", "—"),
+                "message": msg,
+            })
 
-        problem = '；'.join(issues[:3])
-        if len(issues) > 3:
-            problem += f' 等{len(issues)}项'
-        lines.append(f"| {center_name} | 部分通过 | {problem} |")
+        centers.append({
+            "name": cname,
+            "trade_center_id": center_results[cname]["center_id"],
+            "all_pass": all_pass,
+            "failures": failures,
+        })
 
-    diff_fails = [f for f in results['failed'] if '代理用户用电明细与代理用户用电总计差异' in f.get('data_type', '')]
-    if not diff_fails:
-        lines.append(f"\n所有交易中心的**明细与总计差异**检查均通过。")
-
-    return '\n'.join(lines)
-
-
-def send_to_feishu(webhook_url: str, md_file: str):
-    try:
-        content = Path(md_file).read_text(encoding='utf-8')
-        payload = {
-            "msg_type": "interactive",
-            "card": {
-                "header": {"title": {"tag": "plain_text", "content": "📊 RPA数据采集校验报告"}, "template": "blue"},
-                "elements": [{"tag": "markdown", "content": content}]
-            }
-        }
-        resp = requests.post(webhook_url, json=payload, timeout=30)
-        if resp.status_code == 200:
-            result = resp.json()
-            if result.get("StatusCode") == 0:
-                print("\n✅ 报告已发送到飞书群")
-            else:
-                print(f"\n❌ 飞书发送失败: {result}")
-        else:
-            print(f"\n❌ 飞书发送异常 HTTP {resp.status_code}: {resp.text}")
-    except Exception as e:
-        print(f"\n❌ 飞书发送异常: {e}")
+    return {
+        "exec_time": exec_time,
+        "pass_count": pass_count,
+        "fail_count": fail_count,
+        "centers": centers,
+        "report_file": report_file,
+    }
 
 
 def main():
@@ -710,9 +626,6 @@ def main():
     parser.add_argument('--data-type', help='指定数据类型')
     parser.add_argument('--start-date', help='起始日期（YYYYMMDD）')
     parser.add_argument('--end-date', help='结束日期（YYYYMMDD）')
-    # parser.add_argument('--feishu-webhook',
-    #                     default='https://open.feishu.cn/open-apis/bot/v2/hook/604c468d-b8a3-4ef1-8cee-7d3a0e04fd6',
-    #                     help='飞书Webhook地址（默认自动发送）')
 
     args = parser.parse_args()
 
@@ -752,9 +665,6 @@ def main():
 
     print('\n'.join(lines))
     print(f"\n报告已保存到: {result['report_file']}")
-
-    # if hasattr(args, 'feishu_webhook') and args.feishu_webhook:
-    #     send_to_feishu(args.feishu_webhook, str(report_file))
 
 
 if __name__ == '__main__':

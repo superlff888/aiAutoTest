@@ -127,12 +127,6 @@ def get_connection(conn_info):
             password=password, database=database,
             charset="utf8mb4", cursorclass=pymysql.cursors.DictCursor,
         )
-    elif driver == "psycopg2":
-        import psycopg2
-        conn = psycopg2.connect(
-            host=host, port=int(port), user=user,
-            password=password, dbname=database,
-        )
     elif driver == "sqlite3":
         import sqlite3
         conn = sqlite3.connect(database)
@@ -271,7 +265,7 @@ def main():
     p_exec.add_argument("--user")
     p_exec.add_argument("--password")
     p_exec.add_argument("--database")
-    p_exec.add_argument("--db-type", default="mysql", choices=["mysql", "postgresql", "sqlite"])
+    p_exec.add_argument("--db-type", default="mysql", choices=["mysql", "sqlite"])
     p_exec.set_defaults(func=execute_sql)
 
     args = parser.parse_args()

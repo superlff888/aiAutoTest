@@ -14,6 +14,7 @@ RPA 数据采集校验 — 定时调度入口（技能自包含，可被任何�
 """
 
 import argparse
+import json
 import logging
 import sys
 import os
@@ -29,18 +30,33 @@ OUTPUT_DIR = SKILL_DIR / "output"
 
 sys.path.insert(0, str(SCRIPTS_DIR))
 
-# 加载 .env（优先项目根目录，其次技能目录）
+# 加载 .env（优先从技能目录向上搜索，其次兜底 CWD）
 from dotenv import load_dotenv
-# 尝试从当前工作目录往上找 .env
-cwd = Path.cwd()
-for parent in [cwd] + list(cwd.parents):
-    env_file = parent / ".env"
-    if env_file.exists():
-        load_dotenv(env_file)
-        break
-else:
+
+def _find_and_load_dotenv() -> bool:
+    """从 SKILL_DIR 向上搜索 .env，找到后加载。"""
+    _current = SKILL_DIR
+    while _current.parent != _current:
+        env_file = _current / ".env"
+        if env_file.exists():
+            load_dotenv(env_file)
+            return True
+        _current = _current.parent
     # 兜底：技能目录下的 .env
-    load_dotenv(SKILL_DIR / ".env")
+    if (SKILL_DIR / ".env").exists():
+        load_dotenv(SKILL_DIR / ".env")
+        return True
+    return False
+
+_load_and_load_result = _find_and_load_dotenv()
+if not _load_and_load_result:
+    # 最终兜底：从 CWD 向上搜索
+    cwd = Path.cwd()
+    for parent in [cwd] + list(cwd.parents):
+        env_file = parent / ".env"
+        if env_file.exists():
+            load_dotenv(env_file)
+            break
 
 # 加载 config.yaml
 import yaml
@@ -51,21 +67,42 @@ if CONFIG_FILE.exists():
 else:
     config = {}
 
+# 报告历史存储在独立文件（避免 config.yaml 频繁变更）
+HISTORY_FILE = OUTPUT_DIR / "report_history.json"
+MAX_REPORT_HISTORY = 10
+
+
+def _load_history() -> list:
+    """加载报告历史记录。"""
+    if HISTORY_FILE.exists():
+        with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    return []
+
+
+def _save_history(history: list):
+    """保存报告历史记录。"""
+    HISTORY_FILE.parent.mkdir(parents=True, exist_ok=True)
+    with open(HISTORY_FILE, "w", encoding="utf-8") as f:
+        json.dump(history, f, ensure_ascii=False, indent=2)
+
+
 # ---------------------------------------------------------------------------
 # 日志配置
 # ---------------------------------------------------------------------------
 log_cfg = config.get("logging", {})
 OUTPUT_DIR.mkdir(exist_ok=True)
 
+_log_file = log_cfg.get("file", "output/run_check.log")
+_log_path = Path(_log_file)
+if not _log_path.is_absolute():
+    _log_path = SKILL_DIR / _log_path
 logging.basicConfig(
     level=getattr(logging, log_cfg.get("level", "INFO")),
     format="%(asctime)s [%(levelname)s] %(message)s",
     handlers=[
         logging.StreamHandler(sys.stdout),
-        logging.FileHandler(
-            SKILL_DIR / log_cfg.get("file", "output/run_check.log"),
-            encoding="utf-8",
-        ),
+        logging.FileHandler(_log_path, encoding="utf-8"),
     ],
 )
 
@@ -74,13 +111,7 @@ logging.basicConfig(
 # ---------------------------------------------------------------------------
 from checker import run_check
 from feishu_notifier import send_to_feishu
-from wiki_updater import get_tenant_token, update_wiki_content
-
-
-def _save_config():
-    """将 config 写回 config.yaml 文件。"""
-    with open(CONFIG_FILE, "w", encoding="utf-8") as f:
-        yaml.dump(config, f, allow_unicode=True, default_flow_style=False)
+from wiki_updater import get_tenant_token, update_wiki_content, delete_old_document
 
 
 def main():
@@ -152,7 +183,6 @@ def main():
     wiki_url = feishu_cfg.get("wiki_url")  # 兜底链接
     app_id = os.getenv("FEISHU_APP_ID")
     app_secret = os.getenv("FEISHU_APP_SECRET")
-    MAX_REPORT_HISTORY = 10  # 最多保留 10 条报告记录
 
     if app_id and app_secret and result.get("report_file"):
         space_id = feishu_cfg.get("wiki_space_id")
@@ -171,28 +201,26 @@ def main():
                     wiki_url = new_url
                     logging.info("飞书卡片链接: %s", wiki_url)
 
-                    # 维护报告历史记录
+                    # 维护报告历史记录（独立 JSON 文件）
+                    report_history = _load_history()
                     node_token = new_url.split("/wiki/")[1].strip()
-                    report_history = feishu_cfg.get("report_history", [])
                     report_history.append({
                         "doc_id": new_doc_id,
                         "node_token": node_token,
                         "title": new_title,
                     })
 
-                    # 超过 10 条时，删除最早的报告
+                    # 超过上限时，删除最早的报告
                     if len(report_history) > MAX_REPORT_HISTORY:
                         oldest = report_history.pop(0)
                         logging.info(
                             "报告记录已达 %d 条，开始清理最早记录: %s (%s)",
                             MAX_REPORT_HISTORY + 1, oldest.get("title"), oldest.get("doc_id")
                         )
-                        from wiki_updater import delete_old_document
                         if not delete_old_document(oldest["doc_id"], tenant_token):
                             logging.warning("最早报告删除失败: %s", oldest.get("doc_id"))
 
-                    feishu_cfg["report_history"] = report_history
-                    _save_config()
+                    _save_history(report_history)
                     logging.info("报告历史记录: %d 条", len(report_history))
             except Exception:
                 logging.exception("wiki 更新失败，使用兜底链接")

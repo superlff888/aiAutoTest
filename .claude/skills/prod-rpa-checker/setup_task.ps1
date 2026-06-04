@@ -33,13 +33,35 @@ if (-not (Test-Path $VenvPython)) {
 
 # ---------------------------------------------------------------------------
 # Create a VBScript wrapper to ensure absolute zero window flashing
+# and correct working directory
 # ---------------------------------------------------------------------------
 $LauncherVbs = Join-Path $SkillDir "run_check_silent.vbs"
-$VbsContent = @"
+
+# Escape double quotes for VBScript: " → ""
+$EscapedProjectDir = $ProjectDir.Replace('"', '""')
+$EscapedVenvPython = $VenvPython.Replace('"', '""')
+$EscapedRunCheck = $RunCheck.Replace('"', '""')
+
+$ExpectedVbsContent = @"
 Set WshShell = CreateObject("WScript.Shell")
-WshShell.Run "`"$VenvPython`" `"$RunCheck`"", 0, True
+WshShell.CurrentDirectory = "$EscapedProjectDir"
+WshShell.Run """$EscapedVenvPython"" """$EscapedRunCheck""", 0, True
 "@
-Set-Content -Path $LauncherVbs -Value $VbsContent -Encoding Ascii
+
+# Only generate VBS if it doesn't exist or content changed (avoid overwriting user edits)
+if (-not (Test-Path $LauncherVbs)) {
+    Set-Content -Path $LauncherVbs -Value $ExpectedVbsContent -Encoding Ascii
+    Write-Host "  VBS     : Created $LauncherVbs"
+} else {
+    $ExistingVbsContent = Get-Content -Path $LauncherVbs -Raw -Encoding Ascii
+    $ExpectedContent = "`"$ExpectedVbsContent`""
+    if ($ExistingVbsContent.Trim() -ne $ExpectedVbsContent.Trim()) {
+        Set-Content -Path $LauncherVbs -Value $ExpectedVbsContent -Encoding Ascii
+        Write-Host "  VBS     : Updated $LauncherVbs (paths changed)"
+    } else {
+        Write-Host "  VBS     : Up-to-date (skipped)"
+    }
+}
 
 # Task Action: run wscript.exe to execute the VBScript silently
 $action = New-ScheduledTaskAction `
@@ -51,7 +73,7 @@ $trigger = New-ScheduledTaskTrigger -Daily -At $At
 
 $settings = New-ScheduledTaskSettingsSet `
     -AllowStartIfOnBatteries `
-    -DontStopIfGoingOnBatteries `
+    -DontStopIfOnBatteries `
     -RestartCount 3 `
     -RestartInterval (New-TimeSpan -Minutes 5) `
     -ExecutionTimeLimit (New-TimeSpan -Minutes 30)

@@ -4,6 +4,7 @@
 """
 
 import logging
+import os
 import re
 import time
 import requests
@@ -456,7 +457,9 @@ def update_wiki_content(
     # 5. 更新文档标题（wiki 创建的文档标题默认为空，需要手动设置）
     _update_document_title(actual_doc_id, title, tenant_token)
 
-    new_wiki_url = f"https://wbenergy.feishu.cn/wiki/{new_node_token}"
+    # 飞书域名前缀（可从环境变量 FEISHU_DOMAIN 覆盖，默认 wbenergy）
+    feishu_domain = os.getenv("FEISHU_DOMAIN", "wbenergy.feishu.cn")
+    new_wiki_url = f"https://{feishu_domain}/wiki/{new_node_token}"
 
     logger.info("wiki 内容更新完成: %s", new_wiki_url)
     return new_wiki_url, actual_doc_id, title

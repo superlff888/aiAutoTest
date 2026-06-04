@@ -3,31 +3,6 @@ checker:
   report_dir: output
 feishu:
   button_text: 📄 查看完整报告
-  report_history:
-  - doc_id: TVcNd2qE5opQOwxBE25c8g9XnQm
-    node_token: JhegwZsEOiowpBk4TJvcF9WYnne
-    title: RPA数据采集校验报告20260604181316
-  - doc_id: PAYzdpOH5oP81fxnB9gcHI6KnUg
-    node_token: GmkYwRScLiELZmkPC7jcrKU7nGc
-    title: RPA数据采集校验报告20260604182342
-  - doc_id: YeW7dCljPoJAKrxFmNjcam6KnYc
-    node_token: OEifwNcLJiiXsPkRxBNcQYJTnSf
-    title: RPA数据采集校验报告20260604182734
-  - doc_id: ZDKId7gSroz9EaxSrN8cNgKTnJb
-    node_token: MjgXwQnCQiiQemkRxWKcBqVRnZg
-    title: RPA数据采集校验报告20260604183414
-  - doc_id: N9X7dPx4joHU3jxVtqTc0BKenRf
-    node_token: I3pcw5N3MiB9DCkFZhfcxQApnDg
-    title: RPA数据采集校验报告20260604183732
-  - doc_id: VXKldjw6FoObyixFmWGcJLFZn8g
-    node_token: JVnOwSHtki3xj3kXCfccMOU7nb8
-    title: RPA数据采集校验报告20260604183848
-  - doc_id: Cg3EdbHcAohEzfxwzUmc81ncnjg
-    node_token: UWnzwqn9oiSrQ2kQ6sBcNLbwn9f
-    title: RPA数据采集校验报告20260604184312
-  - doc_id: T5fbdJtcSoNv4AxK4kXc6U1lnmh
-    node_token: G8l6wGs8CiQsI3kyaoNcYBPfnFe
-    title: RPA数据采集校验报告20260604184523
   wiki_parent_node_token: APocwMagEigGtmkgLKVcHr2Dned
   wiki_space_id: '7316788734647599106'
   wiki_url: https://wbenergy.feishu.cn/wiki/APocwMagEigGtmkgLKVcHr2Dned

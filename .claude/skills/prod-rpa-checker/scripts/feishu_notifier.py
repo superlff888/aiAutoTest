@@ -30,7 +30,7 @@ def _gen_sign(timestamp: int, secret: str) -> str:
 
 def build_card(
     result: dict[str, Any],
-    wiki_url: str = "https://wbenergy.feishu.cn/wiki/APocwMagEigGtmkgLkBcHr2Dned",
+    wiki_url: str = "",
     button_text: str = "📄 查看完整报告",
 ) -> dict:
     """
@@ -109,7 +109,7 @@ def send_to_feishu(
     result: dict[str, Any],
     webhook_url: str,
     secret: str | None = None,
-    wiki_url: str = "https://wbenergy.feishu.cn/wiki/APocwMagEigGtmkgLkBcHr2Dned",
+    wiki_url: str = "",
     button_text: str = "📄 查看完整报告",
     max_retries: int = 3,
     retry_backoff: int = 2,
