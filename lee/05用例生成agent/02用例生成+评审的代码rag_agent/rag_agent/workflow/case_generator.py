@@ -36,14 +36,15 @@ langgraph的使用：
 """
 import json
 
+
 from langgraph.constants import START, END
 from langgraph.graph import StateGraph
 from typing import TypedDict, List
 
 from langgraph.types import Send
 
-from models import llm_model
-from rag_agent.common.model_output_to_json import format_result
+from rag_agent.models import llm_model
+from rag_agent.common.model_output_to_json import format_result_to_json
 from rag_agent.pormpts import generate_case_prompt
 from rag_agent.pormpts import case_review_prompt
 from rag_agent.pormpts import verify_coverage_prompt
@@ -67,10 +68,10 @@ class State(TypedDict):
     # 覆盖率检查的结果
     coverage_check_result: dict
     # 存储AI评审通过的用例
-    review_passed_cases: Annotated[List, operator.add]
+    review_passed_cases: Annotated[List, operator.add]  # 并发时自动合并列表
 
     # 存储AI评审未通过的用例
-    review_failed_cases: Annotated[List, operator.add]
+    review_failed_cases: Annotated[List, operator.add]  # 并发时自动合并列表
 
 
 # 对用例进行结构化提取的pydantic的模型
@@ -120,7 +121,7 @@ class GenerateCaseWorkflow:
             result = response.content
             print("结果：", result)
             try:
-                cases = format_result(result)
+                cases = format_result_to_json(result)
             except:
                 cases = []
             print(f"用例生成完毕，当前一共生成了{len(cases)}条用例")
@@ -155,7 +156,7 @@ class GenerateCaseWorkflow:
         print("开始审核用例：", _case.get('case_name'))
         prompt = case_review_prompt.get_review_prompt(requirements, _case)
         response = llm_model.invoke(prompt)
-        result_json = format_result(response.content)
+        result_json = format_result_to_json(response.content)
         # 判断评审是否通过
         if result_json.get('review_result') == "通过":
             print("用例通过审核：", _case.get('case_name'))
@@ -261,7 +262,7 @@ class GenerateCaseWorkflow:
 
         graph.add_edge('用例评审', "用例覆盖率检查")
         graph.add_conditional_edges("用例覆盖率检查", self.verify_coverage_router, ['保存用例', '补充生成用例'])
-        
+
         # add_conditional_edges 唯一支持返回 List[Send]（5条用例 ── 路由机器人 ──→ 复制5份，每份都扔进「评审」车间）
         graph.add_conditional_edges("补充生成用例", self._case_review_router, ['用例评审'])
 

@@ -16,7 +16,7 @@
 import json
 
 
-def format_result(result: str):
+def format_result_to_json(result: str):
     # 判断输出的结果中是否包含<think>推理的内容，如果有则去除
     if "<think>" in result:
         result = result.split("</think>")
