@@ -130,7 +130,7 @@ class GenerateCaseWorkflow:
             return {"generated_cases": []}
 
     @staticmethod
-    def _case_review_router(state: State):
+    def _case_review_router(state: State):  # 路由函数，不添加为节点
         """并发对用例进行审核"""
         print("开始对用例进行审核")
         requirements = state.get('requirements')
@@ -261,7 +261,8 @@ class GenerateCaseWorkflow:
 
         graph.add_edge('用例评审', "用例覆盖率检查")
         graph.add_conditional_edges("用例覆盖率检查", self.verify_coverage_router, ['保存用例', '补充生成用例'])
-        # add_conditional_edges 唯一支持返回 List[Send]
+        
+        # add_conditional_edges 唯一支持返回 List[Send]（5条用例 ── 路由机器人 ──→ 复制5份，每份都扔进「评审」车间）
         graph.add_conditional_edges("补充生成用例", self._case_review_router, ['用例评审'])
 
         graph.add_edge('保存用例', END)
