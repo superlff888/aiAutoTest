@@ -1,3 +1,8 @@
+import io
+import sys
+if sys.stdout.encoding != 'utf-8':
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+
 """验证飞书文档导入 API (docs:document:import) 是否支持 Markdown 原生解析"""
 
 import os
