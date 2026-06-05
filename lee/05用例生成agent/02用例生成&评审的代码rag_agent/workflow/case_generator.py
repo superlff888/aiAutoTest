@@ -224,7 +224,7 @@ class GenerateCaseWorkflow:
             response = llm_model.invoke(prompt)
             result = response.content
             print("结果：", result)
-            cases = format_result(result)
+            cases = format_result_to_json(result)
             print(f"用例生成完毕，当前一共生成了{len(cases)}条用例")
             return {"generated_cases": cases}
         except Exception as e:
