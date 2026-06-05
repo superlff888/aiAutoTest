@@ -34,12 +34,15 @@ langgraph的使用：
 
 """
 import json
+import os, sys
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+
 
 from langgraph.constants import START, END
 from langgraph.graph import StateGraph
 from typing import TypedDict
 from models import llm_model
-from rag_agent.pormpts import generate_case_prompt
+from pormpts import generate_case_prompt
 from pydantic import BaseModel, Field
 
 

@@ -15,7 +15,9 @@ from llama_index.core import Settings
 from llama_index.llms.openai_like import OpenAILike
 from llama_index.embeddings.openai_like import OpenAILikeEmbedding
 from langchain_openai.chat_models import ChatOpenAI
-dotenv.load_dotenv()
+
+
+dotenv.load_dotenv(dotenv.find_dotenv())
 
 # ============第一步===========全局的配置=========================
 
@@ -39,13 +41,13 @@ Settings.llm = OpenAILike(
 # ===================定义langchian的模型对象===========
 # 如果配置的API_KEY 和BASE_URL 使用的使用变量名 OPENAI_API_KEY 和 OPENAI_BASE_URL 在通过ChatOpenAI去初始化模型对象的时候，可以不传参数base_url和api_key
 llm_model2 = ChatOpenAI(
+    api_key=os.getenv("API_KEY"),
+    base_url=os.getenv("BASE_URL"), 
     model=os.getenv("MODEL"),
     temperature=0.5,
 )
 
 llm_model = ChatOpenAI(
-    base_url=os.getenv("MINIMAX_BASE_URL"),
-    api_key=os.getenv("MINIMAX_API_KEY"),
-    model="MiniMax-M2.7-highspeed",
+    model=os.getenv("OPENAI_MODEL_QWEN36"),
     temperature=0.5
 )

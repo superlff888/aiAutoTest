@@ -5,7 +5,8 @@
       "Bash(*profit-sum*)",
       "Bash(*prod-rpa-checker*)",
       "Bash(cd *)",
-      "Bash(powershell -NoProfile -WindowStyle Hidden -Command 'Start-Sleep -Seconds 25; Get-ScheduledTaskInfo -TaskName \"RPA Data Check Daily\" | Select-Object TaskName, LastRunTime, LastTaskResult, NextRunTime')"
+      "Bash(powershell -NoProfile -WindowStyle Hidden -Command 'Start-Sleep -Seconds 25; Get-ScheduledTaskInfo -TaskName \"RPA Data Check Daily\" | Select-Object TaskName, LastRunTime, LastTaskResult, NextRunTime')",
+      "Bash(.venv/Scripts/python.exe \"lee/05用例生成agent/01用例生成代码/workflow/case_generator.py\")"
     ]
   }
 }

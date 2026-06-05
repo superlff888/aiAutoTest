@@ -36,7 +36,7 @@ langgraph的使用：
 """
 import json
 import os, sys
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..'))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
 
 from langgraph.constants import START, END
@@ -45,11 +45,11 @@ from typing import TypedDict, List
 
 from langgraph.types import Send
 
-from rag_agent.models import llm_model
-from rag_agent.common.model_output_to_json import format_result_to_json
-from rag_agent.pormpts import generate_case_prompt
-from rag_agent.pormpts import case_review_prompt
-from rag_agent.pormpts import verify_coverage_prompt
+from models import llm_model
+from common.model_output_to_json import format_result_to_json
+from pormpts import generate_case_prompt
+from pormpts import case_review_prompt
+from pormpts import verify_coverage_prompt
 
 from pydantic import BaseModel, Field
 

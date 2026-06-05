@@ -15,7 +15,10 @@ from llama_index.core import Settings
 from llama_index.llms.openai_like import OpenAILike
 from llama_index.embeddings.openai_like import OpenAILikeEmbedding
 from langchain_openai.chat_models import ChatOpenAI
-dotenv.load_dotenv()
+
+
+dotenv.load_dotenv(dotenv.find_dotenv())  # 从当前文件所在目录逐级向上搜索 .env 文件
+
 
 # ============第一步===========全局的配置=========================
 
