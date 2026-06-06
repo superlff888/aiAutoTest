@@ -7,6 +7,8 @@ param(
 
     [string]$At = "17:10",
 
+    [string]$At2 = $null,
+
     [string]$TaskName = "RPA Data Check Daily",
 
     [string]$VenvDir = ".venv"
@@ -70,11 +72,20 @@ $action = New-ScheduledTaskAction `
     -Argument "`"$LauncherVbs`"" `
     -WorkingDirectory $ProjectDir
 
-$trigger = New-ScheduledTaskTrigger -Daily -At $At
+$trigger1 = New-ScheduledTaskTrigger -Daily -At $At
+
+if ($At2) {
+    $trigger2 = New-ScheduledTaskTrigger -Daily -At $At2
+    $triggers = @($trigger1, $trigger2)
+    $triggerDescription = "Daily at $At and $At2"
+} else {
+    $triggers = @($trigger1)
+    $triggerDescription = "Daily at $At"
+}
 
 $settings = New-ScheduledTaskSettingsSet `
     -AllowStartIfOnBatteries `
-    -DontStopIfOnBatteries `
+    -DontStopIfGoingOnBatteries `
     -RestartCount 3 `
     -RestartInterval (New-TimeSpan -Minutes 5) `
     -ExecutionTimeLimit (New-TimeSpan -Minutes 30)
@@ -82,14 +93,14 @@ $settings = New-ScheduledTaskSettingsSet `
 Register-ScheduledTask `
     -TaskName $TaskName `
     -Action $action `
-    -Trigger $trigger `
+    -Trigger $triggers `
     -Settings $settings `
-    -Description "Daily RPA data check at $At, push result to Feishu group (Silent)" `
+    -Description "RPA data check at $triggerDescription, push result to Feishu group (Silent)" `
     -Force
 
 Write-Host ""
 Write-Host "[OK] Task registered: $TaskName (Silent Mode)"
-Write-Host "  Trigger : Daily at $At"
+Write-Host "  Triggers: $triggerDescription"
 Write-Host "  Wrapper : wscript.exe -> run_check_silent.vbs"
 Write-Host "  Command : $VenvPython $RunCheck"
 Write-Host "  WorkDir : $ProjectDir"
