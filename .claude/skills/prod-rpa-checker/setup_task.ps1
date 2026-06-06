@@ -86,16 +86,24 @@ if ($At2) {
 $settings = New-ScheduledTaskSettingsSet `
     -AllowStartIfOnBatteries `
     -DontStopIfGoingOnBatteries `
+    -WakeToRun `
     -RestartCount 3 `
     -RestartInterval (New-TimeSpan -Minutes 5) `
     -ExecutionTimeLimit (New-TimeSpan -Minutes 30)
+
+# Principal: run whether user is logged on or not (required for WakeToRun to work without unlocking)
+$principal = New-ScheduledTaskPrincipal `
+    -UserId $env:USERNAME `
+    -LogonType S4U `
+    -RunLevel Limited
 
 Register-ScheduledTask `
     -TaskName $TaskName `
     -Action $action `
     -Trigger $triggers `
     -Settings $settings `
-    -Description "RPA data check at $triggerDescription, push result to Feishu group (Silent)" `
+    -Principal $principal `
+    -Description "RPA data check at $triggerDescription, push result to Feishu group (Silent, wakes from sleep)" `
     -Force
 
 Write-Host ""
