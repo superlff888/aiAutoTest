@@ -1,0 +1,107 @@
+# RPA 数据采集校验 — GitHub Actions 定时执行
+# 触发时间：每天 08:30 和 17:10（北京时间 = UTC+8）
+
+name: RPA Data Check
+
+on:
+  schedule:
+    # UTC 00:30 = 北京 08:30
+    - cron: '30 0 * * *'
+    # UTC 09:10 = 北京 17:10
+    - cron: '10 9 * * *'
+  # 支持手动触发（Actions 面板点击 "Run workflow"）
+  workflow_dispatch:
+    inputs:
+      connection:
+        description: '数据库连接 (prod/test)'
+        required: false
+        default: 'prod'
+      notify:
+        description: '是否发送飞书通知'
+        required: false
+        default: 'true'
+        type: choice
+        options:
+          - 'true'
+          - 'false'
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    env:
+      # 飞书通知
+      FEISHU_WEBHOOK_URL: ${{ secrets.FEISHU_WEBHOOK_URL }}
+      FEISHU_WEBHOOK_SECRET: ${{ secrets.FEISHU_WEBHOOK_SECRET }}
+      FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
+      FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
+
+      # 生产环境数据库
+      PROD_MYSQL_HOST: ${{ secrets.PROD_MYSQL_HOST }}
+      PROD_MYSQL_PORT: ${{ secrets.PROD_MYSQL_PORT }}
+      PROD_MYSQL_USER: ${{ secrets.PROD_MYSQL_USER }}
+      PROD_MYSQL_PASSWORD: ${{ secrets.PROD_MYSQL_PASSWORD }}
+      PROD_MYSQL_DATABASE: ${{ secrets.PROD_MYSQL_DATABASE }}
+
+      # 测试环境数据库（如需）
+      TEST_MYSQL_HOST: ${{ secrets.TEST_MYSQL_HOST }}
+      TEST_MYSQL_PORT: ${{ secrets.TEST_MYSQL_PORT }}
+      TEST_MYSQL_USER: ${{ secrets.TEST_MYSQL_USER }}
+      TEST_MYSQL_PASSWORD: ${{ secrets.TEST_MYSQL_PASSWORD }}
+      TEST_MYSQL_DATABASE: ${{ secrets.TEST_MYSQL_DATABASE }}
+
+    steps:
+      # 1. 拉取代码
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. 安装 uv（Python 包管理器）
+      - name: Install uv
+        uses: astral-sh/setup-uv@v4
+        with:
+          version: 'latest'
+
+      # 3. 安装 Python 依赖
+      - name: Install dependencies
+        run: |
+          uv sync --frozen
+        working-directory: .
+
+      # 4. 执行校验脚本
+      - name: Run RPA check
+        run: |
+          CONNECTION="${{ github.event.inputs.connection || 'prod' }}"
+          NOTIFY="${{ github.event.inputs.notify || 'true' }}"
+
+          if [ "$NOTIFY" = "false" ]; then
+            uv run python .claude/skills/prod-rpa-checker/run_check.py \
+              --connection "$CONNECTION" \
+              --no-notify
+          else
+            uv run python .claude/skills/prod-rpa-checker/run_check.py \
+              --connection "$CONNECTION"
+          fi
+        env:
+          # 确保 .env 加载（dotenv 会自动读取环境变量）
+          PYTHONUNBUFFERED: 1
+
+      # 5. 上传报告作为 artifact（可选，用于下载查看）
+      - name: Upload report artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rpa-check-report-${{ github.run_id }}
+          path: .claude/skills/prod-rpa-checker/output/*.md
+          retention-days: 7
+          if-no-files-found: ignore
+
+      # 6. 上传日志（可选，用于排查问题）
+      - name: Upload logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: rpa-check-logs-${{ github.run_id }}
+          path: .claude/skills/prod-rpa-checker/output/*.log
+          retention-days: 7
+          if-no-files-found: ignore
