@@ -12,7 +12,7 @@
 from langchain.messages import HumanMessage, SystemMessage
 
 PROMPT = """
-你是一位资深的测试工程师，擅长用例的设计和用例质量评估，接下来需要你根据用户提供的原始需求文档，和用例数据，来评审当前这条用例的是否可用！
+你是一位资深的测试工程师，擅长用例的设计和用例质量评估，接下来需要你根据用户提供的原始需求文档和用例数据，来评审当前这条用例的是否可用！
 
 
 ## 输入说明：
@@ -56,3 +56,11 @@ def get_review_prompt(requirements, _case) -> list:
         SystemMessage(content=PROMPT),
         HumanMessage(content=prompt)
     ]
+
+
+
+
+
+"""
+优化：用例评审的标准或规范
+"""

@@ -113,18 +113,26 @@ MAX_LOCAL_REPORTS = 10  # 本地 .md 报告保留上限
 
 
 def _load_history() -> list:
-    """加载报告历史记录。"""
+    """加载报告历史记录，返回 records 列表。"""
     if HISTORY_FILE.exists():
         with open(HISTORY_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
+            data = json.load(f)
+            # 兼容旧格式（纯数组）和新格式（带 _description 的对象）
+            if isinstance(data, list):
+                return data
+            return data.get("records", [])
     return []
 
 
 def _save_history(history: list):
-    """保存报告历史记录。"""
+    """保存报告历史记录，写入新格式（含 _description 说明）。"""
     HISTORY_FILE.parent.mkdir(parents=True, exist_ok=True)
+    payload = {
+        "_description": "飞书 wiki 报告文档历史记录：每次校验生成新文档后追加记录，超过上限（MAX_REPORT_HISTORY=10）时自动删除最早的文档",
+        "records": history,
+    }
     with open(HISTORY_FILE, "w", encoding="utf-8") as f:
-        json.dump(history, f, ensure_ascii=False, indent=2)
+        json.dump(payload, f, ensure_ascii=False, indent=2)
 
 
 def _cleanup_old_local_reports():
