@@ -7,7 +7,9 @@ param(
 
     [string]$At = "17:10",
 
-    [string]$TaskName = "RPA Data Check Daily"
+    [string]$TaskName = "RPA Data Check Daily",
+
+    [string]$VenvDir = ".venv"
 )
 
 # Auto-locate skill directory (where this script lives)
@@ -25,7 +27,7 @@ if (-not (Test-Path $envFile)) {
 }
 
 # Resolve venv python path (absolute, no PATH dependency)
-$VenvPython = Join-Path $ProjectDir ".venv\Scripts\python.exe"
+$VenvPython = Join-Path $ProjectDir "$VenvDir\Scripts\python.exe"
 if (-not (Test-Path $VenvPython)) {
     Write-Error "Virtual environment Python not found at: $VenvPython"
     exit 1
@@ -54,7 +56,6 @@ if (-not (Test-Path $LauncherVbs)) {
     Write-Host "  VBS     : Created $LauncherVbs"
 } else {
     $ExistingVbsContent = Get-Content -Path $LauncherVbs -Raw -Encoding Ascii
-    $ExpectedContent = "`"$ExpectedVbsContent`""
     if ($ExistingVbsContent.Trim() -ne $ExpectedVbsContent.Trim()) {
         Set-Content -Path $LauncherVbs -Value $ExpectedVbsContent -Encoding Ascii
         Write-Host "  VBS     : Updated $LauncherVbs (paths changed)"

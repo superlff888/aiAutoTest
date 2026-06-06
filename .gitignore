@@ -10,3 +10,6 @@ rag/lightrag.log
 
 # RPA checker output reports
 .claude/skills/prod-rpa-checker/output/
+
+# RPA checker backup (generated artifact, not source)
+.claude/skills/prod-rpa-checker/backup_*/

@@ -111,8 +111,11 @@ def get_driver(conn_info):
         sys.exit(1)
 
 
-@contextmanager
-def get_connection(conn_info):
+def create_connection(conn_info):
+    """创建并返回原始数据库连接（无 context manager 包装）。
+
+    用于需要手动管理连接生命周期的场景（如 _ReconnectableConn 重连包装器）。
+    """
     driver = get_driver(conn_info)
     host = conn_info.get("host", "")
     port = conn_info.get("port", 3306)
@@ -122,7 +125,7 @@ def get_connection(conn_info):
 
     if driver == "pymysql":
         import pymysql
-        conn = pymysql.connect(
+        return pymysql.connect(
             host=host, port=int(port), user=user,
             password=password, database=database,
             charset="utf8mb4", cursorclass=pymysql.cursors.DictCursor,
@@ -131,9 +134,14 @@ def get_connection(conn_info):
         import sqlite3
         conn = sqlite3.connect(database)
         conn.row_factory = sqlite3.Row
+        return conn
     else:
         raise ValueError(f"不支持的驱动: {driver}")
 
+
+@contextmanager
+def get_connection(conn_info):
+    conn = create_connection(conn_info)
     try:
         yield conn
     finally:

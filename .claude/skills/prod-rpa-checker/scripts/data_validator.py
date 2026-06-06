@@ -1,48 +1,78 @@
 #!/usr/bin/env python3
 """
-RPA数据采集完整性校验脚本
+RPA 数据采集校验 — 核心校验模块
 
 功能：
-1. 最新数据时间验证：根据JSON配置验证数据是否采集到最新
-2. 日期连续性验证：验证指定时间范围内每一天的数据都存在
+1. 最新数据时间验证：根据 JSON 配置验证数据是否采集到最新
+2. 日期连续性验证：验证指定时间范围内每一天的数据是否存在
+3. 数据量合理性校验：验证每日数据量是否在合理范围内
+
+依赖：
+- report_builder: 报告生成与结构化结果构建（已拆分）
 """
 
-import argparse
 import json
+import logging
 import os
+import re
 import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timedelta
 from pathlib import Path
 
-from db_executor import get_connections, resolve_conn, get_connection
+# 支持两种运行方式：
+# 1. 通过 run_check.py 调用（SKILL_DIR 在 sys.path，使用 scripts.* 包导入）
+# 2. 直接运行 python data_validator.py（SCRIPTS_DIR 自动在 sys.path，使用裸名导入）
+try:
+    from scripts.db_executor import get_connections, resolve_conn, get_connection, create_connection
+    from scripts.report_builder import (
+        build_report_markdown, build_structured_result,
+        write_report_to_file, _format_date_ranges,
+    )
+except ModuleNotFoundError:
+    from db_executor import get_connections, resolve_conn, get_connection, create_connection
+    from report_builder import (
+        build_report_markdown, build_structured_result,
+        write_report_to_file, _format_date_ranges,
+    )
 
 # ─── MySQL 连接断开错误码 ───
 _CONNECTION_ERRORS = (2006, 2013, 2055)
 
 
 class _ReconnectableConn:
-    """透明重连包装器：捕获 OperationalError 2006/2013 时自动重建连接并重试。"""
+    """透明重连包装器：捕获 OperationalError 2006/2013 时自动重建连接并重试。
 
-    def __init__(self, conn_cm, connection_name: str):
-        # conn_cm 是 context manager，__enter__ 返回真实连接
-        self._conn_cm = conn_cm
-        self._conn = conn_cm.__enter__()
+    实现完整的 __enter__/__exit__ 上下文管理协议，可直接用于 with 语句。
+    """
+
+    def __init__(self, connection_name: str):
         self._connection_name = connection_name
+        self._conn_info = _get_conn(connection_name)
+        self._conn = create_connection(self._conn_info)
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.close()
+        return False
 
     def cursor(self):
         return self._conn.cursor()
 
     def _reconnect(self):
+        """重建数据库连接。"""
         try:
             self._conn.close()
         except Exception:
             pass
-        self._conn = _get_conn(self._connection_name).__enter__()
+        self._conn = create_connection(self._conn_info)
 
     def close(self):
-        self._conn.close()
+        """关闭连接。"""
         try:
-            self._conn_cm.__exit__(None, None, None)
+            self._conn.close()
         except Exception:
             pass
 
@@ -70,18 +100,19 @@ def _safe_query(conn: _ReconnectableConn, func, *args, **kwargs):
         raise
 
 
+# ─── 数据类型 SQL 映射（问题 #6：扩展为结构化配置，驱动检查类型） ───
+
 _DATA_TYPE_SQL_MAPPING = {
-    '日前节点电价': '日前节点电价.sql',
-    '实时节点电价': '实时节点电价.sql',
-    '日前结算电价': '日前结算电价.sql',
-    '实时结算电价': '实时结算电价.sql',
-    '网侧预测': '网侧预测.sql',
-    '网侧实际': '网侧实际.sql',
-    '日前成交电量': '日前成交电量.sql',
-    '代理用户用电明细': '代理用户用电明细.sql',
-    '代理用户用电总计': '代理用户用电总计.sql',
-    '代理用户用电明细与代理用户用电总计差异': '代理用户用电明细与代理用户用电总计差异.sql',
-    # '中长期持仓' — 已跳过，不需要 SQL 模板
+    '日前节点电价': {'sql': '日前节点电价.sql'},
+    '实时节点电价': {'sql': '实时节点电价.sql'},
+    '日前结算电价': {'sql': '日前结算电价.sql'},
+    '实时结算电价': {'sql': '实时结算电价.sql'},
+    '网侧预测': {'sql': '网侧预测.sql', 'check_volume': True},
+    '网侧实际': {'sql': '网侧实际.sql', 'check_volume': True},
+    '日前成交电量': {'sql': '日前成交电量.sql'},
+    '代理用户用电明细': {'sql': '代理用户用电明细.sql'},
+    '代理用户用电总计': {'sql': '代理用户用电总计.sql'},
+    '代理用户用电明细与代理用户用电总计差异': {'sql': '代理用户用电明细与代理用户用电总计差异.sql'},
 }
 
 _DATE_FIELDS = ['day', 'date', 'time', 'data_date', 'stat_date']
@@ -90,7 +121,7 @@ _DATE_FIELDS = ['day', 'date', 'time', 'data_date', 'stat_date']
 def _get_conn(connection_name: str):
     cfg = get_connections()
     conn_info = resolve_conn(cfg, connection_name)
-    return get_connection(conn_info)
+    return conn_info
 
 
 def load_data_center_config(config_path: str) -> dict:
@@ -102,8 +133,8 @@ def load_data_center_config(config_path: str) -> dict:
 def load_sql_templates(sql_dir: Path) -> dict:
     """预加载所有SQL模板到内存，避免重复IO"""
     templates = {}
-    for dtype, sql_file in _DATA_TYPE_SQL_MAPPING.items():
-        sql_path = sql_dir / sql_file
+    for dtype, meta in _DATA_TYPE_SQL_MAPPING.items():
+        sql_path = sql_dir / meta['sql']
         if sql_path.exists():
             templates[dtype] = sql_path.read_text(encoding='utf-8')
     return templates
@@ -129,11 +160,28 @@ def _compute_expected_date(offset_days: int) -> datetime:
     return datetime.now() + timedelta(days=-offset_days)
 
 
+# ─── 问题 #7：SQL 参数安全校验 ───
+
+_SAFE_ID_RE = re.compile(r'^[a-zA-Z0-9_\-{}]+$')
+
+
+def _validate_sql_param(value, name: str) -> str:
+    """校验 SQL 参数安全性，防止注入。"""
+    s = str(value).strip()
+    if not _SAFE_ID_RE.match(s):
+        raise ValueError(f"SQL 参数 {name} 包含不安全字符: {value!r}")
+    return s
+
+
 def render_sql(sql_template: str, trade_center_id: str, offset_days: int,
                start_date: str, end_date: str, vpp_id: str = '1') -> str:
-    return sql_template.replace('{{trade_center_id}}', str(trade_center_id)) \
-                       .replace('{{offset_days}}', str(offset_days)) \
-                       .replace('{{vpp_id}}', vpp_id) \
+    """渲染 SQL 模板，参数经过安全校验。"""
+    safe_tc = _validate_sql_param(trade_center_id, 'trade_center_id')
+    safe_vpp = _validate_sql_param(vpp_id, 'vpp_id')
+    safe_offset = str(int(offset_days))  # 强制整数，防止注入
+    return sql_template.replace('{{trade_center_id}}', safe_tc) \
+                       .replace('{{offset_days}}', safe_offset) \
+                       .replace('{{vpp_id}}', safe_vpp) \
                        .replace('{{start_date}}', start_date) \
                        .replace('{{end_date}}', end_date)
 
@@ -286,36 +334,6 @@ def check_date_continuity(conn, sql: str, start_date: datetime, end_date: dateti
         return False, [], f"查询异常: {str(e)}"
 
 
-def _format_date_ranges(dates: list) -> str:
-    """将连续日期压缩为范围格式，如 20260501~20260510"""
-    if not dates:
-        return ''
-    # 排序去重
-    sorted_dates = sorted(set(dates))
-    ranges = []
-    start = sorted_dates[0]
-    prev = sorted_dates[0]
-    for d in sorted_dates[1:]:
-        # 比较日期是否连续（相差1天）
-        prev_dt = datetime.strptime(prev, '%Y%m%d')
-        curr_dt = datetime.strptime(d, '%Y%m%d')
-        if (curr_dt - prev_dt).days == 1:
-            prev = d
-        else:
-            if start == prev:
-                ranges.append(start)
-            else:
-                ranges.append(f'{start}～{prev}')
-            start = d
-            prev = d
-    # 收尾 — 统一使用半角 ~
-    if start == prev:
-        ranges.append(start)
-    else:
-        ranges.append(f'{start}～{prev}')
-    return '、'.join(ranges)
-
-
 def _check_diff(conn, sql: str) -> str:
     """检查代理用户用电明细与代理用户用电总计的差异，复用连接"""
     try:
@@ -332,7 +350,6 @@ def _check_diff(conn, sql: str) -> str:
                 except (ValueError, TypeError):
                     diff_val = 0
                 if diff_val > 0.01:
-                    # 尝试多种可能的列名
                     date_key = row.get('time') or row.get('day') or row.get('date') or row.get('data_date') or '?'
                     diff_dates.append(str(date_key))
             if not diff_dates:
@@ -343,11 +360,153 @@ def _check_diff(conn, sql: str) -> str:
         return f"❌ 查询异常: {str(e)}"
 
 
+def _check_single_center(center_name: str, center_config: dict, templates: dict,
+                         connection: str, trade_center: str = None,
+                         data_type: str = None) -> dict:
+    """单交易中心校验（每个线程独立连接，互不干扰）。
+
+    返回: {center_name: center_id, rows, passed, failed}
+    """
+    passed = []
+    failed = []
+    rows = []
+
+    with _ReconnectableConn(connection) as conn:
+        trade_center_id = center_config.get('trade_center_id')
+        if not trade_center_id:
+            return {'center_id': 0, 'rows': [], 'passed': [], 'failed': []}
+
+        vpp_id = center_config.get('vpp_id', '1')
+
+        for data_type_name, time_config in center_config.items():
+            if data_type_name in ('trade_center_id', 'vpp_id', '中长期持仓'):
+                continue
+
+            if trade_center and trade_center != center_name:
+                continue
+
+            if data_type and data_type != data_type_name:
+                continue
+
+            if isinstance(time_config, dict):
+                if time_config.get('备注') == '暂未接入':
+                    continue
+                latest_time = time_config.get('最新数据时间', '—')
+            else:
+                latest_time = time_config
+
+            if latest_time == '—':
+                continue
+
+            time_str = '/'.join(latest_time) if isinstance(latest_time, list) else latest_time
+            time_label = f'[{", ".join(latest_time)}]' if isinstance(latest_time, list) else latest_time
+
+            sql_template = templates.get(data_type_name)
+            if not sql_template:
+                continue
+
+            # 代理用户用电明细与代理用户用电总计差异：特殊处理
+            if data_type_name == '代理用户用电明细与代理用户用电总计差异':
+                diff_start = (datetime.now() - timedelta(days=9)).strftime('%Y%m%d')
+                diff_end = datetime.now().strftime('%Y%m%d')
+                diff_sql = render_sql(sql_template, trade_center_id, 0, diff_start, diff_end, vpp_id)
+                diff_status = _safe_query(conn, _check_diff, diff_sql)
+                rows.append({
+                    'data_type': '明细与总计差异',
+                    'latest': diff_status,
+                    'volume': '—',
+                    'continuity': '—',
+                })
+                if '✅' in diff_status:
+                    passed.append({'center': center_name, 'data_type': data_type_name, 'check': {'passed': True}})
+                else:
+                    failed.append({'center': center_name, 'data_type': data_type_name, 'check': {'passed': False, 'error': diff_status}})
+                continue
+
+            offsets = parse_offset_days(time_str)
+
+            # === 最新数据时间验证 ===
+            check_passed, used_offset, max_date, error, fallback_log = _safe_query(
+                conn, check_latest_data, sql_template, trade_center_id, offsets, vpp_id
+            )
+            latest_status = f"✅ {max_date}" if check_passed else f"❌ {error}"
+
+            # 缓存预期日期，避免重复计算
+            expected_date = _compute_expected_date(used_offset)
+
+            # === 计算连续性验证窗口（最新数据日期往前推10天）===
+            if not check_passed and error and '无数据' in error:
+                # 全部offset都无数据，不跑连续性检查
+                continuity_status = '⏭️ 本月无数据'
+                cont_start_date = cont_end_date = None
+            else:
+                if check_passed:
+                    cont_end_date = datetime.strptime(max_date, '%Y-%m-%d')
+                else:
+                    cont_end_date = expected_date - timedelta(days=1)
+                cont_start_date = cont_end_date - timedelta(days=9)
+
+            # === 数据量合理性校验（由 _DATA_TYPE_SQL_MAPPING 驱动） ===
+            vol_status = None
+            type_meta = _DATA_TYPE_SQL_MAPPING.get(data_type_name, {})
+            if type_meta.get('check_volume') and cont_start_date is not None:
+                volume_sql = render_sql(sql_template, trade_center_id, used_offset,
+                                       cont_start_date.strftime('%Y-%m-%d'),
+                                       cont_end_date.strftime('%Y-%m-%d'), vpp_id)
+                vol_ok, vol_count, vol_days, vol_err = _safe_query(conn, check_data_volume, volume_sql)
+                vol_status = "—" if vol_err is None else (f"✅ {vol_err}" if vol_ok else f"❌ {vol_err}")
+
+            # === 日期连续性验证 ===
+            if cont_start_date is not None:
+                rendered_sql = render_sql(sql_template, trade_center_id, used_offset,
+                                         cont_start_date.strftime('%Y-%m-%d'),
+                                         cont_end_date.strftime('%Y-%m-%d'), vpp_id)
+                continuity_passed, missing_dates, _ = _safe_query(
+                    conn, check_date_continuity, rendered_sql, cont_start_date, cont_end_date)
+                if continuity_passed:
+                    continuity_status = f"✅ {cont_start_date.strftime('%m-%d')}~{cont_end_date.strftime('%m-%d')}"
+                elif len(missing_dates) > 3:
+                    continuity_status = f"❌ {', '.join(missing_dates[:3])} 等{len(missing_dates)}天"
+                else:
+                    continuity_status = f"❌ {', '.join(missing_dates)}"
+
+            rows.append({
+                'data_type': f'{data_type_name}（{time_label}）',
+                'latest': latest_status,
+                'volume': vol_status or '—',
+                'continuity': continuity_status,
+            })
+
+            if check_passed:
+                passed.append({
+                    'center': center_name,
+                    'data_type': f'{data_type_name}（{time_label}）',
+                    'check': {'offset': used_offset, 'expected_date': expected_date.strftime('%Y-%m-%d'), 'max_date': max_date, 'passed': True}
+                })
+            else:
+                failed.append({
+                    'center': center_name,
+                    'data_type': f'{data_type_name}（{time_label}）',
+                    'check': {'offset': used_offset, 'expected_date': expected_date.strftime('%Y-%m-%d'), 'max_date': max_date, 'passed': False, 'error': error}
+                })
+
+            if vol_status and '❌' in vol_status:
+                failed.append({
+                    'center': center_name,
+                    'data_type': f'{data_type_name}（{time_label}）',
+                    'check': {'type': 'volume', 'passed': False, 'error': vol_status}
+                })
+
+    return {'center_id': trade_center_id, 'rows': rows, 'passed': passed, 'failed': failed}
+
+
 def run_check(connection: str = "prod", config_path: str | None = None,
               trade_center: str = None, data_type: str = None,
               start_date: str = None, end_date: str = None,
-              outfile=None):
+              outfile=None, exec_time: str = None, max_workers: int = 4):
     """执行完整校验，返回结构化结果。
+
+    各交易中心并行查询（每个线程独立数据库连接），总耗时取决于最慢的一个中心。
 
     Args:
         connection: 数据库连接名称（prod/test）
@@ -357,6 +516,8 @@ def run_check(connection: str = "prod", config_path: str | None = None,
         start_date: 起始日期（YYYYMMDD）
         end_date: 结束日期（YYYYMMDD）
         outfile: 可选，报告内容写入该文件句柄
+        exec_time: 可选，统一传入的执行时间戳（避免多次 datetime.now() 不一致）
+        max_workers: 最大并行线程数（默认 4，受 CPU 核心数限制）
 
     返回:
     {
@@ -371,6 +532,9 @@ def run_check(connection: str = "prod", config_path: str | None = None,
         "report_file": "output/rpa_check_report_20260604171028.md"
     }
     """
+    if exec_time is None:
+        exec_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
     # 自动定位 config_path
     if config_path is None:
         config_path = str(Path(__file__).parent.parent / "doc" / "数据中心类型定义.json")
@@ -380,245 +544,77 @@ def run_check(connection: str = "prod", config_path: str | None = None,
     sql_dir = config_path.parent.parent / 'sqls'
     templates = load_sql_templates(sql_dir)
 
+    # 收集待查中心列表
+    center_tasks = []
+    for center_name, center_config in config.items():
+        if trade_center and trade_center != center_name:
+            continue
+        if not center_config.get('trade_center_id'):
+            continue
+        center_tasks.append((center_name, center_config))
+
     results = {'passed': [], 'failed': []}
     center_results = {}
 
-    conn = _ReconnectableConn(_get_conn(connection), connection)
-    try:
-        for center_name, center_config in config.items():
-            if trade_center and trade_center != center_name:
-                continue
+    # 并行执行各交易中心校验
+    effective_workers = min(max_workers, len(center_tasks))
+    if effective_workers <= 1:
+        effective_workers = 1
 
-            trade_center_id = center_config.get('trade_center_id')
-            if not trade_center_id:
-                continue
+    logging.info("DB 查询并行度: %d（共 %d 个交易中心）", effective_workers, len(center_tasks))
 
-            vpp_id = center_config.get('vpp_id', '1')
-            rows = []
+    with ThreadPoolExecutor(max_workers=effective_workers, thread_name_prefix="checker") as executor:
+        future_to_name = {}
+        for center_name, center_config in center_tasks:
+            future = executor.submit(
+                _check_single_center,
+                center_name, center_config, templates, connection,
+                trade_center, data_type,
+            )
+            future_to_name[future] = center_name
 
-            for data_type_name, time_config in center_config.items():
-                if data_type_name in ('trade_center_id', 'vpp_id', '中长期持仓'):
-                    continue
-
-                if data_type and data_type != data_type_name:
-                    continue
-
-                if isinstance(time_config, dict):
-                    if time_config.get('备注') == '暂未接入':
-                        continue
-                    latest_time = time_config.get('最新数据时间', '—')
-                else:
-                    latest_time = time_config
-
-                if latest_time == '—':
-                    continue
-
-                time_str = '/'.join(latest_time) if isinstance(latest_time, list) else latest_time
-                time_label = f'[{", ".join(latest_time)}]' if isinstance(latest_time, list) else latest_time
-
-                sql_template = templates.get(data_type_name)
-                if not sql_template:
-                    continue
-
-                # 代理用户用电明细与代理用户用电总计差异：特殊处理
-                if data_type_name == '代理用户用电明细与代理用户用电总计差异':
-                    diff_start = (datetime.now() - timedelta(days=9)).strftime('%Y%m%d')
-                    diff_end = datetime.now().strftime('%Y%m%d')
-                    diff_sql = render_sql(sql_template, trade_center_id, 0, diff_start, diff_end, vpp_id)
-                    diff_status = _safe_query(conn, _check_diff, diff_sql)
-                    rows.append({
-                        'data_type': '明细与总计差异',
-                        'latest': diff_status,
+        for future in as_completed(future_to_name):
+            center_name = future_to_name[future]
+            try:
+                center_result = future.result()
+                center_results[center_name] = {
+                    'center_id': center_result['center_id'],
+                    'rows': center_result['rows'],
+                }
+                results['passed'].extend(center_result['passed'])
+                results['failed'].extend(center_result['failed'])
+            except Exception as e:
+                logging.exception("交易中心 %s 校验异常", center_name)
+                center_results[center_name] = {
+                    'center_id': config[center_name].get('trade_center_id', 0),
+                    'rows': [{
+                        'data_type': '⚠️ 校验异常',
+                        'latest': f"❌ {str(e)}",
                         'volume': '—',
                         'continuity': '—',
-                    })
-                    if '✅' in diff_status:
-                        results['passed'].append({'center': center_name, 'data_type': data_type_name, 'check': {'passed': True}})
-                    else:
-                        results['failed'].append({'center': center_name, 'data_type': data_type_name, 'check': {'passed': False, 'error': diff_status}})
-                    continue
+                    }],
+                }
 
-                offsets = parse_offset_days(time_str)
+    # === 按交易中心配置顺序排序输出 ===
+    sorted_centers = {cn: center_results[cn] for cn in config if cn in center_results}
+    center_results = sorted_centers
 
-                # === 最新数据时间验证 ===
-                passed, used_offset, max_date, error, fallback_log = _safe_query(
-                    conn, check_latest_data, sql_template, trade_center_id, offsets, vpp_id
-                )
-                latest_status = f"✅ {max_date}" if passed else f"❌ {error}"
-
-                # 缓存预期日期，避免重复计算
-                expected_date = _compute_expected_date(used_offset)
-
-                # === 计算连续性验证窗口（最新数据日期往前推10天）===
-                if not passed and error and '无数据' in error:
-                    # 全部offset都无数据，不跑连续性检查
-                    continuity_status = '⏭️ 本月无数据'
-                    cont_start_date = cont_end_date = None
-                else:
-                    if passed:
-                        cont_end_date = datetime.strptime(max_date, '%Y-%m-%d')
-                    else:
-                        cont_end_date = expected_date - timedelta(days=1)
-                    cont_start_date = cont_end_date - timedelta(days=9)
-
-                # === 数据量合理性校验（仅网侧预测/网侧实际）===
-                vol_status = None
-                if data_type_name in ('网侧预测', '网侧实际') and cont_start_date is not None:
-                    volume_sql = render_sql(sql_template, trade_center_id, used_offset,
-                                           cont_start_date.strftime('%Y-%m-%d'),
-                                           cont_end_date.strftime('%Y-%m-%d'), vpp_id)
-                    vol_ok, vol_count, vol_days, vol_err = _safe_query(conn, check_data_volume, volume_sql)
-                    vol_status = "—" if vol_err is None else (f"✅ {vol_err}" if vol_ok else f"❌ {vol_err}")
-
-                # === 日期连续性验证 ===
-                if cont_start_date is not None:
-                    rendered_sql = render_sql(sql_template, trade_center_id, used_offset,
-                                             cont_start_date.strftime('%Y-%m-%d'),
-                                             cont_end_date.strftime('%Y-%m-%d'), vpp_id)
-                    continuity_passed, missing_dates, _ = _safe_query(
-                        conn, check_date_continuity, rendered_sql, cont_start_date, cont_end_date)
-                    if continuity_passed:
-                        continuity_status = f"✅ {cont_start_date.strftime('%m-%d')}~{cont_end_date.strftime('%m-%d')}"
-                    elif len(missing_dates) > 3:
-                        continuity_status = f"❌ {', '.join(missing_dates[:3])} 等{len(missing_dates)}天"
-                    else:
-                        continuity_status = f"❌ {', '.join(missing_dates)}"
-
-                rows.append({
-                    'data_type': f'{data_type_name}（{time_label}）',
-                    'latest': latest_status,
-                    'volume': vol_status or '—',
-                    'continuity': continuity_status,
-                })
-
-                if passed:
-                    results['passed'].append({
-                        'center': center_name,
-                        'data_type': f'{data_type_name}（{time_label}）',
-                        'check': {'offset': used_offset, 'expected_date': expected_date.strftime('%Y-%m-%d'), 'max_date': max_date, 'passed': True}
-                    })
-                else:
-                    results['failed'].append({
-                        'center': center_name,
-                        'data_type': f'{data_type_name}（{time_label}）',
-                        'check': {'offset': used_offset, 'expected_date': expected_date.strftime('%Y-%m-%d'), 'max_date': max_date, 'passed': False, 'error': error}
-                    })
-
-                if vol_status and '❌' in vol_status:
-                    results['failed'].append({
-                        'center': center_name,
-                        'data_type': f'{data_type_name}（{time_label}）',
-                        'check': {'type': 'volume', 'passed': False, 'error': vol_status}
-                    })
-
-            center_results[center_name] = {'center_id': trade_center_id, 'rows': rows}
-    finally:
-        conn.close()
-
-    # === 写入 MD 文件 ===
+    # === 生成报告内容 & 写入文件 ===
     output_dir = Path(__file__).parent.parent / 'output'
     os.makedirs(output_dir, exist_ok=True)
     report_file = output_dir / f"rpa_check_report_{datetime.now().strftime('%Y%m%d%H%M%S')}.md"
 
-    report_content = []
-    report_content.append(f"# RPA数据采集校验报告\n\n执行时间：{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    for center_name, cr in center_results.items():
-        report_content.append(f"\n## 交易中心: {center_name} (ID: {cr['center_id']})")
-        report_content.append('| 数据类型 | 最新数据时间 | 数据量 | 日期连续性 |')
-        report_content.append('|----------|-------------|--------|-----------|')
-        for r in cr['rows']:
-            report_content.append(f"| {r['data_type']} | {r['latest']} | {r['volume']} | {r['continuity']} |")
-
-    report_content.append(f"\n---\n\n## 校验汇总\n\n执行时间：{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
-    report_content.append(f"- ✅ 通过: {len(results['passed'])}")
-    report_content.append(f"- ❌ 失败: {len(results['failed'])}")
-    if results['failed']:
-        report_content.append("\n### 失败详情")
-        for fail in results['failed']:
-            check = fail['check']
-            ctype = check.get('type', '')
-            if ctype == 'continuity':
-                missing = ', '.join(check.get('missing_dates', []))
-                report_content.append(f"- ❌ {fail['center']} / {fail['data_type']} - 日期不连续: 缺失 {missing}")
-            elif ctype == 'volume':
-                report_content.append(f"- ❌ {fail['center']} / {fail['data_type']} - 数据量: {check['error']}")
-            else:
-                report_content.append(f"- ❌ {fail['center']} / {fail['data_type']} (offset={check.get('offset', '?')}) - {check.get('error', '未知错误')}")
-
-    md_text = '\n'.join(report_content) + '\n'
+    md_text = build_report_markdown(results, center_results, exec_time=exec_time)
 
     # 写入文件
-    with open(report_file, 'w', encoding='utf-8') as _f:
-        _f.write(md_text)
-
-    # 同时写入用户传入的 outfile（如有）
-    if outfile is not None:
-        outfile.write(md_text)
+    write_report_to_file(report_file, md_text, outfile)
 
     # === 构建并返回结构化结果 ===
-    return _build_structured_result(results, center_results, str(report_file))
-
-
-def _build_structured_result(results, center_results, report_file: str):
-    """将 run_check 的 (results, center_results) 构建为飞书通知所需的结构化 dict"""
-    exec_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-    # 去重统计 pass/fail（同一 data_type 可能因 volume/continuity 产生多条 failed）
-    seen_passed = set()
-    for p in results["passed"]:
-        seen_passed.add((p["center"], p["data_type"]))
-
-    seen_failed = set()
-    for f in results["failed"]:
-        seen_failed.add((f["center"], f["data_type"]))
-
-    pass_count = len(seen_passed)
-    fail_count = len(seen_failed)
-
-    # 按交易中心组织
-    centers = []
-    all_center_names = list(center_results.keys())
-    for cname in all_center_names:
-        center_fails = [f for f in results["failed"] if f["center"] == cname]
-        center_passes = [p for p in results["passed"] if p["center"] == cname]
-        unique_fail_dts = {(f["data_type"],) for f in center_fails}
-        unique_pass_dts = {(p["data_type"],) for p in center_passes}
-        all_pass = len(unique_fail_dts) == 0
-
-        failures = []
-        for f in center_fails:
-            check = f["check"]
-            ctype = check.get("type", "latest")
-            msg = check.get("error", "")
-            if not msg:
-                if ctype == "continuity":
-                    missing = ", ".join(check.get("missing_dates", [])[:3])
-                    msg = f"日期不连续: 缺失 {missing}"
-                elif ctype == "volume":
-                    msg = f"数据量异常: {check.get('error', '')}"
-            failures.append({
-                "data_type": f["data_type"],
-                "offset": check.get("offset", "—"),
-                "message": msg,
-            })
-
-        centers.append({
-            "name": cname,
-            "trade_center_id": center_results[cname]["center_id"],
-            "all_pass": all_pass,
-            "failures": failures,
-        })
-
-    return {
-        "exec_time": exec_time,
-        "pass_count": pass_count,
-        "fail_count": fail_count,
-        "centers": centers,
-        "report_file": report_file,
-    }
+    return build_structured_result(results, center_results, str(report_file), exec_time=exec_time)
 
 
 def main():
+    import argparse
     parser = argparse.ArgumentParser(description='RPA数据采集完整性校验')
     parser.add_argument('--config', default='doc/数据中心类型定义.json', help='数据中心类型定义JSON路径')
     parser.add_argument('--connection', '-c', default='prod', help='数据库连接名称（test/prod）')
@@ -626,6 +622,7 @@ def main():
     parser.add_argument('--data-type', help='指定数据类型')
     parser.add_argument('--start-date', help='起始日期（YYYYMMDD）')
     parser.add_argument('--end-date', help='结束日期（YYYYMMDD）')
+    parser.add_argument('--max-workers', type=int, default=4, help='最大并行线程数（默认 4）')
 
     args = parser.parse_args()
 
@@ -638,6 +635,7 @@ def main():
         data_type=args.data_type,
         start_date=args.start_date,
         end_date=args.end_date,
+        max_workers=args.max_workers,
     )
 
     # 确保 Windows 控制台 UTF-8 输出

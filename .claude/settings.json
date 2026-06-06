@@ -1,12 +1,20 @@
 {
   "permissions": {
     "allow": [
-      "Bash(*bug_rate_calculator.py*)",
-      "Bash(*profit-sum*)",
-      "Bash(*prod-rpa-checker*)",
-      "Bash(cd *)",
-      "Bash(powershell -NoProfile -WindowStyle Hidden -Command 'Start-Sleep -Seconds 25; Get-ScheduledTaskInfo -TaskName \"RPA Data Check Daily\" | Select-Object TaskName, LastRunTime, LastTaskResult, NextRunTime')",
-      "Bash(.venv/Scripts/python.exe \"lee/05用例生成agent/01用例生成代码/workflow/case_generator.py\")"
+      "Bash(python .claude/skills/db-connector/scripts/db_executor.py *)",
+      "Bash(python .claude/skills/retail-revenue/scripts/retail_revenue_calculator.py --text *)",
+      "Bash(PYTHONIOENCODING=utf-8 python .claude/skills/retail-revenue/scripts/retail_revenue_calculator.py --text *)",
+      "Bash(cd \"e:/AI/pythonProject/aiAutoTest\" && PYTHONIOENCODING=utf-8 python .claude/skills/retail-revenue/scripts/retail_revenue_calculator.py *)",
+      "Bash(gh api GET *)",
+      "Bash(python -c *.claude/skills/*/scripts/config.json*)",
+      "Bash(tail -*)",
+      "Bash(ls *)",
+      "Bash(find *)",
+      "Bash(diff *)",
+      "Bash(wc -*)",
+      "Bash(head -*)",
+      "Bash(cat *)",
+      "Bash(grep *)"
     ]
   }
 }

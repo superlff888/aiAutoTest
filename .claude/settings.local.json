@@ -1,17 +1,23 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python .claude/skills/db-connector/scripts/db_executor.py exec test --file *)",
+      "Bash(python .claude/skills/db-connector/scripts/db_executor.py *)",
       "Bash(python .claude/skills/retail-revenue/scripts/retail_revenue_calculator.py --text *)",
       "Bash(PYTHONIOENCODING=utf-8 python .claude/skills/retail-revenue/scripts/retail_revenue_calculator.py --text *)",
-      "Bash(cd \"e:/AI/pythonProject/aiAutoTest\" && PYTHONIOENCODING=utf-8 python .claude/skills/retail-revenue/scripts/retail_revenue_calculator.py --text *)",
-      "Bash(gh api *)",
-      "Bash(python -c 'import json; c=json.load\\(open\\(\"e:/AI/pythonProject/aiAutoTest/.claude/skills/bug-rate/scripts/config.json\"\\)\\); print\\(c.get\\(\"gitlab_token\",\"\"\\)\\)')",
-      "Bash(curl -s --max-time 30 -H \"PRIVATE-TOKEN: $\\(python -c 'import json; c=json.load\\(open\\(\"e:/AI/pythonProject/aiAutoTest/.claude/skills/bug-rate/scripts/config.json\"\\)\\); print\\(c.get\\(\"gitlab_token\",\"\"\\)\\)'\\)\" \"https://gitlab.starcharge.com/api/v4/projects/840/repository/compare?from=master&to=feature-4.9.0&straight=false&per_page=100\")",
-      "Bash(powershell -NoProfile -Command 'Start-ScheduledTask -TaskName \"RPA Data Check Daily\"')",
-      "Bash(powershell -NoProfile -Command 'Start-Sleep -Seconds 20; Get-ScheduledTaskInfo -TaskName \"RPA Data Check Daily\" | Select-Object TaskName, LastRunTime, LastTaskResult, NextRunTime')",
-      "Bash(powershell -NoProfile -WindowStyle Hidden -Command 'Start-ScheduledTask -TaskName \"RPA Data Check Daily\"')",
-      "Bash(powershell -NoProfile -WindowStyle Hidden -Command 'Start-Sleep -Seconds 20; Get-ScheduledTaskInfo -TaskName \"RPA Data Check Daily\" | Select-Object TaskName, LastRunTime, LastTaskResult, NextRunTime')"
+      "Bash(cd \"e:/AI/pythonProject/aiAutoTest\" && PYTHONIOENCODING=utf-8 python .claude/skills/retail-revenue/scripts/retail_revenue_calculator.py *)",
+      "Bash(gh api GET *)",
+      "Bash(python -c *.claude/skills/*/scripts/config.json*)",
+      "Bash(powershell -Command 'Start-ScheduledTask -TaskName *')",
+      "Bash(tail -*)",
+      "Bash(ls *)",
+      "Bash(find *)",
+      "Bash(diff *)",
+      "Bash(wc -*)",
+      "Bash(head -*)",
+      "Bash(cat *)",
+      "Bash(grep *)",
+      "Bash(.venv/Scripts/python.exe .claude/skills/prod-rpa-checker/run_check.py --connection prod)",
+      "Bash(powershell.exe -Command \"Start-ScheduledTask -TaskName 'RPA Data Check Daily'\")"
     ]
   }
 }
