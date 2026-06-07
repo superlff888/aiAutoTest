@@ -129,6 +129,7 @@ def create_connection(conn_info):
             host=host, port=int(port), user=user,
             password=password, database=database,
             charset="utf8mb4", cursorclass=pymysql.cursors.DictCursor,
+            connect_timeout=10, read_timeout=120, write_timeout=30,
         )
     elif driver == "sqlite3":
         import sqlite3

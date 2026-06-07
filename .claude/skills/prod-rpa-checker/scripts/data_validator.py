@@ -131,12 +131,20 @@ def load_data_center_config(config_path: str) -> dict:
 
 
 def load_sql_templates(sql_dir: Path) -> dict:
-    """预加载所有SQL模板到内存，避免重复IO"""
+    """预加载所有SQL模板到内存，避免重复IO。
+
+    SQL 模板缺失时打 warning，避免被静默跳过导致"全部通过"假象。
+    """
     templates = {}
     for dtype, meta in _DATA_TYPE_SQL_MAPPING.items():
         sql_path = sql_dir / meta['sql']
         if sql_path.exists():
             templates[dtype] = sql_path.read_text(encoding='utf-8')
+        else:
+            logging.warning(
+                "SQL 模板缺失: %s（数据类型 %s 将被跳过，请检查文件是否漏提交/漏同步）",
+                sql_path, dtype,
+            )
     return templates
 
 
@@ -156,8 +164,15 @@ def parse_offset_days(time_str: str) -> list:
     return offsets
 
 
-def _compute_expected_date(offset_days: int) -> datetime:
-    return datetime.now() + timedelta(days=-offset_days)
+def _compute_expected_date(offset_days: int, now: datetime = None) -> datetime:
+    """计算 offset 对应的预期日期。
+
+    now: 时间基准，None 时使用 datetime.now()。从外部传入可保证
+    并行执行的多线程使用同一时间基准，避免跨零点时各线程"今天"不一致。
+    """
+    if now is None:
+        now = datetime.now()
+    return now + timedelta(days=-offset_days)
 
 
 # ─── 问题 #7：SQL 参数安全校验 ───
@@ -211,11 +226,14 @@ def _normalize_date(date_val) -> str | None:
 
 
 def check_latest_data(conn, sql_template: str, trade_center_id: str,
-                      offsets: list, vpp_id: str = '1') -> tuple:
-    """检查最新数据时间，支持多offset降级查询。复用数据库连接。"""
+                      offsets: list, vpp_id: str = '1', now: datetime = None) -> tuple:
+    """检查最新数据时间，支持多offset降级查询。复用数据库连接。
+
+    now: 时间基准，None 时使用 datetime.now()。
+    """
     fallback_log = []
     for i, offset in enumerate(offsets):
-        expected_date = _compute_expected_date(offset)
+        expected_date = _compute_expected_date(offset, now)
         start_str = (expected_date - timedelta(days=9)).strftime('%Y-%m-%d')
         end_str = expected_date.strftime('%Y-%m-%d')
         sql = render_sql(sql_template, trade_center_id, offset, start_str, end_str, vpp_id)
@@ -362,8 +380,10 @@ def _check_diff(conn, sql: str) -> str:
 
 def _check_single_center(center_name: str, center_config: dict, templates: dict,
                          connection: str, trade_center: str = None,
-                         data_type: str = None) -> dict:
+                         data_type: str = None, now: datetime = None) -> dict:
     """单交易中心校验（每个线程独立连接，互不干扰）。
+
+    now: 统一的时间基准，跨线程保证"今天"一致。
 
     返回: {center_name: center_id, rows, passed, failed}
     """
@@ -407,8 +427,9 @@ def _check_single_center(center_name: str, center_config: dict, templates: dict,
 
             # 代理用户用电明细与代理用户用电总计差异：特殊处理
             if data_type_name == '代理用户用电明细与代理用户用电总计差异':
-                diff_start = (datetime.now() - timedelta(days=9)).strftime('%Y%m%d')
-                diff_end = datetime.now().strftime('%Y%m%d')
+                _now = now or datetime.now()
+                diff_start = (_now - timedelta(days=9)).strftime('%Y%m%d')
+                diff_end = _now.strftime('%Y%m%d')
                 diff_sql = render_sql(sql_template, trade_center_id, 0, diff_start, diff_end, vpp_id)
                 diff_status = _safe_query(conn, _check_diff, diff_sql)
                 rows.append({
@@ -427,12 +448,12 @@ def _check_single_center(center_name: str, center_config: dict, templates: dict,
 
             # === 最新数据时间验证 ===
             check_passed, used_offset, max_date, error, fallback_log = _safe_query(
-                conn, check_latest_data, sql_template, trade_center_id, offsets, vpp_id
+                conn, check_latest_data, sql_template, trade_center_id, offsets, vpp_id, now
             )
             latest_status = f"✅ {max_date}" if check_passed else f"❌ {error}"
 
             # 缓存预期日期，避免重复计算
-            expected_date = _compute_expected_date(used_offset)
+            expected_date = _compute_expected_date(used_offset, now)
 
             # === 计算连续性验证窗口（最新数据日期往前推10天）===
             if not check_passed and error and '无数据' in error:
@@ -503,7 +524,7 @@ def _check_single_center(center_name: str, center_config: dict, templates: dict,
 def run_check(connection: str = "prod", config_path: str | None = None,
               trade_center: str = None, data_type: str = None,
               start_date: str = None, end_date: str = None,
-              outfile=None, exec_time: str = None, max_workers: int = 4):
+              outfile=None, exec_time=None, max_workers: int = 4):
     """执行完整校验，返回结构化结果。
 
     各交易中心并行查询（每个线程独立数据库连接），总耗时取决于最慢的一个中心。
@@ -516,7 +537,8 @@ def run_check(connection: str = "prod", config_path: str | None = None,
         start_date: 起始日期（YYYYMMDD）
         end_date: 结束日期（YYYYMMDD）
         outfile: 可选，报告内容写入该文件句柄
-        exec_time: 可选，统一传入的执行时间戳（避免多次 datetime.now() 不一致）
+        exec_time: 可选，统一的时间基准（datetime 对象）。None 时兜底为 datetime.now()。
+                   传入可保证并行线程跨零点时"今天"基准一致。
         max_workers: 最大并行线程数（默认 4，受 CPU 核心数限制）
 
     返回:
@@ -533,7 +555,9 @@ def run_check(connection: str = "prod", config_path: str | None = None,
     }
     """
     if exec_time is None:
-        exec_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        exec_time = datetime.now()
+    # 字符串版本仅用于报告渲染
+    exec_time_str = exec_time.strftime("%Y-%m-%d %H:%M:%S")
 
     # 自动定位 config_path
     if config_path is None:
@@ -569,7 +593,7 @@ def run_check(connection: str = "prod", config_path: str | None = None,
             future = executor.submit(
                 _check_single_center,
                 center_name, center_config, templates, connection,
-                trade_center, data_type,
+                trade_center, data_type, exec_time,
             )
             future_to_name[future] = center_name
 
@@ -604,13 +628,13 @@ def run_check(connection: str = "prod", config_path: str | None = None,
     os.makedirs(output_dir, exist_ok=True)
     report_file = output_dir / f"rpa_check_report_{datetime.now().strftime('%Y%m%d%H%M%S')}.md"
 
-    md_text = build_report_markdown(results, center_results, exec_time=exec_time)
+    md_text = build_report_markdown(results, center_results, exec_time=exec_time_str)
 
     # 写入文件
     write_report_to_file(report_file, md_text, outfile)
 
     # === 构建并返回结构化结果 ===
-    return build_structured_result(results, center_results, str(report_file), exec_time=exec_time)
+    return build_structured_result(results, center_results, str(report_file), exec_time=exec_time_str)
 
 
 def main():

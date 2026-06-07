@@ -18,6 +18,7 @@ import io
 import json
 import logging
 import os
+import re
 import sys
 import time
 from datetime import datetime
@@ -94,12 +95,18 @@ def _setup_logging():
     if not _log_path.is_absolute():
         _log_path = SKILL_DIR / _log_path
 
+    from logging.handlers import RotatingFileHandler
+    _max_bytes = int(log_cfg.get("max_bytes", 10 * 1024 * 1024))  # 默认 10MB
+    _backup_count = int(log_cfg.get("backup_count", 3))
     logging.basicConfig(
         level=getattr(logging, log_cfg.get("level", "INFO")),
         format="%(asctime)s [%(levelname)s] %(message)s",
         handlers=[
             logging.StreamHandler(sys.stdout),
-            logging.FileHandler(_log_path, encoding="utf-8"),
+            RotatingFileHandler(
+                _log_path, encoding="utf-8",
+                maxBytes=_max_bytes, backupCount=_backup_count,
+            ),
         ],
     )
 
@@ -165,7 +172,8 @@ from scripts.wiki_updater import get_tenant_token, update_wiki_content, delete_o
 
 def main():
     config = _load_config()
-    exec_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    exec_time_dt = datetime.now()  # 统一时间基准（datetime 对象，传给校验逻辑）
+    exec_time = exec_time_dt.strftime("%Y-%m-%d %H:%M:%S")  # 字符串版用于异常告警卡片渲染
     t0 = time.monotonic()
 
     parser = argparse.ArgumentParser(
@@ -198,7 +206,7 @@ def main():
     # 1. 执行校验（统一传入 exec_time）
     t_check = time.monotonic()
     try:
-        result = run_check(connection=args.connection, exec_time=exec_time)
+        result = run_check(connection=args.connection, exec_time=exec_time_dt)
     except Exception as e:
         # 校验异常 → 发送告警
         logging.exception("校验执行异常")
@@ -263,7 +271,11 @@ def main():
 
                     # 维护报告历史记录（独立 JSON 文件）
                     report_history = _load_history()
-                    node_token = new_url.split("/wiki/")[1].strip()
+                    # 用正则提取 node_token，避免 URL 带 query 参数时被错误截取
+                    m = re.search(r'/wiki/([^/?#]+)', new_url)
+                    node_token = m.group(1) if m else ''
+                    if not node_token:
+                        logging.warning("无法从飞书 URL 解析 node_token: %s", new_url)
                     report_history.append({
                         "doc_id": new_doc_id,
                         "node_token": node_token,

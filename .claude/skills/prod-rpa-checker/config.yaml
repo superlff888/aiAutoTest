@@ -9,6 +9,8 @@ feishu:
 logging:
   file: output/run_check.log
   level: INFO
+  max_bytes: 10485760  # 单文件最大 10MB，超出自动轮转
+  backup_count: 3       # 保留最近 3 个备份文件
 notify:
   max_retries: 3
   mode: always
