@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-> **重要**：所有交流、注释、输出必须使用中文。
+> **重要**：所有交流、注释、输出必须使用中文，包括思考过程（thinking）也必须使用中文。
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
