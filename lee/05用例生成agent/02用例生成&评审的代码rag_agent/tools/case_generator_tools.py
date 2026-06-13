@@ -9,7 +9,7 @@
 # ========================================================
 
 
-from rag_agent.workflow.case_generator import GenerateCaseWorkflow
+from workflow.case_generator import GenerateCaseWorkflow
 from langchain.tools import tool
 
 
