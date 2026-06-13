@@ -125,10 +125,61 @@ class ModuleStat:
 # 支持的 URL 格式：
 #   https://gitlab.example.com/group/project/-/compare/master...release-1.0
 #   https://gitlab.example.com/group/project/-/compare/master...release-1.0?from_project_id=123
+#   https://gitlab.example.com/group/project/-/compare/master...release-1.0#L10（页面锚点）
+# 注：target 排除 ? # \s 防止 query string / fragment / 空白污染分支名
 GITLAB_COMPARE_RE = re.compile(
-    r"https?://(?P<domain>[^/]+)/(?P<path>.+?)/-/compare/(?P<base>[^\.]+)\.\.\.(?P<target>[^?]+)"
+    r"https?://(?P<domain>[^/]+)/(?P<path>.+?)/-/compare/(?P<base>[^\.]+)\.\.\.(?P<target>[^?#\s]+)"
 )
 _CLEAN_JSON_RE = re.compile(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]')
+
+# hunk 头部正则：匹配 @@ -a,b +c,d @@ 形式
+HUNK_HEADER_RE = re.compile(r'^@@ -\d+(?:,\d+)? \+\d+(?:,\d+)? @@')
+
+
+def parse_hunks(diff_text: str) -> List[Dict[str, int]]:
+    """
+    按 @@ hunk 头切分 diff 文本，每个 hunk 独立统计 added/deleted
+    返回: [{"added": int, "deleted": int}, ...]
+    """
+    hunks: List[Dict[str, int]] = []
+    current = {"added": 0, "deleted": 0}
+
+    for line in diff_text.split("\n"):
+        if HUNK_HEADER_RE.match(line):
+            # 遇到新 hunk 头，先保存上一个 hunk
+            if current["added"] or current["deleted"]:
+                hunks.append(current)
+            current = {"added": 0, "deleted": 0}
+            continue
+
+        # + 开头算新增（排除 +++ 文件头）
+        if line.startswith("+") and not line.startswith("+++"):
+            current["added"] += 1
+        # - 开头算删除（排除 --- 文件头）
+        elif line.startswith("-") and not line.startswith("---"):
+            current["deleted"] += 1
+
+    # 保存最后一个 hunk
+    if current["added"] or current["deleted"]:
+        hunks.append(current)
+
+    return hunks
+
+
+def calc_hunk_stats(diff_text: str) -> Tuple[int, int, int]:
+    """
+    按 hunk 分组计算一个文件的更新/纯新增/纯删除行数
+    返回: (updated, new_only, deleted_only)
+    """
+    updated_total = new_total = del_total = 0
+    for hunk in parse_hunks(diff_text):
+        added = hunk["added"]
+        deleted = hunk["deleted"]
+        updated = min(added, deleted)
+        updated_total += updated
+        new_total += added - updated
+        del_total += deleted - updated
+    return updated_total, new_total, del_total
 
 
 def parse_gitlab_url(url: str) -> Dict[str, str]:
@@ -239,17 +290,9 @@ def get_gitlab_diff_stats(
             case _:
                 status = "M"
 
-        # 从 diff 字符串统计新增/删除行（排除 +++ / --- 头部行）
-        added = deleted = 0
-        for l in d.get("diff", "").split("\n"):
-            if l.startswith("+") and not l.startswith("+++"):
-                added += 1
-            elif l.startswith("-") and not l.startswith("---"):
-                deleted += 1
-
-        updated = min(added, deleted)
-        new_only = added - updated
-        deleted_only = deleted - updated
+        # 按 hunk 分组精确计算（避免跨 hunk 错位配对）
+        diff_text = d.get("diff", "")
+        updated, new_only, deleted_only = calc_hunk_stats(diff_text)
 
         stats.append(FileStat(
             path=filepath,
@@ -356,6 +399,9 @@ def get_git_diff_stats(base: str, target: str) -> List[FileStat]:
     获取 Git diff 统计：对比 base 和 target 分支，返回每个文件的变更行数
     base   → 基准分支（如 master）
     target → 对比分支（如 main）
+
+    使用 --unified=0 --diff-algorithm=patience 让 diff 输出最简 hunk，
+    再按 hunk 分组精确计算 updated / new_only / deleted_only
     """
     ref = f"{base}...{target}"
 
@@ -367,22 +413,32 @@ def get_git_diff_stats(base: str, target: str) -> List[FileStat]:
         print(f"错误信息: {result.stderr}")
         sys.exit(1)
 
-    # 2. 获取增删行数
-    cmd_numstat = ["git", "-c", "core.quotePath=false", "diff", "--numstat", ref]
-    result2 = subprocess.run(cmd_numstat, capture_output=True, text=True, encoding='utf-8')
+    # 2. 拿完整 diff 文本（按 hunk 切分需要原始 diff）
+    #    --unified=0：不要上下文行，hunk 切得更碎
+    #    --diff-algorithm=patience：行配对更准
+    #    --no-color：去掉 ANSI 颜色码，便于按行解析
+    cmd_patch = [
+        "git", "-c", "core.quotePath=false", "diff",
+        "--unified=0",
+        "--diff-algorithm=patience",
+        "--no-color",
+        ref
+    ]
+    result_patch = subprocess.run(cmd_patch, capture_output=True, text=True, encoding='utf-8')
 
-    # 构建 numstat 查找表
-    numstat_map: Dict[str, Tuple[int, int]] = {}
-    if result2.stdout.strip():
-        for line in result2.stdout.strip().split("\n"):
-            if not line.strip():
-                continue
-            parts = line.split("\t")
-            if len(parts) == 3:
-                added_str, deleted_str, filepath = parts
-                added = int(added_str) if added_str != "-" else 0
-                deleted = int(deleted_str) if deleted_str != "-" else 0
-                numstat_map[filepath] = (added, deleted)
+    # 按 diff --git a/xxx b/xxx 切分成单文件 diff
+    FILE_DIFF_RE = re.compile(r'^diff --git a/(?P<a>.+?) b/(?P<b>.+?)$', re.MULTILINE)
+
+    # 用 --name-status 的输出做权威文件列表和重命名处理
+    # 同时从 diff 文本中提取每个文件的 diff 内容
+    file_diffs: Dict[str, str] = {}  # filepath -> 该文件的 diff 文本
+    for m in FILE_DIFF_RE.finditer(result_patch.stdout):
+        filepath = m.group("b")
+        start = m.end()
+        # 找下一个 diff --git 的位置
+        next_m = FILE_DIFF_RE.search(result_patch.stdout, start)
+        end = next_m.start() if next_m else len(result_patch.stdout)
+        file_diffs[filepath] = result_patch.stdout[start:end]
 
     stats = []
     for line in result.stdout.strip().split("\n"):
@@ -414,11 +470,9 @@ def get_git_diff_stats(base: str, target: str) -> List[FileStat]:
         if filepath.startswith(".claude"):
             continue
 
-        added, deleted = numstat_map.get(filepath, (0, 0))
-
-        updated = min(added, deleted)
-        new_only = added - updated
-        deleted_only = deleted - updated
+        # 按 hunk 分组精确计算
+        diff_text = file_diffs.get(filepath, "")
+        updated, new_only, deleted_only = calc_hunk_stats(diff_text)
 
         stat = FileStat(
             path=filepath,
@@ -663,7 +717,8 @@ def main():
 
             for url in urls:
                 info = parse_gitlab_url(url)
-                label = f"{info['base']} -> {info['target']} ({info['project']})"
+                project_label = urllib.parse.unquote(info["project"])
+                label = f"{info['base']} -> {info['target']} ({project_label})"
                 print(f"  解析: {label}")
 
                 stats = get_gitlab_diff_stats(
@@ -671,8 +726,10 @@ def main():
                 )
                 if stats:
                     # 为多 URL 模式标记项目来源，便于模块名提取
+                    # project 字段是 URL 编码后的，反编码后展示更直观
+                    project_label = urllib.parse.unquote(info["project"])
                     for s in stats:
-                        s.path = f"[{info['project']}]/{s.path}"
+                        s.path = f"[{project_label}]/{s.path}"
                     all_stats.extend(stats)
                     total = sum(s.new_lines + s.updated_lines + s.deleted_lines for s in stats)
                     print(f"    变更: {len(stats)} 个文件, {total} 行\n")
