@@ -1,0 +1,225 @@
+[
+    {
+        "case_id": "TC-FUNC-001",
+        "priority": "P0",
+        "case_name": "正常注册成功（使用合法用户名+合法密码+合法邮箱）",
+        "setup": [
+            "用户未注册过",
+            "用户名 user_new_001 未被占用",
+            "邮箱 test001@example.com 未被注册"
+        ],
+        "test_data": {
+            "用户名": "user_new_001",
+            "密码": "abc123",
+            "确认密码": "abc123",
+            "邮箱": "test001@example.com"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入 user_new_001",
+            "在密码字段输入 abc123",
+            "在确认密码字段输入 abc123",
+            "在邮箱字段输入 test001@example.com",
+            "点击'注册'按钮"
+        ],
+        "expected_result": [
+            "注册成功",
+            "页面自动登录并跳转至首页",
+            "用户账号初始状态为'正常'",
+            "用户头像为默认图"
+        ],
+        "result": null,
+        "requirement_id": null
+    },
+    {
+        "case_id": "TC-FUNC-002",
+        "priority": "P1",
+        "case_name": "用户名为4位（用户名长度下限）注册成功",
+        "setup": [
+            "4位字母数字组合的用户名 abc1 未被占用"
+        ],
+        "test_data": {
+            "用户名": "abc1",
+            "密码": "abc123",
+            "确认密码": "abc123",
+            "邮箱": "abc1@example.com"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入 abc1",
+            "在密码字段输入 abc123",
+            "在确认密码字段输入 abc123",
+            "在邮箱字段输入 abc1@example.com",
+            "点击'注册'按钮"
+        ],
+        "expected_result": [
+            "注册成功",
+            "跳转至首页"
+        ],
+        "result": null,
+        "requirement_id": null
+    },
+    {
+        "case_id": "TC-FUNC-008",
+        "priority": "P1",
+        "case_name": "用户名已被注册时注册失败",
+        "setup": [
+            "系统中已存在用户名为 user_exist 的账户"
+        ],
+        "test_data": {
+            "用户名": "user_exist",
+            "密码": "abc123",
+            "确认密码": "abc123",
+            "邮箱": "newemail@example.com"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入已被占用的 user_exist",
+            "在密码字段输入 abc123",
+            "在确认密码字段输入 abc123",
+            "在邮箱字段输入 newemail@example.com",
+            "点击'注册'按钮"
+        ],
+        "expected_result": [
+            "注册失败",
+            "提示'该用户名已存在'"
+        ],
+        "result": null,
+        "requirement_id": null
+    },
+    {
+        "case_id": "TC-FUNC-009",
+        "priority": "P1",
+        "case_name": "密码为6位（密码长度下限）注册成功",
+        "setup": [
+            "新用户名未被占用",
+            "新邮箱未被注册"
+        ],
+        "test_data": {
+            "用户名": "user_pwd6",
+            "密码": "123456",
+            "确认密码": "123456",
+            "邮箱": "pwd6@example.com"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入 user_pwd6",
+            "在密码字段输入 123456（6位）",
+            "在确认密码字段输入 123456",
+            "在邮箱字段输入 pwd6@example.com",
+            "点击'注册'按钮"
+        ],
+        "expected_result": [
+            "注册成功",
+            "跳转至首页"
+        ],
+        "result": null,
+        "requirement_id": null
+    },
+    {
+        "case_id": "TC-FUNC-011",
+        "priority": "P1",
+        "case_name": "密码为空时注册失败",
+        "setup": [],
+        "test_data": {
+            "用户名": "user_pwd_empty",
+            "密码": "",
+            "确认密码": "",
+            "邮箱": "test@example.com"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入 user_pwd_empty",
+            "密码字段留空",
+            "确认密码字段留空",
+            "在邮箱字段输入 test@example.com",
+            "点击'注册'按钮"
+        ],
+        "expected_result": [
+            "注册失败",
+            "提示'密码不能为空'或'密码长度不能少于6位'"
+        ],
+        "result": null,
+        "requirement_id": null
+    },
+    {
+        "case_id": "TC-FUNC-012",
+        "priority": "P1",
+        "case_name": "两次密码不一致时注册失败",
+        "setup": [],
+        "test_data": {
+            "用户名": "user_pwd_diff",
+            "密码": "abc123",
+            "确认密码": "abc456",
+            "邮箱": "test@example.com"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入 user_pwd_diff",
+            "在密码字段输入 abc123",
+            "在确认密码字段输入 abc456",
+            "在邮箱字段输入 test@example.com",
+            "点击'注册'按钮"
+        ],
+        "expected_result": [
+            "注册失败",
+            "提示'两次输入的密码不一致，请重新输入'"
+        ],
+        "result": null,
+        "requirement_id": null
+    },
+    {
+        "case_id": "TC-FUNC-014",
+        "priority": "P1",
+        "case_name": "邮箱缺少顶级域名时注册失败",
+        "setup": [],
+        "test_data": {
+            "用户名": "user_badmail2",
+            "密码": "abc123",
+            "确认密码": "abc123",
+            "邮箱": "test@example"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入 user_badmail2",
+            "在密码字段输入 abc123",
+            "在确认密码字段输入 abc123",
+            "在邮箱字段输入 test@example（缺少.xx）",
+            "点击'注册'按钮"
+        ],
+        "expected_result": [
+            "注册失败",
+            "提示'邮箱格式不正确'"
+        ],
+        "result": null,
+        "requirement_id": null
+    },
+    {
+        "case_id": "TC-FUNC-015",
+        "priority": "P1",
+        "case_name": "邮箱已被注册时注册失败",
+        "setup": [
+            "系统中已存在邮箱 exist@example.com 的账户"
+        ],
+        "test_data": {
+            "用户名": "user_new_002",
+            "密码": "abc123",
+            "确认密码": "abc123",
+            "邮箱": "exist@example.com"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入 user_new_002",
+            "在密码字段输入 abc123",
+            "在确认密码字段输入 abc123",
+            "在邮箱字段输入已被注册的 exist@example.com",
+            "点击'注册'按钮"
+        ],
+        "expected_result": [
+            "注册失败",
+            "提示'该邮箱已存在'"
+        ],
+        "result": null,
+        "requirement_id": null
+    }
+]
