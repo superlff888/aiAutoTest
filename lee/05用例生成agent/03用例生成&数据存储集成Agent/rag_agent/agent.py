@@ -17,21 +17,21 @@ from rag_agent.pormpts.system_prompt import get_system_prompt
 from rag_agent.tools.rag_tools import lightrag_query
 from rag_agent.tools import case_generator_tools
 from rag_agent.tools.case_database_tools import save_case_to_database, query_exist_case
-
+from models import llm_model
 dotenv.load_dotenv()
 
 # 初始模型配置
-model = init_chat_model(
-    model_provider="openai",
-    model=os.getenv("MODEL2"),
-    api_key=os.getenv("API_KEY"),
-    base_url=os.getenv("BASE_URL"),
-    temperature=0.5,
-)
+# model = init_chat_model(
+#     model_provider="openai",
+#     model=os.getenv("MODEL2"),
+#     api_key=os.getenv("API_KEY"),
+#     base_url=os.getenv("BASE_URL"),
+#     temperature=0.5,
+# )
 
 # 快速创建一个agent
 agent = create_deep_agent(
-    model=model,
+    model=llm_model,
     # 通过工具接入知识库系统
     tools=[
         # 知识库检索工具

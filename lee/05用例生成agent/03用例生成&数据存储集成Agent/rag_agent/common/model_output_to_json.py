@@ -35,6 +35,15 @@ def format_result(result: str) -> dict | list:
     # 3) 剥 markdown 标记
     result = result.replace('```json', '').replace('```', '').strip()
 
+    # 3.5) 剥完标签/markdown 后如果为空，常见于 LLM 只返回了 <think>...</think> 而忘了输出 JSON
+    if not result:
+        raise ValueError(
+            "format_result 解析失败：LLM 输出剥除 <think> 标签和 ```json``` 标记后为空。"
+            "可能原因：1) LLM 仅返回了思考内容未输出 JSON；"
+            "2) LLM 返回内容被截断；"
+            "3) 思考标签未闭合。"
+        )
+
     # 4) JSON 解析（可能是 dict 或 list）
     parsed = json.loads(result)
 

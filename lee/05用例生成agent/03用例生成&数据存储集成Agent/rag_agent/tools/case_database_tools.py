@@ -34,6 +34,7 @@ CREATE TABLE function_test_case (
 """
 import os
 import dotenv
+import uuid
 from typing import List
 from langchain.tools import tool
 from rag_agent.tools.data_model import GenerateCase
@@ -41,6 +42,24 @@ import pymysql
 import json
 
 dotenv.load_dotenv()
+
+
+
+"""
+
+TEST_MYSQL_HOST=test-mysql.starcharge.cloud
+TEST_MYSQL_PORT=3306
+TEST_MYSQL_USER=ts_admin
+TEST_MYSQL_PASSWORD=23EJHu6Mu
+TEST_MYSQL_DATABASE=energy_vpp
+
+
+
+
+"""
+
+
+
 
 
 class DataBaseHandel:
@@ -53,11 +72,11 @@ class DataBaseHandel:
         初始化数据库链接
         """
         self.connect = pymysql.connect(
-            host=os.getenv("DB_HOST"),
-            port=int(os.getenv("DB_PORT")),
-            user=os.getenv("DB_USER"),
-            password=os.getenv("DB_PASSWORD"),
-            database=os.getenv("DB_DATABASE"),
+            host=os.getenv("TEST_MYSQL_HOST"),
+            port=int(os.getenv("TEST_MYSQL_PORT")),
+            user=os.getenv("TEST_MYSQL_USER"),
+            password=os.getenv("TEST_MYSQL_PASSWORD"),
+            database=os.getenv("TEST_MYSQL_DATABASE"),
             charset="utf8mb4"
         )
 
@@ -78,8 +97,8 @@ class DataBaseHandel:
         """
         # 构建用例存储的sql语句
         sql = """
-              INSERT INTO funtion_teest_case(case_id, case_name, priority, test_data, setup, execute_step,
-                                             except_result, result, requirement_id VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s); \
+              INSERT INTO function_test_case(case_id, case_name, priority, test_data, setup, execute_step,
+                                             except_result, result, requirement_id) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s); \
               """
         try:
             # 执行用例存储的sql语句
@@ -110,7 +129,7 @@ class DataBaseHandel:
         :param requirement_id: 功能的需求文档
         :return: 已有的用例
         """
-        sql = "SELECT * FROM  funtion_teest_case WHERE requirement_id = %s"
+        sql = "SELECT * FROM  function_test_case WHERE requirement_id = %s"
         try:
             self.cursor.execute(sql, requirement_id)
             # 获取查询结果
@@ -129,8 +148,8 @@ def save_case_to_database(case: List[GenerateCase]) -> str:
     :return: 保存结果
     """
     print(f"========开始保存用例:{case}=========")
-    # 获取需求的编号
-    requirement_id = "T001"
+    # 通过 UUID 生成随机的需求编号，确保每次保存的用例关联的需求ID唯一
+    requirement_id = f"T-{uuid.uuid4()}"
     try:
         # 保存用例到数据库
         DataBaseHandel().save_case(case, requirement_id)

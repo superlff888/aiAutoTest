@@ -46,13 +46,24 @@ llm_model_ds = ChatOpenAI(
     extra_body={"enable_thinking": False}  
 )
 
+
+# 用例生成场景的模型对象
+llm_model = ChatOpenAI(
+    # base_url=os.getenv("OPENAI_BASE_URL"),
+    # api_key=os.getenv("OPENAI_API_KEY"),
+    model=os.getenv("OPENAI_MODEL"),
+    temperature=0.5,
+    extra_body={"thinking": {"type": "disabled"}}  
+)
+
 # 用例生成场景的模型对象
 llm_model_generate = ChatOpenAI(
     # base_url=os.getenv("OPENAI_BASE_URL"),
     # api_key=os.getenv("OPENAI_API_KEY"),
     model=os.getenv("OPENAI_MODEL"),
     temperature=0.3,
-    extra_body={"thinking": {"type": "disabled"}}  
+    max_tokens=8192,  # 留足 token 给 5~10 条结构化用例 + 思考标签
+    extra_body={"thinking": {"type": "disabled"}}
 )
 
 # 用例评审场景的模型对象
@@ -60,8 +71,9 @@ llm_model_review = ChatOpenAI(
     # base_url=os.getenv("OPENAI_BASE_URL"),
     # api_key=os.getenv("OPENAI_API_KEY"),
     model=os.getenv("OPENAI_MODEL"),
-    temperature=0.1,
-    extra_body={"thinking": {"type": "disabled"}}  
+    temperature=0.2,
+    max_tokens=8192,  # 评审逐条进行，单次输出也需足够空间
+    extra_body={"thinking": {"type": "disabled"}}
 )
 
 # 覆盖率检查场景的模型对象
@@ -69,8 +81,9 @@ llm_model_coverage = ChatOpenAI(
     # base_url=os.getenv("OPENAI_BASE_URL"),
     # api_key=os.getenv("OPENAI_API_KEY"),
     model=os.getenv("OPENAI_MODEL"),
-    temperature=0.1,
-    extra_body={"thinking": {"type": "disabled"}}  
+    temperature=0.2,
+    max_tokens=8192,  # 覆盖率分析报告含多个 recommend 也需足够空间
+    extra_body={"thinking": {"type": "disabled"}}
 )
 
 

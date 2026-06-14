@@ -56,7 +56,7 @@ from rag_agent.pormpts import generate_case_prompt
 from rag_agent.pormpts import case_review_prompt
 from rag_agent.pormpts import verify_coverage_prompt
 
-from rag_agent.tools.data_model import GenerateCase, CaseList, CoverageResult, ReviewResult
+from rag_agent.tools.data_model import CaseList, CoverageResult, ReviewResult
 
 from typing import Annotated
 import operator
