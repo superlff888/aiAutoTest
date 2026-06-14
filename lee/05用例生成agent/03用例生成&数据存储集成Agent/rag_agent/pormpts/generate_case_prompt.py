@@ -93,7 +93,7 @@ def get_supplement_generate_case_prompt(requirements: str, case_list: list, test
     获取补充生成用例的提示
     :param requirements: 需要生成用例的需求说明文档
     :param case_list: 已经生成的用例列表
-    :param test_point: 需要补充生成用例的测试点
+    :param test_point: 用于补充生成用例所需的测试点
     :return:
     """
     prompt = f"""
@@ -107,7 +107,7 @@ def get_supplement_generate_case_prompt(requirements: str, case_list: list, test
        ## 已有的测试用例：
        {case_list}
        
-       ## 需要补充用例的测试点：
+       ## 用于补充生成用例的测试点：
        {test_point}
 
        """

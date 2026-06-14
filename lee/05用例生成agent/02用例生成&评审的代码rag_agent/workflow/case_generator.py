@@ -238,7 +238,7 @@ class GenerateCaseWorkflow:
         review_passed_cases = state.get('review_passed_cases')
         print(f"一共生成了{len(review_passed_cases)}条用例")
         with open("case.json", "w") as f:
-            json.dump(review_passed_cases, f)
+            json.dump(review_passed_cases, f)   # download下来的用例数据会保存在当前目录下的case.json文件中
         print("用例保存完毕")
 
     # 用于需求初次生成测试用例的流程
@@ -258,12 +258,13 @@ class GenerateCaseWorkflow:
 
         # 编排节点
         graph.add_edge(START, '用例生成')
-        # add_conditional_edges 唯一支持返回 List[Send]；['用例评审'] 第三个参数只是声明"这个路由可能的目标节点"
+        # add_conditional_edges 唯一支持返回 List[Send]；['用例评审'] 第三个参数是声明"这个路由可能的目标节点"
         graph.add_conditional_edges("用例生成", self._case_review_router, ['用例评审'])
 
         graph.add_edge('用例评审', "用例覆盖率检查")
-        graph.add_conditional_edges("用例覆盖率检查", self.verify_coverage_router, ['保存用例', '补充生成用例'])
-
+        # # 不传 path_map，路由返回值 = 目标节点名（推荐写法）
+        # graph.add_conditional_edges("用例覆盖率检查", self.verify_coverage_router, ['保存用例', '补充生成用例'])
+        graph.add_conditional_edges("用例覆盖率检查", self.verify_coverage_router)
         # add_conditional_edges 唯一支持返回 List[Send]（5条用例 ── 路由机器人 ──→ 复制5份，每份都扔进「评审」车间）
         graph.add_conditional_edges("补充生成用例", self._case_review_router, ['用例评审'])
 
@@ -278,7 +279,7 @@ class GenerateCaseWorkflow:
         """创建一个补充生成用例的流程"""
         # 获取需求
 
-        # 获取已经存在的用例，进行补充生成
+        # 获取已经存在的用例，进行补充生成（下节课更新~）
 
 
 

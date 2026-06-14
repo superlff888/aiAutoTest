@@ -27,21 +27,21 @@ PROMPT = """
 ## 输出的结果必须为严格合法的JSON对象格式的数据，不要输出任何Markdown标记（如json）或解释性文字：
     输出字段：
       coverage_report:"覆盖率报告说明，200字以内"
-      coverage:"覆盖率,100比显示"    
-      recomment:需要补充生成的测试用例的测试点
+      coverage:"覆盖率,百分比显示"    
+      recommend:需要补充生成的测试用例的测试点
 
     输出示例1：
         {
-            "coverage_report":"经过分析当前的用例覆盖了所有的测试点",
+            "coverage_report":"经过分析,当前的用例覆盖了所有的测试点",
             "coverage":"100%",
-            "recomment":[]
+            "recommend":[]
         }
         
     输出示例2：
         {
-            "coverage_report":"经过分析当前的用例当前的需求文档一共有X个测试点，已经覆盖了A个,还有xx等测试点未覆盖",
+            "coverage_report":"经过分析，当前的需求文档一共有X个测试点，已经覆盖了A个,还有xx等测试点未覆盖",
             "coverage":"90%",
-            "recomment":["注册时输入已注册的账号","注册时两次密码不一致"]
+            "recommend":["注册时输入已注册的账号","注册时两次密码不一致"]
         }
 """
 

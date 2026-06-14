@@ -198,13 +198,13 @@ class GenerateCaseWorkflow:
         review_passed_cases = state.get('review_passed_cases')
         # 获取覆盖率分析报告中需要补充生成用例的测试点
         coverage_check_result = state.get('coverage_check_result')
-        recomment = coverage_check_result.get('recomment')
+        recommend = coverage_check_result.get('recommend')  
 
         # 提示词的构建
         prompt = generate_case_prompt.get_supplement_generate_case_prompt(
             requirements=requirements,
             case_list=review_passed_cases,
-            test_point=recomment)
+            test_point=recommend)
         # 开始补充生成用例
         try:
             response = llm_model.invoke(prompt)
