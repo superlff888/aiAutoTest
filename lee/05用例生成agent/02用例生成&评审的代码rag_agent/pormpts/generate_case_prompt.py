@@ -1,6 +1,6 @@
 # !/usr/bin/env python3,# -*- coding: utf-8 -*-
 # --------------------------------------------
-# @FilePath    : lee\05用例生成agent\02用例生成+评审的代码rag_agent\rag_agent\pormpts\generate_case_prompt.py
+# @FilePath    : lee\05用例生成agent\03用例生成+数据存储集成Agent\rag_agent\pormpts\generate_case_prompt.py
 # @Author      : Lee大侠
 # @Desc        : 这是一个AI测试项目
 # @CreateTime  : 2026/04/15 22:19
@@ -93,11 +93,13 @@ def get_supplement_generate_case_prompt(requirements: str, case_list: list, test
     获取补充生成用例的提示
     :param requirements: 需要生成用例的需求说明文档
     :param case_list: 已经生成的用例列表
-    :param test_point: 需要补充生成用例的测试点
+    :param test_point: 用于补充生成用例所需的测试点
     :return:
     """
     prompt = f"""
-       请根据下面的功能需求，和已存在的测试用例，以及需求补充生成用例的测试点，来补充生成新的测试用例
+       请根据下面的功能需求，和已存在的测试用例，以及需求补充生成用例的测试点，来补充生成新的测试用例，
+       注意点:
+       1、测试用例的编号必须是递增的，不能重复，和原有的用例编号规则一致
        
        ## 需求文档：
        {requirements}
@@ -105,7 +107,7 @@ def get_supplement_generate_case_prompt(requirements: str, case_list: list, test
        ## 已有的测试用例：
        {case_list}
        
-       ## 需要补充用例的测试点：
+       ## 用于补充生成用例的测试点：
        {test_point}
 
        """

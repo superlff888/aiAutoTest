@@ -16,7 +16,7 @@
 
 2、用例生成的流程(将整个流程使用langgraph封装为一个workflow工作流)：--->封装为一个tool
      获取需求--->大模型生成用例----> 对生成的用例进行逐条评审---> 覆盖率的检测(检测当前生成的用例是否覆盖了需求中所有的测试点，生成一个覆盖率检测的报告)
-     --->调用大模型补充生成用例---->--->存储用例(将生成的用例存储到文件，或者数据库)
+     --->调用大模型补充生成用例---->存储用例(将生成的用例存储到文件，或者数据库)
 
 3、根据需求和已经存在的用例，进行增量补充生成用例(将整个流程使用langgraph封装为一个workflow工作流)：--->封装为一个tool
     获取需求，获取已有的用例  --->调用大模型补充生成用例----->对生成的用例进行逐条评审---> 覆盖率的检测(检测当前生成的用例是否覆盖了需求中所有的测试点，生成一个覆盖率检测的报告)
@@ -27,7 +27,7 @@
 
 
 langgraph的使用：
-    1、定义状态(State)
+    1、定义状态(State)    
 
     2、定义节点
 
@@ -67,9 +67,9 @@ class State(TypedDict):
     # 覆盖率检查的结果
     coverage_check_result: dict
     # 存储AI评审通过的用例
-    review_passed_cases: Annotated[List, operator.add]
+    review_passed_cases: Annotated[List, operator.add] # 并发时自动合并列表
     # 存储AI评审未通过的用例
-    review_failed_cases: Annotated[List, operator.add]
+    review_failed_cases: Annotated[List, operator.add] # 并发时自动合并列表
 
 
 # 对用例进行结构化提取的pydantic的模型
@@ -123,12 +123,13 @@ class GenerateCaseWorkflow:
             return {"generated_cases": []}
 
     @staticmethod
-    def _case_review_router(state: State):
+    def _case_review_router(state: State): # 路由函数，不添加为节点
         """并发对用例进行审核"""
         print("开始对用例进行审核")
         requirements = state.get('requirements')
         # 获取生成的用例
         cases = state.get('generated_cases')
+        # Send(目标节点名,传入该节点的 state 数据)
         review_case_list = [Send("用例评审", {"current_review_case": _case, "requirements": requirements}) for _case in
                             cases]
         return review_case_list
@@ -150,13 +151,15 @@ class GenerateCaseWorkflow:
             print("用例通过审核：", _case.get('case_name'))
             # 需要把AI评审通过的用例保存起来
             _case["review_result"] = "通过"
-            _case["review_decs"] = result_json.get('review_decs')
+            _case["review_desc"] = result_json.get('review_desc')
+            _case["failed_dimensions"] = result_json.get('failed_dimensions', [])
             return {"review_passed_cases": [_case]}
         else:
             print("用例审核未通过：", _case.get('case_name'))
             # 需要把AI评审未通过的用例保存起来
             _case["review_result"] = "未通过"
-            _case["review_decs"] = result_json.get('review_decs')
+            _case["review_desc"] = result_json.get('review_desc')
+            _case["failed_dimensions"] = result_json.get('failed_dimensions', [])
             return {"review_failed_cases": [_case]}
 
     @staticmethod
@@ -176,7 +179,7 @@ class GenerateCaseWorkflow:
         result = format_result(response.content)
         print("用例覆盖率分析报告如下：", result.get('coverage_report'))
         print("用例覆盖率检查结果如下：", result.get('coverage'))
-        print("需要人工补充的测试点如下：", result.get('recomment'))
+        print("需要人工补充的测试点如下：", result.get('recommend'))
         return {"coverage_check_result": result}
 
     @staticmethod
@@ -285,23 +288,23 @@ if __name__ == '__main__':
     requirements = """
     
          F1.1 用户注册
-🧩 功能背景
-新用户通过注册方式创建账户，支持邮箱/用户名+密码的注册方式。
-🚶 主流程
-1. 用户打开注册页，填写注册信息
-2. 系统校验格式与唯一性（用户名、邮箱）
-3. 提交注册，后台创建账户，初始状态为“正常”
-4. 注册成功后自动登录并跳转首页
-⚠️ 异常流程
-● 邮箱/用户名已被注册：提示“已存在”
-● 两次密码不一致：提示用户重新输入
-📌 状态规则
-● 新用户状态为 “正常”
-● 注册时间记录为创建时间，头像为默认图
-📌 业务规则
-● 用户名唯一，支持 4~20 位字母数字组合
-● 密码长度不少于 6 位
-● 邮箱必须符合格式 xxx@xxx.xx
+        🧩 功能背景
+        新用户通过注册方式创建账户，支持邮箱/用户名+密码的注册方式。
+        🚶 主流程
+        1. 用户打开注册页，填写注册信息
+        2. 系统校验格式与唯一性（用户名、邮箱）
+        3. 提交注册，后台创建账户，初始状态为“正常”
+        4. 注册成功后自动登录并跳转首页
+        ⚠️ 异常流程
+        ● 邮箱/用户名已被注册：提示“已存在”
+        ● 两次密码不一致：提示用户重新输入
+        📌 状态规则
+        ● 新用户状态为 “正常”
+        ● 注册时间记录为创建时间，头像为默认图
+        📌 业务规则
+        ● 用户名唯一，支持 4~20 位字母数字组合
+        ● 密码长度不少于 6 位
+        ● 邮箱必须符合格式 xxx@xxx.xx
     
     """
 

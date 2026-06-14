@@ -38,14 +38,24 @@ Settings.llm = OpenAILike(
 
 # ===================定义langchian的模型对象===========
 # 如果配置的API_KEY 和BASE_URL 使用的使用变量名 OPENAI_API_KEY 和 OPENAI_BASE_URL 在通过ChatOpenAI去初始化模型对象的时候，可以不传参数base_url和api_key
-llm_model2 = ChatOpenAI(
-    model=os.getenv("MODEL"),
+llm_model_ds = ChatOpenAI(
+    base_url=os.getenv("DS_BASE_URL"),
+    api_key=os.getenv("DS_API_KEY"),    
+    model=os.getenv("DS_MODEL"),
     temperature=0.5,
 )
 
 llm_model = ChatOpenAI(
-    base_url=os.getenv("MINIMAX_BASE_URL"),
-    api_key=os.getenv("MINIMAX_API_KEY"),
-    model="MiniMax-M2.7-highspeed",
+    # base_url=os.getenv("OPENAI_BASE_URL"),
+    # api_key=os.getenv("OPENAI_API_KEY"),
+    model=os.getenv("OPENAI_MODEL"),
     temperature=0.5
 )
+
+
+"""
+extra_body={"chat_template_kwargs": {"enable_thinking": False}},  # Qwen3 备选
+extra_body={"thinking": {"type": "disabled"}},                    # DeepSeek 风格
+extra_body={"enable_thinking": False}                             # MiniMax 风格
+
+"""
