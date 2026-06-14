@@ -43,14 +43,41 @@ llm_model_ds = ChatOpenAI(
     api_key=os.getenv("DS_API_KEY"),    
     model=os.getenv("DS_MODEL"),
     temperature=0.5,
+    extra_body={"enable_thinking": False}  
 )
 
-llm_model = ChatOpenAI(
+# 用例生成场景的模型对象
+llm_model_generate = ChatOpenAI(
     # base_url=os.getenv("OPENAI_BASE_URL"),
     # api_key=os.getenv("OPENAI_API_KEY"),
     model=os.getenv("OPENAI_MODEL"),
-    temperature=0.5
+    temperature=0.3,
+    extra_body={"thinking": {"type": "disabled"}}  
 )
+
+# 用例评审场景的模型对象
+llm_model_review = ChatOpenAI(
+    # base_url=os.getenv("OPENAI_BASE_URL"),
+    # api_key=os.getenv("OPENAI_API_KEY"),
+    model=os.getenv("OPENAI_MODEL"),
+    temperature=0.1,
+    extra_body={"thinking": {"type": "disabled"}}  
+)
+
+# 覆盖率检查场景的模型对象
+llm_model_coverage = ChatOpenAI(
+    # base_url=os.getenv("OPENAI_BASE_URL"),
+    # api_key=os.getenv("OPENAI_API_KEY"),
+    model=os.getenv("OPENAI_MODEL"),
+    temperature=0.1,
+    extra_body={"thinking": {"type": "disabled"}}  
+)
+
+
+# ===================按场景拆分的别名（语义化，方便未来按场景换模型）===========
+# 当前三个别名都指向同一个 llm_model，未来想为「评审」换更便宜的模型、为「生成」换更强的模型时，
+# 只需在这里改成不同的 ChatOpenAI 实例即可，业务代码无需改动。
+
 
 
 """

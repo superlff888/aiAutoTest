@@ -91,7 +91,7 @@ class DataBaseHandel:
                     json.dumps(case_.test_data, ensure_ascii=False),
                     json.dumps(case_.setup, ensure_ascii=False),
                     json.dumps(case_.execute_step, ensure_ascii=False),
-                    json.dumps(case_.except_result, ensure_ascii=False),
+                    json.dumps(case_.expected_result, ensure_ascii=False),
                     case_.result,
                     requirement_id
                 ))
