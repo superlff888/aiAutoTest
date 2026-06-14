@@ -113,12 +113,15 @@ def hybrid_structured_invoke(
         return schema.model_validate(parsed)
     except (ValidationError, ValueError) as e:
         # 主路径失败：把 LLM 实际返回内容截断打到终端，便于定位是"返回空 / 仅思考标签 / JSON 残缺"
-        preview = (raw_content or "")[:500].replace("\n", "\\n")
+        raw = raw_content or ""
+        preview_head = raw[:500].replace("\n", "\\n")
+        preview_tail = raw[-500:].replace("\n", "\\n")
         print(
             f"[hybrid] 主路径失败, 降级到 with_structured_output。\n"
             f"  异常: {type(e).__name__}: {e}\n"
-            f"  raw_content 长度: {len(raw_content or '')}\n"
-            f"  raw_content 前 500 字符: {preview}"
+            f"  raw_content 长度: {len(raw)}\n"
+            f"  raw_content 前 500 字符: {preview_head}\n"
+            f"  raw_content 末尾 500 字符: {preview_tail}"
         )
         return _invoke_via_structured_output(llm, messages, schema)
 

@@ -15,10 +15,62 @@
 import json
 
 
+def _try_complete_truncated_json(truncated: str, error_pos: int) -> str:
+    """尝试补全截断/缺闭合的 JSON。
+
+    适用场景：LLM 输出的 JSON 在末尾缺 ] / }（典型如多条用例生成的数组在最后一条后忘闭合）。
+    策略：
+      1) 截到 json.loads 报错位置之前
+      2) 用栈追踪 head 中所有未闭合的 [ 和 {
+      3) 若最后一个 token 是未闭合的字符串（in_string=True），先闭合 "
+      4) 若末尾残留 ',' 或 ':'，先去掉
+      5) 反向补全 ] / }
+
+    :param truncated: 原始 JSON 字符串（已剥 <think> 和 ```json``` 标记）
+    :param error_pos: json.loads 抛 JSONDecodeError 时的 pos
+    :return: 补全后的 JSON 字符串（仍可能解析失败，由调用方二次校验）
+    """
+    # 1) 截到错误位置之前
+    head = truncated[:error_pos].rstrip()
+
+    # 2) 末尾残留 ',' / ':' / ',]' / ',}' 等不完整 token：去掉
+    while head and head[-1] in (',', ':'):
+        head = head[:-1].rstrip()
+
+    # 3) 用栈追踪 head 中未闭合的 [ {
+    stack = []
+    in_string = False
+    escape = False
+    for c in head:
+        if escape:
+            escape = False
+        elif c == '\\':
+            escape = True
+        elif c == '"':
+            in_string = not in_string
+        elif not in_string:
+            if c == '[':
+                stack.append(']')
+            elif c == '{':
+                stack.append('}')
+            elif c in ']}' and stack and stack[-1] == c:
+                stack.pop()
+
+    # 4) 字符串未闭合：先闭合 "
+    if in_string:
+        head += '"'
+
+    # 5) 反向补全 ] }
+    if stack:
+        head += ''.join(reversed(stack))
+
+    return head
+
+
 def format_result(result: str) -> dict | list:
     """
     解析 LLM 输出为 Python 对象
-    兼容：<think>...</think> 标签、```json``` 标记、纯 JSON 字符串
+    兼容：<think>...</think> 标签、```json``` 标记、纯 JSON 字符串、末尾缺闭合的 JSON
 
     :param result: LLM 返回的原始字符串
     :return: 解析后的 dict 或 list
@@ -44,8 +96,21 @@ def format_result(result: str) -> dict | list:
             "3) 思考标签未闭合。"
         )
 
-    # 4) JSON 解析（可能是 dict 或 list）
-    parsed = json.loads(result)
+    # 4) JSON 解析（可能是 dict 或 list）。先尝试正常解析，失败再尝试"末尾缺闭合"补全。
+    try:
+        parsed = json.loads(result)
+    except json.JSONDecodeError as first_err:
+        # 尝试自动补全（典型场景：LLM 输出多条 case 数组，最后一条 case 的 } 后忘加 ] 闭合）
+        try:
+            completed = _try_complete_truncated_json(result, first_err.pos)
+            parsed = json.loads(completed)
+        except Exception:
+            # 补全后仍失败：抛原始错误，保留完整上下文
+            raise ValueError(
+                f"format_result JSON 解析失败（自动补全后仍失败）。"
+                f"原始错误: {first_err}。"
+                f"错误位置前后 100 字符: ...{result[max(0, first_err.pos-50):first_err.pos+50]}..."
+            ) from first_err
 
     # 5) 输出类型检查
     if not isinstance(parsed, (dict, list)):
