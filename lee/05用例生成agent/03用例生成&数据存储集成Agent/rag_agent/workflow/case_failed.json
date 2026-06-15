@@ -1,0 +1,64 @@
+[
+    {
+        "case_id": "TC-FUNC-007",
+        "priority": "P1",
+        "case_name": "用户名为下限-1（3位）时注册失败",
+        "setup": [],
+        "test_data": {
+            "username": "abc1",
+            "email": "user07@example.com",
+            "password": "abc123",
+            "confirm_password": "abc123"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入 3 位用户名 abc1",
+            "在邮箱字段输入合法邮箱",
+            "在密码字段输入合法密码",
+            "在确认密码字段输入相同密码",
+            "点击注册按钮"
+        ],
+        "expected_result": [
+            "注册失败",
+            "提示'用户名长度需为 4~20 位'"
+        ],
+        "result": null,
+        "requirement_id": null,
+        "review_result": "未通过",
+        "review_desc": "维度'测试数据有效'不通过：用户名字段取值为'abc1'（4位），而用例描述为3位，用例内部自相矛盾",
+        "failed_dimensions": [
+            "测试数据有效"
+        ]
+    },
+    {
+        "case_id": "TC-FUNC-014",
+        "priority": "P1",
+        "case_name": "密码为越过约束值（7位）时注册成功",
+        "setup": [],
+        "test_data": {
+            "username": "testuser14",
+            "email": "user14@example.com",
+            "password": "abc1234",
+            "confirm_password": "abc1234"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入合法用户名",
+            "在邮箱字段输入合法邮箱",
+            "在密码字段输入 7 位密码 abc1234",
+            "在确认密码字段输入 7 位密码 abc1234",
+            "点击注册按钮"
+        ],
+        "expected_result": [
+            "注册成功",
+            "跳转至首页"
+        ],
+        "result": null,
+        "requirement_id": null,
+        "review_result": "未通过",
+        "review_desc": "维度'测试数据有效'不通过：业务规则'密码长度不少于6位'，7位属于合法正向值，验证7位注册成功用例目的与合法等价类正向用例重复，且不应标记为边界值",
+        "failed_dimensions": [
+            "测试数据有效"
+        ]
+    }
+]

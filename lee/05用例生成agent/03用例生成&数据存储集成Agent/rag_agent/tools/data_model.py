@@ -20,8 +20,12 @@ class GenerateCase(BaseModel):
     case_name: str = Field(..., description="用例名称，简明描述验证目的")
     setup: List[str] = Field(default_factory=list, description="前置条件")
     test_data: dict = Field(default_factory=dict, description="测试数据")
-    execute_step: List[str] = Field(..., description="操作步骤")
-    expected_result: List[str] = Field(..., description="预期结果，关键断言")
+    # execute_step 和 expected_result 是用例核心字段，正常不应省略。
+    # 但 LLM 偶尔会"偷懒"漏掉某些 case 的这两个字段，导致整个 list 校验失败。
+    # 这里设默认值 [] 作为兜底——LLM 万一漏掉，单条 case 失败而非整个 workflow 崩溃。
+    # （prompt 中另有强约束从源头禁止省略）
+    execute_step: List[str] = Field(default_factory=list, description="操作步骤（必填，prompt 中已强约束不可省略；此处 [] 仅作兜底）")
+    expected_result: List[str] = Field(default_factory=list, description="预期结果，关键断言（必填，prompt 中已强约束不可省略；此处 [] 仅作兜底）")
     result: Optional[str] = Field(None, description="实际结果，初始为 null")
     # 用例管理的需求编号 - 由调用方注入，LLM 不需要生成
     requirement_id: Optional[str] = Field(None, description="需求编号，调用方注入")

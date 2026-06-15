@@ -1,0 +1,38 @@
+2026-06-15 00:05:01,426 - lightrag - INFO - OpenAI LLM Options: {}
+2026-06-15 00:05:01,975 - lightrag - INFO - Embedding config: binding=openai model=Qwen/Qwen3-Embedding-8B embedding_dim=4096 max_token_size=8192
+2026-06-15 00:05:01,975 - lightrag - INFO - Send embedding dimension: False by env var (dimensions=4096, has_param=True, binding=openai)
+2026-06-15 00:05:01,975 - lightrag - INFO - Embedding max_token_size: 8192 (from env variable)
+2026-06-15 00:05:01,976 - lightrag - INFO - Reranking is disabled
+2026-06-15 00:06:00,231 - lightrag - INFO - [Rag1000] Created new empty graph file: E:\AI\pythonProject\aiAutoTest\light-rag\rag_storage\Rag1000\graph_chunk_entity_relation.graphml
+2026-06-15 00:06:00,344 - lightrag - INFO - WebUI assets mounted at /webui
+2026-06-15 00:06:00,404 - uvicorn.error - INFO - Started server process [27776]
+2026-06-15 00:06:00,405 - uvicorn.error - INFO - Waiting for application startup.
+2026-06-15 00:06:00,406 - lightrag - INFO - [Rag1000] Process 27776 KV load full_docs with 0 records
+2026-06-15 00:06:00,406 - lightrag - INFO - [Rag1000] Process 27776 KV load text_chunks with 0 records
+2026-06-15 00:06:00,407 - lightrag - INFO - [Rag1000] Process 27776 KV load full_entities with 0 records
+2026-06-15 00:06:00,407 - lightrag - INFO - [Rag1000] Process 27776 KV load full_relations with 0 records
+2026-06-15 00:06:00,407 - lightrag - INFO - [Rag1000] Process 27776 KV load entity_chunks with 0 records
+2026-06-15 00:06:00,408 - lightrag - INFO - [Rag1000] Process 27776 KV load relation_chunks with 0 records
+2026-06-15 00:06:00,408 - lightrag - INFO - [Rag1000] Process 27776 KV load llm_response_cache with 0 records
+2026-06-15 00:06:00,408 - lightrag - INFO - [Rag1000] Process 27776 doc status load doc_status with 0 records
+2026-06-15 00:06:00,409 - uvicorn.error - INFO - Application startup complete.
+2026-06-15 00:06:00,409 - uvicorn.error - INFO - Uvicorn running on http://0.0.0.0:9621 (Press CTRL+C to quit)
+2026-06-15 00:06:08,823 - uvicorn.access - INFO - 127.0.0.1:34952 - "GET / HTTP/1.1" 307
+2026-06-15 00:06:08,827 - uvicorn.access - INFO - 127.0.0.1:34952 - "GET /webui HTTP/1.1" 307
+2026-06-15 00:06:08,915 - uvicorn.access - INFO - 127.0.0.1:34952 - "GET /webui/assets/index-Cmfh6eB3.js HTTP/1.1" 200
+2026-06-15 00:06:08,919 - uvicorn.access - INFO - 127.0.0.1:41709 - "GET /webui/assets/chunk-Dlc7tRH4.js HTTP/1.1" 200
+2026-06-15 00:06:08,940 - uvicorn.access - INFO - 127.0.0.1:41709 - "GET /webui/assets/path-BmDdnQs8.js HTTP/1.1" 200
+2026-06-15 00:06:08,949 - uvicorn.access - INFO - 127.0.0.1:41709 - "GET /webui/assets/index-Dbwgayzd.css HTTP/1.1" 200
+2026-06-15 00:06:08,960 - uvicorn.access - INFO - 127.0.0.1:41709 - "GET /webui/assets/array-DA6v84qs.js HTTP/1.1" 200
+2026-06-15 00:06:08,975 - uvicorn.access - INFO - 127.0.0.1:41709 - "GET /webui/assets/katex-BX7meHaV.js HTTP/1.1" 200
+2026-06-15 00:06:08,985 - uvicorn.access - INFO - 127.0.0.1:41709 - "GET /webui/assets/_createAssigner-CdflnHPZ.js HTTP/1.1" 200
+2026-06-15 00:06:09,031 - uvicorn.access - INFO - 127.0.0.1:41709 - "GET /webui/assets/rough.esm-ezLMvHwD.js HTTP/1.1" 200
+2026-06-15 00:06:09,793 - uvicorn.access - INFO - 127.0.0.1:41709 - "GET /webui/favicon.png HTTP/1.1" 200
+2026-06-15 00:06:09,815 - uvicorn.access - INFO - 127.0.0.1:34952 - "GET /auth-status HTTP/1.1" 200
+2026-06-15 00:06:10,862 - uvicorn.access - INFO - 127.0.0.1:34952 - "GET /webui/assets/rehype-katex-BX5VrZeK.js HTTP/1.1" 200
+2026-06-15 00:06:11,137 - uvicorn.access - INFO - 127.0.0.1:34952 - "GET /docs HTTP/1.1" 200
+2026-06-15 00:06:11,194 - uvicorn.access - INFO - 127.0.0.1:41709 - "GET /static/swagger-ui/swagger-ui-bundle.js HTTP/1.1" 200
+2026-06-15 00:06:11,196 - uvicorn.access - INFO - 127.0.0.1:34952 - "GET /static/swagger-ui/swagger-ui.css HTTP/1.1" 200
+2026-06-15 00:06:11,816 - uvicorn.access - INFO - 127.0.0.1:41709 - "GET /openapi.json HTTP/1.1" 200
+2026-06-15 00:06:41,525 - uvicorn.access - INFO - 127.0.0.1:58447 - "GET /docs HTTP/1.1" 200
+2026-06-15 00:06:41,697 - uvicorn.access - INFO - 127.0.0.1:58447 - "GET /openapi.json HTTP/1.1" 200

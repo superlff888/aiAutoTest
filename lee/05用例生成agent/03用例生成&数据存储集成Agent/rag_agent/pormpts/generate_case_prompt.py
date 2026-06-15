@@ -135,11 +135,11 @@ PROMPT = """
   - **方法 a 不替代方法 b**：方法 a 的有效等价类选了某个边界值（如选了"约束的下限值"作为有效等价类），**不替代**方法 b 的边界值用例，二者必须独立存在于用例列表中（独立 case_id）。
   - 漏掉任意一条边界就**立即补全**，不要等步骤 f 去重 pass 再补。
 - 步骤 c：若为补充生成模式，对照已有用例，标注已覆盖的场景和缺失的场景
-- 步骤 d：按 P0（基本流/有效等价类） → P1（备选流/边界值/无效等价类/状态迁移/判定表） → P2（边缘异常）排定生成顺序
+- 步骤 d：按 P0（基本流/有效等价类） → P1（备选流/边界值/无效等价类/异常分支/状态迁移（含合法迁移和非法迁移）/判定表） → P2（边缘异常）排定生成顺序
 - 步骤 e：逐条生成用例，填充所有字段
 - **步骤 f：全局去重 pass（关键，避免跨方法重复生成）**
   对已规划的所有用例做一次两两对比，去重判定标准如下：
-  - 比较两条用例的「**测试点（验证目的） + 场景组合**」，场景组合 = 前置条件类型 + 测试数据所属等价类 + 主操作序列。
+  - 比较两条用例的「**测试点（验证目的） + 场景组合**」，场景组合 = **前置条件类型 + 测试数据所属等价类 + 主操作序列**。
   - 若两条用例在「测试点 + 场景组合」上完全等同（即便 `case_name` 措辞不同、`test_data` 具体值不同、`expected_result` 粒度不同），视为**重复**。
   - 重复时**仅保留一条**：优先保留 `expected_result` 信息量更大、`execute_step` 描述更完整的那条；删除另一条并重排 `case_id`。
   - **高发重复模式**（生成时主动规避）：
@@ -151,7 +151,15 @@ PROMPT = """
 1. 所有用例的测试数据必须能从需求文档找到依据。**从明确的数值/范围约束推导测试数据**（如"8-16 位"推导 7 位和 17 位）属于合法推导；**从模糊描述补充具体规则**（如从"密码需安全"自行补充"需含大小写+数字"）属于违规推测。
 2. 一条用例聚焦一个测试点（场景法用例聚焦一条业务流），至多覆盖 2-3 个紧密相关的测试点。不得用一条用例覆盖 5 个以上互不相关的测试点。
 3. 两条用例视为重复当且仅当：验证目的（测试点）+ 场景组合（输入值类型/前置条件/状态路径）完全相同。不同路径验证同一结果不算重复。
-4. 优先级标准：P0 = 核心主流程/基本流场景/有效等价类正向用例；P1 = 备选流场景/边界值/无效等价类/合法状态迁移/判定表组合；P2 = 非法状态迁移/边缘异常场景/容错性测试（仅在需求明确提到容错/回滚/降级时生成，无依据则不生成）。
+4. 优先级标准：P0 = 核心主流程/基本流/有效等价类正向用例；P1 = 备选流/边界值/无效等价类/异常分支/状态迁移（含合法迁移和非法迁移）/判定表组合；P2 = 边缘异常场景/容错性测试（仅在需求明确提到容错/回滚/降级时生成，无依据则不生成）。
+5. **正向用例测试数据合规（硬性要求）**：预期结果为成功的正向用例（P0 基本流/有效等价类正向、P1 边界值成功/合法状态迁移等），`test_data` 中**所有字段**的取值都必须符合需求文档对该字段的约束，不论该字段是否是被测目标。例如：被测的是密码边界值，用户名也要取合规值；被测的是订单金额，收货地址也要取合规值。否则会出现矛盾——用例预期"成功"，但测试数据本身就通不过校验，评审时会被维度5（测试数据与验证目的不符）判为不通过。负向用例不受此限制（被测字段故意取违规值来验证拦截逻辑，是合理的）。
+6. **测试数据与用例描述自洽（硬性要求）**：`test_data` 中**被测字段**的取值必须与 `case_name`、`execute_step` 中对该字段的描述**精确一致**。例如：case_name 写"用户名为 3 位"，test_data 中 username 必须是恰好 3 个字符的值，不得填 4 位的值；case_name 写"密码为 16 位"，test_data 中 password 必须是恰好 16 个字符的值。禁止出现"描述说 X 但数据是 Y"的自相矛盾——评审时会被维度5判为不通过。
+7. **必填字段不可省略（硬性要求）**：每条用例的 `case_id` / `priority` / `case_name` / `execute_step` / `expected_result` **必须存在且非空**。
+   - `execute_step` 必须是从用户视角描述的操作步骤列表，**至少 1 条**（即"打开注册页"等用户操作）
+   - `expected_result` 必须是关键断言列表，**至少 1 条**（即"注册成功"、"提示'XXX'"等可观察现象）
+   - ❌ 禁止在某条 case 中省略 `execute_step` 或 `expected_result` 字段
+   - ❌ 禁止把 `execute_step` / `expected_result` 留作空数组 `[]`
+   - 若 LLM 偷懒漏字段，单条 case 校验失败将导致**整个用例列表解析失败**——必须严格遵守
 
 ## 输出格式
 输出必须为**严格合法的 JSON 数组**，不要包含任何 Markdown 标记、注释或解释性文字。
@@ -175,7 +183,7 @@ PROMPT = """
         "priority": "P0",
         "case_name": "正常登录成功",
         "setup": ["用户已注册且账号状态正常"],
-        "test_data": {"username": "test_user", "password": "Abc12345"},
+        "test_data": {"username": "testuser01", "password": "Abc12345"},
         "execute_step": ["打开登录页", "输入正确的账号", "输入正确的密码", "点击登录按钮"],
         "expected_result": ["登录成功，跳转至首页", "页面显示用户昵称"],
         "result": null
@@ -189,7 +197,7 @@ PROMPT = """
         "priority": "P1",
         "case_name": "密码为下限-1（7位）时注册失败",
         "setup": [],
-        "test_data": {"username": "user_2", "email": "u2@x.com", "password": "abc1234", "confirm_password": "abc1234"},
+        "test_data": {"username": "testuser02", "email": "user02@example.com", "password": "abc1234", "confirm_password": "abc1234"},
         "execute_step": ["打开注册页", "在用户名字段输入合法用户名", "在邮箱字段输入合法邮箱", "在密码字段输入 7 位密码", "在确认密码字段输入 7 位密码", "点击注册按钮"],
         "expected_result": ["注册失败", "提示'密码长度需为 8~16 位'"],
         "result": null
@@ -199,7 +207,7 @@ PROMPT = """
         "priority": "P1",
         "case_name": "密码为下限（8位）时注册成功",
         "setup": [],
-        "test_data": {"username": "user_3", "email": "u3@x.com", "password": "abc12345", "confirm_password": "abc12345"},
+        "test_data": {"username": "testuser03", "email": "user03@example.com", "password": "abc12345", "confirm_password": "abc12345"},
         "execute_step": ["打开注册页", "在用户名字段输入合法用户名", "在邮箱字段输入合法邮箱", "在密码字段输入 8 位密码", "在确认密码字段输入 8 位密码", "点击注册按钮"],
         "expected_result": ["注册成功", "跳转至首页"],
         "result": null
@@ -209,7 +217,7 @@ PROMPT = """
         "priority": "P1",
         "case_name": "密码为中点值（12位）时注册成功",
         "setup": [],
-        "test_data": {"username": "user_4", "email": "u4@x.com", "password": "abc12345abcd", "confirm_password": "abc12345abcd"},
+        "test_data": {"username": "testuser04", "email": "user04@example.com", "password": "abc12345abcd", "confirm_password": "abc12345abcd"},
         "execute_step": ["打开注册页", "在用户名字段输入合法用户名", "在邮箱字段输入合法邮箱", "在密码字段输入 12 位密码", "在确认密码字段输入 12 位密码", "点击注册按钮"],
         "expected_result": ["注册成功", "跳转至首页"],
         "result": null
@@ -219,7 +227,7 @@ PROMPT = """
         "priority": "P1",
         "case_name": "密码为上限（16位）时注册成功",
         "setup": [],
-        "test_data": {"username": "user_5", "email": "u5@x.com", "password": "abc12345abcdefgh", "confirm_password": "abc12345abcdefgh"},
+        "test_data": {"username": "testuser05", "email": "user05@example.com", "password": "abc12345abcdefgh", "confirm_password": "abc12345abcdefgh"},
         "execute_step": ["打开注册页", "在用户名字段输入合法用户名", "在邮箱字段输入合法邮箱", "在密码字段输入 16 位密码", "在确认密码字段输入 16 位密码", "点击注册按钮"],
         "expected_result": ["注册成功", "跳转至首页"],
         "result": null
@@ -229,7 +237,7 @@ PROMPT = """
         "priority": "P1",
         "case_name": "密码为上限+1（17位）时注册失败",
         "setup": [],
-        "test_data": {"username": "user_6", "email": "u6@x.com", "password": "abc12345abcdefghi", "confirm_password": "abc12345abcdefghi"},
+        "test_data": {"username": "testuser06", "email": "user06@example.com", "password": "abc12345abcdefghi", "confirm_password": "abc12345abcdefghi"},
         "execute_step": ["打开注册页", "在用户名字段输入合法用户名", "在邮箱字段输入合法邮箱", "在密码字段输入 17 位密码", "在确认密码字段输入 17 位密码", "点击注册按钮"],
         "expected_result": ["注册失败", "提示'密码长度需为 8~16 位'"],
         "result": null
@@ -243,7 +251,7 @@ PROMPT = """
         "priority": "P1",
         "case_name": "账号已被禁用时登录失败",
         "setup": ["管理员已将用户账号设置为禁用状态"],
-        "test_data": {"username": "disabled_user", "password": "Abc12345"},
+        "test_data": {"username": "disableduser01", "password": "Abc12345"},
         "execute_step": ["打开登录页", "输入已被禁用的账号", "输入正确的密码", "点击登录按钮"],
         "expected_result": ["登录失败", "提示'账号已被禁用，请联系管理员'"],
         "result": null
@@ -378,6 +386,11 @@ PROMPT = """
 反例 4 — 验证目的相同但数据不同的两条用例不视为重复：
 ✅ 正确：UC-01 用 7 位密码验证边界，UC-02 用 17 位密码验证边界
    虽然都是"密码边界值校验"，但场景组合不同（下限 vs 上限），不视为重复
+
+反例 4-bis — 等价类正向成功 vs 边界值正向成功不视为重复：
+✅ 正确：UC-01 等价类正向"任意合法用户名注册成功" vs UC-02 边界值正向"用户名 20 位注册成功"
+   虽然验证目的都是"注册成功"，但场景组合不同（前者的测试数据是任意合法值，后者的测试数据是边界值），不视为重复
+   理由：等价类正向验证"任意合法输入都能工作"，边界值正向验证"恰好在边界上的输入能工作"，两者覆盖维度不同，必须独立保留
 
 反例 5 — 需求有状态描述但只用了等价类，遗漏了非法迁移路径（遗漏状态迁移法）：
 需求："订单状态流转：待支付→已支付→已发货→已签收，允许用户在待支付时取消订单"

@@ -247,26 +247,50 @@ class GenerateCaseWorkflow:
 
     @staticmethod
     def save_case(state: State):
-        """保存用例（写入前剥离评审元数据，case.json 只保留纯用例字段）"""
-        print("开始保存用例")
-        # 获取评审通过的所有测试用例
-        review_passed_cases = state.get('review_passed_cases')
-        print(f"一共生成了{len(review_passed_cases)}条用例")
+        """保存用例（写入前剥离评审元数据，case.json 只保留纯用例字段）。
 
-        # 评审字段（review_result/review_desc/failed_dimensions）是过程元数据，仅用于工作流内部判断，
-        # 不应污染最终用例文件。落盘前 strip 掉，保持 case.json 只含用例本体字段。
+        两份产物：
+          - case.json：通过评审的用例（strip 评审元数据，保持纯用例形态）
+          - case_failed.json：未通过评审的用例（**保留** review_result / review_desc / failed_dimensions，
+            便于诊断"为什么 23 条变 13 条"——评审是否误判为重复 / 严苛度过高等）
+        """
+        print("开始保存用例")
+        # 获取评审通过 / 未通过的两批用例
+        review_passed_cases = state.get('review_passed_cases', [])
+        review_failed_cases = state.get('review_failed_cases', [])
+        print(f"评审通过 {len(review_passed_cases)} 条，未通过 {len(review_failed_cases)} 条")
+
+        # 评审元数据键：仅在 case.json 落盘前剥离；case_failed.json 必须保留以便诊断
         REVIEW_META_KEYS = {"review_result", "review_desc", "failed_dimensions"}
         clean_cases = [
             {k: v for k, v in c.items() if k not in REVIEW_META_KEYS}
             for c in review_passed_cases
         ]
 
-        # 用 Path(__file__).parent 锚定到本脚本（case_generator.py）所在的 workflow/ 目录，
-        # 避免相对路径 "case.json" 受启动 cwd 影响被写到项目根等意外位置。
+        # 打印每条不通过 case 的过滤原因（review_desc + failed_dimensions）——便于直接看
+        if review_failed_cases:
+            print("\n========== 评审未通过用例（被过滤）详情 ==========")
+            for idx, c in enumerate(review_failed_cases, 1):
+                print(
+                    f"[{idx}] case_id={c.get('case_id', '?')} | "
+                    f"case_name={c.get('case_name', '?')}\n"
+                    f"    原因: {c.get('review_desc', '(无)')}\n"
+                    f"    失败维度: {c.get('failed_dimensions', [])}"
+                )
+            print("=" * 56)
+
+        # case.json：通过用例（strip 评审元数据）
         case_file = Path(__file__).parent / "case.json"
         with open(case_file, "w", encoding="utf-8") as f:
             json.dump(clean_cases, f, ensure_ascii=False, indent=4)
-        print(f"用例保存完毕，落地路径：{case_file}")
+        print(f"通过用例保存完毕，落地路径：{case_file}（{len(clean_cases)} 条）")
+
+        # case_failed.json：未通过用例（保留 review 元数据）
+        if review_failed_cases:
+            failed_file = Path(__file__).parent / "case_failed.json"
+            with open(failed_file, "w", encoding="utf-8") as f:
+                json.dump(review_failed_cases, f, ensure_ascii=False, indent=4)
+            print(f"未通过用例保存完毕，落地路径：{failed_file}（{len(review_failed_cases)} 条）")
 
     # 用于需求初次生成测试用例的流程
     def create_generate_case_workflow(self):
@@ -339,7 +363,7 @@ if __name__ == '__main__':
         ● 新用户状态为 “正常”
         ● 注册时间记录为创建时间，头像为默认图
         📌 业务规则
-        ● 用户名唯一，支持 4~20 位字母数字组合
+        ● 用户名唯一，仅支持 4~20 位字母数字组合
         ● 密码长度不少于 6 位
         ● 邮箱必须符合格式 xxx@xxx.xx
     

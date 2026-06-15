@@ -1,0 +1,406 @@
+[
+    {
+        "case_id": "TC-FUNC-001",
+        "priority": "P0",
+        "case_name": "正常注册成功（用户名合法、邮箱合法、密码合规）",
+        "setup": [],
+        "test_data": {
+            "username": "testuser01",
+            "email": "user01@example.com",
+            "password": "abc123",
+            "confirm_password": "abc123"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入 testuser01",
+            "在邮箱字段输入 user01@example.com",
+            "在密码字段输入 abc123",
+            "在确认密码字段输入 abc123",
+            "点击注册按钮"
+        ],
+        "expected_result": [
+            "注册成功",
+            "自动登录",
+            "页面跳转至首页",
+            "账户初始状态为'正常'"
+        ],
+        "result": null,
+        "requirement_id": null
+    },
+    {
+        "case_id": "TC-FUNC-002",
+        "priority": "P0",
+        "case_name": "完整注册流程（基本流：填写→校验→创建→登录→跳转首页）",
+        "setup": [
+            "邮箱 user02@example.com 未被注册",
+            "用户名 testuser02 未被注册"
+        ],
+        "test_data": {
+            "username": "testuser02",
+            "email": "user02@example.com",
+            "password": "abc123",
+            "confirm_password": "abc123"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入 testuser02",
+            "在邮箱字段输入 user02@example.com",
+            "在密码字段输入 abc123",
+            "在确认密码字段输入 abc123",
+            "点击注册按钮",
+            "等待页面跳转"
+        ],
+        "expected_result": [
+            "注册信息通过格式与唯一性校验",
+            "后台创建账户成功",
+            "账户状态为'正常'",
+            "注册时间记录为当前创建时间",
+            "头像为默认图",
+            "自动登录并跳转至首页"
+        ],
+        "result": null,
+        "requirement_id": null
+    },
+    {
+        "case_id": "TC-FUNC-003",
+        "priority": "P1",
+        "case_name": "用户名为空时注册失败",
+        "setup": [],
+        "test_data": {
+            "username": "",
+            "email": "user03@example.com",
+            "password": "abc123",
+            "confirm_password": "abc123"
+        },
+        "execute_step": [
+            "打开注册页",
+            "用户名字段留空",
+            "在邮箱字段输入合法邮箱",
+            "在密码字段输入合法密码",
+            "在确认密码字段输入相同密码",
+            "点击注册按钮"
+        ],
+        "expected_result": [
+            "注册失败",
+            "提示'用户名不能为空'或等价提示"
+        ],
+        "result": null,
+        "requirement_id": null
+    },
+    {
+        "case_id": "TC-FUNC-004",
+        "priority": "P1",
+        "case_name": "邮箱已被注册时注册失败",
+        "setup": [
+            "系统中已存在用户邮箱 user04@example.com"
+        ],
+        "test_data": {
+            "username": "testuser04",
+            "email": "user04@example.com",
+            "password": "abc123",
+            "confirm_password": "abc123"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入未使用过的用户名",
+            "在邮箱字段输入已被注册的邮箱",
+            "在密码字段输入合法密码",
+            "在确认密码字段输入相同密码",
+            "点击注册按钮"
+        ],
+        "expected_result": [
+            "注册失败",
+            "提示'邮箱已存在'"
+        ],
+        "result": null,
+        "requirement_id": null
+    },
+    {
+        "case_id": "TC-FUNC-005",
+        "priority": "P1",
+        "case_name": "用户名已被注册时注册失败",
+        "setup": [
+            "系统中已存在用户 testuser05"
+        ],
+        "test_data": {
+            "username": "testuser05",
+            "email": "user05@example.com",
+            "password": "abc123",
+            "confirm_password": "abc123"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入已被注册的用户名",
+            "在邮箱字段输入未使用过的合法邮箱",
+            "在密码字段输入合法密码",
+            "在确认密码字段输入相同密码",
+            "点击注册按钮"
+        ],
+        "expected_result": [
+            "注册失败",
+            "提示'用户名已存在'"
+        ],
+        "result": null,
+        "requirement_id": null
+    },
+    {
+        "case_id": "TC-FUNC-006",
+        "priority": "P1",
+        "case_name": "两次密码不一致时注册失败",
+        "setup": [],
+        "test_data": {
+            "username": "testuser06",
+            "email": "user06@example.com",
+            "password": "abc123",
+            "confirm_password": "abc456"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入合法用户名",
+            "在邮箱字段输入合法邮箱",
+            "在密码字段输入 abc123",
+            "在确认密码字段输入 abc456",
+            "点击注册按钮"
+        ],
+        "expected_result": [
+            "注册失败",
+            "提示用户两次密码不一致，请重新输入"
+        ],
+        "result": null,
+        "requirement_id": null
+    },
+    {
+        "case_id": "TC-FUNC-008",
+        "priority": "P1",
+        "case_name": "用户名为下限（4位）时注册成功",
+        "setup": [],
+        "test_data": {
+            "username": "abc1",
+            "email": "user08@example.com",
+            "password": "abc123",
+            "confirm_password": "abc123"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入 4 位用户名 abc1",
+            "在邮箱字段输入合法邮箱",
+            "在密码字段输入合法密码",
+            "在确认密码字段输入相同密码",
+            "点击注册按钮"
+        ],
+        "expected_result": [
+            "注册成功",
+            "跳转至首页"
+        ],
+        "result": null,
+        "requirement_id": null
+    },
+    {
+        "case_id": "TC-FUNC-009",
+        "priority": "P1",
+        "case_name": "用户名为中点值（12位）时注册成功",
+        "setup": [],
+        "test_data": {
+            "username": "abcdefghijkl",
+            "email": "user09@example.com",
+            "password": "abc123",
+            "confirm_password": "abc123"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入 12 位用户名 abcdefghijkl",
+            "在邮箱字段输入合法邮箱",
+            "在密码字段输入合法密码",
+            "在确认密码字段输入相同密码",
+            "点击注册按钮"
+        ],
+        "expected_result": [
+            "注册成功",
+            "跳转至首页"
+        ],
+        "result": null,
+        "requirement_id": null
+    },
+    {
+        "case_id": "TC-FUNC-010",
+        "priority": "P1",
+        "case_name": "用户名为上限（20位）时注册成功",
+        "setup": [],
+        "test_data": {
+            "username": "abcdefghijklmnopqrst",
+            "email": "user10@example.com",
+            "password": "abc123",
+            "confirm_password": "abc123"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入 20 位用户名 abcdefghijklmnopqrst",
+            "在邮箱字段输入合法邮箱",
+            "在密码字段输入合法密码",
+            "在确认密码字段输入相同密码",
+            "点击注册按钮"
+        ],
+        "expected_result": [
+            "注册成功",
+            "跳转至首页"
+        ],
+        "result": null,
+        "requirement_id": null
+    },
+    {
+        "case_id": "TC-FUNC-011",
+        "priority": "P1",
+        "case_name": "用户名为上限+1（21位）时注册失败",
+        "setup": [],
+        "test_data": {
+            "username": "abcdefghijklmnopqrstu",
+            "email": "user11@example.com",
+            "password": "abc123",
+            "confirm_password": "abc123"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入 21 位用户名 abcdefghijklmnopqrstu",
+            "在邮箱字段输入合法邮箱",
+            "在密码字段输入合法密码",
+            "在确认密码字段输入相同密码",
+            "点击注册按钮"
+        ],
+        "expected_result": [
+            "注册失败",
+            "提示'用户名长度需为 4~20 位'"
+        ],
+        "result": null,
+        "requirement_id": null
+    },
+    {
+        "case_id": "TC-FUNC-012",
+        "priority": "P1",
+        "case_name": "密码为违反约束值（5位）时注册失败",
+        "setup": [],
+        "test_data": {
+            "username": "testuser12",
+            "email": "user12@example.com",
+            "password": "abc12",
+            "confirm_password": "abc12"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入合法用户名",
+            "在邮箱字段输入合法邮箱",
+            "在密码字段输入 5 位密码 abc12",
+            "在确认密码字段输入 5 位密码 abc12",
+            "点击注册按钮"
+        ],
+        "expected_result": [
+            "注册失败",
+            "提示'密码长度不少于 6 位'"
+        ],
+        "result": null,
+        "requirement_id": null
+    },
+    {
+        "case_id": "TC-FUNC-013",
+        "priority": "P1",
+        "case_name": "密码为边界值（6位）时注册成功",
+        "setup": [],
+        "test_data": {
+            "username": "testuser13",
+            "email": "user13@example.com",
+            "password": "abc123",
+            "confirm_password": "abc123"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入合法用户名",
+            "在邮箱字段输入合法邮箱",
+            "在密码字段输入 6 位密码 abc123",
+            "在确认密码字段输入 6 位密码 abc123",
+            "点击注册按钮"
+        ],
+        "expected_result": [
+            "注册成功",
+            "跳转至首页"
+        ],
+        "result": null,
+        "requirement_id": null
+    },
+    {
+        "case_id": "TC-FUNC-015",
+        "priority": "P1",
+        "case_name": "邮箱格式不符合 xxx@xxx.xx 时注册失败",
+        "setup": [],
+        "test_data": {
+            "username": "testuser15",
+            "email": "invalid-email-format",
+            "password": "abc123",
+            "confirm_password": "abc123"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入合法用户名",
+            "在邮箱字段输入 invalid-email-format",
+            "在密码字段输入合法密码",
+            "在确认密码字段输入相同密码",
+            "点击注册按钮"
+        ],
+        "expected_result": [
+            "注册失败",
+            "提示'邮箱格式不正确'"
+        ],
+        "result": null,
+        "requirement_id": null
+    },
+    {
+        "case_id": "TC-FUNC-016",
+        "priority": "P1",
+        "case_name": "用户名包含非法字符（汉字）时注册失败",
+        "setup": [],
+        "test_data": {
+            "username": "用户abc",
+            "email": "user16@example.com",
+            "password": "abc123",
+            "confirm_password": "abc123"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入含汉字的用户名",
+            "在邮箱字段输入合法邮箱",
+            "在密码字段输入合法密码",
+            "在确认密码字段输入相同密码",
+            "点击注册按钮"
+        ],
+        "expected_result": [
+            "注册失败",
+            "提示'用户名仅支持字母数字组合'或等价提示"
+        ],
+        "result": null,
+        "requirement_id": null
+    },
+    {
+        "case_id": "TC-FUNC-017",
+        "priority": "P1",
+        "case_name": "用户名包含非法字符（特殊符号）时注册失败",
+        "setup": [],
+        "test_data": {
+            "username": "test_user",
+            "email": "user17@example.com",
+            "password": "abc123",
+            "confirm_password": "abc123"
+        },
+        "execute_step": [
+            "打开注册页",
+            "在用户名字段输入含下划线的用户名",
+            "在邮箱字段输入合法邮箱",
+            "在密码字段输入合法密码",
+            "在确认密码字段输入相同密码",
+            "点击注册按钮"
+        ],
+        "expected_result": [
+            "注册失败",
+            "提示'用户名仅支持字母数字组合'或等价提示"
+        ],
+        "result": null,
+        "requirement_id": null
+    }
+]
