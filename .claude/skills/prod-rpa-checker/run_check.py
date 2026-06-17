@@ -234,7 +234,7 @@ def main():
     parser.add_argument(
         "--config",
         default=None,
-        help="数据中心配置 JSON 路径（相对项目根目录或绝对路径，默认走 data_validator.py 内部自动定位）",
+        help="数据中心配置 JSON 路径（相对项目根目录或绝对路径；默认 None 时由 data_validator.py 自动定位为 doc/数据中心类型定义pm.json；如需上午配置请显式传 --config doc/数据中心类型定义am.json）",
     )
     parser.add_argument("--no-notify", action="store_true", help="不发送飞书通知")
     parser.add_argument("--dry-run", action="store_true", help="模拟运行")

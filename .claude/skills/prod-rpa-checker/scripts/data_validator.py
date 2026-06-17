@@ -559,9 +559,9 @@ def run_check(connection: str = "prod", config_path: str | None = None,
     # 字符串版本仅用于报告渲染
     exec_time_str = exec_time.strftime("%Y-%m-%d %H:%M:%S")
 
-    # 自动定位 config_path
+    # 自动定位 config_path（默认 pm.json：手动触发场景下更贴近当前时点的预期）
     if config_path is None:
-        config_path = str(Path(__file__).parent.parent / "doc" / "数据中心类型定义am.json")
+        config_path = str(Path(__file__).parent.parent / "doc" / "数据中心类型定义pm.json")
     config_path = Path(config_path) if not isinstance(config_path, Path) else config_path
 
     config = load_data_center_config(str(config_path))
@@ -640,7 +640,7 @@ def run_check(connection: str = "prod", config_path: str | None = None,
 def main():
     import argparse
     parser = argparse.ArgumentParser(description='RPA数据采集完整性校验')
-    parser.add_argument('--config', default='doc/数据中心类型定义am.json', help='数据中心类型定义JSON路径')
+    parser.add_argument('--config', default='doc/数据中心类型定义pm.json', help='数据中心类型定义JSON路径（默认 pm.json：手动触发场景下更贴近当前时点的预期；如需 am.json 请显式 --config doc/数据中心类型定义am.json）')
     parser.add_argument('--connection', '-c', default='prod', help='数据库连接名称（test/prod）')
     parser.add_argument('--trade-center', help='指定交易中心名称')
     parser.add_argument('--data-type', help='指定数据类型')

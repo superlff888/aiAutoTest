@@ -138,12 +138,14 @@ D加减时间转换为 offset_days：
 
 ## 调度任务（Windows 任务计划程序）
 
-技能已注册两个独立任务（管理员 PowerShell 运行 `setup_dual_task.ps1`）：
+技能已注册两个独立任务（管理员 PowerShell 运行 `setup_dual_task.ps1`），共用一个自包含 launcher：
 
-| 任务名 | 时点 | 配置 | 启动入口 |
-|--------|------|------|---------|
-| `RPA-Data-Check-Morning` | 每天 08:35 | am.json | `scripts/run_morning_check.py` |
-| `RPA-Data-Check-Afternoon` | 每天 17:15 | pm.json | `scripts/run_afternoon_check.py` |
+| 任务名 | 时点 | 配置 | launcher | Python 入口 |
+|--------|------|------|---------|------------|
+| `RPA-Data-Check-Morning` | 每天 08:35 | am.json | `run_silent.ps1` | `scripts/run_scheduled_check.py --config doc/数据中心类型定义am.json --tag morning` |
+| `RPA-Data-Check-Afternoon` | 每天 17:15 | pm.json | `run_silent.ps1` | `scripts/run_scheduled_check.py --config doc/数据中心类型定义pm.json --tag afternoon` |
+
+> `run_silent.ps1` 是**自包含 launcher**：用 `$MyInvocation.MyCommand.Path` 派生所有路径（项目根、虚拟环境、技能目录），不写死任何绝对路径。换机器/换盘符只需重跑 `setup_dual_task.ps1`，无需改 launcher。
 
 ### 一键注册（首次部署或重新部署）
 
@@ -162,6 +164,23 @@ Start-ScheduledTask -TaskName 'RPA-Data-Check-Afternoon'
 # 实时跟踪日志
 Get-Content 'E:\AI\pythonProject\aiAutoTest\.claude\skills\prod-rpa-checker\output\run_check.log' -Wait -Tail 30
 ```
+
+### 手动触发（直接命令行）
+
+跳过 Windows 调度，直接调 `run_check.py`：
+
+```bash
+# 默认 = pm.json（看今天）
+python .claude/skills/prod-rpa-checker/run_check.py
+
+# 按需看昨天（am.json）
+python .claude/skills/prod-rpa-checker/run_check.py --config doc/数据中心类型定义am.json
+
+# 按需看今天（pm.json，显式）
+python .claude/skills/prod-rpa-checker/run_check.py --config doc/数据中心类型定义pm.json
+```
+
+> 不传 `--config` 时默认走 pm.json（详见[行为约束](#行为约束)第 4 条）。上午时段想看昨天必须显式传 `am.json`，否则会用下午预期对比实际数据导致大量误报。
 
 技能执行：
 
@@ -266,3 +285,12 @@ Get-Content 'E:\AI\pythonProject\aiAutoTest\.claude\skills\prod-rpa-checker\outp
    > 注：这些参数是 `run_check.py`（技能根目录，飞书推送入口）的参数，不是 `scripts/data_validator.py`（核心校验库）的参数。
 2. **单次执行**：校验脚本执行一次即可，同一操作连续执行且结果不变时，停下来确认用户意图，不要重复触发
 3. **不假设测试状态**：不要假设"还在测试"、"还在凑报告"——除非用户明确说需要调试或测试
+4. **手动触发必须显式指定 am/pm** ⚠️：默认（`run_check.py` 不传 `--config`，或在 Claude Code 里通过 Skill 工具触发本技能）加载的是 `doc/数据中心类型定义pm.json`（下午配置）。如需上午配置，**必须**显式传 `--config doc/数据中心类型定义am.json`；否则不要手动跑上午时段的校验（会误报"数据滞后"）。
+   ```bash
+   # ✅ 推荐：显式声明，跟运行时点对齐
+   python .claude/skills/prod-rpa-checker/run_check.py --config doc/数据中心类型定义pm.json
+   python .claude/skills/prod-rpa-checker/run_check.py --config doc/数据中心类型定义am.json
+
+   # ⚠️ 等价于传 pm.json（默认行为）
+   python .claude/skills/prod-rpa-checker/run_check.py
+   ```
