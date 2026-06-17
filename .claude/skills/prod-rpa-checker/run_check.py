@@ -231,6 +231,11 @@ def main():
         default=config.get("checker", {}).get("default_connection", "prod"),
         help="数据库连接 (prod/test)",
     )
+    parser.add_argument(
+        "--config",
+        default=None,
+        help="数据中心配置 JSON 路径（相对项目根目录或绝对路径，默认走 data_validator.py 内部自动定位）",
+    )
     parser.add_argument("--no-notify", action="store_true", help="不发送飞书通知")
     parser.add_argument("--dry-run", action="store_true", help="模拟运行")
     parser.add_argument(
@@ -240,6 +245,26 @@ def main():
         help="通知策略: always=每天都发, on-failure=仅异常时发",
     )
     args = parser.parse_args()
+
+    # 将 --config 解析为绝对路径
+    # JSON 通常位于 <SKILL_DIR>/doc/ 下，先按技能目录内路径解析；
+    # 若不存在再按项目根（SKILL_DIR.parents[3]）解析作为兜底。
+    config_path = None
+    if args.config:
+        cfg = Path(args.config)
+        if cfg.is_absolute():
+            config_path = cfg
+        else:
+            # 优先按技能目录内相对路径
+            candidate_in_skill = SKILL_DIR / cfg
+            if candidate_in_skill.exists():
+                config_path = candidate_in_skill
+            else:
+                # 兜底：项目根目录（SKILL_DIR.parents[3]）
+                project_root = SKILL_DIR.parents[3]
+                config_path = project_root / cfg
+        config_path = str(config_path)
+        logging.info(f"使用配置: {config_path}")
 
     notify_cfg = config.get("notify", {})
     feishu_cfg = config.get("feishu", {})
@@ -253,7 +278,11 @@ def main():
     # 1. 执行校验（统一传入 exec_time）
     t_check = time.monotonic()
     try:
-        result = run_check(connection=args.connection, exec_time=exec_time_dt)
+        result = run_check(
+            connection=args.connection,
+            exec_time=exec_time_dt,
+            config_path=config_path,
+        )
     except Exception as e:
         # 校验异常 → 发送告警
         logging.exception("校验执行异常")

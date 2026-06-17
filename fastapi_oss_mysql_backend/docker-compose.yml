@@ -1,0 +1,89 @@
+version: "3.9"
+
+services:
+  # ============= MySQL 数据库 =============
+  mysql:
+    image: mysql:8.0
+    container_name: fastapi-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root123456
+      MYSQL_DATABASE: fastapi_demo
+      MYSQL_CHARACTER_SET_SERVER: utf8mb4
+      MYSQL_COLLATION_SERVER: utf8mb4_unicode_ci
+      TZ: Asia/Shanghai
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./scripts/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    command:
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_unicode_ci
+      --default-authentication-plugin=mysql_native_password
+      --max_connections=200
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot123456"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - app-network
+
+  # ============= Redis 缓存 =============
+  redis:
+    image: redis:7-alpine
+    container_name: fastapi-redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes --requirepass ""
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+    networks:
+      - app-network
+
+  # ============= FastAPI 应用 =============
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: fastapi-api
+    restart: unless-stopped
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      APP_ENV: prod
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_USER: root
+      DB_PASSWORD: root123456
+      DB_NAME: fastapi_demo
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      SECRET_KEY: ${SECRET_KEY:-please-change-in-production-32bytes-hex}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./logs:/app/logs
+      - ./temp:/app/temp
+    networks:
+      - app-network
+
+volumes:
+  mysql_data:
+    driver: local
+  redis_data:
+    driver: local
+
+networks:
+  app-network:
+    driver: bridge

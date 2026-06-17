@@ -1,0 +1,2 @@
+# 迁移文件目录
+# 使用命令生成：uv run alembic revision --autogenerate -m "说明"

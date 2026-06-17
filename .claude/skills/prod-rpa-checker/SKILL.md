@@ -29,8 +29,14 @@ description: |
 
 ## 数据中心配置
 
-- **JSON配置**：[数据中心类型定义.json](doc/数据中心类型定义.json)
-- **MD文档**：[数据中心类型定义.md](doc/数据中心类型定义.md)
+技能下挂两份 JSON，分别给**上午任务**和**下午任务**用：
+
+| 文件 | 调度任务 | 用途 |
+|------|---------|------|
+| [数据中心类型定义am.json](doc/数据中心类型定义am.json) | RPA-Data-Check-Morning（08:35） | 上午任务用 |
+| [数据中心类型定义pm.json](doc/数据中心类型定义pm.json) | RPA-Data-Check-Afternoon（17:15） | 下午任务用 |
+
+> ⚠️ 两份 JSON 内容**不同**（pm.json 整体后移 1 天）。改其中任何一个前，**先确认改的是哪个文件**。
 
 配置结构：
 
@@ -38,13 +44,24 @@ description: |
 {
   "广东": {
     "trade_center_id": 1,
+    "vpp_id": "1",
     "日前节点电价": "D",
-    "实时节点电价": "D-2",
+    "实时节点电价": ["D-1", "D-2"],
+    "网侧预测": "D+1",
     ...
+    "中长期持仓": "D",
+    "未接入的数据类型": { "最新数据时间": "—", "备注": "暂未接入" }
   },
   ...
 }
 ```
+
+字段说明：
+
+- `trade_center_id`：数据库主键，用于 SQL `{{trade_center_id}}` 占位符
+- `vpp_id`：VPP 标识符
+- 时间值字段：字符串 `D±N`，或数组 `["D-N", ...]`（数组用于降级查询）
+- `暂未接入`：用对象形式标记，校验时跳过该数据类型
 
 ## SQL模板
 
@@ -117,6 +134,33 @@ D加减时间转换为 offset_days：
 
 ```
 检查广东的日前节点电价数据
+```
+
+## 调度任务（Windows 任务计划程序）
+
+技能已注册两个独立任务（管理员 PowerShell 运行 `setup_dual_task.ps1`）：
+
+| 任务名 | 时点 | 配置 | 启动入口 |
+|--------|------|------|---------|
+| `RPA-Data-Check-Morning` | 每天 08:35 | am.json | `scripts/run_morning_check.py` |
+| `RPA-Data-Check-Afternoon` | 每天 17:15 | pm.json | `scripts/run_afternoon_check.py` |
+
+### 一键注册（首次部署或重新部署）
+
+```powershell
+cd e:\AI\pythonProject\aiAutoTest\.claude\skills\prod-rpa-checker
+.\setup_dual_task.ps1 -ProjectDir "e:\AI\pythonProject\aiAutoTest"
+```
+
+### 手动触发
+
+```powershell
+# 立即跑一次（不等调度）
+Start-ScheduledTask -TaskName 'RPA-Data-Check-Morning'
+Start-ScheduledTask -TaskName 'RPA-Data-Check-Afternoon'
+
+# 实时跟踪日志
+Get-Content 'E:\AI\pythonProject\aiAutoTest\.claude\skills\prod-rpa-checker\output\run_check.log' -Wait -Tail 30
 ```
 
 技能执行：
@@ -214,9 +258,11 @@ D加减时间转换为 offset_days：
 - 多时间值的数据类型，优先查询较新时间，无数据或日期不符时降级到较旧时间
 - 断言失败时需明确指出预期与实际的差异
 - 日期缺失时需列出具体的缺失日期
+- `am.json` / `pm.json` 对应不同的调度任务（08:35 / 17:15），内容不同；改之前先确认改的是哪个文件
 
 ## 行为约束
 
 1. **默认生产流程**：当用户说"检查线上数据"、"跑数据校验"等生产指令时，默认执行完整流程（不加 `--no-notify`、`--dry-run` 等调试参数），正常推送飞书通知
+   > 注：这些参数是 `run_check.py`（技能根目录，飞书推送入口）的参数，不是 `scripts/data_validator.py`（核心校验库）的参数。
 2. **单次执行**：校验脚本执行一次即可，同一操作连续执行且结果不变时，停下来确认用户意图，不要重复触发
 3. **不假设测试状态**：不要假设"还在测试"、"还在凑报告"——除非用户明确说需要调试或测试
