@@ -107,8 +107,8 @@ _DATA_TYPE_SQL_MAPPING = {
     '实时节点电价': {'sql': '实时节点电价.sql'},
     '日前结算电价': {'sql': '日前结算电价.sql'},
     '实时结算电价': {'sql': '实时结算电价.sql'},
-    '网侧预测': {'sql': '网侧预测.sql', 'check_volume': True},
-    '网侧实际': {'sql': '网侧实际.sql', 'check_volume': True},
+    '网侧预测': {'sql': '网侧预测.sql', 'check_coverage': True},
+    '网侧实际': {'sql': '网侧实际.sql', 'check_coverage': True},
     '日前成交电量': {'sql': '日前成交电量.sql'},
     '代理用户用电明细': {'sql': '代理用户用电明细.sql'},
     '代理用户用电总计': {'sql': '代理用户用电总计.sql'},
@@ -276,52 +276,150 @@ def check_latest_data(conn, sql_template: str, trade_center_id: str,
             continue
 
 
-def check_data_volume(conn, sql: str) -> tuple:
-    """检查每日数据条数是否在 4~20 条范围内"""
+def check_load_type_coverage(
+    conn, sql: str, expected_load_types: set, window_days: int = 10
+) -> dict:
+    """load_type 覆盖度校验（load-type-day 覆盖率算法）。
+
+    以 expected_load_types 为标准集合 S，对 10 天窗口内的 SQL 结果：
+    - 命中 = Σ |actual_d ∩ S|（10 天累计）
+    - M = window_days × |S|
+    - 缺失 = S - actual_并
+    - 超出 = actual_并 - S
+
+    返回 CoverageResult 字典：
+    {
+        'status': 'E',
+        'expected_count': int,           # |S|
+        'window_days': int,             # 10
+        'total_units': int,             # window_days × expected_count
+        'hit_units': int,               # 10 天累计命中单位数
+        'hit_rate_text': str,           # 'N/M' 渲染用
+        'missing_union': list,          # 10 天 missing 并集
+        'extra_union': list,            # 10 天 extra 并集
+        'missing_days': dict,           # {date_str: [load_type, ...]}
+        'extra_days': dict,
+        'missing_day_count': int,
+        'extra_day_count': int,
+        'has_missing': bool,
+        'has_extra': bool,
+        'error_msg': str | None,
+    }
+    """
+    expected_count = len(expected_load_types)
+    total_units = window_days * expected_count
+    expected_str = {str(x) for x in expected_load_types}
+
+    empty_result = {
+        'status': 'E',
+        'expected_count': expected_count,
+        'window_days': window_days,
+        'total_units': total_units,
+        'hit_units': 0,
+        'hit_rate_text': f'0/{total_units}',
+        'missing_union': sorted(expected_load_types, key=lambda x: int(x) if str(x).isdigit() else str(x)),
+        'extra_union': [],
+        'missing_days': {},
+        'extra_days': {},
+        'missing_day_count': 0,
+        'extra_day_count': 0,
+        'has_missing': bool(expected_load_types),
+        'has_extra': False,
+        'error_msg': None,
+    }
+
     try:
         with conn.cursor() as cursor:
             cursor.execute(sql)
             rows = cursor.fetchall()
-            count = len(rows)
 
             if not rows:
-                return False, count, 0, "无数据"
+                return empty_result
 
-            # 按日期分组统计，收集所有load_type
-            date_counts = {}
-            date_load_types = {}
+            # 按天归组 actual_d
+            actual_by_day = {}  # {date_str: set(load_type)}
             for row in rows:
                 date_val = _normalize_date(_extract_date(row))
                 if date_val:
-                    date_counts[date_val] = date_counts.get(date_val, 0) + 1
-                    load_type = row.get('load_type')
-                    if load_type is not None:
-                        if date_val not in date_load_types:
-                            date_load_types[date_val] = set()
-                        date_load_types[date_val].add(str(load_type))
+                    actual_by_day.setdefault(date_val, set()).add(row.get('load_type'))
 
-            if not date_counts:
-                return False, count, 0, "无法获取日期字段"
+            if not actual_by_day:
+                return {
+                    **empty_result,
+                    'error_msg': '无法获取日期字段',
+                    'missing_union': sorted(expected_load_types, key=lambda x: int(x) if str(x).isdigit() else str(x)),
+                    'has_missing': bool(expected_load_types),
+                }
 
-            # 检查每天数据量
-            abnormal_days = []
-            for date_str, day_count in sorted(date_counts.items()):
-                if day_count < 4 or day_count > 20:
-                    lt_set = date_load_types.get(date_str)
-                    if lt_set:
-                        lt_str = '、'.join(sorted(lt_set))
-                    else:
-                        lt_str = '无'
-                    abnormal_days.append((date_str, day_count, lt_str))
+            # 计算命中单位数（load-type-day 覆盖率）
+            hit_units = 0
+            actual_union = set()
+            missing_days = {}
+            extra_days = {}
+            missing_day_count = 0
+            extra_day_count = 0
 
-            if abnormal_days:
-                details = '；'.join(f'{d}(load_type={lt}): {c}条' for d, c, lt in abnormal_days[:5])
-                if len(abnormal_days) > 5:
-                    details += f' 等{len(abnormal_days)}天'
-                return False, count, len(date_counts), f'{len(abnormal_days)}天数据量异常: {details}'
-            return True, count, len(date_counts), f"正常(日均{count/len(date_counts):.0f}条)"
+            def _sort_key(x):
+                s = str(x)
+                return (0, int(s)) if s.isdigit() else (1, s)
+
+            for date_str, actual_set in actual_by_day.items():
+                # 强转 → str；丢弃 None
+                actual_set = {str(x) for x in actual_set if x is not None}
+
+                hit_set = actual_set & expected_str
+                hit_units += len(hit_set)
+                actual_union |= actual_set
+
+                missing = expected_str - actual_set
+                extra = actual_set - expected_str
+                if missing:
+                    missing_days[date_str] = sorted(missing, key=_sort_key)
+                    missing_day_count += 1
+                if extra:
+                    extra_days[date_str] = sorted(extra, key=_sort_key)
+                    extra_day_count += 1
+
+            missing_union = sorted(expected_str - actual_union, key=_sort_key)
+            extra_union = sorted(actual_union - expected_str, key=_sort_key)
+
+            return {
+                'status': 'E',
+                'expected_count': expected_count,
+                'window_days': window_days,
+                'total_units': total_units,
+                'hit_units': hit_units,
+                'hit_rate_text': f'{hit_units}/{total_units}',
+                'missing_union': missing_union,
+                'extra_union': extra_union,
+                'missing_days': missing_days,
+                'extra_days': extra_days,
+                'missing_day_count': missing_day_count,
+                'extra_day_count': extra_day_count,
+                'has_missing': bool(missing_union),
+                'has_extra': bool(extra_union),
+                'error_msg': None,
+            }
     except Exception as e:
-        return False, 0, 0, f"数据量检查异常: {str(e)}"
+        return {
+            **empty_result,
+            'error_msg': f'查询异常: {str(e)}',
+        }
+
+
+def count_rows_in_window(conn, sql: str) -> int | None:
+    """查询 10 天窗口内的总行数（仅显示用，不进任何计数桶）。
+
+    返回:
+        int: 行数（≥ 0）
+        None: 查询异常
+    """
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute(sql)
+            return len(cursor.fetchall())
+    except Exception:
+        return None
 
 
 def check_date_continuity(conn, sql: str, start_date: datetime, end_date: datetime) -> tuple:
@@ -389,6 +487,8 @@ def _check_single_center(center_name: str, center_config: dict, templates: dict,
     """
     passed = []
     failed = []
+    warnings = []
+    config_missing = []
     rows = []
 
     with _ReconnectableConn(connection) as conn:
@@ -409,7 +509,14 @@ def _check_single_center(center_name: str, center_config: dict, templates: dict,
                 continue
 
             if isinstance(time_config, dict):
+                # 暂未接入：整行跳过 — 不进表格、不跑最新时间/连续性/覆盖度校验
+                # 但在"警告详情"中列出（让维护者知道哪些类型暂未接入）
                 if time_config.get('备注') == '暂未接入':
+                    warnings.append({
+                        'center': center_name,
+                        'data_type': data_type_name,
+                        'check': {'type': 'not_connected', 'passed': True, 'message': '暂未接入'},
+                    })
                     continue
                 latest_time = time_config.get('最新数据时间', '—')
             else:
@@ -467,15 +574,109 @@ def _check_single_center(center_name: str, center_config: dict, templates: dict,
                     cont_end_date = expected_date - timedelta(days=1)
                 cont_start_date = cont_end_date - timedelta(days=9)
 
-            # === 数据量合理性校验（由 _DATA_TYPE_SQL_MAPPING 驱动） ===
+            # === 数据量/覆盖度校验（由 _DATA_TYPE_SQL_MAPPING 驱动） ===
             vol_status = None
             type_meta = _DATA_TYPE_SQL_MAPPING.get(data_type_name, {})
-            if type_meta.get('check_volume') and cont_start_date is not None:
-                volume_sql = render_sql(sql_template, trade_center_id, used_offset,
-                                       cont_start_date.strftime('%Y-%m-%d'),
-                                       cont_end_date.strftime('%Y-%m-%d'), vpp_id)
-                vol_ok, vol_count, vol_days, vol_err = _safe_query(conn, check_data_volume, volume_sql)
-                vol_status = "—" if vol_err is None else (f"✅ {vol_err}" if vol_ok else f"❌ {vol_err}")
+
+            if type_meta.get('check_coverage') and cont_start_date is not None:
+                # === 网侧预测/网侧实际：load_type 覆盖度校验（4 状态分流） ===
+                load_type_map = center_config.get('load_type', None)
+
+                # 状态 B：中心未配 load_type 字段
+                if load_type_map is None or not isinstance(load_type_map, dict):
+                    vol_status = '**交易中心没配load_type**'
+                    config_missing.append({
+                        'center': center_name,
+                        'data_type': f'{data_type_name}（{time_label}）',
+                        'check': {'type': 'config_missing', 'passed': False, 'message': '交易中心没配load_type'},
+                    })
+                else:
+                    expected = load_type_map.get(data_type_name)
+
+                    # 状态 C：类型 key 缺失
+                    if expected is None:
+                        vol_status = '**未配置该类型标准**'
+                        config_missing.append({
+                            'center': center_name,
+                            'data_type': f'{data_type_name}（{time_label}）',
+                            'check': {'type': 'config_missing', 'passed': False, 'message': '未配置该类型标准'},
+                        })
+                    # 状态 D：标准为空
+                    elif not isinstance(expected, list) or len(expected) == 0:
+                        vol_status = '**标准为空**'
+                        config_missing.append({
+                            'center': center_name,
+                            'data_type': f'{data_type_name}（{time_label}）',
+                            'check': {'type': 'config_missing', 'passed': False, 'message': '标准为空'},
+                        })
+                    # 状态 E：有标准且非空，跑覆盖度校验
+                    else:
+                        coverage_sql = render_sql(sql_template, trade_center_id, used_offset,
+                                                 cont_start_date.strftime('%Y-%m-%d'),
+                                                 cont_end_date.strftime('%Y-%m-%d'), vpp_id)
+                        coverage = _safe_query(
+                            conn, check_load_type_coverage, coverage_sql, set(expected), 10
+                        )
+
+                        if coverage['error_msg']:
+                            vol_status = f"❌ {coverage['error_msg']}"
+                            failed.append({
+                                'center': center_name,
+                                'data_type': f'{data_type_name}（{time_label}）',
+                                'check': {'type': 'coverage_error', 'passed': False, 'error': coverage['error_msg']},
+                            })
+                        else:
+                            parts = []
+                            if coverage['has_missing']:
+                                miss = ', '.join(str(x) for x in coverage['missing_union'])
+                                parts.append(f"❌ 缺 [{miss}] ({coverage['missing_day_count']}天)")
+                            if coverage['has_extra']:
+                                ext = ', '.join(str(x) for x in coverage['extra_union'])
+                                parts.append(f"⚠️ 超 [{ext}] ({coverage['extra_day_count']}天)")
+                            if not parts:
+                                vol_status = "✅"
+                            else:
+                                vol_status = ' '.join(parts)
+
+                            # 失败详情（缺失）
+                            if coverage['has_missing']:
+                                failed.append({
+                                    'center': center_name,
+                                    'data_type': f'{data_type_name}（{time_label}）',
+                                    'check': {
+                                        'type': 'coverage_missing',
+                                        'passed': False,
+                                        'hit_rate': coverage['hit_rate_text'],
+                                        'missing_union': coverage['missing_union'],
+                                        'missing_day_count': coverage['missing_day_count'],
+                                        'missing_days': coverage['missing_days'],
+                                    },
+                                })
+
+                            # 警告详情（超出）
+                            if coverage['has_extra']:
+                                warnings.append({
+                                    'center': center_name,
+                                    'data_type': f'{data_type_name}（{time_label}）',
+                                    'check': {
+                                        'type': 'coverage_extra',
+                                        'passed': True,
+                                        'hit_rate': coverage['hit_rate_text'],
+                                        'extra_union': coverage['extra_union'],
+                                        'extra_day_count': coverage['extra_day_count'],
+                                        'extra_days': coverage['extra_days'],
+                                    },
+                                })
+            elif not type_meta.get('check_coverage') and cont_start_date is not None:
+                # === 其他 8 种非网侧类型：显示 10 天总条数（仅显示用，不进任何桶） ===
+                count_sql = render_sql(sql_template, trade_center_id, used_offset,
+                                      cont_start_date.strftime('%Y-%m-%d'),
+                                      cont_end_date.strftime('%Y-%m-%d'), vpp_id)
+                row_count = _safe_query(conn, count_rows_in_window, count_sql)
+                if row_count is None:
+                    vol_status = '❌ 查询异常'
+                else:
+                    vol_status = f'10 天 {row_count} 条'
 
             # === 日期连续性验证 ===
             if cont_start_date is not None:
@@ -511,14 +712,14 @@ def _check_single_center(center_name: str, center_config: dict, templates: dict,
                     'check': {'offset': used_offset, 'expected_date': expected_date.strftime('%Y-%m-%d'), 'max_date': max_date, 'passed': False, 'error': error}
                 })
 
-            if vol_status and '❌' in vol_status:
-                failed.append({
-                    'center': center_name,
-                    'data_type': f'{data_type_name}（{time_label}）',
-                    'check': {'type': 'volume', 'passed': False, 'error': vol_status}
-                })
-
-    return {'center_id': trade_center_id, 'rows': rows, 'passed': passed, 'failed': failed}
+    return {
+        'center_id': trade_center_id,
+        'rows': rows,
+        'passed': passed,
+        'failed': failed,
+        'warnings': warnings,
+        'config_missing': config_missing,
+    }
 
 
 def run_check(connection: str = "prod", config_path: str | None = None,
@@ -577,7 +778,7 @@ def run_check(connection: str = "prod", config_path: str | None = None,
             continue
         center_tasks.append((center_name, center_config))
 
-    results = {'passed': [], 'failed': []}
+    results = {'passed': [], 'failed': [], 'warnings': [], 'config_missing': []}
     center_results = {}
 
     # 并行执行各交易中心校验
@@ -607,6 +808,8 @@ def run_check(connection: str = "prod", config_path: str | None = None,
                 }
                 results['passed'].extend(center_result['passed'])
                 results['failed'].extend(center_result['failed'])
+                results['warnings'].extend(center_result.get('warnings', []))
+                results['config_missing'].extend(center_result.get('config_missing', []))
             except Exception as e:
                 logging.exception("交易中心 %s 校验异常", center_name)
                 center_results[center_name] = {
@@ -628,13 +831,23 @@ def run_check(connection: str = "prod", config_path: str | None = None,
     os.makedirs(output_dir, exist_ok=True)
     report_file = output_dir / f"rpa_check_report_{datetime.now().strftime('%Y%m%d%H%M%S')}.md"
 
-    md_text = build_report_markdown(results, center_results, exec_time=exec_time_str)
+    md_text = build_report_markdown(
+        results, center_results,
+        exec_time=exec_time_str,
+        warn_count=len(results['warnings']),
+        config_missing_count=len(results['config_missing']),
+    )
 
     # 写入文件
     write_report_to_file(report_file, md_text, outfile)
 
     # === 构建并返回结构化结果 ===
-    return build_structured_result(results, center_results, str(report_file), exec_time=exec_time_str)
+    return build_structured_result(
+        results, center_results, str(report_file),
+        exec_time=exec_time_str,
+        warn_count=len(results['warnings']),
+        config_missing_count=len(results['config_missing']),
+    )
 
 
 def main():

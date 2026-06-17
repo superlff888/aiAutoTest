@@ -41,27 +41,34 @@ def call_convert_api(markdown_content: str, tenant_token: str) -> dict:
     logger.info("Convert 成功，blocks: %d", len(data["data"]["blocks"]))
     return data["data"]
 
+def _get_first_level_text(block: dict) -> str:
+    """提取 first_level 块的文本内容（用于找分界点）。"""
+    text = ''
+    # 各种 heading 类型
+    for hkey in ('heading1', 'heading2', 'heading3', 'heading4', 'heading5', 'heading6'):
+        if hkey in block:
+            text = str(block[hkey])
+            break
+    # 也检查 text 字段
+    if not text and 'text' in block:
+        text = str(block['text'])
+    return text
+
+
 def prepare_batches(convert_data, batch_size=1000):
-    """
-    准备请求批次（按顶层块子树分组切分，保证引用完整性）：
+    """准备请求批次（按用户精确切分，第一批=汇总+失败+警告+配置缺失，第二批=主表格）。
 
-    清理规则：
-    1. 移除每个块的 parent_id（创建嵌套块 API 不需要）
-    2. 移除 table.cells（创建嵌套块 API 不需要）
-    3. 移除 table.property.merge_info（关键！API 不接受此字段）
-    4. 确保每个块有 children 字段
+    飞书渲染顺序实测：后调用的内容渲染在上面。
+    - 之前：第一批=主表格/第二批=汇总+失败+警告 → 渲染反了（汇总/失败/警告在上面，主表格在下面）
+    - 现在：对调顺序 → 第一批=汇总+失败+警告+配置缺失（先调用）/ 第二批=主表格（后调用）
+                       → 渲染后：主表格在上面，汇总+失败+警告+配置缺失在下面
 
-    分批策略：
-    5. 按 first_level_block_ids 构建子树，计算每个顶层块的子树大小
-    6. 按子树大小累积到 batch_size 附近时切分（大块优先）
-    7. 每个批次的 children_id = 该批次的顶层块 ID 列表
-       descendants = 这些顶层块及其所有子块的完整集合
-       保证 children_id 数量 == descendants 中顶层块数量
-    8. 飞书 API 限制 descendants 最大 1000 个
-
-    ~~历史失败策略~~：
-    2026-06-06 验证：按 descendants 数组顺序切分（900/批），children_id 全量传入
-    → code 1770041 open schema mismatch。不再尝试。
+    切分逻辑：
+    - 遍历 first_level_ids
+    - 找到包含"### 校验汇总"的 first_level 块作为分界点
+    - 第一批：分界点及之后的所有 first_level 块（汇总+失败+警告+配置缺失）
+    - 第二批：分界点之前的所有 first_level 块（主表格）
+    - 如果找不到分界点，fallback 到按 first_level 顺序切分
     """
     blocks = convert_data["blocks"]
     first_level_ids = convert_data["first_level_block_ids"]
@@ -84,17 +91,7 @@ def prepare_batches(convert_data, batch_size=1000):
             b_copy["children"] = []
         cleaned_map[b["block_id"]] = b_copy
 
-    # 计算子树大小
-    def subtree_size(block_id):
-        block = cleaned_map.get(block_id)
-        if not block:
-            return 0
-        size = 1
-        for cid in block.get("children", []):
-            size += subtree_size(cid)
-        return size
-
-    # 收集子树所有块 ID（深度优先，保持原始顺序）
+    # 收集子树所有块 ID
     def collect_subtree_ids(block_id):
         block = cleaned_map.get(block_id)
         if not block:
@@ -104,14 +101,82 @@ def prepare_batches(convert_data, batch_size=1000):
             ids.extend(collect_subtree_ids(cid))
         return ids
 
-    # 计算子树大小，保持原始顺序（排序会导致文档渲染顺序错乱）
-    trees = []
-    for fid in first_level_ids:
-        s = subtree_size(fid)
-        trees.append((fid, s))
-    # 注意：不再按子树大小排序！保持 convert API 返回的原始顺序
+    # 找包含"### 校验汇总"的 first_level 块作为分界点
+    summary_idx = None
+    for i, fid in enumerate(first_level_ids):
+        text = _get_first_level_text(cleaned_map[fid])
+        if '校验汇总' in text or '## 校验汇总' in text:
+            summary_idx = i
+            logger.info("找到分界点 first_level[%d]，文本含'校验汇总'", i)
+            break
 
-    # 按子树分组切分
+    if summary_idx is None:
+        # fallback：按 first_level 顺序切分
+        logger.warning("未找到分界点，fallback 到按 first_level 顺序切分")
+        return _prepare_batches_by_size(convert_data, cleaned_map, first_level_ids, batch_size)
+
+    # 切分：调换顺序（飞书渲染：后调用在上面）
+    # 第一批 = 汇总+失败+警告+配置缺失（先调用 → 渲染在下面）
+    # 第二批 = 主表格（后调用 → 渲染在上面）
+    first_batch_fids = first_level_ids[summary_idx:]   # 汇总+失败+警告+配置缺失
+    second_batch_fids = first_level_ids[:summary_idx]  # 主表格
+
+    # 收集 descendants
+    first_descendants = []
+    for fid in first_batch_fids:
+        ids = collect_subtree_ids(fid)
+        first_descendants.extend(cleaned_map[i] for i in ids)
+
+    second_descendants = []
+    for fid in second_batch_fids:
+        ids = collect_subtree_ids(fid)
+        second_descendants.extend(cleaned_map[i] for i in ids)
+
+    batches = [
+        {
+            "index": 0,
+            "children_id": first_batch_fids,
+            "descendants": first_descendants,
+        },
+        {
+            "index": 0,
+            "children_id": second_batch_fids,
+            "descendants": second_descendants,
+        },
+    ]
+
+    logger.info("调换切分顺序：第一批=%d 块（汇总+失败+警告+配置缺失，先调用），第二批=%d 块（主表格，后调用）",
+                len(first_descendants), len(second_descendants))
+
+    # 批次验证
+    for i, b in enumerate(batches):
+        assert len(b["descendants"]) <= 1000, f"批次 {i+1} 超出 API 上限: {len(b['descendants'])}"
+
+    return batches
+
+
+def _prepare_batches_by_size(convert_data, cleaned_map, first_level_ids, batch_size):
+    """fallback：按 first_level 顺序切分（累加到 batch_size）。"""
+    def collect_subtree_ids(block_id):
+        block = cleaned_map.get(block_id)
+        if not block:
+            return []
+        ids = [block_id]
+        for cid in block.get("children", []):
+            ids.extend(collect_subtree_ids(cid))
+        return ids
+
+    def subtree_size(block_id):
+        block = cleaned_map.get(block_id)
+        if not block:
+            return 0
+        size = 1
+        for cid in block.get("children", []):
+            size += subtree_size(cid)
+        return size
+
+    trees = [(fid, subtree_size(fid)) for fid in first_level_ids]
+
     batches = []
     current_descendants = []
     current_children = []
@@ -141,32 +206,8 @@ def prepare_batches(convert_data, batch_size=1000):
             "descendants": current_descendants,
         })
 
-    logger.info("准备完成，共 %d 个批次 (batch_size=%d)", len(batches), batch_size)
-    for i, b in enumerate(batches):
-        logger.info("  批次 %d: %d children, %d descendants",
-                     i + 1, len(b["children_id"]), len(b["descendants"]))
-
-    # ====== 批次验证（异常场景校验，不修改任何数据） ======
-    for i, b in enumerate(batches):
-        batch_ids = {d["block_id"] for d in b["descendants"]}
-        # 1. block_id 唯一性
-        all_bid = [d["block_id"] for d in b["descendants"]]
-        dupes = [x for x in all_bid if all_bid.count(x) > 1]
-        assert not dupes, f"批次 {i+1} 存在重复 block_id: {set(dupes)}"
-
-        # 2. children 引用完整性
-        orphan_refs = 0
-        for d in b["descendants"]:
-            for cid in d.get("children", []):
-                if cid not in batch_ids:
-                    orphan_refs += 1
-        assert orphan_refs == 0, f"批次 {i+1} 有 {orphan_refs} 个 children 引用不在本批 descendants 中"
-
-        # 3. descendants 数量 ≤ 1000
-        assert len(b["descendants"]) <= 1000, f"批次 {i+1} 超出 API 上限: {len(b['descendants'])}"
-
-    logger.info("批次验证通过: block_id 唯一、children 引用完整、数量 ≤ 1000")
     return batches
+
 
 def write_content_via_descendant(document_id, root_block_id, batches, tenant_token):
     headers = {

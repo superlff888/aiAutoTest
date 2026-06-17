@@ -65,6 +65,19 @@ def build_card(
 
     center_md = "\n\n".join(center_lines)
 
+    # 汇总区增 2 个字段（warn_count / config_missing_count），用 .get 兜底
+    warn_count = result.get("warn_count", 0)
+    config_missing_count = result.get("config_missing_count", 0)
+    summary_parts = [
+        f"**✅ 通过**：{result['pass_count']}",
+        f"**❌ 失败**：{result['fail_count']}",
+    ]
+    if warn_count > 0:
+        summary_parts.append(f"**⚠️ 警告**：{warn_count}")
+    if config_missing_count > 0:
+        summary_parts.append(f"**⚙️ 配置缺失**：{config_missing_count}")
+    summary_text = "  ".join(summary_parts)
+
     card = {
         "config": {"wide_screen_mode": True},
         "header": {
@@ -80,7 +93,7 @@ def build_card(
                 "tag": "div",
                 "text": {
                     "tag": "lark_md",
-                    "content": f"**✅ 通过**：{result['pass_count']}  **❌ 失败**：{result['fail_count']}",
+                    "content": summary_text,
                 },
             },
             {"tag": "hr"},
