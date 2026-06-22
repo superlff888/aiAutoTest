@@ -6,7 +6,7 @@
       "Bash(gh api GET *)",
       "Bash(python -c *.claude/skills/*/scripts/config.json*)",
       "Bash(powershell -Command 'Start-ScheduledTask -TaskName *')",
-      "Bash(powershell.exe -Command \"Start-ScheduledTask -TaskName 'RPA Data Check Daily'\")",
+      "Bash(powershell.exe -Command \"Start-ScheduledTask -TaskName *\")",
       "Bash(.venv/Scripts/python.exe .claude/skills/prod-rpa-checker/run_check.py --connection prod)",
       "Bash(tail -*)",
       "Bash(ls *)",
@@ -15,7 +15,8 @@
       "Bash(wc -*)",
       "Bash(head -*)",
       "Bash(cat *)",
-      "Bash(grep *)"
+      "Bash(grep *)",
+      "Bash(python .claude/skills/prod-rpa-checker/run_check.py *)"
     ]
   }
 }
