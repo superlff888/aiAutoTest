@@ -109,3 +109,30 @@
 2026-06-03 20:42:01,638 - lightrag - INFO - Successfully finalized 12 storages
 2026-06-03 20:42:01,639 - uvicorn.error - INFO - Application shutdown complete.
 2026-06-03 20:42:01,640 - uvicorn.error - INFO - Finished server process [18624]
+2026-06-23 23:12:46,910 - lightrag - INFO - Ollama LLM Options: {}
+2026-06-23 23:12:46,911 - lightrag - INFO - Ollama Embedding Options: {}
+2026-06-23 23:12:48,281 - lightrag - INFO - Embedding config: binding=ollama model=None embedding_dim=1024 max_token_size=8192
+2026-06-23 23:12:48,282 - lightrag - INFO - Send embedding dimension: False by env var (dimensions=1024, has_param=True, binding=ollama)
+2026-06-23 23:12:48,282 - lightrag - INFO - Embedding max_token_size: 8192 (from ollama provider default)
+2026-06-23 23:12:48,282 - lightrag - INFO - Reranking is disabled
+2026-06-23 23:12:48,963 - lightrag - INFO - [] Created new empty graph file: E:\AI\pythonProject\aiAutoTest\rag\rag_storage\graph_chunk_entity_relation.graphml
+2026-06-23 23:12:49,149 - lightrag - INFO - WebUI assets mounted at /webui
+2026-06-23 23:12:49,239 - uvicorn.error - INFO - Started server process [30000]
+2026-06-23 23:12:49,240 - uvicorn.error - INFO - Waiting for application startup.
+2026-06-23 23:12:49,242 - lightrag - INFO - [] Process 30000 KV load full_docs with 0 records
+2026-06-23 23:12:49,242 - lightrag - INFO - [] Process 30000 KV load text_chunks with 0 records
+2026-06-23 23:12:49,242 - lightrag - INFO - [] Process 30000 KV load full_entities with 0 records
+2026-06-23 23:12:49,242 - lightrag - INFO - [] Process 30000 KV load full_relations with 0 records
+2026-06-23 23:12:49,243 - lightrag - INFO - [] Process 30000 KV load entity_chunks with 0 records
+2026-06-23 23:12:49,243 - lightrag - INFO - [] Process 30000 KV load relation_chunks with 0 records
+2026-06-23 23:12:49,244 - lightrag - INFO - [] Process 30000 KV load llm_response_cache with 0 records
+2026-06-23 23:12:49,244 - lightrag - INFO - [] Process 30000 doc status load doc_status with 0 records
+2026-06-23 23:12:49,245 - uvicorn.error - INFO - Application startup complete.
+2026-06-23 23:12:49,245 - uvicorn.error - INFO - Uvicorn running on http://0.0.0.0:9621 (Press CTRL+C to quit)
+2026-06-23 23:13:01,267 - uvicorn.access - INFO - 127.0.0.1:41002 - "GET /docs HTTP/1.1" 200
+2026-06-23 23:13:01,573 - uvicorn.access - INFO - 127.0.0.1:41002 - "GET /openapi.json HTTP/1.1" 200
+2026-06-23 23:13:12,546 - uvicorn.access - INFO - 127.0.0.1:26701 - "GET / HTTP/1.1" 307
+2026-06-23 23:13:12,575 - uvicorn.access - INFO - 127.0.0.1:26701 - "GET /webui HTTP/1.1" 307
+2026-06-23 23:13:13,161 - uvicorn.access - INFO - 127.0.0.1:51318 - "GET /auth-status HTTP/1.1" 200
+2026-06-23 23:13:13,568 - uvicorn.access - INFO - 127.0.0.1:51318 - "GET /docs HTTP/1.1" 200
+2026-06-23 23:13:13,675 - uvicorn.access - INFO - 127.0.0.1:51318 - "GET /openapi.json HTTP/1.1" 200

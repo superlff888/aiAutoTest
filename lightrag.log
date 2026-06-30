@@ -36,3 +36,46 @@
 2026-06-15 00:06:11,816 - uvicorn.access - INFO - 127.0.0.1:41709 - "GET /openapi.json HTTP/1.1" 200
 2026-06-15 00:06:41,525 - uvicorn.access - INFO - 127.0.0.1:58447 - "GET /docs HTTP/1.1" 200
 2026-06-15 00:06:41,697 - uvicorn.access - INFO - 127.0.0.1:58447 - "GET /openapi.json HTTP/1.1" 200
+2026-06-23 23:08:09,005 - lightrag - INFO - OpenAI LLM Options: {}
+2026-06-23 23:08:09,786 - lightrag - INFO - Embedding config: binding=openai model=Qwen/Qwen3-Embedding-8B embedding_dim=4096 max_token_size=8192
+2026-06-23 23:08:09,786 - lightrag - INFO - Send embedding dimension: False by env var (dimensions=4096, has_param=True, binding=openai)
+2026-06-23 23:08:09,786 - lightrag - INFO - Embedding max_token_size: 8192 (from env variable)
+2026-06-23 23:08:09,786 - lightrag - INFO - Reranking is disabled
+2026-06-23 23:09:21,005 - lightrag - INFO - [Rag1000] Created new empty graph file: E:\AI\pythonProject\aiAutoTest\light-rag\rag_storage\Rag1000\graph_chunk_entity_relation.graphml
+2026-06-23 23:09:21,132 - lightrag - INFO - WebUI assets mounted at /webui
+2026-06-23 23:09:21,194 - uvicorn.error - INFO - Started server process [1760]
+2026-06-23 23:09:21,194 - uvicorn.error - INFO - Waiting for application startup.
+2026-06-23 23:09:21,195 - lightrag - INFO - [Rag1000] Process 1760 KV load full_docs with 0 records
+2026-06-23 23:09:21,196 - lightrag - INFO - [Rag1000] Process 1760 KV load text_chunks with 0 records
+2026-06-23 23:09:21,196 - lightrag - INFO - [Rag1000] Process 1760 KV load full_entities with 0 records
+2026-06-23 23:09:21,197 - lightrag - INFO - [Rag1000] Process 1760 KV load full_relations with 0 records
+2026-06-23 23:09:21,197 - lightrag - INFO - [Rag1000] Process 1760 KV load entity_chunks with 0 records
+2026-06-23 23:09:21,198 - lightrag - INFO - [Rag1000] Process 1760 KV load relation_chunks with 0 records
+2026-06-23 23:09:21,198 - lightrag - INFO - [Rag1000] Process 1760 KV load llm_response_cache with 0 records
+2026-06-23 23:09:21,198 - lightrag - INFO - [Rag1000] Process 1760 doc status load doc_status with 0 records
+2026-06-23 23:09:21,198 - uvicorn.error - INFO - Application startup complete.
+2026-06-23 23:09:21,199 - uvicorn.error - INFO - Uvicorn running on http://0.0.0.0:9621 (Press CTRL+C to quit)
+2026-06-23 23:09:23,725 - uvicorn.access - INFO - 127.0.0.1:22227 - "GET / HTTP/1.1" 307
+2026-06-23 23:09:23,729 - uvicorn.access - INFO - 127.0.0.1:22227 - "GET /webui HTTP/1.1" 307
+2026-06-23 23:09:23,807 - uvicorn.access - INFO - 127.0.0.1:22227 - "GET /webui/assets/index-Cmfh6eB3.js HTTP/1.1" 200
+2026-06-23 23:09:23,809 - uvicorn.access - INFO - 127.0.0.1:17572 - "GET /webui/assets/chunk-Dlc7tRH4.js HTTP/1.1" 200
+2026-06-23 23:09:23,815 - uvicorn.access - INFO - 127.0.0.1:17572 - "GET /webui/assets/index-Dbwgayzd.css HTTP/1.1" 200
+2026-06-23 23:09:23,824 - uvicorn.access - INFO - 127.0.0.1:17572 - "GET /webui/assets/path-BmDdnQs8.js HTTP/1.1" 200
+2026-06-23 23:09:23,833 - uvicorn.access - INFO - 127.0.0.1:17572 - "GET /webui/assets/array-DA6v84qs.js HTTP/1.1" 200
+2026-06-23 23:09:23,839 - uvicorn.access - INFO - 127.0.0.1:17572 - "GET /webui/assets/katex-BX7meHaV.js HTTP/1.1" 200
+2026-06-23 23:09:23,852 - uvicorn.access - INFO - 127.0.0.1:17572 - "GET /webui/assets/_createAssigner-CdflnHPZ.js HTTP/1.1" 200
+2026-06-23 23:09:23,859 - uvicorn.access - INFO - 127.0.0.1:17572 - "GET /webui/assets/rough.esm-ezLMvHwD.js HTTP/1.1" 200
+2026-06-23 23:09:24,293 - uvicorn.access - INFO - 127.0.0.1:17572 - "GET /webui/favicon.png HTTP/1.1" 200
+2026-06-23 23:09:24,304 - uvicorn.access - INFO - 127.0.0.1:17572 - "GET /auth-status HTTP/1.1" 200
+2026-06-23 23:09:24,771 - uvicorn.access - INFO - 127.0.0.1:22227 - "GET /webui/assets/rehype-katex-BX5VrZeK.js HTTP/1.1" 200
+2026-06-23 23:09:24,895 - uvicorn.access - INFO - 127.0.0.1:22227 - "GET /docs HTTP/1.1" 200
+2026-06-23 23:09:24,947 - uvicorn.access - INFO - 127.0.0.1:17572 - "GET /static/swagger-ui/swagger-ui-bundle.js HTTP/1.1" 200
+2026-06-23 23:09:24,948 - uvicorn.access - INFO - 127.0.0.1:22227 - "GET /static/swagger-ui/swagger-ui.css HTTP/1.1" 200
+2026-06-23 23:09:25,262 - uvicorn.access - INFO - 127.0.0.1:17572 - "GET /openapi.json HTTP/1.1" 200
+2026-06-23 23:09:36,560 - uvicorn.access - INFO - 127.0.0.1:13049 - "GET /openapi.json HTTP/1.1" 200
+2026-06-23 23:09:36,672 - uvicorn.access - INFO - 127.0.0.1:13049 - "GET /favicon.ico HTTP/1.1" 404
+2026-06-23 23:11:57,127 - uvicorn.error - INFO - Shutting down
+2026-06-23 23:11:57,237 - uvicorn.error - INFO - Waiting for application shutdown.
+2026-06-23 23:11:57,238 - lightrag - INFO - Successfully finalized 12 storages
+2026-06-23 23:11:57,238 - uvicorn.error - INFO - Application shutdown complete.
+2026-06-23 23:11:57,239 - uvicorn.error - INFO - Finished server process [1760]
