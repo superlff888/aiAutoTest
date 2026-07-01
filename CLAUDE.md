@@ -106,3 +106,53 @@ START -> 用例生成 -> 用例评审 (并行 Send) -> 覆盖率检查
 ### 测试
 
 项目未配置自动化测试框架。验证方式为直接运行脚本并观察控制台输出。
+
+## aiAutoTester 技能规范
+
+### 目录约定
+
+```
+.claude/
+├── skills/aiAutoTester/                    # 技能代码（SKILL.md + scripts/）
+│   ├── 01requirement-splitter/SKILL.md     # 需求拆分（纯 AI Agent，无脚本）
+│   ├── 02testpoint-extractor/SKILL.md      # 测试点提取（纯 AI Agent，无脚本）
+│   ├── 03testpoint-reviewer/SKILL.md       # 测试点评审（纯 AI Agent，无脚本）
+│   └── 04testcase-exporter/
+│       ├── SKILL.md                        # 用例设计 + Excel 导出
+│       └── scripts/_pipeline.py            # 唯一需要脚本的技能（阶段3→4→5）
+└── output/aiAutoTester/                    # 统一产物输出目录
+    └── {项目名}/
+        └── 06_testcase_export/             # 最终 Excel 交付物
+```
+
+### 关键规则
+
+1. **统一输出目录**：所有技能产物输出到 `.claude/output/{技能名}/{项目名}/`，禁止输出到项目根目录或其他位置
+2. **代码与产物分离**：`skills/` 下只放 SKILL.md 和 `scripts/`，不放生成的 JSON/Excel 等数据文件
+3. **脚本存放规范**：技能的可执行脚本统一放在对应子技能的 `scripts/` 目录下
+4. **流水线自动清理**：`_pipeline.py` 执行完成后自动清理中间产物（`03_requirements/`、`04_testpoints/`、`05_testpoint_review/`），仅保留 `06_testcase_export/` 下的最终 Excel
+
+### 执行流程
+
+```
+需求文档 (PDF/Word/PPT/md)
+    ↓ 阶段1: requirement-splitter (AI Agent)
+    ↓   输出: 03_requirements/{章节}/requirements.json
+    ↓ 阶段2: testpoint-extractor (AI Agent)
+    ↓   输出: 04_testpoints/{章节}/testpoints.json
+    ↓ 阶段3-5: _pipeline.py (脚本)
+    ↓   测试点提取 → 覆盖率评审 → 用例设计 + Excel 导出
+    ↓   输出: 06_testcase_export/{项目名}_测试用例_{日期}.xlsx
+    ↓   自动清理: 03/ 04/ 05/ 中间目录
+```
+
+### 项目类型识别
+
+支持自动识别以下项目类型，激活对应检查清单：
+
+| 项目类型 | 识别关键词 | 检查清单 |
+|----------|-----------|---------|
+| API/协议类 | OCPI、HTTP、接口、REST、API | 接口覆盖度检查 |
+| 跨境/跨区域 | 跨境、香港、澳门、海外、多语言 | 跨境场景检查 |
+| 支付/金融 | 支付、结算、对账、发票、税务 | 金融合规检查 |
+| 电力交易 | 电力交易、售电、购电、电价、负荷、出清 | 电力交易场景检查（12项） |

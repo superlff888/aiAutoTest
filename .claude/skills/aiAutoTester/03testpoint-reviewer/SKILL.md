@@ -38,12 +38,12 @@ required\_variables:
 | ------------------- | ---- | -------------- |
 | `testpoints_json`   | path | 测试点 JSON 文件路径  |
 | `requirements_json` | path | 原始需求 JSON 文件路径 |
-| `output_dir`        | path | 输出目录路径         |
+| `output_dir`        | path | 输出目录路径（默认：`.claude/output/aiAutoTester/`） |
 
 ### 2.2 期望的输入目录结构
 
 ```
-{output_dir}/
+.claude/output/aiAutoTester/          # output_dir 默认值
 ├── {项目名称}/
 │   ├── 03_requirements/
 │   │   ├── 01_{章节编号}_{章节名}/

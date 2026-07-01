@@ -3,7 +3,7 @@ name: testpoint-extractor
 description: 测试点提取技能 - 读取需求JSON和关联图片,提取需求中所有测试点。集成项目类型识别（API/跨境/金融/电力交易）、接口覆盖度、跨境场景、电力交易场景、P0冒烟、负面测试点、性能专项、标题校验等能力。
 required_variables:
   - requirements_json  # 输入的需求JSON文件路径
-  - output_dir        # 输出目录路径
+  - output_dir        # 输出目录路径（默认：`.claude/output/aiAutoTester/`）
 
 ---
 
@@ -75,7 +75,7 @@ required_variables:
 ### 2.2 期望的输入目录结构
 
 ```
-{output_dir}/
+.claude/output/aiAutoTester/          # output_dir 默认值
 ├── {项目名称}/
 │   ├── 03_requirements/
 │   │   ├── 01_{章节编号}_{章节名}/
@@ -525,7 +525,7 @@ TP-{章节编号}-{需求序号:3位}-{测试点序号:3位}
 跨境覆盖度 = 已覆盖跨境场景数 / 应覆盖跨境场景数 × 100%
 
 if 覆盖度 < 80%:
-    生成 test-case/gap-analysis.md 差距分析报告
+    生成 .claude/output/aiAutoTester/gap-analysis.md 差距分析报告
     输出告警:"覆盖度仅 XX%,建议补充 XX 模块"
 else:
     输出 "覆盖度检查通过"

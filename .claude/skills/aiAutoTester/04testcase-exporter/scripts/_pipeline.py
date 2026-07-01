@@ -6,7 +6,7 @@ aiAutoTester 流水线 - 阶段3→4→5
 
 前提：项目目录下已有 03_requirements/ 各章 requirements.json
 用法：python3 _pipeline.py <项目目录>
-例：python3 _pipeline.py /path/to/test-case/太乙111
+例：python3 _pipeline.py .claude/output/aiAutoTester/太乙111
 """
 
 import sys, os, re, json, shutil
@@ -913,7 +913,7 @@ def export_excel(project_dir):
     filename = f"{os.path.basename(project_dir)}_测试用例_{today}.xlsx"
     filepath = os.path.join(export_base, filename)
     wb.save(filepath)
-    print(f"\n✅ Excel 已保存: {filepath}")
+    print(f"\n[OK] Excel 已保存: {filepath}")
     print(f"   总测试用例数: {len(all_tps)}")
     return filepath
 
@@ -922,7 +922,7 @@ def export_excel(project_dir):
 def main():
     if len(sys.argv) < 2:
         print("用法: python3 _pipeline.py <项目目录>")
-        print("例: python3 _pipeline.py /path/to/test-case/太乙111")
+        print("例: python3 _pipeline.py .claude/output/aiAutoTester/太乙111")
         sys.exit(1)
 
     project_dir = sys.argv[1]
@@ -938,7 +938,7 @@ def main():
     export_base = os.path.join(project_dir, "06_testcase_export")
 
     # 清理中间产物
-    print("\n🧹 清理中间产物...")
+    print("\n[CLEAR] 清理中间产物...")
     # 06_testcase_export 下的 .md 文件
     if os.path.isdir(export_base):
         for f in os.listdir(export_base):
@@ -956,7 +956,7 @@ def main():
             os.remove(fp)
             print(f"  删除: {f}")
 
-    print(f"\n🎉 流水线完成！")
+    print(f"\n[DONE] 流水线完成！")
 
 if __name__ == "__main__":
     main()
