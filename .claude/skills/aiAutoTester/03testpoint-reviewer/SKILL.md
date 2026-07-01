@@ -1,14 +1,11 @@
-***
-
+---
 name: testpoint-reviewer
 description: 测试点评审技能 - 对提取的测试点进行质量评审。集成去重合并、标题校验、负面测试点检查、P0专项评审、覆盖度差距分析等能力。
-required\_variables:
-
-- testpoints\_json    # 待评审的测试点JSON文件路径
-- requirements\_json  # 原始需求JSON文件路径（用于对照评审）
-- output\_dir         # 输出目录路径
-
-***
+required_variables:
+  - testpoints_json    # 待评审的测试点JSON文件路径
+  - requirements_json  # 原始需求JSON文件路径（用于对照评审）
+  - output_dir         # 输出目录路径
+---
 
 # 测试点评审技能 (Testpoint Reviewer)
 
@@ -90,6 +87,9 @@ required\_variables:
 □ 边界条件是否充分覆盖？（如最大/最小值、空值、临界值）
 □ 异常场景是否覆盖？（如错误输入、系统异常）
 □ 特殊路径是否覆盖？（如改期、退票、取消）
+□ 【同层级分组覆盖】同一分析维度下的所有子项文本是否都被测试点覆盖？
+□ 【图文对应】关联图片中的界面元素是否与文本中的子项描述一一对应？
+□ 【图片覆盖】每张关联图片是否至少有一个 UIT 类型测试点？
 ```
 
 ### 4.2 准确性检查（Accuracy）
@@ -143,8 +143,12 @@ required\_variables:
    - 准确性：是否准确反映需求？
    - 可执行性：步骤是否清晰可执行？
    - 一致性：与需求描述是否一致？
-4. 识别问题并分类（CRITICAL/IMPORTANT/MINOR）
-5. 提出具体改进建议
+4. 【同层级分组检查】对于包含多个子项文本+关联图片的需求单元：
+   - 验证同一分析维度下的每个子项文本是否都有对应测试点
+   - 验证图片中的界面元素是否与文本子项一一对应
+   - 若发现某个子项文本未被任何测试点覆盖，标记为 IMPORTANT
+5. 识别问题并分类（CRITICAL/IMPORTANT/MINOR）
+6. 提出具体改进建议
 
 ## 输出格式
 
@@ -427,6 +431,7 @@ required\_variables:
 
 3. 执行评审（按维度）
    ├── 完整性评审：对照验收标准检查覆盖率
+   ├── 同层级分组评审：检查同一分析维度下所有子项文本+图片是否被完整覆盖
    ├── 准确性评审：检查描述一致性
    ├── 可执行性评审：检查步骤清晰度
    ├── 一致性评审：检查格式和分类
@@ -466,20 +471,23 @@ required\_variables:
 │                        Skill 协作流程                                 │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                     │
-│  1. requirement-splitter (拆分)                                     │
+│  1. requirement-splitter (解析 + 拆分)                              │
+│     文档 PDF/Word/PPT/md → 需求拆分 → JSON需求文档 + 关联图片       │
 │     输出：03_requirements/                                          │
 │                                                                     │
-│  2. testpoint-extractor (提取 + 校验)                               │
-│     读取：03_requirements/                                          │
-│     能力：项目类型识别、接口覆盖、跨境场景、电力交易场景、P0冒烟、性能专项  │
-│     校验：标题规范、覆盖度自检、负面测试点                            │
-│     输出：04_testpoints/  ──────────────┐                           │
-│                                         │                           │
-│  3. testpoint-reviewer (评审)  ◄────────┘                           │
-│     评审：四维评审 → 去重合并 → 标题校验 → 负面检查 → P0专项         │
-│     输出：05_testpoint_review/ ──────────┐                          │
-│                                          │                          │
-│  4. testcase-exporter (导出)  ◄──────────┘                          │
+│  2. testpoint-extractor (提取)                                      │
+│     读取：03_requirements/ + images/                                │
+│     输出：04_testpoints/                                            │
+│                                                                     │
+│  3. testpoint-reviewer (评审)                                       │
+│     读取：04_testpoints/ + 03_requirements/                         │
+│     评审：四维评审 → 同层级分组检查 → 去重合并 → 标题校验           │
+│           → 负面检查 → P0专项                                  │
+│     输出：05_testpoint_review/ + improved_testpoints.json           │
+│                                                                     │
+│  4. testcase-exporter (用例设计 + 导出)                             │
+│     读取：05_testpoint_review/improved_testpoints.json              │
+│     脚本：scripts/_pipeline.py（用例设计富化 + Excel导出）          │
 │     输出：06_testcase_export/ {项目名}_测试用例_*.xlsx               │
 │                                                                     │
 └─────────────────────────────────────────────────────────────────────┘
