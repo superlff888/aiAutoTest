@@ -163,11 +163,11 @@ required_variables:
     "total_requirements": 10
   },
   "summary": {
-    "coverage_score": 95,        // 覆盖率得分 (0-100)
-    "accuracy_score": 90,        // 准确度得分 (0-100)
-    "executability_score": 88,   // 可执行性得分 (0-100)
-    "consistency_score": 92,     // 一致性得分 (0-100)
-    "overall_score": 91          // 综合得分 (0-100)
+    "coverage_score": 95,
+    "accuracy_score": 90,
+    "executability_score": 88,
+    "consistency_score": 92,
+    "overall_score": 91
   },
   "issues": [
     {
@@ -179,7 +179,7 @@ required_variables:
       "issue_type": "缺失验收标准覆盖",
       "description": "需求REQ-5622-001有3个验收标准，但测试点只覆盖了2个",
       "affected_criteria": "{验收标准名称}边界条件",
-      "recommendation": "补充测试点：验证{条件}时是否不回收",
+      "recommendation": "补充测试点：验证{边界条件}时是否不回收",
       "suggested_fix": {
         "testpoint_name": "验证{边界条件}时不回收",
         "test_type": "FT",
@@ -200,26 +200,23 @@ required_variables:
     }
   ]
 }
-````
-
 ```
+````
 
 ---
 
 ## 6. 输出目录规范
 
 ```
-
-{output\_dir}/
+{output_dir}/
 └── {项目名称}/
-└── 05\_testpoint\_review/           # 评审报告目录（新增）
-├── {章节编号}_{章节名}/
-│   ├── review\_report.json     # 评审报告
-│   └── improved\_testpoints.json # 改进后的测试点（可选）
-├── review\_summary.json          # 全局评审汇总
-└── README.md                   # 评审索引
-
-````
+    └── 05_testpoint_review/           # 评审报告目录
+        ├── {章节编号}_{章节名}/
+        │   ├── review_report.json     # 评审报告
+        │   └── improved_testpoints.json # 改进后的测试点（可选）
+        ├── review_summary.json          # 全局评审汇总
+        └── README.md                   # 评审索引
+```
 
 ---
 
@@ -338,12 +335,12 @@ required_variables:
 
 **标题模板**：
 ```
-[P 优先级] 验证 + [具体场景/页面] + [关键条件/输入] + [预期结果关键词]
+[P0-重要紧急/P1-重要不紧急/P2-紧急不重要/P3-不紧急不重要] 验证 + [具体场景/页面] + [关键条件/输入] + [预期结果关键词]
 ```
 
 **正则表达式校验**：
 ```regex
-^\[P[0-3]\] 验证.+ (页面 | 接口 | 场景 | 功能 | 服务).+ (显示 | 展示 | 处理 | 校验 | 锁定 | 禁止 | 扣费 | 同步 | 查询).+$
+^\[P[0-3]-(重要紧急|重要不紧急|紧急不重要|不紧急不重要)\] 验证.+ (页面 | 接口 | 场景 | 功能 | 服务).+ (显示 | 展示 | 处理 | 校验 | 锁定 | 禁止 | 扣费 | 同步 | 查询).+$
 ```
 
 **检查规则**：
