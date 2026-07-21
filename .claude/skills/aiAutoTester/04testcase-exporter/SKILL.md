@@ -1,6 +1,8 @@
 ---
 name: testcase-exporter
 description: 用例设计 + Excel导出技能 - 读取 testpoint-reviewer 产出的改进测试点，富化为可执行测试用例（推导具体步骤/数据），导出为标准Excel。内置 `scripts/_pipeline.py` 脚本一键完成用例设计+导出。
+required_variables:
+  - project_dir  # 项目目录路径（包含 05_testpoint_review/）
 ---
 
 # 用例设计 + 导出技能 (Testcase Exporter)

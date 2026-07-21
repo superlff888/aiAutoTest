@@ -387,7 +387,7 @@ required_variables:
 
 **如果无法提取testable\_elements，该需求应标记为"非功能需求"或跳过**。
 
-#### 4.3.6 一致性校验
+#### 4.3.7 一致性校验
 
 完成拆分后必须校验：
 
@@ -711,9 +711,8 @@ cp "workspace/source/output/mineru_doc/{项目名称}_{hash}/{图片文件名}.p
    ├── 【重要】校验每个需求的testable_elements字段完整
    └── 如有不一致，报错并列出具体问题
 
-7. 生成汇总
+6. 生成汇总
    ├── 生成各章节 requirements.json
-
    └── 输出执行报告
 ```
 
