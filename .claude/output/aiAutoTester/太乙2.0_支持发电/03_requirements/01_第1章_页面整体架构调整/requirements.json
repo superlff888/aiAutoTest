@@ -1,0 +1,527 @@
+{
+  "chapter": {
+    "chapter_number": 1,
+    "chapter_title": "页面整体架构调整",
+    "total_requirements": 14
+  },
+  "modules": [
+    {
+      "module_name": "租户入驻管理",
+      "requirement_count": 4,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH1-001",
+          "requirement_name": "租户入驻新增发电侧平台选择",
+          "type": "功能需求 (FR)",
+          "module": "租户入驻管理",
+          "chapter": 1,
+          "source_page": "第 1-2 页",
+          "description": "管理员可以在租户入驻页面的开通平台栏中新增发电侧选项，通过单选按钮选择平台类型",
+          "testable_elements": {
+            "trigger": "进入租户入驻页面的开通平台栏",
+            "inputs": ["单选按钮选项：发电侧、用户侧、售电侧、发电侧+售电侧"],
+            "action": "选择平台类型单选按钮",
+            "expected_output": "成功选择对应的平台类型，系统按所选类型展示对应功能",
+            "verification_points": [
+              "单选按钮包含发电侧、用户侧、售电侧、发电侧+售电侧四个选项",
+              "原'交易侧'已更名为'售电侧'",
+              "选择后系统正确切换至对应平台视角"
+            ]
+          },
+          "detailed_description": "租户入驻新增功能界面开通平台栏功能增加发电侧。\n\n- 单选按钮：发电侧、用户侧、售电侧、发电侧+售电侧四个按钮。\n- '交易侧'改为'售电侧'。",
+          "acceptance_criteria": [
+            "开通平台栏显示发电侧、用户侧、售电侧、发电侧+售电侧四个单选按钮",
+            "原'交易侧'文字已更改为'售电侧'",
+            "选择发电侧后系统正确展示发电侧功能界面",
+            "选择发电侧+售电侧后系统同时展示发电侧和售电侧功能"
+          ],
+          "related_images": [
+            {
+              "filename": "tenant_platform_select.png",
+              "description": "租户入驻开通平台栏界面截图，展示发电侧等单选按钮",
+              "path": "images/tenant_platform_select.png"
+            }
+          ],
+          "source_paragraphs": ["Para-001-001"]
+        },
+        {
+          "requirement_id": "REQ-CH1-002",
+          "requirement_name": "系统角色权限管理按身份分类",
+          "type": "功能需求 (FR)",
+          "module": "租户入驻管理",
+          "chapter": 1,
+          "source_page": "第 2 页",
+          "description": "管理员可以在权限管理中将系统角色按身份分类定义，超级管理员身份的菜单权限进行隔离",
+          "testable_elements": {
+            "trigger": "进入系统角色权限管理页面",
+            "inputs": ["角色身份分类信息", "超级管理员菜单权限配置"],
+            "action": "按角色身份分类定义权限管理",
+            "expected_output": "不同身份角色展示对应权限菜单，超级管理员菜单权限隔离正确",
+            "verification_points": [
+              "系统角色按身份分类展示",
+              "超级管理员菜单权限隔离正确，仅显示有权限的菜单",
+              "不同身份角色看到不同的菜单项"
+            ]
+          },
+          "detailed_description": "系统角色对应的权限管理按照角色身份分类定义。超级管理员身份的菜单权限进行隔离。",
+          "acceptance_criteria": [
+            "系统角色按身份分类展示权限管理界面",
+            "超级管理员登录后仅展示被授权的菜单项",
+            "不同身份角色无法看到未授权的菜单"
+          ],
+          "related_images": [
+            {
+              "filename": "role_permission.png",
+              "description": "系统角色权限管理界面截图，展示按身份分类的权限配置",
+              "path": "images/role_permission.png"
+            }
+          ],
+          "source_paragraphs": ["Para-001-002"]
+        },
+        {
+          "requirement_id": "REQ-CH1-003",
+          "requirement_name": "租户账号权限页面权限控制",
+          "type": "功能需求 (FR)",
+          "module": "租户入驻管理",
+          "chapter": 1,
+          "source_page": "第 2 页",
+          "description": "管理员可以在租户账号权限页面设置可选权限内容，权限内容不超过超级管理员菜单权限",
+          "testable_elements": {
+            "trigger": "进入租户【账号权限】页面",
+            "inputs": ["可选权限内容列表"],
+            "action": "配置账号权限可选内容",
+            "expected_output": "账号权限页面的可选内容不超过超级管理员菜单权限内容",
+            "verification_points": [
+              "账号权限页面展示的可选权限内容范围正确",
+              "可选权限内容≤超级管理员菜单权限内容",
+              "超出超级管理员权限的选项不可选"
+            ]
+          },
+          "detailed_description": "租户【账号权限】页面开放权限内容可选内容 ≤【租户入驻】页面超级管理员菜单权限内容。",
+          "acceptance_criteria": [
+            "账号权限页面展示的可选权限内容不超过超级管理员菜单权限范围",
+            "非超级管理员权限的选项不显示或不可选"
+          ],
+          "related_images": [],
+          "source_paragraphs": ["Para-001-003"]
+        },
+        {
+          "requirement_id": "REQ-CH1-004",
+          "requirement_name": "子账号交易单元权限配置",
+          "type": "功能需求 (FR)",
+          "module": "租户入驻管理",
+          "chapter": 1,
+          "source_page": "第 2-3 页",
+          "description": "管理员可以在租户超级管理员下的子账号分配页面中增加交易单元配置的权限",
+          "testable_elements": {
+            "trigger": "进入租户超级管理员下的子账号分配页面",
+            "inputs": ["交易单元配置权限选项"],
+            "action": "为子账号增加交易单元配置权限",
+            "expected_output": "子账号获得交易单元配置权限后可操作相关功能",
+            "verification_points": [
+              "子账号分配页面新增交易单元配置权限选项",
+              "分配权限后子账号可访问交易单元配置功能",
+              "未分配权限的子账号无法访问交易单元配置"
+            ]
+          },
+          "detailed_description": "特殊规则：租户超级管理员下的子账号分配页面增加权限配置：交易单元配置。",
+          "acceptance_criteria": [
+            "子账号分配页面显示交易单元配置权限选项",
+            "分配交易单元配置权限后子账号可正常访问该功能",
+            "未分配权限的子账号无法访问交易单元配置"
+          ],
+          "related_images": [
+            {
+              "filename": "sub_account_permission.png",
+              "description": "子账号分配页面界面截图，展示交易单元配置权限选项",
+              "path": "images/sub_account_permission.png"
+            }
+          ],
+          "source_paragraphs": ["Para-001-004"]
+        }
+      ]
+    },
+    {
+      "module_name": "发电侧配置管理",
+      "requirement_count": 1,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH1-005",
+          "requirement_name": "新增发电侧配置页面",
+          "type": "功能需求 (FR)",
+          "module": "发电侧配置管理",
+          "chapter": 1,
+          "source_page": "第 3 页",
+          "description": "管理员可以在平台服务中新增发电侧配置页面，配置交易单元并根据类型关联项目",
+          "testable_elements": {
+            "trigger": "进入平台服务-发电侧配置页面",
+            "inputs": ["交易单元信息", "交易单元类型（集中式光伏/集中式风电/虚拟电厂）", "所属项目信息"],
+            "action": "配置交易单元及关联项目",
+            "expected_output": "交易单元配置成功，根据类型正确关联项目。集中式项目对应一个项目，虚拟电厂可关联多类型项目",
+            "verification_points": [
+              "发电侧配置页面可正常打开",
+              "一个公司可存在多个交易单元",
+              "集中式项目（光伏/风电）交易单元下所属为一个项目",
+              "虚拟电厂交易单元可存在多类型项目",
+              "参与电力市场交易以交易单元为单位参加"
+            ]
+          },
+          "detailed_description": "发电侧配置:先配置交易单元(一个公司可存在多个交易单元),根据交易单元类型,假设为集中式项目,类型为光伏or风电,则交易单元下所属为一个项目。假设为虚拟电厂聚合多类型项目,则可能存在多类型项目。\n\n参与电力市场交易以交易单元为单位参加。",
+          "acceptance_criteria": [
+            "发电侧配置页面正常展示，可配置交易单元",
+            "一个公司可创建多个交易单元",
+            "集中式光伏/风电类型的交易单元仅关联一个项目",
+            "虚拟电厂类型的交易单元可关联多个不同类型的项目",
+            "电力市场交易以交易单元为单位参加"
+          ],
+          "related_images": [
+            {
+              "filename": "generation_config.png",
+              "description": "发电侧配置页面界面截图，展示交易单元配置和项目关联",
+              "path": "images/generation_config.png"
+            }
+          ],
+          "source_paragraphs": ["Para-001-005"]
+        }
+      ]
+    },
+    {
+      "module_name": "顶端菜单栏",
+      "requirement_count": 2,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH1-006",
+          "requirement_name": "顶端菜单栏增加身份和交易单元选择",
+          "type": "功能需求 (FR)",
+          "module": "顶端菜单栏",
+          "chapter": 1,
+          "source_page": "第 3-4 页",
+          "description": "用户可以在顶端菜单栏中通过级联选择器选择身份和交易单元",
+          "testable_elements": {
+            "trigger": "点击顶端菜单栏的身份/交易单元选择区域",
+            "inputs": ["企业", "角色（发电侧/交易侧/用户侧）", "省份", "交易单元"],
+            "action": "按级联顺序选择：企业→角色→省份→交易单元",
+            "expected_output": "选择完成后页面按所选身份和交易单元展示对应内容",
+            "verification_points": [
+              "增加身份选择下拉框，包含交易侧、用户侧、发电侧",
+              "增加交易单元选择下拉框",
+              "选择顺序为：企业→角色→省份→交易单元",
+              "选择后页面正确切换至对应视角"
+            ]
+          },
+          "detailed_description": "增加身份选择（交易侧、用户侧、发电侧）、交易单元选择。选择的顺序为：企业-->角色(发电侧/交易侧/用户侧)-->省份-->交易单元",
+          "acceptance_criteria": [
+            "顶端菜单栏显示身份选择下拉框，包含交易侧、用户侧、发电侧三个选项",
+            "顶端菜单栏显示交易单元选择下拉框",
+            "选择顺序严格按照企业→角色→省份→交易单元级联",
+            "选择发电侧身份后页面展示发电侧相关功能",
+            "选择不同交易单元后页面数据按交易单元过滤"
+          ],
+          "related_images": [
+            {
+              "filename": "top_menu_identity.png",
+              "description": "顶端菜单栏身份选择界面截图",
+              "path": "images/top_menu_identity.png"
+            },
+            {
+              "filename": "top_menu_trading_unit.png",
+              "description": "顶端菜单栏交易单元选择界面截图",
+              "path": "images/top_menu_trading_unit.png"
+            }
+          ],
+          "source_paragraphs": ["Para-001-006"]
+        },
+        {
+          "requirement_id": "REQ-CH1-007",
+          "requirement_name": "菜单栏功能归集至更多",
+          "type": "功能需求 (FR)",
+          "module": "顶端菜单栏",
+          "chapter": 1,
+          "source_page": "第 4 页",
+          "description": "用户可以在顶端菜单栏的'更多'按钮中访问导出记录、语言切换等功能",
+          "testable_elements": {
+            "trigger": "点击顶端菜单栏的'更多'按钮",
+            "inputs": [],
+            "action": "展开更多菜单",
+            "expected_output": "导出记录、语言切换、切换Tabs、皮肤切换功能归集在更多菜单中",
+            "verification_points": [
+              "导出记录功能归集至更多菜单",
+              "语言切换功能归集至更多菜单",
+              "切换Tabs功能归集至更多菜单",
+              "皮肤切换功能归集至更多菜单",
+              "以上功能不再在菜单栏直接展示"
+            ]
+          },
+          "detailed_description": "菜单栏顺序调整及压缩，导出记录、语言切换、切换Tabs、皮肤切换均归集至更多，不再展开展示。",
+          "acceptance_criteria": [
+            "导出记录、语言切换、切换Tabs、皮肤切换不再在菜单栏直接展示",
+            "点击'更多'按钮可看到以上四个功能入口",
+            "各功能从更多菜单中点击可正常使用"
+          ],
+          "related_images": [
+            {
+              "filename": "top_menu_more.png",
+              "description": "菜单栏更多功能展开界面截图",
+              "path": "images/top_menu_more.png"
+            }
+          ],
+          "source_paragraphs": ["Para-001-007"]
+        }
+      ]
+    },
+    {
+      "module_name": "左侧菜单栏管理",
+      "requirement_count": 7,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH1-008",
+          "requirement_name": "左侧菜单栏平台服务下级菜单调整",
+          "type": "功能需求 (FR)",
+          "module": "左侧菜单栏管理",
+          "chapter": 1,
+          "source_page": "第 4-5 页",
+          "description": "用户可以在左侧菜单栏中看到新增的账号与权限菜单和发电侧配置菜单",
+          "testable_elements": {
+            "trigger": "展开左侧菜单栏【平台服务】",
+            "inputs": [],
+            "action": "查看平台服务下级菜单结构",
+            "expected_output": "新增'账号与权限'菜单包含'我的企业'、'系统角色'、'账号权限'；新增'发电侧配置'菜单包含'交易单元配置'",
+            "verification_points": [
+              "新增'账号与权限'菜单",
+              "'我的企业'、'系统角色'、'账号权限'调整至'账号与权限'下",
+              "新增'发电侧配置'菜单",
+              "'发电侧配置'下有子菜单'交易单元配置'"
+            ]
+          },
+          "detailed_description": "【平台服务】下级菜单：\n- 新增菜单'账号与权限'，并将'我的企业'、'系统角色'、'账号权限'调整至'账号与权限'\n- 新增发电侧配置菜单，并在该菜单下配置子菜单'交易单元配置'页面",
+          "acceptance_criteria": [
+            "左侧菜单栏显示'账号与权限'菜单",
+            "'我的企业'、'系统角色'、'账号权限'三个子菜单在'账号与权限'下",
+            "左侧菜单栏显示'发电侧配置'菜单",
+            "'发电侧配置'下有'交易单元配置'子菜单",
+            "点击各菜单可正确跳转对应页面"
+          ],
+          "related_images": [],
+          "source_paragraphs": ["Para-001-008"]
+        },
+        {
+          "requirement_id": "REQ-CH1-009",
+          "requirement_name": "交易单元配置查询功能",
+          "type": "功能需求 (FR)",
+          "module": "左侧菜单栏管理",
+          "chapter": 1,
+          "source_page": "第 5-6 页",
+          "description": "用户可以在交易单元配置页面通过检索条件查询交易单元列表",
+          "testable_elements": {
+            "trigger": "进入交易单元配置页面",
+            "inputs": ["交易单元名称（输入框，引导文案'请输入'）", "交易单元类型（下拉框，枚举值：集中式光伏、集中式风电、虚拟电厂）"],
+            "action": "输入检索条件后点击查询",
+            "expected_output": "交易单元列表按检索条件过滤展示",
+            "verification_points": [
+              "交易单元名称输入框引导文案为'请输入'",
+              "交易单元类型下拉框包含集中式光伏、集中式风电、虚拟电厂三个枚举值",
+              "查询结果正确过滤",
+              "重置按钮点击后恢复默认状态"
+            ]
+          },
+          "detailed_description": "查询功能，有以下两个检索条件：\n- 交易单元名称为输入框，输入框中的引导文案为'请输入'\n- 交易单元类型为下拉框，下拉枚举值为：集中式光伏、集中式风电、虚拟电厂\n- 重置：点击重置，恢复到默认状态\n- 交易单元列表，展示交易单元信息，有新建、查看、修改、删除功能",
+          "acceptance_criteria": [
+            "交易单元名称输入框显示引导文案'请输入'",
+            "交易单元类型下拉框包含集中式光伏、集中式风电、虚拟电厂",
+            "输入条件后查询结果正确过滤",
+            "点击重置按钮恢复默认状态",
+            "交易单元列表正确展示交易单元信息"
+          ],
+          "related_images": [
+            {
+              "filename": "trading_unit_query.png",
+              "description": "交易单元配置查询界面截图，展示检索条件和列表",
+              "path": "images/trading_unit_query.png"
+            }
+          ],
+          "source_paragraphs": ["Para-001-009"]
+        },
+        {
+          "requirement_id": "REQ-CH1-010",
+          "requirement_name": "交易单元配置新建功能",
+          "type": "功能需求 (FR)",
+          "module": "左侧菜单栏管理",
+          "chapter": 1,
+          "source_page": "第 6 页",
+          "description": "用户可以在交易单元配置页面新建交易单元，填写必填项并配置关联项目",
+          "testable_elements": {
+            "trigger": "点击交易单元配置页面的'新建'按钮",
+            "inputs": ["交易单元各字段信息（所有字段可编辑，红色星号为必填项）", "配置项目信息（支持查询、新增和删除）"],
+            "action": "填写交易单元信息并保存",
+            "expected_output": "新建交易单元成功，列表中出现新建的交易单元",
+            "verification_points": [
+              "新建界面所有字段都可编辑",
+              "带红色星号的字段为必填项，未填时提示",
+              "配置项目有查询、新增和删除功能",
+              "保存后交易单元列表中出现新建记录"
+            ]
+          },
+          "detailed_description": "新建功能，新建界面如图所示，所有字段都可编辑，带红色星号的字段为必填项；配置项目有查询、新增和删除功能。",
+          "acceptance_criteria": [
+            "点击新建按钮弹出新建界面",
+            "所有字段可编辑",
+            "必填项（红色星号标记）未填时提交给出提示",
+            "配置项目支持查询、新增和删除功能",
+            "填写完整信息保存后交易单元列表新增成功"
+          ],
+          "related_images": [
+            {
+              "filename": "trading_unit_create.png",
+              "description": "交易单元新建界面截图",
+              "path": "images/trading_unit_create.png"
+            }
+          ],
+          "source_paragraphs": ["Para-001-010"]
+        },
+        {
+          "requirement_id": "REQ-CH1-011",
+          "requirement_name": "交易单元配置查看功能",
+          "type": "功能需求 (FR)",
+          "module": "左侧菜单栏管理",
+          "chapter": 1,
+          "source_page": "第 6 页",
+          "description": "用户可以在交易单元配置页面查看交易单元详情信息，界面不可编辑",
+          "testable_elements": {
+            "trigger": "点击交易单元列表中某条记录的'查看'按钮",
+            "inputs": ["交易单元记录"],
+            "action": "查看交易单元详情",
+            "expected_output": "展示交易单元详细信息，所有字段不可编辑",
+            "verification_points": [
+              "查看界面展示交易单元完整信息",
+              "所有字段不可编辑（只读状态）"
+            ]
+          },
+          "detailed_description": "查看功能，查询界面如图所示，不可编辑",
+          "acceptance_criteria": [
+            "点击查看按钮展示交易单元详细信息",
+            "所有字段为只读状态，不可编辑"
+          ],
+          "related_images": [
+            {
+              "filename": "trading_unit_view.png",
+              "description": "交易单元查看界面截图",
+              "path": "images/trading_unit_view.png"
+            }
+          ],
+          "source_paragraphs": ["Para-001-011"]
+        },
+        {
+          "requirement_id": "REQ-CH1-012",
+          "requirement_name": "交易单元配置修改功能",
+          "type": "功能需求 (FR)",
+          "module": "左侧菜单栏管理",
+          "chapter": 1,
+          "source_page": "第 6 页",
+          "description": "用户可以在交易单元配置页面修改交易单元信息，部分字段不可编辑",
+          "testable_elements": {
+            "trigger": "点击交易单元列表中某条记录的'修改'按钮",
+            "inputs": ["修改后的交易单元信息（市场主体编号和规模不可编辑）", "配置项目信息（支持查询、新增和删除）"],
+            "action": "修改交易单元信息并保存",
+            "expected_output": "修改成功，列表中信息更新。市场主体编号和规模（MW）不可编辑",
+            "verification_points": [
+              "市场主体编号字段不可编辑",
+              "规模（MW）字段不可编辑",
+              "其他字段可编辑修改",
+              "带红色星号的字段为必填项",
+              "配置项目有查询、新增和删除功能",
+              "保存后列表信息更新正确"
+            ]
+          },
+          "detailed_description": "修改功能，市场主体编号、规模（MW）不可编辑，其他均可编辑修改，其他带红色星号的字段为必填项；配置项目有查询、新增和删除功能。",
+          "acceptance_criteria": [
+            "点击修改按钮进入修改界面",
+            "市场主体编号字段不可编辑",
+            "规模（MW）字段不可编辑",
+            "其他字段可编辑修改",
+            "必填项未填时提交给出提示",
+            "配置项目支持查询、新增和删除",
+            "保存后列表信息正确更新"
+          ],
+          "related_images": [
+            {
+              "filename": "trading_unit_edit.png",
+              "description": "交易单元修改界面截图",
+              "path": "images/trading_unit_edit.png"
+            }
+          ],
+          "source_paragraphs": ["Para-001-012"]
+        },
+        {
+          "requirement_id": "REQ-CH1-013",
+          "requirement_name": "交易单元配置删除功能",
+          "type": "功能需求 (FR)",
+          "module": "左侧菜单栏管理",
+          "chapter": 1,
+          "source_page": "第 6-7 页",
+          "description": "用户可以在交易单元列表中删除交易单元，执行逻辑删除",
+          "testable_elements": {
+            "trigger": "点击交易单元列表操作列中的'删除'按钮",
+            "inputs": ["待删除的交易单元"],
+            "action": "确认删除操作",
+            "expected_output": "交易单元被逻辑删除，列表中不再显示",
+            "verification_points": [
+              "点击删除按钮弹出确认提示",
+              "确认后交易单元被逻辑删除",
+              "列表中不再显示已删除的交易单元"
+            ]
+          },
+          "detailed_description": "删除功能，点击交易单元列表中操作列中的删除按钮，可将对应交易单元逻辑删除",
+          "acceptance_criteria": [
+            "点击删除按钮弹出确认提示",
+            "确认后交易单元被逻辑删除",
+            "列表中不再显示已删除的交易单元",
+            "逻辑删除后数据在后台仍保留（非物理删除）"
+          ],
+          "related_images": [
+            {
+              "filename": "trading_unit_delete.png",
+              "description": "交易单元删除确认界面截图",
+              "path": "images/trading_unit_delete.png"
+            },
+            {
+              "filename": "trading_unit_list.png",
+              "description": "交易单元列表界面截图",
+              "path": "images/trading_unit_list.png"
+            }
+          ],
+          "source_paragraphs": ["Para-001-013"]
+        },
+        {
+          "requirement_id": "REQ-CH1-014",
+          "requirement_name": "菜单名称重命名",
+          "type": "功能需求 (FR)",
+          "module": "左侧菜单栏管理",
+          "chapter": 1,
+          "source_page": "第 7 页",
+          "description": "用户可以在左侧菜单栏中看到重命名后的菜单名称",
+          "testable_elements": {
+            "trigger": "展开左侧菜单栏",
+            "inputs": [],
+            "action": "查看菜单名称",
+            "expected_output": "菜单名称已按规则重命名",
+            "verification_points": [
+              "典型曲线更名为典型分解曲线",
+              "月度电价配置更名为目录电价配置",
+              "合同套餐更名为零售套餐类型",
+              "电价分组更名为用电类型配置"
+            ]
+          },
+          "detailed_description": "以下菜单需要改下名：\n- 典型曲线更名为典型分解曲线\n- 月度电价配置更名为目录电价配置\n- 合同套餐更名为零售套餐类型\n- 电价分组更名为用电类型配置",
+          "acceptance_criteria": [
+            "原'典型曲线'显示为'典型分解曲线'",
+            "原'月度电价配置'显示为'目录电价配置'",
+            "原'合同套餐'显示为'零售套餐类型'",
+            "原'电价分组'显示为'用电类型配置'"
+          ],
+          "related_images": [],
+          "source_paragraphs": ["Para-001-014"]
+        }
+      ]
+    }
+  ]
+}

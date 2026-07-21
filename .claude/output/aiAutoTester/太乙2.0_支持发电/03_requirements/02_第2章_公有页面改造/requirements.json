@@ -1,0 +1,678 @@
+{
+  "chapter": {
+    "chapter_number": 2,
+    "chapter_title": "公有页面改造",
+    "total_requirements": 18
+  },
+  "modules": [
+    {
+      "module_name": "节点电价走势",
+      "requirement_count": 5,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH2-001",
+          "requirement_name": "节点电价走势节点选项改为单选",
+          "type": "功能需求 (FR)",
+          "module": "节点电价走势",
+          "chapter": 2,
+          "source_page": "第 8 页",
+          "description": "用户可以在节点电价走势页面通过单选方式选择节点，默认为当前交易单元对应的节点",
+          "testable_elements": {
+            "trigger": "进入节点电价走势页面",
+            "inputs": ["节点选项（单选）"],
+            "action": "选择节点",
+            "expected_output": "节点选项为单选模式，默认选中当前交易单元对应的节点",
+            "verification_points": [
+              "节点选项由多选改为单选",
+              "默认选中当前交易单元对应的节点",
+              "选择后图表数据按所选节点展示"
+            ]
+          },
+          "detailed_description": "节点选项:原来页面的多选改为单选, 默认为当前选择的交易单元对应的节点。",
+          "acceptance_criteria": [
+            "节点选项为单选模式，不可多选",
+            "页面加载时默认选中当前交易单元对应的节点",
+            "切换节点后图表数据正确更新"
+          ],
+          "related_images": [
+            {
+              "filename": "node_price_single_select.png",
+              "description": "节点电价走势页面节点选项单选界面截图",
+              "path": "images/node_price_single_select.png"
+            }
+          ],
+          "source_paragraphs": ["Para-002-001"]
+        },
+        {
+          "requirement_id": "REQ-CH2-002",
+          "requirement_name": "节点电价走势平铺分析按时段平铺",
+          "type": "功能需求 (FR)",
+          "module": "节点电价走势",
+          "chapter": 2,
+          "source_page": "第 8-9 页",
+          "description": "用户可以在节点电价走势页面通过按时段平铺方式查看日前和实时电价走势",
+          "testable_elements": {
+            "trigger": "在分析维度下拉框中选择'平铺分析-按时段平铺'",
+            "inputs": ["所选日期"],
+            "action": "切换分析维度查看图表",
+            "expected_output": "展示日前电价走势图和实时电价走势图，差值柱子分颜色展示正负价差",
+            "verification_points": [
+              "日前电价走势图展示日前节点电价、统一结算点电价",
+              "差值柱子正差值为蓝色，负差值为红色",
+              "差值=日前节点电价-日前统一结算点电价",
+              "实时电价走势图展示日前节点电价、实时节点电价",
+              "差值柱子正差值为蓝色，负差值为红色",
+              "差值=日前节点电价-实时节点电价",
+              "根据所选日期按日期平铺展示"
+            ]
+          },
+          "detailed_description": "平铺分析-按时段平铺:根据所选日期按日期平铺展示(重点看合约阻塞、现货价差,完整数据):\n- 日前电价走势图:日前节点电价,统一结算点电价,差值柱子(分颜色展示正负价差值，正差值为蓝色，负差值为红色，差值为日前节点电价减日前统一结算点电价的结果);\n- 实时电价走势图:日前节点电价,实时节点电价,差值柱子(分颜色展示正负价差值，正差值为蓝色，负差值为红色，差值为日前节点电价减实时节点电价的结果);",
+          "acceptance_criteria": [
+            "选择按时段平铺后展示日前电价走势图和实时电价走势图",
+            "日前电价走势图展示日前节点电价和统一结算点电价折线",
+            "差值柱子正差值显示蓝色，负差值显示红色",
+            "日前差值=日前节点电价-日前统一结算点电价",
+            "实时电价走势图展示日前节点电价和实时节点电价折线",
+            "实时差值=日前节点电价-实时节点电价"
+          ],
+          "related_images": [
+            {
+              "filename": "price_flat_by_period.png",
+              "description": "节点电价走势平铺分析按时段平铺界面截图",
+              "path": "images/price_flat_by_period.png"
+            }
+          ],
+          "source_paragraphs": ["Para-002-002"]
+        },
+        {
+          "requirement_id": "REQ-CH2-003",
+          "requirement_name": "节点电价走势按日分析曲线重叠",
+          "type": "功能需求 (FR)",
+          "module": "节点电价走势",
+          "chapter": 2,
+          "source_page": "第 9-10 页",
+          "description": "用户可以在节点电价走势页面通过按日分析曲线重叠方式查看电价在历史中的位置",
+          "testable_elements": {
+            "trigger": "在分析维度下拉框中选择'按日分析-曲线重叠'",
+            "inputs": ["检索日期范围"],
+            "action": "查看曲线重叠图，切换日期高亮",
+            "expected_output": "默认高亮当前检索日期范围内日前和实时电价皆有数据的日期和历史均值，可切换日期",
+            "verification_points": [
+              "默认高亮显示当前检索日期范围内日前节点电价和实时节点电价皆有实际数据的日期和历史均值",
+              "历史均值为检索日期范围内的算数平均值",
+              "可点击日期标签切换高亮显示目标日对应的折线图",
+              "所选日期超过1个月时展示最近一个月数据",
+              "页面左上角提示'该分析维度仅支持查看一个月数据'",
+              "日期检索条件自动回退到最近一个月",
+              "日前有数据实时无数据时实时电价提示'当前暂无实时出清数据!'",
+              "日前无数据实时有数据时日前电价提示'当前暂无日前出清数据!'",
+              "图表联动开启后两张图表高亮联动"
+            ]
+          },
+          "detailed_description": "按日分析-曲线重叠(查看所选日期电价在历史中的位置和整体历史的曲线形状)\n- 默认高亮显示当前检索日期范围日前节点电价和实时节点电价皆有实际数据的日期和历史均值(此处历史均值为检索日期范围内的算数平均值)，可点击日期标签切换高亮显示目标日对应的折线图。\n- 特殊校验: 用用户所选日期超过1个月，该模式展示最近一个月的数据。页面左上角加一个提示:该分析维度仅支持查看一个月数据，然后检索日期给他回退到最近一个月，比如检索日期选择选择2026-06-01~2026-07-31，点击查询后，页面左上角提示:该分析维度仅支持查看一个月数据，日期检索条件自动更新为最近一个月，即'2026-07-01~2026-07-31'。\n- 假设日前有数据,而实时无数据时候,此时实时电价提示:'当前暂无实时出清数据!'；反之，日前电价提示:'当前暂无日前出清数据!'\n- 图表联动：开启后切换高亮日则全局统一切换，即开启后两张图表高亮联动",
+          "acceptance_criteria": [
+            "默认高亮日前和实时皆有数据的日期和历史均值",
+            "历史均值为检索日期范围内的算数平均值",
+            "可点击日期标签切换高亮折线图",
+            "所选日期超过1个月时自动回退到最近一个月并提示",
+            "日前有数据实时无数据时显示'当前暂无实时出清数据!'",
+            "日前无数据实时有数据时显示'当前暂无日前出清数据!'",
+            "图表联动开启后两张图高亮同步切换"
+          ],
+          "related_images": [
+            {
+              "filename": "price_daily_overlap.png",
+              "description": "节点电价走势按日分析曲线重叠界面截图",
+              "path": "images/price_daily_overlap.png"
+            }
+          ],
+          "source_paragraphs": ["Para-002-003"]
+        },
+        {
+          "requirement_id": "REQ-CH2-004",
+          "requirement_name": "节点电价走势日分析箱线图",
+          "type": "功能需求 (FR)",
+          "module": "节点电价走势",
+          "chapter": 2,
+          "source_page": "第 10-12 页",
+          "description": "用户可以在节点电价走势页面通过日分析箱线图查看电价分布情况",
+          "testable_elements": {
+            "trigger": "在分析维度下拉框中选择'日分析-箱线图'",
+            "inputs": ["检索日期范围", "96个时段数据"],
+            "action": "查看箱线图",
+            "expected_output": "展示96个时段的箱线图，每个时段的箱线图数据为检索日期范围内相同时段的电价数据",
+            "verification_points": [
+              "晶须类型默认1.5IQR",
+              "基于N-1确认四分位，N为检索时间范围内相同时段的电价个数",
+              "Q1为第一四分位数，Q3为第三四分位数，IQR=Q3-Q1",
+              "最大观测值=Q3+1.5IQR，最小观测值=Q1-1.5IQR",
+              "大于最大观测值或小于最小观测值的数值视为异常值",
+              "奇数长度计算正确（如n=17时Q1=sorted[n/4], Q3=sorted[3n/4]）",
+              "偶数长度计算正确（如n=16时使用线性插值）"
+            ]
+          },
+          "detailed_description": "日分析-箱线图\n- 从筛选的日期范围内，96个时段数据，每个时段的箱线图数据为检索日期范围内相同时段的电价数据。晶须类型默认1.5IQR，基于N-1确认四分位，N为检索时间范围内相同时段的电价个数。定义第三四分位数为Q3，第一四分位数为Q1，区间宽度IQR=Q3-Q1。最大观测值=Q3+1.5IQR。最小观测值=Q1-1.5IQR。大于最大观测值或小于最小观测值的数值视为异常值\n\n奇数长度n=17时：pos=0.25*(17-1)=4, q1=sorted[3]=140; pos=0.75*(17-1)=12, q3=sorted[11]=220\n偶数长度n=16时：pos=0.25*(16-1)=3.75, q1=sorted[2]+(sorted[3]-sorted[2])*0.75=137.5; pos=0.75*(16-1)=11.25, q3=sorted[10]+(sorted[11]-sorted[10])*0.25=212.5",
+          "acceptance_criteria": [
+            "箱线图展示96个时段的电价分布",
+            "晶须类型为1.5IQR",
+            "四分位计算基于N-1方法",
+            "异常值（超出1.5IQR范围）正确标识",
+            "奇数长度数据四分位计算正确",
+            "偶数长度数据四分位使用线性插值计算正确"
+          ],
+          "related_images": [
+            {
+              "filename": "price_boxplot.png",
+              "description": "节点电价走势日分析箱线图界面截图",
+              "path": "images/price_boxplot.png"
+            }
+          ],
+          "source_paragraphs": ["Para-002-004"]
+        },
+        {
+          "requirement_id": "REQ-CH2-005",
+          "requirement_name": "节点电价走势平铺分析按日平铺",
+          "type": "功能需求 (FR)",
+          "module": "节点电价走势",
+          "chapter": 2,
+          "source_page": "第 12 页",
+          "description": "用户可以在节点电价走势页面通过按日平铺方式查看日趋势",
+          "testable_elements": {
+            "trigger": "在分析维度下拉框中选择'平铺分析-按日平铺'",
+            "inputs": ["检索日期范围"],
+            "action": "查看按日平铺图表",
+            "expected_output": "展示日前和实时电价的日均值走势，差异部分分颜色填充",
+            "verification_points": [
+              "日前电价走势图展示节点电价和统一结算点电价的均值（当日加权平均值）",
+              "实时电价走势图展示日前节点电价和实时节点电价的均值（当日加权平均值）",
+              "差异部分分颜色填充"
+            ]
+          },
+          "detailed_description": "平铺分析-按日平铺(查看日趋势):\n- 日前电价走势图:展示节点电价和统一结算点电价的均值(此处均值采用当日加权平均值),差异部分分颜色填充。\n- 实时电价走势图:展示日前节点电价和实时节点电价的均值(此处均值采用当日加权平均值),差异部分分颜色填充。",
+          "acceptance_criteria": [
+            "日前电价走势图展示节点电价和统一结算点电价的日均值",
+            "均值采用当日加权平均值计算",
+            "实时电价走势图展示日前和实时节点电价的日均值",
+            "差异部分分颜色填充"
+          ],
+          "related_images": [
+            {
+              "filename": "price_flat_by_day.png",
+              "description": "节点电价走势平铺分析按日平铺界面截图",
+              "path": "images/price_flat_by_day.png"
+            }
+          ],
+          "source_paragraphs": ["Para-002-005"]
+        }
+      ]
+    },
+    {
+      "module_name": "现货交易策略",
+      "requirement_count": 2,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH2-006",
+          "requirement_name": "现货交易策略发电侧适配",
+          "type": "功能需求 (FR)",
+          "module": "现货交易策略",
+          "chapter": 2,
+          "source_page": "第 12-13 页",
+          "description": "用户可以在现货交易策略页面查看发电侧适配后的申报建议、电量预测和价差预测",
+          "testable_elements": {
+            "trigger": "进入现货交易策略页面，选择发电侧身份",
+            "inputs": ["发电侧场景数据"],
+            "action": "查看现货交易策略各模块数据",
+            "expected_output": "申报建议、电量预测、价差预测、电量走势、电量对比、现货走势均按发电侧适配展示",
+            "verification_points": [
+              "申报建议：发电侧场景下日前高的套利比例为正数",
+              "申报建议：发电侧场景下实时高的套利比例为负数",
+              "电量预测：负荷预测调整为电量预测",
+              "价差预测模型选用对应节点的价差预测模型",
+              "近期电量走势：实际用电负荷改为实际电量（实时出清电量数据）",
+              "近期电量走势：预测用电负荷改为预测电量",
+              "近7天电量对比：数据采用实时出清电量",
+              "近期现货走势：日前价格热力图数据为日前节点价格",
+              "近期现货走势：实时价格热力图数据为实时节点价格",
+              "价差热力图(实时-日前)数据为日前节点价格-实时节点价格",
+              "价差方向预测热力图采用对应节点的价差预测模型数据"
+            ]
+          },
+          "detailed_description": "1. 申报建议：发电侧场景下，日前高的套利比例应该为正数，实时高的套利比例应该是负数\n2. 电量预测：负荷预测需要调整为电量预测\n3. 价差预测模型需要选用对应节点的价差预测模型\n4. 近期电量走势：实际用电负荷修改为实际电量，数据采用实时出清电量；预测用电负荷调整为预测电量；近期负荷走势调整为近期电量走势\n5. 近7天的电量对比：数据采用实时出清电量\n6. 近期现货走势\n  - 日前价格热力图，数据为日前节点价格\n  - 实时价格热力图，数据为实时节点价格\n  - 价差热力图(实时-日前)，数据为日前节点价格-实时节点价格\n  - 价差方向预测热力图，采用用对应节点的价差预测模型数据",
+          "acceptance_criteria": [
+            "发电侧场景下日前高的套利比例显示为正数",
+            "发电侧场景下实时高的套利比例显示为负数",
+            "负荷预测名称已改为电量预测",
+            "价差预测模型使用对应节点数据",
+            "近期电量走势使用实时出清电量数据",
+            "近7天电量对比使用实时出清电量",
+            "热力图数据使用节点价格"
+          ],
+          "related_images": [],
+          "source_paragraphs": ["Para-002-006"]
+        },
+        {
+          "requirement_id": "REQ-CH2-007",
+          "requirement_name": "中长期交易策略发电侧适配",
+          "type": "功能需求 (FR)",
+          "module": "现货交易策略",
+          "chapter": 2,
+          "source_page": "第 13-14 页",
+          "description": "用户可以在中长期交易策略页面查看发电侧适配后的电量预测和申报建议",
+          "testable_elements": {
+            "trigger": "进入中长期交易策略页面，选择发电侧身份",
+            "inputs": ["发电侧场景数据"],
+            "action": "查看中长期交易策略各模块数据",
+            "expected_output": "名称统一、智能体支持发电、价格预测和电量预测按发电侧展示",
+            "verification_points": [
+              "负荷预测修改为电量预测",
+              "日负荷走势改为日电量走势",
+              "用电量修改为电量",
+              "中长期申报Agent支持发电（修改Agent Prompt）",
+              "各品种价格预测虚线部分为预测",
+              "电量预测(月累计)：实际电量为实际出力电量",
+              "电量预测(月累计)：预测电量取'∑中长期预测/4'",
+              "电量预测(分时段)：实际电量为实际出力电量",
+              "电量预测(分时段)：预测电量取'∑中长期预测/4'"
+            ]
+          },
+          "detailed_description": "1. 名称需要统一：负荷预测修改为电量预测，日负荷走势改为日电量走势；用电量修改为电量\n2. 中长期申报Agent：智能体需要支持发电：修改Agent Prompt，支持发电场景下的中长期申报建议\n3. 各品种价格预测（虚线部分为预测）\n4. 电量预测（月累计）：实际电量为实际出力电量；预测电量取'∑中长期预测/4'；年度持仓同售电侧；月度持仓同售电侧\n5. 电量预测（分时段）：实际电量为实际出力电量；预测电量取'∑中长期预测/4'；年度持仓同售电侧；月度持仓同售电侧",
+          "acceptance_criteria": [
+            "负荷预测名称已改为电量预测",
+            "日负荷走势名称已改为日电量走势",
+            "用电量名称已改为电量",
+            "中长期申报Agent支持发电场景",
+            "各品种价格预测虚线部分为预测值",
+            "月累计电量预测中实际电量为实际出力电量",
+            "月累计电量预测中预测电量=∑中长期预测/4",
+            "分时段电量预测中实际电量为实际出力电量",
+            "分时段电量预测中预测电量=∑中长期预测/4"
+          ],
+          "related_images": [],
+          "source_paragraphs": ["Para-002-007"]
+        }
+      ]
+    },
+    {
+      "module_name": "Agents交易驾驶舱",
+      "requirement_count": 1,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH2-008",
+          "requirement_name": "Agents交易驾驶舱提示词校验",
+          "type": "功能需求 (FR)",
+          "module": "Agents交易驾驶舱",
+          "chapter": 2,
+          "source_page": "第 14 页",
+          "description": "系统可以通过定时任务让大模型根据Agent提示词生成报告内容",
+          "testable_elements": {
+            "trigger": "定时任务触发或手动触发Agent报告生成",
+            "inputs": ["Agent提示词"],
+            "action": "大模型根据提示词生成报告",
+            "expected_output": "每周复盘、现货申报建议、中长期申报建议报告正确生成",
+            "verification_points": [
+              "每周复盘报告正确生成",
+              "现货申报建议报告正确生成",
+              "中长期申报建议报告正确生成",
+              "报告内容与提示词要求一致"
+            ]
+          },
+          "detailed_description": "下述Agent提示词校验(根据提示词，通过定时任务让大模型生成报告内容)\n1. 每周复盘\n2. 现货申报建议\n3. 中长期申报建议",
+          "acceptance_criteria": [
+            "每周复盘报告通过定时任务正确生成",
+            "现货申报建议报告通过定时任务正确生成",
+            "中长期申报建议报告通过定时任务正确生成"
+          ],
+          "related_images": [],
+          "source_paragraphs": ["Para-002-008"]
+        }
+      ]
+    },
+    {
+      "module_name": "现货交易复盘",
+      "requirement_count": 2,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH2-009",
+          "requirement_name": "现货交易复盘收益计算",
+          "type": "功能需求 (FR)",
+          "module": "现货交易复盘",
+          "chapter": 2,
+          "source_page": "第 14-15 页",
+          "description": "系统可以在现货交易复盘页面计算并展示最大可套利收益、策略套利收益和实际套利收益",
+          "testable_elements": {
+            "trigger": "进入现货交易复盘页面",
+            "inputs": ["实际出力", "日前节点电价", "实时节点电价", "建议申报电量", "日前出清电量", "偏差回收"],
+            "action": "查看复盘收益数据",
+            "expected_output": "各项收益按公式正确计算并展示",
+            "verification_points": [
+              "最大可套利收益=实际出力*0.2*|日前节点电价-实时节点电价|，保留两位小数",
+              "策略套利收益=(建议申报电量-实际出力)*(日前节点电价-实时节点电价)-偏差回收",
+              "实际套利收益=(日前出清电量-实际出力)*(日前节点电价-实时节点电价)-偏差收益回收，保留两位小数",
+              "申报建议方向准备率=预测正确数/总数"
+            ]
+          },
+          "detailed_description": "1. 最大可套利收益，保留两位小数=实际出力*0.2*|日前节点电价-实时节点电价|\n2. 策略套利收益=（建议申报电量-实际出力）*（日前节点电价-实时节点电价）-偏差回收\n3. 实际套利收益，保留两位小数=（日前出清电量-实际出力）*（日前节点电价-实时节点电价）-偏差收益回收\n4. 申报建议方向准备率：节点价差方向预测与实际价差方向进行计算，即预测正确数/总数",
+          "acceptance_criteria": [
+            "最大可套利收益按公式正确计算并保留两位小数",
+            "策略套利收益按公式正确计算",
+            "实际套利收益按公式正确计算并保留两位小数",
+            "申报建议方向准备率=预测正确数/总数"
+          ],
+          "related_images": [],
+          "source_paragraphs": ["Para-002-009"]
+        },
+        {
+          "requirement_id": "REQ-CH2-010",
+          "requirement_name": "现货交易复盘名称和数据适配",
+          "type": "功能需求 (FR)",
+          "module": "现货交易复盘",
+          "chapter": 2,
+          "source_page": "第 15 页",
+          "description": "系统可以在现货交易复盘页面展示发电侧适配后的名称和数据",
+          "testable_elements": {
+            "trigger": "进入现货交易复盘页面，选择发电侧身份",
+            "inputs": ["发电侧场景数据"],
+            "action": "查看复盘数据",
+            "expected_output": "各字段名称和数据按发电侧适配展示",
+            "verification_points": [
+              "预测负荷电量修改为预测电量",
+              "预测负荷电量调整后修改为预测电量调整后",
+              "实际用电量修改为实际电量",
+              "实际用电量改为实际电量（价差与申报比例）",
+              "结算价差均值改为节点价差均值（小时级方向预测准确率）",
+              "价差分析热力图：日前价格为日前节点电价",
+              "价差分析热力图：实时价格为实时节点电价",
+              "价差方向预测采用算法提供的数据"
+            ]
+          },
+          "detailed_description": "5. 负荷预测对比：预测负荷电量修改为预测电量；预测负荷电量调整后修改为预测电量调整后；实际用电量修改为实际电量\n6. 价差与申报比例：实际用电量改为实际电量\n7. 小时级方向预测准确率：结算价差均值改为节点价差均值\n8. 价差分析热力图：日前价格为日前节点电价；实时价格为实时节点电价；价差方向预测采用算法提供的",
+          "acceptance_criteria": [
+            "负荷预测对比中的名称已按发电侧适配修改",
+            "价差与申报比例中实际用电量改为实际电量",
+            "小时级方向预测准确率中结算价差均值改为节点价差均值",
+            "价差分析热力图使用节点电价数据"
+          ],
+          "related_images": [],
+          "source_paragraphs": ["Para-002-010"]
+        }
+      ]
+    },
+    {
+      "module_name": "中长期交易复盘",
+      "requirement_count": 1,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH2-011",
+          "requirement_name": "中长期交易复盘数据过滤",
+          "type": "功能需求 (FR)",
+          "module": "中长期交易复盘",
+          "chapter": 2,
+          "source_page": "第 15 页",
+          "description": "系统可以在中长期交易复盘页面根据节点过滤展示交易数据",
+          "testable_elements": {
+            "trigger": "进入中长期交易复盘页面",
+            "inputs": ["节点过滤条件"],
+            "action": "查看中长期交易复盘数据",
+            "expected_output": "交易电量、电价、电费根据节点过滤展示，数据源同售电侧",
+            "verification_points": [
+              "中长期交易电量根据节点过滤",
+              "中长期交易电价根据节点过滤",
+              "中长期交易电费根据节点过滤",
+              "数据源同售电侧"
+            ]
+          },
+          "detailed_description": "中长期交易电量、电价、电费需要根据节点过滤，数据源同售电侧",
+          "acceptance_criteria": [
+            "中长期交易电量、电价、电费根据节点过滤展示",
+            "数据源与售电侧一致"
+          ],
+          "related_images": [],
+          "source_paragraphs": ["Para-002-011"]
+        }
+      ]
+    },
+    {
+      "module_name": "交易持仓",
+      "requirement_count": 1,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH2-012",
+          "requirement_name": "交易持仓数据过滤",
+          "type": "功能需求 (FR)",
+          "module": "交易持仓",
+          "chapter": 2,
+          "source_page": "第 15 页",
+          "description": "系统可以在交易持仓页面通过交易单元过滤展示持仓电量",
+          "testable_elements": {
+            "trigger": "进入交易持仓页面",
+            "inputs": ["交易单元过滤条件"],
+            "action": "查看交易持仓数据",
+            "expected_output": "持仓电量通过交易单元过滤展示，数据源同售电侧",
+            "verification_points": [
+              "持仓电量通过交易单元过滤",
+              "数据源同售电侧"
+            ]
+          },
+          "detailed_description": "持仓电量需通过交易单元过滤，数据源同售电侧",
+          "acceptance_criteria": [
+            "持仓电量通过交易单元过滤后正确展示",
+            "数据源与售电侧一致"
+          ],
+          "related_images": [],
+          "source_paragraphs": ["Para-002-012"]
+        }
+      ]
+    },
+    {
+      "module_name": "算法服务",
+      "requirement_count": 1,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH2-013",
+          "requirement_name": "算法服务预测数据展示",
+          "type": "功能需求 (FR)",
+          "module": "算法服务",
+          "chapter": 2,
+          "source_page": "第 15-16 页",
+          "description": "用户可以在太乙交易平台查看算法提供的预测数据和自研预测模型的出力预测",
+          "testable_elements": {
+            "trigger": "进入算法服务页面",
+            "inputs": ["算法预测数据", "自研预测模型数据"],
+            "action": "查看算法服务数据",
+            "expected_output": "日前节点电价、实时节点电价、节点价差等预测数据正确展示；短期/超短期/中长期出力预测正确展示",
+            "verification_points": [
+              "算法提供的日前节点电价正确展示",
+              "算法提供的实时节点电价正确展示",
+              "算法提供的节点价差等模型预测数据正确展示",
+              "自研短期出力预测正确展示",
+              "自研超短期出力预测正确展示",
+              "自研中长期出力预测正确展示"
+            ]
+          },
+          "detailed_description": "1. 算法提供日前节点电价、实时节点电价、节点价差等模型预测数据，需要在太乙交易平台正确展示\n2. 短期出力预测、超短期出力预测、中长期出力预测，自研预测模型，需要在太乙交易平台正确展示",
+          "acceptance_criteria": [
+            "算法提供的日前节点电价、实时节点电价、节点价差数据正确展示",
+            "自研短期出力预测数据正确展示",
+            "自研超短期出力预测数据正确展示",
+            "自研中长期出力预测数据正确展示"
+          ],
+          "related_images": [],
+          "source_paragraphs": ["Para-002-013"]
+        }
+      ]
+    },
+    {
+      "module_name": "市场分析",
+      "requirement_count": 1,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH2-014",
+          "requirement_name": "市场分析页面增加分析对象选择",
+          "type": "功能需求 (FR)",
+          "module": "市场分析",
+          "chapter": 2,
+          "source_page": "第 16 页",
+          "description": "用户可以在市场分析页面通过下拉框选择分析对象",
+          "testable_elements": {
+            "trigger": "进入市场分析页面",
+            "inputs": ["分析对象下拉框：统一结算点、市场中的所有节点"],
+            "action": "选择分析对象",
+            "expected_output": "市场分析数据按所选分析对象展示",
+            "verification_points": [
+              "增加分析对象下拉框",
+              "下拉菜单包含统一结算点和市场中的所有节点",
+              "选择后数据按所选对象展示"
+            ]
+          },
+          "detailed_description": "增加分析对象下拉框，下拉菜单为：统一结算点和市场中的所有节点",
+          "acceptance_criteria": [
+            "市场分析页面显示分析对象下拉框",
+            "下拉菜单包含统一结算点和市场中的所有节点选项",
+            "选择不同分析对象后数据正确切换"
+          ],
+          "related_images": [
+            {
+              "filename": "market_analysis_select.png",
+              "description": "市场分析页面分析对象下拉框界面截图",
+              "path": "images/market_analysis_select.png"
+            }
+          ],
+          "source_paragraphs": ["Para-002-014"]
+        }
+      ]
+    },
+    {
+      "module_name": "市场分析数据展示",
+      "requirement_count": 2,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH2-015",
+          "requirement_name": "市场分析日前实时数据拆分",
+          "type": "功能需求 (FR)",
+          "module": "市场分析数据展示",
+          "chapter": 2,
+          "source_page": "第 16 页",
+          "description": "用户可以在市场分析页面查看日前和实时分析中拆分后的气象数据",
+          "testable_elements": {
+            "trigger": "进入市场分析页面的日前/实时分析",
+            "inputs": ["气象数据"],
+            "action": "查看气象数据",
+            "expected_output": "气象数据拆分为日前预测和实际两套数据",
+            "verification_points": [
+              "日前/实时分析中气象数据拆分为日前预测数据",
+              "日前/实时分析中气象数据拆分为实际数据"
+            ]
+          },
+          "detailed_description": "日前/实时分析，气象数据应拆分为日前预测和实际两套数据。",
+          "acceptance_criteria": [
+            "气象数据拆分为日前预测和实际两套数据展示",
+            "两套数据可分别查看"
+          ],
+          "related_images": [],
+          "source_paragraphs": ["Para-002-015"]
+        },
+        {
+          "requirement_id": "REQ-CH2-016",
+          "requirement_name": "市场分析多日折叠展示",
+          "type": "功能需求 (FR)",
+          "module": "市场分析数据展示",
+          "chapter": 2,
+          "source_page": "第 16 页",
+          "description": "用户可以在市场分析页面通过多日折叠展示查看实际数据和预测数据",
+          "testable_elements": {
+            "trigger": "检索条件设置为'按日分析-曲线重叠'时",
+            "inputs": ["检索日期范围"],
+            "action": "查看多日折叠展示数据",
+            "expected_output": "展示实际数据，兼容现货日预测数据，默认高亮最后一天实际数据",
+            "verification_points": [
+              "展示实际数据",
+              "兼容展示现货日的预测数据",
+              "有实际数据展示实际数据",
+              "默认高亮最后一天的实际数据",
+              "现货预测数据用另一种颜色高亮展示",
+              "所选日期超过1个月时展示最近一个月数据",
+              "页面左上角提示'该分析维度仅支持查看一个月数据'",
+              "日期检索条件自动回退到最近一个月"
+            ]
+          },
+          "detailed_description": "多日折叠展示时，即检索条件为'按日分析-曲线重叠'，展示实际数据，兼容展示现货日的预测数据，即有实际数据展示实际数据，默认高亮最后一天的实际数据，现货预测数据用另一种颜色高亮展示；用用户所选日期超过1个月，该模式展示最近一个月的数据。页面左上角加一个提示:该分析维度仅支持查看一个月数据，然后检索日期给他回退到最近一个月",
+          "acceptance_criteria": [
+            "多日折叠展示时展示实际数据",
+            "兼容展示现货日预测数据",
+            "默认高亮最后一天实际数据",
+            "预测数据用不同颜色高亮",
+            "超过1个月时自动回退并提示"
+          ],
+          "related_images": [
+            {
+              "filename": "market_multi_day_fold.png",
+              "description": "市场分析多日折叠展示界面截图",
+              "path": "images/market_multi_day_fold.png"
+            }
+          ],
+          "source_paragraphs": ["Para-002-016"]
+        }
+      ]
+    },
+    {
+      "module_name": "中长期交易复盘数据",
+      "requirement_count": 2,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH2-017",
+          "requirement_name": "中长期交易复盘名称统一",
+          "type": "功能需求 (FR)",
+          "module": "中长期交易复盘数据",
+          "chapter": 2,
+          "source_page": "第 15 页",
+          "description": "用户可以在中长期交易复盘页面看到统一后的名称",
+          "testable_elements": {
+            "trigger": "进入中长期交易复盘页面",
+            "inputs": [],
+            "action": "查看页面名称",
+            "expected_output": "相关名称已统一修改",
+            "verification_points": [
+              "负荷预测修改为电量预测",
+              "日负荷走势改为日电量走势",
+              "用电量修改为电量"
+            ]
+          },
+          "detailed_description": "中长期交易策略中名称需要统一：负荷预测修改为电量预测，日负荷走势改为日电量走势；用电量修改为电量",
+          "acceptance_criteria": [
+            "负荷预测名称已改为电量预测",
+            "日负荷走势名称已改为日电量走势",
+            "用电量名称已改为电量"
+          ],
+          "related_images": [],
+          "source_paragraphs": ["Para-002-017"]
+        },
+        {
+          "requirement_id": "REQ-CH2-018",
+          "requirement_name": "中长期交易复盘Agent支持发电",
+          "type": "功能需求 (FR)",
+          "module": "中长期交易复盘数据",
+          "chapter": 2,
+          "source_page": "第 15 页",
+          "description": "系统可以在中长期交易复盘中通过修改Agent Prompt支持发电场景",
+          "testable_elements": {
+            "trigger": "进入中长期交易复盘页面，选择发电侧身份",
+            "inputs": ["发电侧场景数据"],
+            "action": "查看中长期申报Agent建议",
+            "expected_output": "Agent支持发电场景下的中长期申报建议",
+            "verification_points": [
+              "Agent Prompt已修改支持发电场景",
+              "中长期申报建议正确生成发电侧内容"
+            ]
+          },
+          "detailed_description": "中长期申报Agent：智能体需要支持发电：修改Agent Prompt，支持发电场景下的中长期申报建议",
+          "acceptance_criteria": [
+            "Agent Prompt已修改支持发电场景",
+            "发电侧场景下中长期申报建议正确生成"
+          ],
+          "related_images": [],
+          "source_paragraphs": ["Para-002-018"]
+        }
+      ]
+    }
+  ]
+}
