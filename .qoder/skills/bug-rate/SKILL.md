@@ -62,7 +62,7 @@ description: 自动计算千行 Bug 率，支持分支名、单/多 GitLab URL�
 用户输入分支名 + 项目路径，自动与 master 对比：
 
 ```bash
-python .claude/skills/bug-rate/scripts/bug_rate_calculator.py \
+python .qoder/skills/bug-rate/scripts/bug_rate_calculator.py \
   --branch feature-4.5.5 --project group/project --bugs 10 --detail
 ```
 
@@ -73,7 +73,7 @@ python .claude/skills/bug-rate/scripts/bug_rate_calculator.py \
 用户输入 GitLab Compare URL 时，直接调用 API：
 
 ```bash
-python .claude/skills/bug-rate/scripts/bug_rate_calculator.py \
+python .qoder/skills/bug-rate/scripts/bug_rate_calculator.py \
   --gitlab-url "https://gitlab.xxx/group/proj/-/compare/master...release-1.0" --bugs 10 --detail
 ```
 
@@ -91,7 +91,7 @@ Token 已内置，无需每次传参（如需换 token 用 `--token glpat-xxx` �
 用户输入多个 GitLab Compare URL（跨多个服务）时，汇总所有 diff 后统一计算：
 
 ```bash
-python .claude/skills/bug-rate/scripts/bug_rate_calculator.py \
+python .qoder/skills/bug-rate/scripts/bug_rate_calculator.py \
   --gitlab-urls "url1" "url2" "url3" --bugs 10 --detail
 ```
 
@@ -107,14 +107,14 @@ python .claude/skills/bug-rate/scripts/bug_rate_calculator.py \
 
 ```bash
 cd <项目目录>
-python .claude/skills/bug-rate/scripts/bug_rate_calculator.py \
+python .qoder/skills/bug-rate/scripts/bug_rate_calculator.py \
   --diff master main --bugs 10 --detail
 ```
 
 ### 模式五：静态扫描模式
 
 ```bash
-python .claude/skills/bug-rate/scripts/bug_rate_calculator.py --dir <目录> --bugs 10
+python .qoder/skills/bug-rate/scripts/bug_rate_calculator.py --dir <目录> --bugs 10
 ```
 
 ## 输出格式
@@ -178,7 +178,7 @@ git diff --unified=0 --diff-algorithm=patience
 
 ## 脚本路径
 
-`.claude/skills/bug-rate/scripts/bug_rate_calculator.py`
+`.qoder/skills/bug-rate/scripts/bug_rate_calculator.py`
 
 ## Token 管理
 
