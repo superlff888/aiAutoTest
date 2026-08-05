@@ -41,8 +41,12 @@ def build_card(
         "exec_time": "2026-06-04 17:10:28",
         "pass_count": 47,
         "fail_count": 64,
+        "warn_count": 33,
+        "config_missing_count": 0,
         "centers": [
-            {"name": "广东", "trade_center_id": 1, "failures": [...], "all_pass": False},
+            {"name": "广东", "trade_center_id": 1, "all_pass": False,
+             "failures": [{"data_type": "...", "offset": "...", "message": "..."}],
+             "warnings": [{"data_type": "...", "type": "coverage_extra", "message": "..."}]},
             ...
         ]
     }
@@ -52,16 +56,36 @@ def build_card(
     status_emoji = "❌" if has_failures else "✅"
 
     # 各中心摘要
+    # 警告明细此前在构建结构化结果时被丢弃，卡片只显示 warn_count 总数；
+    # 现在按中心展开，load_type 超详情可见。
+    # 注："暂未接入"为已知配置状态、非数据问题，不在卡片中展示
     center_lines = []
     for c in result["centers"]:
-        if c["all_pass"]:
-            center_lines.append(f"**{c['name']}** ✅ 全部通过")
+        fail_list = c.get("failures", [])
+        warn_list = c.get("warnings", [])
+        extra_warns = [w for w in warn_list if w.get("type") == "coverage_extra"]
+        fail_count = len(fail_list)
+
+        # 状态优先级：失败 > load_type 超出 > 全部通过
+        if fail_count > 0:
+            header = f"**{c['name']}** ❌ {fail_count}项失败"
+        elif extra_warns:
+            header = f"**{c['name']}** ⚠️ {len(extra_warns)}项load_type超出"
         else:
-            fail_count = len(c.get("failures", []))
-            preview = c["failures"][:3]
-            lines = "\n".join(f"  • {f['data_type']}: {f['message']}" for f in preview)
-            more = f"\n  • ... 等共 {fail_count} 项失败" if fail_count > 3 else ""
-            center_lines.append(f"**{c['name']}** ❌ {fail_count}项失败\n{lines}{more}")
+            center_lines.append(f"**{c['name']}** ✅ 全部通过")
+            continue
+
+        detail_lines = []
+        for f in fail_list[:3]:
+            detail_lines.append(f"  • {f['data_type']}: {f['message']}")
+        if fail_count > 3:
+            detail_lines.append(f"  • ... 等共 {fail_count} 项失败")
+        for w in extra_warns[:3]:
+            detail_lines.append(f"  • ⚠️ {w['data_type']}: {w['message']}")
+        if len(extra_warns) > 3:
+            detail_lines.append(f"  • ... 等共 {len(extra_warns)} 项超出")
+
+        center_lines.append(header + "\n" + "\n".join(detail_lines))
 
     center_md = "\n\n".join(center_lines)
 

@@ -1,0 +1,344 @@
+{
+  "chapter": {
+    "chapter_number": 1,
+    "chapter_title": "相似日分析",
+    "total_requirements": 10
+  },
+  "modules": [
+    {
+      "module_name": "筛选栏",
+      "requirement_count": 6,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH1-001",
+          "requirement_name": "选择目标日期",
+          "type": "功能需求 (FR)",
+          "module": "筛选栏",
+          "chapter": 1,
+          "source_page": "第 1 页",
+          "description": "用户可以在筛选栏中通过时间选择框设置目标日期，默认值为D+1，可选范围最多60天内（默认30天）",
+          "testable_elements": {
+            "trigger": "用户点击目标日期时间选择框",
+            "inputs": ["目标日期（默认D+1）"],
+            "action": "选择日期",
+            "expected_output": "日期选择框显示所选日期，格式YYYY-MM-DD",
+            "verification_points": [
+              "默认值为D+1（当前日期后一天）",
+              "可选范围最多60天内（默认30天）",
+              "超出范围的日期不可选"
+            ]
+          },
+          "detailed_description": "筛选栏第一项为「目标日期」时间选择框，默认值为D+1（当前日期后一天）。可选范围为最多60天内（默认30天），超出范围的日期应置灰不可选。",
+          "acceptance_criteria": [
+            "默认显示D+1日期",
+            "可选范围限制在60天内",
+            "超出范围日期不可选或给出提示"
+          ],
+          "related_images": [{"filename": "similar_day_requirements.png", "description": "相似日需求文档截图-筛选栏部分", "path": "images/similar_day_requirements.png"}],
+          "source_paragraphs": ["Para-CH1-001"]
+        },
+        {
+          "requirement_id": "REQ-CH1-002",
+          "requirement_name": "设置查找范围",
+          "type": "功能需求 (FR)",
+          "module": "筛选栏",
+          "chapter": 1,
+          "source_page": "第 1 页",
+          "description": "用户可以在下拉选择框中设置查找范围，默认30天，最多选60天",
+          "testable_elements": {
+            "trigger": "用户点击查找范围下拉框",
+            "inputs": ["查找范围天数（默认30天，最多60天）"],
+            "action": "选择范围",
+            "expected_output": "下拉框显示所选范围天数",
+            "verification_points": [
+              "默认值为30天",
+              "最大可选60天",
+              "下拉选项包含有效范围值"
+            ]
+          },
+          "detailed_description": "筛选栏「查找范围」为下拉选择框，默认值30天，最多可选60天。用于限定相似日搜索的历史时间窗口。",
+          "acceptance_criteria": [
+            "默认显示30天",
+            "最大可选60天",
+            "选择后影响相似日搜索的历史数据范围"
+          ],
+          "related_images": [{"filename": "similar_day_requirements.png", "description": "相似日需求文档截图-筛选栏部分", "path": "images/similar_day_requirements.png"}],
+          "source_paragraphs": ["Para-CH1-002"]
+        },
+        {
+          "requirement_id": "REQ-CH1-003",
+          "requirement_name": "选择相似度算法",
+          "type": "功能需求 (FR)",
+          "module": "筛选栏",
+          "chapter": 1,
+          "source_page": "第 1 页",
+          "description": "用户可以在下拉选择框中选择相似度算法，可选项为欧氏距离、Pearson相关性、组合算法，默认值为组合算法",
+          "testable_elements": {
+            "trigger": "用户点击相似度算法下拉框",
+            "inputs": ["算法类型：欧氏距离/Pearson相关性/组合算法"],
+            "action": "选择算法",
+            "expected_output": "下拉框显示所选算法名称",
+            "verification_points": [
+              "默认值为组合算法",
+              "下拉包含3个选项：欧氏距离、Pearson相关性、组合算法",
+              "切换算法后查询结果排序发生变化"
+            ]
+          },
+          "detailed_description": "筛选栏「相似度算法」为下拉选择框，可选项为欧氏距离、Pearson相关性、组合算法，默认值为组合算法。不同算法影响相似日匹配的计算逻辑和排序结果。",
+          "acceptance_criteria": [
+            "默认显示组合算法",
+            "下拉包含3个算法选项",
+            "切换算法后重新查询结果排序不同"
+          ],
+          "related_images": [{"filename": "similar_day_requirements.png", "description": "相似日需求文档截图-筛选栏部分", "path": "images/similar_day_requirements.png"}],
+          "source_paragraphs": ["Para-CH1-003"]
+        },
+        {
+          "requirement_id": "REQ-CH1-004",
+          "requirement_name": "切换研究维度",
+          "type": "功能需求 (FR)",
+          "module": "筛选栏",
+          "chapter": 1,
+          "source_page": "第 1 页",
+          "description": "用户可以在下拉选择框中切换研究维度（前指标/实际指标），切换后自动重置参考特征并清空查询结果",
+          "testable_elements": {
+            "trigger": "用户切换研究维度下拉框",
+            "inputs": ["研究维度：前指标/实际指标"],
+            "action": "切换维度",
+            "expected_output": "参考特征自动重置，查询结果清空，特征树内容切换",
+            "verification_points": [
+              "默认值为前指标",
+              "切换后自动重置参考特征（默认清空）",
+              "切换后清空已有查询结果",
+              "前指标特征树：日前价格、日前边界条件、气象预测",
+              "实际指标特征树：实时价格、实时边界条件、实际气象"
+            ]
+          },
+          "detailed_description": "筛选栏「研究维度」为下拉选择框，默认值为前指标。切换后自动重置参考特征（默认清空），并清空查询结果。前指标对应特征树展示日前价格、日前边界条件、气象预测（预报-前缀）；实际指标对应特征树展示实时价格、实时边界条件、实际气象（实际-前缀）。",
+          "acceptance_criteria": [
+            "默认为前指标",
+            "切换维度后参考特征自动清空",
+            "切换维度后查询结果清空",
+            "前指标/实际指标对应不同特征树内容"
+          ],
+          "related_images": [{"filename": "similar_day_requirements.png", "description": "相似日需求文档截图-筛选栏部分", "path": "images/similar_day_requirements.png"}],
+          "source_paragraphs": ["Para-CH1-004"]
+        },
+        {
+          "requirement_id": "REQ-CH1-005",
+          "requirement_name": "选择参考特征",
+          "type": "功能需求 (FR)",
+          "module": "筛选栏",
+          "chapter": 1,
+          "source_page": "第 1 页",
+          "description": "用户点击参考特征控件弹出特征选择树窗口，树形两级分组结构，支持折叠展开，默认展开，限制最多选3个字段，默认选择竞价空间",
+          "testable_elements": {
+            "trigger": "用户点击参考特征控件",
+            "inputs": ["特征字段（复选框勾选）"],
+            "action": "在弹窗中勾选特征字段并点击确定",
+            "expected_output": "弹窗关闭，已选特征显示在控件中",
+            "verification_points": [
+              "点击弹出特征选择树窗口",
+              "默认选择竞价空间",
+              "树形结构为两级：分组>字段",
+              "支持折叠/展开，默认展开",
+              "限制最多选3个字段",
+              "字段以复选框形式呈现",
+              "弹窗底部有确定按钮关闭弹窗",
+              "前指标显示：日前价格、日前边界条件（日前竞价空间、日前负荷预测）、气象预测（温度、辐照、风速、降雨量）",
+              "实际指标显示：实时价格、实际边界条件（实时竞价空间、实际负荷）、实际气象（温度、辐照、风速、降雨量）"
+            ]
+          },
+          "detailed_description": "筛选栏「参考特征」点击后弹出特征选择树窗口。默认选择竞价空间。树形结构为两级分组>字段，支持折叠/展开，默认展开，限制最多选3个。前指标下展示日前价格、日前边界条件（含日前竞价空间、日前负荷预测）、气象预测（温度、辐照、风速、降雨量等）；实际指标下展示实时价格、实际边界条件（含实时竞价空间、实际负荷等）、实际气象（温度、辐照、风速、降雨量等）。字段以复选框形式呈现，点击切换勾选状态。弹窗底部有【确定】按钮关闭弹窗。",
+          "acceptance_criteria": [
+            "点击弹出特征选择树窗口",
+            "默认勾选竞价空间",
+            "最多可选3个字段，超出时给出提示或禁用",
+            "树形默认展开，可折叠",
+            "点击确定关闭弹窗并保存选择"
+          ],
+          "related_images": [{"filename": "similar_day_requirements.png", "description": "相似日需求文档截图-筛选栏部分", "path": "images/similar_day_requirements.png"}],
+          "source_paragraphs": ["Para-CH1-005"]
+        },
+        {
+          "requirement_id": "REQ-CH1-006",
+          "requirement_name": "执行查询",
+          "type": "功能需求 (FR)",
+          "module": "筛选栏",
+          "chapter": 1,
+          "source_page": "第 1 页",
+          "description": "用户点击查询按钮执行相似度计算，未选目标日期或未选参考特征时按钮禁用，点击后快照当前配置并触发计算",
+          "testable_elements": {
+            "trigger": "用户点击查询按钮",
+            "inputs": ["目标日期", "查找范围", "相似度算法", "研究维度", "参考特征"],
+            "action": "点击查询按钮",
+            "expected_output": "系统快照当前配置并触发相似度计算，展示结果",
+            "verification_points": [
+              "未选目标日期时按钮禁用",
+              "未选参考特征时按钮禁用",
+              "点击后快照当前配置",
+              "触发相似度计算并展示结果"
+            ]
+          },
+          "detailed_description": "筛选栏「查询」按钮用于执行相似度计算。禁用条件：未选目标日期或未选参考特征时禁用。触发动作：点击后快照当前配置并触发计算。",
+          "acceptance_criteria": [
+            "未选目标日期时查询按钮禁用（置灰不可点击）",
+            "未选参考特征时查询按钮禁用",
+            "条件满足后按钮可点击",
+            "点击后触发计算并展示相似日结果"
+          ],
+          "related_images": [{"filename": "similar_day_requirements.png", "description": "相似日需求文档截图-筛选栏部分", "path": "images/similar_day_requirements.png"}],
+          "source_paragraphs": ["Para-CH1-006"]
+        }
+      ]
+    },
+    {
+      "module_name": "相似日卡片栏",
+      "requirement_count": 2,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH1-007",
+          "requirement_name": "展示相似日卡片",
+          "type": "功能需求 (FR)",
+          "module": "相似日卡片栏",
+          "chapter": 1,
+          "source_page": "第 1 页",
+          "description": "查询结果第一行横向排列3张卡片，每张卡片展示排名标签、日期、日期类型徽章、相似度数值（百分比保留1位小数）、进度条和左侧色条",
+          "testable_elements": {
+            "trigger": "查询完成返回相似日结果",
+            "inputs": ["相似日计算结果（Top3）"],
+            "action": "系统渲染相似日卡片",
+            "expected_output": "横向排列3张卡片，每张含排名标签、日期、徽章、相似度、进度条、色条",
+            "verification_points": [
+              "第一行横向排列3张卡片",
+              "排名标签：相似日1/相似日2/相似日3",
+              "日期格式YYYY-MM-DD",
+              "日期类型徽章：周末/工作日，与排名标签同行",
+              "相似度数值为百分比保留1位小数",
+              "进度条宽度按相似度百分比填充",
+              "左侧色条与图表示线颜色对应"
+            ]
+          },
+          "detailed_description": "查询结果第一行横向排列3张卡片，每张卡片单行布局。包含：排名标签（相似日1/2/3）、日期（YYYY-MM-DD固定格式）、日期类型徽章（周末/工作日，与排名标签同行）、相似度数值（百分比保留1位小数）、进度条（宽度按相似度百分比填充）、左侧色条（与图表示线颜色对应）。",
+          "acceptance_criteria": [
+            "横向排列3张卡片",
+            "日期格式为YYYY-MM-DD",
+            "相似度保留1位小数百分比",
+            "进度条宽度与相似度成正比",
+            "色条颜色与对应图表折线颜色一致"
+          ],
+          "related_images": [{"filename": "similar_day_requirements.png", "description": "相似日需求文档截图-卡片栏部分", "path": "images/similar_day_requirements.png"}],
+          "source_paragraphs": ["Para-CH1-007"]
+        },
+        {
+          "requirement_id": "REQ-CH1-008",
+          "requirement_name": "卡片日期类型徽章正确标识",
+          "type": "功能需求 (FR)",
+          "module": "相似日卡片栏",
+          "chapter": 1,
+          "source_page": "第 1 页",
+          "description": "卡片中日期类型徽章正确标识该日期为周末或工作日，与排名标签同行显示",
+          "testable_elements": {
+            "trigger": "查询完成返回相似日结果",
+            "inputs": ["相似日日期"],
+            "action": "系统判断日期类型并渲染徽章",
+            "expected_output": "周末日期显示周末徽章，工作日显示工作日徽章",
+            "verification_points": [
+              "周六/周日显示周末徽章",
+              "周一至周五显示工作日徽章",
+              "徽章与排名标签同行显示"
+            ]
+          },
+          "detailed_description": "每张相似日卡片中，日期类型徽章标识该日期为周末或工作日，与排名标签同行显示。周六周日为周末，周一至周五为工作日。",
+          "acceptance_criteria": [
+            "周六/周日日期显示周末徽章",
+            "工作日日期显示工作日徽章",
+            "徽章位置与排名标签同行"
+          ],
+          "related_images": [{"filename": "similar_day_requirements.png", "description": "相似日需求文档截图-卡片栏部分", "path": "images/similar_day_requirements.png"}],
+          "source_paragraphs": ["Para-CH1-008"]
+        }
+      ]
+    },
+    {
+      "module_name": "对比图表区",
+      "requirement_count": 1,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH1-009",
+          "requirement_name": "展示对比折线图",
+          "type": "功能需求 (FR)",
+          "module": "对比图表区",
+          "chapter": 1,
+          "source_page": "第 1 页",
+          "description": "当前数据集中所有非datetime类型的列均生成折线图，X轴为目标日所有时间点（MM-DD HH:mm），Y轴为特征数值，包含目标日+3个相似日共4条实线，支持悬浮查看数值和跨图表tooltip联动",
+          "testable_elements": {
+            "trigger": "查询完成返回相似日结果",
+            "inputs": ["目标日数据", "相似日1/2/3数据", "特征列"],
+            "action": "系统渲染对比折线图网格",
+            "expected_output": "每个非datetime列生成一张折线图，含4条实线",
+            "verification_points": [
+              "所有非datetime类型列均生成图表",
+              "X轴格式MM-DD HH:mm",
+              "Y轴为该特征数值",
+              "4条线：目标日+相似日1+相似日2+相似日3",
+              "所有线条均为实线",
+              "图例标注：目标日（日期）/相似日N（日期）",
+              "悬浮查看具体数值",
+              "鼠标悬停某张图时其他图表同步高亮对应时刻（tooltip联动）"
+            ]
+          },
+          "detailed_description": "对比图表区为卡片下方的图表网格。当前数据集中所有非datetime类型的列均生成一张折线图。X轴为目标日所有时间点（格式MM-DD HH:mm），Y轴为该特征数值。线条包含目标日+相似日1+相似日2+相似日3共4条实线。图例标注为「目标日（日期）/相似日N（日期）」。交互：悬浮查看具体数值；鼠标悬停在某张图上时，其他图表也同步高亮显示对应时刻（tooltip联动）。",
+          "acceptance_criteria": [
+            "每个非datetime列生成独立折线图",
+            "X轴时间格式为MM-DD HH:mm",
+            "4条实线颜色与卡片色条对应",
+            "悬浮显示具体数值tooltip",
+            "跨图表tooltip联动高亮同步"
+          ],
+          "related_images": [{"filename": "similar_day_requirements.png", "description": "相似日需求文档截图-对比图表区部分", "path": "images/similar_day_requirements.png"}],
+          "source_paragraphs": ["Para-CH1-009"]
+        }
+      ]
+    },
+    {
+      "module_name": "算法逻辑",
+      "requirement_count": 1,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH1-010",
+          "requirement_name": "相似度算法计算逻辑",
+          "type": "功能需求 (FR)",
+          "module": "算法逻辑",
+          "chapter": 1,
+          "source_page": "第 1 页",
+          "description": "系统根据所选算法（欧氏距离/Pearson相关性/组合算法）和参考特征计算目标日与历史日的相似度，返回Top3相似日并按相似度降序排列",
+          "testable_elements": {
+            "trigger": "用户点击查询按钮触发计算",
+            "inputs": ["目标日期数据", "查找范围内历史数据", "所选算法", "所选参考特征"],
+            "action": "系统执行相似度计算",
+            "expected_output": "返回Top3相似日，按相似度降序排列，数值为百分比保留1位小数",
+            "verification_points": [
+              "欧氏距离算法计算结果正确",
+              "Pearson相关性算法计算结果正确",
+              "组合算法计算结果正确",
+              "结果按相似度降序排列",
+              "相似度为百分比保留1位小数",
+              "时间格式统一MM-DD HH:mm",
+              "特征树与图表字段映射准确"
+            ]
+          },
+          "detailed_description": "算法逻辑为独立模块，根据所选相似度算法和参考特征，计算目标日与查找范围内历史日的相似度。返回Top3相似日按相似度降序排列。需确保时间格式统一（MM-DD HH:mm）、数值精度一致（相似度保留1位小数）、特征树与图表字段映射准确。",
+          "acceptance_criteria": [
+            "3种算法均可正确计算相似度",
+            "结果按相似度降序排列返回Top3",
+            "相似度百分比保留1位小数",
+            "不同算法产生不同排序结果"
+          ],
+          "related_images": [{"filename": "similar_day_requirements.png", "description": "相似日需求文档截图-算法逻辑部分", "path": "images/similar_day_requirements.png"}],
+          "source_paragraphs": ["Para-CH1-010"]
+        }
+      ]
+    }
+  ]
+}

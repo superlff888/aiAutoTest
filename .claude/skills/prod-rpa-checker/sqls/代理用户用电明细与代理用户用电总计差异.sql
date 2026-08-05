@@ -23,6 +23,7 @@ LEFT JOIN (
     AND `vpp_id` = '{{vpp_id}}'
     AND time BETWEEN REPLACE('{{start_date}}', '-', '')
     AND REPLACE('{{end_date}}', '-', '')
+    AND side_type=1
     GROUP BY time
 ) v
 ON u.time = v.time

@@ -218,6 +218,7 @@ def build_structured_result(results: dict, center_results: dict, report_file: st
     all_center_names = list(center_results.keys())
     for cname in all_center_names:
         center_fails = [f for f in results.get("failed", []) if f["center"] == cname]
+        center_warns = [w for w in results.get("warnings", []) if w["center"] == cname]
         unique_fail_dts = {(f["data_type"],) for f in center_fails}
         all_pass = len(unique_fail_dts) == 0
 
@@ -238,11 +239,31 @@ def build_structured_result(results: dict, center_results: dict, report_file: st
                 "message": msg,
             })
 
+        # 警告明细（load_type 超出 / 暂未接入），此前仅计入 warn_count 总数、
+        # 详情被丢弃，导致飞书卡片看不到"load_type 超"的具体内容
+        warnings = []
+        for w in center_warns:
+            check = w["check"]
+            ctype = check.get("type", "")
+            if ctype == "coverage_extra":
+                ext = ', '.join(str(x) for x in check.get('extra_union', []))
+                msg = f"load_type 超 [{ext}]，命中 {check.get('hit_rate', '?')}"
+            elif ctype == "not_connected":
+                msg = "暂未接入"
+            else:
+                msg = check.get("message", "未知警告")
+            warnings.append({
+                "data_type": w["data_type"],
+                "type": ctype,
+                "message": msg,
+            })
+
         centers.append({
             "name": cname,
             "trade_center_id": center_results[cname]["center_id"],
             "all_pass": all_pass,
             "failures": failures,
+            "warnings": warnings,
         })
 
     return {

@@ -175,14 +175,13 @@ required_variables:
 }
 ```
 
-```
 ---
 
 ## 4. 测试点 JSON 格式
 
 ### 4.1 单个测试点结构
 
-​```json
+```json
 {
   "testpoint_id": "TP-{章节}-{序号}-{测试点序号}",
   "testpoint_name": "验证{需求名称}计算正确性",
