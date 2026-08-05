@@ -1,0 +1,1 @@
+- [red-stderr](reference-red-stderr.md) — Python 终端报错红色背景方案：sitecustomize.py 包裹 sys.stderr

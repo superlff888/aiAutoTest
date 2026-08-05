@@ -1,0 +1,55 @@
+{
+  "_description": "飞书 wiki 报告文档历史记录：每次校验生成新文档后追加记录，超过上限（MAX_REPORT_HISTORY=10）时自动删除最早的文档",
+  "records": [
+    {
+      "doc_id": "PHqcd6anioYpUZxGsj8cBJnPnDI",
+      "node_token": "O0gOwoqsyiiTFukaPnHcKQajnHh",
+      "title": "RPA数据采集校验报告20260730171509"
+    },
+    {
+      "doc_id": "FdTid3O5eojd48xkQc3cPojDnFg",
+      "node_token": "PzoJwzMn0iyPg3k4twKcFiDDnpg",
+      "title": "RPA数据采集校验报告20260731083509"
+    },
+    {
+      "doc_id": "XQaddICmBoGfp5x2hkocFNb0nnd",
+      "node_token": "W4rVwGnTYiH0FQklD4Vc59eRnNb",
+      "title": "RPA数据采集校验报告20260731171512"
+    },
+    {
+      "doc_id": "U5EddSKiioJbpgxjMM7cd5X7ngg",
+      "node_token": "PFBrw0vdsin1i8kEkgkcTrpMnHc",
+      "title": "RPA数据采集校验报告20260802171509"
+    },
+    {
+      "doc_id": "Zs4idsrD1obtT9xNa9Ccqtqanbd",
+      "node_token": "MIaGwkBy8i4RXMklbzYcXQIjnbe",
+      "title": "RPA数据采集校验报告20260803083510"
+    },
+    {
+      "doc_id": "K8Q8djkbjoFbTBxhA2tcggi8nfh",
+      "node_token": "Z4ovwXy3GinnjMkUANQcdeJXnCe",
+      "title": "RPA数据采集校验报告20260803171514"
+    },
+    {
+      "doc_id": "RoOpdCIygoLAQTx49OPchJ8Pnve",
+      "node_token": "UN7Zwye4mivP60kLW5KciWPwn3e",
+      "title": "RPA数据采集校验报告20260804083509"
+    },
+    {
+      "doc_id": "Modod6hfgofiFZxwPLuc6jMbn6W",
+      "node_token": "SphYwJNCziwdNck1rfKcSWEnn3d",
+      "title": "RPA数据采集校验报告20260804171508"
+    },
+    {
+      "doc_id": "LD1sdq5evoz4prxEleAcO0R7n3b",
+      "node_token": "MtqkwtKcHiFvelkQb9AczEJQnjd",
+      "title": "RPA数据采集校验报告20260805083510"
+    },
+    {
+      "doc_id": "SN6tdZZRHoqZ16x4HtIczkRKnwh",
+      "node_token": "SlWmw7Awgiiyxhk1MnDcV5PEnug",
+      "title": "RPA数据采集校验报告20260805171509"
+    }
+  ]
+}

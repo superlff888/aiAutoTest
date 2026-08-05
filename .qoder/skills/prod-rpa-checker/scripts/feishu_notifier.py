@@ -1,0 +1,193 @@
+"""飞书 Webhook 通知模块 — 将校验结果推送到飞书群"""
+
+import hashlib
+import hmac
+import base64
+import time
+import logging
+import requests
+from datetime import datetime
+from typing import Any
+
+logger = logging.getLogger(__name__)
+
+# ---------------------------------------------------------------------------
+# 签名工具
+# ---------------------------------------------------------------------------
+
+def _gen_sign(timestamp: int, secret: str) -> str:
+    """生成飞书 Webhook 签名（HMAC-SHA256）"""
+    string_to_sign = f"{timestamp}\n{secret}"
+    hmac_code = hmac.new(
+        string_to_sign.encode("utf-8"), digestmod=hashlib.sha256
+    ).digest()
+    return base64.b64encode(hmac_code).decode("utf-8")
+
+
+# ---------------------------------------------------------------------------
+# 卡片构建
+# ---------------------------------------------------------------------------
+
+def build_card(
+    result: dict[str, Any],
+    wiki_url: str = "",
+    button_text: str = "📄 查看完整报告",
+) -> dict:
+    """
+    从 checker 返回的结构化结果构建飞书消息卡片。
+
+    result 预期结构:
+    {
+        "exec_time": "2026-06-04 17:10:28",
+        "pass_count": 47,
+        "fail_count": 64,
+        "warn_count": 33,
+        "config_missing_count": 0,
+        "centers": [
+            {"name": "广东", "trade_center_id": 1, "all_pass": False,
+             "failures": [{"data_type": "...", "offset": "...", "message": "..."}],
+             "warnings": [{"data_type": "...", "type": "coverage_extra", "message": "..."}]},
+            ...
+        ]
+    }
+    """
+    has_failures = result["fail_count"] > 0
+    header_template = "red" if has_failures else "green"
+    status_emoji = "❌" if has_failures else "✅"
+
+    # 各中心摘要
+    # 警告明细此前在构建结构化结果时被丢弃，卡片只显示 warn_count 总数；
+    # 现在按中心展开，load_type 超详情可见。
+    # 注："暂未接入"为已知配置状态、非数据问题，不在卡片中展示
+    center_lines = []
+    for c in result["centers"]:
+        fail_list = c.get("failures", [])
+        warn_list = c.get("warnings", [])
+        extra_warns = [w for w in warn_list if w.get("type") == "coverage_extra"]
+        fail_count = len(fail_list)
+
+        # 状态优先级：失败 > load_type 超出 > 全部通过
+        if fail_count > 0:
+            header = f"**{c['name']}** ❌ {fail_count}项失败"
+        elif extra_warns:
+            header = f"**{c['name']}** ⚠️ {len(extra_warns)}项load_type超出"
+        else:
+            center_lines.append(f"**{c['name']}** ✅ 全部通过")
+            continue
+
+        detail_lines = []
+        for f in fail_list[:3]:
+            detail_lines.append(f"  • {f['data_type']}: {f['message']}")
+        if fail_count > 3:
+            detail_lines.append(f"  • ... 等共 {fail_count} 项失败")
+        for w in extra_warns[:3]:
+            detail_lines.append(f"  • ⚠️ {w['data_type']}: {w['message']}")
+        if len(extra_warns) > 3:
+            detail_lines.append(f"  • ... 等共 {len(extra_warns)} 项超出")
+
+        center_lines.append(header + "\n" + "\n".join(detail_lines))
+
+    center_md = "\n\n".join(center_lines)
+
+    # 汇总区增 2 个字段（warn_count / config_missing_count），用 .get 兜底
+    warn_count = result.get("warn_count", 0)
+    config_missing_count = result.get("config_missing_count", 0)
+    summary_parts = [
+        f"**✅ 通过**：{result['pass_count']}",
+        f"**❌ 失败**：{result['fail_count']}",
+    ]
+    if warn_count > 0:
+        summary_parts.append(f"**⚠️ 警告**：{warn_count}")
+    if config_missing_count > 0:
+        summary_parts.append(f"**⚙️ 配置缺失**：{config_missing_count}")
+    summary_text = "  ".join(summary_parts)
+
+    card = {
+        "config": {"wide_screen_mode": True},
+        "header": {
+            "title": {"tag": "plain_text", "content": f"{status_emoji} RPA数据采集校验报告"},
+            "template": header_template,
+        },
+        "elements": [
+            {
+                "tag": "div",
+                "text": {"tag": "lark_md", "content": f"**执行时间**：{result['exec_time']}"},
+            },
+            {
+                "tag": "div",
+                "text": {
+                    "tag": "lark_md",
+                    "content": summary_text,
+                },
+            },
+            {"tag": "hr"},
+            {"tag": "div", "text": {"tag": "lark_md", "content": center_md}},
+            {
+                "tag": "action",
+                "actions": [
+                    {
+                        "tag": "button",
+                        "text": {"tag": "plain_text", "content": button_text},
+                        "url": wiki_url,
+                        "type": "primary",
+                    }
+                ],
+            },
+        ],
+    }
+    return card
+
+
+# ---------------------------------------------------------------------------
+# 发送逻辑
+# ---------------------------------------------------------------------------
+
+def send_to_feishu(
+    result: dict[str, Any],
+    webhook_url: str,
+    secret: str | None = None,
+    wiki_url: str = "",
+    button_text: str = "📄 查看完整报告",
+    max_retries: int = 3,
+    retry_backoff: int = 2,
+) -> bool:
+    """
+    发送校验结果到飞书。
+
+    :param result: checker 返回的结构化结果
+    :param webhook_url: 飞书 Webhook URL
+    :param secret: Webhook 签名密钥（可选）
+    :param wiki_url: 消息卡片中的跳转链接
+    :param button_text: 按钮显示文字
+    :param max_retries: 最大重试次数
+    :param retry_backoff: 指数退避基数（秒）
+    :return: 是否发送成功
+    """
+    card = build_card(result, wiki_url, button_text)
+    payload = {"msg_type": "interactive", "card": card}
+
+    # 签名
+    if secret:
+        timestamp = int(time.time())
+        payload["timestamp"] = str(timestamp)
+        payload["sign"] = _gen_sign(timestamp, secret)
+
+    for attempt in range(1, max_retries + 1):
+        try:
+            resp = requests.post(webhook_url, json=payload, timeout=10)
+            resp.raise_for_status()
+            data = resp.json()
+            if data.get("code") == 0:
+                logger.info("飞书推送成功")
+                return True
+            else:
+                logger.warning(f"飞书返回错误 (尝试 {attempt}/{max_retries}): {data}")
+        except requests.RequestException as e:
+            logger.warning(f"飞书请求异常 (尝试 {attempt}/{max_retries}): {e}")
+
+        if attempt < max_retries:
+            backoff = retry_backoff ** attempt  # 2s, 4s, 8s
+            time.sleep(backoff)
+
+    logger.error(f"飞书推送失败，已重试 {max_retries} 次")
+    return False

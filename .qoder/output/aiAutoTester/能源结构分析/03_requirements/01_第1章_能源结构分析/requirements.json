@@ -1,0 +1,327 @@
+{
+  "chapter": {
+    "chapter_number": 1,
+    "chapter_title": "能源结构分析",
+    "total_requirements": 8
+  },
+  "modules": [
+    {
+      "module_name": "时间范围筛选",
+      "requirement_count": 2,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH1-001",
+          "requirement_name": "查询能源结构数据",
+          "type": "功能需求 (FR)",
+          "module": "时间范围筛选",
+          "chapter": 1,
+          "source_page": "第 1 页",
+          "description": "用户可以在能源结构分析页面设置日期范围后查询对应的能源数据",
+          "testable_elements": {
+            "trigger": "用户设置日期范围并点击查询按钮",
+            "inputs": ["开始月份（如2025-07）", "结束月份（如2026-07）"],
+            "action": "点击「查询」按钮",
+            "expected_output": "所有6个图表卡片刷新为所选时间范围内的数据",
+            "verification_points": [
+              "折线图X轴时间范围与筛选条件一致",
+              "柱状图数据范围与筛选条件一致",
+              "面积图数据范围与筛选条件一致",
+              "环形图展示所选范围内最新月份的结构数据"
+            ]
+          },
+          "detailed_description": "能源结构分析页面左上角提供日期范围筛选控件，包含两个月份选择器（开始月份、结束月份），默认展示近一年数据（如2025-07至2026-07）。右侧提供「重置」和「查询」按钮。点击查询后，页面所有图表（全社会用电量与发电量趋势折线图、供需余缺柱状图、装机容量面积图、装机结构环形图、发电量面积图、发电结构环形图）均按所选时间范围刷新数据。",
+          "acceptance_criteria": [
+            "选择有效日期范围后点击查询，所有图表刷新为对应时间段数据",
+            "查询后各图表X轴时间范围与所选日期范围一致",
+            "环形图展示所选范围内最新月份的装机/发电结构占比",
+            "默认日期范围为近一年"
+          ],
+          "related_images": [
+            {
+              "filename": "energy_structure_analysis.png",
+              "description": "能源结构分析页面完整截图，含日期筛选控件和6个图表卡片",
+              "path": "images/energy_structure_analysis.png"
+            }
+          ],
+          "source_paragraphs": ["Para-CH1-001"]
+        },
+        {
+          "requirement_id": "REQ-CH1-002",
+          "requirement_name": "重置日期筛选条件",
+          "type": "功能需求 (FR)",
+          "module": "时间范围筛选",
+          "chapter": 1,
+          "source_page": "第 1 页",
+          "description": "用户可以点击重置按钮将日期范围恢复为默认值",
+          "testable_elements": {
+            "trigger": "用户修改日期范围后点击重置按钮",
+            "inputs": ["已修改的开始月份", "已修改的结束月份"],
+            "action": "点击「重置」按钮",
+            "expected_output": "日期范围恢复为默认值（近一年）",
+            "verification_points": [
+              "开始月份恢复为默认开始月份",
+              "结束月份恢复为默认结束月份",
+              "重置后图表数据不立即刷新（需点击查询）或立即刷新为默认范围数据"
+            ]
+          },
+          "detailed_description": "日期范围筛选控件右侧提供「重置」按钮，点击后将开始月份和结束月份恢复为系统默认值（近一年，如2025-07至2026-07）。",
+          "acceptance_criteria": [
+            "点击重置后日期范围恢复为默认近一年",
+            "重置操作不影响其他页面元素状态"
+          ],
+          "related_images": [
+            {
+              "filename": "energy_structure_analysis.png",
+              "description": "能源结构分析页面截图，含重置按钮",
+              "path": "images/energy_structure_analysis.png"
+            }
+          ],
+          "source_paragraphs": ["Para-CH1-002"]
+        }
+      ]
+    },
+    {
+      "module_name": "用电量与发电量趋势",
+      "requirement_count": 1,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH1-003",
+          "requirement_name": "展示全社会用电量与发电量趋势",
+          "type": "功能需求 (FR)",
+          "module": "用电量与发电量趋势",
+          "chapter": 1,
+          "source_page": "第 1 页",
+          "description": "用户可以在折线图中查看选定时间段内全社会用电量和发电量的月度变化趋势",
+          "testable_elements": {
+            "trigger": "页面加载完成或查询条件变更",
+            "inputs": ["日期范围", "全社会用电量月度数据", "发电量月度数据"],
+            "action": "系统渲染双折线趋势图",
+            "expected_output": "折线图展示全社会用电量（蓝色线）和发电量（红色线）的月度趋势，Y轴单位为亿千瓦时，X轴为月份",
+            "verification_points": [
+              "图表包含两条折线：全社会用电量、发电量",
+              "Y轴单位为亿千瓦时",
+              "X轴为月份序列（如2024-08至2025-07）",
+              "图例正确标注两条线的含义",
+              "悬停显示具体月份的双项数值（如2025-04，全社会用电量: 536.28亿千瓦时，发电量: 421.80亿千瓦时）"
+            ]
+          },
+          "detailed_description": "页面左上卡片展示「全社会用电量与发电量趋势」双折线图。X轴为月份（如2024-08至2025-07），Y轴单位为亿千瓦时。蓝色折线代表全社会用电量（数值范围约450-600亿千瓦时），红色折线代表发电量（数值范围约380-480亿千瓦时）。支持鼠标悬停显示具体数值（Tooltip格式：2025-04，全社会用电量: 536.28亿千瓦时，发电量: 421.80亿千瓦时），支持图例点击切换显示/隐藏。",
+          "acceptance_criteria": [
+            "折线图正确展示用电量与发电量两条趋势线",
+            "悬停提示显示月份及两项指标的精确数值（保留2位小数）",
+            "图例可点击切换显示/隐藏单条折线",
+            "数据点与后台接口返回数据一致"
+          ],
+          "related_images": [
+            {
+              "filename": "energy_structure_analysis.png",
+              "description": "左上角折线图卡片，展示用电量与发电量双趋势线及悬停提示",
+              "path": "images/energy_structure_analysis.png"
+            }
+          ],
+          "source_paragraphs": ["Para-CH1-003"]
+        }
+      ]
+    },
+    {
+      "module_name": "供需余缺分析",
+      "requirement_count": 1,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH1-004",
+          "requirement_name": "展示电力供需余缺情况",
+          "type": "功能需求 (FR)",
+          "module": "供需余缺分析",
+          "chapter": 1,
+          "source_page": "第 1 页",
+          "description": "用户可以在柱状图中查看选定时间段内电力供需差值的月度变化情况",
+          "testable_elements": {
+            "trigger": "页面加载完成或查询条件变更",
+            "inputs": ["日期范围", "月度供需差值数据"],
+            "action": "系统渲染供需余缺柱状图",
+            "expected_output": "柱状图展示每月供需差值，正值表示供大于求（绿色向上柱），负值表示供不应求（红色向下柱），Y轴单位为亿千瓦时",
+            "verification_points": [
+              "柱状图正负值方向正确（正值向上、负值向下）",
+              "Y轴单位为亿千瓦时",
+              "悬停显示具体月份的供需差值数值",
+              "供需差值=发电量-用电量，数值逻辑正确"
+            ]
+          },
+          "detailed_description": "页面中上卡片展示「电力供需余缺情况」柱状图。X轴为月份，Y轴单位为亿千瓦时，零点位于中间。绿色柱表示供大于求（差值约+50至+150亿千瓦时），红色柱表示供不应求（差值约-100至-150亿千瓦时）。支持悬停提示和图例交互。",
+          "acceptance_criteria": [
+            "柱状图正确区分正负值方向和颜色",
+            "供需差值计算逻辑正确（发电量-用电量）",
+            "悬停提示显示具体月份的差值数值"
+          ],
+          "related_images": [
+            {
+              "filename": "energy_structure_analysis.png",
+              "description": "中上柱状图卡片，展示供需余缺正负柱形",
+              "path": "images/energy_structure_analysis.png"
+            }
+          ],
+          "source_paragraphs": ["Para-CH1-004"]
+        }
+      ]
+    },
+    {
+      "module_name": "装机容量分析",
+      "requirement_count": 2,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH1-005",
+          "requirement_name": "展示各类型装机容量趋势",
+          "type": "功能需求 (FR)",
+          "module": "装机容量分析",
+          "chapter": 1,
+          "source_page": "第 1 页",
+          "description": "用户可以在堆叠面积图中查看水电、火电、核电、风电、光伏各类装机容量的月度变化趋势",
+          "testable_elements": {
+            "trigger": "页面加载完成或查询条件变更",
+            "inputs": ["日期范围", "各类型月度装机容量数据"],
+            "action": "系统渲染堆叠面积图",
+            "expected_output": "堆叠面积图展示水电（蓝色）、火电（红色）、核电（绿色）、风电（深绿）、光伏（黄色）的装机容量趋势，Y轴单位为万千瓦",
+            "verification_points": [
+              "5种能源类型面积层叠顺序和颜色正确",
+              "Y轴单位为万千瓦",
+              "图例包含水电、火电、核电、风电、光伏5项",
+              "图例可点击切换显示/隐藏单个类型",
+              "悬停显示该月份所有类型的具体数值"
+            ]
+          },
+          "detailed_description": "页面左中卡片展示「各类型装机容量趋势」堆叠面积图。X轴为月份（2024-08至2025-07），Y轴单位为万千瓦。包含5种能源类型：水电（蓝色，约12000-13000万千瓦）、火电（红色，约14000-15000万千瓦）、核电（绿色，约6000万千瓦）、风电（深绿色，约5000-6000万千瓦）、光伏（黄色，约8000-10000万千瓦）。支持图例点击切换和悬停提示。",
+          "acceptance_criteria": [
+            "面积图正确展示5种能源类型的装机容量堆叠趋势",
+            "各类型颜色与图例一致（水电蓝/火电红/核电绿/风电深绿/光伏黄）",
+            "图例点击可切换显示/隐藏单个类型",
+            "悬停显示具体数值（万千瓦）"
+          ],
+          "related_images": [
+            {
+              "filename": "energy_structure_analysis.png",
+              "description": "左中面积图卡片，展示5类装机容量堆叠趋势",
+              "path": "images/energy_structure_analysis.png"
+            }
+          ],
+          "source_paragraphs": ["Para-CH1-005"]
+        },
+        {
+          "requirement_id": "REQ-CH1-006",
+          "requirement_name": "展示最新月份装机结构占比",
+          "type": "功能需求 (FR)",
+          "module": "装机容量分析",
+          "chapter": 1,
+          "source_page": "第 1 页",
+          "description": "用户可以在环形图中查看所选范围内最新月份的各类装机容量结构占比",
+          "testable_elements": {
+            "trigger": "页面加载完成或查询条件变更",
+            "inputs": ["日期范围", "最新月份各类型装机容量数据"],
+            "action": "系统渲染环形结构图",
+            "expected_output": "环形图展示最新月份（如2026年5月）各类型装机容量占比，中心显示总量（万千瓦），悬停显示百分比及具体数值",
+            "verification_points": [
+              "环形图标题标注最新月份（如2026年5月装机结构）",
+              "中心显示总装机容量数值和单位（万千瓦）",
+              "悬停显示类型名称、数值和百分比（如火电 8164.35万千瓦 44.2%）",
+              "各类型百分比之和为100%",
+              "图例可点击切换显示/隐藏单个类型"
+            ]
+          },
+          "detailed_description": "页面右中卡片展示「最新月份装机结构」环形图（如2026年5月）。环形图中心显示总装机容量（万千瓦），各扇区按类型着色：火电占比最大（44.2%，8164.35万千瓦）。支持鼠标悬停显示百分比及具体数值（万千瓦），支持图例点击切换显示/隐藏单个类型。",
+          "acceptance_criteria": [
+            "环形图展示最新月份各类型装机占比",
+            "悬停显示百分比和具体数值（万千瓦）",
+            "各扇区占比之和为100%",
+            "中心总量数值等于各类型数值之和"
+          ],
+          "related_images": [
+            {
+              "filename": "energy_structure_analysis.png",
+              "description": "右侧环形图卡片，展示2026年5月装机结构占比及悬停提示",
+              "path": "images/energy_structure_analysis.png"
+            }
+          ],
+          "source_paragraphs": ["Para-CH1-006"]
+        }
+      ]
+    },
+    {
+      "module_name": "发电量分析",
+      "requirement_count": 2,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH1-007",
+          "requirement_name": "展示各类型发电量趋势",
+          "type": "功能需求 (FR)",
+          "module": "发电量分析",
+          "chapter": 1,
+          "source_page": "第 1 页",
+          "description": "用户可以在堆叠面积图中查看水电、火电、核电、风电、光伏各类发电量的月度变化趋势",
+          "testable_elements": {
+            "trigger": "页面加载完成或查询条件变更",
+            "inputs": ["日期范围", "各类型月度发电量数据"],
+            "action": "系统渲染堆叠面积图",
+            "expected_output": "堆叠面积图展示5种能源类型发电量趋势，Y轴单位为亿千瓦时",
+            "verification_points": [
+              "5种能源类型面积层叠正确",
+              "Y轴单位为亿千瓦时",
+              "图例点击可切换显示/隐藏单个类型",
+              "悬停显示该月份所有类型的具体数值",
+              "各类型发电量之和与总发电量趋势图数据逻辑一致"
+            ]
+          },
+          "detailed_description": "页面左下卡片展示「各类型发电量趋势」堆叠面积图。X轴为月份，Y轴单位为亿千瓦时。包含水电、火电、核电、风电、光伏5种类型，火电占比最大。支持图例点击切换和悬停提示。",
+          "acceptance_criteria": [
+            "面积图正确展示5种能源类型的发电量堆叠趋势",
+            "各类型颜色编码与装机容量图一致",
+            "悬停显示具体数值（亿千瓦时）",
+            "图例交互功能正常"
+          ],
+          "related_images": [
+            {
+              "filename": "energy_structure_analysis.png",
+              "description": "左下面积图卡片，展示5类发电量堆叠趋势",
+              "path": "images/energy_structure_analysis.png"
+            }
+          ],
+          "source_paragraphs": ["Para-CH1-007"]
+        },
+        {
+          "requirement_id": "REQ-CH1-008",
+          "requirement_name": "展示最新月份发电结构占比",
+          "type": "功能需求 (FR)",
+          "module": "发电量分析",
+          "chapter": 1,
+          "source_page": "第 1 页",
+          "description": "用户可以在环形图中查看所选范围内最新月份的各类发电量结构占比",
+          "testable_elements": {
+            "trigger": "页面加载完成或查询条件变更",
+            "inputs": ["日期范围", "最新月份各类型发电量数据"],
+            "action": "系统渲染环形结构图",
+            "expected_output": "环形图展示最新月份各类型发电量占比，中心显示总量（亿千瓦时），悬停显示百分比及具体数值",
+            "verification_points": [
+              "环形图标题标注最新月份",
+              "中心显示总发电量数值和单位（亿千瓦时）",
+              "悬停显示类型名称、数值和百分比",
+              "各类型百分比之和为100%"
+            ]
+          },
+          "detailed_description": "页面右下卡片展示「最新月份发电结构」环形图。环形图中心显示总发电量（亿千瓦时），各扇区按类型着色。支持鼠标悬停显示百分比及具体数值（亿千瓦时），支持图例点击切换显示/隐藏单个类型。",
+          "acceptance_criteria": [
+            "环形图展示最新月份各类型发电占比",
+            "悬停显示百分比和具体数值（亿千瓦时）",
+            "各扇区占比之和为100%",
+            "中心总量数值等于各类型数值之和"
+          ],
+          "related_images": [
+            {
+              "filename": "energy_structure_analysis.png",
+              "description": "右下环形图卡片，展示最新月份发电结构占比",
+              "path": "images/energy_structure_analysis.png"
+            }
+          ],
+          "source_paragraphs": ["Para-CH1-008"]
+        }
+      ]
+    }
+  ]
+}

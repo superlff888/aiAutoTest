@@ -1,0 +1,1905 @@
+[2026-06-08T18:57:28.358] === python started, argv=['.claude/skills/prod-rpa-checker/run_check.py', '--dry-run'] ===
+[2026-06-08T18:57:28.378] stdlib imports done
+[2026-06-08T18:57:28.380] before _ensure_env_loaded
+[2026-06-08T18:57:28.381] _ensure_env_loaded: importing dotenv
+[2026-06-08T18:57:28.402] _ensure_env_loaded: searching .env
+[2026-06-08T18:57:28.403] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-08T18:57:28.412] _ensure_env_loaded: done
+[2026-06-08T18:57:28.413] before _setup_logging
+[2026-06-08T18:57:28.414] _setup_logging: start
+[2026-06-08T18:57:28.471] _setup_logging: done
+[2026-06-08T18:57:28.472] before scripts imports
+[2026-06-08T18:57:28.481] imported scripts.data_validator
+[2026-06-08T18:57:28.742] imported scripts.feishu_notifier
+[2026-06-08T18:57:28.744] imported scripts.wiki_updater
+[2026-06-08T18:57:28.745] main() entered
+[2026-06-08T19:53:02.099] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py'] ===
+[2026-06-08T19:53:02.126] stdlib imports done
+[2026-06-08T19:53:02.128] before _ensure_env_loaded
+[2026-06-08T19:53:02.129] _ensure_env_loaded: importing dotenv
+[2026-06-08T19:53:02.156] _ensure_env_loaded: searching .env
+[2026-06-08T19:53:02.157] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-08T19:53:02.165] _ensure_env_loaded: done
+[2026-06-08T19:53:02.167] before _setup_logging
+[2026-06-08T19:53:02.167] _setup_logging: start
+[2026-06-08T19:53:02.235] _setup_logging: done
+[2026-06-08T19:53:02.237] before scripts imports
+[2026-06-08T19:53:02.247] imported scripts.data_validator
+[2026-06-08T19:53:02.556] imported scripts.feishu_notifier
+[2026-06-08T19:53:02.558] imported scripts.wiki_updater
+[2026-06-08T19:53:02.560] main() entered
+[2026-06-08T23:30:02.458] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py'] ===
+[2026-06-08T23:30:02.490] stdlib imports done
+[2026-06-08T23:30:02.492] before _ensure_env_loaded
+[2026-06-08T23:30:02.493] _ensure_env_loaded: importing dotenv
+[2026-06-08T23:30:02.525] _ensure_env_loaded: searching .env
+[2026-06-08T23:30:02.527] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-08T23:30:02.536] _ensure_env_loaded: done
+[2026-06-08T23:30:02.537] before _setup_logging
+[2026-06-08T23:30:02.539] _setup_logging: start
+[2026-06-08T23:30:02.640] _setup_logging: done
+[2026-06-08T23:30:02.642] before scripts imports
+[2026-06-08T23:30:02.653] imported scripts.data_validator
+[2026-06-08T23:30:02.978] imported scripts.feishu_notifier
+[2026-06-08T23:30:02.982] imported scripts.wiki_updater
+[2026-06-08T23:30:02.983] main() entered
+[2026-06-09T08:30:02.284] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py'] ===
+[2026-06-09T08:30:02.314] stdlib imports done
+[2026-06-09T08:30:02.316] before _ensure_env_loaded
+[2026-06-09T08:30:02.317] _ensure_env_loaded: importing dotenv
+[2026-06-09T08:30:02.363] _ensure_env_loaded: searching .env
+[2026-06-09T08:30:02.365] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-09T08:30:02.373] _ensure_env_loaded: done
+[2026-06-09T08:30:02.374] before _setup_logging
+[2026-06-09T08:30:02.375] _setup_logging: start
+[2026-06-09T08:30:02.470] _setup_logging: done
+[2026-06-09T08:30:02.471] before scripts imports
+[2026-06-09T08:30:02.484] imported scripts.data_validator
+[2026-06-09T08:30:02.845] imported scripts.feishu_notifier
+[2026-06-09T08:30:02.847] imported scripts.wiki_updater
+[2026-06-09T08:30:02.848] main() entered
+[2026-06-09T17:15:02.727] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py'] ===
+[2026-06-09T17:15:02.758] stdlib imports done
+[2026-06-09T17:15:02.759] before _ensure_env_loaded
+[2026-06-09T17:15:02.761] _ensure_env_loaded: importing dotenv
+[2026-06-09T17:15:02.802] _ensure_env_loaded: searching .env
+[2026-06-09T17:15:02.804] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-09T17:15:02.814] _ensure_env_loaded: done
+[2026-06-09T17:15:02.815] before _setup_logging
+[2026-06-09T17:15:02.816] _setup_logging: start
+[2026-06-09T17:15:02.876] _setup_logging: done
+[2026-06-09T17:15:02.878] before scripts imports
+[2026-06-09T17:15:02.889] imported scripts.data_validator
+[2026-06-09T17:15:03.392] imported scripts.feishu_notifier
+[2026-06-09T17:15:03.394] imported scripts.wiki_updater
+[2026-06-09T17:15:03.395] main() entered
+[2026-06-10T08:30:04.766] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py'] ===
+[2026-06-10T08:30:04.815] stdlib imports done
+[2026-06-10T08:30:04.817] before _ensure_env_loaded
+[2026-06-10T08:30:04.818] _ensure_env_loaded: importing dotenv
+[2026-06-10T08:30:04.874] _ensure_env_loaded: searching .env
+[2026-06-10T08:30:04.877] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-10T08:30:04.887] _ensure_env_loaded: done
+[2026-06-10T08:30:04.888] before _setup_logging
+[2026-06-10T08:30:04.890] _setup_logging: start
+[2026-06-10T08:30:05.170] _setup_logging: done
+[2026-06-10T08:30:05.171] before scripts imports
+[2026-06-10T08:30:05.203] imported scripts.data_validator
+[2026-06-10T08:30:05.786] imported scripts.feishu_notifier
+[2026-06-10T08:30:05.788] imported scripts.wiki_updater
+[2026-06-10T08:30:05.789] main() entered
+[2026-06-10T17:15:03.581] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py'] ===
+[2026-06-10T17:15:03.614] stdlib imports done
+[2026-06-10T17:15:03.617] before _ensure_env_loaded
+[2026-06-10T17:15:03.618] _ensure_env_loaded: importing dotenv
+[2026-06-10T17:15:03.664] _ensure_env_loaded: searching .env
+[2026-06-10T17:15:03.665] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-10T17:15:03.673] _ensure_env_loaded: done
+[2026-06-10T17:15:03.674] before _setup_logging
+[2026-06-10T17:15:03.675] _setup_logging: start
+[2026-06-10T17:15:03.787] _setup_logging: done
+[2026-06-10T17:15:03.788] before scripts imports
+[2026-06-10T17:15:03.802] imported scripts.data_validator
+[2026-06-10T17:15:04.193] imported scripts.feishu_notifier
+[2026-06-10T17:15:04.195] imported scripts.wiki_updater
+[2026-06-10T17:15:04.196] main() entered
+[2026-06-11T08:30:04.571] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py'] ===
+[2026-06-11T08:30:04.643] stdlib imports done
+[2026-06-11T08:30:04.646] before _ensure_env_loaded
+[2026-06-11T08:30:04.647] _ensure_env_loaded: importing dotenv
+[2026-06-11T08:30:04.728] _ensure_env_loaded: searching .env
+[2026-06-11T08:30:04.729] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-11T08:30:04.780] _ensure_env_loaded: done
+[2026-06-11T08:30:04.781] before _setup_logging
+[2026-06-11T08:30:04.783] _setup_logging: start
+[2026-06-11T08:30:04.917] _setup_logging: done
+[2026-06-11T08:30:04.918] before scripts imports
+[2026-06-11T08:30:04.928] imported scripts.data_validator
+[2026-06-11T08:30:05.471] imported scripts.feishu_notifier
+[2026-06-11T08:30:05.474] imported scripts.wiki_updater
+[2026-06-11T08:30:05.476] main() entered
+[2026-06-11T17:15:03.522] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py'] ===
+[2026-06-11T17:15:03.593] stdlib imports done
+[2026-06-11T17:15:03.595] before _ensure_env_loaded
+[2026-06-11T17:15:03.596] _ensure_env_loaded: importing dotenv
+[2026-06-11T17:15:03.670] _ensure_env_loaded: searching .env
+[2026-06-11T17:15:03.671] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-11T17:15:03.679] _ensure_env_loaded: done
+[2026-06-11T17:15:03.680] before _setup_logging
+[2026-06-11T17:15:03.681] _setup_logging: start
+[2026-06-11T17:15:03.756] _setup_logging: done
+[2026-06-11T17:15:03.759] before scripts imports
+[2026-06-11T17:15:03.769] imported scripts.data_validator
+[2026-06-11T17:15:04.379] imported scripts.feishu_notifier
+[2026-06-11T17:15:04.411] imported scripts.wiki_updater
+[2026-06-11T17:15:04.412] main() entered
+[2026-06-12T08:30:03.195] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py'] ===
+[2026-06-12T08:30:03.223] stdlib imports done
+[2026-06-12T08:30:03.226] before _ensure_env_loaded
+[2026-06-12T08:30:03.227] _ensure_env_loaded: importing dotenv
+[2026-06-12T08:30:03.255] _ensure_env_loaded: searching .env
+[2026-06-12T08:30:03.257] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-12T08:30:03.267] _ensure_env_loaded: done
+[2026-06-12T08:30:03.268] before _setup_logging
+[2026-06-12T08:30:03.269] _setup_logging: start
+[2026-06-12T08:30:03.343] _setup_logging: done
+[2026-06-12T08:30:03.345] before scripts imports
+[2026-06-12T08:30:03.356] imported scripts.data_validator
+[2026-06-12T08:30:03.652] imported scripts.feishu_notifier
+[2026-06-12T08:30:03.655] imported scripts.wiki_updater
+[2026-06-12T08:30:03.657] main() entered
+[2026-06-12T17:15:05.787] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py'] ===
+[2026-06-12T17:15:05.844] stdlib imports done
+[2026-06-12T17:15:05.848] before _ensure_env_loaded
+[2026-06-12T17:15:05.850] _ensure_env_loaded: importing dotenv
+[2026-06-12T17:15:06.053] _ensure_env_loaded: searching .env
+[2026-06-12T17:15:06.060] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-12T17:15:06.093] _ensure_env_loaded: done
+[2026-06-12T17:15:06.095] before _setup_logging
+[2026-06-12T17:15:06.097] _setup_logging: start
+[2026-06-12T17:15:06.229] _setup_logging: done
+[2026-06-12T17:15:06.232] before scripts imports
+[2026-06-12T17:15:06.271] imported scripts.data_validator
+[2026-06-12T17:15:07.062] imported scripts.feishu_notifier
+[2026-06-12T17:15:07.092] imported scripts.wiki_updater
+[2026-06-12T17:15:07.095] main() entered
+[2026-06-13T17:15:02.845] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py'] ===
+[2026-06-13T17:15:02.875] stdlib imports done
+[2026-06-13T17:15:02.876] before _ensure_env_loaded
+[2026-06-13T17:15:02.877] _ensure_env_loaded: importing dotenv
+[2026-06-13T17:15:02.911] _ensure_env_loaded: searching .env
+[2026-06-13T17:15:02.912] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-13T17:15:02.923] _ensure_env_loaded: done
+[2026-06-13T17:15:02.924] before _setup_logging
+[2026-06-13T17:15:02.926] _setup_logging: start
+[2026-06-13T17:15:03.097] _setup_logging: done
+[2026-06-13T17:15:03.099] before scripts imports
+[2026-06-13T17:15:03.109] imported scripts.data_validator
+[2026-06-13T17:15:03.593] imported scripts.feishu_notifier
+[2026-06-13T17:15:03.595] imported scripts.wiki_updater
+[2026-06-13T17:15:03.597] main() entered
+[2026-06-14T17:15:02.689] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py'] ===
+[2026-06-14T17:15:02.734] stdlib imports done
+[2026-06-14T17:15:02.736] before _ensure_env_loaded
+[2026-06-14T17:15:02.737] _ensure_env_loaded: importing dotenv
+[2026-06-14T17:15:02.783] _ensure_env_loaded: searching .env
+[2026-06-14T17:15:02.785] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-14T17:15:02.795] _ensure_env_loaded: done
+[2026-06-14T17:15:02.796] before _setup_logging
+[2026-06-14T17:15:02.797] _setup_logging: start
+[2026-06-14T17:15:02.877] _setup_logging: done
+[2026-06-14T17:15:02.879] before scripts imports
+[2026-06-14T17:15:02.889] imported scripts.data_validator
+[2026-06-14T17:15:03.211] imported scripts.feishu_notifier
+[2026-06-14T17:15:03.213] imported scripts.wiki_updater
+[2026-06-14T17:15:03.214] main() entered
+[2026-06-15T08:30:05.011] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py'] ===
+[2026-06-15T08:30:05.345] stdlib imports done
+[2026-06-15T08:30:05.443] before _ensure_env_loaded
+[2026-06-15T08:30:05.447] _ensure_env_loaded: importing dotenv
+[2026-06-15T08:30:05.525] _ensure_env_loaded: searching .env
+[2026-06-15T08:30:05.571] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-15T08:30:05.603] _ensure_env_loaded: done
+[2026-06-15T08:30:05.607] before _setup_logging
+[2026-06-15T08:30:05.623] _setup_logging: start
+[2026-06-15T08:30:06.140] _setup_logging: done
+[2026-06-15T08:30:06.153] before scripts imports
+[2026-06-15T08:30:06.206] imported scripts.data_validator
+[2026-06-15T08:30:06.815] imported scripts.feishu_notifier
+[2026-06-15T08:30:06.867] imported scripts.wiki_updater
+[2026-06-15T08:30:06.886] main() entered
+[2026-06-15T17:15:02.727] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py'] ===
+[2026-06-15T17:15:02.757] stdlib imports done
+[2026-06-15T17:15:02.760] before _ensure_env_loaded
+[2026-06-15T17:15:02.761] _ensure_env_loaded: importing dotenv
+[2026-06-15T17:15:02.794] _ensure_env_loaded: searching .env
+[2026-06-15T17:15:02.796] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-15T17:15:02.807] _ensure_env_loaded: done
+[2026-06-15T17:15:02.808] before _setup_logging
+[2026-06-15T17:15:02.810] _setup_logging: start
+[2026-06-15T17:15:02.897] _setup_logging: done
+[2026-06-15T17:15:02.898] before scripts imports
+[2026-06-15T17:15:02.926] imported scripts.data_validator
+[2026-06-15T17:15:03.273] imported scripts.feishu_notifier
+[2026-06-15T17:15:03.275] imported scripts.wiki_updater
+[2026-06-15T17:15:03.276] main() entered
+[2026-06-16T08:30:02.891] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py'] ===
+[2026-06-16T08:30:02.937] stdlib imports done
+[2026-06-16T08:30:02.939] before _ensure_env_loaded
+[2026-06-16T08:30:02.939] _ensure_env_loaded: importing dotenv
+[2026-06-16T08:30:02.992] _ensure_env_loaded: searching .env
+[2026-06-16T08:30:02.995] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-16T08:30:03.008] _ensure_env_loaded: done
+[2026-06-16T08:30:03.009] before _setup_logging
+[2026-06-16T08:30:03.010] _setup_logging: start
+[2026-06-16T08:30:03.104] _setup_logging: done
+[2026-06-16T08:30:03.105] before scripts imports
+[2026-06-16T08:30:03.122] imported scripts.data_validator
+[2026-06-16T08:30:03.557] imported scripts.feishu_notifier
+[2026-06-16T08:30:03.561] imported scripts.wiki_updater
+[2026-06-16T08:30:03.563] main() entered
+[2026-06-16T09:24:58.791] === python started, argv=['.claude/skills/prod-rpa-checker/run_check.py'] ===
+[2026-06-16T09:24:58.819] stdlib imports done
+[2026-06-16T09:24:58.821] before _ensure_env_loaded
+[2026-06-16T09:24:58.822] _ensure_env_loaded: importing dotenv
+[2026-06-16T09:24:58.852] _ensure_env_loaded: searching .env
+[2026-06-16T09:24:58.854] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-16T09:24:58.872] _ensure_env_loaded: done
+[2026-06-16T09:24:58.874] before _setup_logging
+[2026-06-16T09:24:58.874] _setup_logging: start
+[2026-06-16T09:24:58.938] _setup_logging: done
+[2026-06-16T09:24:58.939] before scripts imports
+[2026-06-16T09:24:58.949] imported scripts.data_validator
+[2026-06-16T09:24:59.214] imported scripts.feishu_notifier
+[2026-06-16T09:24:59.216] imported scripts.wiki_updater
+[2026-06-16T09:24:59.217] main() entered
+[2026-06-16T09:43:01.084] === python started, argv=['.claude/skills/prod-rpa-checker/run_check.py'] ===
+[2026-06-16T09:43:01.101] stdlib imports done
+[2026-06-16T09:43:01.103] before _ensure_env_loaded
+[2026-06-16T09:43:01.104] _ensure_env_loaded: importing dotenv
+[2026-06-16T09:43:01.124] _ensure_env_loaded: searching .env
+[2026-06-16T09:43:01.125] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-16T09:43:01.137] _ensure_env_loaded: done
+[2026-06-16T09:43:01.138] before _setup_logging
+[2026-06-16T09:43:01.139] _setup_logging: start
+[2026-06-16T09:43:01.188] _setup_logging: done
+[2026-06-16T09:43:01.188] before scripts imports
+[2026-06-16T09:43:01.200] imported scripts.data_validator
+[2026-06-16T09:43:01.395] imported scripts.feishu_notifier
+[2026-06-16T09:43:01.398] imported scripts.wiki_updater
+[2026-06-16T09:43:01.398] main() entered
+[2026-06-16T09:54:26.168] === python started, argv=['.claude/skills/prod-rpa-checker/run_check.py'] ===
+[2026-06-16T09:54:26.185] stdlib imports done
+[2026-06-16T09:54:26.187] before _ensure_env_loaded
+[2026-06-16T09:54:26.188] _ensure_env_loaded: importing dotenv
+[2026-06-16T09:54:26.207] _ensure_env_loaded: searching .env
+[2026-06-16T09:54:26.209] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-16T09:54:26.220] _ensure_env_loaded: done
+[2026-06-16T09:54:26.221] before _setup_logging
+[2026-06-16T09:54:26.223] _setup_logging: start
+[2026-06-16T09:54:26.276] _setup_logging: done
+[2026-06-16T09:54:26.277] before scripts imports
+[2026-06-16T09:54:26.286] imported scripts.data_validator
+[2026-06-16T09:54:26.463] imported scripts.feishu_notifier
+[2026-06-16T09:54:26.465] imported scripts.wiki_updater
+[2026-06-16T09:54:26.466] main() entered
+[2026-06-16T17:15:03.792] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py'] ===
+[2026-06-16T17:15:03.854] stdlib imports done
+[2026-06-16T17:15:03.856] before _ensure_env_loaded
+[2026-06-16T17:15:03.857] _ensure_env_loaded: importing dotenv
+[2026-06-16T17:15:03.942] _ensure_env_loaded: searching .env
+[2026-06-16T17:15:03.943] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-16T17:15:03.953] _ensure_env_loaded: done
+[2026-06-16T17:15:03.954] before _setup_logging
+[2026-06-16T17:15:03.955] _setup_logging: start
+[2026-06-16T17:15:04.229] _setup_logging: done
+[2026-06-16T17:15:04.231] before scripts imports
+[2026-06-16T17:15:04.246] imported scripts.data_validator
+[2026-06-16T17:15:04.674] imported scripts.feishu_notifier
+[2026-06-16T17:15:04.677] imported scripts.wiki_updater
+[2026-06-16T17:15:04.678] main() entered
+[2026-06-16T19:44:10.457] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-06-16T19:44:10.480] stdlib imports done
+[2026-06-16T19:44:10.482] before _ensure_env_loaded
+[2026-06-16T19:44:10.482] _ensure_env_loaded: importing dotenv
+[2026-06-16T19:44:10.505] _ensure_env_loaded: searching .env
+[2026-06-16T19:44:10.506] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-16T19:44:10.521] _ensure_env_loaded: done
+[2026-06-16T19:44:10.522] before _setup_logging
+[2026-06-16T19:44:10.524] _setup_logging: start
+[2026-06-16T19:44:10.600] _setup_logging: done
+[2026-06-16T19:44:10.617] before scripts imports
+[2026-06-16T19:44:10.681] imported scripts.data_validator
+[2026-06-16T19:44:11.005] imported scripts.feishu_notifier
+[2026-06-16T19:44:11.006] imported scripts.wiki_updater
+[2026-06-16T19:44:11.007] main() entered
+[2026-06-16T19:45:04.832] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-06-16T19:45:04.862] stdlib imports done
+[2026-06-16T19:45:04.864] before _ensure_env_loaded
+[2026-06-16T19:45:04.866] _ensure_env_loaded: importing dotenv
+[2026-06-16T19:45:04.890] _ensure_env_loaded: searching .env
+[2026-06-16T19:45:04.891] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-16T19:45:04.907] _ensure_env_loaded: done
+[2026-06-16T19:45:04.910] before _setup_logging
+[2026-06-16T19:45:04.911] _setup_logging: start
+[2026-06-16T19:45:04.976] _setup_logging: done
+[2026-06-16T19:45:04.977] before scripts imports
+[2026-06-16T19:45:04.986] imported scripts.data_validator
+[2026-06-16T19:45:05.240] imported scripts.feishu_notifier
+[2026-06-16T19:45:05.242] imported scripts.wiki_updater
+[2026-06-16T19:45:05.243] main() entered
+[2026-06-16T19:59:19.300] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-06-16T19:59:19.320] stdlib imports done
+[2026-06-16T19:59:19.321] before _ensure_env_loaded
+[2026-06-16T19:59:19.322] _ensure_env_loaded: importing dotenv
+[2026-06-16T19:59:19.339] _ensure_env_loaded: searching .env
+[2026-06-16T19:59:19.340] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-16T19:59:19.348] _ensure_env_loaded: done
+[2026-06-16T19:59:19.349] before _setup_logging
+[2026-06-16T19:59:19.349] _setup_logging: start
+[2026-06-16T19:59:19.403] _setup_logging: done
+[2026-06-16T19:59:19.404] before scripts imports
+[2026-06-16T19:59:19.414] imported scripts.data_validator
+[2026-06-16T19:59:19.623] imported scripts.feishu_notifier
+[2026-06-16T19:59:19.624] imported scripts.wiki_updater
+[2026-06-16T19:59:19.625] main() entered
+[2026-06-16T20:35:14.279] === python started, argv=['.claude/skills/prod-rpa-checker/run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-06-16T20:35:14.297] stdlib imports done
+[2026-06-16T20:35:14.298] before _ensure_env_loaded
+[2026-06-16T20:35:14.300] _ensure_env_loaded: importing dotenv
+[2026-06-16T20:35:14.317] _ensure_env_loaded: searching .env
+[2026-06-16T20:35:14.318] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-16T20:35:14.328] _ensure_env_loaded: done
+[2026-06-16T20:35:14.329] before _setup_logging
+[2026-06-16T20:35:14.329] _setup_logging: start
+[2026-06-16T20:35:14.365] _setup_logging: done
+[2026-06-16T20:35:14.366] before scripts imports
+[2026-06-16T20:35:14.375] imported scripts.data_validator
+[2026-06-16T20:35:14.624] imported scripts.feishu_notifier
+[2026-06-16T20:35:14.625] imported scripts.wiki_updater
+[2026-06-16T20:35:14.627] main() entered
+[2026-06-16T20:39:56.891] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-06-16T20:39:56.914] stdlib imports done
+[2026-06-16T20:39:56.915] before _ensure_env_loaded
+[2026-06-16T20:39:56.916] _ensure_env_loaded: importing dotenv
+[2026-06-16T20:39:56.936] _ensure_env_loaded: searching .env
+[2026-06-16T20:39:56.939] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-16T20:39:56.947] _ensure_env_loaded: done
+[2026-06-16T20:39:56.948] before _setup_logging
+[2026-06-16T20:39:56.949] _setup_logging: start
+[2026-06-16T20:39:56.995] _setup_logging: done
+[2026-06-16T20:39:56.996] before scripts imports
+[2026-06-16T20:39:57.003] imported scripts.data_validator
+[2026-06-16T20:39:57.180] imported scripts.feishu_notifier
+[2026-06-16T20:39:57.183] imported scripts.wiki_updater
+[2026-06-16T20:39:57.184] main() entered
+[2026-06-17T08:35:03.057] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-06-17T08:35:03.082] stdlib imports done
+[2026-06-17T08:35:03.084] before _ensure_env_loaded
+[2026-06-17T08:35:03.086] _ensure_env_loaded: importing dotenv
+[2026-06-17T08:35:03.124] _ensure_env_loaded: searching .env
+[2026-06-17T08:35:03.126] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-17T08:35:03.133] _ensure_env_loaded: done
+[2026-06-17T08:35:03.134] before _setup_logging
+[2026-06-17T08:35:03.136] _setup_logging: start
+[2026-06-17T08:35:03.266] _setup_logging: done
+[2026-06-17T08:35:03.267] before scripts imports
+[2026-06-17T08:35:03.278] imported scripts.data_validator
+[2026-06-17T08:35:03.695] imported scripts.feishu_notifier
+[2026-06-17T08:35:03.698] imported scripts.wiki_updater
+[2026-06-17T08:35:03.700] main() entered
+[2026-06-17T12:22:39.109] === python started, argv=['.claude/skills/prod-rpa-checker/run_check.py', '--config', 'doc/数据中心类型定义am.json'] ===
+[2026-06-17T12:22:39.133] stdlib imports done
+[2026-06-17T12:22:39.134] before _ensure_env_loaded
+[2026-06-17T12:22:39.135] _ensure_env_loaded: importing dotenv
+[2026-06-17T12:22:39.162] _ensure_env_loaded: searching .env
+[2026-06-17T12:22:39.163] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-17T12:22:39.173] _ensure_env_loaded: done
+[2026-06-17T12:22:39.174] before _setup_logging
+[2026-06-17T12:22:39.175] _setup_logging: start
+[2026-06-17T12:22:39.301] _setup_logging: done
+[2026-06-17T12:22:39.302] before scripts imports
+[2026-06-17T12:22:39.319] imported scripts.data_validator
+[2026-06-17T12:22:39.601] imported scripts.feishu_notifier
+[2026-06-17T12:22:39.603] imported scripts.wiki_updater
+[2026-06-17T12:22:39.604] main() entered
+[2026-06-17T13:54:19.211] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-06-17T13:54:19.233] stdlib imports done
+[2026-06-17T13:54:19.236] before _ensure_env_loaded
+[2026-06-17T13:54:19.236] _ensure_env_loaded: importing dotenv
+[2026-06-17T13:54:19.261] _ensure_env_loaded: searching .env
+[2026-06-17T13:54:19.263] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-17T13:54:19.275] _ensure_env_loaded: done
+[2026-06-17T13:54:19.276] before _setup_logging
+[2026-06-17T13:54:19.276] _setup_logging: start
+[2026-06-17T13:54:19.357] _setup_logging: done
+[2026-06-17T13:54:19.358] before scripts imports
+[2026-06-17T13:54:19.369] imported scripts.data_validator
+[2026-06-17T13:54:19.687] imported scripts.feishu_notifier
+[2026-06-17T13:54:19.689] imported scripts.wiki_updater
+[2026-06-17T13:54:19.690] main() entered
+[2026-06-17T17:15:02.819] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-06-17T17:15:02.857] stdlib imports done
+[2026-06-17T17:15:02.859] before _ensure_env_loaded
+[2026-06-17T17:15:02.860] _ensure_env_loaded: importing dotenv
+[2026-06-17T17:15:02.881] _ensure_env_loaded: searching .env
+[2026-06-17T17:15:02.882] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-17T17:15:02.892] _ensure_env_loaded: done
+[2026-06-17T17:15:02.892] before _setup_logging
+[2026-06-17T17:15:02.893] _setup_logging: start
+[2026-06-17T17:15:02.950] _setup_logging: done
+[2026-06-17T17:15:02.951] before scripts imports
+[2026-06-17T17:15:02.959] imported scripts.data_validator
+[2026-06-17T17:15:03.213] imported scripts.feishu_notifier
+[2026-06-17T17:15:03.215] imported scripts.wiki_updater
+[2026-06-17T17:15:03.216] main() entered
+[2026-06-17T18:09:54.895] === python started, argv=['run_check.py', '--config', 'doc/数据中心类型定义am.json'] ===
+[2026-06-17T18:09:54.916] stdlib imports done
+[2026-06-17T18:09:54.918] before _ensure_env_loaded
+[2026-06-17T18:09:54.919] _ensure_env_loaded: importing dotenv
+[2026-06-17T18:09:54.938] _ensure_env_loaded: searching .env
+[2026-06-17T18:09:54.940] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-17T18:09:54.949] _ensure_env_loaded: done
+[2026-06-17T18:09:54.950] before _setup_logging
+[2026-06-17T18:09:54.951] _setup_logging: start
+[2026-06-17T18:09:55.003] _setup_logging: done
+[2026-06-17T18:09:55.004] before scripts imports
+[2026-06-17T18:09:55.014] imported scripts.data_validator
+[2026-06-17T18:09:55.225] imported scripts.feishu_notifier
+[2026-06-17T18:09:55.227] imported scripts.wiki_updater
+[2026-06-17T18:09:55.229] main() entered
+[2026-06-17T18:11:54.276] === python started, argv=['run_check.py', '--config', 'doc/数据中心类型定义pm.json'] ===
+[2026-06-17T18:11:54.294] stdlib imports done
+[2026-06-17T18:11:54.296] before _ensure_env_loaded
+[2026-06-17T18:11:54.296] _ensure_env_loaded: importing dotenv
+[2026-06-17T18:11:54.314] _ensure_env_loaded: searching .env
+[2026-06-17T18:11:54.314] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-17T18:11:54.324] _ensure_env_loaded: done
+[2026-06-17T18:11:54.324] before _setup_logging
+[2026-06-17T18:11:54.325] _setup_logging: start
+[2026-06-17T18:11:54.437] _setup_logging: done
+[2026-06-17T18:11:54.438] before scripts imports
+[2026-06-17T18:11:54.449] imported scripts.data_validator
+[2026-06-17T18:11:54.800] imported scripts.feishu_notifier
+[2026-06-17T18:11:54.802] imported scripts.wiki_updater
+[2026-06-17T18:11:54.803] main() entered
+[2026-06-17T18:33:03.312] === python started, argv=['run_check.py', '--config', 'doc/数据中心类型定义am.json', '--no-notify'] ===
+[2026-06-17T18:33:03.343] stdlib imports done
+[2026-06-17T18:33:03.345] before _ensure_env_loaded
+[2026-06-17T18:33:03.345] _ensure_env_loaded: importing dotenv
+[2026-06-17T18:33:03.383] _ensure_env_loaded: searching .env
+[2026-06-17T18:33:03.384] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-17T18:33:03.402] _ensure_env_loaded: done
+[2026-06-17T18:33:03.406] before _setup_logging
+[2026-06-17T18:33:03.409] _setup_logging: start
+[2026-06-17T18:33:03.503] _setup_logging: done
+[2026-06-17T18:33:03.504] before scripts imports
+[2026-06-17T18:33:03.517] imported scripts.data_validator
+[2026-06-17T18:33:03.859] imported scripts.feishu_notifier
+[2026-06-17T18:33:03.869] imported scripts.wiki_updater
+[2026-06-17T18:33:03.870] main() entered
+[2026-06-17T18:33:36.343] === python started, argv=['run_check.py', '--config', 'doc/数据中心类型定义am.json'] ===
+[2026-06-17T18:33:36.396] stdlib imports done
+[2026-06-17T18:33:36.470] before _ensure_env_loaded
+[2026-06-17T18:33:36.493] _ensure_env_loaded: importing dotenv
+[2026-06-17T18:33:36.546] _ensure_env_loaded: searching .env
+[2026-06-17T18:33:36.548] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-17T18:33:36.570] _ensure_env_loaded: done
+[2026-06-17T18:33:36.573] before _setup_logging
+[2026-06-17T18:33:36.576] _setup_logging: start
+[2026-06-17T18:33:36.646] _setup_logging: done
+[2026-06-17T18:33:36.646] before scripts imports
+[2026-06-17T18:33:36.656] imported scripts.data_validator
+[2026-06-17T18:33:36.957] imported scripts.feishu_notifier
+[2026-06-17T18:33:36.960] imported scripts.wiki_updater
+[2026-06-17T18:33:36.961] main() entered
+[2026-06-17T18:34:49.195] === python started, argv=['run_check.py', '--config', 'doc/数据中心类型定义am.json'] ===
+[2026-06-17T18:34:49.214] stdlib imports done
+[2026-06-17T18:34:49.215] before _ensure_env_loaded
+[2026-06-17T18:34:49.217] _ensure_env_loaded: importing dotenv
+[2026-06-17T18:34:49.236] _ensure_env_loaded: searching .env
+[2026-06-17T18:34:49.237] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-17T18:34:49.247] _ensure_env_loaded: done
+[2026-06-17T18:34:49.248] before _setup_logging
+[2026-06-17T18:34:49.249] _setup_logging: start
+[2026-06-17T18:34:49.297] _setup_logging: done
+[2026-06-17T18:34:49.298] before scripts imports
+[2026-06-17T18:34:49.307] imported scripts.data_validator
+[2026-06-17T18:34:49.499] imported scripts.feishu_notifier
+[2026-06-17T18:34:49.513] imported scripts.wiki_updater
+[2026-06-17T18:34:49.514] main() entered
+[2026-06-17T18:41:50.340] === python started, argv=['run_check.py', '--config', 'doc/数据中心类型定义am.json'] ===
+[2026-06-17T18:41:50.363] stdlib imports done
+[2026-06-17T18:41:50.365] before _ensure_env_loaded
+[2026-06-17T18:41:50.365] _ensure_env_loaded: importing dotenv
+[2026-06-17T18:41:50.388] _ensure_env_loaded: searching .env
+[2026-06-17T18:41:50.389] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-17T18:41:50.400] _ensure_env_loaded: done
+[2026-06-17T18:41:50.402] before _setup_logging
+[2026-06-17T18:41:50.403] _setup_logging: start
+[2026-06-17T18:41:50.460] _setup_logging: done
+[2026-06-17T18:41:50.462] before scripts imports
+[2026-06-17T18:41:50.472] imported scripts.data_validator
+[2026-06-17T18:41:50.760] imported scripts.feishu_notifier
+[2026-06-17T18:41:50.764] imported scripts.wiki_updater
+[2026-06-17T18:41:50.764] main() entered
+[2026-06-17T18:44:22.354] === python started, argv=['run_check.py', '--config', 'doc/数据中心类型定义am.json'] ===
+[2026-06-17T18:44:22.382] stdlib imports done
+[2026-06-17T18:44:22.384] before _ensure_env_loaded
+[2026-06-17T18:44:22.385] _ensure_env_loaded: importing dotenv
+[2026-06-17T18:44:22.409] _ensure_env_loaded: searching .env
+[2026-06-17T18:44:22.411] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-17T18:44:22.426] _ensure_env_loaded: done
+[2026-06-17T18:44:22.428] before _setup_logging
+[2026-06-17T18:44:22.429] _setup_logging: start
+[2026-06-17T18:44:22.490] _setup_logging: done
+[2026-06-17T18:44:22.491] before scripts imports
+[2026-06-17T18:44:22.504] imported scripts.data_validator
+[2026-06-17T18:44:22.754] imported scripts.feishu_notifier
+[2026-06-17T18:44:22.755] imported scripts.wiki_updater
+[2026-06-17T18:44:22.758] main() entered
+[2026-06-17T19:05:21.022] === python started, argv=['run_check.py', '--config', 'doc/数据中心类型定义am.json', '--no-notify'] ===
+[2026-06-17T19:05:21.044] stdlib imports done
+[2026-06-17T19:05:21.046] before _ensure_env_loaded
+[2026-06-17T19:05:21.047] _ensure_env_loaded: importing dotenv
+[2026-06-17T19:05:21.074] _ensure_env_loaded: searching .env
+[2026-06-17T19:05:21.076] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-17T19:05:21.087] _ensure_env_loaded: done
+[2026-06-17T19:05:21.088] before _setup_logging
+[2026-06-17T19:05:21.089] _setup_logging: start
+[2026-06-17T19:05:21.158] _setup_logging: done
+[2026-06-17T19:05:21.159] before scripts imports
+[2026-06-17T19:05:21.171] imported scripts.data_validator
+[2026-06-17T19:05:21.517] imported scripts.feishu_notifier
+[2026-06-17T19:05:21.526] imported scripts.wiki_updater
+[2026-06-17T19:05:21.527] main() entered
+[2026-06-17T19:25:52.691] === python started, argv=['run_check.py', '--config', 'doc/数据中心类型定义am.json'] ===
+[2026-06-17T19:25:52.712] stdlib imports done
+[2026-06-17T19:25:52.714] before _ensure_env_loaded
+[2026-06-17T19:25:52.715] _ensure_env_loaded: importing dotenv
+[2026-06-17T19:25:52.742] _ensure_env_loaded: searching .env
+[2026-06-17T19:25:52.742] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-17T19:25:52.752] _ensure_env_loaded: done
+[2026-06-17T19:25:52.753] before _setup_logging
+[2026-06-17T19:25:52.753] _setup_logging: start
+[2026-06-17T19:25:52.814] _setup_logging: done
+[2026-06-17T19:25:52.815] before scripts imports
+[2026-06-17T19:25:52.826] imported scripts.data_validator
+[2026-06-17T19:25:53.115] imported scripts.feishu_notifier
+[2026-06-17T19:25:53.117] imported scripts.wiki_updater
+[2026-06-17T19:25:53.118] main() entered
+[2026-06-17T19:36:08.891] === python started, argv=['run_check.py', '--config', 'doc/数据中心类型定义am.json'] ===
+[2026-06-17T19:36:08.913] stdlib imports done
+[2026-06-17T19:36:08.914] before _ensure_env_loaded
+[2026-06-17T19:36:08.915] _ensure_env_loaded: importing dotenv
+[2026-06-17T19:36:08.938] _ensure_env_loaded: searching .env
+[2026-06-17T19:36:08.939] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-17T19:36:08.951] _ensure_env_loaded: done
+[2026-06-17T19:36:08.952] before _setup_logging
+[2026-06-17T19:36:08.953] _setup_logging: start
+[2026-06-17T19:36:09.001] _setup_logging: done
+[2026-06-17T19:36:09.003] before scripts imports
+[2026-06-17T19:36:09.013] imported scripts.data_validator
+[2026-06-17T19:36:09.200] imported scripts.feishu_notifier
+[2026-06-17T19:36:09.203] imported scripts.wiki_updater
+[2026-06-17T19:36:09.204] main() entered
+[2026-06-17T19:48:13.662] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-06-17T19:48:13.694] stdlib imports done
+[2026-06-17T19:48:13.696] before _ensure_env_loaded
+[2026-06-17T19:48:13.698] _ensure_env_loaded: importing dotenv
+[2026-06-17T19:48:13.732] _ensure_env_loaded: searching .env
+[2026-06-17T19:48:13.734] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-17T19:48:13.749] _ensure_env_loaded: done
+[2026-06-17T19:48:13.751] before _setup_logging
+[2026-06-17T19:48:13.753] _setup_logging: start
+[2026-06-17T19:48:13.822] _setup_logging: done
+[2026-06-17T19:48:13.823] before scripts imports
+[2026-06-17T19:48:13.834] imported scripts.data_validator
+[2026-06-17T19:48:14.191] imported scripts.feishu_notifier
+[2026-06-17T19:48:14.193] imported scripts.wiki_updater
+[2026-06-17T19:48:14.193] main() entered
+[2026-06-17T20:15:13.738] === python started, argv=['.claude/skills/prod-rpa-checker/run_check.py', '--config', 'doc/数据中心类型定义pm.json'] ===
+[2026-06-17T20:15:13.757] stdlib imports done
+[2026-06-17T20:15:13.758] before _ensure_env_loaded
+[2026-06-17T20:15:13.760] _ensure_env_loaded: importing dotenv
+[2026-06-17T20:15:13.777] _ensure_env_loaded: searching .env
+[2026-06-17T20:15:13.778] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-17T20:15:13.793] _ensure_env_loaded: done
+[2026-06-17T20:15:13.794] before _setup_logging
+[2026-06-17T20:15:13.795] _setup_logging: start
+[2026-06-17T20:15:13.834] _setup_logging: done
+[2026-06-17T20:15:13.835] before scripts imports
+[2026-06-17T20:15:13.844] imported scripts.data_validator
+[2026-06-17T20:15:14.038] imported scripts.feishu_notifier
+[2026-06-17T20:15:14.040] imported scripts.wiki_updater
+[2026-06-17T20:15:14.040] main() entered
+[2026-06-18T08:35:03.531] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-06-18T08:35:03.560] stdlib imports done
+[2026-06-18T08:35:03.562] before _ensure_env_loaded
+[2026-06-18T08:35:03.563] _ensure_env_loaded: importing dotenv
+[2026-06-18T08:35:03.596] _ensure_env_loaded: searching .env
+[2026-06-18T08:35:03.597] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-18T08:35:03.608] _ensure_env_loaded: done
+[2026-06-18T08:35:03.609] before _setup_logging
+[2026-06-18T08:35:03.610] _setup_logging: start
+[2026-06-18T08:35:03.698] _setup_logging: done
+[2026-06-18T08:35:03.700] before scripts imports
+[2026-06-18T08:35:03.717] imported scripts.data_validator
+[2026-06-18T08:35:04.247] imported scripts.feishu_notifier
+[2026-06-18T08:35:04.249] imported scripts.wiki_updater
+[2026-06-18T08:35:04.250] main() entered
+[2026-06-18T17:15:09.692] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-06-18T17:15:10.078] stdlib imports done
+[2026-06-18T17:15:10.079] before _ensure_env_loaded
+[2026-06-18T17:15:10.081] _ensure_env_loaded: importing dotenv
+[2026-06-18T17:15:10.157] _ensure_env_loaded: searching .env
+[2026-06-18T17:15:10.158] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-18T17:15:10.187] _ensure_env_loaded: done
+[2026-06-18T17:15:10.189] before _setup_logging
+[2026-06-18T17:15:10.190] _setup_logging: start
+[2026-06-18T17:15:10.308] _setup_logging: done
+[2026-06-18T17:15:10.309] before scripts imports
+[2026-06-18T17:15:10.384] imported scripts.data_validator
+[2026-06-18T17:15:11.648] imported scripts.feishu_notifier
+[2026-06-18T17:15:11.651] imported scripts.wiki_updater
+[2026-06-18T17:15:11.652] main() entered
+[2026-06-19T08:35:09.434] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-06-19T08:35:09.489] stdlib imports done
+[2026-06-19T08:35:09.491] before _ensure_env_loaded
+[2026-06-19T08:35:09.492] _ensure_env_loaded: importing dotenv
+[2026-06-19T08:35:09.542] _ensure_env_loaded: searching .env
+[2026-06-19T08:35:09.544] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-19T08:35:09.565] _ensure_env_loaded: done
+[2026-06-19T08:35:09.566] before _setup_logging
+[2026-06-19T08:35:09.567] _setup_logging: start
+[2026-06-19T08:35:09.785] _setup_logging: done
+[2026-06-19T08:35:09.788] before scripts imports
+[2026-06-19T08:35:09.841] imported scripts.data_validator
+[2026-06-19T08:35:10.858] imported scripts.feishu_notifier
+[2026-06-19T08:35:10.861] imported scripts.wiki_updater
+[2026-06-19T08:35:10.863] main() entered
+[2026-06-19T17:15:06.302] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-06-19T17:15:06.338] stdlib imports done
+[2026-06-19T17:15:06.340] before _ensure_env_loaded
+[2026-06-19T17:15:06.341] _ensure_env_loaded: importing dotenv
+[2026-06-19T17:15:06.371] _ensure_env_loaded: searching .env
+[2026-06-19T17:15:06.372] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-19T17:15:06.384] _ensure_env_loaded: done
+[2026-06-19T17:15:06.385] before _setup_logging
+[2026-06-19T17:15:06.386] _setup_logging: start
+[2026-06-19T17:15:06.458] _setup_logging: done
+[2026-06-19T17:15:06.459] before scripts imports
+[2026-06-19T17:15:06.484] imported scripts.data_validator
+[2026-06-19T17:15:06.869] imported scripts.feishu_notifier
+[2026-06-19T17:15:06.872] imported scripts.wiki_updater
+[2026-06-19T17:15:06.873] main() entered
+[2026-06-20T08:35:09.283] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-06-20T08:35:09.318] stdlib imports done
+[2026-06-20T08:35:09.321] before _ensure_env_loaded
+[2026-06-20T08:35:09.322] _ensure_env_loaded: importing dotenv
+[2026-06-20T08:35:09.352] _ensure_env_loaded: searching .env
+[2026-06-20T08:35:09.353] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-20T08:35:09.364] _ensure_env_loaded: done
+[2026-06-20T08:35:09.365] before _setup_logging
+[2026-06-20T08:35:09.365] _setup_logging: start
+[2026-06-20T08:35:09.485] _setup_logging: done
+[2026-06-20T08:35:09.487] before scripts imports
+[2026-06-20T08:35:09.498] imported scripts.data_validator
+[2026-06-20T08:35:09.988] imported scripts.feishu_notifier
+[2026-06-20T08:35:09.991] imported scripts.wiki_updater
+[2026-06-20T08:35:09.991] main() entered
+[2026-06-20T17:15:07.113] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-06-20T17:15:07.141] stdlib imports done
+[2026-06-20T17:15:07.143] before _ensure_env_loaded
+[2026-06-20T17:15:07.143] _ensure_env_loaded: importing dotenv
+[2026-06-20T17:15:07.178] _ensure_env_loaded: searching .env
+[2026-06-20T17:15:07.179] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-20T17:15:07.186] _ensure_env_loaded: done
+[2026-06-20T17:15:07.187] before _setup_logging
+[2026-06-20T17:15:07.188] _setup_logging: start
+[2026-06-20T17:15:07.244] _setup_logging: done
+[2026-06-20T17:15:07.246] before scripts imports
+[2026-06-20T17:15:07.257] imported scripts.data_validator
+[2026-06-20T17:15:07.571] imported scripts.feishu_notifier
+[2026-06-20T17:15:07.573] imported scripts.wiki_updater
+[2026-06-20T17:15:07.574] main() entered
+[2026-06-21T08:35:06.496] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-06-21T08:35:06.609] stdlib imports done
+[2026-06-21T08:35:06.611] before _ensure_env_loaded
+[2026-06-21T08:35:06.611] _ensure_env_loaded: importing dotenv
+[2026-06-21T08:35:06.688] _ensure_env_loaded: searching .env
+[2026-06-21T08:35:06.689] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-21T08:35:06.699] _ensure_env_loaded: done
+[2026-06-21T08:35:06.700] before _setup_logging
+[2026-06-21T08:35:06.701] _setup_logging: start
+[2026-06-21T08:35:06.932] _setup_logging: done
+[2026-06-21T08:35:06.933] before scripts imports
+[2026-06-21T08:35:06.946] imported scripts.data_validator
+[2026-06-21T08:35:09.061] imported scripts.feishu_notifier
+[2026-06-21T08:35:09.082] imported scripts.wiki_updater
+[2026-06-21T08:35:09.083] main() entered
+[2026-06-21T17:15:06.939] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-06-21T17:15:06.964] stdlib imports done
+[2026-06-21T17:15:06.966] before _ensure_env_loaded
+[2026-06-21T17:15:06.967] _ensure_env_loaded: importing dotenv
+[2026-06-21T17:15:06.989] _ensure_env_loaded: searching .env
+[2026-06-21T17:15:06.990] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-21T17:15:07.000] _ensure_env_loaded: done
+[2026-06-21T17:15:07.000] before _setup_logging
+[2026-06-21T17:15:07.001] _setup_logging: start
+[2026-06-21T17:15:07.063] _setup_logging: done
+[2026-06-21T17:15:07.064] before scripts imports
+[2026-06-21T17:15:07.075] imported scripts.data_validator
+[2026-06-21T17:15:07.475] imported scripts.feishu_notifier
+[2026-06-21T17:15:07.477] imported scripts.wiki_updater
+[2026-06-21T17:15:07.478] main() entered
+[2026-06-22T08:35:04.105] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-06-22T08:35:04.132] stdlib imports done
+[2026-06-22T08:35:04.133] before _ensure_env_loaded
+[2026-06-22T08:35:04.134] _ensure_env_loaded: importing dotenv
+[2026-06-22T08:35:04.157] _ensure_env_loaded: searching .env
+[2026-06-22T08:35:04.158] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-22T08:35:04.168] _ensure_env_loaded: done
+[2026-06-22T08:35:04.169] before _setup_logging
+[2026-06-22T08:35:04.170] _setup_logging: start
+[2026-06-22T08:35:04.240] _setup_logging: done
+[2026-06-22T08:35:04.241] before scripts imports
+[2026-06-22T08:35:04.252] imported scripts.data_validator
+[2026-06-22T08:35:04.697] imported scripts.feishu_notifier
+[2026-06-22T08:35:04.699] imported scripts.wiki_updater
+[2026-06-22T08:35:04.700] main() entered
+[2026-06-22T08:42:37.820] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-06-22T08:42:37.849] stdlib imports done
+[2026-06-22T08:42:37.851] before _ensure_env_loaded
+[2026-06-22T08:42:37.852] _ensure_env_loaded: importing dotenv
+[2026-06-22T08:42:37.881] _ensure_env_loaded: searching .env
+[2026-06-22T08:42:37.883] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-22T08:42:37.894] _ensure_env_loaded: done
+[2026-06-22T08:42:37.895] before _setup_logging
+[2026-06-22T08:42:37.897] _setup_logging: start
+[2026-06-22T08:42:38.016] _setup_logging: done
+[2026-06-22T08:42:38.018] before scripts imports
+[2026-06-22T08:42:38.028] imported scripts.data_validator
+[2026-06-22T08:42:38.414] imported scripts.feishu_notifier
+[2026-06-22T08:42:38.416] imported scripts.wiki_updater
+[2026-06-22T08:42:38.418] main() entered
+[2026-06-22T17:15:04.597] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-06-22T17:15:04.652] stdlib imports done
+[2026-06-22T17:15:04.654] before _ensure_env_loaded
+[2026-06-22T17:15:04.655] _ensure_env_loaded: importing dotenv
+[2026-06-22T17:15:04.682] _ensure_env_loaded: searching .env
+[2026-06-22T17:15:04.683] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-22T17:15:04.693] _ensure_env_loaded: done
+[2026-06-22T17:15:04.694] before _setup_logging
+[2026-06-22T17:15:04.695] _setup_logging: start
+[2026-06-22T17:15:04.968] _setup_logging: done
+[2026-06-22T17:15:04.970] before scripts imports
+[2026-06-22T17:15:04.982] imported scripts.data_validator
+[2026-06-22T17:15:05.396] imported scripts.feishu_notifier
+[2026-06-22T17:15:05.399] imported scripts.wiki_updater
+[2026-06-22T17:15:05.401] main() entered
+[2026-06-23T08:35:07.827] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-06-23T08:35:07.852] stdlib imports done
+[2026-06-23T08:35:07.853] before _ensure_env_loaded
+[2026-06-23T08:35:07.855] _ensure_env_loaded: importing dotenv
+[2026-06-23T08:35:07.880] _ensure_env_loaded: searching .env
+[2026-06-23T08:35:07.882] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-23T08:35:07.891] _ensure_env_loaded: done
+[2026-06-23T08:35:07.892] before _setup_logging
+[2026-06-23T08:35:07.893] _setup_logging: start
+[2026-06-23T08:35:08.072] _setup_logging: done
+[2026-06-23T08:35:08.073] before scripts imports
+[2026-06-23T08:35:08.109] imported scripts.data_validator
+[2026-06-23T08:35:09.006] imported scripts.feishu_notifier
+[2026-06-23T08:35:09.028] imported scripts.wiki_updater
+[2026-06-23T08:35:09.029] main() entered
+[2026-06-23T17:15:03.625] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-06-23T17:15:03.667] stdlib imports done
+[2026-06-23T17:15:03.668] before _ensure_env_loaded
+[2026-06-23T17:15:03.669] _ensure_env_loaded: importing dotenv
+[2026-06-23T17:15:03.696] _ensure_env_loaded: searching .env
+[2026-06-23T17:15:03.698] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-23T17:15:03.706] _ensure_env_loaded: done
+[2026-06-23T17:15:03.707] before _setup_logging
+[2026-06-23T17:15:03.708] _setup_logging: start
+[2026-06-23T17:15:03.783] _setup_logging: done
+[2026-06-23T17:15:03.784] before scripts imports
+[2026-06-23T17:15:03.870] imported scripts.data_validator
+[2026-06-23T17:15:04.260] imported scripts.feishu_notifier
+[2026-06-23T17:15:04.262] imported scripts.wiki_updater
+[2026-06-23T17:15:04.263] main() entered
+[2026-06-24T08:35:27.597] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-06-24T08:35:28.894] stdlib imports done
+[2026-06-24T08:35:28.906] before _ensure_env_loaded
+[2026-06-24T08:35:28.921] _ensure_env_loaded: importing dotenv
+[2026-06-24T08:35:29.230] _ensure_env_loaded: searching .env
+[2026-06-24T08:35:29.245] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-24T08:35:29.387] _ensure_env_loaded: done
+[2026-06-24T08:35:29.398] before _setup_logging
+[2026-06-24T08:35:29.428] _setup_logging: start
+[2026-06-24T08:35:31.809] _setup_logging: done
+[2026-06-24T08:35:31.812] before scripts imports
+[2026-06-24T08:35:31.961] imported scripts.data_validator
+[2026-06-24T08:35:36.324] imported scripts.feishu_notifier
+[2026-06-24T08:35:36.332] imported scripts.wiki_updater
+[2026-06-24T08:35:36.334] main() entered
+[2026-06-24T17:15:03.957] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-06-24T17:15:03.988] stdlib imports done
+[2026-06-24T17:15:03.990] before _ensure_env_loaded
+[2026-06-24T17:15:03.991] _ensure_env_loaded: importing dotenv
+[2026-06-24T17:15:04.044] _ensure_env_loaded: searching .env
+[2026-06-24T17:15:04.046] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-24T17:15:04.054] _ensure_env_loaded: done
+[2026-06-24T17:15:04.056] before _setup_logging
+[2026-06-24T17:15:04.056] _setup_logging: start
+[2026-06-24T17:15:04.128] _setup_logging: done
+[2026-06-24T17:15:04.129] before scripts imports
+[2026-06-24T17:15:04.140] imported scripts.data_validator
+[2026-06-24T17:15:04.747] imported scripts.feishu_notifier
+[2026-06-24T17:15:04.749] imported scripts.wiki_updater
+[2026-06-24T17:15:04.751] main() entered
+[2026-06-25T08:35:02.852] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-06-25T08:35:02.876] stdlib imports done
+[2026-06-25T08:35:02.879] before _ensure_env_loaded
+[2026-06-25T08:35:02.879] _ensure_env_loaded: importing dotenv
+[2026-06-25T08:35:02.908] _ensure_env_loaded: searching .env
+[2026-06-25T08:35:02.909] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-25T08:35:02.918] _ensure_env_loaded: done
+[2026-06-25T08:35:02.918] before _setup_logging
+[2026-06-25T08:35:02.920] _setup_logging: start
+[2026-06-25T08:35:03.006] _setup_logging: done
+[2026-06-25T08:35:03.007] before scripts imports
+[2026-06-25T08:35:03.046] imported scripts.data_validator
+[2026-06-25T08:35:03.476] imported scripts.feishu_notifier
+[2026-06-25T08:35:03.480] imported scripts.wiki_updater
+[2026-06-25T08:35:03.481] main() entered
+[2026-06-25T17:15:03.846] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-06-25T17:15:03.908] stdlib imports done
+[2026-06-25T17:15:03.910] before _ensure_env_loaded
+[2026-06-25T17:15:03.912] _ensure_env_loaded: importing dotenv
+[2026-06-25T17:15:03.950] _ensure_env_loaded: searching .env
+[2026-06-25T17:15:03.951] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-25T17:15:03.960] _ensure_env_loaded: done
+[2026-06-25T17:15:03.962] before _setup_logging
+[2026-06-25T17:15:03.963] _setup_logging: start
+[2026-06-25T17:15:04.193] _setup_logging: done
+[2026-06-25T17:15:04.195] before scripts imports
+[2026-06-25T17:15:04.243] imported scripts.data_validator
+[2026-06-25T17:15:04.729] imported scripts.feishu_notifier
+[2026-06-25T17:15:04.732] imported scripts.wiki_updater
+[2026-06-25T17:15:04.733] main() entered
+[2026-06-26T08:35:03.544] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-06-26T08:35:03.578] stdlib imports done
+[2026-06-26T08:35:03.581] before _ensure_env_loaded
+[2026-06-26T08:35:03.583] _ensure_env_loaded: importing dotenv
+[2026-06-26T08:35:03.624] _ensure_env_loaded: searching .env
+[2026-06-26T08:35:03.625] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-26T08:35:03.634] _ensure_env_loaded: done
+[2026-06-26T08:35:03.635] before _setup_logging
+[2026-06-26T08:35:03.636] _setup_logging: start
+[2026-06-26T08:35:03.728] _setup_logging: done
+[2026-06-26T08:35:03.730] before scripts imports
+[2026-06-26T08:35:03.744] imported scripts.data_validator
+[2026-06-26T08:35:04.099] imported scripts.feishu_notifier
+[2026-06-26T08:35:04.101] imported scripts.wiki_updater
+[2026-06-26T08:35:04.103] main() entered
+[2026-06-26T17:15:03.432] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-06-26T17:15:03.458] stdlib imports done
+[2026-06-26T17:15:03.459] before _ensure_env_loaded
+[2026-06-26T17:15:03.461] _ensure_env_loaded: importing dotenv
+[2026-06-26T17:15:03.482] _ensure_env_loaded: searching .env
+[2026-06-26T17:15:03.483] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-26T17:15:03.506] _ensure_env_loaded: done
+[2026-06-26T17:15:03.507] before _setup_logging
+[2026-06-26T17:15:03.509] _setup_logging: start
+[2026-06-26T17:15:03.585] _setup_logging: done
+[2026-06-26T17:15:03.586] before scripts imports
+[2026-06-26T17:15:03.597] imported scripts.data_validator
+[2026-06-26T17:15:03.911] imported scripts.feishu_notifier
+[2026-06-26T17:15:03.914] imported scripts.wiki_updater
+[2026-06-26T17:15:03.915] main() entered
+[2026-06-29T08:35:04.715] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-06-29T08:35:04.756] stdlib imports done
+[2026-06-29T08:35:04.758] before _ensure_env_loaded
+[2026-06-29T08:35:04.760] _ensure_env_loaded: importing dotenv
+[2026-06-29T08:35:04.786] _ensure_env_loaded: searching .env
+[2026-06-29T08:35:04.788] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-29T08:35:04.798] _ensure_env_loaded: done
+[2026-06-29T08:35:04.799] before _setup_logging
+[2026-06-29T08:35:04.800] _setup_logging: start
+[2026-06-29T08:35:04.866] _setup_logging: done
+[2026-06-29T08:35:04.867] before scripts imports
+[2026-06-29T08:35:04.881] imported scripts.data_validator
+[2026-06-29T08:35:05.382] imported scripts.feishu_notifier
+[2026-06-29T08:35:05.385] imported scripts.wiki_updater
+[2026-06-29T08:35:05.386] main() entered
+[2026-06-29T17:15:04.088] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-06-29T17:15:04.133] stdlib imports done
+[2026-06-29T17:15:04.135] before _ensure_env_loaded
+[2026-06-29T17:15:04.136] _ensure_env_loaded: importing dotenv
+[2026-06-29T17:15:04.160] _ensure_env_loaded: searching .env
+[2026-06-29T17:15:04.162] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-29T17:15:04.171] _ensure_env_loaded: done
+[2026-06-29T17:15:04.172] before _setup_logging
+[2026-06-29T17:15:04.173] _setup_logging: start
+[2026-06-29T17:15:04.225] _setup_logging: done
+[2026-06-29T17:15:04.226] before scripts imports
+[2026-06-29T17:15:04.240] imported scripts.data_validator
+[2026-06-29T17:15:04.570] imported scripts.feishu_notifier
+[2026-06-29T17:15:04.572] imported scripts.wiki_updater
+[2026-06-29T17:15:04.573] main() entered
+[2026-06-30T08:35:09.192] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-06-30T08:35:09.610] stdlib imports done
+[2026-06-30T08:35:09.611] before _ensure_env_loaded
+[2026-06-30T08:35:09.611] _ensure_env_loaded: importing dotenv
+[2026-06-30T08:35:09.764] _ensure_env_loaded: searching .env
+[2026-06-30T08:35:09.765] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-30T08:35:09.800] _ensure_env_loaded: done
+[2026-06-30T08:35:09.801] before _setup_logging
+[2026-06-30T08:35:09.801] _setup_logging: start
+[2026-06-30T08:35:09.884] _setup_logging: done
+[2026-06-30T08:35:09.884] before scripts imports
+[2026-06-30T08:35:09.893] imported scripts.data_validator
+[2026-06-30T08:35:10.258] imported scripts.feishu_notifier
+[2026-06-30T08:35:10.259] imported scripts.wiki_updater
+[2026-06-30T08:35:10.260] main() entered
+[2026-06-30T17:15:05.487] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-06-30T17:15:05.537] stdlib imports done
+[2026-06-30T17:15:05.539] before _ensure_env_loaded
+[2026-06-30T17:15:05.540] _ensure_env_loaded: importing dotenv
+[2026-06-30T17:15:05.566] _ensure_env_loaded: searching .env
+[2026-06-30T17:15:05.567] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-06-30T17:15:05.575] _ensure_env_loaded: done
+[2026-06-30T17:15:05.576] before _setup_logging
+[2026-06-30T17:15:05.578] _setup_logging: start
+[2026-06-30T17:15:05.707] _setup_logging: done
+[2026-06-30T17:15:05.708] before scripts imports
+[2026-06-30T17:15:05.732] imported scripts.data_validator
+[2026-06-30T17:15:06.310] imported scripts.feishu_notifier
+[2026-06-30T17:15:06.312] imported scripts.wiki_updater
+[2026-06-30T17:15:06.314] main() entered
+[2026-07-01T08:35:04.387] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-01T08:35:04.415] stdlib imports done
+[2026-07-01T08:35:04.417] before _ensure_env_loaded
+[2026-07-01T08:35:04.417] _ensure_env_loaded: importing dotenv
+[2026-07-01T08:35:04.442] _ensure_env_loaded: searching .env
+[2026-07-01T08:35:04.444] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-01T08:35:04.452] _ensure_env_loaded: done
+[2026-07-01T08:35:04.454] before _setup_logging
+[2026-07-01T08:35:04.455] _setup_logging: start
+[2026-07-01T08:35:04.547] _setup_logging: done
+[2026-07-01T08:35:04.549] before scripts imports
+[2026-07-01T08:35:04.577] imported scripts.data_validator
+[2026-07-01T08:35:05.263] imported scripts.feishu_notifier
+[2026-07-01T08:35:05.265] imported scripts.wiki_updater
+[2026-07-01T08:35:05.267] main() entered
+[2026-07-01T17:15:03.139] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-01T17:15:03.177] stdlib imports done
+[2026-07-01T17:15:03.179] before _ensure_env_loaded
+[2026-07-01T17:15:03.180] _ensure_env_loaded: importing dotenv
+[2026-07-01T17:15:03.202] _ensure_env_loaded: searching .env
+[2026-07-01T17:15:03.204] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-01T17:15:03.213] _ensure_env_loaded: done
+[2026-07-01T17:15:03.214] before _setup_logging
+[2026-07-01T17:15:03.215] _setup_logging: start
+[2026-07-01T17:15:03.269] _setup_logging: done
+[2026-07-01T17:15:03.271] before scripts imports
+[2026-07-01T17:15:03.284] imported scripts.data_validator
+[2026-07-01T17:15:03.567] imported scripts.feishu_notifier
+[2026-07-01T17:15:03.570] imported scripts.wiki_updater
+[2026-07-01T17:15:03.572] main() entered
+[2026-07-02T08:35:04.273] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-02T08:35:04.315] stdlib imports done
+[2026-07-02T08:35:04.317] before _ensure_env_loaded
+[2026-07-02T08:35:04.318] _ensure_env_loaded: importing dotenv
+[2026-07-02T08:35:04.364] _ensure_env_loaded: searching .env
+[2026-07-02T08:35:04.366] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-02T08:35:04.375] _ensure_env_loaded: done
+[2026-07-02T08:35:04.377] before _setup_logging
+[2026-07-02T08:35:04.378] _setup_logging: start
+[2026-07-02T08:35:04.486] _setup_logging: done
+[2026-07-02T08:35:04.487] before scripts imports
+[2026-07-02T08:35:04.496] imported scripts.data_validator
+[2026-07-02T08:35:04.971] imported scripts.feishu_notifier
+[2026-07-02T08:35:04.974] imported scripts.wiki_updater
+[2026-07-02T08:35:04.975] main() entered
+[2026-07-02T17:15:03.330] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-02T17:15:03.362] stdlib imports done
+[2026-07-02T17:15:03.364] before _ensure_env_loaded
+[2026-07-02T17:15:03.365] _ensure_env_loaded: importing dotenv
+[2026-07-02T17:15:03.393] _ensure_env_loaded: searching .env
+[2026-07-02T17:15:03.395] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-02T17:15:03.402] _ensure_env_loaded: done
+[2026-07-02T17:15:03.404] before _setup_logging
+[2026-07-02T17:15:03.404] _setup_logging: start
+[2026-07-02T17:15:03.493] _setup_logging: done
+[2026-07-02T17:15:03.493] before scripts imports
+[2026-07-02T17:15:03.521] imported scripts.data_validator
+[2026-07-02T17:15:03.901] imported scripts.feishu_notifier
+[2026-07-02T17:15:03.903] imported scripts.wiki_updater
+[2026-07-02T17:15:03.904] main() entered
+[2026-07-03T08:35:06.619] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-03T08:35:06.974] stdlib imports done
+[2026-07-03T08:35:07.292] before _ensure_env_loaded
+[2026-07-03T08:35:07.294] _ensure_env_loaded: importing dotenv
+[2026-07-03T08:35:07.405] _ensure_env_loaded: searching .env
+[2026-07-03T08:35:07.676] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-03T08:35:07.736] _ensure_env_loaded: done
+[2026-07-03T08:35:07.793] before _setup_logging
+[2026-07-03T08:35:07.798] _setup_logging: start
+[2026-07-03T08:35:08.943] _setup_logging: done
+[2026-07-03T08:35:08.993] before scripts imports
+[2026-07-03T08:35:09.046] imported scripts.data_validator
+[2026-07-03T08:35:10.722] imported scripts.feishu_notifier
+[2026-07-03T08:35:10.755] imported scripts.wiki_updater
+[2026-07-03T08:35:10.757] main() entered
+[2026-07-03T17:15:05.712] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-03T17:15:05.772] stdlib imports done
+[2026-07-03T17:15:05.775] before _ensure_env_loaded
+[2026-07-03T17:15:05.776] _ensure_env_loaded: importing dotenv
+[2026-07-03T17:15:05.806] _ensure_env_loaded: searching .env
+[2026-07-03T17:15:05.808] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-03T17:15:05.819] _ensure_env_loaded: done
+[2026-07-03T17:15:05.820] before _setup_logging
+[2026-07-03T17:15:05.822] _setup_logging: start
+[2026-07-03T17:15:06.019] _setup_logging: done
+[2026-07-03T17:15:06.021] before scripts imports
+[2026-07-03T17:15:06.065] imported scripts.data_validator
+[2026-07-03T17:15:06.621] imported scripts.feishu_notifier
+[2026-07-03T17:15:06.626] imported scripts.wiki_updater
+[2026-07-03T17:15:06.628] main() entered
+[2026-07-06T08:35:11.152] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-06T08:35:11.222] stdlib imports done
+[2026-07-06T08:35:11.333] before _ensure_env_loaded
+[2026-07-06T08:35:11.336] _ensure_env_loaded: importing dotenv
+[2026-07-06T08:35:11.522] _ensure_env_loaded: searching .env
+[2026-07-06T08:35:11.529] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-06T08:35:11.553] _ensure_env_loaded: done
+[2026-07-06T08:35:11.554] before _setup_logging
+[2026-07-06T08:35:11.557] _setup_logging: start
+[2026-07-06T08:35:12.082] _setup_logging: done
+[2026-07-06T08:35:12.133] before scripts imports
+[2026-07-06T08:35:12.168] imported scripts.data_validator
+[2026-07-06T08:35:13.276] imported scripts.feishu_notifier
+[2026-07-06T08:35:13.331] imported scripts.wiki_updater
+[2026-07-06T08:35:13.334] main() entered
+[2026-07-06T17:15:03.502] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-06T17:15:03.528] stdlib imports done
+[2026-07-06T17:15:03.530] before _ensure_env_loaded
+[2026-07-06T17:15:03.531] _ensure_env_loaded: importing dotenv
+[2026-07-06T17:15:03.569] _ensure_env_loaded: searching .env
+[2026-07-06T17:15:03.571] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-06T17:15:03.580] _ensure_env_loaded: done
+[2026-07-06T17:15:03.581] before _setup_logging
+[2026-07-06T17:15:03.582] _setup_logging: start
+[2026-07-06T17:15:03.658] _setup_logging: done
+[2026-07-06T17:15:03.660] before scripts imports
+[2026-07-06T17:15:03.671] imported scripts.data_validator
+[2026-07-06T17:15:04.288] imported scripts.feishu_notifier
+[2026-07-06T17:15:04.290] imported scripts.wiki_updater
+[2026-07-06T17:15:04.291] main() entered
+[2026-07-07T08:35:03.532] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-07T08:35:03.556] stdlib imports done
+[2026-07-07T08:35:03.558] before _ensure_env_loaded
+[2026-07-07T08:35:03.559] _ensure_env_loaded: importing dotenv
+[2026-07-07T08:35:03.595] _ensure_env_loaded: searching .env
+[2026-07-07T08:35:03.597] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-07T08:35:03.605] _ensure_env_loaded: done
+[2026-07-07T08:35:03.606] before _setup_logging
+[2026-07-07T08:35:03.608] _setup_logging: start
+[2026-07-07T08:35:03.665] _setup_logging: done
+[2026-07-07T08:35:03.666] before scripts imports
+[2026-07-07T08:35:03.677] imported scripts.data_validator
+[2026-07-07T08:35:04.106] imported scripts.feishu_notifier
+[2026-07-07T08:35:04.108] imported scripts.wiki_updater
+[2026-07-07T08:35:04.110] main() entered
+[2026-07-07T17:15:04.738] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-07T17:15:04.851] stdlib imports done
+[2026-07-07T17:15:04.856] before _ensure_env_loaded
+[2026-07-07T17:15:04.857] _ensure_env_loaded: importing dotenv
+[2026-07-07T17:15:04.896] _ensure_env_loaded: searching .env
+[2026-07-07T17:15:04.898] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-07T17:15:04.907] _ensure_env_loaded: done
+[2026-07-07T17:15:04.907] before _setup_logging
+[2026-07-07T17:15:04.909] _setup_logging: start
+[2026-07-07T17:15:04.997] _setup_logging: done
+[2026-07-07T17:15:04.999] before scripts imports
+[2026-07-07T17:15:05.017] imported scripts.data_validator
+[2026-07-07T17:15:05.392] imported scripts.feishu_notifier
+[2026-07-07T17:15:05.394] imported scripts.wiki_updater
+[2026-07-07T17:15:05.395] main() entered
+[2026-07-08T08:35:04.101] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-08T08:35:04.127] stdlib imports done
+[2026-07-08T08:35:04.129] before _ensure_env_loaded
+[2026-07-08T08:35:04.129] _ensure_env_loaded: importing dotenv
+[2026-07-08T08:35:04.152] _ensure_env_loaded: searching .env
+[2026-07-08T08:35:04.154] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-08T08:35:04.162] _ensure_env_loaded: done
+[2026-07-08T08:35:04.164] before _setup_logging
+[2026-07-08T08:35:04.165] _setup_logging: start
+[2026-07-08T08:35:04.308] _setup_logging: done
+[2026-07-08T08:35:04.309] before scripts imports
+[2026-07-08T08:35:04.320] imported scripts.data_validator
+[2026-07-08T08:35:04.753] imported scripts.feishu_notifier
+[2026-07-08T08:35:04.770] imported scripts.wiki_updater
+[2026-07-08T08:35:04.772] main() entered
+[2026-07-08T09:15:09.296] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-08T09:15:09.323] stdlib imports done
+[2026-07-08T09:15:09.325] before _ensure_env_loaded
+[2026-07-08T09:15:09.327] _ensure_env_loaded: importing dotenv
+[2026-07-08T09:15:09.350] _ensure_env_loaded: searching .env
+[2026-07-08T09:15:09.351] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-08T09:15:09.360] _ensure_env_loaded: done
+[2026-07-08T09:15:09.361] before _setup_logging
+[2026-07-08T09:15:09.362] _setup_logging: start
+[2026-07-08T09:15:09.423] _setup_logging: done
+[2026-07-08T09:15:09.426] before scripts imports
+[2026-07-08T09:15:09.434] imported scripts.data_validator
+[2026-07-08T09:15:09.731] imported scripts.feishu_notifier
+[2026-07-08T09:15:09.735] imported scripts.wiki_updater
+[2026-07-08T09:15:09.736] main() entered
+[2026-07-08T17:15:03.930] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-08T17:15:03.982] stdlib imports done
+[2026-07-08T17:15:03.985] before _ensure_env_loaded
+[2026-07-08T17:15:03.986] _ensure_env_loaded: importing dotenv
+[2026-07-08T17:15:04.009] _ensure_env_loaded: searching .env
+[2026-07-08T17:15:04.011] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-08T17:15:04.019] _ensure_env_loaded: done
+[2026-07-08T17:15:04.020] before _setup_logging
+[2026-07-08T17:15:04.022] _setup_logging: start
+[2026-07-08T17:15:04.379] _setup_logging: done
+[2026-07-08T17:15:04.381] before scripts imports
+[2026-07-08T17:15:04.490] imported scripts.data_validator
+[2026-07-08T17:15:05.217] imported scripts.feishu_notifier
+[2026-07-08T17:15:05.219] imported scripts.wiki_updater
+[2026-07-08T17:15:05.221] main() entered
+[2026-07-09T17:15:04.088] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-09T17:15:04.114] stdlib imports done
+[2026-07-09T17:15:04.116] before _ensure_env_loaded
+[2026-07-09T17:15:04.117] _ensure_env_loaded: importing dotenv
+[2026-07-09T17:15:04.141] _ensure_env_loaded: searching .env
+[2026-07-09T17:15:04.142] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-09T17:15:04.150] _ensure_env_loaded: done
+[2026-07-09T17:15:04.151] before _setup_logging
+[2026-07-09T17:15:04.152] _setup_logging: start
+[2026-07-09T17:15:04.230] _setup_logging: done
+[2026-07-09T17:15:04.231] before scripts imports
+[2026-07-09T17:15:04.242] imported scripts.data_validator
+[2026-07-09T17:15:04.915] imported scripts.feishu_notifier
+[2026-07-09T17:15:04.918] imported scripts.wiki_updater
+[2026-07-09T17:15:04.919] main() entered
+[2026-07-10T08:35:04.167] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-10T08:35:04.193] stdlib imports done
+[2026-07-10T08:35:04.194] before _ensure_env_loaded
+[2026-07-10T08:35:04.195] _ensure_env_loaded: importing dotenv
+[2026-07-10T08:35:04.235] _ensure_env_loaded: searching .env
+[2026-07-10T08:35:04.236] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-10T08:35:04.244] _ensure_env_loaded: done
+[2026-07-10T08:35:04.245] before _setup_logging
+[2026-07-10T08:35:04.246] _setup_logging: start
+[2026-07-10T08:35:04.325] _setup_logging: done
+[2026-07-10T08:35:04.326] before scripts imports
+[2026-07-10T08:35:04.335] imported scripts.data_validator
+[2026-07-10T08:35:04.786] imported scripts.feishu_notifier
+[2026-07-10T08:35:04.789] imported scripts.wiki_updater
+[2026-07-10T08:35:04.791] main() entered
+[2026-07-10T17:15:05.972] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-10T17:15:06.005] stdlib imports done
+[2026-07-10T17:15:06.007] before _ensure_env_loaded
+[2026-07-10T17:15:06.008] _ensure_env_loaded: importing dotenv
+[2026-07-10T17:15:06.038] _ensure_env_loaded: searching .env
+[2026-07-10T17:15:06.040] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-10T17:15:06.051] _ensure_env_loaded: done
+[2026-07-10T17:15:06.053] before _setup_logging
+[2026-07-10T17:15:06.054] _setup_logging: start
+[2026-07-10T17:15:06.163] _setup_logging: done
+[2026-07-10T17:15:06.164] before scripts imports
+[2026-07-10T17:15:06.183] imported scripts.data_validator
+[2026-07-10T17:15:06.733] imported scripts.feishu_notifier
+[2026-07-10T17:15:06.737] imported scripts.wiki_updater
+[2026-07-10T17:15:06.739] main() entered
+[2026-07-11T08:35:32.759] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-11T08:35:32.818] stdlib imports done
+[2026-07-11T08:35:32.819] before _ensure_env_loaded
+[2026-07-11T08:35:32.820] _ensure_env_loaded: importing dotenv
+[2026-07-11T08:35:32.867] _ensure_env_loaded: searching .env
+[2026-07-11T08:35:32.867] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-11T08:35:32.880] _ensure_env_loaded: done
+[2026-07-11T08:35:32.881] before _setup_logging
+[2026-07-11T08:35:32.881] _setup_logging: start
+[2026-07-11T08:35:33.034] _setup_logging: done
+[2026-07-11T08:35:33.035] before scripts imports
+[2026-07-11T08:35:33.046] imported scripts.data_validator
+[2026-07-11T08:35:34.111] imported scripts.feishu_notifier
+[2026-07-11T08:35:34.114] imported scripts.wiki_updater
+[2026-07-11T08:35:34.114] main() entered
+[2026-07-11T17:15:09.416] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-11T17:15:09.452] stdlib imports done
+[2026-07-11T17:15:09.455] before _ensure_env_loaded
+[2026-07-11T17:15:09.456] _ensure_env_loaded: importing dotenv
+[2026-07-11T17:15:09.491] _ensure_env_loaded: searching .env
+[2026-07-11T17:15:09.493] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-11T17:15:09.504] _ensure_env_loaded: done
+[2026-07-11T17:15:09.506] before _setup_logging
+[2026-07-11T17:15:09.506] _setup_logging: start
+[2026-07-11T17:15:09.610] _setup_logging: done
+[2026-07-11T17:15:09.611] before scripts imports
+[2026-07-11T17:15:09.684] imported scripts.data_validator
+[2026-07-11T17:15:10.464] imported scripts.feishu_notifier
+[2026-07-11T17:15:10.469] imported scripts.wiki_updater
+[2026-07-11T17:15:10.471] main() entered
+[2026-07-12T08:35:09.474] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-12T08:35:09.570] stdlib imports done
+[2026-07-12T08:35:09.571] before _ensure_env_loaded
+[2026-07-12T08:35:09.572] _ensure_env_loaded: importing dotenv
+[2026-07-12T08:35:09.603] _ensure_env_loaded: searching .env
+[2026-07-12T08:35:09.604] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-12T08:35:09.637] _ensure_env_loaded: done
+[2026-07-12T08:35:09.638] before _setup_logging
+[2026-07-12T08:35:09.639] _setup_logging: start
+[2026-07-12T08:35:10.316] _setup_logging: done
+[2026-07-12T08:35:10.317] before scripts imports
+[2026-07-12T08:35:10.356] imported scripts.data_validator
+[2026-07-12T08:35:12.120] imported scripts.feishu_notifier
+[2026-07-12T08:35:12.167] imported scripts.wiki_updater
+[2026-07-12T08:35:12.168] main() entered
+[2026-07-12T17:15:03.379] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-12T17:15:03.478] stdlib imports done
+[2026-07-12T17:15:03.480] before _ensure_env_loaded
+[2026-07-12T17:15:03.480] _ensure_env_loaded: importing dotenv
+[2026-07-12T17:15:03.506] _ensure_env_loaded: searching .env
+[2026-07-12T17:15:03.507] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-12T17:15:03.514] _ensure_env_loaded: done
+[2026-07-12T17:15:03.515] before _setup_logging
+[2026-07-12T17:15:03.516] _setup_logging: start
+[2026-07-12T17:15:03.606] _setup_logging: done
+[2026-07-12T17:15:03.607] before scripts imports
+[2026-07-12T17:15:03.617] imported scripts.data_validator
+[2026-07-12T17:15:04.260] imported scripts.feishu_notifier
+[2026-07-12T17:15:04.262] imported scripts.wiki_updater
+[2026-07-12T17:15:04.263] main() entered
+[2026-07-13T08:35:03.776] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-13T08:35:03.817] stdlib imports done
+[2026-07-13T08:35:03.820] before _ensure_env_loaded
+[2026-07-13T08:35:03.821] _ensure_env_loaded: importing dotenv
+[2026-07-13T08:35:03.847] _ensure_env_loaded: searching .env
+[2026-07-13T08:35:03.849] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-13T08:35:03.857] _ensure_env_loaded: done
+[2026-07-13T08:35:03.859] before _setup_logging
+[2026-07-13T08:35:03.860] _setup_logging: start
+[2026-07-13T08:35:03.936] _setup_logging: done
+[2026-07-13T08:35:03.937] before scripts imports
+[2026-07-13T08:35:03.947] imported scripts.data_validator
+[2026-07-13T08:35:04.390] imported scripts.feishu_notifier
+[2026-07-13T08:35:04.393] imported scripts.wiki_updater
+[2026-07-13T08:35:04.393] main() entered
+[2026-07-13T09:00:33.920] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-13T09:00:33.940] stdlib imports done
+[2026-07-13T09:00:33.941] before _ensure_env_loaded
+[2026-07-13T09:00:33.942] _ensure_env_loaded: importing dotenv
+[2026-07-13T09:00:33.962] _ensure_env_loaded: searching .env
+[2026-07-13T09:00:33.964] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-13T09:00:33.974] _ensure_env_loaded: done
+[2026-07-13T09:00:33.975] before _setup_logging
+[2026-07-13T09:00:33.976] _setup_logging: start
+[2026-07-13T09:00:34.029] _setup_logging: done
+[2026-07-13T09:00:34.031] before scripts imports
+[2026-07-13T09:00:34.066] imported scripts.data_validator
+[2026-07-13T09:00:34.377] imported scripts.feishu_notifier
+[2026-07-13T09:00:34.379] imported scripts.wiki_updater
+[2026-07-13T09:00:34.380] main() entered
+[2026-07-13T17:15:04.035] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-13T17:15:04.112] stdlib imports done
+[2026-07-13T17:15:04.114] before _ensure_env_loaded
+[2026-07-13T17:15:04.116] _ensure_env_loaded: importing dotenv
+[2026-07-13T17:15:04.181] _ensure_env_loaded: searching .env
+[2026-07-13T17:15:04.183] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-13T17:15:04.198] _ensure_env_loaded: done
+[2026-07-13T17:15:04.199] before _setup_logging
+[2026-07-13T17:15:04.201] _setup_logging: start
+[2026-07-13T17:15:04.290] _setup_logging: done
+[2026-07-13T17:15:04.291] before scripts imports
+[2026-07-13T17:15:04.308] imported scripts.data_validator
+[2026-07-13T17:15:04.782] imported scripts.feishu_notifier
+[2026-07-13T17:15:04.785] imported scripts.wiki_updater
+[2026-07-13T17:15:04.786] main() entered
+[2026-07-14T08:35:04.177] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-14T08:35:04.216] stdlib imports done
+[2026-07-14T08:35:04.217] before _ensure_env_loaded
+[2026-07-14T08:35:04.219] _ensure_env_loaded: importing dotenv
+[2026-07-14T08:35:04.242] _ensure_env_loaded: searching .env
+[2026-07-14T08:35:04.243] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-14T08:35:04.251] _ensure_env_loaded: done
+[2026-07-14T08:35:04.252] before _setup_logging
+[2026-07-14T08:35:04.253] _setup_logging: start
+[2026-07-14T08:35:04.342] _setup_logging: done
+[2026-07-14T08:35:04.344] before scripts imports
+[2026-07-14T08:35:04.352] imported scripts.data_validator
+[2026-07-14T08:35:04.787] imported scripts.feishu_notifier
+[2026-07-14T08:35:04.789] imported scripts.wiki_updater
+[2026-07-14T08:35:04.790] main() entered
+[2026-07-14T17:15:03.845] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-14T17:15:03.893] stdlib imports done
+[2026-07-14T17:15:03.895] before _ensure_env_loaded
+[2026-07-14T17:15:03.896] _ensure_env_loaded: importing dotenv
+[2026-07-14T17:15:03.919] _ensure_env_loaded: searching .env
+[2026-07-14T17:15:03.920] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-14T17:15:03.928] _ensure_env_loaded: done
+[2026-07-14T17:15:03.929] before _setup_logging
+[2026-07-14T17:15:03.930] _setup_logging: start
+[2026-07-14T17:15:04.006] _setup_logging: done
+[2026-07-14T17:15:04.008] before scripts imports
+[2026-07-14T17:15:04.017] imported scripts.data_validator
+[2026-07-14T17:15:04.425] imported scripts.feishu_notifier
+[2026-07-14T17:15:04.428] imported scripts.wiki_updater
+[2026-07-14T17:15:04.430] main() entered
+[2026-07-15T08:35:04.267] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-15T08:35:04.293] stdlib imports done
+[2026-07-15T08:35:04.295] before _ensure_env_loaded
+[2026-07-15T08:35:04.297] _ensure_env_loaded: importing dotenv
+[2026-07-15T08:35:04.320] _ensure_env_loaded: searching .env
+[2026-07-15T08:35:04.321] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-15T08:35:04.329] _ensure_env_loaded: done
+[2026-07-15T08:35:04.331] before _setup_logging
+[2026-07-15T08:35:04.331] _setup_logging: start
+[2026-07-15T08:35:04.536] _setup_logging: done
+[2026-07-15T08:35:04.537] before scripts imports
+[2026-07-15T08:35:04.549] imported scripts.data_validator
+[2026-07-15T08:35:04.961] imported scripts.feishu_notifier
+[2026-07-15T08:35:04.966] imported scripts.wiki_updater
+[2026-07-15T08:35:04.967] main() entered
+[2026-07-15T17:15:05.182] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-15T17:15:05.246] stdlib imports done
+[2026-07-15T17:15:05.248] before _ensure_env_loaded
+[2026-07-15T17:15:05.249] _ensure_env_loaded: importing dotenv
+[2026-07-15T17:15:05.277] _ensure_env_loaded: searching .env
+[2026-07-15T17:15:05.279] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-15T17:15:05.312] _ensure_env_loaded: done
+[2026-07-15T17:15:05.314] before _setup_logging
+[2026-07-15T17:15:05.315] _setup_logging: start
+[2026-07-15T17:15:05.406] _setup_logging: done
+[2026-07-15T17:15:05.408] before scripts imports
+[2026-07-15T17:15:05.423] imported scripts.data_validator
+[2026-07-15T17:15:06.890] imported scripts.feishu_notifier
+[2026-07-15T17:15:06.892] imported scripts.wiki_updater
+[2026-07-15T17:15:06.893] main() entered
+[2026-07-16T08:35:12.380] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-16T08:35:12.436] stdlib imports done
+[2026-07-16T08:35:12.438] before _ensure_env_loaded
+[2026-07-16T08:35:12.439] _ensure_env_loaded: importing dotenv
+[2026-07-16T08:35:12.468] _ensure_env_loaded: searching .env
+[2026-07-16T08:35:12.468] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-16T08:35:12.481] _ensure_env_loaded: done
+[2026-07-16T08:35:12.482] before _setup_logging
+[2026-07-16T08:35:12.483] _setup_logging: start
+[2026-07-16T08:35:12.568] _setup_logging: done
+[2026-07-16T08:35:12.569] before scripts imports
+[2026-07-16T08:35:12.596] imported scripts.data_validator
+[2026-07-16T08:35:13.479] imported scripts.feishu_notifier
+[2026-07-16T08:35:13.482] imported scripts.wiki_updater
+[2026-07-16T08:35:13.483] main() entered
+[2026-07-16T17:15:04.554] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-16T17:15:04.581] stdlib imports done
+[2026-07-16T17:15:04.582] before _ensure_env_loaded
+[2026-07-16T17:15:04.583] _ensure_env_loaded: importing dotenv
+[2026-07-16T17:15:04.623] _ensure_env_loaded: searching .env
+[2026-07-16T17:15:04.625] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-16T17:15:04.634] _ensure_env_loaded: done
+[2026-07-16T17:15:04.636] before _setup_logging
+[2026-07-16T17:15:04.637] _setup_logging: start
+[2026-07-16T17:15:04.714] _setup_logging: done
+[2026-07-16T17:15:04.715] before scripts imports
+[2026-07-16T17:15:04.743] imported scripts.data_validator
+[2026-07-16T17:15:05.215] imported scripts.feishu_notifier
+[2026-07-16T17:15:05.218] imported scripts.wiki_updater
+[2026-07-16T17:15:05.219] main() entered
+[2026-07-17T08:35:03.822] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-17T08:35:03.871] stdlib imports done
+[2026-07-17T08:35:03.873] before _ensure_env_loaded
+[2026-07-17T08:35:03.874] _ensure_env_loaded: importing dotenv
+[2026-07-17T08:35:03.901] _ensure_env_loaded: searching .env
+[2026-07-17T08:35:03.902] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-17T08:35:03.911] _ensure_env_loaded: done
+[2026-07-17T08:35:03.912] before _setup_logging
+[2026-07-17T08:35:03.913] _setup_logging: start
+[2026-07-17T08:35:04.103] _setup_logging: done
+[2026-07-17T08:35:04.105] before scripts imports
+[2026-07-17T08:35:04.117] imported scripts.data_validator
+[2026-07-17T08:35:04.781] imported scripts.feishu_notifier
+[2026-07-17T08:35:04.785] imported scripts.wiki_updater
+[2026-07-17T08:35:04.786] main() entered
+[2026-07-20T08:35:04.812] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-20T08:35:04.856] stdlib imports done
+[2026-07-20T08:35:04.858] before _ensure_env_loaded
+[2026-07-20T08:35:04.860] _ensure_env_loaded: importing dotenv
+[2026-07-20T08:35:04.883] _ensure_env_loaded: searching .env
+[2026-07-20T08:35:04.885] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-20T08:35:04.894] _ensure_env_loaded: done
+[2026-07-20T08:35:04.896] before _setup_logging
+[2026-07-20T08:35:04.897] _setup_logging: start
+[2026-07-20T08:35:05.144] _setup_logging: done
+[2026-07-20T08:35:05.146] before scripts imports
+[2026-07-20T08:35:05.155] imported scripts.data_validator
+[2026-07-20T08:35:05.736] imported scripts.feishu_notifier
+[2026-07-20T08:35:05.739] imported scripts.wiki_updater
+[2026-07-20T08:35:05.740] main() entered
+[2026-07-20T17:15:08.250] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-20T17:15:08.358] stdlib imports done
+[2026-07-20T17:15:08.362] before _ensure_env_loaded
+[2026-07-20T17:15:08.364] _ensure_env_loaded: importing dotenv
+[2026-07-20T17:15:08.508] _ensure_env_loaded: searching .env
+[2026-07-20T17:15:08.511] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-20T17:15:08.543] _ensure_env_loaded: done
+[2026-07-20T17:15:08.545] before _setup_logging
+[2026-07-20T17:15:08.548] _setup_logging: start
+[2026-07-20T17:15:08.817] _setup_logging: done
+[2026-07-20T17:15:08.819] before scripts imports
+[2026-07-20T17:15:08.853] imported scripts.data_validator
+[2026-07-20T17:15:10.148] imported scripts.feishu_notifier
+[2026-07-20T17:15:10.154] imported scripts.wiki_updater
+[2026-07-20T17:15:10.157] main() entered
+[2026-07-21T08:35:03.442] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-21T08:35:03.496] stdlib imports done
+[2026-07-21T08:35:03.498] before _ensure_env_loaded
+[2026-07-21T08:35:03.499] _ensure_env_loaded: importing dotenv
+[2026-07-21T08:35:03.547] _ensure_env_loaded: searching .env
+[2026-07-21T08:35:03.549] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-21T08:35:03.564] _ensure_env_loaded: done
+[2026-07-21T08:35:03.564] before _setup_logging
+[2026-07-21T08:35:03.566] _setup_logging: start
+[2026-07-21T08:35:03.700] _setup_logging: done
+[2026-07-21T08:35:03.700] before scripts imports
+[2026-07-21T08:35:03.723] imported scripts.data_validator
+[2026-07-21T08:35:04.293] imported scripts.feishu_notifier
+[2026-07-21T08:35:04.295] imported scripts.wiki_updater
+[2026-07-21T08:35:04.296] main() entered
+[2026-07-21T17:15:03.247] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-21T17:15:03.289] stdlib imports done
+[2026-07-21T17:15:03.290] before _ensure_env_loaded
+[2026-07-21T17:15:03.291] _ensure_env_loaded: importing dotenv
+[2026-07-21T17:15:03.317] _ensure_env_loaded: searching .env
+[2026-07-21T17:15:03.318] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-21T17:15:03.327] _ensure_env_loaded: done
+[2026-07-21T17:15:03.328] before _setup_logging
+[2026-07-21T17:15:03.329] _setup_logging: start
+[2026-07-21T17:15:03.446] _setup_logging: done
+[2026-07-21T17:15:03.447] before scripts imports
+[2026-07-21T17:15:03.457] imported scripts.data_validator
+[2026-07-21T17:15:04.070] imported scripts.feishu_notifier
+[2026-07-21T17:15:04.073] imported scripts.wiki_updater
+[2026-07-21T17:15:04.074] main() entered
+[2026-07-21T17:52:45.001] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-21T17:52:45.019] stdlib imports done
+[2026-07-21T17:52:45.022] before _ensure_env_loaded
+[2026-07-21T17:52:45.023] _ensure_env_loaded: importing dotenv
+[2026-07-21T17:52:45.061] _ensure_env_loaded: searching .env
+[2026-07-21T17:52:45.062] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-21T17:52:45.071] _ensure_env_loaded: done
+[2026-07-21T17:52:45.072] before _setup_logging
+[2026-07-21T17:52:45.073] _setup_logging: start
+[2026-07-21T17:52:45.134] _setup_logging: done
+[2026-07-21T17:52:45.136] before scripts imports
+[2026-07-21T17:52:45.182] imported scripts.data_validator
+[2026-07-21T17:52:45.355] imported scripts.feishu_notifier
+[2026-07-21T17:52:45.358] imported scripts.wiki_updater
+[2026-07-21T17:52:45.359] main() entered
+[2026-07-21T19:31:33.228] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-21T19:31:33.247] stdlib imports done
+[2026-07-21T19:31:33.249] before _ensure_env_loaded
+[2026-07-21T19:31:33.251] _ensure_env_loaded: importing dotenv
+[2026-07-21T19:31:33.307] _ensure_env_loaded: searching .env
+[2026-07-21T19:31:33.309] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-21T19:31:33.326] _ensure_env_loaded: done
+[2026-07-21T19:31:33.327] before _setup_logging
+[2026-07-21T19:31:33.328] _setup_logging: start
+[2026-07-21T19:31:33.386] _setup_logging: done
+[2026-07-21T19:31:33.388] before scripts imports
+[2026-07-21T19:31:33.397] imported scripts.data_validator
+[2026-07-21T19:31:33.559] imported scripts.feishu_notifier
+[2026-07-21T19:31:33.562] imported scripts.wiki_updater
+[2026-07-21T19:31:33.562] main() entered
+[2026-07-22T08:35:03.926] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-22T08:35:03.958] stdlib imports done
+[2026-07-22T08:35:03.960] before _ensure_env_loaded
+[2026-07-22T08:35:03.961] _ensure_env_loaded: importing dotenv
+[2026-07-22T08:35:03.992] _ensure_env_loaded: searching .env
+[2026-07-22T08:35:03.994] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-22T08:35:04.061] _ensure_env_loaded: done
+[2026-07-22T08:35:04.063] before _setup_logging
+[2026-07-22T08:35:04.065] _setup_logging: start
+[2026-07-22T08:35:04.186] _setup_logging: done
+[2026-07-22T08:35:04.187] before scripts imports
+[2026-07-22T08:35:04.206] imported scripts.data_validator
+[2026-07-22T08:35:04.761] imported scripts.feishu_notifier
+[2026-07-22T08:35:04.764] imported scripts.wiki_updater
+[2026-07-22T08:35:04.766] main() entered
+[2026-07-22T17:15:03.629] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-22T17:15:03.655] stdlib imports done
+[2026-07-22T17:15:03.657] before _ensure_env_loaded
+[2026-07-22T17:15:03.658] _ensure_env_loaded: importing dotenv
+[2026-07-22T17:15:03.699] _ensure_env_loaded: searching .env
+[2026-07-22T17:15:03.700] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-22T17:15:03.712] _ensure_env_loaded: done
+[2026-07-22T17:15:03.713] before _setup_logging
+[2026-07-22T17:15:03.714] _setup_logging: start
+[2026-07-22T17:15:03.791] _setup_logging: done
+[2026-07-22T17:15:03.791] before scripts imports
+[2026-07-22T17:15:03.803] imported scripts.data_validator
+[2026-07-22T17:15:04.324] imported scripts.feishu_notifier
+[2026-07-22T17:15:04.327] imported scripts.wiki_updater
+[2026-07-22T17:15:04.328] main() entered
+[2026-07-23T08:35:04.566] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-23T08:35:04.589] stdlib imports done
+[2026-07-23T08:35:04.591] before _ensure_env_loaded
+[2026-07-23T08:35:04.593] _ensure_env_loaded: importing dotenv
+[2026-07-23T08:35:04.638] _ensure_env_loaded: searching .env
+[2026-07-23T08:35:04.639] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-23T08:35:04.649] _ensure_env_loaded: done
+[2026-07-23T08:35:04.650] before _setup_logging
+[2026-07-23T08:35:04.651] _setup_logging: start
+[2026-07-23T08:35:04.729] _setup_logging: done
+[2026-07-23T08:35:04.731] before scripts imports
+[2026-07-23T08:35:04.781] imported scripts.data_validator
+[2026-07-23T08:35:05.318] imported scripts.feishu_notifier
+[2026-07-23T08:35:05.321] imported scripts.wiki_updater
+[2026-07-23T08:35:05.322] main() entered
+[2026-07-23T17:15:03.579] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-23T17:15:03.603] stdlib imports done
+[2026-07-23T17:15:03.605] before _ensure_env_loaded
+[2026-07-23T17:15:03.606] _ensure_env_loaded: importing dotenv
+[2026-07-23T17:15:03.627] _ensure_env_loaded: searching .env
+[2026-07-23T17:15:03.628] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-23T17:15:03.637] _ensure_env_loaded: done
+[2026-07-23T17:15:03.638] before _setup_logging
+[2026-07-23T17:15:03.639] _setup_logging: start
+[2026-07-23T17:15:03.692] _setup_logging: done
+[2026-07-23T17:15:03.694] before scripts imports
+[2026-07-23T17:15:03.703] imported scripts.data_validator
+[2026-07-23T17:15:04.017] imported scripts.feishu_notifier
+[2026-07-23T17:15:04.019] imported scripts.wiki_updater
+[2026-07-23T17:15:04.020] main() entered
+[2026-07-24T08:35:03.722] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-24T08:35:03.753] stdlib imports done
+[2026-07-24T08:35:03.754] before _ensure_env_loaded
+[2026-07-24T08:35:03.755] _ensure_env_loaded: importing dotenv
+[2026-07-24T08:35:03.812] _ensure_env_loaded: searching .env
+[2026-07-24T08:35:03.815] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-24T08:35:03.824] _ensure_env_loaded: done
+[2026-07-24T08:35:03.825] before _setup_logging
+[2026-07-24T08:35:03.826] _setup_logging: start
+[2026-07-24T08:35:03.908] _setup_logging: done
+[2026-07-24T08:35:03.909] before scripts imports
+[2026-07-24T08:35:03.921] imported scripts.data_validator
+[2026-07-24T08:35:04.290] imported scripts.feishu_notifier
+[2026-07-24T08:35:04.293] imported scripts.wiki_updater
+[2026-07-24T08:35:04.294] main() entered
+[2026-07-24T17:15:07.093] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-24T17:15:07.171] stdlib imports done
+[2026-07-24T17:15:07.176] before _ensure_env_loaded
+[2026-07-24T17:15:07.178] _ensure_env_loaded: importing dotenv
+[2026-07-24T17:15:07.241] _ensure_env_loaded: searching .env
+[2026-07-24T17:15:07.244] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-24T17:15:07.271] _ensure_env_loaded: done
+[2026-07-24T17:15:07.273] before _setup_logging
+[2026-07-24T17:15:07.275] _setup_logging: start
+[2026-07-24T17:15:07.465] _setup_logging: done
+[2026-07-24T17:15:07.467] before scripts imports
+[2026-07-24T17:15:07.502] imported scripts.data_validator
+[2026-07-24T17:15:08.578] imported scripts.feishu_notifier
+[2026-07-24T17:15:08.585] imported scripts.wiki_updater
+[2026-07-24T17:15:08.587] main() entered
+[2026-07-25T08:35:13.711] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-25T08:35:13.742] stdlib imports done
+[2026-07-25T08:35:13.744] before _ensure_env_loaded
+[2026-07-25T08:35:13.745] _ensure_env_loaded: importing dotenv
+[2026-07-25T08:35:13.768] _ensure_env_loaded: searching .env
+[2026-07-25T08:35:13.769] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-25T08:35:13.777] _ensure_env_loaded: done
+[2026-07-25T08:35:13.778] before _setup_logging
+[2026-07-25T08:35:13.779] _setup_logging: start
+[2026-07-25T08:35:13.849] _setup_logging: done
+[2026-07-25T08:35:13.851] before scripts imports
+[2026-07-25T08:35:13.861] imported scripts.data_validator
+[2026-07-25T08:35:14.216] imported scripts.feishu_notifier
+[2026-07-25T08:35:14.218] imported scripts.wiki_updater
+[2026-07-25T08:35:14.219] main() entered
+[2026-07-25T17:15:07.582] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-25T17:15:07.621] stdlib imports done
+[2026-07-25T17:15:07.624] before _ensure_env_loaded
+[2026-07-25T17:15:07.626] _ensure_env_loaded: importing dotenv
+[2026-07-25T17:15:07.671] _ensure_env_loaded: searching .env
+[2026-07-25T17:15:07.672] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-25T17:15:07.685] _ensure_env_loaded: done
+[2026-07-25T17:15:07.686] before _setup_logging
+[2026-07-25T17:15:07.687] _setup_logging: start
+[2026-07-25T17:15:07.791] _setup_logging: done
+[2026-07-25T17:15:07.791] before scripts imports
+[2026-07-25T17:15:07.805] imported scripts.data_validator
+[2026-07-25T17:15:08.286] imported scripts.feishu_notifier
+[2026-07-25T17:15:08.289] imported scripts.wiki_updater
+[2026-07-25T17:15:08.290] main() entered
+[2026-07-26T08:35:07.996] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-26T08:35:08.028] stdlib imports done
+[2026-07-26T08:35:08.029] before _ensure_env_loaded
+[2026-07-26T08:35:08.029] _ensure_env_loaded: importing dotenv
+[2026-07-26T08:35:08.075] _ensure_env_loaded: searching .env
+[2026-07-26T08:35:08.076] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-26T08:35:08.087] _ensure_env_loaded: done
+[2026-07-26T08:35:08.088] before _setup_logging
+[2026-07-26T08:35:08.088] _setup_logging: start
+[2026-07-26T08:35:08.212] _setup_logging: done
+[2026-07-26T08:35:08.213] before scripts imports
+[2026-07-26T08:35:08.225] imported scripts.data_validator
+[2026-07-26T08:35:08.764] imported scripts.feishu_notifier
+[2026-07-26T08:35:08.767] imported scripts.wiki_updater
+[2026-07-26T08:35:08.768] main() entered
+[2026-07-26T17:15:03.653] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-26T17:15:03.697] stdlib imports done
+[2026-07-26T17:15:03.700] before _ensure_env_loaded
+[2026-07-26T17:15:03.701] _ensure_env_loaded: importing dotenv
+[2026-07-26T17:15:03.775] _ensure_env_loaded: searching .env
+[2026-07-26T17:15:03.776] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-26T17:15:03.784] _ensure_env_loaded: done
+[2026-07-26T17:15:03.786] before _setup_logging
+[2026-07-26T17:15:03.787] _setup_logging: start
+[2026-07-26T17:15:03.849] _setup_logging: done
+[2026-07-26T17:15:03.850] before scripts imports
+[2026-07-26T17:15:03.863] imported scripts.data_validator
+[2026-07-26T17:15:04.230] imported scripts.feishu_notifier
+[2026-07-26T17:15:04.234] imported scripts.wiki_updater
+[2026-07-26T17:15:04.236] main() entered
+[2026-07-27T08:35:04.448] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-27T08:35:04.473] stdlib imports done
+[2026-07-27T08:35:04.476] before _ensure_env_loaded
+[2026-07-27T08:35:04.476] _ensure_env_loaded: importing dotenv
+[2026-07-27T08:35:04.502] _ensure_env_loaded: searching .env
+[2026-07-27T08:35:04.504] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-27T08:35:04.511] _ensure_env_loaded: done
+[2026-07-27T08:35:04.512] before _setup_logging
+[2026-07-27T08:35:04.513] _setup_logging: start
+[2026-07-27T08:35:04.584] _setup_logging: done
+[2026-07-27T08:35:04.586] before scripts imports
+[2026-07-27T08:35:04.598] imported scripts.data_validator
+[2026-07-27T08:35:04.928] imported scripts.feishu_notifier
+[2026-07-27T08:35:04.931] imported scripts.wiki_updater
+[2026-07-27T08:35:04.932] main() entered
+[2026-07-27T17:15:03.729] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-27T17:15:03.753] stdlib imports done
+[2026-07-27T17:15:03.755] before _ensure_env_loaded
+[2026-07-27T17:15:03.756] _ensure_env_loaded: importing dotenv
+[2026-07-27T17:15:03.782] _ensure_env_loaded: searching .env
+[2026-07-27T17:15:03.784] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-27T17:15:03.793] _ensure_env_loaded: done
+[2026-07-27T17:15:03.795] before _setup_logging
+[2026-07-27T17:15:03.796] _setup_logging: start
+[2026-07-27T17:15:03.870] _setup_logging: done
+[2026-07-27T17:15:03.871] before scripts imports
+[2026-07-27T17:15:03.883] imported scripts.data_validator
+[2026-07-27T17:15:04.394] imported scripts.feishu_notifier
+[2026-07-27T17:15:04.397] imported scripts.wiki_updater
+[2026-07-27T17:15:04.398] main() entered
+[2026-07-28T08:35:03.775] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-28T08:35:03.815] stdlib imports done
+[2026-07-28T08:35:03.818] before _ensure_env_loaded
+[2026-07-28T08:35:03.818] _ensure_env_loaded: importing dotenv
+[2026-07-28T08:35:03.846] _ensure_env_loaded: searching .env
+[2026-07-28T08:35:03.848] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-28T08:35:03.859] _ensure_env_loaded: done
+[2026-07-28T08:35:03.860] before _setup_logging
+[2026-07-28T08:35:03.861] _setup_logging: start
+[2026-07-28T08:35:03.935] _setup_logging: done
+[2026-07-28T08:35:03.937] before scripts imports
+[2026-07-28T08:35:03.949] imported scripts.data_validator
+[2026-07-28T08:35:04.266] imported scripts.feishu_notifier
+[2026-07-28T08:35:04.269] imported scripts.wiki_updater
+[2026-07-28T08:35:04.270] main() entered
+[2026-07-28T17:15:04.788] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-28T17:15:04.815] stdlib imports done
+[2026-07-28T17:15:04.818] before _ensure_env_loaded
+[2026-07-28T17:15:04.820] _ensure_env_loaded: importing dotenv
+[2026-07-28T17:15:04.850] _ensure_env_loaded: searching .env
+[2026-07-28T17:15:04.852] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-28T17:15:04.861] _ensure_env_loaded: done
+[2026-07-28T17:15:04.863] before _setup_logging
+[2026-07-28T17:15:04.865] _setup_logging: start
+[2026-07-28T17:15:04.965] _setup_logging: done
+[2026-07-28T17:15:04.967] before scripts imports
+[2026-07-28T17:15:04.976] imported scripts.data_validator
+[2026-07-28T17:15:05.543] imported scripts.feishu_notifier
+[2026-07-28T17:15:05.546] imported scripts.wiki_updater
+[2026-07-28T17:15:05.548] main() entered
+[2026-07-29T08:35:07.456] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-29T08:35:07.534] stdlib imports done
+[2026-07-29T08:35:07.537] before _ensure_env_loaded
+[2026-07-29T08:35:07.538] _ensure_env_loaded: importing dotenv
+[2026-07-29T08:35:07.568] _ensure_env_loaded: searching .env
+[2026-07-29T08:35:07.570] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-29T08:35:07.580] _ensure_env_loaded: done
+[2026-07-29T08:35:07.581] before _setup_logging
+[2026-07-29T08:35:07.582] _setup_logging: start
+[2026-07-29T08:35:07.673] _setup_logging: done
+[2026-07-29T08:35:07.674] before scripts imports
+[2026-07-29T08:35:07.727] imported scripts.data_validator
+[2026-07-29T08:35:08.192] imported scripts.feishu_notifier
+[2026-07-29T08:35:08.195] imported scripts.wiki_updater
+[2026-07-29T08:35:08.196] main() entered
+[2026-07-29T17:15:04.116] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-29T17:15:04.160] stdlib imports done
+[2026-07-29T17:15:04.162] before _ensure_env_loaded
+[2026-07-29T17:15:04.163] _ensure_env_loaded: importing dotenv
+[2026-07-29T17:15:04.195] _ensure_env_loaded: searching .env
+[2026-07-29T17:15:04.196] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-29T17:15:04.206] _ensure_env_loaded: done
+[2026-07-29T17:15:04.207] before _setup_logging
+[2026-07-29T17:15:04.207] _setup_logging: start
+[2026-07-29T17:15:04.428] _setup_logging: done
+[2026-07-29T17:15:04.430] before scripts imports
+[2026-07-29T17:15:04.490] imported scripts.data_validator
+[2026-07-29T17:15:05.063] imported scripts.feishu_notifier
+[2026-07-29T17:15:05.067] imported scripts.wiki_updater
+[2026-07-29T17:15:05.067] main() entered
+[2026-07-30T08:35:04.333] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-30T08:35:04.355] stdlib imports done
+[2026-07-30T08:35:04.356] before _ensure_env_loaded
+[2026-07-30T08:35:04.358] _ensure_env_loaded: importing dotenv
+[2026-07-30T08:35:04.459] _ensure_env_loaded: searching .env
+[2026-07-30T08:35:04.461] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-30T08:35:04.470] _ensure_env_loaded: done
+[2026-07-30T08:35:04.472] before _setup_logging
+[2026-07-30T08:35:04.472] _setup_logging: start
+[2026-07-30T08:35:04.604] _setup_logging: done
+[2026-07-30T08:35:04.605] before scripts imports
+[2026-07-30T08:35:04.616] imported scripts.data_validator
+[2026-07-30T08:35:05.029] imported scripts.feishu_notifier
+[2026-07-30T08:35:05.032] imported scripts.wiki_updater
+[2026-07-30T08:35:05.033] main() entered
+[2026-07-30T17:15:03.999] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-30T17:15:04.029] stdlib imports done
+[2026-07-30T17:15:04.030] before _ensure_env_loaded
+[2026-07-30T17:15:04.031] _ensure_env_loaded: importing dotenv
+[2026-07-30T17:15:04.061] _ensure_env_loaded: searching .env
+[2026-07-30T17:15:04.063] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-30T17:15:04.071] _ensure_env_loaded: done
+[2026-07-30T17:15:04.072] before _setup_logging
+[2026-07-30T17:15:04.075] _setup_logging: start
+[2026-07-30T17:15:04.151] _setup_logging: done
+[2026-07-30T17:15:04.153] before scripts imports
+[2026-07-30T17:15:04.167] imported scripts.data_validator
+[2026-07-30T17:15:04.733] imported scripts.feishu_notifier
+[2026-07-30T17:15:04.737] imported scripts.wiki_updater
+[2026-07-30T17:15:04.738] main() entered
+[2026-07-31T08:35:03.933] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-07-31T08:35:03.957] stdlib imports done
+[2026-07-31T08:35:03.959] before _ensure_env_loaded
+[2026-07-31T08:35:03.961] _ensure_env_loaded: importing dotenv
+[2026-07-31T08:35:03.985] _ensure_env_loaded: searching .env
+[2026-07-31T08:35:03.986] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-31T08:35:03.996] _ensure_env_loaded: done
+[2026-07-31T08:35:03.997] before _setup_logging
+[2026-07-31T08:35:03.999] _setup_logging: start
+[2026-07-31T08:35:04.073] _setup_logging: done
+[2026-07-31T08:35:04.074] before scripts imports
+[2026-07-31T08:35:04.108] imported scripts.data_validator
+[2026-07-31T08:35:04.451] imported scripts.feishu_notifier
+[2026-07-31T08:35:04.454] imported scripts.wiki_updater
+[2026-07-31T08:35:04.455] main() entered
+[2026-07-31T17:15:06.807] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-07-31T17:15:06.843] stdlib imports done
+[2026-07-31T17:15:06.847] before _ensure_env_loaded
+[2026-07-31T17:15:06.849] _ensure_env_loaded: importing dotenv
+[2026-07-31T17:15:06.884] _ensure_env_loaded: searching .env
+[2026-07-31T17:15:06.886] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-07-31T17:15:06.896] _ensure_env_loaded: done
+[2026-07-31T17:15:06.898] before _setup_logging
+[2026-07-31T17:15:06.900] _setup_logging: start
+[2026-07-31T17:15:06.983] _setup_logging: done
+[2026-07-31T17:15:06.984] before scripts imports
+[2026-07-31T17:15:07.005] imported scripts.data_validator
+[2026-07-31T17:15:07.602] imported scripts.feishu_notifier
+[2026-07-31T17:15:07.606] imported scripts.wiki_updater
+[2026-07-31T17:15:07.607] main() entered
+[2026-08-02T17:15:04.237] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-08-02T17:15:04.263] stdlib imports done
+[2026-08-02T17:15:04.266] before _ensure_env_loaded
+[2026-08-02T17:15:04.266] _ensure_env_loaded: importing dotenv
+[2026-08-02T17:15:04.292] _ensure_env_loaded: searching .env
+[2026-08-02T17:15:04.293] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-08-02T17:15:04.303] _ensure_env_loaded: done
+[2026-08-02T17:15:04.304] before _setup_logging
+[2026-08-02T17:15:04.305] _setup_logging: start
+[2026-08-02T17:15:04.379] _setup_logging: done
+[2026-08-02T17:15:04.380] before scripts imports
+[2026-08-02T17:15:04.392] imported scripts.data_validator
+[2026-08-02T17:15:04.961] imported scripts.feishu_notifier
+[2026-08-02T17:15:04.964] imported scripts.wiki_updater
+[2026-08-02T17:15:04.965] main() entered
+[2026-08-03T08:35:04.432] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-08-03T08:35:04.455] stdlib imports done
+[2026-08-03T08:35:04.457] before _ensure_env_loaded
+[2026-08-03T08:35:04.458] _ensure_env_loaded: importing dotenv
+[2026-08-03T08:35:04.481] _ensure_env_loaded: searching .env
+[2026-08-03T08:35:04.483] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-08-03T08:35:04.491] _ensure_env_loaded: done
+[2026-08-03T08:35:04.492] before _setup_logging
+[2026-08-03T08:35:04.493] _setup_logging: start
+[2026-08-03T08:35:04.584] _setup_logging: done
+[2026-08-03T08:35:04.586] before scripts imports
+[2026-08-03T08:35:04.598] imported scripts.data_validator
+[2026-08-03T08:35:05.172] imported scripts.feishu_notifier
+[2026-08-03T08:35:05.176] imported scripts.wiki_updater
+[2026-08-03T08:35:05.176] main() entered
+[2026-08-03T17:15:07.777] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-08-03T17:15:07.840] stdlib imports done
+[2026-08-03T17:15:07.843] before _ensure_env_loaded
+[2026-08-03T17:15:07.846] _ensure_env_loaded: importing dotenv
+[2026-08-03T17:15:07.900] _ensure_env_loaded: searching .env
+[2026-08-03T17:15:07.902] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-08-03T17:15:07.911] _ensure_env_loaded: done
+[2026-08-03T17:15:07.912] before _setup_logging
+[2026-08-03T17:15:07.913] _setup_logging: start
+[2026-08-03T17:15:08.173] _setup_logging: done
+[2026-08-03T17:15:08.175] before scripts imports
+[2026-08-03T17:15:08.210] imported scripts.data_validator
+[2026-08-03T17:15:09.180] imported scripts.feishu_notifier
+[2026-08-03T17:15:09.188] imported scripts.wiki_updater
+[2026-08-03T17:15:09.189] main() entered
+[2026-08-04T08:35:04.003] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-08-04T08:35:04.031] stdlib imports done
+[2026-08-04T08:35:04.033] before _ensure_env_loaded
+[2026-08-04T08:35:04.034] _ensure_env_loaded: importing dotenv
+[2026-08-04T08:35:04.059] _ensure_env_loaded: searching .env
+[2026-08-04T08:35:04.061] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-08-04T08:35:04.069] _ensure_env_loaded: done
+[2026-08-04T08:35:04.071] before _setup_logging
+[2026-08-04T08:35:04.072] _setup_logging: start
+[2026-08-04T08:35:04.193] _setup_logging: done
+[2026-08-04T08:35:04.195] before scripts imports
+[2026-08-04T08:35:04.222] imported scripts.data_validator
+[2026-08-04T08:35:04.682] imported scripts.feishu_notifier
+[2026-08-04T08:35:04.684] imported scripts.wiki_updater
+[2026-08-04T08:35:04.685] main() entered
+[2026-08-04T17:15:03.089] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-08-04T17:15:03.114] stdlib imports done
+[2026-08-04T17:15:03.115] before _ensure_env_loaded
+[2026-08-04T17:15:03.117] _ensure_env_loaded: importing dotenv
+[2026-08-04T17:15:03.137] _ensure_env_loaded: searching .env
+[2026-08-04T17:15:03.139] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-08-04T17:15:03.147] _ensure_env_loaded: done
+[2026-08-04T17:15:03.148] before _setup_logging
+[2026-08-04T17:15:03.149] _setup_logging: start
+[2026-08-04T17:15:03.222] _setup_logging: done
+[2026-08-04T17:15:03.223] before scripts imports
+[2026-08-04T17:15:03.232] imported scripts.data_validator
+[2026-08-04T17:15:03.583] imported scripts.feishu_notifier
+[2026-08-04T17:15:03.587] imported scripts.wiki_updater
+[2026-08-04T17:15:03.588] main() entered
+[2026-08-05T08:35:04.564] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义am.json', '--connection', 'prod'] ===
+[2026-08-05T08:35:04.635] stdlib imports done
+[2026-08-05T08:35:04.636] before _ensure_env_loaded
+[2026-08-05T08:35:04.638] _ensure_env_loaded: importing dotenv
+[2026-08-05T08:35:04.691] _ensure_env_loaded: searching .env
+[2026-08-05T08:35:04.693] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-08-05T08:35:04.704] _ensure_env_loaded: done
+[2026-08-05T08:35:04.706] before _setup_logging
+[2026-08-05T08:35:04.707] _setup_logging: start
+[2026-08-05T08:35:04.838] _setup_logging: done
+[2026-08-05T08:35:04.840] before scripts imports
+[2026-08-05T08:35:04.854] imported scripts.data_validator
+[2026-08-05T08:35:05.546] imported scripts.feishu_notifier
+[2026-08-05T08:35:05.549] imported scripts.wiki_updater
+[2026-08-05T08:35:05.550] main() entered
+[2026-08-05T17:15:04.383] === python started, argv=['E:\\AI\\pythonProject\\aiAutoTest\\.claude\\skills\\prod-rpa-checker\\run_check.py', '--config', 'doc/数据中心类型定义pm.json', '--connection', 'prod'] ===
+[2026-08-05T17:15:04.432] stdlib imports done
+[2026-08-05T17:15:04.434] before _ensure_env_loaded
+[2026-08-05T17:15:04.435] _ensure_env_loaded: importing dotenv
+[2026-08-05T17:15:04.458] _ensure_env_loaded: searching .env
+[2026-08-05T17:15:04.460] _ensure_env_loaded: loading E:\AI\pythonProject\aiAutoTest\.env
+[2026-08-05T17:15:04.468] _ensure_env_loaded: done
+[2026-08-05T17:15:04.468] before _setup_logging
+[2026-08-05T17:15:04.469] _setup_logging: start
+[2026-08-05T17:15:04.629] _setup_logging: done
+[2026-08-05T17:15:04.630] before scripts imports
+[2026-08-05T17:15:04.639] imported scripts.data_validator
+[2026-08-05T17:15:05.107] imported scripts.feishu_notifier
+[2026-08-05T17:15:05.110] imported scripts.wiki_updater
+[2026-08-05T17:15:05.111] main() entered
