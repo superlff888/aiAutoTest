@@ -13,7 +13,7 @@
 ## 使用方式
 
 ```bash
-python .claude/skills/bug-rate/scripts/bug_rate_calculator.py \
+python .qoder/skills/bug-rate/scripts/bug_rate_calculator.py \
   --branch feature-4.5.5 --project group/project --bugs 10 --detail
 ```
 

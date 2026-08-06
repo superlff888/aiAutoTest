@@ -1,6 +1,6 @@
 ---
 name: bug-rate
-description: 自动计算千行 Bug 率，支持分支名、单/多 GitLab URL、Git Diff 和静态扫描五种模式，按 hunk 分组精确计算
+description: 自动计算千行 Bug 率，支持分支名、单/多 GitLab URL、Git Diff 和静态扫描五种模式，原始 diff 计数（与 GitLab Web UI 一致）
 ---
 
 # 千行 Bug 率计算
@@ -95,7 +95,7 @@ python .qoder/skills/bug-rate/scripts/bug_rate_calculator.py \
   --gitlab-urls "url1" "url2" "url3" --bugs 10 --detail
 ```
 
-- 逐个解析每个 URL 的 diff，汇总新增/更新/删除行
+- 逐个解析每个 URL 的 diff，汇总新增/删除行
 - 文件路径标记 `[项目名]/实际路径`（项目名已 URL 反编码，可读性更好）
 - 最终用**总变更量**和**总 Bug 数**计算一个统一的千行 Bug 率
 - 按实际一级子目录分组（自动剥离 `[项目名]` 前缀）
