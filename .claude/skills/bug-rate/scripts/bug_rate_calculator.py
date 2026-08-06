@@ -610,15 +610,11 @@ def main():
   # 对比最近5次提交
   python bug_rate_calculator.py --diff HEAD~5 HEAD --bugs 3
 
-  # GitLab Compare URL 模式
-  python bug_rate_calculator.py --gitlab-url "https://gitlab.xxx/group/proj/-/compare/master...release-1.0" --bugs 10 --token "glpat-xxx"
+  # GitLab Compare URL 模式（Token 已内置于 scripts/config.json）
+  python bug_rate_calculator.py --gitlab-url "https://gitlab.xxx/group/proj/-/compare/master...release-1.0" --bugs 10
 
   # 分支模式（简洁）：指定分支名，自动与 master 对比
   python bug_rate_calculator.py --branch feature-4.5.5 --project group/project --bugs 10 --detail
-
-  # Token 也可通过环境变量提供
-  export GITLAB_TOKEN="glpat-xxx"
-  python bug_rate_calculator.py --branch feature-4.5.5 --project group/project --bugs 10
         """,
     )
     parser.add_argument("--dir", default=".", help="要扫描的目录 (默认: 当前目录)")
@@ -638,10 +634,6 @@ def main():
         help="GitLab Compare URL（多个），自动汇总所有 URL 的 diff 后统一计算千行 Bug 率"
     )
     parser.add_argument(
-        "--token", default=DEFAULT_GITLAB_TOKEN,
-        help="GitLab Personal Access Token（也可通过环境变量 GITLAB_TOKEN 提供）"
-    )
-    parser.add_argument(
         "--branch", metavar="NAME",
         help="分支模式：指定目标分支名，自动与 master 对比（需配合 --project）"
     )
@@ -654,15 +646,13 @@ def main():
         help="GitLab 域名（默认: gitlab.starcharge.com）"
     )
     args = parser.parse_args()
-    token = args.token or os.environ.get("GITLAB_TOKEN")
+    token = DEFAULT_GITLAB_TOKEN
 
     match (args.gitlab_url, args.gitlab_urls, args.branch, args.diff):
         case (_, urls, _, _) if urls:
             # 多 GitLab URL 汇总模式
             if not token:
-                print("需要提供 GitLab Token，通过以下方式之一：")
-                print("  1. 命令行参数: --token glpat-xxx")
-                print("  2. 环境变量:   export GITLAB_TOKEN=glpat-xxx")
+                print("未配置 GitLab Token，请在 scripts/config.json 中配置 gitlab_token")
                 sys.exit(1)
 
             print(f"多 URL 汇总模式: 共 {len(urls)} 个 GitLab 链接\n")
@@ -707,9 +697,7 @@ def main():
         case (url, _, _, _) if url:
             # GitLab URL 模式
             if not token:
-                print("需要提供 GitLab Token，通过以下方式之一：")
-                print("  1. 命令行参数: --token glpat-xxx")
-                print("  2. 环境变量:   export GITLAB_TOKEN=glpat-xxx")
+                print("未配置 GitLab Token，请在 scripts/config.json 中配置 gitlab_token")
                 sys.exit(1)
             info = parse_gitlab_url(args.gitlab_url)
 
@@ -737,9 +725,7 @@ def main():
         case (_, _, branch, _) if branch:
             # 分支模式（简洁模式：指定分支名，自动与 master 对比）
             if not token:
-                print("需要提供 GitLab Token，通过以下方式之一：")
-                print("  1. 命令行参数: --token glpat-xxx")
-                print("  2. 环境变量:   export GITLAB_TOKEN=glpat-xxx")
+                print("未配置 GitLab Token，请在 scripts/config.json 中配置 gitlab_token")
                 sys.exit(1)
             if not args.project:
                 print("分支模式需指定项目路径: --project group/project")

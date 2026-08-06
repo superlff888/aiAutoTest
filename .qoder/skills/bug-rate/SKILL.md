@@ -84,7 +84,7 @@ python .qoder/skills/bug-rate/scripts/bug_rate_calculator.py \
 - 带锚点：`...release-1.0#L10`（GitLab 页面跳转到第 10 行时的链接）
 - 三者混合：脚本自动剥离 `?xxx` 和 `#xxx`，干净取分支名
 
-Token 已内置，无需每次传参（如需换 token 用 `--token glpat-xxx` 覆盖）。
+Token 已内置在 `scripts/config.json`，脚本自动读取，无需传参。
 
 ### 模式三：多 GitLab URL 汇总模式
 
@@ -155,7 +155,7 @@ python .qoder/skills/bug-rate/scripts/bug_rate_calculator.py --dir <目录> --bu
 | 分支不存在 / 404 | 输出 `项目或分支不存在` + GitLab 错误信息 |
 | 多个 URL 中部分失败 | 失败的 URL 给出诊断，其他 URL 继续执行 |
 | URL 带 `?from_project_id=xxx` 或 `#L10` | 自动剥离，干净取分支名 |
-| Token 缺失 | 提示 `--token` 参数或 `GITLAB_TOKEN` 环境变量 |
+| Token 缺失 | 提示在 `scripts/config.json` 中配置 `gitlab_token` |
 | Windows GBK 终端乱码 | 脚本内强制 UTF-8 输出 |
 
 ## 脚本路径
@@ -164,9 +164,8 @@ python .qoder/skills/bug-rate/scripts/bug_rate_calculator.py --dir <目录> --bu
 
 ## Token 管理
 
-- Token 已内置在 `scripts/config.json`，默认使用
-- 优先级：命令行 `--token` > 环境变量 `GITLAB_TOKEN` > 配置文件
-- 脚本不保存 Token，仅用于当次 API 调用
+- Token 已内置在 `scripts/config.json`，脚本自动读取，仅支持这一种方式
+- Token 不保存、不外传，仅用于当次 API 调用
 - 需要 `read_api` 权限
 - 目标分支必须未被合并到 master，否则 API 返回空
 
