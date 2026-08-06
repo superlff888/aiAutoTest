@@ -62,7 +62,7 @@ description: 自动计算千行 Bug 率，支持分支名、单/多 GitLab URL�
 用户输入分支名 + 项目路径，自动与 master 对比：
 
 ```bash
-python .claude/skills/bug-rate/scripts/bug_rate_calculator.py \
+python .qoder/skills/bug-rate/scripts/bug_rate_calculator.py \
   --branch feature-4.5.5 --project group/project --bugs 10 --detail
 ```
 
@@ -73,7 +73,7 @@ python .claude/skills/bug-rate/scripts/bug_rate_calculator.py \
 用户输入 GitLab Compare URL 时，直接调用 API：
 
 ```bash
-python .claude/skills/bug-rate/scripts/bug_rate_calculator.py \
+python .qoder/skills/bug-rate/scripts/bug_rate_calculator.py \
   --gitlab-url "https://gitlab.xxx/group/proj/-/compare/master...release-1.0" --bugs 10 --detail
 ```
 
@@ -91,7 +91,7 @@ Token 已内置，无需每次传参（如需换 token 用 `--token glpat-xxx` �
 用户输入多个 GitLab Compare URL（跨多个服务）时，汇总所有 diff 后统一计算：
 
 ```bash
-python .claude/skills/bug-rate/scripts/bug_rate_calculator.py \
+python .qoder/skills/bug-rate/scripts/bug_rate_calculator.py \
   --gitlab-urls "url1" "url2" "url3" --bugs 10 --detail
 ```
 
@@ -107,63 +107,45 @@ python .claude/skills/bug-rate/scripts/bug_rate_calculator.py \
 
 ```bash
 cd <项目目录>
-python .claude/skills/bug-rate/scripts/bug_rate_calculator.py \
+python .qoder/skills/bug-rate/scripts/bug_rate_calculator.py \
   --diff master main --bugs 10 --detail
 ```
 
 ### 模式五：静态扫描模式
 
 ```bash
-python .claude/skills/bug-rate/scripts/bug_rate_calculator.py --dir <目录> --bugs 10
+python .qoder/skills/bug-rate/scripts/bug_rate_calculator.py --dir <目录> --bugs 10
 ```
+
+## 输出规则
+
+执行后**只展示结果表格**，不追加换路建议或额外提示。
+
+- 脚本成功 → 只输出结果表格，不要画蛇添足
+- 脚本失败 → 用**表格**列出每个 URL/分支的失败状态（一句话点明即可），不要列替代方案
+
+## 询问风格
+
+模式确定后，**一律用 `AskUserQuestion` 弹选项**，不要用自然语言问。
 
 ## 输出格式
 
 用表格格式向用户展示：
 
-- 变更文件数、新增行、更新行、删除行、变更总量、千行 Bug 率
+- 变更文件数、新增行、删除行、变更总量、千行 Bug 率
 - 按模块（一级子目录）分组汇总
 - `--detail` 时显示文件级明细
 
-## 统计规则（按 hunk 精确计算）
+## 统计规则（原始 diff 计数，与 GitLab Web UI 一致）
 
 ```
-新增行   = 基准分支没有，目标分支有的行
-更新行   = 同一 hunk 内成对出现的增删（min(added, deleted)）
-删除行   = 基准分支有，目标分支没有的行
-变更总量 = 新增行 + 更新行 + 删除行
+新增行   = diff 中所有 + 行（与 GitLab Web UI additions 一致）
+删除行   = diff 中所有 - 行（与 GitLab Web UI deletions 一致）
+变更总量 = 新增行 + 删除行
 千行 Bug 率 = Bug 数 / 变更总量 × 1000
 ```
 
-### 为什么"精确"？
-
-核心算法采用**按 hunk 分组计算**，而非全文件混算：
-
-```
-git diff --unified=0 --diff-algorithm=patience
-   ↓
-按 @@ hunk 头切分（每个 hunk 是一次连续变更块）
-   ↓
-每个 hunk 独立套 min(added, deleted) 还原"修改"行
-   ↓
-汇总所有 hunk 的结果
-```
-
-**关键技术配合：**
-
-| 手段 | 作用 |
-|------|------|
-| `--unified=0` | 不带上下文行，hunk 切得最碎 |
-| `--diff-algorithm=patience` | 行配对符合语义 |
-| 按 `@@` 切块 | 隔离无关变更，避免跨块错位配对 |
-| 块内 `min()` | 还原"修改"语义 |
-
-**对比示例**（同一文件：4 行修改 + 4 行删除 + 4 行新增分散在 2 个 hunk）：
-
-| 方案 | updated | new_only | del_only | 偏差 |
-|------|---------|----------|----------|------|
-| 旧（全文件混算） | 5 | 0 | 3 | ❌ 偏 1 行 |
-| 新（按 hunk） | 4 | 1 | 4 | ✅ 精确 |
+算法与 GitLab Web UI、GitHub 等主流工具一致，每行新增/删除独立计数，不做配对合并。
 
 ## 特殊情况处理
 
@@ -178,7 +160,7 @@ git diff --unified=0 --diff-algorithm=patience
 
 ## 脚本路径
 
-`.claude/skills/bug-rate/scripts/bug_rate_calculator.py`
+`.qoder/skills/bug-rate/scripts/bug_rate_calculator.py`
 
 ## Token 管理
 
@@ -190,7 +172,11 @@ git diff --unified=0 --diff-algorithm=patience
 
 ## 更新记录
 
-- **v2.0（本次升级）**
+- **v3.0（当前版本）**
+  - 统计口径升级：hunk 配对算法 → 原始 diff 计数（与 GitLab Web UI 一致）
+  - 去掉“更新行”分类，变更总量 = 新增行 + 删除行
+  - GitLab API 使用 `straight=false`（基于 merge-base）
+- **v2.0**
   - 核心算法升级：全文件混算 → 按 hunk 分组精确计算
   - 本地 Git 模式加 `--unified=0 --diff-algorithm=patience`
   - URL 正则防御性排除 `? # \s`

@@ -7,11 +7,10 @@
 3. Git Diff 模式：对比两个分支/提交的变更行数
 4. 静态扫描模式（实验性）：扫描当前目录下所有代码文件的行数，分配 Bug 计算千行 Bug 率
 
-Git Diff / GitLab 模式变更量计算（代码行级别）：
-  新增行   — 基准分支没有，目标分支有的代码行（纯新增）
-  更新行   — 两个分支都有，但内容被修改的代码行
-  删除行   — 基准分支有，目标分支没有的代码行（纯删除）
-  变更总量 = 新增行 + 更新行 + 删除行
+Git Diff / GitLab 模式变更量计算（代码行级别，原始 diff 计数）：
+  新增行   — diff 中所有 + 行（与 GitLab Web UI 一致）
+  删除行   — diff 中所有 - 行（与 GitLab Web UI 一致）
+  变更总量 = 新增行 + 删除行
   千行 Bug 率 = Bug 数 / 变更总量 * 1000
 
 Usage:
@@ -93,14 +92,13 @@ class FileStat:
     blank_lines: int = 0
     comment_lines: int = 0
     new_lines: int = 0
-    updated_lines: int = 0
     deleted_lines: int = 0
     bug_count: float = 0.0      # 静态模式分配
     bug_rate: float = 0.0       # 静态模式分配
 
     @property
     def changed_lines(self) -> int:
-        return self.new_lines + self.updated_lines + self.deleted_lines
+        return self.new_lines + self.deleted_lines
 
 
 @dataclass
@@ -111,13 +109,12 @@ class ModuleStat:
     total_lines: int = 0
     code_lines: int = 0
     new_lines: int = 0
-    updated_lines: int = 0
     deleted_lines: int = 0
     files: List[FileStat] = field(default_factory=list)
 
     @property
     def changed_lines(self) -> int:
-        return self.new_lines + self.updated_lines + self.deleted_lines
+        return self.new_lines + self.deleted_lines
 
 
 # ===== GitLab URL 模式 =====
@@ -132,54 +129,19 @@ GITLAB_COMPARE_RE = re.compile(
 )
 _CLEAN_JSON_RE = re.compile(r'[\x00-\x08\x0b\x0c\x0e-\x1f\x7f]')
 
-# hunk 头部正则：匹配 @@ -a,b +c,d @@ 形式
-HUNK_HEADER_RE = re.compile(r'^@@ -\d+(?:,\d+)? \+\d+(?:,\d+)? @@')
 
-
-def parse_hunks(diff_text: str) -> List[Dict[str, int]]:
+def count_diff_lines(diff_text: str) -> Tuple[int, int]:
     """
-    按 @@ hunk 头切分 diff 文本，每个 hunk 独立统计 added/deleted
-    返回: [{"added": int, "deleted": int}, ...]
+    原始 diff 计数：统计所有 + 行和 - 行（与 GitLab Web UI 一致）
+    返回: (additions, deletions)
     """
-    hunks: List[Dict[str, int]] = []
-    current = {"added": 0, "deleted": 0}
-
+    additions = deletions = 0
     for line in diff_text.split("\n"):
-        if HUNK_HEADER_RE.match(line):
-            # 遇到新 hunk 头，先保存上一个 hunk
-            if current["added"] or current["deleted"]:
-                hunks.append(current)
-            current = {"added": 0, "deleted": 0}
-            continue
-
-        # + 开头算新增（排除 +++ 文件头）
         if line.startswith("+") and not line.startswith("+++"):
-            current["added"] += 1
-        # - 开头算删除（排除 --- 文件头）
+            additions += 1
         elif line.startswith("-") and not line.startswith("---"):
-            current["deleted"] += 1
-
-    # 保存最后一个 hunk
-    if current["added"] or current["deleted"]:
-        hunks.append(current)
-
-    return hunks
-
-
-def calc_hunk_stats(diff_text: str) -> Tuple[int, int, int]:
-    """
-    按 hunk 分组计算一个文件的更新/纯新增/纯删除行数
-    返回: (updated, new_only, deleted_only)
-    """
-    updated_total = new_total = del_total = 0
-    for hunk in parse_hunks(diff_text):
-        added = hunk["added"]
-        deleted = hunk["deleted"]
-        updated = min(added, deleted)
-        updated_total += updated
-        new_total += added - updated
-        del_total += deleted - updated
-    return updated_total, new_total, del_total
+            deletions += 1
+    return additions, deletions
 
 
 def parse_gitlab_url(url: str) -> Dict[str, str]:
@@ -290,16 +252,15 @@ def get_gitlab_diff_stats(
             case _:
                 status = "M"
 
-        # 按 hunk 分组精确计算（避免跨 hunk 错位配对）
+        # 原始 diff 计数（与 GitLab Web UI 一致）
         diff_text = d.get("diff", "")
-        updated, new_only, deleted_only = calc_hunk_stats(diff_text)
+        additions, deletions = count_diff_lines(diff_text)
 
         stats.append(FileStat(
             path=filepath,
             status=status,
-            new_lines=new_only,
-            updated_lines=updated,
-            deleted_lines=deleted_only,
+            new_lines=additions,
+            deleted_lines=deletions,
         ))
 
     return stats
@@ -400,8 +361,7 @@ def get_git_diff_stats(base: str, target: str) -> List[FileStat]:
     base   → 基准分支（如 master）
     target → 对比分支（如 main）
 
-    使用 --unified=0 --diff-algorithm=patience 让 diff 输出最简 hunk，
-    再按 hunk 分组精确计算 updated / new_only / deleted_only
+    使用 --unified=0 让 diff 输出最精简，原始 +/- 计数
     """
     ref = f"{base}...{target}"
 
@@ -413,14 +373,12 @@ def get_git_diff_stats(base: str, target: str) -> List[FileStat]:
         print(f"错误信息: {result.stderr}")
         sys.exit(1)
 
-    # 2. 拿完整 diff 文本（按 hunk 切分需要原始 diff）
-    #    --unified=0：不要上下文行，hunk 切得更碎
-    #    --diff-algorithm=patience：行配对更准
+    # 2. 拿完整 diff 文本
+    #    --unified=0：不要上下文行
     #    --no-color：去掉 ANSI 颜色码，便于按行解析
     cmd_patch = [
         "git", "-c", "core.quotePath=false", "diff",
         "--unified=0",
-        "--diff-algorithm=patience",
         "--no-color",
         ref
     ]
@@ -470,16 +428,15 @@ def get_git_diff_stats(base: str, target: str) -> List[FileStat]:
         if filepath.startswith(".claude"):
             continue
 
-        # 按 hunk 分组精确计算
+        # 原始 diff 计数
         diff_text = file_diffs.get(filepath, "")
-        updated, new_only, deleted_only = calc_hunk_stats(diff_text)
+        additions, deletions = count_diff_lines(diff_text)
 
         stat = FileStat(
             path=filepath,
             status=status,
-            new_lines=new_only,
-            updated_lines=updated,
-            deleted_lines=deleted_only,
+            new_lines=additions,
+            deleted_lines=deletions,
         )
         stats.append(stat)
 
@@ -557,7 +514,6 @@ def group_by_module_diff(stats: List[FileStat]) -> Dict[str, ModuleStat]:
         mod.total_lines += stat.total_lines
         mod.code_lines += stat.code_lines
         mod.new_lines += stat.new_lines
-        mod.updated_lines += stat.updated_lines
         mod.deleted_lines += stat.deleted_lines
         mod.files.append(stat)
 
@@ -600,9 +556,8 @@ def print_diff_summary(stats: List[FileStat], modules: Dict[str, ModuleStat],
     """Git diff 模式汇总报告"""
     total_files = len(stats)
     total_new = sum(s.new_lines for s in stats)
-    total_updated = sum(s.updated_lines for s in stats)
     total_deleted = sum(s.deleted_lines for s in stats)
-    total_changed = total_new + total_updated + total_deleted
+    total_changed = total_new + total_deleted
     overall_rate = bug_count / total_changed * 1000 if total_changed > 0 else 0
 
     print("=" * 75)
@@ -611,7 +566,6 @@ def print_diff_summary(stats: List[FileStat], modules: Dict[str, ModuleStat],
     print(f"  Bug 总数:           {bug_count}")
     print(f"  变更文件数:         {total_files}")
     print(f"  新增行:             {total_new}")
-    print(f"  更新行:             {total_updated}")
     print(f"  删除行:             {total_deleted}")
     print(f"  变更总行数:         {total_changed}")
     print(f"  千行 Bug 率:        {overall_rate:.2f}‰")
@@ -625,7 +579,7 @@ def print_detail(stats: List[FileStat], diff_mode: bool = False):
     """打印文件级明细"""
     match diff_mode:
         case True:
-            print(f"\n {'文件':<50} {'状态':>6} {'新增行':>6} {'更新行':>6} {'删除行':>6}")
+            print(f"\n {'文件':<50} {'状态':>6} {'新增行':>6} {'删除行':>6}")
         case False:
             print(f"\n {'文件':<55} {'代码行':>7}")
     print("-" * 75)
@@ -634,7 +588,7 @@ def print_detail(stats: List[FileStat], diff_mode: bool = False):
         match diff_mode:
             case True:
                 label = STATUS_LABEL.get(f.status, f.status)
-                print(f"    {f.path:<50} {label:>6} {f.new_lines:>6} {f.updated_lines:>6} {f.deleted_lines:>6}")
+                print(f"    {f.path:<50} {label:>6} {f.new_lines:>6} {f.deleted_lines:>6}")
             case False:
                 print(f"    {f.path:<55} {f.code_lines:>7}")
 
@@ -731,7 +685,7 @@ def main():
                     for s in stats:
                         s.path = f"[{project_label}]/{s.path}"
                     all_stats.extend(stats)
-                    total = sum(s.new_lines + s.updated_lines + s.deleted_lines for s in stats)
+                    total = sum(s.new_lines + s.deleted_lines for s in stats)
                     print(f"    变更: {len(stats)} 个文件, {total} 行\n")
                 else:
                     msg = _check_branch_merged(
