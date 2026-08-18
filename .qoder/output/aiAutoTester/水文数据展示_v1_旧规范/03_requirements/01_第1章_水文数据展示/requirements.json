@@ -1,0 +1,400 @@
+{
+  "chapter": {
+    "chapter_number": 1,
+    "chapter_title": "水文数据展示",
+    "total_requirements": 10
+  },
+  "modules": [
+    {
+      "module_name": "页面基础功能",
+      "requirement_count": 2,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH1-001",
+          "requirement_name": "新增水文数据展示页面",
+          "type": "功能需求 (FR)",
+          "module": "页面基础功能",
+          "chapter": 1,
+          "source_page": "截图",
+          "description": "用户可以在水文数据模块下查看水文数据展示页面，页面包含河道水情、水库水情、实时雨情三个Tab页签",
+          "testable_elements": {
+            "trigger": "用户进入水文数据模块",
+            "inputs": [],
+            "action": "系统展示水文数据展示页面，默认选中河道水情Tab",
+            "expected_output": "页面正常加载，显示三个Tab页签：河道水情、水库水情、实时雨情",
+            "verification_points": [
+              "页面标题显示'水文数据'",
+              "三个Tab页签均正常显示：河道水情、水库水情、实时雨情",
+              "默认选中第一个Tab（河道水情）",
+              "Tab页签可点击切换"
+            ]
+          },
+          "detailed_description": "新增页面【水文数据展示】，含三个Tab：河道水情、水库水情、实时雨情。页面顶部显示标题'水文数据'，下方为Tab导航栏，三个Tab从左到右依次为'河道水情'、'水库水情'、'实时雨情'（截图中第三个Tab显示为'雨情监测'）。",
+          "acceptance_criteria": [
+            "页面正常加载，标题显示'水文数据'",
+            "三个Tab页签均正常显示并可点击切换",
+            "默认选中河道水情Tab"
+          ],
+          "related_images": [
+            {
+              "filename": "水文数据页面截图.png",
+              "description": "水文数据展示页面截图，显示河道水情Tab下的筛选区和数据表格",
+              "path": "images/水文数据页面截图.png"
+            }
+          ],
+          "source_paragraphs": ["Para-001"]
+        },
+        {
+          "requirement_id": "REQ-CH1-002",
+          "requirement_name": "Tab页签切换功能",
+          "type": "功能需求 (FR)",
+          "module": "页面基础功能",
+          "chapter": 1,
+          "source_page": "截图",
+          "description": "用户可以点击不同的Tab页签切换查看河道水情、水库水情、实时雨情的数据",
+          "testable_elements": {
+            "trigger": "用户点击不同的Tab页签",
+            "inputs": ["Tab页签名称"],
+            "action": "切换Tab页签",
+            "expected_output": "页面内容切换为对应Tab的数据展示",
+            "verification_points": [
+              "点击'河道水情'Tab，显示河道水情数据表格",
+              "点击'水库水情'Tab，显示水库水情数据表格",
+              "点击'实时雨情'Tab，显示实时雨情数据",
+              "切换Tab后筛选区内容根据Tab类型相应变化",
+              "当前选中Tab有高亮标识"
+            ]
+          },
+          "detailed_description": "页面包含三个Tab：河道水情、水库水情、实时雨情。用户可点击任意Tab切换查看不同类型的水文数据。当前选中的Tab有绿色下划线高亮标识。",
+          "acceptance_criteria": [
+            "点击不同Tab可正常切换页面内容",
+            "当前选中Tab有高亮样式标识",
+            "每个Tab展示对应的数据内容"
+          ],
+          "related_images": [],
+          "source_paragraphs": ["Para-002"]
+        }
+      ]
+    },
+    {
+      "module_name": "筛选查询功能",
+      "requirement_count": 2,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH1-003",
+          "requirement_name": "筛选区条件查询功能",
+          "type": "功能需求 (FR)",
+          "module": "筛选查询功能",
+          "chapter": 1,
+          "source_page": "截图",
+          "description": "用户可以在筛选区设置日期、省份、流域、河名、站名关键字等条件进行数据查询",
+          "testable_elements": {
+            "trigger": "用户在筛选区输入/选择筛选条件后点击查询按钮",
+            "inputs": ["日期", "省份", "流域", "河名", "站名关键字"],
+            "action": "点击'查询'按钮执行数据筛选",
+            "expected_output": "表格数据根据筛选条件刷新显示",
+            "verification_points": [
+              "日期选择器可选择日期范围",
+              "省份下拉框可选择省份，默认'全部'",
+              "流域下拉框可选择流域，默认'全部'",
+              "河名下拉框可选择河名，默认'全部'",
+              "站名输入框支持关键字模糊搜索",
+              "点击查询按钮后表格数据按条件过滤",
+              "无匹配数据时表格显示空状态"
+            ]
+          },
+          "detailed_description": "筛选区包含以下筛选项：日期（日期选择器，格式yyyy/mm/dd）、省份（下拉框，默认'全部'）、流域（下拉框，默认'全部'）、河名（下拉框，默认'全部'）、站名（文本输入框，提示'请输入站名'）。右侧有'查询'（蓝色按钮）、'重置'、'导出'三个操作按钮。",
+          "acceptance_criteria": [
+            "各筛选项可正常输入/选择",
+            "点击查询按钮后数据按条件过滤",
+            "多条件组合查询结果正确",
+            "无匹配数据时显示空状态提示"
+          ],
+          "related_images": [
+            {
+              "filename": "水文数据页面截图.png",
+              "description": "筛选区截图，显示日期、省份、流域、河名、站名筛选项及查询/重置/导出按钮",
+              "path": "images/水文数据页面截图.png"
+            }
+          ],
+          "source_paragraphs": ["Para-003"]
+        },
+        {
+          "requirement_id": "REQ-CH1-004",
+          "requirement_name": "河名随省份和流域级联联动",
+          "type": "功能需求 (FR)",
+          "module": "筛选查询功能",
+          "chapter": 1,
+          "source_page": "需求说明",
+          "description": "河名下拉框的选项随省份和流域的选择进行级联联动过滤",
+          "testable_elements": {
+            "trigger": "用户选择省份或流域后",
+            "inputs": ["省份", "流域"],
+            "action": "系统自动过滤河名下拉框的可选值",
+            "expected_output": "河名下拉框仅显示所选省份和流域下的河流",
+            "verification_points": [
+              "选择省份后，河名列表过滤为该省河流",
+              "选择流域后，河名列表过滤为该流域河流",
+              "同时选择省份和流域后，河名列表为交集",
+              "重置省份或流域后，河名列表恢复",
+              "河名联动不影响已选的其他筛选项"
+            ]
+          },
+          "detailed_description": "河名下拉框随省份+流域级联联动。当用户选择省份和/或流域后，河名下拉框的选项自动过滤为对应条件下的河流列表。例如选择'河南'省+'淮河流域'后，河名仅显示淮河流域在河南省的河流。",
+          "acceptance_criteria": [
+            "选择省份后河名列表正确过滤",
+            "选择流域后河名列表正确过滤",
+            "省份+流域组合后河名列表为交集过滤",
+            "取消省份或流域选择后河名列表恢复"
+          ],
+          "related_images": [],
+          "source_paragraphs": ["Para-004"]
+        }
+      ]
+    },
+    {
+      "module_name": "表格功能",
+      "requirement_count": 2,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH1-005",
+          "requirement_name": "表格表头排序功能",
+          "type": "功能需求 (FR)",
+          "module": "表格功能",
+          "chapter": 1,
+          "source_page": "截图",
+          "description": "用户可以点击表格列标题进行升序/降序排序",
+          "testable_elements": {
+            "trigger": "用户点击表格列标题",
+            "inputs": ["列标题名称"],
+            "action": "点击表头触发排序",
+            "expected_output": "表格数据按该列升序或降序排列",
+            "verification_points": [
+              "点击表头首次排序为升序",
+              "再次点击同一表头切换为降序",
+              "第三次点击取消排序恢复默认",
+              "排序图标正确显示当前排序方向",
+              "各列均可独立排序",
+              "排序后分页数据正确"
+            ]
+          },
+          "detailed_description": "表格支持点击表头排序，支持升序/降序切换。表头列名旁有排序图标（截图中显示为上下箭头图标），点击后按该列数据排序。河道水情表格列包括：流域、行政区划、河名、站名、时间、水位(米)、超警戒水位(米)、近七日水位变化。",
+          "acceptance_criteria": [
+            "点击表头可触发排序",
+            "升序/降序可切换",
+            "排序结果正确",
+            "排序图标状态与当前排序方向一致"
+          ],
+          "related_images": [
+            {
+              "filename": "水文数据页面截图.png",
+              "description": "表格表头截图，显示各列标题及排序图标",
+              "path": "images/水文数据页面截图.png"
+            }
+          ],
+          "source_paragraphs": ["Para-005"]
+        },
+        {
+          "requirement_id": "REQ-CH1-006",
+          "requirement_name": "表格分页及每页条数切换功能",
+          "type": "功能需求 (FR)",
+          "module": "表格功能",
+          "chapter": 1,
+          "source_page": "需求说明",
+          "description": "表格支持分页浏览，用户可切换每页显示条数",
+          "testable_elements": {
+            "trigger": "数据量超过一页显示数量时",
+            "inputs": ["每页条数"],
+            "action": "用户切换页码或每页条数",
+            "expected_output": "表格按分页参数显示对应数据",
+            "verification_points": [
+              "分页控件正常显示总页数和当前页",
+              "可点击页码跳转到指定页",
+              "可切换每页显示条数（如10/20/50条）",
+              "切换每页条数后数据正确刷新",
+              "最后一页数据不足时正确显示",
+              "分页与排序组合使用结果正确"
+            ]
+          },
+          "detailed_description": "表格支持分页及每页条数切换。当数据量较大时，表格底部显示分页控件，用户可选择每页显示条数并翻页浏览。",
+          "acceptance_criteria": [
+            "分页控件正常显示",
+            "切换每页条数后数据正确刷新",
+            "翻页功能正常",
+            "分页与排序组合使用结果正确"
+          ],
+          "related_images": [],
+          "source_paragraphs": ["Para-006"]
+        }
+      ]
+    },
+    {
+      "module_name": "近七日水位变化",
+      "requirement_count": 2,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH1-007",
+          "requirement_name": "近七日水位变化缩略图展示",
+          "type": "功能需求 (FR)",
+          "module": "近七日水位变化",
+          "chapter": 1,
+          "source_page": "截图",
+          "description": "河道水情和水库水情列表最右列展示近七日水位变化缩略图，上涨段绿色、下跌段红色，无数据日期留空",
+          "testable_elements": {
+            "trigger": "表格数据加载完成后",
+            "inputs": ["近七日水位数据"],
+            "action": "系统渲染水位变化缩略图",
+            "expected_output": "缩略图正确展示七日水位变化趋势",
+            "verification_points": [
+              "缩略图位于表格最右列'近七日水位变化'",
+              "水位上涨段显示为绿色线条",
+              "水位下跌段显示为红色线条",
+              "无数据的日期对应位置留空（不连线）",
+              "缩略图大小适中，不影响表格布局",
+              "各行的缩略图独立展示各自数据"
+            ]
+          },
+          "detailed_description": "河道水情、水库水情列表最右列为【近七日水位变化】缩略图。缩略图以折线形式展示近七日水位变化趋势：上涨段用绿色线条表示，下跌段用红色线条表示，无数据的日期位置留空（不绘制线条）。截图中可见各行的缩略图展示了不同的趋势形态。",
+          "acceptance_criteria": [
+            "缩略图正确展示在表格最右列",
+            "上涨段为绿色，下跌段为红色",
+            "无数据日期留空不连线",
+            "缩略图趋势与实际数据一致"
+          ],
+          "related_images": [
+            {
+              "filename": "水文数据页面截图.png",
+              "description": "表格最右列近七日水位变化缩略图，可见绿色上涨和红色下跌的折线",
+              "path": "images/水文数据页面截图.png"
+            }
+          ],
+          "source_paragraphs": ["Para-007"]
+        },
+        {
+          "requirement_id": "REQ-CH1-008",
+          "requirement_name": "点击缩略图弹出水位趋势弹窗",
+          "type": "功能需求 (FR)",
+          "module": "近七日水位变化",
+          "chapter": 1,
+          "source_page": "需求说明",
+          "description": "用户点击近七日水位变化缩略图后弹出趋势详情弹窗，展示统计指标和七日折线图",
+          "testable_elements": {
+            "trigger": "用户点击近七日水位变化缩略图",
+            "inputs": ["站点近七日水位数据"],
+            "action": "弹出水位趋势详情弹窗",
+            "expected_output": "弹窗展示统计指标和七日折线图",
+            "verification_points": [
+              "点击缩略图弹出趋势弹窗",
+              "弹窗上方显示均值、最大值、最小值、上行天数四个统计指标",
+              "弹窗下方显示七日折线图",
+              "折线图横轴为日期，纵轴为水位",
+              "折线图颜色规则与缩略图一致（上涨绿、下跌红）",
+              "弹窗可正常关闭",
+              "不同站点弹出的数据正确对应"
+            ]
+          },
+          "detailed_description": "点击近七日水位变化缩略图弹出趋势弹窗。弹窗布局：上方区域展示四个统计指标——均值、最大值、最小值、上行天数；下方区域展示七日折线图，横轴为日期，纵轴为水位。折线图的涨跌颜色规则与缩略图一致。",
+          "acceptance_criteria": [
+            "点击缩略图可弹出趋势弹窗",
+            "弹窗上方正确显示均值、最大值、最小值、上行天数",
+            "弹窗下方正确显示七日折线图（横轴日期、纵轴水位）",
+            "弹窗数据与对应站点数据一致",
+            "弹窗可正常关闭"
+          ],
+          "related_images": [],
+          "source_paragraphs": ["Para-008"]
+        }
+      ]
+    },
+    {
+      "module_name": "站点列表弹窗",
+      "requirement_count": 1,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH1-009",
+          "requirement_name": "点击站名弹出同河流站点列表",
+          "type": "功能需求 (FR)",
+          "module": "站点列表弹窗",
+          "chapter": 1,
+          "source_page": "需求说明",
+          "description": "用户点击表格中的站名链接后弹出同河流下所有站点的列表弹窗",
+          "testable_elements": {
+            "trigger": "用户点击表格中的站名（蓝色链接）",
+            "inputs": ["当前站名、所属河流"],
+            "action": "弹出同河流站点列表弹窗",
+            "expected_output": "弹窗展示同河流下所有站点信息",
+            "verification_points": [
+              "站名显示为蓝色可点击链接样式",
+              "点击站名弹出同河流站点列表弹窗",
+              "河道水情弹窗列：省份、站名、水位、超警戒水位",
+              "水库水情弹窗列：省份、库名、库水位、日变幅",
+              "弹窗数据仅包含同河流站点",
+              "弹窗可正常关闭"
+            ]
+          },
+          "detailed_description": "点击站名（蓝色链接样式）弹出同河流站点列表弹窗。河道水情Tab下弹窗包含列：省份、站名、水位、超警戒水位；水库水情Tab下弹窗包含列：省份、库名、库水位、日变幅。弹窗仅展示与当前点击站名同河流/水库的站点数据。",
+          "acceptance_criteria": [
+            "站名显示为可点击的蓝色链接",
+            "点击站名弹出同河流站点列表",
+            "河道水情弹窗列正确：省份、站名、水位、超警戒水位",
+            "水库水情弹窗列正确：省份、库名、库水位、日变幅",
+            "弹窗数据范围正确（仅同河流站点）"
+          ],
+          "related_images": [
+            {
+              "filename": "水文数据页面截图.png",
+              "description": "表格中站名列显示为蓝色链接，如杨庄、五沟营、庙湾等",
+              "path": "images/水文数据页面截图.png"
+            }
+          ],
+          "source_paragraphs": ["Para-009"]
+        }
+      ]
+    },
+    {
+      "module_name": "数据展示规则",
+      "requirement_count": 1,
+      "requirements": [
+        {
+          "requirement_id": "REQ-CH1-010",
+          "requirement_name": "超警戒水位红色高亮与延迟标签",
+          "type": "功能需求 (FR)",
+          "module": "数据展示规则",
+          "chapter": 1,
+          "source_page": "截图",
+          "description": "超警戒水位数值以红色高亮显示；非当日更新的数据行标记'延迟'标签",
+          "testable_elements": {
+            "trigger": "表格数据渲染时",
+            "inputs": ["超警戒水位数值", "数据更新时间"],
+            "action": "系统根据规则渲染数据样式",
+            "expected_output": "超警戒水位红色显示，非当日数据行显示延迟标签",
+            "verification_points": [
+              "超警戒水位有数值时，该数值以红色字体显示",
+              "超警戒水位为'--'时正常显示（非红色）",
+              "非当日更新的数据行时间列显示橙色'延迟'标签",
+              "当日更新的数据行不显示延迟标签",
+              "延迟标签位于时间值右侧",
+              "红色高亮和延迟标签可同时存在"
+            ]
+          },
+          "detailed_description": "超警戒水位数值红色高亮：当超警戒水位(米)列有具体数值时，该数值以红色字体显示（截图中该列目前均为'--'）。非当日更新的数据行标记'延迟'标签：当数据更新时间不是当日时，时间值右侧显示橙色'延迟'标签（如截图中'2026-07-21 08:00 延迟'所示，数据日期为7月21日而非当日7月29日）。",
+          "acceptance_criteria": [
+            "超警戒水位有数值时显示为红色",
+            "超警戒水位为'--'时正常颜色显示",
+            "非当日数据行显示'延迟'标签",
+            "当日数据行不显示'延迟'标签",
+            "延迟标签样式为橙色，位于时间值右侧"
+          ],
+          "related_images": [
+            {
+              "filename": "水文数据页面截图.png",
+              "description": "截图中周堂桥行显示'2026-07-21 08:00 延迟'，时间为橙色并带延迟标签",
+              "path": "images/水文数据页面截图.png"
+            }
+          ],
+          "source_paragraphs": ["Para-010"]
+        }
+      ]
+    }
+  ]
+}
