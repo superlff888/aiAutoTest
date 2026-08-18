@@ -2,7 +2,7 @@
   "chapter": {
     "chapter_number": 1,
     "chapter_title": "水文数据展示",
-    "total_requirements": 10
+    "total_requirements": 11
   },
   "modules": [
     {
@@ -42,7 +42,9 @@
               "path": "images/水文数据页面截图.png"
             }
           ],
-          "source_paragraphs": ["Para-001"]
+          "source_paragraphs": [
+            "Para-001"
+          ]
         },
         {
           "requirement_id": "REQ-CH1-002",
@@ -54,7 +56,9 @@
           "description": "用户可以点击不同的Tab页签切换查看河道水情、水库水情、实时雨情的数据",
           "testable_elements": {
             "trigger": "用户点击不同的Tab页签",
-            "inputs": ["Tab页签名称"],
+            "inputs": [
+              "Tab页签名称"
+            ],
             "action": "切换Tab页签",
             "expected_output": "页面内容切换为对应Tab的数据展示",
             "verification_points": [
@@ -72,13 +76,15 @@
             "每个Tab展示对应的数据内容"
           ],
           "related_images": [],
-          "source_paragraphs": ["Para-002"]
+          "source_paragraphs": [
+            "Para-002"
+          ]
         }
       ]
     },
     {
       "module_name": "筛选查询功能",
-      "requirement_count": 2,
+      "requirement_count": 3,
       "requirements": [
         {
           "requirement_id": "REQ-CH1-003",
@@ -90,7 +96,13 @@
           "description": "用户可以在筛选区设置日期、省份、流域、河名、站名关键字等条件进行数据查询",
           "testable_elements": {
             "trigger": "用户在筛选区输入/选择筛选条件后点击查询按钮",
-            "inputs": ["日期", "省份", "流域", "河名", "站名关键字"],
+            "inputs": [
+              "日期",
+              "省份",
+              "流域",
+              "河名",
+              "站名关键字"
+            ],
             "action": "点击'查询'按钮执行数据筛选",
             "expected_output": "表格数据根据筛选条件刷新显示",
             "verification_points": [
@@ -117,7 +129,9 @@
               "path": "images/水文数据页面截图.png"
             }
           ],
-          "source_paragraphs": ["Para-003"]
+          "source_paragraphs": [
+            "Para-003"
+          ]
         },
         {
           "requirement_id": "REQ-CH1-004",
@@ -129,7 +143,10 @@
           "description": "河名下拉框的选项随省份和流域的选择进行级联联动过滤",
           "testable_elements": {
             "trigger": "用户选择省份或流域后",
-            "inputs": ["省份", "流域"],
+            "inputs": [
+              "省份",
+              "流域"
+            ],
             "action": "系统自动过滤河名下拉框的可选值",
             "expected_output": "河名下拉框仅显示所选省份和流域下的河流",
             "verification_points": [
@@ -148,7 +165,47 @@
             "取消省份或流域选择后河名列表恢复"
           ],
           "related_images": [],
-          "source_paragraphs": ["Para-004"]
+          "source_paragraphs": [
+            "Para-004"
+          ]
+        },
+        {
+          "requirement_id": "REQ-CH1-011",
+          "requirement_name": "数据导出功能",
+          "type": "功能需求 (FR)",
+          "module": "筛选查询功能",
+          "chapter": 1,
+          "source_page": "截图",
+          "description": "用户可以在筛选区点击「导出」按钮，将当前筛选条件下的列表数据导出为文件",
+          "testable_elements": {
+            "trigger": "用户点击「导出」按钮",
+            "inputs": [
+              "当前筛选条件"
+            ],
+            "action": "系统按当前筛选条件导出数据文件",
+            "expected_output": "导出文件内容与当前筛选后的列表数据一致",
+            "verification_points": [
+              "导出文件字段与表格列一致",
+              "导出数据行数与筛选后总条数一致",
+              "无数据时导出有明确提示"
+            ]
+          },
+          "detailed_description": "截图筛选区右侧显示「导出」按钮（与「查询」「重置」并排）。点击后按当前筛选条件（日期、省份、流域、河名、站名关键字）导出列表数据。",
+          "acceptance_criteria": [
+            "点击「导出」按钮可成功导出文件",
+            "导出内容与当前筛选条件后的数据一致",
+            "无数据时导出给出明确提示而非报错"
+          ],
+          "related_images": [
+            {
+              "filename": "水文数据页面截图.png",
+              "description": "截图筛选区右侧显示「导出」按钮",
+              "path": "images/水文数据页面截图.png"
+            }
+          ],
+          "source_paragraphs": [
+            "Para-011"
+          ]
         }
       ]
     },
@@ -166,7 +223,9 @@
           "description": "用户可以点击表格列标题进行升序/降序排序",
           "testable_elements": {
             "trigger": "用户点击表格列标题",
-            "inputs": ["列标题名称"],
+            "inputs": [
+              "列标题名称"
+            ],
             "action": "点击表头触发排序",
             "expected_output": "表格数据按该列升序或降序排列",
             "verification_points": [
@@ -192,7 +251,9 @@
               "path": "images/水文数据页面截图.png"
             }
           ],
-          "source_paragraphs": ["Para-005"]
+          "source_paragraphs": [
+            "Para-005"
+          ]
         },
         {
           "requirement_id": "REQ-CH1-006",
@@ -204,7 +265,9 @@
           "description": "表格支持分页浏览，用户可切换每页显示条数",
           "testable_elements": {
             "trigger": "数据量超过一页显示数量时",
-            "inputs": ["每页条数"],
+            "inputs": [
+              "每页条数"
+            ],
             "action": "用户切换页码或每页条数",
             "expected_output": "表格按分页参数显示对应数据",
             "verification_points": [
@@ -224,7 +287,9 @@
             "分页与排序组合使用结果正确"
           ],
           "related_images": [],
-          "source_paragraphs": ["Para-006"]
+          "source_paragraphs": [
+            "Para-006"
+          ]
         }
       ]
     },
@@ -242,7 +307,9 @@
           "description": "河道水情和水库水情列表最右列展示近七日水位变化缩略图，上涨段绿色、下跌段红色，无数据日期留空",
           "testable_elements": {
             "trigger": "表格数据加载完成后",
-            "inputs": ["近七日水位数据"],
+            "inputs": [
+              "近七日水位数据"
+            ],
             "action": "系统渲染水位变化缩略图",
             "expected_output": "缩略图正确展示七日水位变化趋势",
             "verification_points": [
@@ -268,7 +335,9 @@
               "path": "images/水文数据页面截图.png"
             }
           ],
-          "source_paragraphs": ["Para-007"]
+          "source_paragraphs": [
+            "Para-007"
+          ]
         },
         {
           "requirement_id": "REQ-CH1-008",
@@ -280,7 +349,9 @@
           "description": "用户点击近七日水位变化缩略图后弹出趋势详情弹窗，展示统计指标和七日折线图",
           "testable_elements": {
             "trigger": "用户点击近七日水位变化缩略图",
-            "inputs": ["站点近七日水位数据"],
+            "inputs": [
+              "站点近七日水位数据"
+            ],
             "action": "弹出水位趋势详情弹窗",
             "expected_output": "弹窗展示统计指标和七日折线图",
             "verification_points": [
@@ -302,7 +373,9 @@
             "弹窗可正常关闭"
           ],
           "related_images": [],
-          "source_paragraphs": ["Para-008"]
+          "source_paragraphs": [
+            "Para-008"
+          ]
         }
       ]
     },
@@ -320,7 +393,9 @@
           "description": "用户点击表格中的站名链接后弹出同河流下所有站点的列表弹窗",
           "testable_elements": {
             "trigger": "用户点击表格中的站名（蓝色链接）",
-            "inputs": ["当前站名、所属河流"],
+            "inputs": [
+              "当前站名、所属河流"
+            ],
             "action": "弹出同河流站点列表弹窗",
             "expected_output": "弹窗展示同河流下所有站点信息",
             "verification_points": [
@@ -347,7 +422,9 @@
               "path": "images/水文数据页面截图.png"
             }
           ],
-          "source_paragraphs": ["Para-009"]
+          "source_paragraphs": [
+            "Para-009"
+          ]
         }
       ]
     },
@@ -365,7 +442,10 @@
           "description": "超警戒水位数值以红色高亮显示；非当日更新的数据行标记'延迟'标签",
           "testable_elements": {
             "trigger": "表格数据渲染时",
-            "inputs": ["超警戒水位数值", "数据更新时间"],
+            "inputs": [
+              "超警戒水位数值",
+              "数据更新时间"
+            ],
             "action": "系统根据规则渲染数据样式",
             "expected_output": "超警戒水位红色显示，非当日数据行显示延迟标签",
             "verification_points": [
@@ -392,7 +472,9 @@
               "path": "images/水文数据页面截图.png"
             }
           ],
-          "source_paragraphs": ["Para-010"]
+          "source_paragraphs": [
+            "Para-010"
+          ]
         }
       ]
     }

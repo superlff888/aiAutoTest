@@ -2,136 +2,128 @@
   "review_metadata": {
     "reviewer": "资深软件测试评审工程师",
     "review_date": "2026-08-18",
-    "chapter": "1",
+    "chapter": "CH1",
     "chapter_title": "水文数据展示",
-    "total_testpoints": 42,
-    "total_requirements": 10,
-    "review_duration_minutes": 8
+    "total_testpoints": 51,
+    "total_requirements": 11,
+    "review_basis": "按03testpoint-reviewer 4.3量化评分标准（10分制）及评审提示词3.5条步骤/预期质量审查执行"
   },
   "summary": {
-    "coverage_score": 95,
-    "accuracy_score": 92,
-    "executability_score": 88,
-    "consistency_score": 90,
-    "overall_score": 91
+    "coverage_score": 94,
+    "accuracy_score": 93,
+    "executability_score": 96,
+    "consistency_score": 92,
+    "overall_score": 94
+  },
+  "executability_scoring": {
+    "method": "步骤数量(3分)+步骤具体性(3分)+预期结果数量(2分)+预期结果可验证性(2分)，满分10分",
+    "score_distribution": {
+      "9-10分": 43,
+      "7-8分": 8,
+      "6分以下": 0
+    },
+    "average_score": 9.4,
+    "conclusion": "全部测试点评分>=6分，无需强制重写；步骤3-6条、预期结果3-4条，均满足写作规范最低要求；预期结果中未检出'正确/正常/符合需求'类模糊词，步骤中未检出'观察变化'类笼统表述"
   },
   "issues": [
     {
       "issue_id": "ISSUE-CH1-001",
-      "severity": "IMPORTANT",
-      "dimension": "C",
-      "requirement_id": "REQ-CH1-003",
-      "testpoint_id": "TP-CH1-003-001",
-      "issue_type": "遗漏功能点覆盖",
-      "description": "需求截图显示筛选区有'导出'按钮，但测试点未覆盖导出功能",
-      "affected_criteria": "导出按钮功能",
-      "recommendation": "补充测试点：验证点击导出按钮后数据导出功能正常",
-      "suggested_fix": {
-        "testpoint_name": "[P1-重要不紧急] 验证水文数据筛选区功能点击导出按钮后数据正确导出",
-        "test_type": "FT",
-        "priority": "P1-重要不紧急"
-      }
+      "severity": "MINOR",
+      "dimension": "I",
+      "requirement_id": "REQ-CH1-009",
+      "testpoint_id": "TP-CH1-009-001",
+      "issue_type": "用词与需求不一致",
+      "description": "需求原文中河道水情弹窗第四列名为'超警戒水位'，测试点中写作'超警戒水位'与'超警戒'混用，需统一为需求原文'超警戒水位'",
+      "affected_criteria": "河道水情弹窗列：省份、站名、水位、超警戒水位",
+      "recommendation": "将TP-CH1-009-001步骤与预期结果中的列名统一为'超警戒水位'"
     },
     {
       "issue_id": "ISSUE-CH1-002",
       "severity": "MINOR",
       "dimension": "E",
-      "requirement_id": "REQ-CH1-008",
-      "testpoint_id": "TP-CH1-008-002",
-      "issue_type": "测试数据不够具体",
-      "description": "统计指标测试点缺少具体数值校验建议",
-      "affected_criteria": "弹窗上方正确显示均值、最大值、最小值、上行天数",
-      "recommendation": "建议补充具体算例验证，如已知7日水位数据时验证均值计算是否正确",
-      "suggested_fix": {
-        "testpoint_name": "补充数据校验测试点",
-        "test_type": "DT",
-        "priority": "P2-紧急不重要"
-      }
+      "requirement_id": "REQ-CH1-002",
+      "testpoint_id": "TP-CH1-002-002",
+      "issue_type": "预期结果确定性不足",
+      "description": "预期结果'表格列头更新为实时雨情对应字段（如站点、降雨量、时间等）'使用'如…等'不确定表述，可验证性不足",
+      "affected_criteria": "每个Tab展示对应的数据内容",
+      "recommendation": "改写为'表格列头更新为实时雨情对应字段，不显示河道水情的水位/警戒水位等字段'，具体列名以实时雨情需求定义为准，并在备注中注明待需求确认项"
     },
     {
       "issue_id": "ISSUE-CH1-003",
       "severity": "MINOR",
-      "dimension": "I",
-      "requirement_id": "REQ-CH1-002",
-      "testpoint_id": "TP-CH1-002-004",
-      "issue_type": "优先级评估",
-      "description": "P0测试点占比12%（5/42），略高于10%建议上限",
-      "affected_criteria": "P0比例",
-      "recommendation": "可考虑将TP-CH1-002-002（实时雨情Tab切换）降为P1，因实时雨情Tab在截图中显示为'雨情监测'，可能功能尚未完全实现",
+      "dimension": "C",
+      "requirement_id": "REQ-CH1-008",
+      "testpoint_id": "",
+      "issue_type": "遗漏场景",
+      "description": "缺少弹窗防重复打开场景：快速连续点击不同缩略图/站名时，弹窗内容应始终与最后一次点击对象一致，不出现弹窗叠加或内容错乱",
+      "affected_criteria": "点击缩略图弹出趋势弹窗",
+      "recommendation": "新增测试点TP-CH1-008-007：快速切换点击不同缩略图时弹窗内容与最后点击对象一致",
       "suggested_fix": {
-        "testpoint_name": "调整P0比例",
-        "test_type": "FT",
-        "priority": "P1-重要不紧急"
+        "testpoint_name": "验证快速连续点击不同缩略图时弹窗内容与最后点击对象一致",
+        "test_type": "ET",
+        "priority": "P2-紧急不重要"
       }
+    },
+    {
+      "issue_id": "ISSUE-CH1-004",
+      "severity": "MINOR",
+      "dimension": "A",
+      "requirement_id": "REQ-CH1-008",
+      "testpoint_id": "TP-CH1-008-002",
+      "issue_type": "优先级偏高",
+      "description": "P0占比21.6%（11/51），其中TP-CH1-008-002为数据计算校验类测试点，非核心阻断路径，建议降为P1",
+      "affected_criteria": "优先级设置是否与需求重要性匹配",
+      "recommendation": "TP-CH1-008-002优先级从P0-重要紧急调整为P1-重要不紧急，P0占比降至19.6%"
+    },
+    {
+      "issue_id": "ISSUE-CH1-005",
+      "severity": "MINOR",
+      "dimension": "I",
+      "requirement_id": "REQ-CH1-011",
+      "testpoint_id": "TP-CH1-011-003",
+      "issue_type": "需求归属不当",
+      "description": "TP-CH1-011-003（站名关键字XSS注入验证）实际作用于筛选区输入框，归属导出功能REQ-CH1-011不当",
+      "affected_criteria": "需求映射准确性",
+      "recommendation": "将TP-CH1-011-003的需求归属调整为REQ-CH1-003（筛选区条件查询功能）"
     }
   ],
   "coverage_analysis": {
-    "requirement_coverage": {
-      "REQ-CH1-001": {"covered": true, "criteria_count": 3, "testpoint_count": 3},
-      "REQ-CH1-002": {"covered": true, "criteria_count": 3, "testpoint_count": 4},
-      "REQ-CH1-003": {"covered": true, "criteria_count": 4, "testpoint_count": 7},
-      "REQ-CH1-004": {"covered": true, "criteria_count": 4, "testpoint_count": 4},
-      "REQ-CH1-005": {"covered": true, "criteria_count": 4, "testpoint_count": 5},
-      "REQ-CH1-006": {"covered": true, "criteria_count": 4, "testpoint_count": 4},
-      "REQ-CH1-007": {"covered": true, "criteria_count": 4, "testpoint_count": 5},
-      "REQ-CH1-008": {"covered": true, "criteria_count": 5, "testpoint_count": 6},
-      "REQ-CH1-009": {"covered": true, "criteria_count": 5, "testpoint_count": 5},
-      "REQ-CH1-010": {"covered": true, "criteria_count": 5, "testpoint_count": 5}
-    },
-    "overall_coverage_rate": "95%",
-    "p0_count": 5,
-    "p0_ratio": "11.9%",
-    "test_type_distribution": {
-      "FT": 33,
-      "UIT": 5,
-      "ET": 2,
-      "DT": 2
-    }
+    "covered_criteria": [
+      "页面三Tab展示与默认选中",
+      "Tab切换内容与高亮",
+      "组合条件查询/重置",
+      "站名关键字模糊查询",
+      "省份+流域+河名级联联动",
+      "表头升降序排序",
+      "分页与每页条数切换",
+      "近七日缩略图红绿规则与留空",
+      "趋势弹窗四指标与七日折线图",
+      "站名弹窗（河道四列/水库四列）",
+      "超警戒红色高亮",
+      "延迟标签",
+      "数据导出"
+    ],
+    "missing_criteria": [
+      "弹窗快速切换防重复打开场景（已建议补充）"
+    ],
+    "coverage_rate": "96%",
+    "note": "实时雨情Tab因需求未给出具体列定义，仅覆盖切换可用性，具体字段验证列为待需求确认项"
   },
   "recommendations": [
     {
       "priority": "HIGH",
-      "category": "功能覆盖",
-      "suggestion": "补充导出按钮功能测试点（REQ-CH1-003）"
+      "category": "异常测试",
+      "suggestion": "新增弹窗防重复打开测试点（ISSUE-CH1-003）"
     },
     {
       "priority": "MEDIUM",
-      "category": "数据校验",
-      "suggestion": "为水位趋势弹窗统计指标补充具体算例验证"
+      "category": "一致性",
+      "suggestion": "统一弹窗列名用词与需求原文一致（ISSUE-CH1-001），修正XSS测试点需求归属（ISSUE-CH1-005）"
     },
     {
       "priority": "LOW",
-      "category": "优先级调整",
-      "suggestion": "评估P0测试点比例，适当调整为5-10%"
+      "category": "优先级",
+      "suggestion": "TP-CH1-008-002降级为P1，控制P0占比（ISSUE-CH1-004）"
     }
-  ],
-  "title_validation": {
-    "total_checked": 42,
-    "passed": 42,
-    "failed": 0,
-    "notes": "所有测试点标题均符合规范：包含优先级标识、'验证'关键词、场景类型、预期结果动词"
-  },
-  "negative_test_check": {
-    "applicable_requirements": [],
-    "violations": 0,
-    "notes": "本需求无'不支持/不涉及'类功能，无需负面测试点检查"
-  },
-  "p0_smoke_review": {
-    "p0_testpoints": [
-      "TP-CH1-001-001",
-      "TP-CH1-002-001",
-      "TP-CH1-002-002",
-      "TP-CH1-003-001",
-      "TP-CH1-002-002"
-    ],
-    "p0_count": 5,
-    "p0_ratio": "11.9%",
-    "assessment": "P0测试点覆盖核心功能（页面加载、Tab切换、查询），数量适中。建议将TP-CH1-002-002降为P1以控制在10%以内。",
-    "core_coverage": {
-      "page_load": true,
-      "tab_switch": true,
-      "query": true,
-      "security": "N/A"
-    }
-  }
+  ]
 }
