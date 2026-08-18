@@ -173,6 +173,8 @@ def build_report_markdown(results: dict, center_results: dict, exec_time: str = 
                     report_content.append(sub_line)
             elif ctype == 'not_connected':
                 report_content.append(f"- ⚠️ {w['center']} / {w['data_type']} — 暂未接入")
+            elif ctype == 'not_disclosed':
+                report_content.append(f"- ⚠️ {w['center']} / {w['data_type']} — 暂未披露")
 
     # 配置缺失详情（条件显示：config_missing_count > 0）
     if results.get('config_missing'):

@@ -518,8 +518,10 @@ def _check_single_center(center_name: str, center_config: dict, templates: dict,
                         'check': {'type': 'not_connected', 'passed': True, 'message': '暂未接入'},
                     })
                     continue
+                remark = time_config.get('备注')
                 latest_time = time_config.get('最新数据时间', '—')
             else:
+                remark = None
                 latest_time = time_config
 
             if latest_time == '—':
@@ -558,6 +560,16 @@ def _check_single_center(center_name: str, center_config: dict, templates: dict,
                 conn, check_latest_data, sql_template, trade_center_id, offsets, vpp_id, now
             )
             latest_status = f"✅ {max_date}" if check_passed else f"❌ {error}"
+
+            # 暂未披露：照常校验；仅当近10天无数据时降级为警告 —
+            # 整行不进主表格、不计失败，在"警告详情"中列出
+            if not check_passed and remark == '暂未披露' and error and '无数据' in error:
+                warnings.append({
+                    'center': center_name,
+                    'data_type': f'{data_type_name}（{time_label}）',
+                    'check': {'type': 'not_disclosed', 'passed': True, 'message': '暂未披露'},
+                })
+                continue
 
             # 缓存预期日期，避免重复计算
             expected_date = _compute_expected_date(used_offset, now)

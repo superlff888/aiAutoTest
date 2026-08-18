@@ -56,48 +56,33 @@ def build_card(
     status_emoji = "❌" if has_failures else "✅"
 
     # 各中心摘要
-    # 警告明细此前在构建结构化结果时被丢弃，卡片只显示 warn_count 总数；
-    # 现在按中心展开，load_type 超详情可见。
-    # 注："暂未接入"为已知配置状态、非数据问题，不在卡片中展示
+    # 注："暂未接入"、"load_type 超出"均不在卡片展示，仅有此类警告的中心按全部通过处理；
+    # 超出明细可在 Wiki 完整报告中查看
     center_lines = []
     for c in result["centers"]:
         fail_list = c.get("failures", [])
-        warn_list = c.get("warnings", [])
-        extra_warns = [w for w in warn_list if w.get("type") == "coverage_extra"]
         fail_count = len(fail_list)
 
-        # 状态优先级：失败 > load_type 超出 > 全部通过
+        # 状态优先级：失败 > 全部通过
         if fail_count > 0:
             header = f"**{c['name']}** ❌ {fail_count}项失败"
-        elif extra_warns:
-            header = f"**{c['name']}** ⚠️ {len(extra_warns)}项load_type超出"
+            detail_lines = []
+            for f in fail_list[:3]:
+                detail_lines.append(f"  • {f['data_type']}: {f['message']}")
+            if fail_count > 3:
+                detail_lines.append(f"  • ... 等共 {fail_count} 项失败")
+            center_lines.append(header + "\n" + "\n".join(detail_lines))
         else:
             center_lines.append(f"**{c['name']}** ✅ 全部通过")
-            continue
-
-        detail_lines = []
-        for f in fail_list[:3]:
-            detail_lines.append(f"  • {f['data_type']}: {f['message']}")
-        if fail_count > 3:
-            detail_lines.append(f"  • ... 等共 {fail_count} 项失败")
-        for w in extra_warns[:3]:
-            detail_lines.append(f"  • ⚠️ {w['data_type']}: {w['message']}")
-        if len(extra_warns) > 3:
-            detail_lines.append(f"  • ... 等共 {len(extra_warns)} 项超出")
-
-        center_lines.append(header + "\n" + "\n".join(detail_lines))
 
     center_md = "\n\n".join(center_lines)
 
-    # 汇总区增 2 个字段（warn_count / config_missing_count），用 .get 兜底
-    warn_count = result.get("warn_count", 0)
+    # 汇总区（warn_count 不再在卡片展示，超出/暂未接入仅在完整报告中体现）
     config_missing_count = result.get("config_missing_count", 0)
     summary_parts = [
         f"**✅ 通过**：{result['pass_count']}",
         f"**❌ 失败**：{result['fail_count']}",
     ]
-    if warn_count > 0:
-        summary_parts.append(f"**⚠️ 警告**：{warn_count}")
     if config_missing_count > 0:
         summary_parts.append(f"**⚙️ 配置缺失**：{config_missing_count}")
     summary_text = "  ".join(summary_parts)
