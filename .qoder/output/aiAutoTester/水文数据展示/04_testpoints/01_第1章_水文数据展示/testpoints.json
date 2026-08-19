@@ -190,7 +190,7 @@
     },
     {
       "testpoint_id": "TP-CH1-003-002",
-      "testpoint_name": "[P1-重要不紧急] 验证站名关键字'杨'模糊查询仅返回站名包含杨的站点",
+      "testpoint_name": "[P1-重要不紧急] 验证站名关键字模糊查询仅返回站名包含关键字的站点",
       "requirement_id": "REQ-CH1-003",
       "requirement_name": "筛选区条件查询功能",
       "test_type": "FT",
@@ -250,7 +250,7 @@
     },
     {
       "testpoint_id": "TP-CH1-003-004",
-      "testpoint_name": "[P1-重要不紧急] 验证日期选择未来日期'2026-08-19'查询后表格显示暂无数据",
+      "testpoint_name": "[P1-重要不紧急] 验证日期选择未来日期查询后表格显示暂无数据",
       "requirement_id": "REQ-CH1-003",
       "requirement_name": "筛选区条件查询功能",
       "test_type": "BT",
@@ -278,7 +278,7 @@
     },
     {
       "testpoint_id": "TP-CH1-003-005",
-      "testpoint_name": "[P2-紧急不重要] 验证仅选择省份'河南'不选其他条件时查询返回该省全部站点",
+      "testpoint_name": "[P2-紧急不重要] 验证仅选择省份不选其他条件时查询返回该省全部站点",
       "requirement_id": "REQ-CH1-003",
       "requirement_name": "筛选区条件查询功能",
       "test_type": "FT",
@@ -307,7 +307,7 @@
     },
     {
       "testpoint_id": "TP-CH1-003-006",
-      "testpoint_name": "[P2-紧急不重要] 验证1秒内快速连点查询按钮5次仅执行一次查询且无重复数据",
+      "testpoint_name": "[P2-紧急不重要] 验证快速连点查询按钮仅执行一次查询且无重复数据",
       "requirement_id": "REQ-CH1-003",
       "requirement_name": "筛选区条件查询功能",
       "test_type": "ET",
@@ -337,7 +337,7 @@
     },
     {
       "testpoint_id": "TP-CH1-004-001",
-      "testpoint_name": "[P0-重要紧急] 验证选择省份河南后流域下拉框联动加载黄河流域淮河等选项",
+      "testpoint_name": "[P0-重要紧急] 验证选择省份后流域下拉框联动加载对应流域选项",
       "requirement_id": "REQ-CH1-004",
       "requirement_name": "河名随省份和流域级联联动",
       "test_type": "FT",
@@ -395,7 +395,7 @@
     },
     {
       "testpoint_id": "TP-CH1-004-003",
-      "testpoint_name": "[P1-重要不紧急] 验证选择河南+黄河流域后河名下拉框联动加载黄河选项",
+      "testpoint_name": "[P1-重要不紧急] 验证选择省份和流域后河名下拉框联动加载对应河流选项",
       "requirement_id": "REQ-CH1-004",
       "requirement_name": "河名随省份和流域级联联动",
       "test_type": "FT",
@@ -607,7 +607,7 @@
     },
     {
       "testpoint_id": "TP-CH1-006-001",
-      "testpoint_name": "[P1-重要不紧急] 验证分页器默认显示20条每页且总条数为10",
+      "testpoint_name": "[P1-重要不紧急] 验证分页器默认每页条数与总条数显示",
       "requirement_id": "REQ-CH1-006",
       "requirement_name": "表格分页及每页条数切换功能",
       "test_type": "FT",
@@ -637,7 +637,7 @@
     },
     {
       "testpoint_id": "TP-CH1-006-002",
-      "testpoint_name": "[P1-重要不紧急] 验证切换每页条数为50后表格刷新且分页信息同步更新",
+      "testpoint_name": "[P1-重要不紧急] 验证切换每页条数后表格刷新且分页信息同步更新",
       "requirement_id": "REQ-CH1-006",
       "requirement_name": "表格分页及每页条数切换功能",
       "test_type": "FT",
@@ -668,7 +668,7 @@
     },
     {
       "testpoint_id": "TP-CH1-006-003",
-      "testpoint_name": "[P2-紧急不重要] 验证数据量10条小于每页20条时仅显示一页且翻页按钮不可点击",
+      "testpoint_name": "[P2-紧急不重要] 验证数据量不足一页时仅显示一页且翻页按钮不可点击",
       "requirement_id": "REQ-CH1-006",
       "requirement_name": "表格分页及每页条数切换功能",
       "test_type": "BT",
@@ -699,7 +699,7 @@
     },
     {
       "testpoint_id": "TP-CH1-006-004",
-      "testpoint_name": "[P2-紧急不重要] 验证数据超过每页条数时点击第2页加载后续数据",
+      "testpoint_name": "[P2-紧急不重要] 验证数据超过每页条数时点击下一页加载后续数据",
       "requirement_id": "REQ-CH1-006",
       "requirement_name": "表格分页及每页条数切换功能",
       "test_type": "FT",
@@ -985,7 +985,7 @@
     },
     {
       "testpoint_id": "TP-CH1-008-005",
-      "testpoint_name": "[P1-重要不紧急] 验证近七日缺测2天时上行天数统计仅基于有效相邻日计算",
+      "testpoint_name": "[P1-重要不紧急] 验证近七日存在缺测时上行天数统计仅基于有效相邻日计算",
       "requirement_id": "REQ-CH1-008",
       "requirement_name": "点击缩略图弹出水位趋势弹窗",
       "test_type": "BT",
@@ -1069,7 +1069,7 @@
     },
     {
       "testpoint_id": "TP-CH1-009-002",
-      "testpoint_name": "[P1-重要不紧急] 验证站点弹窗中杨庄水位58.06与主列表数值一致",
+      "testpoint_name": "[P1-重要不紧急] 验证站点弹窗中杨庄水位与主列表数值一致",
       "requirement_id": "REQ-CH1-009",
       "requirement_name": "点击站名弹出同河流站点列表",
       "test_type": "DT",
@@ -1210,7 +1210,7 @@
     },
     {
       "testpoint_id": "TP-CH1-010-001",
-      "testpoint_name": "[P0-重要紧急] 验证龙羊峡水位225.30超警戒225.00时数值红色高亮显示",
+      "testpoint_name": "[P0-重要紧急] 验证龙羊峡水位超警戒时数值红色高亮显示",
       "requirement_id": "REQ-CH1-010",
       "requirement_name": "超警戒水位红色高亮与延迟标签",
       "test_type": "FT",
