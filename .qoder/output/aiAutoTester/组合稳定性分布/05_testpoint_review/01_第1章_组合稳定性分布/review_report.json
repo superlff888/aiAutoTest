@@ -1,0 +1,80 @@
+{
+  "review_meta": {
+    "chapter": "第1章 组合稳定性分布",
+    "reviewer": "03testpoint-reviewer",
+    "review_date": "2026-08-19",
+    "input_file": "04_testpoints/01_第1章_组合稳定性分布/testpoints.json",
+    "total_input_testpoints": 40,
+    "total_output_testpoints": 41,
+    "overall_score": 94
+  },
+  "dimension_scores": {
+    "completeness": {
+      "score": 24,
+      "max": 25,
+      "comment": "8个需求单元全覆盖；功能/数据/边界/异常/UI类型齐备（FT14/DT14/UIT6/BT5/ET1）；有效天口径、LCB、z参数、动态topK、tooltip分档、色带筛选、?浮层、空态均有测试点"
+    },
+    "accuracy": {
+      "score": 24,
+      "max": 25,
+      "comment": "指标口径与需求文本及截图数值闭环验证（44.6+27.2÷√29≈49.6、16/29≈55.2%、29/31≈93.5%、2/29≈6.9%、4/29≈13.8%）；胜天口径采用需求方确认定义（跑赢实际：策略收益>实际收益）"
+    },
+    "executability": {
+      "score": 24,
+      "max": 25,
+      "comment": "步骤3-4条、预期3条，含「」UI元素标注与具体构造数据；量化评分均≥6分；3处口径待确认项已在notes标注（标准差口径、气泡映射口径、z参数入口）"
+    },
+    "consistency": {
+      "score": 22,
+      "max": 25,
+      "comment": "标题全部总结性（无数字、无引号字面量）；优先级分布P0=20%达标；发现1处场景缺口（tooltip与明细浮层叠加）需补充"
+    }
+  },
+  "issues": [
+    {
+      "issue_id": "ISSUE-001",
+      "severity": "MINOR",
+      "testpoint_id": "TP-CH1-003-002",
+      "description": "排名波动标准差口径（总体标准差/样本标准差）需求未明确",
+      "action": "保留测试点，notes已标注执行前与需求方确认，预期结果按确认口径判定"
+    },
+    {
+      "issue_id": "ISSUE-002",
+      "severity": "MINOR",
+      "testpoint_id": "TP-CH1-005-003",
+      "description": "气泡大小线性映射口径（直径线性/面积线性）需求未明确",
+      "action": "保留测试点，notes已标注以实现口径为准，预期保留单调性判定"
+    },
+    {
+      "issue_id": "ISSUE-003",
+      "severity": "MINOR",
+      "testpoint_id": "新增TP-CH1-006-008",
+      "description": "缺少tooltip与点击明细浮层同时展示时的叠加交互场景",
+      "action": "改进版新增TP-CH1-006-008覆盖叠加展示与独立关闭"
+    },
+    {
+      "issue_id": "ISSUE-004",
+      "severity": "MINOR",
+      "testpoint_id": "TP-CH1-004-002/003",
+      "description": "置信系数z参数调整入口需求未描述（参数设置位置不明）",
+      "action": "保留测试点，notes已标注以实际页面入口为准"
+    }
+  ],
+  "title_compliance_check": {
+    "rule": "标题总结性：禁止具体数据值（数值/日期/次数/条数/百分比）与具体输入值（关键字/选项值），仅保留业务对象名称",
+    "detection": "去除[Px-xxx]前缀后正则\\d与[''“].+[''”]检测",
+    "result": "40/40合规，0处违规"
+  },
+  "priority_distribution": {
+    "P0": 8,
+    "P1": 23,
+    "P2": 9,
+    "P0_ratio": "20.0%",
+    "verdict": "达标（≤20%）"
+  },
+  "improvements_applied": [
+    "新增TP-CH1-006-008：tooltip与明细浮层叠加交互场景",
+    "TP-CH1-002-004 notes固化胜天判定口径（需求方确认=跑赢实际）"
+  ],
+  "conclusion": "评审通过，改进版41个测试点可进入04testcase-exporter导出"
+}

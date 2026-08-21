@@ -1,0 +1,874 @@
+{
+  "chapter": {
+    "chapter_number": 1,
+    "chapter_title": "组合稳定性分布",
+    "total_requirements": 8
+  },
+  "total_testpoints": 41,
+  "testpoints": [
+    {
+      "testpoint_id": "TP-CH1-001-001",
+      "testpoint_name": "[P0-重要紧急] 验证组合稳定性分布图页面加载并完整展示标题问号按钮与散点图",
+      "requirement_id": "REQ-CH1-001",
+      "requirement_name": "组合稳定性分布散点图页面展示",
+      "test_type": "FT",
+      "priority": "P0",
+      "precondition": "已登录并进入现货算法复盘页面，默认查询条件下存在有效组合数据",
+      "test_steps": [
+        "在现货算法复盘页面定位「组合稳定性分布」图表区域",
+        "确认图表标题文本及标题右侧「?」按钮存在",
+        "确认散点图区域渲染彩色气泡及X轴「平均排名」、Y轴「排名波动」标签",
+        "确认页面控制台无JS报错"
+      ],
+      "expected_results": [
+        "标题显示「组合稳定性分布」，右侧带圆形「?」按钮",
+        "散点图渲染多个彩色气泡，无白屏或加载失败",
+        "X轴标签为「平均排名」、Y轴标签为「排名波动」，与截图布局一致"
+      ],
+      "test_data": "默认查询条件；截图布局为参照",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-001-002",
+      "testpoint_name": "[P2-不紧急不重要] 验证四象限灰色衬底文字与坐标轴方向与需求截图一致",
+      "requirement_id": "REQ-CH1-001",
+      "requirement_name": "组合稳定性分布散点图页面展示",
+      "test_type": "UIT",
+      "priority": "P2",
+      "precondition": "组合稳定性分布图已正常渲染",
+      "test_steps": [
+        "查看散点图四个角落的灰色衬底文字内容",
+        "查看X轴刻度从左到右的数值方向",
+        "查看Y轴刻度从上到下的数值方向",
+        "与需求截图逐项比对"
+      ],
+      "expected_results": [
+        "左上=「收益低 波动小」、右上=「收益高 波动小」、左下=「收益低 波动大」、右下=「收益高 波动大」",
+        "X轴刻度从左到右递减（反向轴，越右越好）",
+        "Y轴刻度从上到下递增（反向轴，越上越稳）",
+        "衬底文字与轴方向均与截图一致"
+      ],
+      "test_data": "截图刻度：X轴左67右26，Y轴上14下36",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-001-003",
+      "testpoint_name": "[P1-重要不紧急] 验证中位数虚线按指标中位数划分散点图四象限",
+      "requirement_id": "REQ-CH1-001",
+      "requirement_name": "组合稳定性分布散点图页面展示",
+      "test_type": "FT",
+      "priority": "P1",
+      "precondition": "散点图已渲染且组合数量足够划分象限",
+      "test_steps": [
+        "导出全部组合的平均排名与排名波动数据",
+        "分别计算平均排名中位数与排名波动中位数",
+        "查看图中垂直虚线与水平虚线所在刻度位置"
+      ],
+      "expected_results": [
+        "垂直虚线位于X轴=平均排名中位数处",
+        "水平虚线位于Y轴=排名波动中位数处",
+        "虚线为灰色虚线样式，将图面划分为四个象限且与衬底文字位置对应"
+      ],
+      "test_data": "以当前查询结果全量组合计算中位数",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-002-001",
+      "testpoint_name": "[P0-重要紧急] 验证策略收益为零或缺失的天不计入有效天且不参与每日排名",
+      "requirement_id": "REQ-CH1-002",
+      "requirement_name": "有效天口径与每日排名计算",
+      "test_type": "DT",
+      "priority": "P0",
+      "precondition": "已构造组合A查询区间数据：区间共31天，其中2天策略收益为0或缺失，其余29天收益非零且考核数据存在",
+      "test_steps": [
+        "打开组合稳定性分布图，悬停组合A气泡查看「覆盖率」字段",
+        "查看组合A每日收益明细，确认收益为0的2天是否有排名记录",
+        "核对组合A平均排名的计算分母"
+      ],
+      "expected_results": [
+        "组合A有效天数=29，覆盖率显示29÷31≈93.5%",
+        "收益为0或缺失的2天无排名记录，不参与当日排名",
+        "平均排名分母为29而非31"
+      ],
+      "test_data": "组合A：31天区间，2天收益0/缺失，29天有效",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-002-002",
+      "testpoint_name": "[P1-重要不紧急] 验证实际收益偏差考核数据缺失的天不计入有效天",
+      "requirement_id": "REQ-CH1-002",
+      "requirement_name": "有效天口径与每日排名计算",
+      "test_type": "DT",
+      "priority": "P1",
+      "precondition": "已构造组合B数据：31天收益均非零，其中3天缺失实际收益偏差考核数据",
+      "test_steps": [
+        "悬停组合B气泡查看「覆盖率」与「胜率」字段",
+        "查看组合B每日明细确认考核数据缺失的3天是否有排名记录",
+        "核对有效天数统计"
+      ],
+      "expected_results": [
+        "组合B有效天数=28，覆盖率=28÷31≈90.3%",
+        "考核数据缺失的3天不参与排名",
+        "胜率分母为28（有效天）而非31"
+      ],
+      "test_data": "组合B：31天收益非零，3天考核数据缺失",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-002-003",
+      "testpoint_name": "[P1-重要不紧急] 验证每日排名按天独立计算且当日策略收益最高者排第一名",
+      "requirement_id": "REQ-CH1-002",
+      "requirement_name": "有效天口径与每日排名计算",
+      "test_type": "DT",
+      "priority": "P1",
+      "precondition": "已构造某日三个组合的策略收益数据",
+      "test_steps": [
+        "选定某有效天，构造组合收益：组合X=150万、组合Y=80万、组合Z=-20万",
+        "查看三个组合每日明细中该日的排名",
+        "切换另一天重复确认排名独立计算"
+      ],
+      "expected_results": [
+        "该日组合X排第1名、组合Y排第2名、组合Z排第3名",
+        "负收益组合Z只要收益非零且考核数据存在仍参与排名",
+        "不同天排名各自独立，不受其他天收益影响"
+      ],
+      "test_data": "某日收益：X=150万、Y=80万、Z=-20万",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-002-004",
+      "testpoint_name": "[P1-重要不紧急] 验证胜率胜天数仅统计跑赢实际的天且分母为有效天数",
+      "requirement_id": "REQ-CH1-002",
+      "requirement_name": "有效天口径与每日排名计算",
+      "test_type": "DT",
+      "priority": "P1",
+      "precondition": "已构造组合C数据：29个有效天中16天策略收益>实际收益、13天策略收益≤实际收益",
+      "test_steps": [
+        "悬停组合C气泡查看「胜率」字段显示",
+        "核对胜率分子是否仅含当日策略收益>实际收益的天",
+        "核对胜率展示格式"
+      ],
+      "expected_results": [
+        "胜率显示55.2%（16/29天），与截图格式一致",
+        "策略收益为正但未跑赢实际的天不计入胜天，收益为负但跑赢实际的天计入胜天",
+        "展示格式为「百分比（胜天数/有效天数天）」"
+      ],
+      "test_data": "组合C：29有效天，16天策略收益>实际收益",
+      "notes": "胜天判定口径经需求方确认=当日策略收益>当日实际收益(跑赢实际)，与spot_review.js第460行文案一致"
+    },
+    {
+      "testpoint_id": "TP-CH1-002-005",
+      "testpoint_name": "[P2-紧急不重要] 验证某日全部组合收益为零或缺失时当日不产生排名",
+      "requirement_id": "REQ-CH1-002",
+      "requirement_name": "有效天口径与每日排名计算",
+      "test_type": "BT",
+      "priority": "P2",
+      "precondition": "已构造某日全部组合策略收益均为0或缺失的数据",
+      "test_steps": [
+        "构造某日所有组合收益为0或缺失",
+        "查看各组合每日明细中该日是否有排名记录",
+        "查看散点图各组合指标是否剔除该日"
+      ],
+      "expected_results": [
+        "该日不计入任何组合的有效天",
+        "各组合平均排名与排名波动计算均不包含该日",
+        "图表正常渲染不报错"
+      ],
+      "test_data": "某日全组合收益0/缺失",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-002-006",
+      "testpoint_name": "[P1-重要不紧急] 验证收益非零但考核数据缺失的天不参与每日排名且不计入稳定性指标",
+      "requirement_id": "REQ-CH1-002",
+      "requirement_name": "有效天口径与每日排名计算",
+      "test_type": "DT",
+      "priority": "P1",
+      "precondition": "已构造组合C数据：29个有效天（收益非零且考核数据存在），另有1天策略收益非零但偏差考核数据缺失",
+      "test_steps": [
+        "打开每日排名热力图查看组合C在考核缺失天的着色",
+        "悬停组合C气泡核对平均排名、排名波动、悲观排名的统计天数",
+        "核对该天是否计入前百分之十率与爆雷率的分母"
+      ],
+      "expected_results": [
+        "考核缺失天组合C无排名，热力图不着色，排名参与口径与有效天口径一致",
+        "平均排名、排名波动、悲观排名的分母均为29个有效天，未混入该天名次",
+        "前百分之十率与爆雷率分母为有效天数，该天不计入"
+      ],
+      "test_data": "组合C：29有效天+1天收益非零但考核缺失",
+      "notes": "每日排名参与口径经需求方验证=有效天口径(收益≠0且非空且考核数据存在)；spot_review.js第847行仅校验收益字段，若后端未预剔除该天则为缺陷"
+    },
+    {
+      "testpoint_id": "TP-CH1-003-001",
+      "testpoint_name": "[P0-重要紧急] 验证平均排名等于每日排名之和除以有效天数",
+      "requirement_id": "REQ-CH1-003",
+      "requirement_name": "稳定性四项指标计算",
+      "test_type": "DT",
+      "priority": "P0",
+      "precondition": "组合A有29个有效天的每日排名序列",
+      "test_steps": [
+        "从每日明细或数据库导出组合A的29天每日排名序列",
+        "手工计算Σ每日排名÷29并保留一位小数",
+        "悬停组合A气泡比对「平均排名」显示值"
+      ],
+      "expected_results": [
+        "tooltip平均排名与手工计算一致（允许±0.1舍入误差）",
+        "显示格式为「#数值」保留一位小数，如截图#44.6",
+        "平均排名越小气泡位置越靠右"
+      ],
+      "test_data": "截图示例组合平均排名#44.6",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-003-002",
+      "testpoint_name": "[P1-重要不紧急] 验证排名波动等于每日排名的标准差",
+      "requirement_id": "REQ-CH1-003",
+      "requirement_name": "稳定性四项指标计算",
+      "test_type": "DT",
+      "priority": "P1",
+      "precondition": "组合A有29个有效天的每日排名序列",
+      "test_steps": [
+        "导出组合A每日排名序列",
+        "计算该序列标准差并保留一位小数",
+        "悬停组合A气泡比对「排名波动」显示值及附注文案"
+      ],
+      "expected_results": [
+        "tooltip排名波动与标准差手工计算一致（允许±0.1误差）",
+        "字段附注「越小越稳」文案展示",
+        "标准差口径（总体/样本）与需求方确认结果一致并在用例备注记录"
+      ],
+      "test_data": "截图示例组合排名波动27.2",
+      "notes": "标准差口径需求未明确，执行前与需求方确认"
+    },
+    {
+      "testpoint_id": "TP-CH1-003-003",
+      "testpoint_name": "[P1-重要不紧急] 验证前百分之十阈值按组合总数乘百分之十向上取整动态计算",
+      "requirement_id": "REQ-CH1-003",
+      "requirement_name": "稳定性四项指标计算",
+      "test_type": "DT",
+      "priority": "P1",
+      "precondition": "当前查询命中组合总数为96",
+      "test_steps": [
+        "确认当前查询命中组合总数96，计算topK=⌈96×10%⌉=10",
+        "查看组合前10%率统计所用排名阈值",
+        "查看爆雷率统计所用排名阈值"
+      ],
+      "expected_results": [
+        "前10%率统计排名≤10的天数",
+        "爆雷率统计排名>96−10=86的天数",
+        "阈值随组合总数动态向上取整，非固定值"
+      ],
+      "test_data": "组合总数96→topK=10",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-003-004",
+      "testpoint_name": "[P1-重要不紧急] 验证前百分之十率等于排名进入前列天数占有效天数比例",
+      "requirement_id": "REQ-CH1-003",
+      "requirement_name": "稳定性四项指标计算",
+      "test_type": "DT",
+      "priority": "P1",
+      "precondition": "组合A的29天排名中进入前topK名的天数为2",
+      "test_steps": [
+        "统计组合A排名≤topK的天数=2",
+        "计算2÷29≈6.9%",
+        "悬停组合A气泡比对「前10%率」显示值"
+      ],
+      "expected_results": [
+        "前10%率显示6.9%，与手工计算一致",
+        "分母为有效天数29而非区间天数31",
+        "百分比保留一位小数"
+      ],
+      "test_data": "组合A：前10%天数2，有效天29→6.9%",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-003-005",
+      "testpoint_name": "[P1-重要不紧急] 验证爆雷率等于排名跌入后列天数占有效天数比例",
+      "requirement_id": "REQ-CH1-003",
+      "requirement_name": "稳定性四项指标计算",
+      "test_type": "DT",
+      "priority": "P1",
+      "precondition": "组合A的29天排名中跌入后10%（排名>总数−topK）的天数为4",
+      "test_steps": [
+        "统计组合A排名>86的天数=4",
+        "计算4÷29≈13.8%",
+        "悬停组合A气泡比对「爆雷率」显示值"
+      ],
+      "expected_results": [
+        "爆雷率显示13.8%，与手工计算一致",
+        "分母为有效天数29",
+        "13.8%≤20%时该字段不标红"
+      ],
+      "test_data": "组合A：爆雷天数4，有效天29→13.8%",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-004-001",
+      "testpoint_name": "[P0-重要紧急] 验证悲观排名按默认置信系数公式计算并以排名除以组合总数展示",
+      "requirement_id": "REQ-CH1-004",
+      "requirement_name": "悲观排名LCB计算与z参数",
+      "test_type": "DT",
+      "priority": "P0",
+      "precondition": "组合A指标：平均排名44.6、排名波动27.2、有效天数29，组合总数96，默认z=1",
+      "test_steps": [
+        "按公式计算LCB=44.6+1×27.2÷√29≈49.6",
+        "悬停组合A气泡查看「悲观排名」字段",
+        "核对展示格式分母"
+      ],
+      "expected_results": [
+        "悲观排名显示#49.6/96，分子与公式手工计算一致",
+        "分母96为组合总数",
+        "默认置信系数z=1（约84%置信下限）"
+      ],
+      "test_data": "截图示例：44.6+27.2÷√29≈49.6",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-004-002",
+      "testpoint_name": "[P1-重要不紧急] 验证置信系数设为零时悲观排名等于平均排名",
+      "requirement_id": "REQ-CH1-004",
+      "requirement_name": "悲观排名LCB计算与z参数",
+      "test_type": "FT",
+      "priority": "P1",
+      "precondition": "参数设置中置信系数z可调整",
+      "test_steps": [
+        "将置信系数参数调整为z=0",
+        "悬停任一组合气泡查看悲观排名",
+        "与该组合平均排名比对"
+      ],
+      "expected_results": [
+        "所有组合悲观排名等于其平均排名，无波动惩罚项",
+        "参数调整后数值即时生效",
+        "气泡颜色按新的悲观排名重新映射"
+      ],
+      "test_data": "z=0",
+      "notes": "z参数调整入口以实际页面为准"
+    },
+    {
+      "testpoint_id": "TP-CH1-004-003",
+      "testpoint_name": "[P1-重要不紧急] 验证置信系数设为百分之九十五置信档时悲观排名更保守",
+      "requirement_id": "REQ-CH1-004",
+      "requirement_name": "悲观排名LCB计算与z参数",
+      "test_type": "FT",
+      "priority": "P1",
+      "precondition": "组合A指标同TP-CH1-004-001",
+      "test_steps": [
+        "将置信系数调整为z=1.645（95%置信下限）",
+        "悬停组合A气泡查看悲观排名",
+        "计算44.6+1.645×27.2÷√29≈52.9并比对"
+      ],
+      "expected_results": [
+        "悲观排名≈#52.9，比z=1时数值更大（更差）",
+        "组合A气泡颜色较z=1时偏向红色",
+        "参数调整即时生效无需刷新页面"
+      ],
+      "test_data": "z=1.645→LCB≈52.9",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-004-004",
+      "testpoint_name": "[P1-重要不紧急] 验证有效天数过少组合的悲观排名不确定性惩罚被样本量修正项放大",
+      "requirement_id": "REQ-CH1-004",
+      "requirement_name": "悲观排名LCB计算与z参数",
+      "test_type": "BT",
+      "priority": "P1",
+      "precondition": "构造组合D（3个有效天，均值10，波动5）与组合E（30个有效天，均值10，波动5）",
+      "test_steps": [
+        "计算组合D的LCB=10+5÷√3≈12.9",
+        "计算组合E的LCB=10+5÷√30≈10.9",
+        "比对两组合悲观排名与气泡颜色"
+      ],
+      "expected_results": [
+        "组合D惩罚项约2.9，显著大于组合E的约0.9",
+        "组合D悲观排名明显差于组合E，即使两者均值相同",
+        "无需人工处理，√T项自动放大少天数惩罚"
+      ],
+      "test_data": "D：3天均值10波动5；E：30天均值10波动5",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-004-005",
+      "testpoint_name": "[P1-重要不紧急] 验证悲观排名同时惩罚整体排名差排名波动大与有效天数少三项",
+      "requirement_id": "REQ-CH1-004",
+      "requirement_name": "悲观排名LCB计算与z参数",
+      "test_type": "DT",
+      "priority": "P1",
+      "precondition": "构造三个有效天数相同的组合：F均值50波动5、G均值50波动20、H均值20波动5",
+      "test_steps": [
+        "分别计算F、G、H的LCB",
+        "比对三者数值大小关系",
+        "查看三组合气泡颜色梯度"
+      ],
+      "expected_results": [
+        "LCB(G)>LCB(F)，波动大被惩罚",
+        "LCB(F)>LCB(H)，均值差被惩罚",
+        "颜色排序H最绿、G最红，与LCB排序一致"
+      ],
+      "test_data": "F(50,5)、G(50,20)、H(20,5)，天数相同",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-004-006",
+      "testpoint_name": "[P2-不紧急不重要] 验证气泡颜色随悲观排名绿优红差渐变且与右侧色带一致",
+      "requirement_id": "REQ-CH1-004",
+      "requirement_name": "悲观排名LCB计算与z参数",
+      "test_type": "UIT",
+      "priority": "P2",
+      "precondition": "散点图已渲染，右侧色带展示悲观排名颜色梯度",
+      "test_steps": [
+        "查看悲观排名最优与最差的组合气泡颜色",
+        "查看中间档组合气泡颜色过渡",
+        "比对右侧色带颜色梯度"
+      ],
+      "expected_results": [
+        "悲观排名靠前（数值小）的组合气泡为绿色系",
+        "悲观排名靠后（数值大）的组合气泡为红色/橙色系",
+        "气泡颜色与右侧色带同一梯度映射一致"
+      ],
+      "test_data": "截图：右上稳定区绿色、左下橙色",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-005-001",
+      "testpoint_name": "[P0-重要紧急] 验证X轴平均排名为反向轴且排名越小气泡越靠右",
+      "requirement_id": "REQ-CH1-005",
+      "requirement_name": "反向坐标轴与气泡大小颜色映射",
+      "test_type": "UIT",
+      "priority": "P0",
+      "precondition": "散点图已渲染",
+      "test_steps": [
+        "查看X轴刻度排列方向",
+        "定位平均排名最小与最大的两个组合气泡水平位置",
+        "确认X轴标签位置"
+      ],
+      "expected_results": [
+        "X轴刻度从左到右递减（截图左67右26）",
+        "平均排名最小的组合气泡位于最右侧",
+        "「平均排名」标签位于X轴右端"
+      ],
+      "test_data": "截图X轴：67→26",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-005-002",
+      "testpoint_name": "[P1-重要不紧急] 验证Y轴排名波动为反向轴且波动越小气泡越靠上",
+      "requirement_id": "REQ-CH1-005",
+      "requirement_name": "反向坐标轴与气泡大小颜色映射",
+      "test_type": "UIT",
+      "priority": "P1",
+      "precondition": "散点图已渲染",
+      "test_steps": [
+        "查看Y轴刻度排列方向",
+        "定位排名波动最小与最大的两个组合气泡垂直位置",
+        "确认Y轴标签位置"
+      ],
+      "expected_results": [
+        "Y轴刻度从上到下递增（截图上14下36）",
+        "排名波动最小的组合气泡位于最上方",
+        "「排名波动」标签位于Y轴顶端"
+      ],
+      "test_data": "截图Y轴：14→36",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-005-003",
+      "testpoint_name": "[P1-重要不紧急] 验证气泡大小与策略收益金额线性映射",
+      "requirement_id": "REQ-CH1-005",
+      "requirement_name": "反向坐标轴与气泡大小颜色映射",
+      "test_type": "UIT",
+      "priority": "P1",
+      "precondition": "散点图已渲染且组合策略收益有差异",
+      "test_steps": [
+        "找出策略收益最高与最低的组合气泡",
+        "比对两者气泡直径大小",
+        "抽取中间收益组合确认大小随收益单调变化"
+      ],
+      "expected_results": [
+        "收益最高者气泡最大、收益最低者气泡最小",
+        "中间收益组合气泡大小介于两者之间且随收益单调递增",
+        "映射为线性（直径或面积与收益线性关系与实现口径一致）"
+      ],
+      "test_data": "以当前查询结果收益极值组合验证",
+      "notes": "线性映射口径（直径/面积）以实现为准"
+    },
+    {
+      "testpoint_id": "TP-CH1-005-004",
+      "testpoint_name": "[P2-不紧急不重要] 验证坐标轴刻度范围自适应数据范围",
+      "requirement_id": "REQ-CH1-005",
+      "requirement_name": "反向坐标轴与气泡大小颜色映射",
+      "test_type": "BT",
+      "priority": "P2",
+      "precondition": "散点图已渲染",
+      "test_steps": [
+        "记录当前X/Y轴刻度范围",
+        "通过右侧色带筛选掉边缘组合后查看轴刻度",
+        "恢复筛选再次查看"
+      ],
+      "expected_results": [
+        "筛选后轴刻度范围按剩余组合数据自适应收缩",
+        "恢复后轴刻度回到全量数据范围",
+        "自适应过程无刻度错乱或气泡溢出"
+      ],
+      "test_data": "筛选前后轴范围对比",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-005-005",
+      "testpoint_name": "[P2-紧急不重要] 验证策略收益为负的组合散点图正常渲染气泡",
+      "requirement_id": "REQ-CH1-005",
+      "requirement_name": "反向坐标轴与气泡大小颜色映射",
+      "test_type": "BT",
+      "priority": "P2",
+      "precondition": "存在策略收益为负的组合（如截图深度学习×相似日收益-13.90万）",
+      "test_steps": [
+        "定位策略收益为负的组合气泡",
+        "确认气泡正常渲染且大小符合映射规则",
+        "悬停确认tooltip收益字段展示"
+      ],
+      "expected_results": [
+        "负收益组合气泡正常显示，不因负值渲染异常",
+        "气泡大小仍按收益金额映射规则参与排序",
+        "tooltip收益字段以红色显示负值"
+      ],
+      "test_data": "截图示例：深度学习×相似日 -13.90万",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-006-001",
+      "testpoint_name": "[P0-重要紧急] 验证鼠标悬停气泡展示tooltip且字段清单完整",
+      "requirement_id": "REQ-CH1-006",
+      "requirement_name": "Tooltip综合评价标签与字段展示",
+      "test_type": "FT",
+      "priority": "P0",
+      "precondition": "散点图已渲染",
+      "test_steps": [
+        "鼠标悬停「深度学习×相似日」组合气泡",
+        "逐项核对tooltip字段清单",
+        "核对tooltip顶部组合名称与综合评价标签"
+      ],
+      "expected_results": [
+        "tooltip展示8项字段：平均排名/排名波动/前10%率/爆雷率/悲观排名/策略收益/胜率/覆盖率",
+        "顶部显示组合名称「深度学习×相似日」与综合评价标签",
+        "排名波动字段带「越小越稳」附注、胜率带「胜天数/有效天数」明细"
+      ],
+      "test_data": "截图示例全字段：#44.6、27.2、6.9%、13.8%、#49.6/96、-13.90万、55.2%（16/29天）、93.5%",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-006-002",
+      "testpoint_name": "[P1-重要不紧急] 验证悲观排名进入前十百分之的组合标签为稳定优秀且绿色",
+      "requirement_id": "REQ-CH1-006",
+      "requirement_name": "Tooltip综合评价标签与字段展示",
+      "test_type": "FT",
+      "priority": "P1",
+      "precondition": "存在LCB分位进入前10%的组合",
+      "test_steps": [
+        "按LCB升序排序全部组合，取分位前10%的组合",
+        "悬停该组合气泡查看综合评价标签",
+        "确认标签文字与颜色"
+      ],
+      "expected_results": [
+        "标签显示「稳定优秀」",
+        "标签颜色为绿色",
+        "该组合气泡颜色同为绿色系"
+      ],
+      "test_data": "LCB分位前10%组合",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-006-003",
+      "testpoint_name": "[P1-重要不紧急] 验证综合评价标签按前三十五百分之中部后三十五百分之分档展示对应颜色",
+      "requirement_id": "REQ-CH1-006",
+      "requirement_name": "Tooltip综合评价标签与字段展示",
+      "test_type": "FT",
+      "priority": "P1",
+      "precondition": "存在LCB分位分别落在前35%、中部、后35%的组合",
+      "test_steps": [
+        "悬停LCB分位前35%区间组合查看标签",
+        "悬停中部分位组合查看标签",
+        "悬停后35%分位组合查看标签"
+      ],
+      "expected_results": [
+        "前35%档标签「较稳定」浅绿色",
+        "中部档标签「表现中等」橙色（截图深度学习×相似日即此档）",
+        "后35%档标签「不稳定」浅红色"
+      ],
+      "test_data": "截图示例：表现中等（橙）",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-006-004",
+      "testpoint_name": "[P1-重要不紧急] 验证悲观排名落入后十百分之的组合标签为易爆雷且红色",
+      "requirement_id": "REQ-CH1-006",
+      "requirement_name": "Tooltip综合评价标签与字段展示",
+      "test_type": "FT",
+      "priority": "P1",
+      "precondition": "存在LCB分位落入后10%的组合",
+      "test_steps": [
+        "按LCB升序排序取分位后10%的组合",
+        "悬停该组合气泡查看综合评价标签",
+        "确认标签文字与颜色"
+      ],
+      "expected_results": [
+        "标签显示「易爆雷」",
+        "标签颜色为红色",
+        "该组合气泡颜色为红色系"
+      ],
+      "test_data": "LCB分位后10%组合",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-006-005",
+      "testpoint_name": "[P1-重要不紧急] 验证综合评价标签阈值按悲观排名实际数据分位动态计算",
+      "requirement_id": "REQ-CH1-006",
+      "requirement_name": "Tooltip综合评价标签与字段展示",
+      "test_type": "DT",
+      "priority": "P1",
+      "precondition": "可切换两组LCB分布差异明显的查询条件",
+      "test_steps": [
+        "在查询条件A下记录五档标签对应的LCB分位边界值",
+        "切换查询条件B（LCB分布不同）再次记录边界值",
+        "比对两组边界值"
+      ],
+      "expected_results": [
+        "两组条件下标签分档边界随实际LCB分布变化",
+        "各档组合数量占比符合10%/25%/30%/25%/10%分位定义",
+        "不存在固定LCB数值阈值导致全部命中同一档"
+      ],
+      "test_data": "两组不同查询条件的LCB分布",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-006-006",
+      "testpoint_name": "[P1-重要不紧急] 验证tooltip收益正数绿色负数红色且爆雷率超警戒阈值标红",
+      "requirement_id": "REQ-CH1-006",
+      "requirement_name": "Tooltip综合评价标签与字段展示",
+      "test_type": "UIT",
+      "priority": "P1",
+      "precondition": "存在收益为正、收益为负、爆雷率超20%与不超20%的组合",
+      "test_steps": [
+        "悬停收益为正的组合确认收益字段颜色",
+        "悬停收益为负的组合（如-13.90万）确认收益字段颜色",
+        "分别悬停爆雷率大于20%与不大于20%的组合确认爆雷率字段颜色"
+      ],
+      "expected_results": [
+        "收益正数显示绿色",
+        "收益负数显示红色（截图-13.90万为红）",
+        "爆雷率>20%显示红色，≤20%显示默认色（截图13.8%不标红）"
+      ],
+      "test_data": "截图示例：-13.90万红、13.8%默认色",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-006-007",
+      "testpoint_name": "[P2-不紧急不重要] 验证tooltip随气泡悬停展示并随鼠标移开隐藏",
+      "requirement_id": "REQ-CH1-006",
+      "requirement_name": "Tooltip综合评价标签与字段展示",
+      "test_type": "FT",
+      "priority": "P2",
+      "precondition": "散点图已渲染",
+      "test_steps": [
+        "鼠标移入某气泡确认tooltip展示",
+        "鼠标在相邻气泡间移动确认tooltip内容切换",
+        "鼠标移出散点图区域确认tooltip隐藏"
+      ],
+      "expected_results": [
+        "悬停即时展示对应组合tooltip",
+        "切换气泡时tooltip内容更新为当前组合",
+        "移开后tooltip隐藏，不残留遮挡图表"
+      ],
+      "test_data": "任意相邻两组合气泡",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-007-001",
+      "testpoint_name": "[P0-重要紧急] 验证点击气泡查看该组合每日收益明细",
+      "requirement_id": "REQ-CH1-007",
+      "requirement_name": "圆点点击明细、色带筛选与?说明浮层",
+      "test_type": "FT",
+      "priority": "P0",
+      "precondition": "散点图已渲染",
+      "test_steps": [
+        "点击「深度学习×相似日」组合气泡",
+        "查看弹出的每日收益明细列表",
+        "核对明细包含日期、策略收益、排名等字段"
+      ],
+      "expected_results": [
+        "点击后弹出该组合每日收益明细视图",
+        "明细逐日列出查询区间内数据，收益为0/缺失天有相应标识或不参与排名标识",
+        "明细标题或头部显示组合名称「深度学习×相似日」"
+      ],
+      "test_data": "截图示例组合",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-007-002",
+      "testpoint_name": "[P1-重要不紧急] 验证每日收益明细数据与tooltip指标交叉一致",
+      "requirement_id": "REQ-CH1-007",
+      "requirement_name": "圆点点击明细、色带筛选与?说明浮层",
+      "test_type": "DT",
+      "priority": "P1",
+      "precondition": "已打开组合A每日收益明细",
+      "test_steps": [
+        "统计明细中有效天数、胜天数、收益合计",
+        "与tooltip覆盖率分母、胜率分子、策略收益比对",
+        "由明细排名序列重算平均排名与tooltip比对"
+      ],
+      "expected_results": [
+        "明细有效天数=tooltip覆盖率分子（29）",
+        "明细胜天数=tooltip胜率分子（16）",
+        "明细收益合计=tooltip策略收益，明细重算平均排名=tooltip平均排名"
+      ],
+      "test_data": "组合A：29有效天、16胜天、均值44.6",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-007-003",
+      "testpoint_name": "[P1-重要不紧急] 验证右侧色带拖拽按悲观排名区间筛选组合",
+      "requirement_id": "REQ-CH1-007",
+      "requirement_name": "圆点点击明细、色带筛选与?说明浮层",
+      "test_type": "FT",
+      "priority": "P1",
+      "precondition": "散点图已渲染，右侧色带可拖拽",
+      "test_steps": [
+        "拖拽右侧色带上下手柄选定悲观排名区间",
+        "查看散点图保留的组合",
+        "核对保留组合悲观排名是否均在区间内"
+      ],
+      "expected_results": [
+        "拖拽后仅展示悲观排名落在所选区间内的组合",
+        "区间外组合气泡隐藏",
+        "色带选中区间高亮显示"
+      ],
+      "test_data": "选取悲观排名中间区间验证",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-007-004",
+      "testpoint_name": "[P2-不紧急不重要] 验证色带筛选后散点图坐标自适应且可恢复全量",
+      "requirement_id": "REQ-CH1-007",
+      "requirement_name": "圆点点击明细、色带筛选与?说明浮层",
+      "test_type": "FT",
+      "priority": "P2",
+      "precondition": "已执行色带筛选",
+      "test_steps": [
+        "筛选后查看X/Y轴刻度范围变化",
+        "重置色带恢复全量组合",
+        "查看轴刻度与气泡数量恢复情况"
+      ],
+      "expected_results": [
+        "筛选后轴刻度按剩余组合自适应",
+        "重置后全部组合气泡恢复展示",
+        "轴刻度恢复全量数据范围"
+      ],
+      "test_data": "筛选前后对比",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-007-005",
+      "testpoint_name": "[P1-重要不紧急] 验证问号按钮展开计算逻辑说明浮层且再次点击或点击其他区域收起",
+      "requirement_id": "REQ-CH1-007",
+      "requirement_name": "圆点点击明细、色带筛选与?说明浮层",
+      "test_type": "FT",
+      "priority": "P1",
+      "precondition": "组合稳定性分布图已渲染",
+      "test_steps": [
+        "点击标题右侧「?」按钮查看浮层",
+        "核对浮层说明条目完整性",
+        "再次点击「?」按钮确认收起；重新展开后点击页面其他区域确认收起"
+      ],
+      "expected_results": [
+        "浮层展开显示「组合稳定性·计算逻辑说明」",
+        "含6条说明：每日排名/平均排名/排名波动/悲观排名LCB（z=1约84%置信下限）/前10%率与爆雷率/气泡大小与颜色",
+        "再次点击?或点击页面其他区域均可收起浮层"
+      ],
+      "test_data": "截图浮层6条说明",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-008-001",
+      "testpoint_name": "[P0-重要紧急] 验证无有效数据组合不进入散点图且不参与排名",
+      "requirement_id": "REQ-CH1-008",
+      "requirement_name": "无有效数据与有效天数过少边界处理",
+      "test_type": "FT",
+      "priority": "P0",
+      "precondition": "构造组合K：查询区间内收益全为0或缺失",
+      "test_steps": [
+        "查询区间内组合K收益全部置为0或缺失",
+        "查看散点图是否渲染组合K气泡",
+        "查看其他组合每日排名分母是否包含组合K"
+      ],
+      "expected_results": [
+        "组合K不出现在散点图中",
+        "各有效天排名序列不包含组合K（排名分母不含K）",
+        "图表不报错，其余组合指标正常计算"
+      ],
+      "test_data": "组合K：区间收益全0/缺失",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-008-002",
+      "testpoint_name": "[P1-重要不紧急] 验证有效天数过少组合正常进入图表且悲观排名被自动惩罚",
+      "requirement_id": "REQ-CH1-008",
+      "requirement_name": "无有效数据与有效天数过少边界处理",
+      "test_type": "BT",
+      "priority": "P1",
+      "precondition": "构造组合D仅3个有效天且均值较好",
+      "test_steps": [
+        "确认组合D气泡在散点图正常渲染",
+        "查看组合D悲观排名与平均排名的差值",
+        "与有效天数充足组合的差值对比"
+      ],
+      "expected_results": [
+        "组合D正常进入散点图（区别于无有效数据组合）",
+        "组合D悲观排名显著差于其平均排名（√T惩罚生效）",
+        "无需人工干预，惩罚自动完成"
+      ],
+      "test_data": "组合D：3有效天",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-008-003",
+      "testpoint_name": "[P2-紧急不重要] 验证组合总数变化时前百分之十阈值重新向上取整计算",
+      "requirement_id": "REQ-CH1-008",
+      "requirement_name": "无有效数据与有效天数过少边界处理",
+      "test_type": "DT",
+      "priority": "P2",
+      "precondition": "可构造两组不同组合总数的查询条件",
+      "test_steps": [
+        "查询条件A命中95个组合，计算topK=⌈95×10%⌉=10",
+        "查询条件B命中101个组合，计算topK=⌈101×10%⌉=11",
+        "分别核对前10%率与爆雷率统计阈值"
+      ],
+      "expected_results": [
+        "条件A按topK=10统计",
+        "条件B按topK=11统计，爆雷阈值为总数−11",
+        "阈值始终向上取整动态计算"
+      ],
+      "test_data": "95→10；101→11",
+      "notes": ""
+    },
+    {
+      "testpoint_id": "TP-CH1-008-004",
+      "testpoint_name": "[P2-不紧急不重要] 验证查询区间无任何数据时图表展示空态且不报错",
+      "requirement_id": "REQ-CH1-008",
+      "requirement_name": "无有效数据与有效天数过少边界处理",
+      "test_type": "ET",
+      "priority": "P2",
+      "precondition": "选择无数据的查询区间",
+      "test_steps": [
+        "切换至无任何复盘数据的查询区间",
+        "查看组合稳定性分布图展示状态",
+        "查看控制台是否报错"
+      ],
+      "expected_results": [
+        "图表展示空态提示（如暂无数据），不渲染气泡",
+        "中位数虚线与象限衬底文字不异常错位",
+        "页面无JS报错、无接口异常弹窗"
+      ],
+      "test_data": "无数据查询区间",
+      "notes": ""
+    }
+  ]
+}
