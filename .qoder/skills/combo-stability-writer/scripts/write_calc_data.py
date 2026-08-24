@@ -13,6 +13,13 @@
              参与口径与有效天一致（需求口径）；--rank-mode frontend 复现 847 行缺陷行为
   覆盖率   = validDays ÷ 区间天数D，D=len(dailyDataList)，不可用 len(actualBaseline)
   胜率     = winDays ÷ validDays，胜天 = 当日策略收益 > 当日实际收益（跑赢实际）
+  综合评价标签 = 全量组合LCB升序分位定档（对齐spot_review.js:1070-1097）：
+             LCB=μ+z·σ/√T(z=1,对齐879行)；≤P10稳定优秀/≤P35较稳定/>P90易爆雷/>P65不稳定/else表现中等
+
+布局（2026-08-21版，用户在16/17行插入两行后）：
+  B16=综合评价标签值  B17=分位线与值("P10(63.8)/P35(78.5)/P65(93.9)/P90(118.2)")
+  18行=数据表头  19~49行=数据区(A日期/B排名/C策略收益万/D实际收益万/E有效天标志)
+  A51=口径说明标题  A52:E59=合并说明区
 """
 import argparse
 import json
@@ -23,8 +30,11 @@ from pathlib import Path
 import openpyxl
 from openpyxl.styles import PatternFill
 
-DATA_START = 17          # 数据区起始行
-DATA_MAX_ROWS = 31       # 计算器容量（17~47）
+DATA_START = 19          # 数据区起始行（18行为表头，16/17行为综合评价标签/分位线）
+DATA_MAX_ROWS = 31       # 计算器容量（19~49）
+TAG_CELL = 'B16'         # 综合评价标签
+QUANT_CELL = 'B17'       # 分位线与值
+NOTE_TITLE_CELL = 'A51'  # 口径说明标题
 INVALID_FILL = PatternFill('solid', fgColor='FFF2CC')
 NO_FILL = PatternFill(fill_type=None)
 E_FORMULA = '=IF(AND(B{r}<>"",C{r}<>"",C{r}<>0,D{r}<>""),1,0)'
@@ -60,6 +70,43 @@ def daily_ranks(combos, base, ti, dates, mode):
         part.sort(key=lambda x: (-x[1], x[0]))
         ranks[dt] = next(ri + 1 for ri, (i, _) in enumerate(part) if i == ti)
     return ranks
+
+
+def compute_lcb_tags(combos, base, mode, ti):
+    """全量组合计算LCB并按分位定档（对齐spot_review.js:860-880, 1070-1097）。
+
+    返回 (tag, quant_text, tgt_lcb)：目标组合(ti)标签、分位线文本、目标LCB。
+    排名矩阵按 mode 口径：requirement=有效天参与（需求）；frontend=仅查收益（847行缺陷）。
+    """
+    dates = [dd['date'] for dd in combos[0]['dailyDataList']]
+    sp = [{dd['date']: dd.get('strategyProfit') for dd in c['dailyDataList']} for c in combos]
+    rm = [[None] * len(dates) for _ in combos]
+    for di, dt in enumerate(dates):
+        if mode == 'requirement' and dt not in base:
+            continue
+        part = [(i, sp[i][dt]) for i in range(len(combos)) if sp[i].get(dt) not in (None, 0)]
+        part.sort(key=lambda x: (-x[1], x[0]))
+        for pos, (i, _) in enumerate(part):
+            rm[i][di] = pos + 1
+    lcbs, tgt = [], None
+    for i, c in enumerate(combos):
+        rs = [r for r in rm[i] if r is not None]
+        if not rs:
+            continue
+        mu = sum(rs) / len(rs)
+        sd = math.sqrt(sum((r - mu) ** 2 for r in rs) / len(rs))
+        lcb = round((mu + sd / math.sqrt(len(rs))) * 10) / 10
+        lcbs.append(lcb)
+        if i == ti:
+            tgt = lcb
+    s = sorted(lcbs)
+    n = len(s)
+    q = lambda f: s[min(n - 1, math.floor(n * f))]
+    p10, p35, p65, p90 = q(0.1), q(0.35), q(0.65), q(0.9)
+    tag = ('稳定优秀' if tgt <= p10 else '较稳定' if tgt <= p35
+           else '易爆雷' if tgt > p90 else '不稳定' if tgt > p65 else '表现中等')
+    quant = f'P10({p10})/P35({p35})/P65({p65})/P90({p90})'
+    return tag, quant, tgt
 
 
 def invalid_reason(combo, base, dt):
@@ -123,12 +170,13 @@ def main():
     if n > DATA_MAX_ROWS:
         sys.exit(f'[ERROR] dailyDataList 长度 {n} 超过计算器容量 {DATA_MAX_ROWS} 行')
 
-    # ---- 4. 计算排名与指标 ----
+    # ---- 4. 计算排名、指标与综合评价标签 ----
     ranks = daily_ranks(combos, base, ti, dates, args.rank_mode)
     valid_days = [dt for dt in dates if invalid_reason(target, base, dt) is None]
     t = len(valid_days)
     w = sum(1 for dt in valid_days if sp_of(target, dt) > base[dt])
     win_rate, coverage = (w / t if t else 0), (t / n if n else 0)
+    tag, quant_text, tgt_lcb = compute_lcb_tags(combos, base, args.rank_mode, ti)
 
     # ---- 5. 与报文交叉校验 ----
     print('=' * 62)
@@ -159,6 +207,7 @@ def main():
               f"爆雷率={sum(1 for x in rs if x > len(combos)-topk)/len(rs)*100:.1f}% LCB={mu+sd/math.sqrt(len(rs)):.1f}")
     invalids = [(dt, invalid_reason(target, base, dt)) for dt in dates if invalid_reason(target, base, dt)]
     print(f"  无效天 {len(invalids)} 个: " + ('; '.join(f'{d}({r})' for d, r in invalids) if invalids else '无'))
+    print(f"  综合评价标签: {tag} | LCB={tgt_lcb} | 分位线 {quant_text}")
     print('=' * 62)
     if args.dry_run:
         print('[DRY-RUN] 校验通过，未写入 Excel')
@@ -172,14 +221,14 @@ def main():
     ws = wb.active
     for i, dt in enumerate(dates):
         r = DATA_START + i
-        sp, ap = sp_of(target, dt), base.get(dt)
+        sp, ap_val = sp_of(target, dt), base.get(dt)
         ws.cell(row=r, column=1).value = dt                       # A 日期
         ws.cell(row=r, column=2).value = ranks.get(dt)            # B 每日排名(无效天=None清空)
         c3 = ws.cell(row=r, column=3)                             # C 策略收益(万)
         c3.value = None if sp is None else round(sp / 10000, 6)
         c3.number_format = '0.0000'
         c4 = ws.cell(row=r, column=4)                             # D 实际收益(万)
-        c4.value = None if ap is None else round(ap / 10000, 6)
+        c4.value = None if ap_val is None else round(ap_val / 10000, 6)
         c4.number_format = '0.0000'
     # 清空超出 n 的旧行（openpyxl 陷阱：cell(value=None) 不清空，必须 .value=None）
     for r in range(DATA_START + n, DATA_START + DATA_MAX_ROWS):
@@ -197,44 +246,70 @@ def main():
         for col in range(1, 6):
             ws.cell(row=r, column=col).fill = INVALID_FILL
     ws['B4'] = n                                                  # 区间天数 D 同步
-    # 口径说明区动态更新（第3/4/8条，行号依赖计算器模板结构）
-    if ws['A49'].value == '口径说明':
-        ws['A52'] = ('3. 无效天示例(高亮行%s)：%s' % (
-            f'{hl_rows[0]}-{hl_rows[-1]}' if len(hl_rows) > 1 else (hl_rows[0] if hl_rows else '无'),
-            '；'.join(f'{d}({r})' for d, r in invalids) if invalids else '本组合无无效天'))
-        ws['A53'] = (f'4. 区间天数D(B4)=len(dailyDataList)={n}，覆盖率分母=D；本表有实际收益的天数A={len(base)}'
-                     + (f'，若误用A做分母覆盖率虚高为{t}/{len(base)}={t/len(base)*100:.1f}%(正确值{coverage*100:.1f}%)'
-                        if len(base) < n else '，本区间D=A无缺实际收益日'))
-        ws['A57'] = (f'8. 本表A-D列取自真实报文组合“{target["label"]}”({dates[0]}~{dates[-1]})，'
-                     f'C/D列=报文原值÷10000(单位:万)；B列每日排名按{args.rank_mode}口径计算'
-                     f'(当日收益降序、并列按报文顺序取相邻名次)；报文基准validDays={target["validDays"]}'
-                     f'/winDays={target["winDays"]}/winRate={target["winRate"]:.4f}/coverage={target["coverage"]:.4f}')
+    ws['C4'] = '← 覆盖率的分母'                                   # 校正注释(D仅为覆盖率分母，爆雷率分母是T)
+    ws['B2'] = len(combos)                                        # 组合总数(label个数)同步
+    ws[TAG_CELL] = tag                                            # 综合评价标签 → B16
+    ws[QUANT_CELL] = quant_text                                   # 分位线与值 → B17
+    # 口径说明区动态更新（兼容两种模板：A52-A59逐行独立 / A52:E59整体合并）
+    line3 = ('3. 无效天示例(高亮行%s)：%s' % (
+        f'{hl_rows[0]}-{hl_rows[-1]}' if len(hl_rows) > 1 else (hl_rows[0] if hl_rows else '无'),
+        '；'.join(f'{d}({r})' for d, r in invalids) if invalids else '本组合无无效天'))
+    line4 = (f'4. 区间天数D(B4)=len(dailyDataList)={n}，覆盖率分母=D；本表有实际收益的天数A={len(base)}'
+             + (f'，若误用A做分母覆盖率虚高为{t}/{len(base)}={t/len(base)*100:.1f}%(正确值{coverage*100:.1f}%)'
+                if len(base) < n else '，本区间D=A无缺实际收益日'))
+    line6 = ('6. σ为总体标准差STDEV.P；μ/σ仅统计有效天(B列非空;参与天数=T)；'
+             'LCB(悲观排名)=μ+z·σ/√T(z=B3=1)，越小越好(对齐前端879行)。')
+    line8 = (f'8. 本表A-D列取自真实报文组合“{target["label"]}”({dates[0]}~{dates[-1]})，'
+             f'C/D列=报文原值÷10000(单位:万)；B列每日排名按{args.rank_mode}口径计算'
+             f'(当日收益降序、并列按报文顺序取相邻名次)；报文基准validDays={target["validDays"]}'
+             f'/winDays={target["winDays"]}/winRate={target["winRate"]:.4f}/coverage={target["coverage"]:.4f}')
+    if ws[NOTE_TITLE_CELL].value == '口径说明':
+        merged_note = any(str(m) == 'A52:E59' for m in ws.merged_cells.ranges)
+        if merged_note:
+            # 合并模板：全量文本写在 A52 锚点，按序号替换第3/4/6/8条(第6条负责校正LCB公式口径)
+            import re
+            text = ws['A52'].value or ''
+            for line in (line3, line4, line6, line8):
+                num = line[0]
+                pat = re.compile(rf'{num}\. .*?(?=\n\d+\. |\Z)', re.S)
+                text = pat.sub(line, text, count=1) if pat.search(text) else (text + '\n' + line if text else line)
+            ws['A52'] = text
+        else:
+            ws['A54'], ws['A55'], ws['A59'] = line3, line4, line8
     try:
         wb.save(excel_path)
     except PermissionError:
         sys.exit(f'[ERROR] Excel 文件被占用，请先关闭后重试: {excel_path}')
     print(f'已写入 {excel_path}')
-    print(f'高亮无效天行: {hl_rows if hl_rows else "无"} | B4 已同步为 {n} | E列公式已重建')
+    print(f'高亮无效天行: {hl_rows if hl_rows else "无"} | B2 已同步为 {len(combos)} | B4 已同步为 {n} | '
+          f'E列公式已重建 | B16={tag} | B17={quant_text}')
 
-    # ---- 7. 落盘回读校验 ----
+    # ---- 7. 落盘回读校验（重新打开磁盘文件；历史教训：写入被中断时可能只落盘部分列） ----
     wb2 = openpyxl.load_workbook(excel_path)
     ws2 = wb2.active
     bad = []
     for i, dt in enumerate(dates):
         r = DATA_START + i
-        got = tuple(ws2.cell(row=r, column=j).value for j in (2, 3, 4))
-        exp = (ranks.get(dt),
+        got = tuple(ws2.cell(row=r, column=j).value for j in (1, 2, 3, 4))
+        exp = (dt, ranks.get(dt),
                None if sp_of(target, dt) is None else round(sp_of(target, dt) / 10000, 6),
                None if base.get(dt) is None else round(base[dt] / 10000, 6))
         if got != exp:
             bad.append((dt, got, exp))
+    # A/B/C/D 全量精确比对已覆盖所有列（含无效天应为空的B/C/D），无需额外非空规则
+    e_ok = all(str(ws2.cell(row=DATA_START + i, column=5).value or '').startswith('=IF(') for i in range(n))
     sim_t = sum(1 for i, dt in enumerate(dates)
                 if all(ws2.cell(row=DATA_START + i, column=j).value not in (None, '')
                        for j in (2, 4))
                 and ws2.cell(row=DATA_START + i, column=3).value not in (None, '', 0))
-    print(f'落盘校验: B/C/D 31行内比对 {"PASS" if not bad else bad} | 模拟E列T={sim_t} (应{t}) '
-          f'{"PASS" if sim_t == t else "FAIL"}')
-    if bad or sim_t != t:
+    status = 'PASS' if (not bad and e_ok and sim_t == t and ws2[TAG_CELL].value == tag
+                        and ws2[QUANT_CELL].value == quant_text) else 'FAIL'
+    print(f'落盘校验: A/B/C/D {n}行全量比对 {"PASS" if not bad else bad[:3]} | E列公式 {"PASS" if e_ok else "FAIL"} | '
+          f'B16标签 {"PASS" if ws2[TAG_CELL].value == tag else "FAIL"} | '
+          f'B17分位线 {"PASS" if ws2[QUANT_CELL].value == quant_text else "FAIL"} | '
+          f'模拟E列T={sim_t} (应{t}) {"PASS" if sim_t == t else "FAIL"} => {status}')
+    if status == 'FAIL':
+        print('[ERROR] 落盘校验失败，请确认 Excel 已关闭且未被其他程序修改后重跑', file=sys.stderr)
         sys.exit(1)
     print('全部完成 ✔')
 
