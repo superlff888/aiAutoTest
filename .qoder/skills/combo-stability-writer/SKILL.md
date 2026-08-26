@@ -10,6 +10,7 @@ description: 当用户提到"写入计算器"、"报文数据写入Excel"、"更
 ## 当前 Excel 布局（2026-08-21 版，用户插入两行后）
 | 位置 | 内容 |
 |------|------|
+| A5 | 指标计算区标题（合并 A5:E5 锚点），动态显示目标组合：`指标计算区(<label>)`，如 `指标计算区(太乙-七天前实际负荷 × 综合模型)` |
 | B16 | 综合评价标签值（如"表现中等"） |
 | B17 | 分位线与值，格式"分位线（值）"，如 `P10(63.8)/P35(78.5)/P65(93.9)/P90(118.2)` |
 | 18 行 | 数据表头：日期｜每日排名 r｜策略收益(万)｜实际收益(万)｜有效天标志 |
@@ -29,12 +30,12 @@ description: 当用户提到"写入计算器"、"报文数据写入Excel"、"更
 4. 写入计算器 19 行起数据区：A 日期 / B 每日排名 / C 策略收益(万) / D 实际收益(万)；**E 列有效天公式自动重建**（不写死值）
 5. **综合评价标签 → B16**：全量 180 组合按 mode 口径算 LCB（μ+σ/√T，对齐 spot_review.js:860-880），升序取 P10/P35/P65/P90 分位线（对齐 1070-1097），目标组合定档：≤P10 稳定优秀 / ≤P35 较稳定 / >P90 易爆雷 / >P65 不稳定 / else 表现中等
 6. **分位线与值 → B17**：格式"分位线（值）"四条分位线拼接，如 `P10(63.8)/P35(78.5)/P65(93.9)/P90(118.2)`
-7. 无效天行高亮（FFF2CC），同步更新 **B2 组合总数(label个数)**、**B4 区间天数 D=len(dailyDataList)** 与口径说明区第 3/4/6/8 条（第 6 条负责校正 LCB 公式口径为 μ+z·σ/√T）
+7. 无效天行高亮（FFF2CC），同步更新 **A5 指标计算区标题（指标计算区(<目标组合label>)，随 --combo 切换）**、**B2 组合总数(label个数)**、**B4 区间天数 D=len(dailyDataList)** 与口径说明区第 3/4/6/8 条（第 6 条负责校正 LCB 公式口径为 μ+z·σ/√T）
 8. 写入后与报文四字段交叉校验（validDays/winDays/winRate/coverage），不一致即报错退出
 
 ## 明确不动的单元格（用户约定）
 - **A18:E18** 数据表头行
-- **A1~A17 列的标题/标签文本**（B16/B17 的值写入不受影响）
+- **A1~A17 列的标题/标签文本，但 A5 除外**（A5 为技能维护单元格，每次写入同步目标组合名；B16/B17 的值写入不受影响）
 - **B3**（z 系数）、**B6:B15 公式区**（保持公式，数据写入后由 Excel 自动重算）
 
 ## 数据口径（核心约定，勿改动）
@@ -68,8 +69,8 @@ $env:PYTHONUTF8="1"; & "E:\AI\pythonProject\aiAutoTest\.venv\Scripts\python.exe"
 ```
 
 ## 参数说明
-- `--json <path>` — 报文路径，默认 `.qoder/picture/algorithmRetrospectiveCombinations.json`
-- `--excel <path>` — 计算器路径，默认 `.qoder/output/aiAutoTester/组合稳定性分布/组合稳定性分布_指标计算器.xlsx`
+- `--json <path>` — 报文路径，默认 `.qoder/skills/combo-stability-writer/algorithmRetrospectiveCombinations.json`（报文已随技能内置，2026-08-26 从 picture 目录迁入）
+- `--excel <path>` — 计算器路径，默认 `.qoder/skills/combo-stability-writer/组合稳定性分布_指标计算器.xlsx`（计算器已随技能内置于技能根目录，2026-08-26 从 output 目录迁入）
 - `--combo <label>` — 目标组合 label（报文 combinations[].label），缺省自动选 validDays 最高者
 - `--rank-mode <requirement|frontend>` — 排名口径：`requirement`（默认，有效天参与，实际收益缺失日留空）；`frontend`（仅收益非零非空即参与，复现 spot_review.js:847 缺陷行为，仅 B 列多写对比值，指标统计仍由 E 列门控）
 - `--list` — 仅列出组合摘要，不写 Excel
@@ -88,5 +89,7 @@ $env:PYTHONUTF8="1"; & "E:\AI\pythonProject\aiAutoTest\.venv\Scripts\python.exe"
 - 脚本已规避 openpyxl 的 `cell(value=None)` 不清空旧值陷阱（显式 `.value = None`），可安全重复执行
 - `--rank-mode frontend` 下 Excel 的 μ/σ/LCB 仍按 E 列门控（正确口径），与页面缺陷值不同，差异即 TP-CH1-002-006 的量化证据
 
-## 脚本路径
-`.qoder/skills/combo-stability-writer/scripts/write_calc_data.py`
+## 脚本与资源路径
+- 脚本：`.qoder/skills/combo-stability-writer/scripts/write_calc_data.py`
+- 报文：`.qoder/skills/combo-stability-writer/algorithmRetrospectiveCombinations.json`（技能内置，勿再引用旧路径 .qoder/picture/）
+- 计算器：`.qoder/skills/combo-stability-writer/组合稳定性分布_指标计算器.xlsx`（技能内置，勿再引用旧路径 .qoder/output/aiAutoTester/组合稳定性分布/）

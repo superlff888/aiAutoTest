@@ -422,6 +422,25 @@ def count_rows_in_window(conn, sql: str) -> int | None:
         return None
 
 
+def _format_continuity_ranges(missing_dates: list) -> str:
+    """主表格连续性列缺失日期压缩：连续日期合并为 start~end（保留横杠），非连续用、分隔。
+
+    例：['2026-08-13'..'2026-08-18'] -> '2026-08-13~2026-08-18'
+        ['2026-08-15','2026-08-16','2026-08-22'] -> '2026-08-15~2026-08-16、2026-08-22'
+    """
+    sorted_dates = sorted(missing_dates)
+    parts = []
+    start = prev = sorted_dates[0]
+    for d in sorted_dates[1:]:
+        if (datetime.strptime(d, '%Y-%m-%d') - datetime.strptime(prev, '%Y-%m-%d')).days == 1:
+            prev = d
+        else:
+            parts.append(start if start == prev else f'{start}~{prev}')
+            start = prev = d
+    parts.append(start if start == prev else f'{start}~{prev}')
+    return '、'.join(parts)
+
+
 def check_date_continuity(conn, sql: str, start_date: datetime, end_date: datetime) -> tuple:
     """复用数据库连接检查日期连续性，复用 _normalize_date/_extract_date 统一逻辑"""
     try:
@@ -470,7 +489,12 @@ def _check_diff(conn, sql: str) -> str:
                     diff_dates.append(str(date_key))
             if not diff_dates:
                 return "✅ diff=0"
-            date_summary = _format_date_ranges(diff_dates)
+            # 统一为 YYYY-MM-DD（失败详情保留完整年份，卡片/主表格由渲染层缩短为 MM-DD）
+            normalized = [
+                f"{d[:4]}-{d[4:6]}-{d[6:]}" if len(d) == 8 and d.isdigit() else d
+                for d in diff_dates
+            ]
+            date_summary = _format_continuity_ranges(normalized)
             return f"❌ diff={len(diff_dates)}，{date_summary}"
     except Exception as e:
         return f"❌ 查询异常: {str(e)}"
@@ -575,15 +599,19 @@ def _check_single_center(center_name: str, center_config: dict, templates: dict,
             expected_date = _compute_expected_date(used_offset, now)
 
             # === 计算连续性验证窗口（最新数据日期往前推10天）===
+            volume_text = None  # 最新时间失败时卡片附带的数据量文案
             if not check_passed and error and '无数据' in error:
                 # 全部offset都无数据，不跑连续性检查
                 continuity_status = '⏭️ 本月无数据'
                 cont_start_date = cont_end_date = None
+                volume_text = '10 天 0 条数据'
             else:
                 if check_passed:
                     cont_end_date = datetime.strptime(max_date, '%Y-%m-%d')
                 else:
-                    cont_end_date = expected_date - timedelta(days=1)
+                    # 失败时窗口结束日=预期日期（含预期当天这个“本该有却没有”的缺失日），
+                    # 与通过时（结束日=实际最新日期=预期日期）口径一致
+                    cont_end_date = expected_date
                 cont_start_date = cont_end_date - timedelta(days=9)
 
             # === 数据量/覆盖度校验（由 _DATA_TYPE_SQL_MAPPING 驱动） ===
@@ -640,13 +668,33 @@ def _check_single_center(center_name: str, center_config: dict, templates: dict,
                         else:
                             parts = []
                             if coverage['has_missing']:
-                                miss = ', '.join(str(x) for x in coverage['missing_union'])
-                                parts.append(f"❌ 缺 [{miss}] ({coverage['missing_day_count']}天)")
+                                # 整天无数据 vs 部分 load_type 缺 分流展示
+                                expected_str_set = {str(x) for x in expected}
+                                full_missing_days = [
+                                    d for d, lst in coverage['missing_days'].items()
+                                    if set(lst) == expected_str_set
+                                ]
+                                partial_days = {
+                                    d: lst for d, lst in coverage['missing_days'].items()
+                                    if set(lst) != expected_str_set
+                                }
+                                if full_missing_days:
+                                    # 整天缺 N 天；混合部分缺时追加 缺 [lt] (压缩日期)
+                                    seg = f"❌ {len(full_missing_days)} 天"
+                                    groups = {}
+                                    for d, lst in partial_days.items():
+                                        groups.setdefault(tuple(lst), []).append(d)
+                                    for lt_tuple in sorted(groups):
+                                        seg += f"+缺 [{', '.join(lt_tuple)}] ({_format_continuity_ranges(sorted(groups[lt_tuple]))})"
+                                    parts.append(seg)
+                                else:
+                                    miss = ', '.join(str(x) for x in coverage['missing_union'])
+                                    parts.append(f"❌ 缺 [{miss}] ({coverage['missing_day_count']}天)")
                             if coverage['has_extra']:
                                 ext = ', '.join(str(x) for x in coverage['extra_union'])
                                 parts.append(f"⚠️ 超 [{ext}] ({coverage['extra_day_count']}天)")
                             if not parts:
-                                vol_status = "✅"
+                                vol_status = "✅ 10 天load_type数据"
                             else:
                                 vol_status = ' '.join(parts)
 
@@ -679,6 +727,15 @@ def _check_single_center(center_name: str, center_config: dict, templates: dict,
                                         'extra_days': coverage['extra_days'],
                                     },
                                 })
+
+                # 网侧类型最新时间失败时补查窗口行数（仅卡片失败消息附带，不影响数据量列）
+                if not check_passed:
+                    count_sql = render_sql(sql_template, trade_center_id, used_offset,
+                                           cont_start_date.strftime('%Y-%m-%d'),
+                                           cont_end_date.strftime('%Y-%m-%d'), vpp_id)
+                    row_count = _safe_query(conn, count_rows_in_window, count_sql)
+                    if row_count is not None:
+                        volume_text = f'10 天 {row_count} 条数据'
             elif not type_meta.get('check_coverage') and cont_start_date is not None:
                 # === 其他 8 种非网侧类型：显示 10 天总条数（仅显示用，不进任何桶） ===
                 count_sql = render_sql(sql_template, trade_center_id, used_offset,
@@ -688,21 +745,45 @@ def _check_single_center(center_name: str, center_config: dict, templates: dict,
                 if row_count is None:
                     vol_status = '❌ 查询异常'
                 else:
-                    vol_status = f'10 天 {row_count} 条'
+                    vol_status = f'{"✅" if row_count == 10 else "❌"} 10 天 {row_count} 条'
+                    volume_text = f'10 天 {row_count} 条数据'
 
             # === 日期连续性验证 ===
             if cont_start_date is not None:
                 rendered_sql = render_sql(sql_template, trade_center_id, used_offset,
                                          cont_start_date.strftime('%Y-%m-%d'),
                                          cont_end_date.strftime('%Y-%m-%d'), vpp_id)
-                continuity_passed, missing_dates, _ = _safe_query(
+                continuity_passed, missing_dates, cont_error = _safe_query(
                     conn, check_date_continuity, rendered_sql, cont_start_date, cont_end_date)
                 if continuity_passed:
                     continuity_status = f"✅ {cont_start_date.strftime('%m-%d')}~{cont_end_date.strftime('%m-%d')}"
-                elif len(missing_dates) > 3:
-                    continuity_status = f"❌ {', '.join(missing_dates[:3])} 等{len(missing_dates)}天"
+                elif missing_dates:
+                    if len(missing_dates) > 3:
+                        continuity_status = f"❌ {_format_continuity_ranges(missing_dates)}等{len(missing_dates)}天"
+                    else:
+                        continuity_status = f"❌ {', '.join(missing_dates)}"
+                    # 缺天记为失败：日期转 YYYYMMDD 后压缩为范围格式（如 20260815~20260817、20260820）
+                    failed.append({
+                        'center': center_name,
+                        'data_type': f'{data_type_name}（{time_label}）',
+                        'check': {
+                            'type': 'continuity_missing',
+                            'passed': False,
+                            'error': f"日期连续性缺失 {_format_continuity_ranges(missing_dates)}",
+                        },
+                    })
                 else:
-                    continuity_status = f"❌ {', '.join(missing_dates)}"
+                    # 查询异常（不通过且无缺失天）：也记为失败，异常详情不再静默丢弃
+                    continuity_status = f"❌ {cont_error or '查询异常'}"
+                    failed.append({
+                        'center': center_name,
+                        'data_type': f'{data_type_name}（{time_label}）',
+                        'check': {
+                            'type': 'continuity_error',
+                            'passed': False,
+                            'error': f"日期连续性{cont_error or '查询异常'}",
+                        },
+                    })
 
             rows.append({
                 'data_type': f'{data_type_name}（{time_label}）',
@@ -721,7 +802,7 @@ def _check_single_center(center_name: str, center_config: dict, templates: dict,
                 failed.append({
                     'center': center_name,
                     'data_type': f'{data_type_name}（{time_label}）',
-                    'check': {'offset': used_offset, 'expected_date': expected_date.strftime('%Y-%m-%d'), 'max_date': max_date, 'passed': False, 'error': error}
+                    'check': {'offset': used_offset, 'expected_date': expected_date.strftime('%Y-%m-%d'), 'max_date': max_date, 'passed': False, 'error': error, 'volume': volume_text}
                 })
 
     return {

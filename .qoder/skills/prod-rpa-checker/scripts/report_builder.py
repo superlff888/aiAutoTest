@@ -7,7 +7,19 @@
 4. _format_date_ranges() — 共享工具：将连续日期压缩为范围格式
 """
 
+import re
 from datetime import datetime, timedelta
+
+_DATE_FULL_RE = re.compile(r'(?<!\d)20\d{2}-(\d{2}-\d{2})(?!\d)')
+_DATE_COMPACT_RE = re.compile(r'(?<!\d)20\d{2}(\d{2})(\d{2})(?!\d)')
+
+
+def _shorten_dates(text: str) -> str:
+    """卡片与主表格日期缩短：YYYY-MM-DD / YYYYMMDD → MM-DD"""
+    if not text:
+        return text
+    text = _DATE_FULL_RE.sub(r'\1', text)
+    return _DATE_COMPACT_RE.sub(r'\1-\2', text)
 
 
 def _format_date_ranges(dates: list) -> str:
@@ -126,7 +138,10 @@ def build_report_markdown(results: dict, center_results: dict, exec_time: str = 
         report_content.append('| 数据类型 | 最新数据时间 | 数据量 | 日期连续性 |')
         report_content.append('|----------|-------------|--------|-----------|')
         for r in cr['rows']:
-            report_content.append(f"| {r['data_type']} | {r['latest']} | {r['volume']} | {r['continuity']} |")
+            # 主表格日期统一缩短为 MM-DD（YYYY-MM-DD / YYYYMMDD 均转换）
+            report_content.append(
+                f"| {r['data_type']} | {_shorten_dates(str(r['latest']))} | {_shorten_dates(str(r['volume']))} | {_shorten_dates(str(r['continuity']))} |"
+            )
 
     report_content.append(f"\n---\n\n## 校验汇总\n\n执行时间：{exec_time}")
     pass_count = len({(p['center'], p['data_type']) for p in results.get('passed', [])})
@@ -225,7 +240,19 @@ def build_structured_result(results: dict, center_results: dict, report_file: st
         all_pass = len(unique_fail_dts) == 0
 
         failures = []
-        for f in center_fails:
+        # 卡片抑制规则：同一数据类型既有连续性失败又有其他失败时，
+        # 卡片只展示其他失败（预期/实际/数据量），连续性不重复渲染（仅影响卡片）
+        _CONT_TYPES = ("continuity_missing", "continuity_error")
+        other_fail_dts = {
+            f["data_type"] for f in center_fails
+            if f["check"].get("type", "latest") not in _CONT_TYPES
+        }
+        card_fails = [
+            f for f in center_fails
+            if f["check"].get("type", "latest") not in _CONT_TYPES
+            or f["data_type"] not in other_fail_dts
+        ]
+        for f in card_fails:
             check = f["check"]
             ctype = check.get("type", "latest")
             msg = check.get("error", "")
@@ -235,10 +262,16 @@ def build_structured_result(results: dict, center_results: dict, report_file: st
                     msg = f"load_type 缺 [{miss}]，命中 {check.get('hit_rate', '?')}"
                 elif ctype == "coverage_error":
                     msg = f"覆盖度查询异常: {check.get('error', '')}"
+            elif ctype == "latest" and check.get("volume"):
+                # 最新时间失败消息追加窗口数据量
+                msg = f"{msg}，{check['volume']}"
+            elif ctype == "continuity_error":
+                # 连续性查询异常：卡片红字突出
+                msg = f"<font color='red'>{msg}</font>"
             failures.append({
                 "data_type": f["data_type"],
                 "offset": check.get("offset", "—"),
-                "message": msg,
+                "message": _shorten_dates(msg),
             })
 
         # 警告明细（load_type 超出 / 暂未接入），此前仅计入 warn_count 总数、

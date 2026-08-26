@@ -17,6 +17,7 @@
              LCB=μ+z·σ/√T(z=1,对齐879行)；≤P10稳定优秀/≤P35较稳定/>P90易爆雷/>P65不稳定/else表现中等
 
 布局（2026-08-21版，用户在16/17行插入两行后）：
+  A5=指标计算区标题(合并A5:E5锚点)，动态显示目标组合：指标计算区(<label>)
   B16=综合评价标签值  B17=分位线与值("P10(63.8)/P35(78.5)/P65(93.9)/P90(118.2)")
   18行=数据表头  19~49行=数据区(A日期/B排名/C策略收益万/D实际收益万/E有效天标志)
   A51=口径说明标题  A52:E59=合并说明区
@@ -32,6 +33,7 @@ from openpyxl.styles import PatternFill
 
 DATA_START = 19          # 数据区起始行（18行为表头，16/17行为综合评价标签/分位线）
 DATA_MAX_ROWS = 31       # 计算器容量（19~49）
+TITLE_CELL = 'A5'        # 指标计算区标题(合并区A5:E5锚点，动态显示目标组合)
 TAG_CELL = 'B16'         # 综合评价标签
 QUANT_CELL = 'B17'       # 分位线与值
 NOTE_TITLE_CELL = 'A51'  # 口径说明标题
@@ -134,8 +136,8 @@ def main():
     args = ap.parse_args()
 
     root = find_project_root()
-    json_path = Path(args.json) if args.json else root / '.qoder' / 'picture' / 'algorithmRetrospectiveCombinations.json'
-    excel_path = Path(args.excel) if args.excel else root / '.qoder' / 'output' / 'aiAutoTester' / '组合稳定性分布' / '组合稳定性分布_指标计算器.xlsx'
+    json_path = Path(args.json) if args.json else root / '.qoder' / 'skills' / 'combo-stability-writer' / 'algorithmRetrospectiveCombinations.json'
+    excel_path = Path(args.excel) if args.excel else root / '.qoder' / 'skills' / 'combo-stability-writer' / '组合稳定性分布_指标计算器.xlsx'
 
     # ---- 1. 读取报文 ----
     try:
@@ -248,6 +250,8 @@ def main():
     ws['B4'] = n                                                  # 区间天数 D 同步
     ws['C4'] = '← 覆盖率的分母'                                   # 校正注释(D仅为覆盖率分母，爆雷率分母是T)
     ws['B2'] = len(combos)                                        # 组合总数(label个数)同步
+    title_text = f"指标计算区({target['label']})"                  # 计算区标题 → A5(随组合切换)
+    ws[TITLE_CELL] = title_text
     ws[TAG_CELL] = tag                                            # 综合评价标签 → B16
     ws[QUANT_CELL] = quant_text                                   # 分位线与值 → B17
     # 口径说明区动态更新（兼容两种模板：A52-A59逐行独立 / A52:E59整体合并）
@@ -281,8 +285,8 @@ def main():
     except PermissionError:
         sys.exit(f'[ERROR] Excel 文件被占用，请先关闭后重试: {excel_path}')
     print(f'已写入 {excel_path}')
-    print(f'高亮无效天行: {hl_rows if hl_rows else "无"} | B2 已同步为 {len(combos)} | B4 已同步为 {n} | '
-          f'E列公式已重建 | B16={tag} | B17={quant_text}')
+    print(f'高亮无效天行: {hl_rows if hl_rows else "无"} | A5={title_text} | B2 已同步为 {len(combos)} | '
+          f'B4 已同步为 {n} | E列公式已重建 | B16={tag} | B17={quant_text}')
 
     # ---- 7. 落盘回读校验（重新打开磁盘文件；历史教训：写入被中断时可能只落盘部分列） ----
     wb2 = openpyxl.load_workbook(excel_path)
@@ -303,8 +307,10 @@ def main():
                        for j in (2, 4))
                 and ws2.cell(row=DATA_START + i, column=3).value not in (None, '', 0))
     status = 'PASS' if (not bad and e_ok and sim_t == t and ws2[TAG_CELL].value == tag
-                        and ws2[QUANT_CELL].value == quant_text) else 'FAIL'
+                        and ws2[QUANT_CELL].value == quant_text
+                        and ws2[TITLE_CELL].value == title_text) else 'FAIL'
     print(f'落盘校验: A/B/C/D {n}行全量比对 {"PASS" if not bad else bad[:3]} | E列公式 {"PASS" if e_ok else "FAIL"} | '
+          f'A5标题 {"PASS" if ws2[TITLE_CELL].value == title_text else "FAIL"} | '
           f'B16标签 {"PASS" if ws2[TAG_CELL].value == tag else "FAIL"} | '
           f'B17分位线 {"PASS" if ws2[QUANT_CELL].value == quant_text else "FAIL"} | '
           f'模拟E列T={sim_t} (应{t}) {"PASS" if sim_t == t else "FAIL"} => {status}')
