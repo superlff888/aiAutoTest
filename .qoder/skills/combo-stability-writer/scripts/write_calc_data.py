@@ -3,13 +3,15 @@
 """组合稳定性分布 · 指标计算器数据写入工具
 
 从 algorithmRetrospectiveCombinations.json 报文中提取指定模型组合的数据，
-按需求口径计算每日排名、换算万元后写入指标计算器 Excel 的 A16:E47 数据区：
-  A列=日期  B列=每日排名r  C列=策略收益(万)  D列=实际收益(万)  E列=有效天标志(公式重建)
+按需求口径计算每日排名，收益按报文原值(元)写入指标计算器 Excel 的 A16:E47 数据区：
+  A列=日期  B列=每日排名r  C列=策略收益(元)  D列=实际收益(元)  E列=有效天标志(公式重建)
+  C/D列写报文原值(单位:元，显示2位小数，存储原值精度保证C>D胜天判定不受舍入影响)
 
 口径基准（用户确认 + spot_review.js 代码验证）：
   有效天   = 当日策略收益≠0且非空 且 该日实际收益数据存在
              （考核数据与实际收益数据是两套数据，但存在性判定等价，以实际收益是否存在判定）
-  每日排名 = 当日参与组合按策略收益降序稳定排序，名次=位置序号，并列按报文顺序取相邻名次
+  每日排名 = 竞赛排名法：当日参与组合按策略收益降序，并列同名次、下一名次跳过
+             （名次=当日收益严格更高者个数+1，对齐报文后端dailyRank口径；2026-08-26由相邻名次法改入）
              参与口径与有效天一致（需求口径）；--rank-mode frontend 复现 847 行缺陷行为
   覆盖率   = validDays ÷ 区间天数D，D=len(dailyDataList)，不可用 len(actualBaseline)
   胜率     = winDays ÷ validDays，胜天 = 当日策略收益 > 当日实际收益（跑赢实际）
@@ -19,7 +21,7 @@
 布局（2026-08-21版，用户在16/17行插入两行后）：
   A5=指标计算区标题(合并A5:E5锚点)，动态显示目标组合：指标计算区(<label>)
   B16=综合评价标签值  B17=分位线与值("P10(63.8)/P35(78.5)/P65(93.9)/P90(118.2)")
-  18行=数据表头  19~49行=数据区(A日期/B排名/C策略收益万/D实际收益万/E有效天标志)
+  18行=数据表头  19~49行=数据区(A日期/B排名/C策略收益元/D实际收益元/E有效天标志)
   A51=口径说明标题  A52:E59=合并说明区
 """
 import argparse
@@ -60,17 +62,18 @@ def daily_ranks(combos, base, ti, dates, mode):
 
     requirement：当日策略收益非零非空 且 当日有实际收益才参与（需求口径=有效天口径）
     frontend   ：仅策略收益非零非空即参与（复现 spot_review.js:847 缺陷，不查实际收益）
-    排序规则对齐前端 849-852 行：降序稳定排序，名次=位置序号，并列按报文顺序取相邻名次。
+    排名规则为竞赛排名法（对齐报文后端dailyRank）：并列同名次、下一名次跳过，
+    即名次 = 当日收益严格更高的参与组合个数 + 1。
     """
     ranks = {}
     for dt in dates:
-        if sp_of(combos[ti], dt) in (None, 0):
+        spt = sp_of(combos[ti], dt)
+        if spt in (None, 0):
             continue
         if mode == 'requirement' and dt not in base:
             continue
         part = [(i, sp_of(c, dt)) for i, c in enumerate(combos) if sp_of(c, dt) not in (None, 0)]
-        part.sort(key=lambda x: (-x[1], x[0]))
-        ranks[dt] = next(ri + 1 for ri, (i, _) in enumerate(part) if i == ti)
+        ranks[dt] = sum(1 for _, v in part if v > spt) + 1
     return ranks
 
 
@@ -88,8 +91,14 @@ def compute_lcb_tags(combos, base, mode, ti):
             continue
         part = [(i, sp[i][dt]) for i in range(len(combos)) if sp[i].get(dt) not in (None, 0)]
         part.sort(key=lambda x: (-x[1], x[0]))
-        for pos, (i, _) in enumerate(part):
-            rm[i][di] = pos + 1
+        pos = 0                                              # 竞赛排名法：并列同名次、跳号
+        while pos < len(part):
+            j = pos
+            while j + 1 < len(part) and part[j + 1][1] == part[pos][1]:
+                j += 1
+            for k in range(pos, j + 1):
+                rm[part[k][0]][di] = pos + 1
+            pos = j + 1
     lcbs, tgt = [], None
     for i, c in enumerate(combos):
         rs = [r for r in rm[i] if r is not None]
@@ -226,18 +235,18 @@ def main():
         sp, ap_val = sp_of(target, dt), base.get(dt)
         ws.cell(row=r, column=1).value = dt                       # A 日期
         ws.cell(row=r, column=2).value = ranks.get(dt)            # B 每日排名(无效天=None清空)
-        c3 = ws.cell(row=r, column=3)                             # C 策略收益(万)
-        c3.value = None if sp is None else round(sp / 10000, 6)
-        c3.number_format = '0.0000'
-        c4 = ws.cell(row=r, column=4)                             # D 实际收益(万)
-        c4.value = None if ap_val is None else round(ap_val / 10000, 6)
-        c4.number_format = '0.0000'
+        c3 = ws.cell(row=r, column=3)                             # C 策略收益(元)
+        c3.value = sp                                             # 报文原值直接写入(单位:元)
+        c3.number_format = '0.00'
+        c4 = ws.cell(row=r, column=4)                             # D 实际收益(元)
+        c4.value = ap_val                                         # 报文原值直接写入(单位:元)
+        c4.number_format = '0.00'
     # 清空超出 n 的旧行（openpyxl 陷阱：cell(value=None) 不清空，必须 .value=None）
     for r in range(DATA_START + n, DATA_START + DATA_MAX_ROWS):
         for col in range(1, 5):
             ws.cell(row=r, column=col).value = None
-        ws.cell(row=r, column=3).number_format = '0.0000'
-        ws.cell(row=r, column=4).number_format = '0.0000'
+        ws.cell(row=r, column=3).number_format = '0.00'
+        ws.cell(row=r, column=4).number_format = '0.00'
     # E 列公式重建 + 高亮重置（先全清，再对无效天行高亮）
     for r in range(DATA_START, DATA_START + DATA_MAX_ROWS):
         ws.cell(row=r, column=5).value = E_FORMULA.format(r=r)
@@ -264,8 +273,8 @@ def main():
     line6 = ('6. σ为总体标准差STDEV.P；μ/σ仅统计有效天(B列非空;参与天数=T)；'
              'LCB(悲观排名)=μ+z·σ/√T(z=B3=1)，越小越好(对齐前端879行)。')
     line8 = (f'8. 本表A-D列取自真实报文组合“{target["label"]}”({dates[0]}~{dates[-1]})，'
-             f'C/D列=报文原值÷10000(单位:万)；B列每日排名按{args.rank_mode}口径计算'
-             f'(当日收益降序、并列按报文顺序取相邻名次)；报文基准validDays={target["validDays"]}'
+             f'C/D列=报文原值(单位:元,显示2位小数)；B列每日排名按{args.rank_mode}口径计算'
+             f'(当日收益降序、并列同名次跳号的竞赛排名法)；报文基准validDays={target["validDays"]}'
              f'/winDays={target["winDays"]}/winRate={target["winRate"]:.4f}/coverage={target["coverage"]:.4f}')
     if ws[NOTE_TITLE_CELL].value == '口径说明':
         merged_note = any(str(m) == 'A52:E59' for m in ws.merged_cells.ranges)
@@ -295,10 +304,13 @@ def main():
     for i, dt in enumerate(dates):
         r = DATA_START + i
         got = tuple(ws2.cell(row=r, column=j).value for j in (1, 2, 3, 4))
-        exp = (dt, ranks.get(dt),
-               None if sp_of(target, dt) is None else round(sp_of(target, dt) / 10000, 6),
-               None if base.get(dt) is None else round(base[dt] / 10000, 6))
-        if got != exp:
+        exp = (dt, ranks.get(dt), sp_of(target, dt), base.get(dt))
+        # C/D列浮点比对用容差：Excel存取会做二进制浮点往返舍入(末位1e-12级差异属正常)
+        equal = got[:2] == exp[:2] and all(
+            g is None and e is None or
+            isinstance(g, (int, float)) and isinstance(e, (int, float)) and abs(g - e) < 1e-9
+            for g, e in zip(got[2:], exp[2:]))
+        if not equal:
             bad.append((dt, got, exp))
     # A/B/C/D 全量精确比对已覆盖所有列（含无效天应为空的B/C/D），无需额外非空规则
     e_ok = all(str(ws2.cell(row=DATA_START + i, column=5).value or '').startswith('=IF(') for i in range(n))
